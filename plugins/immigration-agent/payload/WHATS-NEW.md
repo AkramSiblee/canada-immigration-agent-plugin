@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.3
+- Fees re-checked on 2026-11-12: visitor visa $100 (family maximum $500) and biometrics $85 (family maximum $170) are unchanged, and IRCC lists no upcoming change to them.
+
 ## 1.3.2
 - Updates on Windows no longer treat every agent file as "changed by you", so they stop making large backup copies in .immigration-agent/backup/ each time. Backup folders made by this problem only hold copies of the agent's own files; unless you edited agent files yourself, you can delete them.
 

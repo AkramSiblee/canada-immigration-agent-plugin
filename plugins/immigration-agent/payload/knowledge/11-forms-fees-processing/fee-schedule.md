@@ -2,7 +2,7 @@
 domain: 11-forms-fees-processing
 topic: fee-schedule
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-12
 confidence: H
 review_every_days: 30
 sources:
@@ -91,6 +91,7 @@ The fee that applies is the one in force on the **date the application is receiv
 | 2026-04-01 | Removal cost repayment indexed ($12,880 to $13,098.96; $3,840 to $3,905.28) |
 | 2026-04-30 | RPRF $575 to **$600**; economic $950 to **$990**; business $1,810 to $1,895; child $260 to $270; sponsorship $85 to **$90**; sponsored principal $545 to **$570**; family spouse $635 to $660; family child $175 to $180; protected persons and H&C $635 to $660; permit holders $375 to $390 |
 - No change scheduled for 2026-12-01 found (2026-11-07).
+- 2026-11-12: fee list page now "Date modified 2026-11-10"; visitor visa $100 (family max $500) and biometrics $85 (family max $170) unchanged; fee-changes page lists no upcoming change to these fees.
 - Baseline items confirmed: RPRF $600, economic $990, sponsorship $90, sponsored principal $570, citizenship right fee $123, and the 2025-12-01 inadmissibility fee increase.
 
 ## Consultant pitfalls
@@ -113,7 +114,7 @@ The fee that applies is the one in force on the **date the application is receiv
 - ATIP fee ($5 under the Access to Information Act; not on the IRCC fee list; see 09-procedure-litigation/atip-gcms-notes.md)
 
 ## Sources
-- IRCC fee list (modified 2026-09-21; read 2026-11-07): https://ircc.canada.ca/english/information/fees/fees.asp
+- IRCC fee list (modified 2026-11-10; read 2026-11-12, visitor and biometrics rows re-checked; other rows read 2026-11-07): https://ircc.canada.ca/english/information/fees/fees.asp
 - IRCC fee changes: https://ircc.canada.ca/english/information/fees/fee-changes.asp
 - PR fees notice (2026-03-27): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/permanent-residence-fees-increasing.html
 - Citizenship fee notice (2026-03-27): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/right-citizenship-fee-increasing.html
