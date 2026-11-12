@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.1.1
+- Setup runs smoothly inside the Claude app: no extra permission questions when installing or updating.
+
 ## 1.1.0
 - The agent now installs and updates through the Claude app: no zip files, updates arrive automatically.
 - Your client folders (cases, Input, Output) are never touched by an update.

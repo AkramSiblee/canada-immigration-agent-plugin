@@ -1,0 +1,3 @@
+#!/bin/sh
+# Install or update the Immigration Agent in the current folder. See agent_sync.py.
+exec python3 "$(dirname "$0")/../agent_sync.py" "$@"

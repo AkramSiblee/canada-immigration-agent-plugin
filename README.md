@@ -1,4 +1,4 @@
-# Canada Immigration Agent (1.1.0)
+# Canada Immigration Agent (1.1.1)
 
 Decision support for licensed Canadian immigration consultants. It prepares and checks; the licensed professional makes every judgment and signs every submission.
 

@@ -17,7 +17,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 1. Make the change and commit it.
 2. Bump `VERSION` and add an entry at the top of `WHATS-NEW.md` (firms see it after updating). Commit.
 3. `python3 scripts/build_plugin.py` : builds `dist/marketplace/` from the last commit, with the same privacy checks as the zip, and validates it.
-4. Push `dist/marketplace/` to the marketplace repository. Firms receive it at their next update.
+4. `python3 scripts/build_plugin.py --publish` : builds, then commits, tags vX.Y.Z and pushes to https://github.com/AkramSiblee/canada-immigration-agent-plugin (the git repo in `dist/marketplace/`). Refuses an already-published version. Firms receive it at their next update.
 - Tests: `python3 scripts/test_plugin.py`
 
 ## First steps
