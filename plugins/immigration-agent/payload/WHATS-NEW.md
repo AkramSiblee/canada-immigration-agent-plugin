@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.2.2
+- Install instructions now include a one-step install command for the Claude app's Code tab.
+
 ## 1.2.1
 - The dashboard opens in its own window, with no black console window behind it.
 - It stops by itself a few minutes after you close its window, so nothing is left running.
