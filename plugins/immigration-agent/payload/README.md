@@ -12,6 +12,10 @@ Claude Code project: instructions, skills, subagents, slash commands, and a stag
 - `python3 scripts/setup_check.py` : installation check (what is missing and how to fix it)
 - `python3 scripts/make_release.py` : the clean zip for buyers in `dist/`: committed files only, checked for client names, numbers and firm details
 
+## Office dashboard (no AI)
+- Double-click `Dashboard.bat` (Windows) or `Dashboard.command` (Mac), or `python3 app/dashboard.py`: deadlines, alerts, cases, documents and agent status in the browser, on this computer only. `--shortcut` puts it on the Windows desktop.
+- Reads case files and never changes them; same rules as `scripts/alerts.py`. Tests: `python3 scripts/test_dashboard.py`
+
 ## Plugin release (how firms install and get updates)
 Firms install the agent as a Claude plugin; at every Claude start it copies the latest agent into their folder (never cases/, Input/, Output/; files they changed are backed up to `.immigration-agent/backup/`). Source: `plugin/`.
 1. Make the change and commit it.

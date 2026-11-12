@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.2.0
+- New office dashboard: today's deadlines and alerts, every case with its next deadline, case files, money and activity, and all finished documents, in your web browser. Open it with the "Immigration Agent Dashboard" shortcut (or Dashboard.bat in your agent folder).
+- One-click "Copy for Claude" buttons for common tasks on each case.
+- Runs on your computer only and uses no AI, so it costs nothing to use.
+
 ## 1.1.1
 - Setup runs smoothly inside the Claude app: no extra permission questions when installing or updating.
 

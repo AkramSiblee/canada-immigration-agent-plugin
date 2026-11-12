@@ -15,7 +15,8 @@ Speak plainly: the user is a consultant, not a programmer. One step at a time; s
    `immigration-agent-sync --init`
    This copies the agent into the folder. Client folders (cases, Input, Output) are created empty and are never touched by updates.
 4. **Install the libraries.** Run `python3 -m pip install --user -r requirements.txt`, then the check: `python3 scripts/setup_check.py --install`. Explain anything marked [FIX] in plain words.
-5. **Finish.** Tell the user:
+5. **Dashboard shortcut.** On Windows run `python3 app/dashboard.py --shortcut`. It puts an "Immigration Agent Dashboard" shortcut on the desktop: deadlines, alerts, cases and documents in the web browser, no AI used. On a Mac, tell them to double-click `Dashboard.command` in this folder.
+6. **Finish.** Tell the user:
    - Start a **new conversation** in this folder so Claude loads the agent.
    - Then set up the firm profile (name, RCIC number, letterhead): ask "Set up my firm profile".
    - Turn on automatic updates: `/plugin` > Marketplaces > select the agent's marketplace > Enable auto-update.
