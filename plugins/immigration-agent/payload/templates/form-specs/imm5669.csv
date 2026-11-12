@@ -1,0 +1,28 @@
+section,no,question,key,rule,help
+Applicant,,Indicate whether you are the principal applicant or a spouse/partner/dependent child aged 18 or older,applicant_role,consultant,
+Applicant,1,Your full name: Family name,family_name,auto,
+Applicant,1,Your full name: Given name(s),given_name,auto,
+Applicant,2,Your full name written in your native language or script,name_native_script,client,
+Applicant,3,Your date of birth (YYYY-MM-DD),date_of_birth,auto,
+Father,4,"Father: family name, given name(s), date of birth, town/city and country of birth, date of death if deceased",father_details,client,
+Mother,5,"Mother: family name at birth, given name(s), date of birth, town/city and country of birth, date of death if deceased",mother_details,client,
+Background,6a,Been convicted of a crime or offence in Canada for which a pardon has not been granted under the Criminal Records Act of Canada?,bg_conviction_canada,client,Yes or No. Also covers family members in the application
+Background,6b,"Been convicted of, or are you currently charged with, on trial for, or party to a crime or offence, or subject of any criminal proceedings in any other country or territory?",bg_conviction_abroad,client,Yes or No
+Background,6c,"Made previous claims for refugee protection in Canada or at a Canadian visa office abroad, in any other country(ies) or territory(ies), or with the UNHCR?",bg_refugee_claim,client,Yes or No
+Background,6d,"Been refused refugee status, an immigrant or permanent resident visa (including a CSQ or application to the Provincial Nominee Program) or visitor or temporary resident visa, to Canada or any other country or territory?",bg_refused_visa,client,Yes or No
+Background,6e,"Been refused admission to, or ordered to leave, Canada or any other country or territory?",bg_refused_admission,client,Yes or No
+Background,6f,"Been involved in an act of genocide, a war crime or in the commission of a crime against humanity?",bg_war_crime,client,Yes or No
+Background,6g,"Used, planned or advocated the use of armed struggle or violence to reach political, religious or social objectives?",bg_armed_struggle,client,Yes or No
+Background,6h,"Been associated with a group that used, uses, advocated or advocates the use of armed struggle or violence to reach political, religious or social objectives?",bg_armed_group,client,Yes or No
+Background,6i,Been member of an organization that is or was engaged in an activity that is part of a pattern of criminal activity?,bg_criminal_org,client,Yes or No
+Background,6j,"Been detained, incarcerated or put in jail?",bg_detained,client,Yes or No
+Background,6k,Had any serious disease or physical or mental disorder?,bg_health,client,Yes or No
+Background,6,"If your answer to any of these questions is YES, provide details",bg_details,client,
+Education,7,"Number of years of school completed: elementary, secondary, university/college, trade or other post-secondary",education_years_by_level,client,
+Education,7,"Full details of all secondary and post-secondary education: from, to, institution, city and country, certificate, field of study",education_history,client,
+Personal history,8,"Personal history since the age of 18, or the past 10 years, whichever is most recent. Start with the most recent",personal_history,client,No gaps in time. Failure to account for all periods will delay processing
+Organizations,9,"Organizations you have supported, been a member of or been associated with",organizations,client,Write NONE if none. No abbreviations
+Government positions,10,Government positions you have held,government_positions,client,Write NONE if none. No abbreviations
+Military service,11,Military and/or paramilitary service for each country,military_service,client,Write NONE if none. No gaps in time
+Addresses,12,"All addresses where you have lived since your 18th birthday or the past 10 years, whichever is most recent",address_history,client,No P.O. box addresses
+Declaration,,Signature and date,signature,sign,Only the applicant can sign this

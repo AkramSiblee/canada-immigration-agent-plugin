@@ -1,0 +1,14 @@
+no,item,required,condition,detect,note
+1,"Application for a PR Card or PRTD (IMM 5444), completed and signed (online in the PR Portal)",always,,form:IMM 5444|file:5444,
+2,Proof of the residency obligation in the past 5 years (Appendix A of the guide),always,,type:tax_assessment|type:employment_letter|type:bank_statement|file:residen|lease|tax|school|employment,IRPA s.28
+3,Fee receipt,always,,file:receipt|fee|payment,
+4,This document checklist (IMM 5644),always,,form:IMM 5644|file:5644|checklist,
+5,Use of a Representative (IMM 5476) or IMM 5475,if,a representative or designated individual,form:IMM 5476|form:IMM 5475|file:5476|5475,
+6,Humanitarian and compassionate supporting documents,if,asking to keep PR status on H&C grounds,file:h.?c|humanitarian|compassion,
+7,Legal name change documents,if,name changed,file:name.?change|change.?of.?name|deed.?poll,
+C1,"PR card: photos (2 on paper, or 1 uploaded)",if,PR card application,file:photo|picture,
+C2,PR card: copy of one primary identity document (e.g. passport),if,PR card application,type:passport|file:passport|identity,
+C3,"PR card: copy of the current card (renewal), the card itself or a photo of it (replacement), or a police report (lost)",if,PR card application,file:pr.?card|police.?report|incident,
+C4,"Under 18: birth certificate, adoption order, guardianship document or school records",if,applicant under 18,type:birth_certificate|file:birth|adoption|guardian|school|report.?card,
+T1,PRTD: copies of all pages of every passport used in the past 5 years,if,PRTD application,type:passport|file:passport,"All pages, not just the identity page"
+T2,PRTD: country-specific documents; travel authorization for a minor,if,PRTD application,,Check the visa office instructions

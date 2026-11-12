@@ -1,0 +1,18 @@
+section,no,question,key,rule,help
+A: Applicant,,Family name (as shown on passport/travel document),family_name,auto,"Also in your native language, if applicable"
+A: Applicant,,Given name(s) (as shown on passport/travel document),given_name,auto,
+A: Applicant,,Name in native language (if applicable),name_native_script,client,
+A: Applicant,,Date of birth,date_of_birth,auto,
+A: Applicant,,Country or territory of birth (as shown on passport/travel document),birth_country,auto,
+A: Applicant,,Marital status,marital_status,client,
+A: Applicant,,Present occupation,occupation,client,
+A: Applicant,,I was physically present at the marriage ceremony,present_at_marriage,client,Yes or No. A marriage without physical presence is generally not recognized
+A: Spouse or partner,,"Spouse, common-law or conjugal partner: name, native-language name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, occupation",spouse_details,client,"If none, the applicant signs Note 1"
+A: Spouse or partner,,Will your spouse or partner accompany you to Canada?,spouse_accompanying,client,Yes or No
+A: Spouse or partner,,My spouse was physically present at the marriage ceremony,spouse_present_at_marriage,client,Yes or No
+A: Parent 1,,"Parent 1: name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, occupation, accompanying or not",parent1_details,client,
+A: Parent 2,,"Parent 2: name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, occupation, accompanying or not",parent2_details,client,
+A: Note 1,,"If no spouse, common-law or conjugal partner is listed: certification that you have none",no_spouse_certification,sign,Only if there is no spouse or partner
+B: Children,,"ALL sons and daughters, including ALL adopted and step-children, regardless of age or place of residence: relationship, name, date of birth, country of birth, address, marital status, occupation, accompanying or not",children_details,client,Leaving a child out can permanently bar sponsoring them later (IRPR 117(9)(d))
+B: Note 2,,"If no children are listed: certification that you have no natural, adopted or step-children",no_children_certification,sign,Only if there are no children
+C: Certification,,Signature and date,signature,sign,Only the applicant can sign this

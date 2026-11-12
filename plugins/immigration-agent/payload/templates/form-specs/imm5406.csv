@@ -1,0 +1,16 @@
+section,no,question,key,rule,help
+Section A: Applicant,,Family name (as shown on passport/travel document),family_name,auto,Write names in English and in your native language
+Section A: Applicant,,Given name(s) (as shown on passport/travel document),given_name,auto,
+Section A: Applicant,,Date of birth (YYYY-MM-DD),date_of_birth,auto,
+Section A: Applicant,,Country or territory of birth (as shown on passport/travel document),birth_country,auto,
+Section A: Applicant,,Present address,present_address,client,
+Section A: Applicant,,Marital status,marital_status,client,
+Section A: Applicant,,E-mail address,email,client,
+Section A: Applicant,,I was physically present at the marriage ceremony,present_at_marriage,client,Yes or No. A marriage without physical presence is generally not recognized
+Section A: Spouse or partner,,"Spouse/partner: name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, e-mail",spouse_details,client,
+Section A: Spouse or partner,,My spouse was physically present at the marriage ceremony,spouse_present_at_marriage,client,Yes or No
+Section A: Parent 1,,"Parent 1: name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, e-mail",parent1_details,client,
+Section A: Parent 2,,"Parent 2: name, date of birth, country of birth, present address (if deceased: city, country and date), marital status, e-mail",parent2_details,client,
+Section B: Children,,"ALL sons and daughters, including ALL adopted and step-children, regardless of age or place of residence",children_details,client,Leaving a child out can permanently bar them from sponsorship later (IRPR 117(9)(d))
+Section C: Brothers and sisters,,"All brothers and sisters, including half- and step-brothers and sisters",siblings_details,client,
+Section D: Certification,,Signature and date,signature,sign,Only the applicant can sign this

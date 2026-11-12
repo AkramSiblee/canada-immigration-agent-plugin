@@ -1,0 +1,17 @@
+no,item,required,condition,detect,note
+1,"Application for Canadian Citizenship - Minors (CIT 0003), validated, printed and signed by hand; barcode page on top",always,,form:CIT 0003|file:cit.?0003,
+2,Colour copies of all biographical pages of the minor's passports or travel documents in the 5-year period,always,,type:passport|file:passport|travel.?doc,Explain any gap at question 8 c)
+3,Colour copies of two pieces of the minor's identification (one with a photo),always,,file:driver|licen[cs]e|health.?card|id.?card|identification|pr.?card|\bid\b,
+4,Copy of the minor's birth certificate or adoption order,always,,type:birth_certificate|file:birth|adoption,
+5,Two identical citizenship photos,always,,file:photo|picture,
+6,Fee receipt,always,,file:receipt|fee|payment,
+7,This document checklist (CIT 0008),always,,form:CIT 0008|file:cit.?0008|checklist,
+8,Copy of the parent's proof of Canadian citizenship,if,a parent is already a citizen,file:citizenship.?cert|citizenship.?card|parent.*(citizen|passport),
+9,Legal guardianship documents,if,a legal guardian applies,file:guardian,
+10,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+11,Proof of registration under the Indian Act,if,registered under the Indian Act,file:indian.?status|status.?card,
+12,Legal name change documents,if,name changed,file:name.?change|change.?of.?name|deed.?poll,
+13,Request to Correct a Date of Birth (IRM 0003),if,date of birth correction,form:IRM 0003|file:irm.?0003,
+14,Request for a Change of Sex or Gender Identifier (IRM 0002),if,gender identifier change,form:IRM 0002|file:irm.?0002,
+15,Translations of documents not in English or French,if,any document not in English or French,file:translat|affidavit,
+16,"Oath waiver: CIT 0554, Medical Opinion (CIT 0547) and supporting documents",if,minor 14 or over asking for an oath waiver,form:CIT 0554|form:CIT 0547|file:waiver,

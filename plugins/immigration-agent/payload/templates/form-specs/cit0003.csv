@@ -1,0 +1,55 @@
+section,no,question,key,rule,help
+Before you start,,"Which route: s.5(2) (a parent is a citizen or applies at the same time) on CIT 0003, or a minor's s.5(1) application (1,095 days)? Or may the minor already be a citizen by descent?",citizenship_route,consultant,"CIT 0003 is only for s.5(2). If a parent or grandparent question in section 7 points to citizenship by descent, check proof of citizenship (CIT 0001) first; multigenerational Bill C-3 cases go to a lawyer"
+Service,1,In which language would you like to receive service?,language_service,client,
+Service,2,Do you have special needs requiring accommodation?,accommodation,client,
+Applicant,3a,The person applying on behalf of the minor is the: parent or legal guardian,applicant_relationship,client,A legal guardian needs proof of guardianship
+Applicant,3b,Full name of the person applying on behalf of the minor,applicant_name,client,
+Applicant,3c,Is the minor legally adopted?,minor_adopted,client,An adopted minor may instead qualify under s.5.1 (citizenship for adopted persons): consider which route fits
+Identity,4a,Minor's UCI,uci,auto,As on the PR document
+Identity,4b,Minor's full name as shown on their PR document: family name,family_name,auto,Must match the PR document exactly
+Identity,4b,Minor's full name as shown on their PR document: given name(s),given_name,auto,
+Identity,4c,Has the minor's name changed since becoming a permanent resident?,name_change,client,If yes: legal name change documents (Appendix A)
+Identity,4d,Has the minor ever used any other name?,other_name,client,
+Identity,5a,Minor's date of birth as shown exactly on their PR document,date_of_birth,auto,Under 18 when signing; 14 and over must also sign and take the oath
+Identity,5b,Minor's place of birth: city/town,birth_city,auto,
+Identity,5b,Minor's place of birth: country or territory,birth_country,auto,
+Status abroad,5c,"Does the minor hold, or have they ever held, immigration or citizenship status in a country other than Canada?",other_country_status,client,
+Identity,5d,Gender,sex,auto,
+Identity,5d,Height,height,client,
+Identity,5d,Natural eye colour,eye_colour,client,
+Identity,5d,Marital status,marital_status,client,
+Contact,6,Home address,residential_address,client,
+Contact,6,Mailing address (if different),mailing_address,client,
+Contact,6,Telephone number,telephone,client,
+Contact,6,Email address,email,client,
+Parents,7a-c,"Parent 1: biological or adoptive, name, other names, country of birth, date of birth",parent1_details,client,
+Parents,7e-f,"Parent 1: citizen (certificate number and date), or applying for citizenship together with this minor?",parent1_citizenship,client,s.5(2) needs at least one parent who is a citizen or applies at the same time
+Parents,"7d,g-i",Parent 1: was a grandparent a Canadian citizen at the parent's birth; did the parent leave Canada for more than 1 year before 1977-02-15; was the parent or a grandparent a Crown servant abroad?,parent1_descent,client,Any Yes may mean the minor is already a citizen by descent
+Parents,7a-c,"Parent 2: biological or adoptive, name, other names, country of birth, date of birth",parent2_details,client,
+Parents,7e-f,"Parent 2: citizen (certificate number and date), or applying for citizenship together with this minor?",parent2_citizenship,client,
+Parents,"7d,g-i",Parent 2: grandparent citizen at the parent's birth; left Canada for more than 1 year before 1977-02-15; parent or grandparent a Crown servant abroad?,parent2_descent,client,
+Residence,8a,When did the minor become a permanent resident?,pr_date,auto,
+Residence,8b,"Has the minor been outside Canada for a total of 730 days or more in the past five years or since becoming a PR? If yes, each absence",minor_absences,client,"s.5(2) has no physical presence requirement, but long absences raise the PR residency obligation (IRPA s.28)"
+Travel documents,8c,Has the minor held travel documents or passports in the five years before signing? Details of each,held_passports,client,Copies of the biographical pages; explain any gap
+Prohibitions,9.1a,Is the minor on probation?,proh_probation,client,Yes or No
+Prohibitions,9.1b,Is the minor on parole?,proh_parole,client,Yes or No
+Prohibitions,9.1c,Is the minor serving a term of imprisonment?,proh_imprisonment,client,Yes or No
+Prohibitions,9.2,Is the minor now serving a sentence outside Canada for an offence?,proh_sentence_outside,client,Yes or No
+Prohibitions,9.3a,"Is the minor now charged with, on trial for, or subject to or a party to an appeal relating to an offence under the Citizenship Act or an indictable offence in Canada?",proh_charged_canada,client,Yes or No
+Prohibitions,9.3b,"Is the minor now charged with, on trial for, or subject to or a party to an appeal relating to an offence outside Canada?",proh_charged_outside,client,Yes or No
+Prohibitions,9.4,"Is the minor now, or has the minor ever been, under a removal order?",proh_removal_order,client,Yes or No
+Prohibitions,9.5,"Is the minor now under investigation for, charged with, on trial for, subject to or a party to an appeal relating to, or has the minor ever been convicted of a war crime or a crime against humanity?",proh_war_crimes,client,Yes or No
+Prohibitions,9.6,"In the five years before the application, was the minor prohibited from being granted citizenship or taking the oath because of misrepresentation or withholding material circumstances?",proh_misrep_5_years,client,Yes or No
+Prohibitions,9.7,"In the 10 years before the application, was the minor's Canadian citizenship revoked for false representation, fraud, or knowingly concealing material circumstances?",proh_revoked_10_years,client,Yes or No
+Prohibitions,9.8a,"In the four years before the application, has the minor been convicted of an indictable offence or an offence under the Citizenship Act?",proh_convicted_canada,client,Yes or No
+Prohibitions,9.8b,"In the four years before the application, has the minor been convicted of an offence outside Canada, regardless of whether they were pardoned or granted amnesty?",proh_convicted_outside,client,Yes or No
+Prohibitions,9.9a,"While a permanent resident, has the minor been convicted in Canada of terrorism, high treason, treason, or spying offences?",proh_terrorism_canada,client,Yes or No
+Prohibitions,9.9b,"While a permanent resident, has the minor been convicted outside Canada of terrorism?",proh_terrorism_outside,client,Yes or No
+Prohibitions,9.9c,"While a permanent resident, has the minor served as a member of an armed force or organized armed group engaged in armed conflict with Canada?",proh_armed_force,client,Yes or No
+Certificate,10,Type of citizenship certificate: paper or electronic,certificate_type,client,
+Oath,11,If the minor is under 14: will they attend a citizenship ceremony?,ceremony_attend,client,14 and over must take the oath
+Elections,12,Consent to share information with Elections Canada (letter and Register of Electors),elections_register,client,
+Representative,12a,Is someone helping you fill out this form?,helped_by_someone,consultant,Use of a paid representative must be declared with IMM 5476
+Representative,12b,Are you paying someone to help you fill out this form?,paying_someone,consultant,
+Declaration,,"Parent's or guardian's signature, city and date",signature,sign,Only the parent or guardian can sign this
+Declaration,,"Minor's signature, city and date (14 and over)",minor_signature,sign,Only the minor can sign this

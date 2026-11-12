@@ -1,0 +1,14 @@
+{
+  "name": "immigration-agent-marketplace",
+  "owner": {
+    "name": "AkramSiblee"
+  },
+  "description": "Releases and updates of the Canada Immigration Agent",
+  "plugins": [
+    {
+      "name": "immigration-agent",
+      "source": "./plugins/immigration-agent",
+      "description": "Decision support for Canadian immigration consultants (RCIC): cases, intake, checklists, forms, letters, refusals, CRS, fees and a verified knowledge base."
+    }
+  ]
+}

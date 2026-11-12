@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write(knowledge/**)",
+      "Edit(knowledge/**)",
+      "Write(cases/**)",
+      "Edit(cases/**)",
+      "Edit(Output/**)",
+      "WebSearch",
+      "WebFetch",
+      "Bash(python3 scripts/kb_status.py:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./cases/**/client-ids/**)",
+      "Read(./Input/**/client-ids/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/kb_status.py --brief"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+section,no,question,key,rule,help
+Before you start,,"Is this the right route: proof of citizenship (CIT 0001), or a grant (CIT 0002 or CIT 0003), or for a person adopted abroad, s.5.1?",citizenship_route,consultant,"Born abroad before 2025-12-15 to a citizen parent: likely a citizen at any generation. Born on or after: the parent needs 1,095 days in Canada before the birth (s.3(3)). Multigenerational, pre-1947 or adoption chains go to a lawyer"
+Before you start,,Which applies: replace a certificate; pass down citizenship to a child born outside Canada; never had a certificate and born outside Canada; think you are Canadian and want to know for sure,application_reason,client,
+1. Language,1,Language of service: English or French,language_service,client,
+2. UCI,2,"Unique Client Identifier (UCI), if any",uci,auto,
+3. Replacement,3,"Are you replacing a citizenship certificate? Certificate number, date, and the name on it",certificate_replacement,client,Copy the number from the old certificate
+3. Replacement,3,"If lost, stolen or destroyed: reported to the police? Details (when, where, how)",certificate_loss,client,
+4. Certificate type,4,Certificate type: paper or electronic,certificate_type,client,
+5. About you,5,Surname as on your birth certificate,family_name,auto,From the birth certificate
+5. About you,5,Given name(s) as on your birth certificate,given_name,auto,
+5. About you,5,Date of birth,date_of_birth,auto,
+5. About you,5,Place of birth,birth_city,auto,
+5. About you,5,Country or territory of birth,birth_country,auto,
+5. About you,5,Gender,sex,auto,
+5. About you,5,Height,height,client,
+5. About you,5,Natural eye colour,eye_colour,client,
+5. About you,5,Any other names used (including married names),other_name,client,
+5. About you,5,"Requesting a different name, date of birth or gender on the certificate? Requested details",requested_changes,client,Supporting documents needed
+6. Birth certificate,6,Will you provide a birth certificate that was changed or replaced?,birth_certificate_changed,client,
+7. Parents,7,"Parent 1: name, other names, country of birth, date of birth, Canadian birth registration number, marriage date and place, date of death; biological, adoptive or legal parent",parent1_details,client,
+7. Parents,7B,"Parent 1's citizenship: not a citizen, not sure, or a citizen; how they obtained it; certificate number; date they first entered Canada to live; left Canada for more than 1 year before 1977; citizen of another country before 1977",parent1_citizenship,client,Copy certificate numbers from the parent's documents
+7. Parents,7B,"Parent 1: born in Canada before 1947 (Newfoundland and Labrador before 1949-04-01), naturalized as a British subject in Canada before then, or a British subject living in Canada on 1947-01-01?",parent1_pre1947,client,Any Yes: pre-1947 cases go to a lawyer
+7. Parents,7C,"Parent 1 (if you were born in Canada) employed in Canada by a foreign government or international agency at your birth? Or a grandparent, if parent 1 was born in Canada?",parent1_foreign_government,client,Yes may mean no citizenship by birth in Canada (Citizenship Act s.3(2))
+8. Grandparents,8,"Was parent 1 born outside Canada, and was one of parent 1's parents (your grandparents) a Canadian citizen or Crown servant at that birth? Grandparents' names, birth, certificate numbers, how they became citizens",parent1_grandparents,client,Citizenship through a grandparent or great-grandparent is multigenerational: refer to a lawyer
+7. Parents,7,"Parent 2: name, other names, country of birth, date of birth, Canadian birth registration number, marriage date and place, date of death; biological, adoptive or legal parent",parent2_details,client,
+7. Parents,7B,"Parent 2's citizenship: not a citizen, not sure, or a citizen; how they obtained it; certificate number; date they first entered Canada to live; left Canada for more than 1 year before 1977; citizen of another country before 1977",parent2_citizenship,client,Copy certificate numbers from the parent's documents
+7. Parents,7B,"Parent 2: born in Canada before 1947 (Newfoundland and Labrador before 1949-04-01), naturalized as a British subject in Canada before then, or a British subject living in Canada on 1947-01-01?",parent2_pre1947,client,Any Yes: pre-1947 cases go to a lawyer
+7. Parents,7C,"Parent 2 (if you were born in Canada) employed in Canada by a foreign government or international agency at your birth? Or a grandparent, if parent 2 was born in Canada?",parent2_foreign_government,client,Yes may mean no citizenship by birth in Canada (Citizenship Act s.3(2))
+8. Grandparents,8,"Was parent 2 born outside Canada, and was one of parent 2's parents (your grandparents) a Canadian citizen or Crown servant at that birth? Grandparents' names, birth, certificate numbers, how they became citizens",parent2_grandparents,client,Citizenship through a grandparent or great-grandparent is multigenerational: refer to a lawyer
+9. Additional information,9,"Have you ever lived in Canada? Date you first entered to live, or born in Canada",lived_in_canada,client,
+10. Born before 1977,10,"Were you absent from Canada for 1 year or longer before 1977? Dates, destination, reason",pre1977_absence,client,
+10. Born before 1977,10,Were you a citizen of another country before 1977? Details,pre1977_other_citizenship,client,
+11. Born before 1950,11,"Born in Canada before 1947 (Newfoundland and Labrador before 1949-04-01), naturalized before then, a British subject resident in Canada on 1947-01-01, or married before 1947 to a man born or naturalized in Canada?",pre1947_status,client,Any Yes: refer to a lawyer
+12. Born on or after 2025-12-15,12,"Were you born on or after December 15, 2025? Born in Canada? Was either parent born in Canada or granted citizenship (other than as an adopted person)?",born_after_c3,client,
+12. Born on or after 2025-12-15,12,"Was your Canadian citizen parent or grandparent employed outside Canada in the Canadian Armed Forces, the federal public administration or a provincial or territorial public service?",crown_service_parent_grandparent,client,
+12. Born on or after 2025-12-15,12,"Did your Canadian citizen parent accumulate at least 1,095 days of physical presence in Canada before your birth?",parent_1095_days,client,If Yes: CIT 0555 (parent's physical presence calculation) and proof. Citizenship Act s.3(3)
+Contact,,Home address,residential_address,client,
+Contact,,Mailing address (if different),mailing_address,client,
+Contact,,Telephone number,telephone,client,
+Contact,,Email address,email,client,
+13. Representative,13,Is someone helping you fill out this form?,helped_by_someone,consultant,Use of a paid representative must be declared with IMM 5476
+13. Representative,13,Are you paying someone to help you fill out this form?,paying_someone,consultant,
+15. Declaration,15,"Declarations, applicant's signature, city and date",signature,sign,Only the applicant can sign this
+15. Declaration,15,"If the applicant is under 14: parent's or guardian's signature, city and date",parent_signature,sign,Only the parent or guardian can sign this

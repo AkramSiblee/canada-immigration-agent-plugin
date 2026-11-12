@@ -1,0 +1,7 @@
+section,no,question,key,rule,help
+1. Your full name,,Family name (as shown on passport/travel document),family_name,auto,
+1. Your full name,,Given name(s) (as shown on passport/travel document),given_name,auto,
+2a. You,,"All trips you have taken outside your country of origin or residence in the last ten years (or since your 18th birthday): from, to, length, destination, purpose, details",travel_history,client,"Include all trips: tourism, business, training, etc. Must match passport stamps and earlier applications (IRPA s.40). Tick 'did not travel' if none"
+2b. Your spouse or partner,,"Your spouse or common-law partner (if not a Canadian citizen or permanent resident): name, and all trips in the last ten years",spouse_travel,client,
+2c. Dependent children,,"Each dependent child aged 18 or older: name, and all trips in the last ten years",dependant_travel,client,
+3. Signature,,Signature and date,signature,sign,Only the principal applicant can sign this

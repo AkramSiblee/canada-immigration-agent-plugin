@@ -1,0 +1,20 @@
+section,no,question,key,rule,help
+Before you start,,Parent and grandparent sponsorship: confirm the sponsor was invited to apply and the intake is open,pgp_intake_check,consultant,"New applications have been paused since 2026-01-01 (MI89; knowledge base parents-grandparents.md, checked 2026-11-07). Check policy-tracker before relying on this form"
+1. Co-signer,1A,Is your spouse or common-law partner co-signing the undertaking? If yes: name and date of birth,spouse_cosigning,client,A co-signer's income can be combined with yours
+1. Sponsor,1B,Your full name: family name,family_name,auto,
+1. Sponsor,1B,Your full name: given name(s),given_name,auto,
+Family size,2,You,count_you,client,Always 1
+Family size,3A,Number of persons in box 3 of the Generic Application Form (IMM 0008) for this undertaking,count_this_undertaking,client,
+Family size,3B,"Persons in previous undertakings you signed or co-signed, still in effect or not yet in effect (i to iv)",count_previous_undertakings,client,Check every previous undertaking for default (IRPR s.133(1)(g))
+Family size,4,If your spouse or partner is co-signing: persons in their previous undertakings (i to iv),count_spouse_undertakings,client,
+Family size,5,"Your spouse or common-law partner, if not already included",count_spouse,client,
+Family size,6,Every other family member not included above and dependent on you financially,count_other_dependants,client,
+Family size,7,Total number of persons for determining the minimum necessary income (family size),family_size,consultant,Family size is counted for each tax year; count each person in the year they joined the family
+Details,9-12,"Names and dates of birth of everyone counted above: previous undertakings, your spouse or partner, other dependants",family_members_listed,client,Must add up to the family size
+Consent,8,Sponsor: do you consent to IRCC collecting your SIN to ask CRA for your income tax information for the three tax years before applying?,cra_consent,client,"If No, IMM 5748 is required"
+Consent,16,Co-signer: do you consent to IRCC collecting your SIN to ask CRA for your income tax information for the same three tax years?,cosigner_cra_consent,client,"If No, IMM 5748 is required"
+Income,13,"Your current situation: unemployed, employed or self-employed",employment_status,client,
+Income,14,"Employment history and periods of unemployment for the last three consecutive tax years: dates, employer, address, phone, gross income, family size",employment_income_history,client,
+Income,15-17,Your co-signing spouse or partner: current situation and employment history for the same three tax years,cosigner_income_history,client,
+Income check,,"Income for each of the three tax years before applying (Notice of Assessment line 15000, with the co-signer's added) against the minimum necessary income plus 30%",pgp_income_check,consultant,IRPR s.133(1)(j)(i)(B). The table in templates/form-specs/income-tables.csv is IRCC's table for the 2025 intake (tax years 2022 to 2024). Check IRCC's current table for any later intake. Quebec has its own test
+Declaration,,"Signatures of the sponsor and any co-signer, and dates",signature,sign,Only the sponsor and co-signer can sign

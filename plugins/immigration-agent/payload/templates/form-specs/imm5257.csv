@@ -1,0 +1,54 @@
+section,no,question,key,rule,help
+Application,,Visa requested (visitor visa or transit),visa_type,consultant,
+Personal details,,UCI (if known),uci,auto,
+Personal details,,I want service in,language_service,client,
+Personal details,,Family name (as shown on your passport or travel document),family_name,auto,
+Personal details,,Given name(s) (as shown on your passport or travel document),given_name,auto,
+Personal details,,"Have you ever used any other name (e.g. nickname, maiden name, alias, etc.)?",other_name,client,Give the other names if yes
+Personal details,,Sex,sex,auto,
+Personal details,,Date of birth,date_of_birth,auto,
+Personal details,,Place of birth: city/town,birth_city,auto,
+Personal details,,Place of birth: country or territory,birth_country,auto,
+Personal details,,Citizenship,citizenship,auto,
+Personal details,,"Current country or territory of residence: country, status, from and to dates",current_residence,client,
+Personal details,,During the past five years have you lived in any country or territory other than your country of citizenship or your current country of residence for more than six months?,previous_countries,client,Give details if yes
+Marital status,,Your current marital status,marital_status,client,
+Marital status,,Date on which you were married or entered into the common-law relationship,marriage_date,auto,
+Marital status,,Name of your current spouse or common-law partner,spouse_name,client,
+Marital status,,Have you previously been married or in a common-law relationship?,previous_relationship,client,Give details if yes
+Languages,,Native language/mother tongue,native_language,client,
+Languages,,Are you able to communicate in English and/or French?,communicate_language,client,
+Languages,,In which language are you most at ease?,language_at_ease,client,
+Languages,,Have you taken a test from a designated testing agency to assess your proficiency in English or French?,language_test_taken,client,
+Passport,,Passport number,passport_number,auto,
+Passport,,Country or territory of issue,passport_country,auto,
+Passport,,Issue date,passport_issue_date,auto,
+Passport,,Expiry date,passport_expiry_date,auto,Must be valid for the whole stay
+National identity document,,Do you have a national identity document?,national_id,client,Give details if yes
+US PR card,,Are you a lawful permanent resident of the United States with a valid green card?,us_lpr,client,Give details if yes
+Contact information,,Current mailing address,mailing_address,client,
+Contact information,,Telephone number,telephone,client,
+Contact information,,E-mail address,email,client,
+Details of visit,,Purpose of my visit,purpose_of_visit,client,
+Details of visit,,Purpose: other (details),purpose_other,client,
+Details of visit,,Intended stay: from,stay_from,client,
+Details of visit,,Intended stay: to,stay_to,client,
+Details of visit,,Funds available for my stay (CAD),funds,client,Must match the proof of funds
+Details of visit,,"People or institutions I will visit in Canada: name, relationship, address",contacts_in_canada,client,
+Education,,"Have you had any post-secondary education (including university, college or apprenticeship training)?",post_secondary,client,
+Education,,"Details of post-secondary education: from, to, field of study, school, city, country",education_history,client,
+Employment,,"Employment for the past 10 years, starting with the current activity: from, to, occupation, employer, city, country",employment_history,client,"No gaps. If not working, say what you were doing (e.g. studying, unemployed)"
+Background,1a,"Within the past two years, have you or a family member ever had tuberculosis of the lungs or been in close contact with a person with tuberculosis?",tr_tb,client,Yes or No
+Background,1b,"Do you have any physical or mental disorder that would require social and/or health services, other than medication, during a stay in Canada?",tr_health_services,client,Yes or No
+Background,1c,"If yes to 1a or 1b, details and the name of the family member (if applicable)",tr_health_details,client,
+Background,2a,"Have you ever remained beyond the validity of your status, attended school without authorization or worked without authorization in Canada?",tr_overstay,client,Yes or No
+Background,2b,"Have you ever been refused a visa or permit, denied entry or ordered to leave Canada or any other country or territory?",tr_refused,client,Yes or No. Include refusals by any country. Leaving one out is misrepresentation (IRPA s.40)
+Background,2c,Have you previously applied to enter or remain in Canada?,tr_previous_application,client,Yes or No
+Background,2d,"If yes to 2a, 2b or 2c, details",tr_refusal_details,client,
+Background,3a,"Have you ever committed, been arrested for, been charged with or convicted of any criminal offence in any country or territory?",tr_criminal,client,Yes or No. Includes impaired driving. Criminal matters may need a lawyer
+Background,3b,"If yes, details",tr_criminal_details,client,
+Background,4a,"Did you serve in any military, militia, or civil defence unit or serve in a security organization or police force (including non-obligatory national service, reserve or volunteer units)?",tr_military,client,Yes or No
+Background,4b,"If yes, dates of service and countries or territories where you served",tr_military_details,client,IMM 5257 Schedule 1 may be required
+Background,5,"Are you, or have you ever been a member or associated with any political party, or other group or organization which has engaged in or advocated violence as a means to achieving a political or religious objective, or which has been associated with criminal activity at any time?",tr_violent_org,client,Yes or No
+Background,6,"Have you ever witnessed or participated in the ill treatment of prisoners or civilians, looting or desecration of religious buildings?",tr_ill_treatment,client,Yes or No
+Declaration,,Signature and date,signature,sign,Only the applicant (or a parent or guardian if under 18) can sign this

@@ -1,0 +1,20 @@
+section,no,question,key,rule,help
+Application,,"Type of application: visitor, worker, student or other",application_type,consultant,
+A: Applicant,,Family name,family_name,auto,The form has one name box: write the full name as on the passport
+A: Applicant,,Given name(s),given_name,auto,
+A: Applicant,,Date of birth,date_of_birth,auto,
+A: Applicant,,Country of birth,birth_country,auto,
+A: Applicant,,Present address,present_address,client,
+A: Applicant,,Present occupation,occupation,client,
+A: Applicant,,Marital status,marital_status,client,
+A: Spouse or partner,,"Spouse or common-law partner: name, date of birth, country of birth, present address (if deceased: city, country and date), occupation, marital status",spouse_details,client,"If none, the applicant signs Note 1"
+A: Spouse or partner,,Will your spouse or partner accompany you to Canada?,spouse_accompanying,client,Yes or No
+A: Mother,,"Mother: name, date of birth, country of birth, present address (if deceased: city, country and date), occupation, marital status",mother_details,client,
+A: Mother,,Will your mother accompany you to Canada?,mother_accompanying,client,Yes or No
+A: Father,,"Father: name, date of birth, country of birth, present address (if deceased: city, country and date), occupation, marital status",father_details,client,
+A: Father,,Will your father accompany you to Canada?,father_accompanying,client,Yes or No
+A: Note 1,,If no spouse or common-law partner is listed: certification that you have none,no_spouse_certification,sign,Only if there is no spouse or partner
+B: Children,,"ALL sons and daughters, including ALL adopted and step-children, regardless of age or place of residence: name, relationship, date of birth, country of birth, address, occupation, marital status, accompanying or not",children_details,client,Leaving a child out can permanently bar sponsoring them later (IRPR 117(9)(d))
+B: Note 2,,"If no children are listed: certification that you have no natural, adopted or step-children",no_children_certification,sign,Only if there are no children
+C: Brothers and sisters,,"ALL brothers and sisters, including half- and step-brothers and sisters: name, relationship, date of birth, country of birth, address, occupation, marital status, accompanying or not",siblings_details,client,
+C: Certification,,Signature and date,signature,sign,Only the applicant can sign this

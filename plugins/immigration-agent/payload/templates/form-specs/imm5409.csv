@@ -1,0 +1,15 @@
+section,no,question,key,rule,help
+Declarants,,Declarant's family name (as shown on passport/travel document),family_name,auto,The form has one name box: write the full name as on the passport
+Declarants,,Declarant's given name(s) (as shown on passport/travel document),given_name,auto,
+Declarants,,Declarant's partner: full name (as shown on passport/travel document),partner_name,client,
+Declaration,,"Where you live together: city, town or village, county (if applicable), province or state, and country",cohabitation_place,client,
+Declaration,,We have cohabited in a conjugal relationship for (number of years) continuous year(s),cohabitation_years,client,At least 12 consecutive months to be common-law (IRPR s.1(1))
+Declaration,,Continuously from (date),cohabitation_from,client,"Must match leases, bills and other proof of living together"
+Declaration,,To (date),cohabitation_to,client,
+1. My common-law partner and I,a,"Have jointly signed a residential lease, mortgage or purchase agreement relating to a residence in which we both live",cl_joint_residence,client,Yes or No. Have the documents ready to show it
+1. My common-law partner and I,b,Jointly own property other than our residence,cl_joint_property,client,Yes or No. Have the documents ready to show it
+1. My common-law partner and I,c,"Have joint bank, trust, credit union or charge card accounts",cl_joint_accounts,client,Yes or No. Have the documents ready to show it
+1. My common-law partner and I,d,Have declared our common-law union under the Canadian Income Tax Act (T1 General income tax return),cl_tax_declared,client,Yes or No. Have the documents ready to show it
+2. Life insurance,,I have life insurance on myself which names my common-law partner as beneficiary,cl_insurance_self,client,Yes or No. Have the documents ready to show it
+3. Life insurance,,My common-law partner has life insurance on themselves which names me as beneficiary,cl_insurance_partner,client,Yes or No. Have the documents ready to show it
+Solemn declaration,,"Signatures of both partners, made before a notary public or commissioner of oaths (name, title, place and date)",signature,sign,"Both sign in front of the commissioner, not before. It has the same force as an oath: a false statement is an offence and misrepresentation (IRPA s.40)"

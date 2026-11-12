@@ -1,0 +1,19 @@
+no,item,required,condition,detect,note
+1,"Application for Canadian Citizenship - Adults (CIT 0002), validated, printed and signed by hand; barcode page on top",always,,form:CIT 0002|file:cit.?0002,
+2,"Online physical presence calculation printout, or How to Calculate Physical Presence (CIT 0407)",always,,form:CIT 0407|file:presence|cit.?0407|calculat,Same application date as on the form
+3,Colour copies of the identity pages of every passport or travel document covering the 5-year eligibility period,always,,type:passport|file:passport|travel.?doc,Include extension stamps; explain any gap at question 14
+4,Copy of proof of English or French (if 18 to 54),if,applicant is 18 to 54,type:language_test|file:ielts|celpip|tef|tcf|language|diploma|transcript,
+5,"Copies of two pieces of personal identification (name, photo, date of birth)",always,,file:driver|licen[cs]e|health.?card|id.?card|identification|pr.?card|\bid\b,The passport page can be one of them
+6,Two identical citizenship photos,always,,file:photo|picture,Must meet the citizenship photo specifications
+7,Fee receipt,always,,file:receipt|fee|payment,
+8,This document checklist (CIT 0007),always,,form:CIT 0007|file:cit.?0007|checklist,
+9,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+10,Original police certificates for each country where the applicant spent 183 days or more in a row in the 4 years before applying (since age 18),if,183 days or more in a row in another country,type:police_certificate|file:police,Or an explanation at question 10 b)
+11,Proof of registration under the Indian Act,if,registered under the Indian Act,file:indian.?status|status.?card|\bscis\b|\bcis\b,
+12,Legal name change documents,if,name changed,file:name.?change|change.?of.?name|deed.?poll,
+13,Request to Correct a Date of Birth (IRM 0003),if,date of birth correction,form:IRM 0003|file:irm.?0003,
+14,Request for a Change of Sex or Gender Identifier (IRM 0002),if,gender identifier change,form:IRM 0002|file:irm.?0002,
+15,Residence outside Canada (CIT 0177) with its supporting documents,if,residence outside Canada counted,form:CIT 0177|file:cit.?0177,
+16,Translations of documents not in English or French,if,any document not in English or French,file:translat|affidavit,
+17,Guardianship documents,if,a guardian corresponds for the applicant,file:guardian|power.?of.?attorney,
+18,"Waiver Request Form (CIT 0116), Medical Opinion (CIT 0547) and supporting documents",if,"asking for a language, knowledge or oath waiver",form:CIT 0116|form:CIT 0547|file:waiver|cit.?0116|cit.?0547,

@@ -1,0 +1,10 @@
+section,no,question,key,rule,help
+Before you start,,Complete this form only if you or your co-signer answered No to question 8 or 16 on IMM 5768 (consent for IRCC to get your tax information from CRA),imm5748_needed,consultant,This version (07-2025) is for the 2025 intake: tax years 2022 to 2024. New parents and grandparents applications are paused; check knowledge/14-policy-tracker
+1. Minimum necessary income,1,"Minimum income required for the family size in question 7 of IMM 5768, for 2022, 2023 and 2024",stated_minimum,consultant,"IRCC's parents and grandparents table (templates/form-specs/income-tables.csv, already includes the 30%)"
+3. Sponsor,3a,"Total income on your Notice of Assessment or CRA My Account (line 15000), for 2022, 2023 and 2024",sponsor_line15000,client,Copy from the Notices of Assessment
+3. Sponsor,3b-f,"Amounts included in that income that don't count: Employment Insurance other than special benefits (2023 and 2024), training allowances, provincial social assistance, federal resettlement assistance, guaranteed income supplement, for 2022, 2023 and 2024",sponsor_benefits,client,
+3. Sponsor,3g-h,"Available income (line a minus the benefits), for 2022, 2023 and 2024",sponsor_available,consultant,Calculated: check the arithmetic
+4. Co-signer,4a,"Co-signer's total income (line 15000), for 2022, 2023 and 2024",cosigner_line15000,client,
+4. Co-signer,4b-f,"Co-signer's amounts that don't count, for 2022, 2023 and 2024",cosigner_benefits,client,
+4. Co-signer,4g-h,"Co-signer's available income, for 2022, 2023 and 2024",cosigner_available,consultant,
+2. Total available,2,"Total income available to the sponsor (boxes 3 and 4 added), for 2022, 2023 and 2024",total_available,consultant,"If less than box 1 in any year, the sponsor doesn't qualify and IRCC says not to send the application (IRPR s.133(1)(j)(i)(B))"

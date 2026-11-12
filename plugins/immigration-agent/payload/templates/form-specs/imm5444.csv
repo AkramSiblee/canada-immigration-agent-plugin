@@ -1,0 +1,42 @@
+section,no,question,key,rule,help
+1. Application,,Your situation: in Canada (PR card) or outside Canada (PR travel document),application_situation,consultant,A PRTD is for a PR outside Canada without a valid PR card
+1. Application,1.1,"PR card: renew, replace, or obtain (first card). PRTD: card lost, stolen or damaged, or card not valid",card_request_reason,consultant,
+1. Application,1.2,UCI number,uci,auto,
+1. Application,1.3,Language of correspondence,language_correspondence,client,
+1. Application,1.4,Date you became a PR in Canada,pr_date,client,As on the Confirmation of Permanent Residence or Record of Landing
+1. Application,1.5,"Place you became a PR in Canada: city or port of entry, province",pr_place,client,
+2. Personal details,2.1,"Surname as shown on your Record of Landing (IMM 1000), Confirmation of Permanent Residence (IMM 5292 or IMM 5688) or last PR card",family_name,auto,
+2. Personal details,2.1,Given name(s) as shown on that document,given_name,auto,
+2. Personal details,2.2,"Current name, if different (this name will appear on the card or PRTD)",current_name,client,Supporting documents needed for any name change
+2. Personal details,2.3,Gender,sex,auto,
+2. Personal details,2.3,Eye colour,eye_colour,client,
+2. Personal details,2.3,Height (in cm),height,client,
+2. Personal details,2.4,Date of birth,date_of_birth,auto,
+2. Personal details,2.4,Country or territory of birth,birth_country,auto,
+2. Personal details,2.5,"Country, countries or territories of citizenship",citizenship,auto,
+2. Contact,2.6,Current residential address in Canada,residential_address,client,
+2. Contact,2.7,Current mailing address in Canada (if different),mailing_address,client,
+2. Contact,2.8,Your address outside Canada,address_outside,client,"For a PRTD, or if you live outside Canada"
+2. Contact,2.9,Primary telephone number,telephone,client,
+2. Contact,2.11,Email address,email,client,
+2. Personal details,2.12,Current marital and relationship status,marital_status,client,
+2. Personal details,2.13,Date you were married or entered into a common-law relationship,marriage_date,auto,
+3. Background,3.1,Have you ever been issued a removal order from Canada?,pr_removal_order,client,Yes or No
+3. Background,3.2,Has an immigration officer ever issued you an inadmissibility report under subsection 44(1) of the Immigration and Refugee Protection Act?,pr_s44_report,client,Yes or No
+3. Background,3.3,Have you ever lost your status as a PR of Canada?,pr_status_lost,client,Yes or No
+3. Background,3.4,Have you ever submitted an appeal to the Immigration Appeal Division against a decision on the residency obligation?,pr_iad_appeal,client,Yes or No
+3. Background,3.5,Have you ever been issued a travel document or a PRTD?,pr_previous_travel_docs,client,
+3. Background,3.6,"If you answered Yes to any question in section 3, details",pr_background_details,client,
+4. History,4.1,"Address history, inside and outside Canada, for the past five years (or since becoming a PR)",address_history,client,No gaps
+4. History,4.2,"Work and educational history, inside and outside Canada, for the same period",activity_history,client,No gaps
+5. Residency,5.5,Period to be assessed: from and to,assessment_period,consultant,"The last five years, or since becoming a PR if less (IRPA s.28(2)(b))"
+5. Residency,5.5,"Every absence from Canada in that period, most recent first: dates, location, reason (A, B, C or Other)",absences,client,Must match passport stamps and the CBSA entry history. A missed trip is misrepresentation (IRPA s.40). The day you left and the day you returned don't count as absent
+5. Residency,5.5,Days counted toward the 730-day residency obligation (calculated from the absences),residency_days_counted,consultant,"730 days in 5 years (IRPA s.28). Absences for reasons A, B or C count only with proof"
+5. Residency,5.6,"If reasons B or C apply: the spouse, partner or parent you accompanied (name, relationship, citizen or PR)",accompanied_person,client,Proof of their status and of your relationship needed
+5. Residency,5.7,"Humanitarian and compassionate grounds, if you may not meet the residency obligation",hc_grounds,client,IRPA s.28(2)(c). Consider whether to file anyway; get advice
+"6. Lost, stolen or damaged card",6.1,PR card number (if known),pr_card_number,client,Copy it from the card or earlier documents
+"6. Lost, stolen or damaged card",6.3,"The card was lost, stolen, damaged or never received; date and country",card_loss,client,
+"6. Lost, stolen or damaged card",6.4,"Circumstances, and efforts made to locate the card",card_loss_details,client,
+7. Consent,,Consent to disclose your history of entries into Canada (CBSA),cbsa_consent,client,"If no, you may need to get it yourself and send it"
+7. Consent,,"Consent to disclose your income tax and residency information (CRA), and your SIN",cra_consent,client,
+8. Declaration,,"Declarations, signature, date and place (and parent or guardian for a child)",signature,sign,Only the applicant (or parent or guardian) can sign this

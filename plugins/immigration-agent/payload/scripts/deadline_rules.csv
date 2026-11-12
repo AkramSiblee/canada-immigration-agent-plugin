@@ -1,0 +1,15 @@
+type,days,counted_from,basis,last_verified
+jr-in-canada,15,day notified or became aware of the decision,IRPA s.72(2)(b),2026-11-09
+jr-outside-canada,60,day notified or became aware of the decision,IRPA s.72(2)(b),2026-11-09
+iad-sponsorship,30,day sponsor received the decision and written reasons,IAD Rules 2022 r.16(a),2026-11-09
+iad-removal,30,day appellant received the removal order,IAD Rules 2022 r.16(b),2026-11-09
+iad-residency,60,day appellant received the decision,IAD Rules 2022 r.16,2026-11-07
+rad-notice,15,day written reasons were received,IRPR s.159.91(1),2026-11-07
+rad-perfect,30,day written reasons were received,IRPR s.159.91(1),2026-11-07
+restoration,90,day status was lost,IRPR s.182,2026-11-09
+pgwp-180,180,day school confirmed completion,IRCC PGWP eligibility page,2026-11-09
+ee-ita-60,60,day the invitation to apply was issued,Express Entry ITA period,2026-11-09
+pr-biometrics-30,30,date on the biometric instruction letter,IRCC Express Entry after you apply page,2026-11-09
+client-property-account,14,day the client requested their property,CICC Client File Management Regulation s.8.2,2026-11-07
+client-property-deliver,30,day the client requested their property,CICC Client File Management Regulation s.8.2,2026-11-07
+final-accounting,30,day the service agreement was completed or terminated,Code s.36(1): accounting final invoice and refund of excess trust funds,2026-11-09

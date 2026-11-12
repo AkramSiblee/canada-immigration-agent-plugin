@@ -1,0 +1,17 @@
+section,no,question,key,rule,help
+1. Sponsor,1A,Your full name: family name,family_name,auto,
+1. Sponsor,1A,Your full name: given name(s),given_name,auto,
+1. Co-signer,1B,Is your spouse or common-law partner co-signing the undertaking? If yes: name and date of birth,spouse_cosigning,client,
+Family size,2,You,count_you,client,Always 1
+Family size,3A,Number of persons in box 3 of the Generic Application Form (IMM 0008) for this undertaking,count_this_undertaking,client,
+Family size,3B,"Persons in previous undertakings you signed or co-signed, still in effect or not yet in effect (i to iv)",count_previous_undertakings,client,Check every previous undertaking for default (IRPR s.133(1)(g))
+Family size,4,If your spouse or partner is co-signing: persons in their previous undertakings (i to iv),count_spouse_undertakings,client,
+Family size,5,"Your spouse or common-law partner, if not already included",count_spouse,client,
+Family size,6,Every other family member not included above and dependent on you financially,count_other_dependants,client,
+Family size,7,Total number of persons for determining the minimum necessary income (family size),family_size,consultant,
+Income,8,Minimum necessary income for that family size,stated_mni,consultant,"From IRCC's current table (templates/form-specs/income-tables.csv, 'mni', updated 2025-07-29). Check IRCC's page on filing day"
+Income,9,Total income available to the sponsor (and co-signer),available_income,client,"If less than box 8, the sponsor is not eligible and should not apply"
+Details,9-12,"Names and dates of birth of everyone counted above: previous undertakings, your spouse or partner, other dependants",family_members_listed,client,Must add up to the family size
+Income,10,"Your current situation: unemployed, employed or self-employed",employment_status,client,
+Income,10,"Income periods: employment (employer, address, supervisor, occupation, hours, pay) and self-employment (business, share, net income)",income_periods,client,
+Declaration,,"Signatures of the sponsor and any co-signer, and dates",signature,sign,Only the sponsor and co-signer can sign

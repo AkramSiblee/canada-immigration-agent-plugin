@@ -1,0 +1,20 @@
+section,no,question,key,rule,help
+Purpose,,I am: appointing a representative / updating my representative's contact information / cancelling a representative / cancelling and appointing a new one / (representative) withdrawing,rep_form_purpose,consultant,
+A: Applicant,1,Your full name: family name (as shown on your passport or travel document),family_name,auto,
+A: Applicant,1,Your full name: given name(s) (as shown on your passport or travel document),given_name,auto,
+A: Applicant,2,Your date of birth,date_of_birth,auto,
+A: Applicant,3,"Your email address (if none, your telephone number or address)",email,client,IRCC uses this for communication if the representative is later cancelled
+A: Applicant,4,"Type of application (permanent residence, extension of study permit, etc.)",application_type,consultant,
+A: Applicant,4,Application number (if known),application_number,auto,
+A: Applicant,5,UCI number (if known),uci,auto,
+B: Representative,6,"Your representative's full name (family name and given names, separately on the form)",rep_name,firm,As on your CICC licence
+B: Representative,7,"Your representative: paid (CICC member, law society member or student-at-law, Chambre des notaires) or unpaid",rep_paid,consultant,A paid representative must be authorized (IRPA s.91)
+B: Representative,7,Membership ID number,rep_membership_id,firm,
+B: Representative,8,Name of firm or organization (if applicable),rep_organization,firm,
+B: Representative,8,Representative's mailing address,rep_address,firm,
+B: Representative,8,Representative's telephone number,rep_phone,firm,
+B: Representative,8,Representative's e-mail address,rep_email,firm,Authorizes IRCC to send the client's information to this address
+B: Representative,9,Representative's signature and date,rep_signature,sign,You sign this
+C: Cancelling a representative,10,Full name and organization of the representative being cancelled,previous_rep,consultant,Confirm the earlier agreement has ended (Code s.24(2)(c))
+E: Declaration,12,Applicant's signature and date,signature,sign,Only the applicant (or parent or guardian if under 18) can sign this
+E: Declaration,12,If a sponsorship application: signature of the spouse or common-law partner,spouse_signature,sign,Sponsorship applications only

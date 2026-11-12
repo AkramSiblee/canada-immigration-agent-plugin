@@ -1,0 +1,124 @@
+cma,province,from,to,rate,source,read
+St. John's,Newfoundland and Labrador,2026-04-10,2026-07-09,7.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+St. John's,Newfoundland and Labrador,2026-07-10,2026-10-08,7.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+St. John's,Newfoundland and Labrador,2026-10-09,2027-01-07,6.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Halifax,Nova Scotia,2026-04-10,2026-07-09,6.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Halifax,Nova Scotia,2026-07-10,2026-10-08,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Halifax,Nova Scotia,2026-10-09,2027-01-07,6.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Moncton,New Brunswick,2026-04-10,2026-07-09,7.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Moncton,New Brunswick,2026-07-10,2026-10-08,8.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Moncton,New Brunswick,2026-10-09,2027-01-07,8.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saint John,New Brunswick,2026-04-10,2026-07-09,6.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saint John,New Brunswick,2026-07-10,2026-10-08,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saint John,New Brunswick,2026-10-09,2027-01-07,5.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Fredericton,New Brunswick,2026-04-10,2026-07-09,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Fredericton,New Brunswick,2026-07-10,2026-10-08,5.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Fredericton,New Brunswick,2026-10-09,2027-01-07,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saguenay,Quebec,2026-04-10,2026-07-09,3.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saguenay,Quebec,2026-07-10,2026-10-08,3.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saguenay,Quebec,2026-10-09,2027-01-07,3.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Québec,Quebec,2026-04-10,2026-07-09,3.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Québec,Quebec,2026-07-10,2026-10-08,4.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Québec,Quebec,2026-10-09,2027-01-07,4.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Sherbrooke,Quebec,2026-04-10,2026-07-09,5.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Sherbrooke,Quebec,2026-07-10,2026-10-08,4.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Sherbrooke,Quebec,2026-10-09,2027-01-07,4.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Trois-Rivières,Quebec,2026-04-10,2026-07-09,5.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Trois-Rivières,Quebec,2026-07-10,2026-10-08,5.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Trois-Rivières,Quebec,2026-10-09,2027-01-07,5.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Drummondville,Quebec,2026-04-10,2026-07-09,7.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Drummondville,Quebec,2026-07-10,2026-10-08,5.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Drummondville,Quebec,2026-10-09,2027-01-07,3.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Montréal,Quebec,2026-04-10,2026-07-09,6.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Montréal,Quebec,2026-07-10,2026-10-08,6.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Montréal,Quebec,2026-10-09,2027-01-07,7.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Ottawa-Gatineau,Ontario/Quebec,2026-04-10,2026-07-09,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Ottawa-Gatineau,Ontario/Quebec,2026-07-10,2026-10-08,6.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Ottawa-Gatineau,Ontario/Quebec,2026-10-09,2027-01-07,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kingston,Ontario,2026-04-10,2026-07-09,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kingston,Ontario,2026-07-10,2026-10-08,5.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kingston,Ontario,2026-10-09,2027-01-07,6.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Belleville - Quinte West,Ontario,2026-04-10,2026-07-09,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Belleville - Quinte West,Ontario,2026-07-10,2026-10-08,6.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Belleville - Quinte West,Ontario,2026-10-09,2027-01-07,6.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Peterborough,Ontario,2026-04-10,2026-07-09,6.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Peterborough,Ontario,2026-07-10,2026-10-08,7.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Peterborough,Ontario,2026-10-09,2027-01-07,6.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Oshawa,Ontario,2026-04-10,2026-07-09,7.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Oshawa,Ontario,2026-07-10,2026-10-08,8.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Oshawa,Ontario,2026-10-09,2027-01-07,9.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Toronto,Ontario,2026-04-10,2026-07-09,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Toronto,Ontario,2026-07-10,2026-10-08,7.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Toronto,Ontario,2026-10-09,2027-01-07,7.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Hamilton,Ontario,2026-04-10,2026-07-09,6.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Hamilton,Ontario,2026-07-10,2026-10-08,6.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Hamilton,Ontario,2026-10-09,2027-01-07,7.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+St. Catharines-Niagara,Ontario,2026-04-10,2026-07-09,7.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+St. Catharines-Niagara,Ontario,2026-07-10,2026-10-08,5.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+St. Catharines-Niagara,Ontario,2026-10-09,2027-01-07,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kitchener-Cambridge-Waterloo,Ontario,2026-04-10,2026-07-09,9.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kitchener-Cambridge-Waterloo,Ontario,2026-07-10,2026-10-08,8.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kitchener-Cambridge-Waterloo,Ontario,2026-10-09,2027-01-07,7.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Brantford,Ontario,2026-04-10,2026-07-09,6.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Brantford,Ontario,2026-07-10,2026-10-08,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Brantford,Ontario,2026-10-09,2027-01-07,6.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Guelph,Ontario,2026-04-10,2026-07-09,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Guelph,Ontario,2026-07-10,2026-10-08,7.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Guelph,Ontario,2026-10-09,2027-01-07,7.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+London,Ontario,2026-04-10,2026-07-09,9.3,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+London,Ontario,2026-07-10,2026-10-08,7.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+London,Ontario,2026-10-09,2027-01-07,9.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Windsor,Ontario,2026-04-10,2026-07-09,8.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Windsor,Ontario,2026-07-10,2026-10-08,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Windsor,Ontario,2026-10-09,2027-01-07,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Barrie,Ontario,2026-04-10,2026-07-09,8.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Barrie,Ontario,2026-07-10,2026-10-08,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Barrie,Ontario,2026-10-09,2027-01-07,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Greater Sudbury,Ontario,2026-04-10,2026-07-09,6.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Greater Sudbury,Ontario,2026-07-10,2026-10-08,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Greater Sudbury,Ontario,2026-10-09,2027-01-07,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Thunder Bay,Ontario,2026-04-10,2026-07-09,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Thunder Bay,Ontario,2026-07-10,2026-10-08,4.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Thunder Bay,Ontario,2026-10-09,2027-01-07,4.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Winnipeg,Manitoba,2026-04-10,2026-07-09,6.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Winnipeg,Manitoba,2026-07-10,2026-10-08,5.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Winnipeg,Manitoba,2026-10-09,2027-01-07,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Regina,Saskatchewan,2026-04-10,2026-07-09,6.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Regina,Saskatchewan,2026-07-10,2026-10-08,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Regina,Saskatchewan,2026-10-09,2027-01-07,6.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saskatoon,Saskatchewan,2026-04-10,2026-07-09,5.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saskatoon,Saskatchewan,2026-07-10,2026-10-08,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Saskatoon,Saskatchewan,2026-10-09,2027-01-07,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Lethbridge,Alberta,2026-04-10,2026-07-09,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Lethbridge,Alberta,2026-07-10,2026-10-08,5.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Lethbridge,Alberta,2026-10-09,2027-01-07,6.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Calgary,Alberta,2026-04-10,2026-07-09,7.1,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Calgary,Alberta,2026-07-10,2026-10-08,7.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Calgary,Alberta,2026-10-09,2027-01-07,6.4,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Red Deer,Alberta,2026-04-10,2026-07-09,5.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Red Deer,Alberta,2026-07-10,2026-10-08,7.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Red Deer,Alberta,2026-10-09,2027-01-07,6.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Edmonton,Alberta,2026-04-10,2026-07-09,7.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Edmonton,Alberta,2026-07-10,2026-10-08,7.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Edmonton,Alberta,2026-10-09,2027-01-07,7.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kelowna,British Columbia,2026-04-10,2026-07-09,8.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kelowna,British Columbia,2026-07-10,2026-10-08,7.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kelowna,British Columbia,2026-10-09,2027-01-07,8.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kamloops,British Columbia,2026-04-10,2026-07-09,5.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kamloops,British Columbia,2026-07-10,2026-10-08,7.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Kamloops,British Columbia,2026-10-09,2027-01-07,3.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Chilliwack,British Columbia,2026-04-10,2026-07-09,5.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Chilliwack,British Columbia,2026-07-10,2026-10-08,7.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Chilliwack,British Columbia,2026-10-09,2027-01-07,5.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Abbotsford-Mission,British Columbia,2026-04-10,2026-07-09,6.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Abbotsford-Mission,British Columbia,2026-07-10,2026-10-08,8.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Abbotsford-Mission,British Columbia,2026-10-09,2027-01-07,7.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Vancouver,British Columbia,2026-04-10,2026-07-09,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Vancouver,British Columbia,2026-07-10,2026-10-08,6.7,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Vancouver,British Columbia,2026-10-09,2027-01-07,7.0,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Victoria,British Columbia,2026-04-10,2026-07-09,4.9,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Victoria,British Columbia,2026-07-10,2026-10-08,4.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Victoria,British Columbia,2026-10-09,2027-01-07,5.8,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Nanaimo,British Columbia,2026-04-10,2026-07-09,7.2,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Nanaimo,British Columbia,2026-07-10,2026-10-08,6.5,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10
+Nanaimo,British Columbia,2026-10-09,2027-01-07,6.6,https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html,2026-11-10

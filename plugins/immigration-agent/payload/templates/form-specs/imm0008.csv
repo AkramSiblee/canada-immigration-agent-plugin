@@ -1,0 +1,53 @@
+section,no,question,key,rule,help
+Application details,,Program under which you are applying,program,consultant,
+Application details,,Category under which you are applying,category,consultant,
+Application details,,"How many family members, including you, are in this application?",family_count,client,Count everyone in the application
+Application details,,Immigration office requested for processing this application,office_requested,consultant,
+Application details,,Language preference for correspondence,language_correspondence,client,
+Application details,,Language preference for interview,language_interview,client,
+Application details,,Interpreter requested,interpreter,client,
+Application details,,Where do you intend to live in Canada? Province/Territory,intended_province,client,
+Application details,,Where do you intend to live in Canada? City/Town,intended_city,client,
+Application details,,Have you received your Certificat de Sélection du Québec (CSQ)?,csq_received,client,
+Personal details,,Family name(s) (exactly as shown on your passport or travel document),family_name,auto,
+Personal details,,Given name(s) (exactly as shown on your passport or travel document),given_name,auto,
+Personal details,,"Have you ever used any other name (e.g. nickname, maiden name, alias, etc.)?",other_name,client,
+Personal details,,UCI,uci,auto,
+Personal details,,Sex,sex,auto,
+Personal details,,Height,height,client,
+Personal details,,Eye colour,eye_colour,client,
+Personal details,,Date of birth,date_of_birth,auto,
+Personal details,,Place of birth: City/Town,birth_city,auto,
+Personal details,,Place of birth: Country,birth_country,auto,
+Personal details,,Citizenship(s),citizenship,auto,
+Personal details,,"Current country of residence: country, status, from and to dates",current_residence,client,
+Personal details,,Date and place of your last entry to Canada,last_entry,client,
+Personal details,,During the past five years have you lived in any country other than your country of citizenship or your current country of residence for more than six months?,previous_countries,client,Give details if yes
+Personal details,,Your current marital status,marital_status,client,
+Personal details,,Date on which you were married or entered into the common-law relationship,marriage_date,auto,
+Personal details,,Name of your current spouse/common-law partner,spouse_name,client,
+Personal details,,Have you previously been married or in a common-law relationship?,previous_relationship,client,Give details if yes
+Contact information,,Current mailing address,mailing_address,client,
+Contact information,,Residential address (same as mailing address?),residential_address,client,
+Contact information,,Telephone number,telephone,client,
+Contact information,,E-mail address,email,client,
+Passport,,Do you have a valid passport/travel document?,valid_passport,client,
+Passport,,Passport/Travel document number (exactly as shown on your passport or travel document),passport_number,auto,
+Passport,,Country of issue,passport_country,auto,
+Passport,,Issue date,passport_issue_date,auto,
+Passport,,Expiry date,passport_expiry_date,auto,
+National identity document,,Do you have a national identity document?,national_id,client,Give details if yes
+US PR card,,Are you a lawful permanent resident of the United States?,us_lpr,client,Give details if yes
+Education/occupation,,Highest level of education,education_level,client,
+Education/occupation,,Number of years of education in total,education_years,client,
+Education/occupation,,Current occupation,current_occupation,client,
+Education/occupation,,Intended occupation,intended_occupation,client,
+Language,,Native language/Mother tongue,native_language,client,
+Language,,Are you able to communicate in English and/or French?,communicate_language,client,
+Language,,In which language are you most at ease?,language_at_ease,client,
+Language,,Have you taken a test from a designated testing agency to assess your proficiency in English or French?,language_test_taken,client,Attach results if yes
+Dependants,,"Details of each family member, whether accompanying or not",dependants,client,List your spouse or partner and all dependent children. Give each person's full name and date of birth
+Consent,,Consent to release information to intended province/territory of destination,consent_province,client,
+Consent,,Consent to share information with prospective employers,consent_employers,client,
+Consent,,Consent to be contacted for evaluation purposes,consent_evaluation,client,
+Declaration,,Signature and date,signature,sign,Only the applicant can sign this

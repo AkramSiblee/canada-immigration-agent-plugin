@@ -1,0 +1,11 @@
+no,item,required,condition,detect,note
+1,Application for a Temporary Resident Visa (IMM 5257) and Family Information (IMM 5645),always,,form:IMM 5257|form:IMM 5645|file:5257|5645,
+2,"Letter of invitation from the child or grandchild: promise of financial support, the household list with names and dates of birth, signed",always,,type:letter_of_invitation|file:invitation,
+3,"Proof of the host's income: Notice of Assessment (or T4/T1, pay stubs, employer letter, bank statements)",always,,type:tax_assessment|type:employment_letter|type:pay_stub|file:assessment|\bnoa\b|t4|t1,"Either of the 2 tax years, or 75% plus the visitor's income"
+4,"Proof of medical insurance: Canadian or OSFI-authorized insurer, $100,000, 1 year from entry, paid (not a quote)",always,,type:insurance_policy|file:insurance|policy,
+5,Proof of the immigration medical exam,always,,type:medical_exam|file:medical|ime|panel,
+6,"Proof the host is a citizen, PR or registered Indian (and the co-signer, if any)",always,,file:citizenship|pr.?card|copr|canadian.?passport|indian.?status|birth,
+7,Proof of the relationship to the host (birth certificates),always,,type:birth_certificate|file:birth,
+8,Visitor's own income proof,if,relying on option 2 (visitor's income),type:pay_stub|type:employment_letter|type:bank_statement|file:pension|salary|income,
+9,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+10,Translations of documents not in English or French,if,any document not in English or French,file:translat|affidavit,

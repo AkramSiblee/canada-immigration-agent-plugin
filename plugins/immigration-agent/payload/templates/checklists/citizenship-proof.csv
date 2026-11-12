@@ -1,0 +1,15 @@
+no,item,required,condition,detect,note
+1,"Application for a Citizenship Certificate (CIT 0001), completed, signed and dated",always,,form:CIT 0001|file:cit.?0001,
+2,"Citizenship photos (two originals, or a digital image online)",always,,file:photo|picture,
+3,"Two pieces of valid personal identification, one with a photo",always,,type:passport|file:passport|driver|licen[cs]e|health.?card|id.?card|identification,
+4,Proof of payment of the fee,always,,file:receipt|fee|payment,
+5,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+6,Statutory declaration for a change of sex or gender,if,gender identifier change,file:gender|irm.?0002,
+7,Proof of legal change of name,if,name changed,file:name.?change|change.?of.?name|deed.?poll,
+S1,"Scenario 1 (certificate before): all original citizenship, naturalization, registration of birth abroad or retention certificates",if,a certificate was issued before,file:certificate|naturali[sz]ation|retention|\brba\b,
+S2,"Scenario 2 (born in Canada, paper only): Canadian birth certificate; other nationalities before 1977-02-15",if,born in Canada,type:birth_certificate|file:birth,
+S3a,"Scenario 3 (born abroad to a Canadian parent): birth certificate naming the Canadian parent(s), from the original authority",if,born outside Canada to a Canadian parent,type:birth_certificate|file:birth,
+S3b,"Scenario 3: proof of parentage and citizenship for each Canadian parent, grandparent and ancestor (birth, citizenship, RBA, retention or naturalization certificates)",if,born outside Canada to a Canadian parent,file:parent|grandparent|citizenship.?cert|naturali[sz]ation,Multigenerational claims go to a lawyer
+S3c,"Scenario 3, born on or after 2025-12-15 to a parent born abroad: CIT 0555 and proof of the parent's 1,095 days in Canada before the birth",if,born abroad on or after 2025-12-15 to a parent also born abroad,"form:CIT 0555|file:cit.?0555|presence|1095|1,095","T4s, school, travel, residential, government records or affidavits"
+S4,"Scenario 4 (British subject before 1947, paper only): long form birth certificate, proof of British subject status, landing and residence in Canada",if,British subject resident in Canada before 1947 (Newfoundland and Labrador 1949),file:british|landing|1947,Refer to a lawyer
+S5,"Scenario 5 (woman married before 1947, paper only): marriage certificate and the husband's nationality documents",if,married before 1947 to a man born or naturalized in Canada,type:marriage_certificate|file:marriage|husband,Refer to a lawyer

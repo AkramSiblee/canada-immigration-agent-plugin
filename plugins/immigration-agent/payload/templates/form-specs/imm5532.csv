@@ -1,0 +1,41 @@
+section,no,question,key,rule,help
+Identity,,Sponsor: family name,family_name,auto,
+Identity,,Sponsor: given name(s),given_name,auto,
+Identity,,Sponsor: date of birth,date_of_birth,auto,
+Identity,,Sponsor: client ID (if known),uci,auto,
+Identity,,Spouse or partner: full name,partner_name,client,
+Identity,,Spouse or partner: date of birth,partner_dob,client,
+Part A: Sponsor,A1,"Sponsor's employment history: all employers over the past five years, starting with the current one (dates, employer name, address and telephone, occupation, monthly gross income)",sp_employment_history,client,"No gaps. If unemployed, explain how you supported yourself. If self-employed, give the business name"
+Part A: Sponsor,A2,"Have you sponsored in the past, or are you currently sponsoring, any other members of your family in a different application?",sp_other_sponsorships,client,Yes or No
+Part A: Sponsor,A2,"If yes: everyone included in past undertakings you signed as sponsor or co-signer (name, date of birth, sponsor or co-signer)",sp_past_undertakings,client,Includes people who are not permanent residents yet
+Part A: Sponsor,A3,"Other people financially dependent on you, not already listed (name and date of birth)",sp_dependants,client,Include previous spouses or partners and children from past relationships
+Part A: Sponsor,A4,"Highest level of education completed, and number of years",sp_education,client,
+Part A: Sponsor,A5,All addresses where you have lived in the past five years,sp_address_history,client,No P.O. boxes. No gaps
+Part A: Sponsor,A6,Do you live in Canada now?,sp_lives_in_canada,client,If no: when you last lived in Canada and when you plan to return
+Part A: Sponsor,A7,Have you ever been married or in a common-law relationship with another person?,previous_relationship,client,"If yes: details of each previous spouse or partner, with the date of divorce, death or separation"
+Part A: Sponsor,A8,"If there is an investigation into marriage fraud about you, do you consent to IRCC and CBSA releasing the results to your spouse or partner?",sp_consent_disclose,client,Yes or No
+Part B: Principal applicant,B1,"Before this relationship, was your sponsor related to you in any way?",pa_related_before,client,"Yes or No. If yes, names and relationships, including previous in-laws"
+Part B: Principal applicant,B2,"Do you have any relatives (including aunts, uncles, cousins, etc.) living in Canada? Give their full names, addresses and relationship to you",pa_relatives_in_canada,client,Not needed for family members already on IMM 5406
+Part B: Principal applicant,B3,Have you ever been married or in a common-law relationship with another person?,pa_previous_relationship,client,Yes or No
+Part B: Principal applicant,B4,"If there is an investigation into marriage fraud about you, do you consent to IRCC and CBSA releasing the results to your spouse or partner?",pa_consent_disclose,client,Yes or No
+Part C: Relationship,C1,When was the first time you met in person? (date and place),rel_first_met,client,"Must match photos, travel and other evidence"
+Part C: Relationship,C1,Did anyone introduce you?,rel_introduced,client,"Yes or No. If yes, who"
+Part C: Relationship,C2,Did you have any contact before you met in person?,rel_contact_before,client,"Yes or No. If yes: who made first contact, when, and how (phone, email, social media)"
+Part C: Relationship,C3,Are you living together now?,rel_living_together,client,"Yes or No. If no, explain why not, and list when and where you lived together in the past"
+Part C: Relationship,C4,"If you are not living together, have you visited each other during your relationship?",rel_visited,client,"Yes or No. If yes: dates, who travelled, where you stayed. Must match passport stamps and tickets"
+Part C: Relationship,C5,What language(s) do you use when communicating with each other?,rel_language,client,
+Part C: Relationship,C6,"How often do you communicate when you are not together, and how?",rel_communication,client,
+Part C: Relationship,C7,"Do your close friends, family and children know about your relationship?",rel_others_know,client,"Yes or No. If yes: names, relationship, date they met you"
+Part C: Relationship,C8,If you are married: was your marriage arranged?,rel_arranged,client,Yes or No
+Part C: Relationship,C9,Were there formal ceremonies or events to recognize or celebrate your relationship?,rel_ceremony,client,"Yes or No. If yes: date, description, location, number of guests, who performed it"
+Part C: Relationship,C9a,Did the principal applicant's parent(s) attend?,attend_pa_parents,client,Yes or No
+Part C: Relationship,C9b,"Did the principal applicant's child(ren) attend, if applicable?",attend_pa_children,client,Yes or No
+Part C: Relationship,C9c,Did the principal applicant's other family members or relatives attend?,attend_pa_relatives,client,Yes or No
+Part C: Relationship,C9d,Did the sponsor's parent(s) attend?,attend_sp_parents,client,Yes or No
+Part C: Relationship,C9e,"Did the sponsor's child(ren) attend, if applicable?",attend_sp_children,client,Yes or No
+Part C: Relationship,C9f,Did the sponsor's other family members or relatives attend?,attend_sp_relatives,client,Yes or No
+Part C: Relationship,C10,Are either of you pregnant?,rel_pregnant,client,"Yes or No. If yes, the expected date of birth"
+Part C: Relationship,C11,Is there more information you wish to share to support your relationship?,rel_more_information,client,In the clients' own words. Don't write their relationship story for them
+Declarations,A9,Sponsor's declaration: signature and date,signature,sign,Only the sponsor can sign this
+Declarations,B5,Principal applicant's declaration: signature and date,pa_signature,sign,Only the applicant can sign this
+Declarations,C14,"Interpreter declaration, if an interpreter helped",interpreter_declaration,consultant,Required if an interpreter helped prepare the form

@@ -1,0 +1,15 @@
+# Review cadence per domain (days)
+01-federal-economic: 30
+02-pnp: 30
+03-quebec: 30
+04-family: 90
+05-temporary-residence: 90
+06-protection-humanitarian: 90
+07-citizenship-pr-status: 90
+08-inadmissibility: 90
+09-procedure-litigation: 90
+10-consultant-practice: 90
+11-forms-fees-processing: 30
+12-decision-trees: 90
+13-case-law: 90
+14-policy-tracker: 30

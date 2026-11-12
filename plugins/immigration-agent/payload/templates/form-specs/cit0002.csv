@@ -1,0 +1,53 @@
+section,no,question,key,rule,help
+Service,1,In which language would you like to receive service?,language_service,client,
+Service,2,Do you have special needs requiring accommodation?,accommodation,client,
+Identity,3,UCI,uci,auto,As on the PR document
+Identity,4a,Your full name as shown on your Record of Landing (IMM 1000) or Confirmation of Permanent Residence (IMM 5292 or IMM 5688) or last PR card: family name,family_name,auto,Must match the PR document exactly
+Identity,4a,Your full name as shown on your PR document: given name(s),given_name,auto,
+Identity,4b,Have you changed your name since becoming a Permanent Resident?,name_change,client,If yes: legal name change documents
+Identity,4c,Gender,sex,auto,
+Identity,4d,Height,height,client,
+Identity,4e,Natural eye colour,eye_colour,client,
+Identity,4f,Your date of birth as shown exactly on your PR document,date_of_birth,auto,
+Identity,4g,Place of birth: city/town,birth_city,auto,
+Identity,4g,Place of birth: country or territory,birth_country,auto,
+Personal,6,Marital status,marital_status,client,
+Contact,7,Mailing address,mailing_address,client,
+Contact,7,Telephone number,telephone,client,
+Contact,7,E-mail address,email,client,
+Representative,8a,Is someone helping you fill out this form?,helped_by_someone,consultant,Use of a paid representative must be declared with IMM 5476
+Representative,8b,Are you paying someone to help you fill out this form?,paying_someone,consultant,
+Physical presence,9a,Five-year eligibility period from the physical presence calculator,eligibility_period,consultant,Run IRCC's online calculator and attach the printout. Needs 1095 days
+Physical presence,9a,Calculator used (online or paper),calculator_used,consultant,
+Physical presence,9b,"During your eligibility period, did you live outside Canada as a crown servant, or with a spouse, partner or parent who was a crown servant?",crown_service,client,
+Addresses,10a,All addresses inside and outside Canada during your entire five-year eligibility period. Start with the most recent,address_history,client,Any missing days and the application is returned
+Addresses,10b,"In the past four years, were you in a country other than Canada for 183 days or more in a row (since age 18)?",abroad_183_days,client,If yes: police certificate from that country
+Work and education,11,"Work and education history during your eligibility period, including unemployment, retirement and other activities",activity_history,client,No gaps
+Taxes,12a,"Do you have a Social Insurance Number, Temporary Tax Number or Individual Tax Number?",has_tax_number,client,
+Taxes,12a,Social Insurance Number,sin,client,Copy the full number from the original
+Taxes,12b,Income tax filing for each of the last five years,tax_years,client,"Must meet filing obligations for 3 of the 5 years (Citizenship Act s.5(1)(c)(iii)). Check against CRA records"
+Taxes,12c,Authorization to release your tax number to the Canada Revenue Agency,cra_consent,client,
+Status abroad,13,Do you currently hold or have you ever held immigration or citizenship status in a country other than Canada (including your country of birth)?,other_country_status,client,
+Status abroad,13,Details of each status held,other_country_status_details,client,
+Travel documents,14,Have you held travel documents or passports during your five-year eligibility period?,held_passports,client,
+Travel documents,14,Details of each passport or travel document,travel_documents,client,Copy numbers from the documents. Include expired passports
+Language,15a,"If you are 18 to 54, do you have proof of knowledge of English or French?",language_proof,client,Check the proof meets CLB/NCLC 4
+Language,15b,Did you complete LINC or CLIC courses at CLB 4/NCLC 4 or higher from January 1 2008 to October 31 2012?,linc_clic,client,
+Prohibitions,16.1a,Are you now on probation?,proh_probation,client,Yes or No
+Prohibitions,16.1b,Are you now on parole?,proh_parole,client,Yes or No
+Prohibitions,16.1c,Are you now serving a term of imprisonment?,proh_imprisonment,client,Yes or No
+Prohibitions,16.2,Are you now serving a sentence outside Canada for an offence?,proh_sentence_outside,client,Yes or No
+Prohibitions,16.3a,"Are you now charged with, on trial for, or subject to or a party to an appeal relating to an offence under the Citizenship Act or an indictable offence in Canada?",proh_charged_canada,client,Yes or No
+Prohibitions,16.3b,"Are you now charged with, on trial for, or subject to or a party to an appeal relating to an offence outside Canada?",proh_charged_outside,client,Yes or No
+Prohibitions,16.4,"Are you now, or have you ever been, under a removal order?",proh_removal_order,client,Yes or No
+Prohibitions,16.5,"Are you now under investigation for, charged with, on trial for, subject to or a party to an appeal relating to, or have you been convicted of a war crime or a crime against humanity?",proh_war_crimes,client,Yes or No
+Prohibitions,16.6,"In the five years before your application, were you prohibited from being granted citizenship or taking the oath because of misrepresentation or withholding material circumstances?",proh_misrep_5_years,client,Yes or No
+Prohibitions,16.7,"In the 10 years before your application, was your Canadian citizenship revoked for false representation, fraud, or knowingly concealing material circumstances?",proh_revoked_10_years,client,Yes or No
+Prohibitions,16.8a,"In the 4 years before your application, have you been convicted of an indictable offence under any Act of Parliament or an offence under the Citizenship Act?",proh_convicted_canada,client,Yes or No
+Prohibitions,16.8b,"In the 4 years before your application, have you been convicted of an offence outside Canada, regardless of whether you were pardoned or granted amnesty?",proh_convicted_outside,client,Yes or No
+Prohibitions,16.9a,"While a permanent resident, have you been convicted in Canada of terrorism, high treason, treason, or spying offences?",proh_terrorism_canada,client,Yes or No
+Prohibitions,16.9b,"While a permanent resident, have you been convicted outside Canada of terrorism?",proh_terrorism_outside,client,Yes or No
+Prohibitions,16.9c,"While a permanent resident, have you served as a member of an armed force or organized armed group engaged in armed conflict with Canada?",proh_armed_force,client,Yes or No
+Elections,17a,Consent to share your information with Elections Canada for a congratulatory letter,elections_letter,client,
+Elections,17b,Consent to add your name to the National Register of Electors,elections_register,client,
+Declaration,,Signature and date,signature,sign,Only the applicant can sign this

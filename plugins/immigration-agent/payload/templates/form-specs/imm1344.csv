@@ -1,0 +1,43 @@
+section,no,question,key,rule,help
+Application,,"If you are found ineligible to sponsor, do you want to withdraw or proceed?",if_ineligible,consultant,Decide with the client before filing
+Application,,Principal applicant's date of birth,applicant_dob,client,
+Application,,Your relationship to the principal applicant,relationship_to_applicant,client,
+Sponsor details,,Family name,family_name,auto,
+Sponsor details,,Given name(s),given_name,auto,
+Sponsor details,,Have you ever used any other name?,other_name,client,
+Sponsor details,,Sex,sex,auto,
+Sponsor details,,Date of birth,date_of_birth,auto,
+Sponsor details,,Place of birth: city/town,birth_city,auto,
+Sponsor details,,Place of birth: country or territory,birth_country,auto,
+Sponsor details,,Your status in Canada,status_in_canada,client,"Citizen, PR or registered Indian"
+Sponsor details,,Date you became a citizen or permanent resident,status_date,client,Check against the PR or citizenship document
+Sponsor details,,Your current marital status,marital_status,client,
+Sponsor details,,Date of marriage or start of common-law relationship,marriage_date,auto,
+Sponsor details,,Name of your current spouse or common-law partner,spouse_name,client,
+Sponsor details,,Have you previously been married or in a common-law relationship?,previous_relationship,client,
+Contact information,,Mailing address,mailing_address,client,
+Contact information,,Telephone number,telephone,client,
+Contact information,,E-mail address,email,client,
+Residency,,Are you a Canadian citizen living exclusively outside Canada?,citizen_living_abroad,client,If yes: must live in Canada when the sponsored person becomes PR
+Residency,,Do you reside or intend to reside in Quebec?,live_in_quebec,client,Quebec sponsors also need the Quebec undertaking
+Sponsor eligibility,1,Are you 18 years of age or older?,spb_over_18,client,No means not eligible (IRPR s.130(1))
+Sponsor eligibility,2,Are you a Canadian citizen or permanent resident?,spb_citizen_or_pr,client,No means not eligible (IRPR s.130(1))
+Sponsor eligibility,3,Are you sponsoring a member of the family class or a member of the spouse or common-law partner in Canada class?,spb_family_class,client,No means not eligible
+Sponsor eligibility,4,Do you reside in Canada and in no other country?,spb_reside_canada,client,Citizens living abroad may still sponsor; see the guide
+Sponsor eligibility,5,"In the five years preceding this application, did you become a permanent resident after being sponsored as a spouse, common-law or conjugal partner?",spb_sponsored_as_spouse,client,Yes means not eligible to sponsor a spouse or partner (IRPR s.130(3))
+Sponsor eligibility,6,Have you submitted a previous application in respect of which a final decision has not been made for the person being sponsored and their family members?,spb_previous_application,client,See the guide
+Sponsor eligibility,7,Are you in receipt of social assistance for a reason other than disability?,spb_social_assistance,client,IRPR s.133(1)(k)
+Sponsor eligibility,8,Are you an undischarged bankrupt under the Bankruptcy and Insolvency Act?,spb_bankrupt,client,IRPR s.133(1)(i). Quebec sponsors skip this
+Sponsor eligibility,9,Have persons you previously sponsored or their family members received social assistance during the validity period of the undertaking?,spb_previous_sponsored_assistance,client,IRPR s.133(1)(g). Quebec sponsors skip this
+Sponsor eligibility,10,Did you co-sign an undertaking where the sponsored person or their family members received social assistance during the validity period of the undertaking?,spb_cosigned_assistance,client,IRPR s.133(1)(g). Quebec sponsors skip this
+Sponsor eligibility,11,Have you been ordered to leave Canada?,spb_removal_order,client,IRPR s.133(1)(c)
+Sponsor eligibility,12,"Are you late in making a required payment on an immigration loan, a performance bond or any other amounts you agreed to pay under Canadian immigration legislation, and have not made arrangements to defer payments?",spb_late_payment,client,IRPR s.133(1)(h)
+Sponsor eligibility,13,"Are you currently detained in jail, prison, penitentiary or reformatory?",spb_detained,client,IRPR s.133(1)(d)
+Sponsor eligibility,14,"Have you been convicted of a sexual offence or serious violent offence against anyone, or an offence causing bodily harm against someone who is or was related to you, or an attempt to commit such an offence?",spb_offence,client,IRPR s.133(1)(e)-(f). Criminal matters may need a lawyer
+Sponsor eligibility,15,"Are you in default of a court order to make support payments to your spouse, former spouse, common-law partner, former common-law partner or child?",spb_support_default,client,IRPR s.133(1)(g). Quebec sponsors skip this
+Sponsor eligibility,16,Are you the subject of an application to revoke your Canadian citizenship?,spb_revocation,client,Processing may be suspended; see the guide
+Sponsor eligibility,17,Are you the subject of a report on inadmissibility?,spb_inadmissibility_report,client,Processing may be suspended; see the guide
+Sponsor eligibility,18,Have you been charged with an offence under an Act of Parliament punishable by a maximum term of imprisonment of at least 10 years?,spb_charged_serious,client,Processing may be suspended; see the guide
+Sponsor eligibility,,"If you answered yes to any question, details",sponsor_bar_details,client,
+Co-signer,,Co-signer's name (if any),cosigner_name,consultant,No co-signer when sponsoring a spouse or partner
+Declaration,,Sponsor's signature and date,signature,sign,Only the sponsor can sign this
