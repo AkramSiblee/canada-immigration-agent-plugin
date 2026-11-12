@@ -2,6 +2,13 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.4
+- Autofilled IRCC forms no longer open as altered or damaged in Adobe. Answers are now saved the way Adobe saves them, so IRCC's certification stays valid: Adobe shows "Certified by Immigration, Refugees and Citizenship Canada". Fill again any form autofilled before this version.
+- IMM 5476 answers now show in Adobe (before, the form could open empty).
+- IMM 5669 can now be autofilled, and CIT 0002 downloads again (IRCC moved its page).
+- Every filled form is checked before it is saved; if a check fails, nothing is saved and you are told why. A damaged, cut-off or browser-saved blank form is refused with the reason.
+- Open IRCC forms only in Adobe Acrobat or the free Adobe Acrobat Reader. A web browser, Edge or Preview shows them blank or as "Please wait...", which is not damage.
+
 ## 1.3.3
 - Fees re-checked on 2026-11-12: visitor visa $100 (family maximum $500) and biometrics $85 (family maximum $170) are unchanged, and IRCC lists no upcoming change to them.
 

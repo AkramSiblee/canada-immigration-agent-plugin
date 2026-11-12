@@ -386,7 +386,7 @@ def read_form(reader):
                 decode_choices(values, tree, streams.get("template"))
         for name, info in (reader.get_fields() or {}).items():
             v = info.get("/V") if hasattr(info, "get") else None
-            if v not in (None, "", "/Off"):
+            if v not in (None, "", "/Off") and info.get("/FT") != "/Sig":  # a signature is not an answer
                 # static forms such as IMM 5669 name fields "IMM_5669[0].page1[0].familyName[0]": store them as paths too
                 values.setdefault("/" + re.sub(r"\[0\]", "", str(name)).replace(".", "/"), str(v).lstrip("/"))
     except Exception:

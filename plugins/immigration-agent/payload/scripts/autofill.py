@@ -50,16 +50,29 @@ def fetch(form):
     CACHE.mkdir(exist_ok=True)
     target = CACHE / f"{form}-{info['version_code']}.pdf"
     if target.exists():
-        return target
-    page = download(info["source_url"]).decode("utf-8", "replace")
-    m = re.search(rf'href="([^"]*{re.escape(form)}e?\.pdf)"', page, re.I)
+        problem = blank_problem(target)
+        if not problem:
+            return target
+        print(f"Note: the saved blank {target.name} {problem}; downloading it again.")
+        target.unlink()
+    m = None
+    standard = f"https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/{form}.html"
+    for source in dict.fromkeys((info["source_url"], standard)):  # IRCC moves pages: its standard form page is the fallback
+        page = download(source).decode("utf-8", "replace")
+        m = re.search(rf'href="([^"]*{re.escape(form)}e?\.pdf)"', page, re.I)
+        if m:
+            break
     if not m:
         sys.exit(f"ERROR: no PDF link found on {info['source_url']}. Download the form yourself and pass --blank")
     url = m.group(1) if m.group(1).startswith("http") else "https://www.canada.ca" + m.group(1)
     data = download(url)
-    if not data.startswith(b"%PDF"):
-        sys.exit(f"ERROR: {url} didn't return a PDF")
-    target.write_bytes(data)
+    part = target.with_name(target.name + ".part")
+    part.write_bytes(data)  # checked before it becomes the cached blank, so a cut-off download is never reused
+    problem = blank_problem(part)
+    if problem:
+        part.unlink()
+        sys.exit(f"ERROR: the form downloaded from {url} {problem}. Download it yourself in Adobe and pass --blank")
+    part.replace(target)
     return target
 
 
@@ -291,31 +304,242 @@ def split_date(value, stem, paths, exclude, placed, uses, plain):
 
 
 # ---- writing ----
-def register_namespaces(xml_bytes):
-    for _, (prefix, uri) in ET.iterparse(io.BytesIO(xml_bytes), events=("start-ns",)):
-        ET.register_namespace(prefix, uri)
+NOT_XML = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f￾￿\ud800-\udfff]")  # characters XML can't hold: they would corrupt the form
+
+
+EMPTY_DATASETS = f'<xfa:datasets xmlns:xfa="{XFA_DATA}"><xfa:data/></xfa:datasets>'.encode()
+
+
+class FillError(Exception):
+    """The form couldn't be written safely; nothing was saved."""
+
+
+def _elements(node, name=None):
+    return [k for k in node.childNodes if k.nodeType == k.ELEMENT_NODE and (name is None or k.localName == name)]
+
+
+def _default_ns(node):
+    """The default XML namespace in force at this node ('' if none)."""
+    while node is not None and node.nodeType == node.ELEMENT_NODE:
+        if node.hasAttribute("xmlns"):
+            return node.getAttribute("xmlns")
+        node = node.parentNode
+    return ""
 
 
 def set_values(datasets_xml, values):
-    """Write {data path: value} into the datasets XML; the form's other data is kept."""
-    register_namespaces(datasets_xml)
-    root = ET.fromstring(datasets_xml)
-    data = next((k for k in root if tag(k) == "data"), None)
+    """Write {data path: value} into the datasets XML; the form's other data is kept.
+
+    The XML is edited in place (minidom keeps every namespace declaration where the form put it). A rewrite that
+    moved a declaration, as ElementTree does, put IMM 5476's answers in the XHTML namespace, where Adobe never sees them.
+    """
+    from xml.dom import minidom
+    if b"<!DOCTYPE" in datasets_xml or b"<!ENTITY" in datasets_xml:
+        raise FillError("the form's data section contains a DOCTYPE; it isn't an IRCC form as published")
+    doc = minidom.parseString(datasets_xml)
+    root = doc.documentElement
+    data = next((k for k in _elements(root, "data") if k.namespaceURI == XFA_DATA), None)
     if data is None:
-        data = ET.SubElement(root, f"{{{XFA_DATA}}}data")
+        data = doc.createElementNS(XFA_DATA, (root.prefix + ":" if root.prefix else "") + "data")
+        root.appendChild(data)
     for path, value in values.items():
         node = data
         for part in path.split("/")[2:]:  # skip '' and 'data'
             m = re.fullmatch(r"(.+?)(?:\[(\d+)\])?", part)
             name, idx = m.group(1), int(m.group(2) or 0)
-            same = [k for k in node if tag(k) == name]
+            same = _elements(node, name)
             while len(same) <= idx:
-                same.append(ET.SubElement(node, name))
+                new = doc.createElement(name)
+                if _default_ns(node):  # answers are never in a namespace, whatever the form declared above them
+                    new.setAttribute("xmlns", "")
+                node.appendChild(new)
+                same.append(new)
             node = same[idx]
-        for k in list(node):  # a field holds text, not leftover children
-            node.remove(k)
-        node.text = value
-    return ET.tostring(root, encoding="utf-8")
+        for k in list(node.childNodes):  # a field holds text, not leftover children (rich text, old answers)
+            node.removeChild(k)
+        for a in [a for a in node.attributes.values() if a.localName in ("contentType", "dataNode")]:
+            node.removeAttributeNode(a)  # plain text now: a leftover text/html marker would hide it
+        node.appendChild(doc.createTextNode(NOT_XML.sub("", str(value))))
+    return root.toxml().encode("utf-8")
+
+
+def _trailer_value(obj):
+    buf = io.BytesIO()
+    obj.write_to_stream(buf)
+    return buf.getvalue()
+
+
+def save_incremental(blank_bytes, reader, ref, new_data, out, values=None):
+    """The blank's bytes unchanged, plus one appended update that replaces the form's data section.
+
+    This is how Adobe itself saves a filled form. IRCC certifies some forms (IMM 5257, IMM 1294) with a digital
+    signature and adds usage rights: both cover the original bytes, so a full rewrite (the old way) broke them and
+    Adobe reported the form as altered or damaged. An appended update leaves them valid.
+    """
+    import zlib
+    from pypdf.generic import ArrayObject, DictionaryObject, IndirectObject, NameObject, TextStringObject
+    start = blank_bytes.rfind(b"startxref")
+    m = re.match(rb"startxref\s+(\d+)", blank_bytes[start:]) if start >= 0 else None
+    if not m:
+        raise FillError("the blank form is incomplete (no cross-reference table): download it again")
+    prev = int(m.group(1))
+    classic = blank_bytes[prev:prev + 4] == b"xref"
+    t = reader.trailer
+    size = int(t["/Size"])
+    objects = {}  # object number -> (generation, what goes between "obj" and "endobj")
+
+    def data_stream(num, gen):
+        body = zlib.compress(new_data, 9)
+        if reader.is_encrypted:  # IRCC's forms are encrypted (no password to open): the update must use the same key
+            body = reader._encryption._make_crypt_filter(num, gen).stm_crypt.encrypt(body)
+        return f"<</Filter/FlateDecode/Length {len(body)}>>\nstream\n".encode() + body + b"\nendstream"
+
+    def plain(obj, num, gen):
+        if reader.is_encrypted:
+            obj = reader._encryption.encrypt_object(obj, num, gen)
+        return _trailer_value(obj)
+
+    if ref is not None:
+        if not isinstance(ref, IndirectObject):
+            raise FillError("the form's data section isn't stored as its own object")
+        objects[ref.idnum] = (ref.generation, data_stream(ref.idnum, ref.generation))
+    else:  # a form nobody has typed into yet (IMM 5669) has no data section: add one, as Adobe does on first save
+        num, size = size, size + 1
+        objects[num] = (0, data_stream(num, 0))
+        root_ref = t.raw_get("/Root")
+        root = root_ref.get_object()
+        acro_raw = root.raw_get("/AcroForm")
+        acro = acro_raw.get_object()
+        xfa_raw = acro.raw_get("/XFA")
+        xfa = xfa_raw.get_object()
+        if not isinstance(xfa, ArrayObject):
+            raise FillError("this form keeps its layout in one piece, which isn't supported")
+        items = ArrayObject(list(xfa))
+        names = [str(items[i]) for i in range(0, len(items) - 1, 2)]
+        after = next((names.index(n) for n in ("localeSet", "template") if n in names), len(names) - 2)
+        items[2 * after + 2:2 * after + 2] = [TextStringObject("datasets"), IndirectObject(num, 0, reader)]
+        if isinstance(xfa_raw, IndirectObject):
+            objects[xfa_raw.idnum] = (xfa_raw.generation, plain(items, xfa_raw.idnum, xfa_raw.generation))
+        elif isinstance(acro_raw, IndirectObject):
+            new_acro = DictionaryObject(acro)
+            new_acro[NameObject("/XFA")] = items
+            objects[acro_raw.idnum] = (acro_raw.generation, plain(new_acro, acro_raw.idnum, acro_raw.generation))
+        else:
+            new_acro = DictionaryObject(acro)
+            new_acro[NameObject("/XFA")] = items
+            new_root = DictionaryObject(root)
+            new_root[NameObject("/AcroForm")] = new_acro
+            objects[root_ref.idnum] = (root_ref.generation, plain(new_root, root_ref.idnum, root_ref.generation))
+    entries = b""
+    for key in ("/Root", "/Encrypt", "/Info"):
+        if key in t:
+            entries += key.encode() + b" " + _trailer_value(t.raw_get(key))
+    if "/ID" in t:
+        ids = [bytes(x.original_bytes if hasattr(x, "original_bytes") else x.get_original_bytes()) for x in t["/ID"]]
+        entries += b"/ID[" + b"".join(b"<" + i.hex().encode() + b">" for i in ids) + b"]"
+    buf = bytearray(blank_bytes)
+    if not buf.endswith(b"\n"):
+        buf += b"\n"
+    where = {}
+    for num in sorted(objects):
+        gen, body = objects[num]
+        where[num] = (len(buf), gen)
+        buf += f"{num} {gen} obj\n".encode() + body + b"\nendobj\n"
+    xref_at = len(buf)
+    if classic:
+        buf += b"xref\n" + b"".join(f"{n} 1\n{at:010d} {g:05d} n \n".encode() for n, (at, g) in where.items())
+        buf += b"trailer\n<<" + entries + f"/Size {size}/Prev {prev}>>\n".encode()
+    else:  # the blank uses a cross-reference stream: the update must too
+        where[size] = (xref_at, 0)
+        rows = b"".join(b"\x01" + at.to_bytes(4, "big") + g.to_bytes(2, "big") for at, g in where.values())
+        index = " ".join(f"{n} 1" for n in where)
+        buf += (f"{size} 0 obj\n<</Type/XRef/W[1 4 2]/Index[{index}]/Size {size + 1}/Prev {prev}".encode() + entries
+                + f"/Length {len(rows)}>>\nstream\n".encode() + rows + b"\nendstream\nendobj\n")
+    buf += f"startxref\n{xref_at}\n%%EOF\n".encode()
+    part = out.with_name(out.name + ".part")
+    try:
+        part.write_bytes(bytes(buf))
+        check_saved(part, blank_bytes, new_data, values)
+        part.replace(out)
+    finally:
+        if part.exists():
+            part.unlink()
+
+
+def check_saved(path, blank_bytes, new_data, values=None):
+    """Open the saved file as a PDF reader would: the original untouched, the new data readable and whole."""
+    import pypdf
+    saved = path.read_bytes()
+    if not saved.startswith(blank_bytes):
+        raise FillError("the original form bytes changed")
+    r = pypdf.PdfReader(str(path), strict=False)
+    if r.is_encrypted and not r.decrypt(""):
+        raise FillError("the saved form can't be opened")
+    parts = xfa_parts(r)
+    if parts.get("datasets") is None or parts["datasets"].get_data() != new_data:
+        raise FillError("the saved form data doesn't read back exactly")
+    items = list(r.trailer["/Root"]["/AcroForm"]["/XFA"].get_object())
+    chunks = [items[i + 1].get_object().get_data() for i in range(0, len(items) - 1, 2)]
+    wrapped = str(items[0]) in ("xdp:xdp", "preamble")  # IRCC's forms: the parts join into one XML document
+    try:
+        for chunk in ([b"".join(chunks)] if wrapped else chunks):
+            ET.fromstring(chunk)
+    except ET.ParseError as e:
+        raise FillError(f"the saved form's XML is damaged ({e})")
+    lost = misplaced(new_data, values or {})
+    if lost:
+        raise FillError("answers not where the form looks for them: " + ", ".join(lost[:5]))
+
+
+def misplaced(datasets_xml, values):
+    """Paths whose answer isn't stored exactly there: plain names (no namespace) under xfa:data, as Adobe binds them."""
+    data = next((k for k in ET.fromstring(datasets_xml) if k.tag == f"{{{XFA_DATA}}}data"), None)
+    if data is None:
+        return list(values)[:1] or ["(no answer section)"]
+    bad = []
+    for path, value in values.items():
+        node = data
+        for part in path.split("/")[2:]:
+            m = re.fullmatch(r"(.+?)(?:\[(\d+)\])?", part)
+            same = [k for k in node if k.tag == m.group(1)]  # an exact, namespace-free name
+            node = same[int(m.group(2) or 0)] if len(same) > int(m.group(2) or 0) else None
+            if node is None:
+                break
+        if node is None or (node.text or "") != NOT_XML.sub("", str(value)) or len(node):
+            bad.append(path.split("/")[-1])
+    return bad
+
+
+def blank_problem(path):
+    """None if the file is a usable IRCC form, else what is wrong with it in plain words."""
+    import pypdf
+    try:
+        raw = pathlib.Path(path).read_bytes()
+    except OSError as e:
+        return f"can't be read ({e.strerror})"
+    if not raw.startswith(b"%PDF"):
+        return "isn't a PDF (a web page or an incomplete download?)"
+    if b"%%EOF" not in raw[-2048:]:
+        return "is incomplete (the download was cut off)"
+    try:
+        r = pypdf.PdfReader(io.BytesIO(raw), strict=False)
+        if r.is_encrypted and not r.decrypt(""):
+            return "is locked with a password"
+        acro = r.trailer["/Root"].get("/AcroForm")
+        xfa = acro.get_object().get("/XFA") if acro else None
+        if xfa is None:
+            return ("has no IRCC form inside: it was probably saved from a web browser or printed to PDF, which removes "
+                    "the form. Download it again from IRCC")
+        items = list(xfa.get_object())
+        names = {str(items[i]) for i in range(0, len(items) - 1, 2)}
+        if "template" not in names:
+            return "is missing its form template"
+        for i in range(0, len(items) - 1, 2):
+            if str(items[i]) in ("template", "datasets"):
+                ET.fromstring(items[i + 1].get_object().get_data())
+    except Exception as e:  # any damage the reader trips on
+        return f"is damaged ({type(e).__name__})"
+    return None
 
 
 def answers(form, person, case=None, report=None, facts=None, include_confirm=False):
@@ -354,14 +578,19 @@ def fill(form, blank, ready, out):
     number = number_of(form)
     maps, joins = de.form_maps(number)
     if not maps:
-        sys.exit(f"ERROR: {form} has no field mapping to fill from")
-    reader = pypdf.PdfReader(str(blank), strict=False)
+        sys.exit(f"ERROR: {form.upper()} isn't autofilled (its answers are a table of figures or free text): fill it in Adobe")
+    problem = blank_problem(blank)
+    if problem:
+        sys.exit(f"ERROR: the blank form {blank} {problem}.")
+    blank_bytes = pathlib.Path(blank).read_bytes()
+    reader = pypdf.PdfReader(io.BytesIO(blank_bytes), strict=False)
     if reader.is_encrypted:
         reader.decrypt("")
     parts = xfa_parts(reader)
-    if "template" not in parts or "datasets" not in parts:
+    if "template" not in parts:
         sys.exit("ERROR: the form's template or data section is missing")
-    template, datasets = parts["template"].get_data(), parts["datasets"].get_data()
+    template = parts["template"].get_data()
+    datasets = parts["datasets"].get_data() if "datasets" in parts else EMPTY_DATASETS  # IMM 5669 ships without one
     paths = template_fields(template)
     placed, uses, plain = de.choice_maps(ET.fromstring(datasets), template)
     exclude = de.NOT_PA if number == "0008" else None
@@ -378,7 +607,7 @@ def fill(form, blank, ready, out):
             missed[key] = why
             continue
         values[path], filled[key] = code, ready[key]
-    parts_written = {}
+    parts_written, split = {}, set()
     for role, boxes in (getattr(fill, "family", None) or {}).items():
         for box, value in boxes.items():
             if box == "Name" or (box in ("FamilyName", "GivenNames") and number == "5645"):
@@ -415,6 +644,8 @@ def fill(form, blank, ready, out):
             got = split_date(ready[key], stem, paths, exclude, placed, uses, plain)
             if got:
                 values.update(got)
+                parts_written.update(got)  # read back box by box: the extractor has no single answer for them
+                split.add(key)
                 filled[key] = ready[key]
                 missed.pop(key, None)
     for key, _, _ in joins:
@@ -429,27 +660,27 @@ def fill(form, blank, ready, out):
             continue  # written row by row in the family table
         if key not in filled and key not in missed:
             missed[key] = "not a single form field (calculated or a table): type it in Adobe"
-    w = pypdf.PdfWriter(clone_from=reader)
-    acro = w._root_object["/AcroForm"]
-    xfa = acro["/XFA"]
-    items = list(xfa)
-    for i in range(0, len(items) - 1, 2):
-        if str(items[i]) == "datasets":
-            items[i + 1].get_object().set_data(set_values(datasets, values))
-    if "/Perms" in w._root_object:  # usage rights are tied to the original bytes; leaving them makes Reader refuse the form
-        del w._root_object["/Perms"]
+    items = list(reader.trailer["/Root"]["/AcroForm"].get_object()["/XFA"].get_object())
+    ref = next((items[i + 1] for i in range(0, len(items) - 1, 2) if str(items[i]) == "datasets"), None)
+    out = pathlib.Path(out)
     ps.check_output(out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    with open(out, "wb") as f:
-        w.write(f)
-    fill.parts_written = parts_written
     fill.family = None
+    try:
+        new_data = set_values(datasets, values)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        save_incremental(blank_bytes, reader, ref, new_data, out, values)
+    except FillError as e:
+        sys.exit(f"ERROR: the form could not be filled safely, so nothing was saved: {e}. "
+                 "Fill this form by hand in Adobe, and tell your agent provider.")
+    fill.parts_written, fill.split = parts_written, split
     return filled, missed
 
 
 def matches(got, value):
     """Does the value read back from the form say what was written? Allows 'F' for 'F Female' and '160' for '160 cm'."""
     g, v = got.strip().lower(), value.strip().lower()
+    if "*" in g and g.strip("*") and v.endswith(g.strip("*")) and len(g) == len(v):  # numbers are read back masked: ******567
+        return True
     g, v = re.sub(r"\s*cm$", "", g), re.sub(r"\s*cm$", "", v)
     if de.squash(g) in (de.squash(v), de.squash(de.country_name(value))):
         return True
@@ -469,7 +700,7 @@ def verify(form, out, filled):
     wrong = {}
     raw = form_values
     for key, value in filled.items():
-        if key.startswith("family."):
+        if key.startswith("family.") or key in (getattr(fill, "split", None) or ()):
             continue  # checked below, box by box
         group, _, box = key.partition(".")
         if group in BOXES and box in BOXES[group]:  # a part: read its own box back
@@ -485,11 +716,11 @@ def verify(form, out, filled):
     for p, v in raw.items():
         flat.setdefault(re.sub(r"\[0\](?=/)", "", p), v)  # a single repeated section is read back without [0]
     for path, label in (getattr(fill, "parts_written", None) or {}).items():
-        if "/IMM_5645/" not in path and "/IMM_5707/" not in path:
-            continue
         got = raw.get(path, flat.get(re.sub(r"\[0\](?=/)", "", path)))
-        if got is None or not (matches(str(got), str(label)) or (label == "1" and str(got) in ("1", "on"))):
-            wrong[path.split("/page1/")[-1]] = f"wrote '{label}', reads back as '{got}'"
+        if got is None or not (matches(str(got), str(label)) or str(got).lstrip("0") == str(label).lstrip("0")
+                               or (label == "1" and str(got) in ("1", "on"))):
+            box = path.split("/page1/")[-1] if "/page1/" in path else "/".join(path.split("/")[-2:])
+            wrong[box] = f"wrote '{label}', reads back as '{got}'"
     return wrong
 
 
@@ -524,7 +755,9 @@ def cmd_fill(a):
             print(f"  - {questions.get(k, k)[:80]}: {why}")
     left = {k: v for k, v in skipped.items() if v != "signature"}
     print(f"Left blank for you: {len(left)} question(s) not ready (see the worksheet), and every signature.")
-    print("Next: open it in Adobe Acrobat or Reader, check every page, fill the blanks, click Validate, then sign.")
+    print("Next: open it in Adobe Acrobat or the free Adobe Acrobat Reader (right-click > Open with > Adobe Acrobat), check every page,")
+    print("fill the blanks, click Validate, then sign. A web browser, Edge or Preview shows IRCC forms blank or as 'Please wait...':")
+    print("that is the viewer, not damage. Adobe shows the form as certified by IRCC.")
 
 
 def main():
