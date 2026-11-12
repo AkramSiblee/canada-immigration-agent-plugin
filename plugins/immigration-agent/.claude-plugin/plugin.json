@@ -1,7 +1,7 @@
 {
   "name": "immigration-agent",
   "displayName": "Canada Immigration Agent",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Decision support for Canadian immigration consultants (RCIC): cases, intake, checklists, forms, letters, refusals, CRS, fees and a verified knowledge base.",
   "author": {
     "name": "AkramSiblee"

@@ -4,6 +4,9 @@
   python3 app/dashboard.py              start it and open the browser (or reopen the one already running)
   python3 app/dashboard.py --shortcut   put an "Immigration Agent Dashboard" shortcut on the desktop (Windows)
 
+It opens in its own app window (Microsoft Edge or Google Chrome app mode; otherwise the normal browser). Started from the
+shortcut it runs without a console window, and it stops by itself a few minutes after the dashboard window is closed.
+
 Guarantees:
   - Only this computer can open it: it listens on 127.0.0.1, every request needs this run's secret key, and
     requests addressed to any other host name are refused.
@@ -25,6 +28,7 @@ import socket
 import subprocess
 import sys
 import threading
+import time
 import urllib.parse
 import urllib.request
 import webbrowser
@@ -40,6 +44,9 @@ import kb_status as kb  # noqa: E402
 import updates as up  # noqa: E402
 
 STATE = cs.ROOT / ".dashboard.json"
+ERROR_LOG = cs.ROOT / ".dashboard-error.log"
+IDLE_STOP = int(os.environ.get("DASHBOARD_IDLE_SECONDS", "300"))  # stop this long after the last dashboard window went away
+FIRST_VISIT = int(os.environ.get("DASHBOARD_FIRST_VISIT_SECONDS", "600"))  # stop if no window ever connects
 OUTPUT = WORK / "Output"
 HIDDEN = re.compile(r"(^|/)(\.|_extraction(/|$)|__pycache__)")
 CASE_COMMANDS = [
@@ -335,7 +342,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
         if not self.allowed_host() or not self.authorised() or self.headers.get("X-Agent-Key") != self.server.key:
             return self.send(403, {"error": "forbidden"})
-        if urllib.parse.urlsplit(self.path).path != "/api/open":
+        path = urllib.parse.urlsplit(self.path).path
+        if path == "/api/alive":
+            self.server.last_seen = time.monotonic()
+            return self.send(200, {"ok": True})
+        if path != "/api/open":
             return self.send(404, {"error": "Not found"})
         try:
             n = min(int(self.headers.get("Content-Length", "0")), 10000)
@@ -372,7 +383,50 @@ def make_server(port=0):
     srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
     srv.key = secrets.token_urlsafe(24)
     srv.daemon_threads = True
+    srv.started = time.monotonic()
+    srv.last_seen = None
     return srv
+
+
+def watch_idle(srv, idle=None, first=None, step=5):
+    """Stop the server once no dashboard window has checked in for a while. Runs in its own thread."""
+    idle = IDLE_STOP if idle is None else idle
+    first = FIRST_VISIT if first is None else first
+    while True:
+        time.sleep(step)
+        now = time.monotonic()
+        quiet = now - srv.started > first if srv.last_seen is None else now - srv.last_seen > idle
+        if quiet:
+            srv.shutdown()
+            return
+
+
+def app_browser():
+    """A browser that can show a page as its own app window: [executable] or None."""
+    if sys.platform == "win32":
+        bases = [os.environ.get(k, "") for k in ("ProgramFiles(x86)", "ProgramFiles", "LOCALAPPDATA")]
+        for sub in (("Microsoft", "Edge", "Application", "msedge.exe"), ("Google", "Chrome", "Application", "chrome.exe")):
+            for base in bases:
+                if base and pathlib.Path(base, *sub).exists():
+                    return [str(pathlib.Path(base, *sub))]
+    elif sys.platform == "darwin":
+        for app in ("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"):
+            if pathlib.Path(app).exists():
+                return [app]
+    return None
+
+
+def show(url):
+    """Open the dashboard in its own app window, or in the normal browser when that is not possible."""
+    exe = app_browser()
+    if exe:
+        try:
+            flags = getattr(subprocess, "CREATE_NO_WINDOW", 0) if sys.platform == "win32" else 0
+            subprocess.Popen(exe + [f"--app={url}", "--window-size=1280,860"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, creationflags=flags)
+            return
+        except OSError:
+            pass
+    webbrowser.open(url)
 
 
 def save_state(port, key):
@@ -395,20 +449,34 @@ def free_port(preferred=8765):
             return 0
 
 
+def quiet_python():
+    """pythonw.exe (Python without a console window) next to the running Python, or on PATH; None if missing."""
+    p = pathlib.Path(sys.executable).with_name("pythonw.exe")
+    if p.exists():
+        return str(p)
+    import shutil
+    return shutil.which("pythonw")
+
+
 def shortcut():
     if sys.platform != "win32":
         print("Shortcuts are made on Windows only. On a Mac, drag 'Dashboard.command' to the Dock.")
         return 1
-    target = WORK / "Dashboard.bat"
+    pythonw = quiet_python()
+    target, args = (pythonw, f'"{APP / "dashboard.py"}"') if pythonw else (str(WORK / "Dashboard.bat"), "")
+    icon = APP / "static" / "icon.ico"
     script = ("$s=(New-Object -ComObject WScript.Shell).CreateShortcut([Environment]::GetFolderPath('Desktop')+'\\Immigration Agent Dashboard.lnk');"
-              "$s.TargetPath=$env:T;$s.WorkingDirectory=$env:W;$s.WindowStyle=7;$s.Description='Deadlines, alerts and cases';$s.Save()")
-    r = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", script], env={**os.environ, "T": str(target), "W": str(WORK)},
-                       capture_output=True, text=True, timeout=60)
+              "$s.TargetPath=$env:T;$s.Arguments=$env:A;$s.WorkingDirectory=$env:W;$s.IconLocation=$env:I;$s.WindowStyle=7;"
+              "$s.Description='Deadlines, alerts and cases';$s.Save()")
+    env = {**os.environ, "T": target, "A": args, "W": str(WORK), "I": str(icon) if icon.exists() else target}
+    r = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", script], env=env, capture_output=True, text=True, timeout=60)
     print("Desktop shortcut created: Immigration Agent Dashboard" if r.returncode == 0 else "Could not create the shortcut: " + (r.stderr or r.stdout).strip())
     return r.returncode
 
 
 def main():
+    if sys.stdout is None:  # started without a console (pythonw)
+        sys.stdout = sys.stderr = open(os.devnull, "w", encoding="utf-8")
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     p = argparse.ArgumentParser(description="Office dashboard for the Immigration Agent")
@@ -419,18 +487,19 @@ def main():
         return shortcut()
     url = running()
     if url:
-        print("The dashboard is already open. Showing it in the browser.")
+        print("The dashboard is already running. Opening its window.")
         if not a.no_browser:
-            webbrowser.open(url)
+            show(url)
         return 0
     srv = make_server(free_port())
     port = srv.server_address[1]
     save_state(port, srv.key)
     url = f"http://127.0.0.1:{port}/?key={srv.key}"
     print("Immigration Agent dashboard is running on this computer only.")
-    print("Keep this window open while you use it. Close it to stop the dashboard.")
+    print("It stops by itself a few minutes after you close the dashboard window.")
+    threading.Thread(target=watch_idle, args=(srv,), daemon=True).start()
     if not a.no_browser:
-        threading.Timer(0.5, webbrowser.open, [url]).start()
+        threading.Timer(0.5, show, [url]).start()
     try:
         srv.serve_forever()
     except KeyboardInterrupt:
@@ -444,4 +513,14 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception:  # without a console nobody would see it: keep a note (no client data) for support
+        import traceback
+        try:
+            cs.ROOT.mkdir(parents=True, exist_ok=True)
+            with open(ERROR_LOG, "a", encoding="utf-8") as fh:
+                fh.write(f"{datetime.datetime.now().isoformat(timespec='seconds')}\n{traceback.format_exc()}\n")
+        except OSError:
+            pass
+        raise

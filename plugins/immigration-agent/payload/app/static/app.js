@@ -18,8 +18,11 @@ function el(tag, attrs, ...kids) {
   return e;
 }
 
+const CLOSED = "The dashboard has stopped (it stops by itself a few minutes after its window is closed, or when the computer sleeps). Open it again from the Immigration Agent Dashboard shortcut on your desktop.";
+
 async function api(path) {
-  const r = await fetch(path, { credentials: "same-origin", cache: "no-store" });
+  let r;
+  try { r = await fetch(path, { credentials: "same-origin", cache: "no-store" }); } catch { throw new Error(CLOSED); }
   const body = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(body.error || `The dashboard could not load this page (${r.status}). Reopen it from its shortcut.`);
   return body;
@@ -237,6 +240,13 @@ async function route() {
   }
   main.focus({ preventScroll: true });
 }
+
+// Tell the dashboard program this window is still open; it stops by itself once no window checks in.
+function alive() {
+  fetch("/api/alive", { method: "POST", credentials: "same-origin", headers: { "X-Agent-Key": KEY } }).catch(() => {});
+}
+alive();
+setInterval(alive, 30000);
 
 window.addEventListener("hashchange", route);
 document.addEventListener("visibilitychange", () => { if (!document.hidden) route(); });

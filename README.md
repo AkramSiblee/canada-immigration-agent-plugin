@@ -1,16 +1,18 @@
-# Canada Immigration Agent (1.2.0)
+# Canada Immigration Agent (1.2.1)
 
 Decision support for licensed Canadian immigration consultants. It prepares and checks; the licensed professional makes every judgment and signs every submission.
 
 ## Install (about 15 minutes, once)
 You need: the Claude desktop app with a Claude plan that includes Claude Code, Python 3.10 or newer, and on Windows Git for Windows.
 
-1. Make an empty folder for the agent and your client files, for example `Documents\Immigration Agent`.
-2. In the Claude app, open the **Code** tab and choose that folder.
-3. Add this marketplace: type `/plugin marketplace add AkramSiblee/canada-immigration-agent-plugin`.
-4. Install the agent: `/plugin install immigration-agent@immigration-agent-marketplace`.
-5. Turn on automatic updates: `/plugin` > **Marketplaces** > **immigration-agent-marketplace** > **Enable auto-update**.
-6. Start a new conversation and type `/immigration-agent:setup`. Claude walks you through the rest.
+1. Make an empty folder for the agent and your client files, for example `C:\Users\<you>\Immigration Agent`.
+   Keep it outside OneDrive, Dropbox or Google Drive unless that meets your privacy obligations.
+2. In the Claude app, open **Customize > Plugins > Add marketplace** and paste: `AkramSiblee/canada-immigration-agent-plugin`
+3. In the same screen, click **Install** on **Canada Immigration Agent** (choose "for you" if asked).
+4. Turn on automatic updates for this marketplace in the same screen (or type `/plugin` > Marketplaces > Enable auto-update).
+5. Open the **Code** tab, choose your agent folder, start a **new conversation** and type `/immigration-agent:setup`.
+   Claude walks you through the rest. Click **Allow** when it asks to install the agent files.
+6. Open the **Immigration Agent Dashboard** shortcut on your desktop to see deadlines, alerts and cases.
 
 ## Updates
 New knowledge (fees, draws, policy changes) and new features arrive by themselves when auto-update is on.

@@ -145,6 +145,8 @@ def apply(ws, state, manifest, version):
                 tmp = t.with_name(t.name + ".agent-tmp")
                 shutil.copy2(L(PAYLOAD / rel), L(tmp))
                 os.replace(L(tmp), L(t))
+                if os.name != "nt" and rel.endswith((".command", ".sh")):
+                    os.chmod(L(t), 0o755)  # Mac launchers must stay double-clickable
                 if action != "create-data":
                     files[rel] = manifest[rel]
             done += 1
