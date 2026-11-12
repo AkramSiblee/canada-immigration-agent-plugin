@@ -54,6 +54,18 @@ def sha(path):
     return h.hexdigest()
 
 
+def same(path, digest):
+    """True if the file matches the digest, also when only its line endings differ.
+    Git on Windows (core.autocrlf) can turn the plugin's LF files into CRLF when the Claude app downloads it."""
+    if not digest:
+        return False
+    if sha(path) == digest:
+        return True
+    with open(L(path), "rb") as f:
+        data = f.read()
+    return b"\r\n" in data and hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest() == digest
+
+
 def plugin_info():
     manifest = json.loads((HERE / "payload-manifest.json").read_text(encoding="utf-8"))
     version = json.loads((HERE / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8")).get("version", "?")
@@ -116,14 +128,14 @@ def plan(ws, state, manifest):
             continue
         if not exists(t):
             todo.append(("copy", rel))
-        elif sha(t) != digest:
-            todo.append(("replace-changed" if sha(t) != old.get(rel) else "copy", rel))
+        elif not same(t, digest):
+            todo.append(("replace-changed" if not same(t, old.get(rel)) else "copy", rel))
     for rel, digest in sorted(old.items()):
         if rel in manifest or PROTECTED.search(rel):
             continue
         t = target(ws, rel)
         if t is not None and exists(t):
-            todo.append(("remove" if sha(t) == digest else "remove-changed", rel))
+            todo.append(("remove" if same(t, digest) else "remove-changed", rel))
     return todo
 
 
@@ -154,7 +166,7 @@ def apply(ws, state, manifest, version):
             failed.append(f"{rel} ({e.strerror or e})")
     for rel, digest in manifest.items():  # files already identical count as installed
         t = target(ws, rel)
-        if t is not None and not DATA.match(rel) and not PROTECTED.search(rel) and rel not in files and exists(t) and sha(t) == digest:
+        if t is not None and not DATA.match(rel) and not PROTECTED.search(rel) and rel not in files and exists(t) and same(t, digest):
             files[rel] = digest
     new_state = {"version": version if not failed else state.get("version"), "files": files,
                  "updated": datetime.datetime.now().isoformat(timespec="seconds"), "created": state.get("created") or datetime.date.today().isoformat()}

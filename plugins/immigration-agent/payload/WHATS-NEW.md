@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.2
+- Updates on Windows no longer treat every agent file as "changed by you", so they stop making large backup copies in .immigration-agent/backup/ each time. Backup folders made by this problem only hold copies of the agent's own files; unless you edited agent files yourself, you can delete them.
+
 ## 1.3.1
 - Policy changes checked on 2026-11-12.
 - Rural Community Immigration: the pilot closes and the new permanent program opens on January 1, 2027. Recommendations dated December 31, 2026 or earlier must be used before they expire. (Before, the agent showed the permanent program as already open.)
