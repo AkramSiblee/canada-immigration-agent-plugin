@@ -19,6 +19,8 @@ import form_prefill as fp  # noqa: E402
 VERSION = "2"
 PICK = "Select"
 CHECKED_ON = "2026-11-11"
+# Extra forms a visa office may ask for that this questionnaire already covers, so it can be used for them too.
+COVERS_EXTRA = {"imm5707": "IMM 5707 (Family information): the family cards, marriage questions and present occupation cover it"}
 BOX_GROUPS = {"mailing_address", "contacts_in_canada", "current_residence"}  # answers written box by box on IRCC forms
 
 PROGRAMS = {
@@ -144,6 +146,7 @@ def education():
 def work_history():
     return ("Work and activities: last 10 years", "IRCC needs every month accounted for, with no gaps. Include unemployment, "
             "studies, homemaking and retirement.", [
+        q("occupation", "Your present occupation (job title)", help="If you are not working, write student, homemaker, retired or unemployed.", example="Sales manager"),
         table("hist", "What you were doing, most recent first",
               [("from", "From (YYYY-MM)", 1.4), ("to", "To", 1.2), ("activity", "Activity", 2), ("employer", "Employer or school", 2.5), ("place", "City, country", 2)], 8,
               "Activity: employed, self-employed, student, homemaker, retired or unemployed. Example: 2018-03 / now / Employed / ABC Trading LLC / Dubai, United Arab Emirates",
@@ -657,6 +660,8 @@ def collect(answers, program):
     contact_parts = [facts.get(f"contacts_in_canada.{p}") for p in ("Name", "Relationship", "Address")]
     if any(contact_parts):
         facts["contacts_in_canada"] = ", ".join(p for p in contact_parts if p)
+    if "occupation" in facts:
+        facts.setdefault("current_occupation", facts["occupation"])
     if "employment_history" in facts:
         facts.setdefault("personal_history", facts["employment_history"])
     if "previous_applications" in facts:

@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.2.3
+- Client intake always uses the new guided questionnaire (cover page, plain-language sections with examples, family cards, document checklist), including for clients who also need IMM 5707 (residents of Bangladesh). Before, those clients received the older one-list form.
+- The questionnaire now asks the client's present occupation.
+- Forms already sent to clients still import as before.
+
 ## 1.2.2
 - Install instructions now include a one-step install command for the Claude app's Code tab.
 

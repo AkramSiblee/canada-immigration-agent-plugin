@@ -221,15 +221,18 @@ def firm_name():
 
 
 def cmd_make(a):
+    import intake_questionnaire as iq
+    extras = [f.lower() for f in a.add_form or []]
+    uncovered = [f for f in extras if f not in iq.COVERS_EXTRA]
+    guided = not a.classic and not uncovered  # the guided questionnaire (version 2) unless an extra form needs the classic one
     if a.case:
         out = de.active_case(a.case) / "01-intake"
     else:
-        default = "client-questionnaires" if not (a.classic or a.add_form) else "general"  # blank questionnaires have their own folder
+        default = "client-questionnaires" if guided else "general"  # blank questionnaires have their own folder
         out = pathlib.Path(a.out) if a.out else REPO / "Output" / default
     de.guard_output(out)
     out.mkdir(parents=True, exist_ok=True)
-    if not a.classic and not a.add_form:  # the guided questionnaire (version 2); --add-form belongs to the classic form
-        import intake_questionnaire as iq
+    if guided:
         program = a.program or iq.program_for(case_program(a.case) if a.case else "")
         if program not in iq.PROGRAMS:
             sys.exit(f"ERROR: program must be one of: {', '.join(iq.PROGRAMS)}")
@@ -237,8 +240,12 @@ def cmd_make(a):
         path = next_path(out, f"client-questionnaire-{program}{slug}")
         iq.make_pdf(path, a.person or "", program, firm_name())
         print(f"Questionnaire: {iq.PROGRAMS[program]['title']} ({iq.describe(program)})")
+        for f in extras:
+            print(f"Also covers {iq.COVERS_EXTRA[f]}")
         print("Form:", path)
         return
+    if uncovered and not a.classic:
+        print(f"Note: the guided questionnaire does not cover {', '.join(f.upper() for f in uncovered)}; using the classic form.")
     forms = forms_for(case_program(a.case)) if a.case else FORMS
     known = {r["form"] for r in fp.load_csv(fp.SPECS / "index.csv")}
     for extra in a.add_form or []:
