@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <meta name="agent-key" content="__AGENT_KEY__">
 <title>Immigration Agent Dashboard</title>
 <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
@@ -12,21 +13,39 @@
 <div class="shell">
   <aside class="side">
     <div class="brand">
-      <img src="/static/icon.svg" alt="" width="28" height="28">
-      <div><div class="brand-name">Immigration Agent</div><div class="brand-firm" id="firm"></div></div>
+      <img class="brand-mark" src="/static/icon.svg" alt="" width="34" height="34">
+      <div class="brand-text">
+        <div class="brand-name">Immigration Agent</div>
+        <div class="brand-firm" id="firm"></div>
+      </div>
     </div>
-    <nav id="nav">
-      <a href="#home" data-page="home">Today</a>
-      <a href="#cases" data-page="cases">Cases</a>
-      <a href="#documents" data-page="documents">Documents</a>
-      <a href="#agent" data-page="agent">Agent &amp; updates</a>
+    <nav id="nav" aria-label="Main">
+      <a href="#home" data-page="home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM8 13h3v3H8z"/></svg>
+        <span>Today</span><b class="nav-count" id="nav-urgent" hidden></b>
+      </a>
+      <a href="#cases" data-page="cases">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>Cases</span>
+      </a>
+      <a href="#documents" data-page="documents">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h6"/></svg>
+        <span>Documents</span>
+      </a>
+      <a href="#agent" data-page="agent">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4"/></svg>
+        <span>Agent &amp; updates</span>
+      </a>
     </nav>
     <div class="side-foot">
-      <div id="today"></div>
-      <div class="muted small">Private: runs on this computer only. No AI is used here.</div>
+      <div class="side-date" id="today"></div>
+      <div class="side-private">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12v9H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <span>Private. Runs on this computer only, with no AI.</span>
+      </div>
     </div>
   </aside>
-  <main id="main" tabindex="-1"><p class="muted">Loading…</p></main>
+  <main id="main" tabindex="-1"><div class="loading">Loading…</div></main>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="/static/app.js"></script>

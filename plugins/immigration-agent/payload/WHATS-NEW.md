@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.0
+- The office dashboard has a new, clearer design: a sidebar with a count of urgent items, summary cards, and alerts marked by colour with days left or overdue.
+- The case list shows each client, their next deadline and whether anything needs attention at a glance.
+- Case pages show the case number and program as tags, files labelled PDF, Word or Excel, and unpaid amounts in red.
+- Works in light and dark mode, and still runs only on your computer.
+
 ## 1.2.3
 - Client intake always uses the new guided questionnaire (cover page, plain-language sections with examples, family cards, document checklist), including for clients who also need IMM 5707 (residents of Bangladesh). Before, those clients received the older one-list form.
 - The questionnaire now asks the client's present occupation.
