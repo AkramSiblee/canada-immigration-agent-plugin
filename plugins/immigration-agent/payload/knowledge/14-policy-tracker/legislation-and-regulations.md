@@ -2,7 +2,7 @@
 domain: 14-policy-tracker
 topic: legislation-and-regulations
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-12
 confidence: H
 review_every_days: 30
 sources:
@@ -34,7 +34,7 @@ sources:
 |---|---|---|---|
 | Bill C-12, *Strengthening Canada's Immigration System and Borders Act*, S.C. 2026, c. 4 | Royal Assent 2026-03-26 | SI/2026-59: ss. 31, 34, 35, 41-45, 48, 49, 51, 52, 55, 58 in force **2026-11-03**. Asylum bars retroactive to 2025-06-03 | H |
 | Bill C-3 (citizenship, first-generation limit) | In force 2025-12-15 | see 07-citizenship-pr-status/citizenship-proof-bill-c3.md | H |
-| Other immigration bills before Parliament | None found on LEGISinfo (checked 2026-11-07) | — | M |
+| Other immigration bills before Parliament | None found on LEGISinfo (checked 2026-11-12; search page partly unreadable) | — | M |
 
 ### 2026 regulations (Canada Gazette Part II)
 | SOR | Title | In force | Gist | Conf. |
@@ -75,7 +75,7 @@ sources:
 - SOR/2026-218 exact time limits (60-day documents, 30-day extension, 365-day due diligence)
 - Read SOR/2026-221 (Citizenship AMPs) in full
 - RCI transition dates (pilot recommendations end 2026-12-31; MIs until 2027-06-30)
-- New Gazette II issues every second Wednesday
+- New Gazette II issues every second Wednesday. Checked 2026-11-12: newest Part II issue 2026-11-04 (SOR/2026-209 to 228); next 2026-11-18. Part I 2026-11-07: no immigration items
 
 ## Sources
 - Gazette II 2026-11-04 index: https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/index-eng.html

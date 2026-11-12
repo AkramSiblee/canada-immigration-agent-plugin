@@ -2,10 +2,11 @@
 domain: 14-policy-tracker
 topic: ministerial-instructions-and-program-delivery
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-12
 confidence: H
 review_every_days: 30
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
   - https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/browse-sinp-programs/entrepreneur/entrepreneur-eoi-system
   - https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/immigration-faqs
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
@@ -49,8 +50,8 @@ sources:
 | Home Care Worker pilots | **PAUSED/CLOSED** "until further notice" (IRCC caregivers page labels "Closed"); will not reopen in March 2026 | Since 2025-12-19 | notice 2025-12-19; MI86-88 | H |
 | Hong Kong PR pathways | **CLOSED** to new applications 2026-08-31. The Hong Kong OWP policy stays until May 2029 | — | notice 2026-08-28 | H |
 | Refugee sponsorship: Groups of Five and Community Sponsors | **PAUSED** until 2026-12-31 (first paused 2024-11-29) | Re-check in Jan 2027 | notice 2025-11-21 | H |
-| Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws were paused from 2026-10-28 for rescoring | Restart date: re-verify | MI 2026-1 | H/M |
-| Rural Community Immigration class | **OPEN.** Permanent class (IRPR s.87.4); pilot recommendations end 2026-12-31; pilot MIs to 2027-06-30; allocations from 2027-01-01 | In force **2026-10-22** | SOR/2026-217 | H |
+| Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws paused for rescoring (last round 2026-10-28). **No round published and no restart date announced as of 2026-11-12** | Restart date: re-verify | MI 2026-1 | H/M |
+| Rural Community Immigration | **Pilot OPEN until 2026-12-31** (recommendations dated 2026-12-31 or earlier; apply for PR before they expire). **Pilot closes 2027-01-01**; the permanent **Rural Community Immigration Program opens 2027-01-01** (IRCC page 2026-11-09). Class in IRPR s.87.4 since 2026-10-22; pilot MIs to 2027-06-30 | Class in force 2026-10-22; program opens 2027-01-01 | SOR/2026-217; IRCC RCI Program and Pilot pages (2026-11-09) | H |
 | **PEQ (Quebec)** | **CLOSED** since 2026-10-31 (window opened 2026-07-02); no new window announced | 2026-10-31 | Quebec PEQ page (2026-10-29) | H |
 | **Ontario (OINP)** | Only the **Ontario Workforce Priority stream** is open; all 8 legacy streams closed (EOI closed 2026-06-26) | In force 2026-06-25 | O. Reg. 422/17; OINP page | H |
 | **Agri-Food Pilot** | **CLOSED** 2025-05-14 (pending files processed) | 2025-05-14 | IRCC Agri-Food page | H |
@@ -96,6 +97,7 @@ sources:
 - 2026-09-09: work permit holders may study up to 6 months without a study permit, until 2027-12-31 (H)
 - 2026-10-22: SOR/2026-217 Rural Community Immigration class in force (Gazette II 2026-11-04) (H)
 - 2026-11-03: MI 2026-1 Express Entry rescoring; LMIA exemption public policy (H)
+- 2026-11-09: IRCC pages: Rural Community Immigration Pilot closes 2027-01-01; permanent Rural Community Immigration Program opens 2027-01-01. **Correction:** the tracker listed the class as "OPEN" from 2026-10-22; intake under the permanent program starts 2027-01-01 (H)
 - **Correction to baseline:** the PGP pause started with MI89 for the 2026 calendar year (effective 2026-01-01). The 2026-07-15 notice extends it "until further notice"; it did not create it.
 
 ## Consultant pitfalls
@@ -115,11 +117,13 @@ sources:
 - Express Entry draw restart date and first post-Nov 3 cut-offs
 - Federal entrepreneur pilot launch (promised "in 2026")
 - Groups of Five / community sponsor pause after 2026-12-31
-- RCI class implementation (2027 community list, allocations)
+- RCI permanent program from 2027-01-01: community list, application process, allocations (IRCC program page lists no communities yet, 2026-11-09)
 - Expiry dates of individual crisis public policies (most listing entries show no end date)
 
 ## Sources
-- IRCC Notices index, read 2026-11-07: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
+- Rural Community Immigration Program (page 2026-11-09, read 2026-11-12): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
+- Rural Community Immigration Pilot (page 2026-11-09, read 2026-11-12): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
+- IRCC Notices index, read 2026-11-12 (newest notice 2026-11-05): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
 - MI89 Parents and Grandparents: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/other-goals/mi89.html
 - PGP notice 2026-07-15: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/responsibly-manage-parent-grandparent-program.html
 - Entrepreneurs notice 2025-12-19: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/immigration-measures-entrepreneurs.html

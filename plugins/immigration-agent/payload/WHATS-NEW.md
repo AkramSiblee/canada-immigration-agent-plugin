@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.1
+- Policy changes checked on 2026-11-12.
+- Rural Community Immigration: the pilot closes and the new permanent program opens on January 1, 2027. Recommendations dated December 31, 2026 or earlier must be used before they expire. (Before, the agent showed the permanent program as already open.)
+- Express Entry: draws are still paused while scores are recalculated; IRCC has not announced a restart date.
+
 ## 1.3.0
 - The office dashboard has a new, clearer design: a sidebar with a count of urgent items, summary cards, and alerts marked by colour with days left or overdue.
 - The case list shows each client, their next deadline and whether anything needs attention at a glance.

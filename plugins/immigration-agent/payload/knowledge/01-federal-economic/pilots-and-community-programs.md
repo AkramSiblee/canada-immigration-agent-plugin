@@ -2,10 +2,11 @@
 domain: 01-federal-economic
 topic: pilots-and-community-programs
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-12
 confidence: H
 review_every_days: 30
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration.html
@@ -24,7 +25,7 @@ sources:
 ## Current rules
 | Program | Status | Notes |
 |---|---|---|
-| **Rural Community Immigration** | **Open**. Pilot (14 communities) moving to a **permanent class** (SOR/2026-217, in force 2026-10-22) | Job offer from a designated employer in a participating community; language + ECA. Pilot recommendations end 2026-12-31; pilot MIs to 2027-06-30; class allocations from 2027-01-01. Levels 5,500 (2027) |
+| **Rural Community Immigration** | **Pilot open until 2026-12-31** (14 communities); pilot **closes 2027-01-01**. The permanent **Rural Community Immigration Program opens 2027-01-01** (class in force 2026-10-22, SOR/2026-217; IRCC pages 2026-11-09) | Job offer from a designated employer in a participating community; language + ECA. Pilot recommendations end 2026-12-31; pilot MIs to 2027-06-30; class allocations from 2027-01-01. Levels 5,500 (2027) |
 | **Francophone Community Immigration Pilot** | **Open** (6 communities) | Designated employer job offer; French |
 | **Atlantic Immigration Program** | Active | Designated employer job offer + provincial endorsement; skilled worker or Atlantic graduate. **NB paused new employer designations for 2026** (see 02-pnp/new-brunswick.md). Levels 6,000 |
 | **Agri-Food Pilot** | **Closed 2025-05-14** | Pending files processed; included in 2027 workers cohort |
@@ -54,6 +55,7 @@ sources:
 - 2025-05-14: Agri-Food Pilot ended (H)
 - 2025-12-19: Home Care Worker pilots intake paused (H)
 - 2026-10-22: Rural Community Immigration class (SOR/2026-217) (H)
+- 2026-11-09: IRCC: pilot closes 2027-01-01; permanent program opens 2027-01-01. Recommendations dated 2026-12-31 or earlier must be used before they expire (H)
 
 ## Consultant pitfalls
 - Caregivers: no open PR pathway. Use an LMIA-based work permit, then CEC/PNP, or wait for the 2027 cohort if already filed.
@@ -67,7 +69,8 @@ sources:
 - RCI permanent class implementation details (2027); FMCSP page; EMPP status
 
 ## Sources
-- RCIP (2026-04-30): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
+- RCIP pilot (page 2026-11-09, read 2026-11-12): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
+- RCI Program (page 2026-11-09, read 2026-11-12): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
 - FCIP (2026-04-30): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
 - AIP (2026-09-01): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration.html
 - Agri-Food (2026-04-27): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/agri-food-immigration-pilot.html

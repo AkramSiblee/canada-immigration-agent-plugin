@@ -73,6 +73,7 @@
 | 2026-11-03 | RPD Rules amended (SOR/2026-219): single application, personal documents 30 days after referral, no fax | H |
 | 2026-11-05 | 2027-2029 Levels Plan tabled | H |
 | 2026-11-06 | TFWP: Low-Wage LMIA up to 2 years; ECE exempt from 6% CMA rule | H |
+| 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (IRCC pages 2026-11-09) | H |
 | 2027 | Time-limited measure: up to 200,000 in-Canada TR-to-PR (100k workers via PNP + 100k humanitarian), outside Levels, no application | H |
 | 2026-09-07 | IRB Practice Notice on AI in force: no AI for narratives or evidence; declaration required | H |
 | 2027-03-01 | (Proposed) TFWP Low-Wage access reforms (provincial opt-in) | H |

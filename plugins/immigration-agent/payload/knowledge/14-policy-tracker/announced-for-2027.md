@@ -2,10 +2,11 @@
 domain: 14-policy-tracker
 topic: announced-for-2027
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-12
 confidence: H
 review_every_days: 30
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/building-a-stronger-canada-through-a-well-managed-predictable-immigration-system.html
@@ -63,7 +64,7 @@ sources:
   - rural communities: full access
   - cap of 15% of workforce on request of a province (now 10%); priority sectors stay at 20%
 - **Rural "workforce retention" time-limited measure**: announced as separate from the levels plan; no details.
-- **Rural Community Immigration class**: allocations from 2027-01-01; pilot MIs end 2027-06-30.
+- **Rural Community Immigration Program** (permanent) **opens 2027-01-01**; the pilot closes the same day (recommendations dated 2026-12-31 or earlier stay usable until they expire). Allocations from 2027-01-01; pilot MIs end 2027-06-30. Source: IRCC RCI Program page (2026-11-09) https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
 - **CICC public register** (SOR/2026-68 s.22) in force 2027-04-16.
 - **Groups of Five / community sponsor pause** expires 2026-12-31. Watch for an extension.
 - **Ontario Workforce Priority Phase 2**: timing unconfirmed (see 02-pnp/ontario.md).
