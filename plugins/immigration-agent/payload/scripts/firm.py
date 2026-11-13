@@ -301,6 +301,16 @@ def write_docx(path, blocks, profile, client_name):
             p = d.add_paragraph()
             p.paragraph_format.space_after = Pt(8 if kind == "body" else 2)  # letter paragraphs get room between them
             runs(p, text)
+        elif kind == "table":  # text = [header row, row, ...]
+            rows = [[str(c) for c in r] for r in text]
+            t = d.add_table(rows=len(rows), cols=max(len(r) for r in rows))
+            t.style = "Table Grid"
+            for i, r in enumerate(rows):
+                for j, c in enumerate(r):
+                    cell = t.cell(i, j)
+                    cell.text = ""
+                    runs(cell.paragraphs[0], f"**{c}**" if i == 0 else c, 9.5)
+            d.add_paragraph().paragraph_format.space_after = Pt(2)
         elif kind == "signatures":
             t = d.add_table(rows=4, cols=2)
             for col, who in enumerate((f"{profile.get('name', '')}, RCIC {profile.get('rcic', '')}", client_name)):

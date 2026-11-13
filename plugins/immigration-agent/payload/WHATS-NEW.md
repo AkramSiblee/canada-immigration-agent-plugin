@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.4.0
+- /clb: converts IELTS General Training, CELPIP-General, PTE Core, TEF Canada and TCF Canada scores to CLB/NCLC levels with IRCC's official tables, and shows which program minimums are met.
+- /fsw: scores the Federal Skilled Worker 67-point grid, checks the minimum requirements and proof of funds, and lists what would add the most points.
+- /us-pathway: routes for clients in the United States (US citizens, green-card holders, H-1B, L-1, TN, F-1): CUSMA and intra-company work permits, Express Entry, PNP, and DUI and police-certificate checks. The H-1B pathway announced in Budget 2025 is not open yet; the agent says so.
+- /pr-plan: a full eligibility assessment and PR plan for the client (scores, pathways compared, step-by-step timeline, documents, risks) as a Word document on your letterhead.
+
 ## 1.3.6
 - Updates no longer depend on you remembering to check. Automatic updates are now turned on by the agent folder itself.
 - Once a day, when Claude starts in your agent folder, the agent checks whether a newer version exists (it sends nothing about you or your clients). If one does, Claude tells you, with the steps to install it.

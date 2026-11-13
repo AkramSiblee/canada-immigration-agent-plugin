@@ -1,0 +1,50 @@
+{
+  "title": "Federal Skilled Worker Program: six selection factors",
+  "read": "2026-11-13",
+  "confidence": "H",
+  "sources": {
+    "grid": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/federal-skilled-workers/six-selection-factors-federal-skilled-workers.html (page 2026-11-03)",
+    "education": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessment.html (FSW points table)",
+    "language": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-requirements/language-testing.html (page 2026-10-16)",
+    "funds": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/proof-funds.html (page 2026-10-16; amounts updated 2025-07-07)"
+  },
+  "pass_mark": 67,
+  "language": {
+    "first_per_ability": {"7": 4, "8": 5, "9": 6},
+    "first_minimum_clb": 7,
+    "first_max": 24,
+    "second_points": 4,
+    "second_minimum_clb_all": 5,
+    "max": 28
+  },
+  "education": {
+    "phd": [25, "Doctoral (PhD)"],
+    "masters": [23, "Master's degree"],
+    "professional": [23, "Professional degree needed to practise a licensed profession"],
+    "two-or-more": [22, "Two or more credentials, one of them 3+ years"],
+    "bachelor": [21, "Bachelor's or other 3+ year program"],
+    "two-year": [19, "Two-year program"],
+    "one-year": [15, "One-year program"],
+    "secondary": [5, "Secondary school (high school) diploma"]
+  },
+  "experience": [[6, 15], [4, 13], [2, 11], [1, 9]],
+  "age": {"18-35": 12, "36": 11, "37": 10, "38": 9, "39": 8, "40": 7, "41": 6, "42": 5, "43": 4, "44": 3, "45": 2, "46": 1},
+  "arranged_employment": 10,
+  "adaptability": {
+    "spouse_language": [5, "Spouse or partner at CLB 4 or higher in all four abilities"],
+    "study_canada": [5, "You: 2+ academic years of full-time study in Canada (program of 2+ years)"],
+    "spouse_study_canada": [5, "Spouse or partner: past full-time study in Canada"],
+    "work_canada": [10, "You: 1+ year full-time skilled (TEER 0-3) work in Canada with authorization"],
+    "spouse_work_canada": [5, "Spouse or partner: 1+ year full-time work in Canada with authorization"],
+    "arranged_employment": [5, "Arranged employment in Canada"],
+    "relative_canada": [5, "Relative in Canada (18+, citizen or PR): parent, grandparent, child, grandchild, sibling, aunt, uncle, niece, nephew"]
+  },
+  "adaptability_max": 10,
+  "funds": {"1": 15263, "2": 19001, "3": 23360, "4": 28362, "5": 32168, "6": 36280, "7": 40392, "each_more": 4112},
+  "notes": [
+    "From 2026-11-03 a job offer needs no LMIA to qualify (officer still assesses genuineness).",
+    "Job offer: 1+ year, one employer, continuous, paid, full-time (30+ h/week), not seasonal, TEER 0-3.",
+    "Minimum experience: 1 year continuous full-time (or 1,560 hours) in one NOC, TEER 0-3, within the last 10 years.",
+    "Proof of funds not needed if authorized to work in Canada with a valid job offer (or for CEC)."
+  ]
+}

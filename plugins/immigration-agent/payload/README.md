@@ -31,7 +31,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - Use `research-prompts/gap-pass-01.md` for the uncovered areas
 
 ## Slash commands
-`/case` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
+`/case` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
 
 ## Layout
 - `CLAUDE.md` : agent rules

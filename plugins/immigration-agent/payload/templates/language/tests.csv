@@ -1,0 +1,6 @@
+test,name,language,speaking_max,listening_max,reading_max,writing_max,note
+ielts,IELTS General Training,English,9,9,9,9,"General Training only; IELTS One Skill Retake not accepted"
+celpip,CELPIP-General,English,12,12,12,12,"CELPIP-General only"
+pte,PTE Core,English,90,90,90,90,"PTE Core only (not PTE Academic)"
+tef,TEF Canada,French,450,360,300,450,"Use the 'equivalence ancien score' column, not the score out of 699"
+tcf,TCF Canada,French,20,699,699,20,"TCF Canada only"

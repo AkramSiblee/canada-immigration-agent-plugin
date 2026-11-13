@@ -69,6 +69,10 @@ GENERAL_COMMANDS = [
     ("Open a new case", "/case new", "Create a case file"),
     ("Which program fits?", "/select-program", "Recommend pathways for a client profile"),
     ("CRS score", "/crs", "Express Entry score with what-if options"),
+    ("PR plan", "/pr-plan", "Full eligibility assessment and client PR plan (Word)"),
+    ("FSW 67 points", "/fsw", "Federal Skilled Worker grid with what would add points"),
+    ("Test scores to CLB", "/clb", "IELTS, CELPIP, PTE Core, TEF, TCF to CLB/NCLC"),
+    ("US-based client", "/us-pathway", "H-1B, TN, L-1, green card and US citizens"),
     ("Government fees", "/fees", "Fees for an application"),
     ("What changed?", "/changelog", "Scan official sources for new immigration changes"),
 ]
