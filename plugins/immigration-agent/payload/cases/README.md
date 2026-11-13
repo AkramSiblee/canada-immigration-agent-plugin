@@ -30,6 +30,15 @@ python3 scripts/case.py set 2026-001 agreement_signed yes
 python3 scripts/case.py close 2026-001
 ```
 
+## Document progress
+Each case is compared with IRCC's official checklist for its program (`templates/checklists/`: visitor, study permit, work permit, Express Entry, spousal, PGP, super visa, citizenship, PR card). The dashboard shows it on the case page: percentage received, still missing, to confirm, and the full list. Mark items there, or:
+```
+python3 scripts/readiness.py checklist 2026-001
+python3 scripts/readiness.py mark 2026-001 6 not-needed        (received | missing | not-needed | clear)
+python3 scripts/readiness.py add 2026-001 "Employer leave letter" --note "IMM 5890"
+```
+Marks go to `checklist-marks.csv` and added items to `checklist-extra.csv` in the case folder. Both are add-only, so every change is kept. The percentage counts required documents only; conditional items wait until you mark them.
+
 ## Readiness report
 Before filing, `python3 scripts/readiness.py report 2026-001` saves `05-forms-submissions/YYYY-MM-DD-readiness-report.xlsx`: items to fix before filing, urgent items, and things to do, from every check on the file. Add `--form imm1234` for each form if the program's usual forms don't fit. It never says a file is ready; the final review is yours.
 

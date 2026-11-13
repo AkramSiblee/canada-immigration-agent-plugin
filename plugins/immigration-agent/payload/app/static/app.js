@@ -182,12 +182,13 @@ const pages = {
     const render = (q) => {
       body.replaceChildren();
       const rows = d.active.filter((r) => !q || JSON.stringify(r).toLowerCase().includes(q));
-      if (!rows.length) body.append(el("tr", {}, el("td", { colspan: 6 }, empty(d.active.length ? "No case matches your search." : "No active cases yet. Ask Claude: /case new"))));
+      if (!rows.length) body.append(el("tr", {}, el("td", { colspan: 7 },empty(d.active.length ? "No case matches your search." : "No active cases yet. Ask Claude: /case new"))));
       for (const r of rows) {
         body.append(el("tr", {},
           el("td", {}, el("div", { class: "cell-stack" }, caseTag(r.folder, r.id), r.program ? el("span", { class: "small muted" }, r.program) : null)),
           el("td", {}, r.client ? el("div", { class: "client" }, el("span", { class: "avatar" }, initials(r.client)), el("span", {}, r.client)) : el("span", { class: "muted" }, r.error || "")),
           el("td", {}, r.province || el("span", { class: "muted" }, "—")),
+          el("td", {}, el("a", { class: "plain-link", href: "#case/" + encodeURIComponent(r.folder) }, miniProgress(r.progress))),
           el("td", {}, r.next_action || el("span", { class: "muted" }, "Not set")),
           el("td", {}, r.next_deadline ? el("div", { class: "cell-stack" }, el("span", { class: "num" }, fmtDate(r.next_deadline.due)), dueChip(r.next_deadline.left)) : el("span", { class: "muted" }, "None")),
           el("td", {}, el("div", { class: "cell-stack" }, r.urgent ? el("span", { class: "pill Urgent" }, `${r.urgent} urgent`) : null, r.soon ? el("span", { class: "pill Soon" }, `${r.soon} coming up`) : null,
@@ -198,7 +199,7 @@ const pages = {
     return [
       pageHead("Practice", "Cases", `${d.active.length} active · ${d.closed.length} closed`, searchBox("Search by name, case number or program", render)),
       el("section", { class: "panel" }, el("div", { class: "tablewrap" }, el("table", {},
-        el("thead", {}, el("tr", {}, ["Case", "Client", "Province", "Next action", "Next deadline", "Alerts"].map((h) => el("th", {}, h)))), body))),
+        el("thead", {}, el("tr", {}, ["Case", "Client", "Province", "Documents", "Next action", "Next deadline", "Alerts"].map((h) => el("th", {}, h)))), body))),
       d.closed.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `Closed files (${d.closed.length})`)),
         el("div", { class: "tablewrap" }, el("table", {},
           el("thead", {}, el("tr", {}, ["Case", "Client", "Program", "Closed", "Keep until"].map((h) => el("th", {}, h)))),
@@ -225,6 +226,7 @@ const pages = {
             el("span", { class: "sub" }, [i.province, i.opened && "Opened " + fmtDate(i.opened)].filter(Boolean).join(" · ")),
             d.closed ? el("span", { class: "pill done" }, "Closed") : null)),
         el("div", { class: "head-actions" }, el("button", { class: "btn primary", onclick: () => openPath(d.path) }, icon("folder"), "Open case folder"))),
+      checklistPanel(d),
       el("div", { class: "grid2" },
         el("div", { class: "col" },
           panel("Needs attention", null, alertList(d.alerts, false)),
@@ -302,6 +304,137 @@ const pages = {
     ];
   },
 };
+
+// ---- Document checklist: progress summary on top, the full checklist below ----
+const STATES = {
+  received: { label: "Received", tone: "ok" },
+  missing: { label: "Still missing", tone: "Urgent" },
+  confirm: { label: "To confirm", tone: "Soon" },
+  "not-needed": { label: "Not needed", tone: "done" },
+};
+
+async function changeChecklist(body) {
+  let r;
+  try {
+    r = await fetch("/api/checklist", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-Agent-Key": KEY }, body: JSON.stringify(body) });
+  } catch { throw new Error(CLOSED); }
+  const out = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(out.error || "Could not save the change");
+  return out.checklist;
+}
+
+function ring(percent) {
+  const s = document.createElementNS(SVG, "svg");
+  s.setAttribute("viewBox", "0 0 120 120");
+  s.setAttribute("class", "ring");
+  s.setAttribute("role", "img");
+  s.setAttribute("aria-label", `${percent}% of required documents received`);
+  const circ = 2 * Math.PI * 52;
+  for (const [cls, dash] of [["ring-track", circ], ["ring-fill", (circ * percent) / 100]]) {
+    const c = document.createElementNS(SVG, "circle");
+    c.setAttribute("cx", "60"); c.setAttribute("cy", "60"); c.setAttribute("r", "52");
+    c.setAttribute("class", cls);
+    c.setAttribute("stroke-dasharray", `${dash} ${circ}`);
+    s.append(c);
+  }
+  return el("div", { class: "ring-wrap" + (percent === 100 ? " full" : "") }, s,
+    el("div", { class: "ring-label" }, el("div", { class: "ring-n" }, `${percent}%`), el("div", { class: "ring-h" }, "received")));
+}
+
+function progressSummary(cl) {
+  const p = cl.progress;
+  const tile = (cls, n, label, hint) => el("div", { class: "pstat " + cls + (n ? "" : " zero") }, el("div", { class: "n" }, n), el("div", { class: "l" }, label), el("div", { class: "h" }, hint));
+  const bar = el("div", { class: "stack", role: "img", "aria-label": `${p.received} received, ${p.missing} still missing, ${p.confirm} to confirm, ${p.not_needed} not needed` });
+  for (const [k, n] of [["received", p.received], ["missing", p.missing], ["confirm", p.confirm], ["not-needed", p.not_needed]]) {
+    if (!n) continue;
+    const seg = el("span", { class: "seg " + k, title: `${STATES[k].label}: ${n}` });
+    seg.style.flexGrow = n;
+    bar.append(seg);
+  }
+  return el("div", { class: "progress-top" },
+    ring(p.percent),
+    el("div", { class: "progress-side" },
+      el("div", { class: "pstats" },
+        tile("", p.needed, "Required", "Documents this client must provide"),
+        tile("ok", p.received, "Received", "On file or marked received"),
+        tile("Urgent", p.missing, "Still missing", "Ask the client for these"),
+        tile("Soon", p.confirm, "To confirm", "Decide if they apply to this client")),
+      bar,
+      el("div", { class: "legend" }, ["received", "missing", "confirm", "not-needed"].map((k) => el("span", { class: "lg " + k }, STATES[k].label))),
+      p.confirm ? el("div", { class: "small muted" }, `The percentage counts required documents only. ${p.confirm} item${p.confirm === 1 ? "" : "s"} still to confirm: mark each as missing (it applies) or not needed.`) : null));
+}
+
+function checklistItem(it, readOnly, act) {
+  const st = STATES[it.status];
+  const btn = (mark, label) => el("button", {
+    class: "seg-btn" + (it.status === mark ? " on " + mark : ""), "aria-pressed": it.status === mark ? "true" : "false",
+    onclick: () => act({ action: "mark", no: it.no, mark: it.mark === mark ? "" : mark }), title: it.mark === mark ? "Click again to go back to the automatic match" : `Mark as ${label.toLowerCase()}`,
+  }, label);
+  const autoNote = it.mark ? `Marked by you ${fmtDate(it.marked)}` + (it.auto !== it.status ? ` (automatic check: ${STATES[it.auto].label.toLowerCase()})` : "") : it.status === "received" ? "Found in the case documents" : "";
+  return el("div", { class: "ck " + it.status },
+    el("span", { class: "ck-icon", "aria-hidden": "true" }, it.status === "received" ? icon("check") : null),
+    el("div", { class: "ck-main" },
+      el("div", { class: "ck-title" }, el("span", { class: "ck-no" }, it.no), it.item),
+      el("div", { class: "ck-meta" },
+        el("span", { class: "pill " + st.tone }, st.label),
+        it.required !== "always" && it.condition ? el("span", { class: "small muted" }, "Only if: " + it.condition) : null,
+        it.note ? el("span", { class: "small muted" }, it.note) : null),
+      it.files.length ? el("div", { class: "ck-files" }, it.files.map((f) => el("button", { class: "ck-file", onclick: () => openPath(f.path), title: "Open" }, icon("open"), f.name))) : null,
+      autoNote ? el("div", { class: "ck-auto" }, autoNote) : null),
+    readOnly ? null : el("div", { class: "ck-actions" },
+      el("div", { class: "seg-group", role: "group", "aria-label": "Mark this item" }, btn("received", "Received"), btn("missing", "Missing"), btn("not-needed", "Not needed")),
+      it.extra ? el("button", { class: "link-btn", onclick: () => act({ action: "remove", no: it.no }) }, "Remove") : null));
+}
+
+function checklistPanel(d) {
+  const cl = d.checklist;
+  if (!cl) return panel("Document progress", null, empty(`No IRCC checklist is stored for the program "${d.info.program || "not set"}". Stored: visitor, study permit, work permit, Express Entry, spousal, PGP, super visa, citizenship, PR card.`));
+  if (cl.error) return panel("Document progress", null, el("div", { class: "panel-body" }, el("div", { class: "error" }, cl.error)));
+  const wrap = el("section", { class: "panel checklist" });
+  let data = cl, filter = "all";
+  const readOnly = d.closed;
+  const act = async (body) => {
+    try { data = await changeChecklist({ ...body, folder: d.folder }); render(); }
+    catch (e) { toast(e.message); }
+  };
+  const render = () => {
+    const counts = { all: data.items.length };
+    for (const it of data.items) counts[it.status] = (counts[it.status] || 0) + 1;
+    const tabs = el("div", { class: "tabs", role: "tablist" }, [["all", "All"], ["missing", "Still missing"], ["received", "Received"], ["confirm", "To confirm"], ["not-needed", "Not needed"]].map(([k, label]) =>
+      el("button", { class: "tab" + (filter === k ? " on" : ""), role: "tab", "aria-selected": filter === k ? "true" : "false", onclick: () => { filter = k; render(); } }, label, el("span", { class: "tab-n" }, counts[k] || 0))));
+    const shown = data.items.filter((it) => filter === "all" || it.status === filter);
+    const groups = {};
+    for (const it of shown) (groups[it.group] ||= []).push(it);
+    const input = el("input", { type: "text", maxlength: "200", placeholder: "Add a document the visa office or this client needs, e.g. Employer leave letter", "aria-label": "Document to add" });
+    const add = async () => { if (input.value.trim()) { await act({ action: "add", item: input.value }); } };
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") add(); });
+    wrap.replaceChildren(
+      el("div", { class: "panel-head" }, el("h2", {}, "Document progress"),
+        el("span", { class: "count" }, `${data.progress.received} of ${data.progress.needed} required received`)),
+      el("div", { class: "panel-body" }, progressSummary(data)),
+      el("div", { class: "ck-head" },
+        el("div", { class: "ck-source small muted" }, `${data.title}: IRCC ${data.source} (${data.version}), read ${fmtDate(data.read)}. `,
+          el("a", { href: data.url, target: "_blank", rel: "noopener noreferrer" }, "Official list"),
+          data.old ? el("span", { class: "pill Soon" }, "Check IRCC's current version") : null),
+        tabs),
+      shown.length ? el("div", {}, Object.entries(groups).map(([g, items]) => el("div", { class: "ck-group" }, el("h3", {}, g), items.map((it) => checklistItem(it, readOnly, act)))))
+        : empty(filter === "missing" ? "Nothing is missing." : "No items here.", filter === "missing"),
+      readOnly ? null : el("div", { class: "ck-add" }, input, el("button", { class: "btn", onclick: add }, "Add document")),
+      el("p", { class: "hint ck-hint" }, "Documents are matched from the case's 03-documents folder and the latest /extract. Your marks win over the automatic match; click a mark again to undo it. Every change is kept in the case folder."));
+  };
+  render();
+  return wrap;
+}
+
+function miniProgress(p) {
+  if (!p) return el("span", { class: "muted small" }, "No checklist");
+  const bar = el("span");
+  bar.style.width = `${p.percent}%`;
+  return el("div", { class: "mini" },
+    el("div", { class: "mini-top" }, el("span", { class: "num strong" }, `${p.percent}%`), el("span", { class: "small muted num" }, `${p.received} of ${p.needed}`)),
+    el("div", { class: "meter" + (p.percent === 100 ? "" : p.missing ? " warn" : "") }, bar),
+    p.confirm ? el("span", { class: "small muted" }, `${p.confirm} to confirm`) : null);
+}
 
 function fileRow(f, sub) {
   const ext = extOf(f.name);

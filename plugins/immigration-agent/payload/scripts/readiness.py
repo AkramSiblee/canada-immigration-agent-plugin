@@ -3,12 +3,15 @@
 
 Usage:
   python3 scripts/readiness.py report CASE [--form imm5257 --form imm5645] [--person "Full Name"] [--out DIR]
+  python3 scripts/readiness.py checklist CASE                 documents against IRCC's checklist, with progress
+  python3 scripts/readiness.py mark CASE 5 received|missing|not-needed|clear [--note "why"]
+  python3 scripts/readiness.py add CASE "Employer leave letter" [--note "IMM 5890"]   a case-specific item (X1, X2...)
 
 It joins checks that already exist: document extraction flags, form worksheet answers, intake steps,
 deadlines and expiring documents, client updates not yet sent, and client account issues.
 Guarantees:
   - It never says a file is ready to file. The best result is "no blocking items found"; the RCIC decides.
-  - It changes nothing in the case. It only reads and writes the report.
+  - The report changes nothing in the case. Only `mark` and `add` write, to checklist-marks.csv and checklist-extra.csv (add-only history).
   - Missing inputs (no extraction yet, no forms chosen) are listed as items to do, never silently skipped.
 """
 import argparse
@@ -67,8 +70,13 @@ def default_forms(program, marital=""):
 
 
 CHECKLISTS = de.REPO / "templates" / "checklists"
-FOUND, MISSING, IF_APPLIES, BY_HAND = "Found", "Missing", "Only if it applies", "Confirm by hand"
+FOUND, MISSING, IF_APPLIES, BY_HAND, NOT_NEEDED = "Found", "Missing", "Only if it applies", "Confirm by hand", "Not needed"
 CHECKLIST_STALE_DAYS = 180
+# The consultant's marks (from the dashboard or `readiness.py mark`), kept in the case folder; they beat the automatic match.
+MARKS_FILE = "checklist-marks.csv"
+EXTRA_FILE = "checklist-extra.csv"  # case-specific items the consultant adds (X1, X2, ...)
+RECEIVED_MARK, MISSING_MARK, NOT_NEEDED_MARK = "received", "missing", "not-needed"
+MARKS = (RECEIVED_MARK, MISSING_MARK, NOT_NEEDED_MARK)
 
 
 def checklist_for(program):
@@ -116,16 +124,106 @@ def squash(text):
     return re.sub(r"\s+", "", text or "").upper()
 
 
+def load_marks(folder):
+    """The consultant's own marks on checklist items: {item no: {mark, date, note}} (last row per item wins)."""
+    p = folder / MARKS_FILE
+    marks = {}
+    if p.exists():
+        for r in fp.load_csv(p):
+            if r.get("no"):
+                marks[r["no"]] = r
+    return {k: v for k, v in marks.items() if v.get("mark") in MARKS}
+
+
+def save_mark(folder, no, mark, note="", today=None):
+    """Record a mark for one item ('' clears it). Add-only: every change is a new row, so the history stays."""
+    import csv
+    if mark and mark not in MARKS:
+        raise ValueError(f"mark must be one of {', '.join(MARKS)}")
+    p = folder / MARKS_FILE
+    new = not p.exists()
+    with open(p, "a", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        if new:
+            w.writerow(["no", "mark", "date", "note"])
+        w.writerow([no, mark, (today or datetime.date.today()).isoformat(), note.replace("\n", " ")[:200]])
+
+
+def load_extra(folder):
+    """Items the consultant added for this case (visa-office extras and the like), in order, without removed ones."""
+    p = folder / EXTRA_FILE
+    items = {}
+    if p.exists():
+        for r in fp.load_csv(p):
+            if r.get("no"):
+                items[r["no"]] = r
+    return [{"no": k, "item": v.get("item", ""), "required": "always", "condition": "", "detect": "", "note": v.get("note", ""), "extra": True}
+            for k, v in items.items() if v.get("removed") != "yes" and v.get("item")]
+
+
+def add_extra(folder, text, note="", today=None):
+    """Add a case-specific item. Returns its number (X1, X2, ...)."""
+    import csv
+    text = " ".join((text or "").split())[:200]
+    if not text:
+        raise ValueError("Write what the document is")
+    p = folder / EXTRA_FILE
+    used = [int(r["no"][1:]) for r in fp.load_csv(p) if re.fullmatch(r"X\d+", r.get("no", ""))] if p.exists() else []
+    no = f"X{max(used, default=0) + 1}"
+    new = not p.exists()
+    with open(p, "a", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        if new:
+            w.writerow(["no", "item", "note", "added", "removed"])
+        w.writerow([no, text, " ".join(note.split())[:200], (today or datetime.date.today()).isoformat(), ""])
+    return no
+
+
+def remove_extra(folder, no):
+    import csv
+    match = [r for r in load_extra(folder) if r["no"] == no]
+    if not match:
+        raise ValueError(f"No added item '{no}'")
+    with open(folder / EXTRA_FILE, "a", encoding="utf-8", newline="") as fh:
+        csv.writer(fh).writerow([no, match[0]["item"], match[0]["note"], datetime.date.today().isoformat(), "yes"])
+
+
 def checklist_rows(folder, program, docs):
-    """Each checklist item with its status. Returns (index row, rows)."""
+    """Each checklist item with its status, after the consultant's marks. Returns (index row, rows)."""
     info, items = checklist_for(program)
+    if info:
+        items = items + load_extra(folder)
     files = case_files(folder)
+    marks = load_marks(folder)
     rows = []
     for it in items:
         hits = matches(it["detect"], docs, files) if it["detect"] else []
-        status = FOUND if hits else BY_HAND if not it["detect"] else MISSING if it["required"] == "always" else IF_APPLIES
-        rows.append({**it, "status": status, "files": ", ".join(hits[:4]) + (f" (+{len(hits) - 4})" if len(hits) > 4 else "")})
+        auto = FOUND if hits else MISSING if it.get("extra") else BY_HAND if not it["detect"] else MISSING if it["required"] == "always" else IF_APPLIES
+        m = marks.get(it["no"], {})
+        status = {RECEIVED_MARK: FOUND, MISSING_MARK: MISSING, NOT_NEEDED_MARK: NOT_NEEDED}.get(m.get("mark"), auto)
+        rows.append({**it, "status": status, "auto": auto, "mark": m.get("mark", ""), "marked": m.get("date", ""), "mark_note": m.get("note", ""),
+                     "file_list": hits, "files": ", ".join(hits[:4]) + (f" (+{len(hits) - 4})" if len(hits) > 4 else "")})
     return info, rows
+
+
+def progress(rows):
+    """Counts for a progress view. Percent = received / (received + still missing); items still to confirm are counted apart."""
+    c = {"received": sum(1 for r in rows if r["status"] == FOUND), "missing": sum(1 for r in rows if r["status"] == MISSING),
+         "confirm": sum(1 for r in rows if r["status"] in (IF_APPLIES, BY_HAND)), "not_needed": sum(1 for r in rows if r["status"] == NOT_NEEDED)}
+    c["needed"] = c["received"] + c["missing"]
+    c["total"] = len(rows)
+    c["percent"] = round(100 * c["received"] / c["needed"]) if c["needed"] else 0
+    return c
+
+
+def case_checklist(folder, program=None):
+    """(index row, rows) for a case, using its latest extraction when there is one."""
+    report_path = fp.latest_report(folder / "03-documents" / "_extraction")
+    try:
+        docs = json.loads(report_path.read_text(encoding="utf-8")).get("documents", []) if report_path else []
+    except (OSError, ValueError):
+        docs = []
+    return checklist_rows(folder, program if program is not None else cs.read_case(folder).get("program", ""), docs)
 
 
 def checklist_items(info, rows, today):
@@ -363,8 +461,24 @@ def cmd_checklist(a):
         print("No extraction yet: matching uses file names only. Run doc_extract.py extract --case " + folder.name.split("_")[0])
     for r in rows:
         print(f"  [{r['status']}] {r['no']}. {r['item']}" + (f"  <- {r['files']}" if r["files"] else "") + (f"  (if: {r['condition']})" if r["status"] == IF_APPLIES else ""))
-    tally = {s: sum(1 for r in rows if r["status"] == s) for s in (FOUND, MISSING, IF_APPLIES, BY_HAND)}
+    tally = {s: sum(1 for r in rows if r["status"] == s) for s in (FOUND, MISSING, IF_APPLIES, BY_HAND, NOT_NEEDED)}
     print(" | ".join(f"{k}: {v}" for k, v in tally.items()))
+    p = progress(rows)
+    print(f"Progress: {p['received']} of {p['needed']} required documents received ({p['percent']}%); {p['confirm']} still to confirm")
+
+
+def cmd_mark(a):
+    folder = de.active_case(a.case)
+    _, rows = case_checklist(folder, a.program)
+    if a.no not in {r["no"] for r in rows}:
+        sys.exit(f"No checklist item '{a.no}' for this case. Run: readiness.py checklist {a.case}")
+    save_mark(folder, a.no, "" if a.mark == "clear" else a.mark, a.note or "")
+    print(f"Item {a.no}: " + ("mark cleared (automatic match again)" if a.mark == "clear" else a.mark))
+
+
+def cmd_add(a):
+    folder = de.active_case(a.case)
+    print(f"Added item {add_extra(folder, a.item, a.note or '')}: {a.item}")
 
 
 def main():
@@ -374,6 +488,9 @@ def main():
     s = p.add_subparsers(dest="cmd", required=True)
     x = s.add_parser("report"); x.add_argument("case"); x.add_argument("--form", action="append"); x.add_argument("--person"); x.add_argument("--out"); x.set_defaults(fn=cmd_report)
     x = s.add_parser("checklist", help="compare a case's documents with IRCC's checklist"); x.add_argument("case"); x.add_argument("--program", help="override the case's program"); x.set_defaults(fn=cmd_checklist)
+    x = s.add_parser("mark", help="mark one checklist item by hand (beats the automatic match)"); x.add_argument("case"); x.add_argument("no", help="item number, e.g. 5 or F2")
+    x.add_argument("mark", choices=[*MARKS, "clear"]); x.add_argument("--note"); x.add_argument("--program", help="override the case's program"); x.set_defaults(fn=cmd_mark)
+    x = s.add_parser("add", help="add a case-specific document to the checklist"); x.add_argument("case"); x.add_argument("item"); x.add_argument("--note"); x.set_defaults(fn=cmd_add)
     a = p.parse_args()
     a.fn(a)
 

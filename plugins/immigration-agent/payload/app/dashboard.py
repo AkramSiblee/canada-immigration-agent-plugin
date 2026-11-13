@@ -10,8 +10,9 @@ shortcut it runs without a console window, and it stops by itself a few minutes 
 Guarantees:
   - Only this computer can open it: it listens on 127.0.0.1, every request needs this run's secret key, and
     requests addressed to any other host name are refused.
-  - It reads case files and never changes them. Its one action is opening a file or folder of this agent folder
-    in its usual program.
+  - It reads case files. It writes only the document checklist marks of an open case (checklist-marks.csv and
+    checklist-extra.csv, add-only, so every change is kept). Its other action is opening a file or folder of this
+    agent folder in its usual program.
   - Uses the same rules as the daily alerts (scripts/alerts.py), so both always agree.
   - Python standard library only.
 """
@@ -41,13 +42,18 @@ import alerts as al  # noqa: E402
 import billing as bl  # noqa: E402
 import case as cs  # noqa: E402
 import kb_status as kb  # noqa: E402
+import readiness as rd  # noqa: E402
 import updates as up  # noqa: E402
+
+# Checklist states as the page shows them.
+STATE_OF = {rd.FOUND: "received", rd.MISSING: "missing", rd.IF_APPLIES: "confirm", rd.BY_HAND: "confirm", rd.NOT_NEEDED: "not-needed"}
 
 STATE = cs.ROOT / ".dashboard.json"
 ERROR_LOG = cs.ROOT / ".dashboard-error.log"
 IDLE_STOP = int(os.environ.get("DASHBOARD_IDLE_SECONDS", "300"))  # stop this long after the last dashboard window went away
 FIRST_VISIT = int(os.environ.get("DASHBOARD_FIRST_VISIT_SECONDS", "600"))  # stop if no window ever connects
 OUTPUT = WORK / "Output"
+CHECKLIST_LOCK = threading.Lock()  # one checklist write at a time
 HIDDEN = re.compile(r"(^|/)(\.|_extraction(/|$)|__pycache__)")
 CASE_COMMANDS = [
     ("Readiness report", "/readiness {id}", "Everything still open before filing"),
@@ -127,8 +133,35 @@ def scan():
     return alerts
 
 
+def checklist_of(folder, info=None):
+    """The case's document checklist with progress, or None when no official checklist is stored for its program."""
+    info = info or cs.read_case(folder)
+    cl, rows = rd.case_checklist(folder, info.get("program", ""))
+    if not cl:
+        return None
+    root = folder / "03-documents"
+    out = []
+    for r in rows:
+        group = "Added for this case" if r.get("extra") else "Forms" if r["no"].startswith("F") else "Documents"
+        out.append({"no": r["no"], "item": r["item"], "group": group, "required": r["required"], "condition": r["condition"], "note": r["note"],
+                    "status": STATE_OF[r["status"]], "auto": STATE_OF[r["auto"]], "mark": r["mark"], "marked": r["marked"], "extra": bool(r.get("extra")),
+                    "files": [{"name": pathlib.Path(f).name, "path": rel(root / f)} for f in r["file_list"] if (root / f).exists()]})
+    try:
+        age = (today() - datetime.date.fromisoformat(cl["read"])).days
+    except ValueError:
+        age = None
+    return {"title": cl["title"], "source": cl["source"], "version": cl["version"], "url": cl["source_url"], "read": cl["read"],
+            "confidence": cl["confidence"], "old": age is None or age > rd.CHECKLIST_STALE_DAYS or cl["confidence"] != "H",
+            "progress": rd.progress(rows), "items": out}
+
+
 def case_row(folder, alerts):
     info = cs.read_case(folder)
+    try:
+        cl = checklist_of(folder, info)
+        progress = cl["progress"] if cl else None
+    except Exception:  # a damaged checklist file must not hide the case list
+        progress = None
     open_rows = [r for r in cs.read_deadlines(folder) if r.get("status", "").lower() != "done"]
     dues = sorted((d, r) for r in open_rows for d in [date_of(r.get("due", ""))] if d)
     mine = [a for a in alerts if a["case"] == folder.name]
@@ -139,6 +172,7 @@ def case_row(folder, alerts):
         "next_action": info.get("next_action", ""),
         "next_deadline": {"due": nxt[0].isoformat(), "left": (nxt[0] - today()).days, "what": f"{nxt[1].get('type', '')}: {nxt[1].get('description', '')}"} if nxt else None,
         "urgent": sum(1 for a in mine if a["rank"] == al.URGENT), "soon": sum(1 for a in mine if a["rank"] == al.SOON),
+        "progress": progress,
     }
 
 
@@ -217,7 +251,12 @@ def case_detail(name):
     except Exception as e:  # a damaged ledger must not hide the rest of the file
         money = {"error": f"Could not read the billing ledger ({type(e).__name__})"}
     cid = info.get("case_id", folder.name[:8])
+    try:
+        checklist = checklist_of(folder, info)
+    except Exception as e:  # a damaged checklist file must not hide the rest of the file
+        checklist = {"error": f"Could not read the document checklist ({type(e).__name__})"}
     return {
+        "checklist": checklist,
         "folder": folder.name, "path": rel(folder), "closed": folder.parent == cs.CLOSED, "info": info,
         "alerts": alerts, "deadlines": deadlines, "log": log_entries(folder), "updates": up.load(folder)[-10:][::-1],
         "money": money, "files": files_of(folder),
@@ -252,6 +291,39 @@ def agent():
         except ValueError:
             pass
     return {"version": version(), "folder": str(WORK), "whats_new": notes, "kb": kb_summary(), "install": state}
+
+
+def checklist_change(body):
+    """The dashboard's only writes: mark a checklist item, or add/remove a case-specific item, on an ACTIVE case.
+    Returns (error text or None, updated checklist)."""
+    if not isinstance(body, dict):
+        return "Bad request", None
+    folder = next((f for f in cs.folders(cs.ACTIVE) if f.name == body.get("folder")), None)
+    if not folder:
+        return "Only open cases can be changed", None
+    action, no = body.get("action"), str(body.get("no", ""))
+    try:
+        if action == "mark":
+            mark = body.get("mark", "")
+            if mark not in (*rd.MARKS, ""):
+                return "Unknown mark", None
+            cl = checklist_of(folder)
+            if not cl or no not in {i["no"] for i in cl["items"]}:
+                return "No such checklist item", None
+            rd.save_mark(folder, no, mark)
+        elif action == "add":
+            if not checklist_of(folder):
+                return "This case has no checklist to add to", None
+            rd.add_extra(folder, str(body.get("item", "")))
+        elif action == "remove":
+            rd.remove_extra(folder, no)
+        else:
+            return "Unknown action", None
+    except ValueError as e:
+        return str(e), None
+    except OSError as e:
+        return f"Could not save it ({e.strerror or e}). Is the file open in another program?", None
+    return None, checklist_of(folder)
 
 
 def open_path(relpath):
@@ -346,14 +418,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/alive":
             self.server.last_seen = time.monotonic()
             return self.send(200, {"ok": True})
-        if path != "/api/open":
+        if path not in ("/api/open", "/api/checklist"):
             return self.send(404, {"error": "Not found"})
         try:
             n = min(int(self.headers.get("Content-Length", "0")), 10000)
             body = json.loads(self.rfile.read(n) or b"{}")
         except ValueError:
             return self.send(400, {"error": "Bad request"})
-        err = open_path(body.get("path"))
+        if path == "/api/checklist":
+            with CHECKLIST_LOCK:
+                err, cl = checklist_change(body)
+            return self.send(400 if err else 200, {"error": err} if err else {"ok": True, "checklist": cl})
+        err = open_path(body.get("path") if isinstance(body, dict) else None)
         return self.send(400 if err else 200, {"error": err} if err else {"ok": True})
 
     def static(self, name):

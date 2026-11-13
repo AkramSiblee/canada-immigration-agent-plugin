@@ -1,0 +1,16 @@
+no,item,required,condition,detect,note
+F1,Application for Temporary Resident Visa (IMM 5257),always,,form:IMM 5257|file:5257|trv.?application,Online: the portal builds its own checklist
+F2,Family Information (IMM 5645 or IMM 5707 as the region requires),always,,form:IMM 5645|form:IMM 5707|file:5645|5707|family.?info,Age 18 or older; the visa-office instructions name the form
+F3,Statutory Declaration of Common-law Union (IMM 5409),if,common-law partner,form:IMM 5409|file:5409|common.?law,
+F4,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+F5,Authority to Release Personal Information (IMM 5475),if,a designated individual is named,form:IMM 5475|file:5475,
+1,Proof of payment (processing fee; biometrics fee if needed),always,,file:receipt|fee|payment,
+2,Passport or travel document: information page (blank page available),always,,type:passport|file:passport|travel.?doc,
+3,Valid US nonimmigrant visa,if,holds a US visa,file:us.?visa|nonimmigrant,
+4,Two photos to IRCC specifications,if,no biometrics required,file:photo|picture,Not needed when biometrics are given
+5,Proof of financial support,always,,type:bank_statement|type:pay_stub|type:employment_letter|file:bank|statement|income|salary|fund|financial|sponsor,
+6,Marriage licence or certificate,if,married (check the visa-office instructions),type:marriage_certificate|file:marriage|nikah,
+7,Purpose of travel (invitation letter or itinerary),always,,type:letter_of_invitation|file:invitation|itinerary|purpose|ticket|hotel|booking,Refer to the visa-office instructions
+8,Proof of immigration status in the country of residence,if,lives outside the country of citizenship,file:residence.?permit|resident.?card|immigration.?status,
+9,Minor travelling alone or with one parent: custody papers or consent letter,if,applicant is a minor,file:custody|consent|authori[sz]ation,
+10,Additional documents required by the visa office,always,,,Check the country-specific instructions (for example IMM 5890 for Bangladesh)

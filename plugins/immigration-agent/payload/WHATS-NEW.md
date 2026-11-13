@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.5
+- Document progress for every case in the dashboard. Open a case to see the percentage of required documents received, what is still missing, what you still need to confirm, and the full IRCC checklist. Mark each item Received, Missing or Not needed, and add documents the visa office asks for (for example IMM 5890 items). The Cases list shows each case's progress.
+- New official checklists: visitor visa (IMM 5484), study permit and work permit applied outside Canada (IMM 5483, IMM 5488), and Express Entry permanent residence.
+- Your marks also apply to the readiness report and client follow-ups, so a document marked Not needed is no longer asked for.
+
 ## 1.3.4
 - Autofilled IRCC forms no longer open as altered or damaged in Adobe. Answers are now saved the way Adobe saves them, so IRCC's certification stays valid: Adobe shows "Certified by Immigration, Refugees and Citizenship Canada". Fill again any form autofilled before this version.
 - IMM 5476 answers now show in Adobe (before, the form could open empty).

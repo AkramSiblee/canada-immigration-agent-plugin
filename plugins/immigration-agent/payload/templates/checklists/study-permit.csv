@@ -1,0 +1,18 @@
+no,item,required,condition,detect,note
+F1,Application for Study Permit Made Outside of Canada (IMM 1294),always,,form:IMM 1294|file:1294,
+F2,Family Information (IMM 5707),always,,form:IMM 5707|form:IMM 5645|file:5707|5645|family.?info,Age 18 or older or a minor travelling alone
+F3,Statutory Declaration of Common-law Union (IMM 5409),if,common-law partner,form:IMM 5409|file:5409|common.?law,
+F4,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+F5,Authority to Release Personal Information (IMM 5475),if,a designated individual is named,form:IMM 5475|file:5475,
+F6,Custodianship Declaration (IMM 5646),if,minor under 17 not travelling with a parent or guardian,form:IMM 5646|file:5646|custodian,
+1,Proof of payment (processing fee; biometrics fee if needed),always,,file:receipt|fee|payment,
+2,Passport or travel document: information page,always,,type:passport|file:passport|travel.?doc,
+3,Two photos to IRCC specifications,if,no biometrics required,file:photo|picture,Not needed when biometrics are given
+4,Letter of acceptance from the school,always,,type:letter_of_acceptance|file:acceptance|\bloa\b|offer.?letter|admission,Post-secondary: the school must validate it
+5,Provincial or territorial attestation letter (PAL/TAL) or proof of an exception,always,,file:\bpal\b|\btal\b|attestation,A 2026 PAL/TAL is valid only until 2026-12-31 unless an earlier date is printed
+6,Quebec Acceptance Certificate (CAQ),if,studying in Quebec,file:\bcaq\b|acceptance.?certificate,Replaces the PAL/TAL in Quebec
+7,Proof of financial support,always,,type:bank_statement|type:pay_stub|type:employment_letter|file:bank|statement|fund|financial|scholarship|loan|\bgic\b|tuition|sponsor,"Outside Quebec, from 2026-09-01: $23,448 for 1 person plus tuition and travel"
+8,Medical exam,if,"stay over 6 months, time in certain countries, or certain jobs",type:medical_exam|file:medical|\bime\b|panel,
+9,Marriage licence or certificate,if,married,type:marriage_certificate|file:marriage|nikah,
+10,Letter of explanation (study plan),if,recommended by IRCC,file:explanation|\bloe\b|study.?plan|statement.?of.?purpose|\bsop\b,"Recommended, not required"
+11,Additional documents required by the visa office,always,,,Check the country-specific instructions

@@ -1,0 +1,18 @@
+no,item,required,condition,detect,note
+F1,Application for Work Permit Made Outside of Canada (IMM 1295),always,,form:IMM 1295|file:1295,
+F2,Family Information (IMM 5707),always,,form:IMM 5707|form:IMM 5645|file:5707|5645|family.?info,Age 18 or older or a minor travelling alone
+F3,Statutory Declaration of Common-law Union (IMM 5409),if,common-law partner,form:IMM 5409|file:5409|common.?law,
+F4,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+F5,Authority to Release Personal Information (IMM 5475),if,a designated individual is named,form:IMM 5475|file:5475,
+1,"Proof of payment (processing fee, open work permit holder fee if any, biometrics)",always,,file:receipt|fee|payment,Fee-exempt: proof of the exemption
+2,Passport or travel document: information page,always,,type:passport|file:passport|travel.?doc,
+3,Two photos to IRCC specifications,if,no biometrics required,file:photo|picture,
+4,Proof of immigration status in the country of residence,if,lives outside the country of citizenship,file:residence.?permit|resident.?card|immigration.?status,
+5,Marriage licence or certificate,if,married,type:marriage_certificate|file:marriage|nikah,
+6,"Proof of meeting the job requirements (diplomas, licences, experience letters)",if,employer-specific work permit,type:employment_letter|file:diploma|degree|licen[cs]e|experience|reference|resume|\bcv\b,
+7,LMIA copy and employment contract,if,LMIA-based work permit,file:\blmia\b|contract|employment.?agreement,
+8,"Offer of employment number, or IMM 5802 and proof the employer compliance fee was paid",if,LMIA-exempt employer-specific work permit,form:IMM 5802|file:5802|offer.?of.?employment|compliance.?fee,Employer-compliance-exempt: the employment contract
+9,Provincial nomination certificate and R204(c) letter,if,provincial nominee with an LMIA-exempt offer,file:nomination|\bpnp\b|204,
+10,PGWP: final transcript and completion letter,if,post-graduation work permit,file:transcript|completion|graduation|convocation,
+11,Language test results,if,required for the permit type (PGWP since 2024-11-01),type:language_test|file:ielts|celpip|\bpte\b|\btef\b|\btcf\b|language,
+12,Additional documents required by the visa office,always,,,Check the country-specific instructions

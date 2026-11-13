@@ -1,0 +1,21 @@
+no,item,required,condition,detect,note
+1,Passport or travel document,always,,type:passport|file:passport|travel.?doc,Renew if it expires within 6 months
+2,Language test results,always,,type:language_test|file:ielts|celpip|\bpte\b|\btef\b|\btcf\b|language,
+3,Educational credential assessment (ECA),if,"FSW, or points claimed for education outside Canada",file:\beca\b|\bwes\b|credential.?assess|\bices\b|iqas,Under 5 years old at profile and at application
+4,Proof of work experience (reference or experience letters),always,,type:employment_letter|file:reference|experience|employment.?letter|employer.?letter,
+5,Written job offer from a Canadian employer,if,job offer points claimed,file:job.?offer|offer.?of.?employment|offer.?letter,No LMIA needed for ITAs from 2026-11-03
+6,Certificate of qualification in a trade,if,Federal Skilled Trades with a certificate,file:qualification|red.?seal|trade.?cert,
+7,Provincial nomination,if,provincial nominee,file:nomination|\bpnp\b,
+8,"Proof of funds, or exemption letter",always,,type:bank_statement|file:bank|fund|statement|exempt,"CEC, or a valid job offer with authorization to work: upload a letter instead"
+9,Police certificates for each country with 6 months or more in a row in the last 10 years (18 or older),always,,type:police_certificate|file:police|\bpcc\b|clearance,Current country: issued within 6 months of applying
+10,Upfront medical exam confirmation,always,,type:medical_exam|file:medical|\bime\b|panel|1017,Valid 12 months
+11,Birth certificates of dependent children,if,dependent children declared,type:birth_certificate|file:birth,
+12,Marriage certificate,if,married,type:marriage_certificate|file:marriage|nikah,
+13,Statutory Declaration of Common-law Union (IMM 5409),if,common-law,form:IMM 5409|file:5409|common.?law,
+14,Divorce certificate and separation agreement,if,divorced,file:divorce|separation,
+15,Death certificate,if,widowed,file:death,
+16,Adoption certificate,if,adopted dependent child,file:adoption,
+17,Use of a Representative (IMM 5476),if,a representative is used,form:IMM 5476|file:5476|representative,
+18,Authority to Release Personal Information (IMM 5475),if,the portal asks for it,form:IMM 5475|file:5475,
+19,Translations with certified translator stamp,if,any document not in English or French,file:translat|affidavit,
+20,Other documents on the personalized portal checklist,always,,,"Proof of relative in Canada, photos, other names: only if the portal asks"
