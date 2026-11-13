@@ -98,7 +98,7 @@ def main():
     for c in copies:
         print(f"Saved: {c}")
     if not profile.get("rcic"):
-        print("Note: the firm profile is not set up, so the letterhead is blank. Ask: 'Set up my firm profile'.")
+        print("No firm details saved, so the plan is on plain paper. Optional: /firm-profile adds your letterhead.")
     print("Draft for your review before it goes to the client.")
 
 

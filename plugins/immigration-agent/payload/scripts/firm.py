@@ -11,6 +11,8 @@ Guarantees:
   - An agreement missing any element the Code of Professional Conduct requires is never produced,
     even if the template wording has been changed. Required elements are listed in this script, not the template.
   - Nothing is produced while any blank remains to be filled. It never guesses a client's details or terms.
+  - The firm profile is optional: a document can take your details for that one document (terms "firm": {...}).
+    Agreements still need your name, licence number and contact details (Code s.23(2)(a), s.24(3)(a)).
   - Files are never overwritten. Word files, so you can edit before signing.
 Templates live in templates/firm/ and can be rewritten in your own words. Keep each "@covers" line.
 """
@@ -64,6 +66,8 @@ DEFAULTS = {
     "confidentiality": "Your file is kept in secure, access-controlled storage. Only the Consultant and the people named in this agreement can see it. Your information is shared only with your written consent, or where the law or the College requires it.",
     "complaints_procedure": "If you are unhappy with the services, please tell the Consultant in writing. The Consultant will acknowledge your complaint within 5 business days and give you a written response within 30 days.",
 }
+MY_DETAILS = {"name": "your full name", "rcic": "your RCIC licence number (R123456)", "address": "business address", "phone": "phone",
+              "email": "email", "incapacity_plan": "your incapacity plan (who takes over your files)"}
 PROFILE_LABELS = {"name": "--name", "rcic": "--rcic", "address": "--address", "phone": "--phone", "email": "--email", "incapacity_plan": "--incapacity-plan"}
 TERM_HELP = {
     "preliminary_advice": "summary of advice given so far", "instructions": "the client's instructions", "services": "list of services",
@@ -130,7 +134,7 @@ def cmd_setup(a):
 def cmd_show(_):
     p = load_profile()
     if not p:
-        die("no firm profile yet. Run 'firm.py setup'")
+        die("no firm profile saved (it is optional). Save one with /firm-profile, or give your details with each document")
     for k, v in p.items():
         print(f"{k}: {v if len(str(v)) < 90 else str(v)[:87] + '...'}")
 
@@ -272,14 +276,16 @@ def write_docx(path, blocks, profile, client_name):
     if profile.get("logo") and pathlib.Path(profile["logo"]).exists():
         head.add_run().add_picture(profile["logo"], height=Inches(0.55))
         head = sec.header.add_paragraph()
-    runs(head, f"**{profile.get('business') or profile.get('name', '')}**", 12)
-    sub = sec.header.add_paragraph()
-    line = "  |  ".join(x for x in (profile.get("address"), profile.get("phone"), profile.get("email"), profile.get("website")) if x)
-    runs(sub, line, 9)
-    foot = sec.footer.paragraphs[0]
-    foot.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = foot.add_run(f"{profile.get('name', '')}, Regulated Canadian Immigration Consultant, licence no. {profile.get('rcic', '')}. Regulated by the College of Immigration and Citizenship Consultants.")
-    r.font.size, r.font.color.rgb = Pt(8), RGBColor(0x55, 0x55, 0x55)
+    if profile.get("business") or profile.get("name"):  # no firm details: plain paper, no empty letterhead
+        runs(head, f"**{profile.get('business') or profile.get('name', '')}**", 12)
+        line = "  |  ".join(x for x in (profile.get("address"), profile.get("phone"), profile.get("email"), profile.get("website")) if x)
+        if line:
+            runs(sec.header.add_paragraph(), line, 9)
+    if profile.get("name") and profile.get("rcic"):
+        foot = sec.footer.paragraphs[0]
+        foot.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        r = foot.add_run(f"{profile['name']}, Regulated Canadian Immigration Consultant, licence no. {profile['rcic']}. Regulated by the College of Immigration and Citizenship Consultants.")
+        r.font.size, r.font.color.rgb = Pt(8), RGBColor(0x55, 0x55, 0x55)
     previous = None
     for kind, text in blocks:
         if kind == "space":
@@ -362,10 +368,10 @@ def draft(kind, folder, terms, out=None):
     """Produce one document. Returns (path, profile). Exits with NOT PRODUCED and the reason if anything is missing."""
     if kind not in TYPES:
         die(f"unknown type '{kind}'. Types: {', '.join(TYPES)}")
-    profile = load_profile()
-    gaps = [flag for key, flag in PROFILE_LABELS.items() if not profile.get(key)]
-    if gaps:
-        die("your firm profile is incomplete. Run 'firm.py setup' with: " + ", ".join(gaps))
+    # The saved firm profile is optional: details given for this document (terms "firm") are used first.
+    profile = {**load_profile(), **{k: str(v).strip() for k, v in (terms.get("firm") or {}).items() if str(v or "").strip()}}
+    if profile.get("rcic") and not re.fullmatch(r"R\d{6}", profile["rcic"]):
+        die("an RCIC licence number looks like R123456")
     template_name, required, sub, _ = TYPES[kind]
     info, client = client_details(folder) if folder else ({}, {})
     accounting = accounting_lines(folder) if folder and kind == "closing-letter" else None
@@ -384,6 +390,10 @@ def draft(kind, folder, terms, out=None):
     lost = [c for c in required if c not in covers]
     if lost:
         die(f"templates/firm/{template_name} no longer covers what the Code requires: " + "; ".join(f"{c} ({CODE_TEXT.get(c, '')})" for c in lost) + ". Restore the wording and its @covers line")
+    mine = [k for k in missing if k.startswith("firm.")]
+    if mine:
+        die("this document needs your own details: " + ", ".join(MY_DETAILS.get(k[5:], k[5:].replace("_", " ")) for k in mine)
+            + ". Give them in this request (terms \"firm\": {...}), or save them once with /firm-profile (optional)")
     if missing:
         die("fill these in first: " + "; ".join(f"{k} ({TERM_HELP.get(k.split('.')[-1], k.split('.')[-1].replace('_', ' '))})" for k in missing))
     out = pathlib.Path(out) if out else (folder / sub if folder else REPO / "Output" / "general")

@@ -150,6 +150,22 @@ function kbPanel(kb, policy) {
         policy.age > policy.stale_after ? el("span", {}, ". Ask Claude: ", el("code", { class: "mono" }, "/changelog")) : null) : null));
 }
 
+// Optional reminder: the firm profile adds the letterhead; it can be dismissed and is never required.
+const HIDE_PROFILE = "agent.hideProfileTip";
+function profileTip(set) {
+  let hidden = false;
+  try { hidden = localStorage.getItem(HIDE_PROFILE) === "1"; } catch { /* storage unavailable: show it */ }
+  if (set || hidden) return null;
+  const box = el("section", { class: "tip", role: "note" },
+    el("div", { class: "ub-text" },
+      el("div", { class: "tip-title" }, "Optional: add your firm details"),
+      el("div", { class: "small" }, "Adds your letterhead and logo, and fills in your name and licence on agreements and letters. Without it, documents are on plain paper and Claude asks for your details each time.")),
+    el("div", { class: "head-actions" },
+      el("button", { class: "btn", onclick: () => copyCommand("/firm-profile") }, icon("copy"), "Copy /firm-profile"),
+      el("button", { class: "link-btn", onclick: () => { try { localStorage.setItem(HIDE_PROFILE, "1"); } catch { /* ignore */ } box.remove(); } }, "Not now")));
+  return box;
+}
+
 function updateBanner(u) {
   if (!u || !u.state) return null;
   const steps = u.state === "available"
@@ -177,6 +193,7 @@ const pages = {
     return [
       pageHead(fmtLong(d.today), "Today", d.firm || null),
       updateBanner(d.update),
+      profileTip(d.profile_set),
       el("div", { class: "stats" },
         stat("urgent", c.urgent, "Urgent", "Act on these first"),
         stat("soon", c.soon, "Coming up", "Plan for these"),
@@ -462,7 +479,7 @@ function fileRow(f, sub) {
 }
 
 function setFrame(d) {
-  document.getElementById("firm").textContent = d.firm || "Firm profile not set up";
+  document.getElementById("firm").textContent = d.firm || "Firm details: optional";
   document.getElementById("today").textContent = fmtLong(d.today);
   const badge = document.getElementById("nav-urgent");
   badge.textContent = d.counts && d.counts.urgent ? d.counts.urgent : "";

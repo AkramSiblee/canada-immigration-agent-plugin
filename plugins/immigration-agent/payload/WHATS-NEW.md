@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.4.1
+- Your firm profile is now optional. Without it, documents are on plain paper and Claude asks for the details each one needs (agreements still need your name, licence number and contact details, as the CICC Code requires).
+- New /firm-profile command to add, show or change your details, letterhead and logo in a few questions.
+- The dashboard shows an optional reminder to add your firm details; click "Not now" to hide it.
+
 ## 1.4.0
 - /clb: converts IELTS General Training, CELPIP-General, PTE Core, TEF Canada and TCF Canada scores to CLB/NCLC levels with IRCC's official tables, and shows which program minimums are met.
 - /fsw: scores the Federal Skilled Worker 67-point grid, checks the minimum requirements and proof of funds, and lists what would add the most points.

@@ -25,8 +25,8 @@ It prepares and checks; the licensed professional makes every judgment and signs
 
 ## 3. First-time setup
 Open Claude Code in the agent's folder (in VS Code: File > Open Folder, then start Claude Code). Then:
-1. **Your firm profile** (letterhead, agreements, letters):
-   `python3 scripts/firm.py setup --name "Your Name" --rcic R123456 --business "Your Firm" --address "..." --phone "..." --email "..."`
+1. **Your firm profile** (optional: letterhead, logo, and your details filled in on agreements and letters): type `/firm-profile`.
+   Without it, documents are on plain paper and Claude asks for the details each one needs.
 2. **Billing and client account** (optional): `python3 scripts/billing.py setup --model 1` (see `/billing`).
 3. **Daily alerts** (optional, Windows): `python3 scripts/alerts.py install --time 08:30`.
 4. **Practice run with a made-up client** before using real files: ask

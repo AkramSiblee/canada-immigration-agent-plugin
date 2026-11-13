@@ -10,7 +10,7 @@ description: Draft CICC-compliant agreements and letters on the firm's letterhea
 - knowledge/10-consultant-practice/ai-and-privacy.md (the technology notice)
 
 ## Workflow
-1. Check the firm profile: `python3 scripts/firm.py show`. If missing, ask the RCIC for name, licence number, address, phone, email and their incapacity plan (designated successor), then run `firm.py setup`. Never invent these.
+1. Check the firm profile: `python3 scripts/firm.py show`. It is optional. If missing, ask the RCIC for the details this document needs (agreements: name, licence number, address, phone, email; service agreement also the incapacity plan; letters: name and licence number) and put them in the terms file under "firm". Offer once to save them with /firm-profile. Never invent these.
 2. Pick the type with `firm.py types`. Collect the terms from the RCIC. Never invent fees, refund terms, advice or instructions. Ask.
 3. Write the terms to a JSON file in the scratchpad (keys as listed in the refusal message if any are missing; lists for services, disbursements, changes, reasons, risks, documents_returned, body). Client contact details come from the case's intake answers; override with a "client" object if needed.
 4. Run `firm.py make TYPE --case ID --terms FILE`. Without a case, add a "client" object with name and address; the file goes to `Output/general`.

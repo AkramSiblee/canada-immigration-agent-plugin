@@ -69,6 +69,7 @@ GENERAL_COMMANDS = [
     ("Open a new case", "/case new", "Create a case file"),
     ("Which program fits?", "/select-program", "Recommend pathways for a client profile"),
     ("CRS score", "/crs", "Express Entry score with what-if options"),
+    ("Firm details (optional)", "/firm-profile", "Your letterhead, logo and details on documents"),
     ("PR plan", "/pr-plan", "Full eligibility assessment and client PR plan (Word)"),
     ("FSW 67 points", "/fsw", "Federal Skilled Worker grid with what would add points"),
     ("Test scores to CLB", "/clb", "IELTS, CELPIP, PTE Core, TEF, TCF to CLB/NCLC"),
@@ -215,7 +216,7 @@ def home():
     week = [a for a in alerts if a["kind"] == "Deadline" and a["left"] != "" and 0 <= a["left"] <= 7]
     policy = al.last_policy_check()
     return {
-        "firm": firm_name(), "version": version(), "today": today().isoformat(), "update": update_status(),
+        "firm": firm_name(), "version": version(), "today": today().isoformat(), "update": update_status(), "profile_set": bool(firm_name()),
         "counts": {"cases": len(folders), "urgent": sum(1 for a in alerts if a["rank"] == al.URGENT),
                    "soon": sum(1 for a in alerts if a["rank"] == al.SOON), "week": len(week),
                    "housekeeping": sum(1 for a in alerts if a["rank"] == al.HOUSEKEEPING)},
