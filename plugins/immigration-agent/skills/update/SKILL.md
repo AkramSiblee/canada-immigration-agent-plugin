@@ -7,7 +7,9 @@ allowed-tools: Bash(immigration-agent-sync:*)
 
 Speak plainly: the user is a consultant, not a programmer.
 
-1. Run `immigration-agent-sync --status` and explain the result in one or two sentences.
+1. Run `immigration-agent-sync --status` and explain the result in one or two sentences. It shows the version in this folder, the version Claude has downloaded, and the latest release on GitHub.
+   - Latest release newer than the downloaded one: give the steps in 2.
+   - Downloaded version newer than this folder: run `immigration-agent-sync --init` to install it now.
    - If the folder is not an agent folder yet, offer the setup command instead.
 2. If the user wants the newest version, tell them how to fetch it, because Claude cannot run `/plugin` for them:
    - Type `/plugin`, open **Marketplaces**, select the agent's marketplace, choose **Update marketplace**.

@@ -14,6 +14,11 @@ Guarantees:
     .env, CLAUDE.local.md, .claude/settings.local.json. (Their README.md is created only if missing.)
   - A file the firm changed is copied to .immigration-agent/backup/<time>/ before it is replaced or removed.
   - A file that fails to copy is retried at the next start.
+
+Update check (--hook and --status, at most once a day): reads the public version number of the latest release from
+the plugin's GitHub repository. Nothing about the firm, its folder or its clients is sent. If a newer release exists,
+the user is told how to install it. The result is kept in .immigration-agent/update-check.json so the dashboard
+(which never goes online) can show it too. Set IMMIGRATION_AGENT_NO_UPDATE_CHECK=1 to turn it off.
 """
 import argparse
 import datetime
@@ -32,6 +37,65 @@ STATE_FILE = "workspace.json"
 LONG = "\\\\?\\"  # Windows extended-length path prefix
 DATA = re.compile(r"^(cases|Input|Output)/")
 PROTECTED = re.compile(r"^(cases/|Input/|Output/|forms-cache/|\.extraction/|\.immigration-agent/|\.git/)|^(\.env|CLAUDE\.local\.md|\.claude/settings\.local\.json)$")
+CHECK_FILE = "update-check.json"
+MARKETPLACE = "immigration-agent-marketplace"
+LATEST_URL = os.environ.get("IMMIGRATION_AGENT_LATEST_URL") or "https://raw.githubusercontent.com/AkramSiblee/canada-immigration-agent-plugin/main/plugins/immigration-agent/.claude-plugin/plugin.json"
+CHECK_EVERY = datetime.timedelta(hours=20)
+HOW_TO_UPDATE = (f"In the Claude app type /plugin, open Marketplaces, choose {MARKETPLACE}, then Update marketplace "
+                 "(and Enable auto-update if it is offered). Then quit and reopen Claude and start a new conversation in "
+                 "the agent folder: the new version installs into the folder by itself. Client files are never changed.")
+
+
+def vtuple(v):
+    return tuple(int(x) for x in re.findall(r"\d+", str(v or ""))[:3]) or (0,)
+
+
+def check_latest(ws, plugin_version, force=False):
+    """Latest released version (from GitHub, at most once a day; cached), or None. Never raises."""
+    p = ws / STATE_DIR / CHECK_FILE
+    try:
+        cache = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    except Exception:
+        cache = {}
+    now = datetime.datetime.now(datetime.timezone.utc)
+    latest = cache.get("latest")
+    try:
+        fresh = now - datetime.datetime.fromisoformat(cache.get("checked", "")) < CHECK_EVERY
+    except ValueError:
+        fresh = False
+    if os.environ.get("IMMIGRATION_AGENT_NO_UPDATE_CHECK") != "1" and (force or not fresh):
+        try:
+            import urllib.request
+            req = urllib.request.Request(LATEST_URL, headers={"User-Agent": "immigration-agent-update-check", "Cache-Control": "no-cache"})
+            with urllib.request.urlopen(req, timeout=4) as r:
+                latest = json.loads(r.read(20000).decode("utf-8")).get("version") or latest
+            cache["checked"] = now.isoformat(timespec="seconds")
+        except Exception:
+            pass  # offline or GitHub unreachable: keep the last known answer
+    cache.update({"latest": latest, "plugin": plugin_version})
+    try:
+        (ws / STATE_DIR).mkdir(exist_ok=True)
+        p.write_text(json.dumps(cache, indent=1), encoding="utf-8")
+    except OSError:
+        pass
+    return latest
+
+
+def update_notice(plugin_version, latest):
+    if latest and vtuple(latest) > vtuple(plugin_version):
+        return f"A newer Immigration Agent is available: version {latest} (this computer has {plugin_version}). To install it: {HOW_TO_UPDATE}"
+    return ""
+
+
+def hook_output(text, notice, latest=None):
+    """SessionStart hook output: the user sees a short message; Claude gets the details and passes them on."""
+    if not text and not notice:
+        return ""
+    context = "\n".join(x for x in (text, notice) if x)
+    if notice:
+        context += "\nTell the user about this update at the start of your first reply, in plain words, with the steps."
+    short = f"Immigration Agent {latest} is available. Ask Claude: how do I update?" if notice else text.splitlines()[0]
+    return json.dumps({"systemMessage": short, "hookSpecificOutput": {"hookEventName": "SessionStart", "additionalContext": context}})
 
 
 def L(path):
@@ -235,23 +299,35 @@ def main():
             print(f"This folder is not an agent folder yet: {ws}\nPlugin version: {version}. Run the setup command here to install.")
             return 0
         todo = plan(ws, state, manifest)
-        print(f"Agent folder: {ws}\nInstalled version: {state.get('version')}\nPlugin version: {version}\nPending changes: {len(todo)}")
+        latest = check_latest(ws, version, force=True)
+        print(f"Agent folder: {ws}\nInstalled version: {state.get('version')}\nPlugin version: {version}\n"
+              f"Latest release: {latest or 'unknown (could not check online)'}\nPending changes: {len(todo)}")
+        notice = update_notice(version, latest)
+        if notice:
+            print(notice)
         return 0
     if a.hook and state is None:
         return 0  # not an agent folder: stay silent and touch nothing
     first = state is None
     if first:
         state = {"version": None, "files": {}, "created": datetime.date.today().isoformat()}
-    if not first and state.get("version") == version and not plan(ws, state, manifest):
-        if a.init:
-            print(f"Immigration Agent {version} is already installed and up to date in {ws}.")
+    msg, failed = "", []
+    if first or state.get("version") != version or plan(ws, state, manifest):
+        old_version = state.get("version")
+        done, failed, backed_up, stamp = apply(ws, state, manifest, version)
+        msg = report(old_version, version, done, failed, backed_up, stamp, first)
+    elif a.init:
+        msg = f"Immigration Agent {version} is already installed and up to date in {ws}."
+    latest = check_latest(ws, version)
+    notice = update_notice(version, latest)
+    if a.hook:
+        out = hook_output(msg, notice, latest)
+        if out:
+            print(out)
         return 0
-    old_version = state.get("version")
-    done, failed, backed_up, stamp = apply(ws, state, manifest, version)
-    msg = report(old_version, version, done, failed, backed_up, stamp, first)
-    if msg:
-        print(msg)
-    return 0 if (a.hook or not failed) else 1
+    if msg or notice:
+        print("\n".join(x for x in (msg, notice) if x))
+    return 0 if not failed else 1
 
 
 if __name__ == "__main__":

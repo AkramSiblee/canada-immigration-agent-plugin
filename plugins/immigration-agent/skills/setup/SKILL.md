@@ -19,7 +19,8 @@ Speak plainly: the user is a consultant, not a programmer. One step at a time; s
 6. **Finish.** Tell the user:
    - Start a **new conversation** in this folder so Claude loads the agent.
    - Then set up the firm profile (name, RCIC number, letterhead): ask "Set up my firm profile".
-   - Turn on automatic updates: `/plugin` > Marketplaces > select the agent's marketplace > Enable auto-update.
+   - Automatic updates are turned on by the agent folder's settings. To be sure: `/plugin` > Marketplaces > select the agent's marketplace > it should offer Disable auto-update (if it offers Enable, choose it).
+   - The agent also checks once a day for a newer version and says so here and on the dashboard.
    - Try a practice run with a made-up client before real files.
 
 Never run the install in a folder the user did not confirm.

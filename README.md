@@ -1,4 +1,4 @@
-# Canada Immigration Agent (1.3.5)
+# Canada Immigration Agent (1.3.6)
 
 Decision support for licensed Canadian immigration consultants. It prepares and checks; the licensed professional makes every judgment and signs every submission.
 
@@ -17,7 +17,8 @@ You need: the Claude desktop app with a Claude plan that includes Claude Code, P
 6. Open the **Immigration Agent Dashboard** shortcut on your desktop to see deadlines, alerts and cases.
 
 ## Updates
-New knowledge (fees, draws, policy changes) and new features arrive by themselves when auto-update is on.
+New knowledge (fees, draws, policy changes) and new features arrive by themselves when auto-update is on (the agent folder turns it on for you).
+Once a day, when Claude starts in your agent folder, the agent checks GitHub for a newer version (it sends nothing about you or your clients). If one exists, Claude and the dashboard tell you, with the steps to install it.
 Type `/immigration-agent:update` to see your version and what's new. Your client folders are never changed by an update.
 
 ## Licence

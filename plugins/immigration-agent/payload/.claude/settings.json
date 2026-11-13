@@ -17,6 +17,15 @@
       "Read(./Input/**/client-ids/**)"
     ]
   },
+  "extraKnownMarketplaces": {
+    "immigration-agent-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "AkramSiblee/canada-immigration-agent-plugin"
+      },
+      "autoUpdate": true
+    }
+  },
   "hooks": {
     "SessionStart": [
       {

@@ -150,6 +150,21 @@ function kbPanel(kb, policy) {
         policy.age > policy.stale_after ? el("span", {}, ". Ask Claude: ", el("code", { class: "mono" }, "/changelog")) : null) : null));
 }
 
+function updateBanner(u) {
+  if (!u || !u.state) return null;
+  const steps = u.state === "available"
+    ? [`In the Claude app, type /plugin, open Marketplaces, choose immigration-agent-marketplace, then Update marketplace (and Enable auto-update).`,
+       "Quit and reopen Claude, then start a new conversation in this agent folder. The update installs by itself.",
+       "Reopen this dashboard."]
+    : ["Start a new conversation in Claude in this agent folder. The update installs by itself.", "Reopen this dashboard."];
+  return el("section", { class: "update-banner", role: "status" },
+    el("div", { class: "ub-text" },
+      el("div", { class: "ub-title" }, u.state === "available" ? `Version ${u.latest} is available` : `Version ${u.latest} is downloaded and ready to install`),
+      el("div", { class: "small" }, `This folder has version ${u.folder}. Your client files are never changed by an update.`),
+      el("ol", {}, steps.map((s) => el("li", {}, s)))),
+    u.state === "available" ? el("button", { class: "btn", onclick: () => copyCommand("/plugin") }, icon("copy"), "Copy /plugin") : null);
+}
+
 const pages = {
   async home() {
     const d = await api("/api/home");
@@ -161,6 +176,7 @@ const pages = {
     const attention = [...urgent, ...soon];
     return [
       pageHead(fmtLong(d.today), "Today", d.firm || null),
+      updateBanner(d.update),
       el("div", { class: "stats" },
         stat("urgent", c.urgent, "Urgent", "Act on these first"),
         stat("soon", c.soon, "Coming up", "Plan for these"),
@@ -289,6 +305,7 @@ const pages = {
     }
     return [
       pageHead("Canada Immigration Agent", "Agent & updates", `Version ${d.version}` + (d.install.updated ? ` · last updated ${fmtDate(d.install.updated)}` : "")),
+      updateBanner(d.update),
       el("div", { class: "grid2" },
         panel("What's new", null, el("div", { class: "timeline" }, releases.map((r) =>
           el("div", { class: "release" },

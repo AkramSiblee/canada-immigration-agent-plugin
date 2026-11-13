@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.3.6
+- Updates no longer depend on you remembering to check. Automatic updates are now turned on by the agent folder itself.
+- Once a day, when Claude starts in your agent folder, the agent checks whether a newer version exists (it sends nothing about you or your clients). If one does, Claude tells you, with the steps to install it.
+- The dashboard shows a banner when a newer version is available or downloaded and waiting, with the steps.
+
 ## 1.3.5
 - Document progress for every case in the dashboard. Open a case to see the percentage of required documents received, what is still missing, what you still need to confirm, and the full IRCC checklist. Mark each item Received, Missing or Not needed, and add documents the visa office asks for (for example IMM 5890 items). The Cases list shows each case's progress.
 - New official checklists: visitor visa (IMM 5484), study permit and work permit applied outside Canada (IMM 5483, IMM 5488), and Express Entry permanent residence.

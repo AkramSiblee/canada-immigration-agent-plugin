@@ -110,6 +110,35 @@ def version():
         return ""
 
 
+def vtuple(v):
+    return tuple(int(x) for x in re.findall(r"\d+", str(v or ""))[:3]) or (0,)
+
+
+def update_status():
+    """Is a newer version waiting? Offline: reads the last online check (written by the plugin when Claude starts here)
+    and the plugin version Claude has downloaded. Returns {state, latest, plugin, folder} or {} when up to date."""
+    folder = version()
+    latest = plugin = None
+    try:
+        d = json.loads((WORK / ".immigration-agent" / "update-check.json").read_text(encoding="utf-8"))
+        latest, plugin = d.get("latest"), d.get("plugin")
+    except (OSError, ValueError):
+        pass
+    try:
+        conf = pathlib.Path(os.environ.get("CLAUDE_CONFIG_DIR") or pathlib.Path.home() / ".claude")
+        rows = json.loads((conf / "plugins" / "installed_plugins.json").read_text(encoding="utf-8"))["plugins"]
+        found = [r.get("version") for k, v in rows.items() if k.startswith("immigration-agent@") for r in v]
+        if found:
+            plugin = max(found + [plugin], key=vtuple)
+    except (OSError, ValueError, KeyError, TypeError, AttributeError):
+        pass
+    if latest and vtuple(latest) > max(vtuple(plugin), vtuple(folder)):
+        return {"state": "available", "latest": latest, "plugin": plugin or folder, "folder": folder}
+    if plugin and vtuple(plugin) > vtuple(folder):
+        return {"state": "downloaded", "latest": plugin, "plugin": plugin, "folder": folder}
+    return {}
+
+
 def kb_summary():
     rows = []
     for p in sorted(kb.ROOT.rglob("*.md")):
@@ -182,7 +211,7 @@ def home():
     week = [a for a in alerts if a["kind"] == "Deadline" and a["left"] != "" and 0 <= a["left"] <= 7]
     policy = al.last_policy_check()
     return {
-        "firm": firm_name(), "version": version(), "today": today().isoformat(),
+        "firm": firm_name(), "version": version(), "today": today().isoformat(), "update": update_status(),
         "counts": {"cases": len(folders), "urgent": sum(1 for a in alerts if a["rank"] == al.URGENT),
                    "soon": sum(1 for a in alerts if a["rank"] == al.SOON), "week": len(week),
                    "housekeeping": sum(1 for a in alerts if a["rank"] == al.HOUSEKEEPING)},
@@ -290,7 +319,7 @@ def agent():
             state = {"installed": d.get("version"), "updated": d.get("updated", "")}
         except ValueError:
             pass
-    return {"version": version(), "folder": str(WORK), "whats_new": notes, "kb": kb_summary(), "install": state}
+    return {"version": version(), "folder": str(WORK), "whats_new": notes, "kb": kb_summary(), "install": state, "update": update_status()}
 
 
 def checklist_change(body):
