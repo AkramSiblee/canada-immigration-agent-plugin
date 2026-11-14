@@ -17,6 +17,7 @@ Usage:
   python3 scripts/case.py log CASE TEXT
   python3 scripts/case.py set CASE KEY VALUE
   python3 scripts/case.py close CASE [--date YYYY-MM-DD]
+  python3 scripts/case.py calendar [CASE] [--details] [--out DIR]   open deadlines and expiry dates as a calendar file (.ics)
 
 CASE is a case id (2026-001) or any text that matches one folder name.
 Nothing here deletes a file. Destruction is always a manual decision.
@@ -24,6 +25,7 @@ Nothing here deletes a file. Destruction is always a manual decision.
 import argparse
 import csv
 import datetime
+import hashlib
 import os
 import pathlib
 import re
@@ -159,6 +161,13 @@ def cmd_new(a):
     path.write_text(text, encoding="utf-8")
     add_log(dest, "File opened", opened)
     print("Created", dest.relative_to(ROOT.parent) if ROOT.parent in dest.parents else dest)
+    import conflicts
+    hits, _ = conflicts.search([a.client or a.surname], dest.name)
+    if hits:
+        print(f"Conflict check: the client's name matches {len(hits)} name(s) in other files. Review before any work:")
+        for h in hits[:5]:
+            print(f"  {conflicts.STRENGTH[h['strength']]}: {h['found']} | {h['where']} | {h['file']} ({h['state']})")
+    print(f"Run the full conflict check (client, spouse, sponsor, employer): conflicts.py check \"{a.client or a.surname}\" ... --case {case_id}")
 
 
 def collect():
@@ -323,6 +332,75 @@ def cmd_close(a):
     print(f"Closed {folder.name}. Keep until at least {destroy}.")
 
 
+def ics_text(text):
+    return str(text).replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\r", "").replace("\n", "\\n")
+
+
+def ics_fold(line):
+    """Lines of at most 75 bytes, continued with a leading space (RFC 5545 3.1)."""
+    out, cur = [], b""
+    for ch in line:
+        b = ch.encode("utf-8")
+        if len(cur) + len(b) > (75 if not out else 74):
+            out.append(cur)
+            cur = b""
+        cur += b
+    out.append(cur)
+    return b"\r\n ".join(out).decode("utf-8")
+
+
+def calendar_events(pool, details):
+    """All-day events for open deadlines and recorded expiry dates. Without details, titles hold the case id only."""
+    events = []
+    for folder in pool:
+        info = read_case(folder)
+        cid = info.get("case_id") or folder.name[:8]
+        items = [(r["due"], r["type"], r["description"], r.get("basis", ""), str(i)) for i, r in enumerate(read_deadlines(folder), 1) if r["status"].lower() != "done"]
+        items += [(info[k], label, label, "from the case file", k) for k, label in (("status_expiry", "status in Canada expires"), ("passport_expiry", "passport expires")) if info.get(k)]
+        for due, kind, desc, basis, key in items:
+            try:
+                day = datetime.date.fromisoformat(due)
+            except ValueError:
+                continue
+            summary = f"{cid}: {kind}" + (f" - {desc}" if details and desc != kind else "")
+            body = (f"{folder.name}\n{desc}\nBasis: {basis}\n" if details else "Open the case file for details.\n") + "A computed date is a planning aid: confirm it against the decision or document."
+            uid = hashlib.sha256(f"{folder.name}|{kind}|{key}|{due}".encode()).hexdigest()[:24] + "@immigration-agent"
+            events.append((day, uid, summary, body))
+    return sorted(events)
+
+
+def ics(events):
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Canada Immigration Agent//Deadlines//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:Immigration deadlines"]
+    for day, uid, summary, body in events:
+        lines += ["BEGIN:VEVENT", f"UID:{uid}", f"DTSTAMP:{stamp}", f"DTSTART;VALUE=DATE:{day:%Y%m%d}", f"DTEND;VALUE=DATE:{day + datetime.timedelta(days=1):%Y%m%d}",
+                  f"SUMMARY:{ics_text(summary)}", f"DESCRIPTION:{ics_text(body)}", "TRANSP:TRANSPARENT"]
+        for before in ("P7D", "P1D"):
+            lines += ["BEGIN:VALARM", "ACTION:DISPLAY", f"DESCRIPTION:{ics_text(summary)}", f"TRIGGER:-{before}", "END:VALARM"]
+        lines.append("END:VEVENT")
+    lines.append("END:VCALENDAR")
+    return "\r\n".join(ics_fold(x) for x in lines) + "\r\n"
+
+
+def cmd_calendar(a):
+    pool = [find(a.case)] if a.case else folders(ACTIVE)
+    events = calendar_events(pool, a.details)
+    out = pathlib.Path(a.out) if a.out else REPO / "Output" / "general"
+    if out.resolve() == (REPO / "Input").resolve() or (REPO / "Input").resolve() in out.resolve().parents:
+        die("refusing to write inside Input/, which is read-only")
+    out.mkdir(parents=True, exist_ok=True)
+    stem = f"{TODAY.isoformat()}-deadlines-calendar"
+    path, n = out / f"{stem}.ics", 1
+    while path.exists():
+        n += 1
+        path = out / f"{stem}-v{n}.ics"
+    path.write_bytes(ics(events).encode("utf-8"))
+    print(f"{len(events)} date(s) from {len(pool)} file(s) saved to {path}")
+    print("Import it into Outlook, Google Calendar or Apple Calendar. Each date has reminders 7 days and 1 day before.")
+    print("Titles show the case id only" + ("" if not a.details else " plus the deadline description and file name: these go to your calendar provider") + ".")
+    print("Importing again later adds the new dates; it doesn't remove dates you marked done, so delete those in the calendar.")
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -337,6 +415,7 @@ def main():
     x = s.add_parser("log"); x.add_argument("case"); x.add_argument("text"); x.set_defaults(fn=cmd_log)
     x = s.add_parser("set"); x.add_argument("case"); x.add_argument("key"); x.add_argument("value"); x.set_defaults(fn=cmd_set)
     x = s.add_parser("close"); x.add_argument("case"); x.add_argument("--date"); x.set_defaults(fn=cmd_close)
+    x = s.add_parser("calendar"); x.add_argument("case", nargs="?"); x.add_argument("--details", action="store_true"); x.add_argument("--out"); x.set_defaults(fn=cmd_calendar)
     a = p.parse_args()
     a.fn(a)
 

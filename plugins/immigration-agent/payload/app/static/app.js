@@ -27,6 +27,7 @@ const ICONS = {
   back: "M19 12H5M11 6l-6 6 6 6",
   check: "M5 12.5l4.5 4.5L19 7.5",
   folder: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",
+  calendar: "M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM12 12v5M9.5 14.5h5",
 };
 function icon(name) {
   const s = document.createElementNS(SVG, "svg");
@@ -230,7 +231,11 @@ const pages = {
     };
     render("");
     return [
-      pageHead("Practice", "Cases", `${d.active.length} active · ${d.closed.length} closed`, searchBox("Search by name, case number or program", render)),
+      pageHead("Practice", "Cases", `${d.active.length} active · ${d.closed.length} closed`, [
+        d.active.length ? el("a", { class: "btn", href: "/api/calendar.ics", download: "immigration-deadlines.ics",
+          title: "Open deadlines and expiry dates of every active case, with reminders 7 days and 1 day before. Titles show the case number only." },
+          icon("calendar"), "Add deadlines to calendar") : null,
+        searchBox("Search by name, case number or program", render)]),
       el("section", { class: "panel" }, el("div", { class: "tablewrap" }, el("table", {},
         el("thead", {}, el("tr", {}, ["Case", "Client", "Province", "Documents", "Next action", "Next deadline", "Alerts"].map((h) => el("th", {}, h)))), body))),
       d.closed.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `Closed files (${d.closed.length})`)),

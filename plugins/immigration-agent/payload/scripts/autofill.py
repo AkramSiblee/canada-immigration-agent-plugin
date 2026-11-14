@@ -47,6 +47,11 @@ def fetch(form):
     info = next((r for r in fp.load_csv(fp.SPECS / "index.csv") if r["form"] == form), None)
     if not info:
         sys.exit(f"ERROR: no worksheet for {form}. Known: " + ", ".join(r["form"] for r in fp.load_csv(fp.SPECS / "index.csv")))
+    import watch
+    seen = (watch.load_state().get("forms") or {}).get(form) or {}
+    if seen.get("status") == "new version" and seen.get("agent_version") == info["version"]:
+        sys.exit(f"ERROR: the last form check found a newer {form.upper()} on IRCC (Last updated: {seen.get('badge')}); the agent's worksheet is for "
+                 f"{info['version']}. It isn't autofilled. Fill the new version yourself from the worksheet answers, and check for an agent update")
     CACHE.mkdir(exist_ok=True)
     target = CACHE / f"{form}-{info['version_code']}.pdf"
     if target.exists():
@@ -64,6 +69,11 @@ def fetch(form):
             break
     if not m:
         sys.exit(f"ERROR: no PDF link found on {info['source_url']}. Download the form yourself and pass --blank")
+    badge, _ = watch.page_version(page, form)
+    if badge and not watch.same_version(badge, info["version"]):
+        sys.exit(f"ERROR: IRCC now has a newer {form.upper()} (Last updated: {badge}); the agent's worksheet is for {info['version']}. "
+                 "Questions may have moved or changed, so it isn't autofilled. Fill the new version yourself from the worksheet answers, "
+                 "and check for an agent update")
     url = m.group(1) if m.group(1).startswith("http") else "https://www.canada.ca" + m.group(1)
     data = download(url)
     part = target.with_name(target.name + ".part")

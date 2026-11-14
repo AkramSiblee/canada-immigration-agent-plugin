@@ -8,7 +8,8 @@ Usage:
   python3 scripts/alerts.py uninstall
 
 Guarantees:
-  - Nothing is sent anywhere, and no case file is changed.
+  - Nothing is sent anywhere, and no case file is changed. Once a week it reads IRCC's public form pages and fee list
+    (scripts/watch.py; --offline skips it). When a backup folder is set (backup.py setup), it makes the backup that's due.
   - Pop-up notices and printed output show counts only, never client details.
   - One unreadable case file becomes an alert. It doesn't stop the others.
   - A failed run shows a notice, so alerts can't stop silently.
@@ -33,6 +34,8 @@ import case as cs  # noqa: E402
 import doc_extract as de  # noqa: E402
 import form_prefill as fp  # noqa: E402
 import updates as up  # noqa: E402
+import backup as bk  # noqa: E402
+import watch as wt  # noqa: E402
 
 REPO = de.REPO
 TASK_NAME = "Canada Immigration Agent Alerts"
@@ -326,6 +329,37 @@ def notify(message):
         pass
 
 
+def watch_alerts(today, offline=False):
+    """IRCC form versions and fees, re-read once a week (public pages only), then reported from the saved result."""
+    out = []
+    if not offline and wt.stale(today):
+        try:
+            wt.check()
+        except Exception as e:  # a failed check must show, not pass as "no change"
+            out.append(alert(SOON, "All files", "Form version", "not checked", f"IRCC form and fee check failed ({type(e).__name__})", "Run /watch"))
+    for kind, text, step in wt.findings():
+        rank = HOUSEKEEPING if "couldn't be checked" in text or "republished" in text else SOON
+        out.append(alert(rank, "All files", kind, "IRCC", text, step))
+    return out
+
+
+def backup_alerts(today, make=True):
+    """A due backup is made when a backup folder is set (make=False only reports, as the dashboard does)."""
+    out, made = [], None
+    try:
+        made = bk.auto(today) if make else None
+    except Exception as e:
+        made = f"backup failed ({type(e).__name__}: {str(e)[:120]})"
+    if made and not made.startswith("backup made"):
+        out.append(alert(SOON, "All files", "Backup", "failed", made[0].upper() + made[1:], "Run backup.py status, then backup.py create"))
+    is_due, days = bk.due(today)
+    if is_due and not made:
+        text = "No backup of your case files yet" if days is None else f"Last backup was {days} days ago"
+        out.append(alert(SOON if days is None or days > 30 else HOUSEKEEPING, "All files", "Backup", "due", text,
+                         "Run backup.py create, or backup.py setup --to <external drive folder> so the daily alerts make one each week"))
+    return out
+
+
 def cmd_run(a):
     today = datetime.date.today()
     state = load_state()
@@ -342,6 +376,8 @@ def cmd_run(a):
             alerts.append(alert(HOUSEKEEPING, k["name"], "File setup", "program", f"Program \"{k['program']}\" not recognized, so rule changes can't be matched", "Use a clearer program name, and review rule changes manually"))
     if cases and (not checked or (today - checked).days > TRACKER_STALE_DAYS):
         alerts.append(alert(SOON, "All files", "Rule changes", "not checked", "Rule changes haven't been checked recently" + (f" (last {checked.isoformat()})" if checked else ""), "Run /changelog"))
+    if cases:
+        alerts += watch_alerts(today, offline=a.offline) + backup_alerts(today)
     relevant = [c for c in recent if c["files"]]
     fingerprint = sorted([f"{x['case']}|{x['kind']}|{x['text']}|{x['tier']}" for x in alerts] + [f"rule|{c['id']}|{','.join(sorted(c['files']))}" for c in relevant])
     urgent, soon = sum(x["rank"] == URGENT for x in alerts), sum(x["rank"] == SOON for x in alerts)
@@ -403,7 +439,8 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     p = argparse.ArgumentParser(description="Daily alerts for open case files")
     s = p.add_subparsers(dest="cmd", required=True)
-    x = s.add_parser("run"); x.add_argument("--notify", action="store_true"); x.add_argument("--force", action="store_true"); x.add_argument("--out"); x.set_defaults(fn=cmd_run)
+    x = s.add_parser("run"); x.add_argument("--notify", action="store_true"); x.add_argument("--force", action="store_true"); x.add_argument("--out")
+    x.add_argument("--offline", action="store_true", default=os.environ.get("IMMIGRATION_AGENT_OFFLINE") == "1", help="don't read IRCC's form and fee pages"); x.set_defaults(fn=cmd_run)
     x = s.add_parser("status"); x.set_defaults(fn=cmd_status)
     x = s.add_parser("install"); x.add_argument("--time", default="08:00"); x.set_defaults(fn=cmd_install)
     x = s.add_parser("uninstall"); x.set_defaults(fn=cmd_uninstall)

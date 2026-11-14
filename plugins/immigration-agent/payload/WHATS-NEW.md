@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.5.0
+- /conflicts: checks a new client, spouse, sponsor, co-signer or employer against every open and closed file (clients, family members and every name in the client facts) and a list of other parties you keep, such as people you declined. Spelling variants and reversed names are found. Every check is kept on record, and you record your decision (clear, consented in writing, or conflict). Opening a new case now compares the client's name automatically.
+- /calendar: puts every open deadline and status and passport expiry date into Outlook, Google or Apple Calendar, with reminders 7 days and 1 day before. Titles show the case number only, so no client names go to your calendar provider. The dashboard's Cases page has an "Add deadlines to calendar" button.
+- /backup: backs up your case files, client account records, Input and Output folders, firm profile and logo into one file, checks every file in it, and can restore it into an empty folder (nothing is ever overwritten). Choose a backup folder once (an external or encrypted drive) and the daily alerts make a backup every week. Today and the dashboard warn you when a backup is due or failed.
+- /watch: compares each form the agent fills with the version on IRCC's page, and every amount on IRCC's fee list with the agent's fee table. The daily alerts check once a week and the dashboard shows what changed. Autofill now refuses a form IRCC has replaced, so answers can't land on moved questions.
+
 ## 1.4.1
 - Your firm profile is now optional. Without it, documents are on plain paper and Claude asks for the details each one needs (agreements still need your name, licence number and contact details, as the CICC Code requires).
 - New /firm-profile command to add, show or change your details, letterhead and logo in a few questions.

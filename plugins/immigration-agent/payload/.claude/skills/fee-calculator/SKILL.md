@@ -8,7 +8,7 @@ description: Compute government fees for an application with effective dates. Us
 - knowledge/11-forms-fees-processing/fee-schedule.md
 
 ## Workflow
-1. Verify fee table on official fee list before quoting
+1. Verify fee table on official fee list before quoting. `python3 scripts/watch.py status` shows the last automatic comparison with IRCC's fee list; run `watch.py check --fees-only` if it is older than 7 days. A changed fee there outranks the knowledge file
 2. Itemize principal, spouse, children, RPRF, biometrics, extras
 3. Note RPRF deferral trap and effective dates
 4. Output: itemized total in CAD

@@ -75,6 +75,10 @@ GENERAL_COMMANDS = [
     ("Test scores to CLB", "/clb", "IELTS, CELPIP, PTE Core, TEF, TCF to CLB/NCLC"),
     ("US-based client", "/us-pathway", "H-1B, TN, L-1, green card and US citizens"),
     ("Government fees", "/fees", "Fees for an application"),
+    ("Conflict check", "/conflicts", "Check a new client, spouse, sponsor or employer against every file"),
+    ("Deadlines to calendar", "/calendar", "Outlook, Google or Apple Calendar file with reminders"),
+    ("Back up files", "/backup", "Back up case files and client records, or restore"),
+    ("Form and fee check", "/watch", "Compare IRCC's form versions and fees with the agent"),
     ("What changed?", "/changelog", "Scan official sources for new immigration changes"),
 ]
 
@@ -160,7 +164,9 @@ def kb_summary():
 
 
 def scan():
-    alerts, _ = al.scan_cases(today())
+    alerts, cases = al.scan_cases(today())
+    if cases:  # saved results only: the dashboard reads no web page and makes no backup
+        alerts += al.watch_alerts(today(), offline=True) + al.backup_alerts(today(), make=False)
     for a in alerts:
         a["level"] = al.RANK_NAME.get(a["rank"], "")
     alerts.sort(key=lambda a: (a["rank"], a["left"] if a["left"] != "" else 9999, a["case"]))
@@ -438,6 +444,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             if url.path in ROUTES:
                 return self.send(200, ROUTES[url.path]())
+            if url.path == "/api/calendar.ics":  # case ids only in titles, as with case.py calendar
+                body = cs.ics(cs.calendar_events(cs.folders(cs.ACTIVE), details=False)).encode("utf-8")
+                return self.send(200, body, "text/calendar; charset=utf-8", {"Content-Disposition": 'attachment; filename="immigration-deadlines.ics"'})
             if url.path == "/api/case":
                 d = case_detail(q.get("folder", [""])[0])
                 return self.send(200, d) if d else self.send(404, {"error": "No such case"})

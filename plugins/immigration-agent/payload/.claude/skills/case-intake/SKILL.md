@@ -12,6 +12,7 @@ description: Collect client facts and flag risks at intake. Use at the start of 
 1. Collect: identity/status/expiry dates, family composition (all members, declared), history of refusals/removals, criminality, education, work history (NOC/TEER, hours), language, funds, province of interest
 2. Flag red flags: undeclared family (117(9)(d)), prior misrepresentation, expiring status, ghost-consultant involvement, criminality
 3. Check scope of practice; flag lawyer referral triggers
+   Conflict check before any advice (Code ss.15-18): every party (client, spouse, sponsor, co-signer, employer) with `python3 scripts/conflicts.py check "Name" ... [--case CASE]` (see /conflicts). Report matches; the consultant decides
 4. Output: structured intake summary + missing-info list + candidate programs + urgent deadlines
 
 ## Fillable client form

@@ -78,6 +78,36 @@ python3 scripts/billing.py reconcile --month 2026-10 --bank 5000
 ```
 A file can't close while client money is held, a receipt is undeposited or an invoice is unpaid. The daily alerts flag deposits due, invoiced trust money not withdrawn within 30 days, and months not reconciled.
 
+## Conflict checks
+Before acting, check every party (client, spouse, sponsor, co-signer, employer) against all open and closed files (Code ss.15-18). `case.py new` already compares the client's name.
+```
+python3 scripts/conflicts.py check "Sara Khan" "Ali Khan" --case 2026-001
+python3 scripts/conflicts.py record 2026-001 --result clear --note "No matches; client confirmed no links"
+python3 scripts/conflicts.py add-party "Northern Foods Ltd" --role "employer we declined" --note "2026-10 LMIA enquiry"
+python3 scripts/conflicts.py history 2026-001
+```
+Every check is kept in `conflict-checks.csv` (add-only); people and businesses outside your files go in `other-parties.csv`. `record` sets `conflict_check` in case.md to the result you give. A match is a prompt to review; no match only means no recorded name matched.
+
+## Calendar
+```
+python3 scripts/case.py calendar              all active cases
+python3 scripts/case.py calendar 2026-001     one case
+```
+Saves `Output/general/YYYY-MM-DD-deadlines-calendar.ics`: open deadlines and status and passport expiry dates, with reminders 7 days and 1 day before. Titles show the case number only (`--details` adds descriptions and file names, which then go to your calendar provider). The dashboard's Cases page has the same download.
+
+## Backups
+```
+python3 scripts/backup.py setup --to "E:\Immigration backups"     once: an external, network or encrypted drive
+python3 scripts/backup.py create
+python3 scripts/backup.py status
+python3 scripts/backup.py verify "E:\Immigration backups\immigration-agent-backup-2026-11-13-090000.zip"
+python3 scripts/backup.py restore "<zip>" --into "C:\Restored"
+```
+A backup holds cases/ (with client-ids, ledgers and reconciliations), Input/, Output/, the firm profile and logo, with a fingerprint of every file that is checked before the backup is kept. Once a backup folder is set, the daily alerts make a backup every 7 days and flag a failed or overdue one. Backups aren't encrypted: keep them on storage that meets your privacy obligations. Restore only unpacks into an empty folder; nothing is overwritten.
+
+## IRCC form and fee watch
+`python3 scripts/watch.py check` compares each form the agent fills with the version on IRCC's page, and every amount on IRCC's fee list with the amounts the agent's fee table was checked against. The daily alerts run it weekly and the dashboard shows the result. Autofill refuses a form IRCC has replaced until the agent is updated.
+
 ## Rules built in (CICC Client File Management Regulation)
 - A file closes only when fees are settled, property is returned, and the client is told in writing (s.7.1).
 - Closed files are kept at least 6 years, with a closed-files list and a projected destruction date (s.7.2 to s.7.4).

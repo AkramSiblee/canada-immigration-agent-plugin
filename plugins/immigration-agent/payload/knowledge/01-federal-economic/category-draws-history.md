@@ -128,6 +128,7 @@ sources:
 - 2026-10-28: last round before rescoring (#453) (H)
 - 2026-11-07: still no round after #453 (IRCC JSON checked) (H)
 - 2026-11-08: still no round after #453 (IRCC JSON checked) (H)
+- 2026-11-13: still no round after #453 (IRCC JSON checked) (H)
 
 ## Consultant pitfalls
 - FSW-only candidates outside Canada with no French or PNP have had no realistic route in 2025-2026. CEC, French and PNP dominated. Advise PNP or French as levers.
