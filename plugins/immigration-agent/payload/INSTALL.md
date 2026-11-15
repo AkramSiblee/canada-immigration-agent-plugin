@@ -54,6 +54,11 @@ Ask in plain English, or use a command:
 | Record hours, see what files earn | `/time 2026-001 1.5 "drafted LOE"`, `/time report` |
 | Reuse a past letter | `/precedents search study gap` |
 | Letter in the client's language | `/translate 2026-001 Punjabi` |
+| Notes from a consultation recording | `/consult-notes` |
+| New enquiry, paid consultation, quote | `/prospects` |
+| Which files are past IRCC's times? | `/processing check` |
+| Monthly "still in process" letters | `/monthly-updates` |
+| My CPD hours, fee and insurance | `/licence status` |
 
 Folders:
 - `Input/`: files you give the agent (it never changes them)

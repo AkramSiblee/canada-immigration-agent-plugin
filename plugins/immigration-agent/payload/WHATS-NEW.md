@@ -2,6 +2,14 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.7.0
+- /consult-notes: give the agent the transcript of a recorded consultation (from Zoom, Teams, Otter or Word), or your typed notes. It flags risks (previous refusals, family not declared, possible misrepresentation, an unlicensed agent, criminality, medical, matters for a lawyer), drafts the notes for you to correct, and files them as a Word record in the client's file, with the advice added to the file's advice log and follow-ups as deadlines. A recording needs the client's consent.
+- /prospects: track every enquiry from first contact to paid consultation, quote and signed client. Each new name is conflict-checked, you are reminded of the consultation agreement and that an advance fee goes to the client account, prospects waiting for a follow-up show in the alerts, and a report shows conversion by source and why people didn't sign.
+- /processing: each submitted file is compared with IRCC's own published processing times (read weekly). A file past the time is flagged and the agent drafts the IRCC web form enquiry for you to send. No repeat reminder within 30 days.
+- /monthly-updates: one command drafts a "still in process" letter for every client whose application is at IRCC and who hasn't heard from you in a month, quoting IRCC's current estimate.
+- /licence: your CPD hours for the July to June term (16 hours, 1 on professionalism or the Code), annual fee and insurance dates, with reminders before June 30 and each due date.
+- Dashboard: prospects and your licence on the Opportunities page; processing time on each case page.
+
 ## 1.6.0
 - /ircc-letter: give the agent an IRCC letter (or let it look in Gmail for IRCC emails). It recognises the letter (acknowledgement of receipt, biometrics, medical, procedural fairness, document request, interview, passport request, PR confirmation, approval, refusal, ITA), finds the client's file, files a copy, adds the time limit the letter states, and records it so the client update is tracked. It never guesses a deadline: if the letter's limit isn't clear, it asks you.
 - /validity: tracks how long language tests (2 years), ECAs (5 years), medicals (12 months), police certificates (6 months before filing), Express Entry profiles (12 months) and ITAs (60 days) stay valid. Set a planned filing or landing date and you are warned when a document will run out before it. The daily alerts and the dashboard warn 90 and 30 days ahead.

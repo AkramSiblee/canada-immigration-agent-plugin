@@ -176,6 +176,49 @@ Never for IRB narratives, affidavits or evidence.
 `/translate` makes a courtesy translation of a client letter as a Word file (`firm.py make translation`), saying the English letter governs.
 Record the client's language in case.md (`client_language`).
 
+## Consultation notes
+```
+python3 scripts/consult_notes.py scan "Input/2026-11-14 consultation transcript.vtt"
+python3 scripts/consult_notes.py save --notes notes.json --case 2026-001 --transcript "Input/...vtt"
+```
+From a transcript (Zoom, Teams, Otter or Word export; audio itself can't be read) or typed notes. Saves a Word record in `04-advice`,
+adds the advice to case.md's "Advice given" table, adds dated follow-ups as deadlines and files the transcript in `01-intake/transcripts`.
+A recorded consultation needs the client's consent to the recording.
+
+## Prospects
+```
+python3 scripts/prospects.py add "Lia Example" --source website --program "study permit"
+python3 scripts/prospects.py move L001 booked --fee 150      (paid --amount, consulted, quoted --amount, signed --case, declined/not-taken/no-show/lost --reason)
+python3 scripts/prospects.py list
+python3 scripts/prospects.py report
+```
+Kept in `cases/prospects/` with an add-only `history.csv`. Adding runs the conflict check; prospects are also searched by later conflict checks.
+The alerts list prospects waiting for a follow-up (enquiry 3 days, consulted 3 days, quoted 7 days: practice defaults).
+
+## Processing times
+```
+python3 scripts/ptimes.py set 2026-001 --line cec --submitted 2026-03-02
+python3 scripts/ptimes.py check
+python3 scripts/ptimes.py enquiry 2026-001
+python3 scripts/ptimes.py enquired 2026-001
+```
+Compares each tracked file with IRCC's own published times (read weekly by the alerts). A file past the time gets an alert and an enquiry
+draft for the IRCC web form; no repeat alert within 30 days of an enquiry.
+
+## Monthly updates
+`python3 scripts/updates.py monthly [--dry-run] [--days 30]` drafts a "still in process" letter for every file with an application at IRCC
+and no update for 30 days, quoting IRCC's current time when tracked. Files with unreported news are skipped (use `notify`).
+`monthly_updates: no` in case.md opts a file out.
+
+## Your licence and CPD
+```
+python3 scripts/practice.py setup --class RCIC --fees single
+python3 scripts/practice.py cpd-add --date 2026-09-10 --hours 3 --title "IRB practice update" --professionalism --proof cert.pdf
+python3 scripts/practice.py paid annual-fee --term 2026
+python3 scripts/practice.py status
+```
+16 CPD hours per term (July 1 to June 30), 1 on professionalism or the Code; annual fee and insurance from July 1. Kept in `cases/practice/`.
+
 ## Rules built in (CICC Client File Management Regulation)
 - A file closes only when fees are settled, property is returned, and the client is told in writing (s.7.1).
 - Closed files are kept at least 6 years, with a closed-files list and a projected destruction date (s.7.2 to s.7.4).

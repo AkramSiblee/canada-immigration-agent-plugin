@@ -8,6 +8,7 @@ Usage:
   python3 scripts/updates.py list CASE
   python3 scripts/updates.py notify CASE [--online "how to check status"]
   python3 scripts/updates.py sent CASE ROW          (a requested copy was sent)
+  python3 scripts/updates.py monthly [--days 30] [--dry-run] [--online "..."]   "still in process" letters for every quiet file
 
 Guarantees:
   - Every event stays on file. Notifying never deletes anything.
@@ -142,6 +143,81 @@ def cmd_sent(a):
     print(f"Marked as sent: {row['what']}")
 
 
+def quiet_since(rows):
+    """Last day the client heard from us, or the last event date."""
+    days = [r["notified"] for r in rows if r["notified"]] + [r["date"] for r in rows]
+    return max(datetime.date.fromisoformat(d) for d in days) if days else None
+
+
+def monthly_candidates(days, now=None):
+    """Open files with an application at IRCC and no update for `days`: [(folder, rows, last, reason or '')]."""
+    now = now or today()
+    out = []
+    for folder in cs.folders(cs.ACTIVE):
+        rows = load(folder)
+        submitted = [r for r in rows if r["kind"] == "submitted"]
+        if not submitted:
+            continue
+        info = cs.read_case(folder)
+        if info.get("monthly_updates", "").lower() == "no":
+            continue
+        pending = [r for r in rows if not r["notified"] and r["kind"] != "copy-requested"]
+        last = quiet_since(rows)
+        if (now - last).days < days:
+            continue
+        out.append((folder, rows, last, "has news not yet reported: use updates.py notify" if pending else ""))
+    return out
+
+
+def cmd_monthly(a):
+    import ptimes
+    found = monthly_candidates(a.days)
+    if not found:
+        print(f"No file has gone {a.days} days without an update.")
+        return
+    made = 0
+    for folder, rows, last, reason in found:
+        info = cs.read_case(folder)
+        cid = info.get("case_id", folder.name[:8])
+        if reason:
+            print(f"  {cid} {info.get('client', '')}: skipped, {reason}")
+            continue
+        first = sorted((r for r in rows if r["kind"] == "submitted"), key=lambda r: r["date"])[-1]
+        try:
+            pt = ptimes.status(folder)
+        except Exception:
+            pt = None
+        nxt = ""
+        if pt and pt.get("words"):
+            nxt = (f"IRCC's processing times page (checked {str(ptimes.load_state().get('checked', ''))[:10]}) says: {pt['words']}. "
+                   "These are IRCC's estimates and can change.")
+        if a.dry_run:
+            print(f"  {cid} {info.get('client', '')}: last update {last}; would report {first['what']} still in process")
+            continue
+        row = {k: "" for k in FIELDS}
+        row.update(id=str(max((int(r["id"]) for r in rows), default=0) + 1), date=today().isoformat(), kind="status",
+                   what=f"{first['what']} (submitted on {first['date']}) is still being processed by IRCC. We have had no request or decision since our last update on {last}",
+                   party="IRCC", reference=first["reference"], next_steps=nxt, recorded=datetime.datetime.now().isoformat(timespec="seconds"))
+        rows.append(row)
+        save(folder, rows)
+        terms = {"events": [f"{row['what']}.{(' Reference: ' + row['reference'] + '.') if row['reference'] else ''}"],
+                 "next_steps": [nxt] if nxt else [], "client_actions": [], "online_access": a.online or ONLINE}
+        try:
+            path, _ = firm.draft("status-update", folder, terms, None)
+        except SystemExit as e:
+            rows.pop()
+            save(folder, rows)
+            sys.exit(f"STOPPED at {cid}: {e}. Nothing was drafted for this file; {made} letter(s) drafted before it.")
+        row["notified"], row["letter"] = today().isoformat(), path.name
+        save(folder, rows)
+        cs.add_log(folder, f"Monthly status update drafted: {path.name}")
+        made += 1
+        print(f"  {cid} {info.get('client', '')}: {path.name}")
+    if not a.dry_run:
+        print(f"{made} letter(s) drafted, each in its case's 06-correspondence. Read and send each one by a secure method.")
+        print("A file can opt out: case.py set CASE monthly_updates no (add the field to case.md first if it's missing).")
+
+
 def issues(folder, now):
     """Alerts for one case: (rank, kind, tier, text, step, day)."""
     out = []
@@ -171,6 +247,7 @@ def main():
     x = s.add_parser("list"); x.add_argument("case"); x.set_defaults(fn=cmd_list)
     x = s.add_parser("notify"); x.add_argument("case"); x.add_argument("--online"); x.add_argument("--out"); x.set_defaults(fn=cmd_notify)
     x = s.add_parser("sent"); x.add_argument("case"); x.add_argument("row"); x.set_defaults(fn=cmd_sent)
+    x = s.add_parser("monthly"); x.add_argument("--days", type=int, default=30); x.add_argument("--dry-run", action="store_true"); x.add_argument("--online"); x.set_defaults(fn=cmd_monthly)
     a = p.parse_args()
     a.fn(a)
 

@@ -46,6 +46,9 @@ import readiness as rd  # noqa: E402
 import updates as up  # noqa: E402
 import draws as dr  # noqa: E402
 import opportunities as op  # noqa: E402
+import practice as pc  # noqa: E402
+import prospects as ps  # noqa: E402
+import ptimes as pt  # noqa: E402
 import timesheet as ts  # noqa: E402
 import validity as vd  # noqa: E402
 
@@ -71,6 +74,8 @@ CASE_COMMANDS = [
     ("Document validity", "/validity {id}", "Language test, ECA, medical, police, profile and ITA dates"),
     ("Record time", "/time {id}", "Hours on this file and what it earns per hour"),
     ("Client's language", "/translate {id}", "Courtesy translation of a client letter"),
+    ("Consultation notes", "/consult-notes {id}", "Turn a consultation transcript into a filed record with risk flags"),
+    ("Processing time", "/processing set {id}", "Track this file against IRCC's posted processing time"),
 ]
 GENERAL_COMMANDS = [
     ("New client intake", "/intake", "Start a new client matter"),
@@ -85,6 +90,10 @@ GENERAL_COMMANDS = [
     ("Government fees", "/fees", "Fees for an application"),
     ("IRCC letters", "/ircc-letter", "Read new IRCC letters in Input (or Gmail), file them and add deadlines"),
     ("Express Entry draws", "/draws check", "Which clients are at or near the latest round's cut-off"),
+    ("Prospects", "/prospects", "Enquiries, paid consultations, quotes and sign-ups"),
+    ("Processing times", "/processing check", "Files past IRCC's posted times, with enquiry drafts"),
+    ("Monthly client updates", "/monthly-updates", "A 'still in process' letter for every quiet file"),
+    ("Licence and CPD", "/licence status", "CICC fee, insurance and CPD hours"),
     ("Client opportunities", "/opportunities", "Past and current clients who may need you again soon"),
     ("Time and fees", "/time report", "What each file and kind of file earns per hour"),
     ("Precedent letters", "/precedents", "Find a past anonymised letter on the same issue"),
@@ -319,8 +328,14 @@ def case_detail(name):
         money["hours"], money["rate"] = str(t["hours"]), str(t["rate"]) if t["rate"] is not None else ""
     except Exception:
         pass
+    try:
+        r = pt.status(folder)
+        ptime = {"line": r["line"], "submitted": r["submitted"].isoformat() if r["submitted"] else "", "elapsed": r["elapsed"], "words": r["words"] or "",
+                 "past": r["past"], "updated": r["updated"]} if r else None
+    except Exception:
+        ptime = None
     return {
-        "checklist": checklist, "validity": validity,
+        "checklist": checklist, "validity": validity, "ptime": ptime,
         "folder": folder.name, "path": rel(folder), "closed": folder.parent == cs.CLOSED, "info": info,
         "alerts": alerts, "deadlines": deadlines, "log": log_entries(folder), "updates": up.load(folder)[-10:][::-1],
         "money": money, "files": files_of(folder),
@@ -422,9 +437,20 @@ def growth():
     for r in (state.get("rounds") or [])[:5]:
         hits = [{"folder": f.name, "id": i.get("case_id", f.name[:8]), "client": i.get("client", ""), "crs": crs, "gap": gap} for f, i, crs, gap in dr.match_round(r)]
         rounds.append({**r, "matches": hits})
-    return {"opportunities": [o for o in items if o["consent"] != "no"], "errors": [f"{n} ({e})" for n, e in errors], "rounds": rounds,
+    today_ = today()
+    prospects = [{"id": r["id"], "name": r["name"], "stage": r["stage"], "program": r["program"], "source": r["source"], "quote": r["quote"],
+                  "followup": ps.due(r, today_)} for r in ps.load() if r["stage"] in ps.OPEN]
+    licence = None
+    if pc.settings():
+        term = pc.term_of(today_)
+        owed, pro_owed, _ = pc.required(term)
+        total, pro = pc.done(term)
+        licence = {"term": f"{term}-{(term + 1) % 100:02d}", "end": pc.term_dates(term)[1].isoformat(), "owed": str(owed), "done": str(total),
+                   "pro_owed": str(pro_owed), "pro_done": str(pro),
+                   "due": [{"day": d.isoformat(), "what": w, "paid": pc.paid(t, k)} for d, w, k, t in pc.due_items(today_) if 0 <= (d - today_).days <= 120]}
+    return {"prospects": prospects, "licence": licence, "opportunities": [o for o in items if o["consent"] != "no"], "errors": [f"{n} ({e})" for n, e in errors], "rounds": rounds,
             "pnp": (state.get("pnp") or [])[-5:][::-1], "checked": state.get("checked", ""),
-            "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS if c.split()[0] in ("/draws", "/opportunities", "/time", "/precedents")]}
+            "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS if c.split()[0] in ("/draws", "/opportunities", "/time", "/precedents", "/prospects", "/licence", "/monthly-updates", "/processing")]}
 
 
 ROUTES = {"/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent}

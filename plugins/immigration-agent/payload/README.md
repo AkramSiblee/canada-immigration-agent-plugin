@@ -31,7 +31,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - Use `research-prompts/gap-pass-01.md` for the uncovered areas
 
 ## Slash commands
-`/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
+`/consult-notes` `/prospects` `/processing` `/monthly-updates` `/licence` `/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
 
 ## Layout
 - `CLAUDE.md` : agent rules
@@ -64,6 +64,10 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - `scripts/draws.py` : Express Entry rounds from IRCC's feed and recorded PNP draws matched to clients' scores (`/draws`)
 - `scripts/timesheet.py` : hours per file and effective hourly rate by file and program (`/time`)
 - `scripts/precedents.py` : anonymised library of past letters by issue (`/precedents`)
+- `scripts/consult_notes.py` : consultation notes from a transcript, with risk scan, advice log and follow-ups (`/consult-notes`)
+- `scripts/prospects.py` : prospect pipeline from enquiry to signed, with conflict check and funnel report (`/prospects`)
+- `scripts/ptimes.py` : files against IRCC's published processing times, with web form enquiry drafts (`/processing`)
+- `scripts/practice.py` : CICC annual fee, insurance and CPD hours (`/licence`)
 - `scripts/pdf_studio.py` : private PDF tools on this computer: combine, organize, split, compress (to IRCC's upload limit) and convert, with IRCC forms protected (`/pdf`; tests: `scripts/test_pdf_studio.py`)
 
 ## Maintenance cadence

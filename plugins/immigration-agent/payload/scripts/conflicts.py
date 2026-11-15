@@ -124,6 +124,9 @@ def index():
             for r in csv.DictReader(f):
                 if r.get("folder") not in known and r.get("client"):
                     out.append((r["client"], "client (closed-files list)", r.get("folder") or r.get("case_id", ""), "closed"))
+    prospects = cs.ROOT / "prospects" / "prospects.csv"
+    for r in read(prospects) if prospects.exists() else []:  # people who enquired or consulted may have shared confidential information
+        out.append((r.get("name", ""), f"prospect {r.get('id', '')} ({r.get('stage', '')})", "prospect list", "prospect"))
     for r in read(PARTIES):
         out.append((r["name"], f"other party: {r['role']}" + (f" ({r['note']})" if r.get("note") else ""), r.get("case") or "no file", "party"))
     return out

@@ -9,7 +9,8 @@ Usage:
 
 Guarantees:
   - Nothing is sent anywhere, and no case file is changed. Once a week it reads IRCC's public form pages and fee list
-    (scripts/watch.py), and once a day IRCC's Express Entry rounds feed (scripts/draws.py); --offline skips both. When a backup folder is set (backup.py setup), it makes the backup that's due.
+    (scripts/watch.py) and processing times (scripts/ptimes.py), and once a day IRCC's Express Entry rounds feed
+    (scripts/draws.py); --offline skips them. When a backup folder is set (backup.py setup), it makes the backup that's due.
   - Pop-up notices and printed output show counts only, never client details.
   - One unreadable case file becomes an alert. It doesn't stop the others.
   - A failed run shows a notice, so alerts can't stop silently.
@@ -38,6 +39,9 @@ import backup as bk  # noqa: E402
 import watch as wt  # noqa: E402
 import validity as vd  # noqa: E402
 import draws as dr  # noqa: E402
+import practice as pc  # noqa: E402
+import prospects as ps  # noqa: E402
+import ptimes as pt  # noqa: E402
 
 REPO = de.REPO
 TASK_NAME = "Canada Immigration Agent Alerts"
@@ -201,10 +205,15 @@ def scan_cases(today):
             info, rows = cs.read_case(folder), cs.read_deadlines(folder)
             cases.append({"name": folder.name, "program": info.get("program", ""), "province": info.get("province", "")})
             alerts += deadline_alerts(folder.name, rows, today) + file_alerts(folder.name, folder, info, rows, today) + document_alerts(folder.name, folder, today)
-            alerts += [alert(rank, folder.name, kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in bl.issues(folder, today) + up.issues(folder, today) + vd.issues(folder, today) + dr.issues(folder, today)]
+            alerts += [alert(rank, folder.name, kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in bl.issues(folder, today) + up.issues(folder, today) + vd.issues(folder, today) + dr.issues(folder, today) + pt.issues(folder, today)]
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
             alerts.append(alert(URGENT, folder.name, "Unreadable file", "error", f"Could not check this file ({type(e).__name__})", "Open the file and repair it. Its deadlines were not checked"))
     alerts += retention_alerts(today)
+    for source in (pc.issues, ps.issues):  # your licence and CPD; prospects waiting for a follow-up
+        try:
+            alerts += [alert(rank, "All files", kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in source(today)]
+        except Exception as e:  # one damaged file must not stop the others
+            alerts.append(alert(SOON, "All files", "Practice", "error", f"Could not check {source.__module__} ({type(e).__name__})", "Check the files in cases/practice or cases/prospects"))
     try:
         recon = bl.reconcile_issue(today)
     except (OSError, ValueError, KeyError):
@@ -365,15 +374,19 @@ def backup_alerts(today, make=True):
 def cmd_run(a):
     today = datetime.date.today()
     state = load_state()
-    draw_problem = None
+    feed_problems = []
     if not a.offline and dr.stale() and cs.folders(cs.ACTIVE):
         try:
             dr.refresh()  # IRCC's public rounds feed, once a day
         except Exception as e:  # a failed read must show, not pass as "no new round"
-            draw_problem = alert(HOUSEKEEPING, "All files", "Draw", "not checked", f"Express Entry rounds couldn't be read ({type(e).__name__})", "Run draws.py check")
+            feed_problems.append(alert(HOUSEKEEPING, "All files", "Draw", "not checked", f"Express Entry rounds couldn't be read ({type(e).__name__})", "Run draws.py check"))
+    if not a.offline and pt.stale() and cs.folders(cs.ACTIVE):
+        try:
+            pt.refresh()  # IRCC's public processing times, once a week
+        except Exception as e:
+            feed_problems.append(alert(HOUSEKEEPING, "All files", "Processing time", "not checked", f"IRCC processing times couldn't be read ({type(e).__name__})", "Run ptimes.py check"))
     alerts, cases = scan_cases(today)
-    if draw_problem:
-        alerts.append(draw_problem)
+    alerts += feed_problems
     changes = parse_changes(CHANGELOG.read_text(encoding="utf-8")) if CHANGELOG.exists() else []
     first_run = "seen" not in state
     seen = state.get("seen", {})
