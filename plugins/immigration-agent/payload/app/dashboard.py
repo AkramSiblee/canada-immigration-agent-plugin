@@ -44,6 +44,10 @@ import case as cs  # noqa: E402
 import kb_status as kb  # noqa: E402
 import readiness as rd  # noqa: E402
 import updates as up  # noqa: E402
+import draws as dr  # noqa: E402
+import opportunities as op  # noqa: E402
+import timesheet as ts  # noqa: E402
+import validity as vd  # noqa: E402
 
 # Checklist states as the page shows them.
 STATE_OF = {rd.FOUND: "received", rd.MISSING: "missing", rd.IF_APPLIES: "confirm", rd.BY_HAND: "confirm", rd.NOT_NEEDED: "not-needed"}
@@ -63,6 +67,10 @@ CASE_COMMANDS = [
     ("Client follow-up", "/follow-up {id}", "Ask the client for missing answers and documents"),
     ("Status update", "/status-update {id}", "Record what was submitted or received; draft the client update"),
     ("Billing", "/billing {id}", "Invoices, payments and client account"),
+    ("IRCC letter received", "/ircc-letter {id}", "File the letter, add its deadline, record it for the client update"),
+    ("Document validity", "/validity {id}", "Language test, ECA, medical, police, profile and ITA dates"),
+    ("Record time", "/time {id}", "Hours on this file and what it earns per hour"),
+    ("Client's language", "/translate {id}", "Courtesy translation of a client letter"),
 ]
 GENERAL_COMMANDS = [
     ("New client intake", "/intake", "Start a new client matter"),
@@ -75,6 +83,11 @@ GENERAL_COMMANDS = [
     ("Test scores to CLB", "/clb", "IELTS, CELPIP, PTE Core, TEF, TCF to CLB/NCLC"),
     ("US-based client", "/us-pathway", "H-1B, TN, L-1, green card and US citizens"),
     ("Government fees", "/fees", "Fees for an application"),
+    ("IRCC letters", "/ircc-letter", "Read new IRCC letters in Input (or Gmail), file them and add deadlines"),
+    ("Express Entry draws", "/draws check", "Which clients are at or near the latest round's cut-off"),
+    ("Client opportunities", "/opportunities", "Past and current clients who may need you again soon"),
+    ("Time and fees", "/time report", "What each file and kind of file earns per hour"),
+    ("Precedent letters", "/precedents", "Find a past anonymised letter on the same issue"),
     ("Conflict check", "/conflicts", "Check a new client, spouse, sponsor or employer against every file"),
     ("Deadlines to calendar", "/calendar", "Outlook, Google or Apple Calendar file with reminders"),
     ("Back up files", "/backup", "Back up case files and client records, or restore"),
@@ -295,8 +308,19 @@ def case_detail(name):
         checklist = checklist_of(folder, info)
     except Exception as e:  # a damaged checklist file must not hide the rest of the file
         checklist = {"error": f"Could not read the document checklist ({type(e).__name__})"}
+    try:
+        rows, plan = vd.status(folder)
+        validity = {"items": [{"label": r["label"], "person": r["person"], "from": r["from"].isoformat(), "until": r["until"].isoformat(), "left": r["left"], "problem": r["problem"]} for r in rows],
+                    "plan": {k: v.isoformat() for k, v in plan.items()}}
+    except Exception as e:  # a damaged validity file must not hide the rest of the file
+        validity = {"error": f"Could not read document validity ({type(e).__name__})"}
+    try:
+        t = ts.file_row(folder)
+        money["hours"], money["rate"] = str(t["hours"]), str(t["rate"]) if t["rate"] is not None else ""
+    except Exception:
+        pass
     return {
-        "checklist": checklist,
+        "checklist": checklist, "validity": validity,
         "folder": folder.name, "path": rel(folder), "closed": folder.parent == cs.CLOSED, "info": info,
         "alerts": alerts, "deadlines": deadlines, "log": log_entries(folder), "updates": up.load(folder)[-10:][::-1],
         "money": money, "files": files_of(folder),
@@ -390,7 +414,20 @@ def open_path(relpath):
 
 
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml"}
-ROUTES = {"/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent}
+def growth():
+    """Client opportunities and the latest Express Entry rounds (saved results only: the dashboard reads no web page)."""
+    items, errors = op.find(today())
+    state = dr.load_state()
+    rounds = []
+    for r in (state.get("rounds") or [])[:5]:
+        hits = [{"folder": f.name, "id": i.get("case_id", f.name[:8]), "client": i.get("client", ""), "crs": crs, "gap": gap} for f, i, crs, gap in dr.match_round(r)]
+        rounds.append({**r, "matches": hits})
+    return {"opportunities": [o for o in items if o["consent"] != "no"], "errors": [f"{n} ({e})" for n, e in errors], "rounds": rounds,
+            "pnp": (state.get("pnp") or [])[-5:][::-1], "checked": state.get("checked", ""),
+            "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS if c.split()[0] in ("/draws", "/opportunities", "/time", "/precedents")]}
+
+
+ROUTES = {"/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent}
 
 
 class Handler(http.server.BaseHTTPRequestHandler):

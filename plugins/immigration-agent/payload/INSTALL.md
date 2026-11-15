@@ -47,6 +47,13 @@ Ask in plain English, or use a command:
 | Build the upload package | `/package 2026-001` |
 | Count days for citizenship or PR | `/presence 2026-001 citizenship` |
 | Which program fits? CRS? PNP? | `/select-program`, `/crs`, `/pnp` |
+| An IRCC letter arrived | `/ircc-letter` |
+| Will tests and medicals still be valid? | `/validity 2026-001` |
+| Who is near the latest draw's cut-off? | `/draws check` |
+| Which past clients need us again? | `/opportunities` |
+| Record hours, see what files earn | `/time 2026-001 1.5 "drafted LOE"`, `/time report` |
+| Reuse a past letter | `/precedents search study gap` |
+| Letter in the client's language | `/translate 2026-001 Punjabi` |
 
 Folders:
 - `Input/`: files you give the agent (it never changes them)

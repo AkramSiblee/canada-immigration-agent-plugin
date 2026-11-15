@@ -2,6 +2,16 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.6.0
+- /ircc-letter: give the agent an IRCC letter (or let it look in Gmail for IRCC emails). It recognises the letter (acknowledgement of receipt, biometrics, medical, procedural fairness, document request, interview, passport request, PR confirmation, approval, refusal, ITA), finds the client's file, files a copy, adds the time limit the letter states, and records it so the client update is tracked. It never guesses a deadline: if the letter's limit isn't clear, it asks you.
+- /validity: tracks how long language tests (2 years), ECAs (5 years), medicals (12 months), police certificates (6 months before filing), Express Entry profiles (12 months) and ITAs (60 days) stay valid. Set a planned filing or landing date and you are warned when a document will run out before it. The daily alerts and the dashboard warn 90 and 30 days ahead.
+- /draws: record each Express Entry client's CRS score and categories once. After every round (read from IRCC's own feed, once a day), the agent lists clients at or within 10 points of the cut-off. You can also record provincial draws.
+- /opportunities: finds clients in open and closed files who may need you again: citizenship eligibility, PR card renewal, permits ending, study or work clients ready for a PR route, CRS points dropping at a birthday, expiring tests, and family members left behind. Contact only clients who agreed to hear from you (`contact_ok` in the file).
+- /time: record hours on each file and see what each file, and each kind of file, earns per hour against your target rate.
+- /precedents: keep your best past letters as anonymised precedents by issue (study gap, previous refusal, dual intent...), and start new drafts from them. Letters of explanation now check the library first.
+- /translate: a courtesy translation of a client letter in the client's language, as a Word file, stating that the English letter governs.
+- Dashboard: a new Opportunities page (clients to review, latest Express Entry rounds and who matches them), plus document validity and hours on each case page.
+
 ## 1.5.1
 - New knowledge for corporate files: employer compliance inspections (who inspects, the employer conditions, the 30-day response, and the official penalty and ban tables), work permits under trade agreements other than CUSMA (CETA, UK, CPTPP, GATS, Chile, Peru, Colombia, Korea, Panama, Ukraine), and the Global Skills Strategy (2-week processing, the 15/30/120-day work permit exemptions, Global Talent Stream wages).
 - Quebec business immigration: Investor, Entrepreneur (3 streams) and Self-Employed programs, with net worth, investment, French level 7 and 2026 fees. Correction: these programs are open and take applications at any time; the agent previously said their status was unconfirmed.

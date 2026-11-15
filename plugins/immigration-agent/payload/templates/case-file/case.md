@@ -10,6 +10,8 @@ next_action:
 province:
 status_expiry:
 passport_expiry:
+contact_ok:
+client_language:
 conflict_check: no
 agreement_signed: no
 imm5476_on_file: no

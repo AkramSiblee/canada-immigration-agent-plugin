@@ -31,7 +31,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - Use `research-prompts/gap-pass-01.md` for the uncovered areas
 
 ## Slash commands
-`/case` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
+`/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
 
 ## Layout
 - `CLAUDE.md` : agent rules
@@ -58,6 +58,12 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - `scripts/letter_check.py` : checks a drafted letter's dates, numbers, amounts, names and forms against the extracted documents
 - `scripts/autofill.py` : writes a worksheet's ready answers into IRCC's official blank form and reads it back to confirm (`/autofill`)
 - `scripts/lmia.py` : LMIA stream, refusal-to-process, cap and recruitment checks (`/lmia`; data in `templates/lmia/`; tests: `scripts/test_autofill_lmia.py`)
+- `scripts/ircc_letters.py` : IRCC letter inbox: recognises the letter, files it in its case, adds its time limit and records it for the client update (`/ircc-letter`)
+- `scripts/validity.py` : validity of language tests, ECAs, medicals, police certificates, EE profiles and ITAs against the planned filing date (`/validity`; rules in `templates/validity-rules.csv`)
+- `scripts/opportunities.py` : clients in open and closed files who may need the firm again (`/opportunities`)
+- `scripts/draws.py` : Express Entry rounds from IRCC's feed and recorded PNP draws matched to clients' scores (`/draws`)
+- `scripts/timesheet.py` : hours per file and effective hourly rate by file and program (`/time`)
+- `scripts/precedents.py` : anonymised library of past letters by issue (`/precedents`)
 - `scripts/pdf_studio.py` : private PDF tools on this computer: combine, organize, split, compress (to IRCC's upload limit) and convert, with IRCC forms protected (`/pdf`; tests: `scripts/test_pdf_studio.py`)
 
 ## Maintenance cadence

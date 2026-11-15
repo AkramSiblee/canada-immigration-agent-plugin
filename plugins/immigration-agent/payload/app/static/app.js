@@ -27,6 +27,7 @@ const ICONS = {
   back: "M19 12H5M11 6l-6 6 6 6",
   check: "M5 12.5l4.5 4.5L19 7.5",
   folder: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",
+  growth: "M3 17l6-6 4 4 8-8M14 7h7v7",
   calendar: "M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM12 12v5M9.5 14.5h5",
 };
 function icon(name) {
@@ -276,6 +277,14 @@ const pages = {
                 el("td", {}, el("div", { class: "alert-what" }, r.type), el("div", { class: "small muted" }, r.description)),
                 el("td", { class: "small muted" }, r.basis),
                 el("td", {}, r.done ? el("span", { class: "pill done" }, "Done") : dueChip(r.left))))))) : empty("No deadlines tracked yet. Ask Claude to add one.")),
+          d.validity && (d.validity.error || d.validity.items.length) ? panel("Document validity",
+            el("span", { class: "count" }, d.validity.plan && d.validity.plan.plan_filing ? "Filing planned " + fmtDate(d.validity.plan.plan_filing) : ""),
+            d.validity.error ? el("div", { class: "error" }, d.validity.error) : el("div", { class: "tablewrap" }, el("table", {},
+              el("thead", {}, el("tr", {}, ["Document", "Dated", "Good until", "Status"].map((h) => el("th", {}, h)))),
+              el("tbody", {}, d.validity.items.map((r) => el("tr", {},
+                el("td", {}, el("div", { class: "alert-what" }, r.label), el("div", { class: "small muted" }, r.person)),
+                el("td", { class: "num" }, fmtDate(r.from)), el("td", { class: "num" }, fmtDate(r.until)),
+                el("td", {}, r.problem ? el("span", { class: "pill Urgent" }, r.problem) : dueChip(r.left)))))))) : null,
           panel("Files", el("span", { class: "count" }, d.files.length ? `${d.files.length} file${d.files.length === 1 ? "" : "s"}` : ""),
             Object.keys(groups).length ? el("div", {}, Object.entries(groups).map(([g, fs]) => el("div", { class: "files-group" }, el("h3", {}, g),
               fs.map((f) => fileRow(f, null))))) : empty("No files yet."))),
@@ -289,14 +298,59 @@ const pages = {
             el("dt", {}, "Agreement signed"), el("dd", {}, dash(i.agreement_signed)),
             el("dt", {}, "IMM 5476 on file"), el("dd", {}, dash(i.imm5476_on_file))))),
           panel("Money", null, el("div", { class: "panel-body" },
-            m.error ? el("div", { class: "error" }, m.error) : !m.has_ledger ? el("div", { class: "muted" }, "No billing recorded yet.") :
+            m.error ? el("div", { class: "error" }, m.error) : !m.has_ledger ? el("div", {}, el("div", { class: "muted" }, "No billing recorded yet."),
+                m.hours && Number(m.hours) ? el("dl", { class: "kv" }, el("dt", {}, "Hours recorded"), el("dd", {}, m.hours)) : null) :
               el("dl", { class: "kv" }, el("dt", {}, "Invoiced"), el("dd", {}, money(m.invoiced)), el("dt", {}, "Received"), el("dd", {}, money(m.received)),
-                el("dt", {}, "Unpaid"), el("dd", { class: owing ? "warn" : "strong" }, money(m.owing)), el("dt", {}, "Held in client account"), el("dd", {}, money(m.held))))),
+                el("dt", {}, "Unpaid"), el("dd", { class: owing ? "warn" : "strong" }, money(m.owing)), el("dt", {}, "Held in client account"), el("dd", {}, money(m.held)),
+                m.hours && Number(m.hours) ? [el("dt", {}, "Hours recorded"), el("dd", {}, m.hours), el("dt", {}, "Per hour"), el("dd", {}, m.rate ? money(m.rate) : "—")] : null))),
           d.updates.length ? panel("Submitted and received", null,
             el("div", {}, d.updates.map((u) => el("div", { class: "row" }, el("span", {}, el("span", { class: "alert-what" }, u.kind + ": "), u.what),
               el("span", { class: "cell-stack" }, el("span", { class: "file-meta" }, fmtDate(u.date)), el("span", { class: "pill " + (u.notified ? "ok" : "Soon") }, u.notified ? "Client told" : "Client not told")))))) : null,
           panel("Recent activity", null,
             d.log.length ? el("div", {}, d.log.map((l) => el("div", { class: "row" }, el("span", {}, l.text), el("span", { class: "file-meta" }, fmtDate(l.date))))) : empty("No activity logged.")))),
+    ];
+  },
+
+  async growth() {
+    const d = await api("/api/growth");
+    const opps = el("tbody");
+    const render = (q) => {
+      opps.replaceChildren();
+      const rows = d.opportunities.filter((r) => !q || JSON.stringify(r).toLowerCase().includes(q));
+      if (!rows.length) opps.append(el("tr", {}, el("td", { colspan: 5 }, empty(d.opportunities.length ? "Nothing matches your search." : "No opportunities found in the files. Only dates recorded in the files are used (PR date, PR card expiry, status expiry, date of birth, trips, test dates)."))));
+      for (const r of rows) {
+        opps.append(el("tr", {},
+          el("td", {}, el("div", { class: "cell-stack" }, r.when ? el("span", { class: "num" }, fmtDate(r.when)) : el("span", { class: "muted" }, "Review"), r.when ? (r.left <= 0 ? el("span", { class: "pill ok" }, "Now") : dueChip(r.left)) : null)),
+          el("td", {}, el("div", { class: "cell-stack" }, caseTag(r.case, r.id), el("span", { class: "small" }, r.client), el("span", { class: "small muted" }, `${r.program} · ${r.state} file`))),
+          el("td", {}, el("div", { class: "alert-what" }, r.kind), el("div", { class: "small muted" }, r.why)),
+          el("td", { class: "small" }, r.service),
+          el("td", {}, el("span", { class: "pill " + (r.consent === "yes" ? "ok" : "Soon") }, r.consent === "yes" ? "Agreed to contact" : "Consent not recorded"))));
+      }
+    };
+    render("");
+    const gapText = (g) => g >= 0 ? `+${g} over` : `${-g} below`;
+    return [
+      pageHead("Practice", "Opportunities", "Clients who may need you again, and the latest Express Entry rounds",
+        [searchBox("Search by name, case or opportunity", render)]),
+      el("section", { class: "panel" },
+        el("div", { class: "panel-head" }, el("h2", {}, "Clients to review"), el("span", { class: "count" }, `${d.opportunities.length} item${d.opportunities.length === 1 ? "" : "s"}`)),
+        el("p", { class: "hint" }, "Each item is a prompt to review the file, not a finding that the client qualifies. Contact only clients who agreed to hear about future services: privacy and anti-spam rules apply."),
+        el("div", { class: "tablewrap" }, el("table", {},
+          el("thead", {}, el("tr", {}, ["When", "Client", "Opportunity", "Service", "Contact"].map((h) => el("th", {}, h)))), opps)),
+        d.errors.length ? el("div", { class: "error" }, "Could not read: " + d.errors.join(", ")) : null),
+      el("div", { class: "grid2" },
+        el("div", { class: "col" },
+          panel("Express Entry rounds", el("span", { class: "count" }, d.checked ? "Checked " + fmtDate(d.checked) : "Not checked yet"),
+            d.rounds.length ? el("div", {}, d.rounds.map((r) => el("div", { class: "row" },
+              el("span", {}, el("span", { class: "alert-what" }, `#${r.number} ${r.name}`), el("div", { class: "small muted" }, `${fmtDate(r.date)} · ${r.size ?? "?"} invitations · lowest CRS ${r.crs}`),
+                r.matches.length ? el("div", { class: "small" }, r.matches.map((m) => el("div", {}, caseTag(m.folder, m.id), ` ${m.client}: CRS ${m.crs} (${gapText(m.gap)})`))) : el("div", { class: "small muted" }, "No recorded client score at or within 10 points")),
+              r.matches.some((m) => m.gap >= 0) ? el("span", { class: "pill Soon" }, "Check accounts") : null)))
+              : empty("No rounds saved yet. The daily alerts read IRCC's feed once a day, or ask Claude: /draws check")),
+          d.pnp.length ? panel("Provincial draws recorded", null, el("div", {}, d.pnp.map((p) => el("div", { class: "row" },
+            el("span", {}, el("span", { class: "alert-what" }, `${p.province} ${p.stream}`), el("div", { class: "small muted" }, `minimum score ${p.min_score}${p.note ? " · " + p.note : ""}`)),
+            el("span", { class: "file-meta" }, fmtDate(p.date)))))) : null),
+        el("div", { class: "col" },
+          panel("Ask Claude", null, el("p", { class: "hint" }, "A match means the score you recorded is at or above the cut-off, not that an invitation was issued. Check the client's IRCC account."), cmdList(d.commands)))),
     ];
   },
 

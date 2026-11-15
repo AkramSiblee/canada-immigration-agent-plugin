@@ -28,3 +28,8 @@ description: Open, update, review and close client case files, and track deadlin
 - Never delete client files or edit `Input/`. Destruction is a manual decision by the RCIC, recorded in a destruction log.
 - Don't store passport, UCI or other identity scans outside `client-ids/`, which is blocked from reading.
 - Flag IRPA s.40, IRPR 117(9)(d) and ghost-consultant risk whenever seen. Refer Federal Court matters to a lawyer.
+
+## Letters, validity, time
+- IRCC letter received: /ircc-letter files it, adds its deadline and records it for the client update.
+- Language tests, ECAs, medicals, police certificates, EE profiles and ITAs: track their dates with /validity.
+- Hours on the file: /time. Client's preferred language (client_language in case.md): offer /translate for client letters.

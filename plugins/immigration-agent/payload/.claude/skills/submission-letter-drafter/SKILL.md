@@ -10,6 +10,7 @@ description: Draft letters of explanation, cover letters and written submissions
 - The knowledge file for the program, and any refusal or procedural fairness letter in the case
 
 ## Workflow
+0. Look for a precedent: `python3 scripts/precedents.py search <issue words> --program <program>`. Use an approved one for structure and arguments only; every fact comes from this client's file (see /precedents). Never for IRB evidence.
 1. Gather the facts and the issue to address. Use the case documents and the extraction report; ask the RCIC for anything missing. Never invent dates, numbers or events.
 2. Draft the letter inline in chat first: concise, one point per paragraph, each point tied to an enclosed document.
 3. Cross-check every date, name and number against the forms and documents. Verify every legal citation on Justice Laws or CanLII.

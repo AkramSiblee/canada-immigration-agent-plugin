@@ -108,6 +108,74 @@ A backup holds cases/ (with client-ids, ledgers and reconciliations), Input/, Ou
 ## IRCC form and fee watch
 `python3 scripts/watch.py check` compares each form the agent fills with the version on IRCC's page, and every amount on IRCC's fee list with the amounts the agent's fee table was checked against. The daily alerts run it weekly and the dashboard shows the result. Autofill refuses a form IRCC has replaced until the agent is updated.
 
+## IRCC letters
+```
+python3 scripts/ircc_letters.py scan                     every letter in Input/ (changes nothing)
+python3 scripts/ircc_letters.py read "Input/letter.pdf"
+python3 scripts/ircc_letters.py file "Input/letter.pdf" --case 2026-001 [--type biometrics] [--date D] [--due D | --no-deadline]
+python3 scripts/ircc_letters.py types
+```
+Recognises AORs, biometric instruction letters, medical requests, procedural fairness letters, document requests, interviews,
+passport requests, PR confirmations, approvals, refusals and ITAs. Filing copies the letter into `06-correspondence` (the original
+is never moved), adds the time limit the letter states, and records it in `updates.csv` so the client update is tracked.
+No deadline is guessed: a limit the script can't count must be given with `--due`. Scanned letters need `--type`, `--date` and `--due`.
+
+## Document validity
+```
+python3 scripts/validity.py rules
+python3 scripts/validity.py add 2026-001 language_test --date 2025-01-20 --person "Sara Khan"
+python3 scripts/validity.py plan 2026-001 --file-by 2027-01-15 --land-by 2027-04-01
+python3 scripts/validity.py import 2026-001        test, ECA, police and ITA dates found by /extract
+python3 scripts/validity.py show 2026-001
+```
+Language tests (2 years), ECAs (5 years), medicals (12 months), police certificates for the current country (6 months before filing),
+Express Entry profiles (12 months) and ITAs (60 days), from `templates/validity-rules.csv`. Kept in `validity.csv` (add-only).
+The daily alerts warn 90 and 30 days ahead, and at once when a document runs out before the planned filing or landing date.
+
+## Client opportunities
+```
+python3 scripts/opportunities.py list [--days 120]
+python3 scripts/opportunities.py report
+python3 scripts/opportunities.py consent 2026-001 yes
+```
+Open and closed files where the client may need the firm again: citizenship (PR date and trips), PR card renewal, status ending on a
+closed file, study or work files a year old (CEC or PNP), CRS age points at the next birthday, expiring tests or profiles, and family
+listed as not accompanying. Uses `pr_date`, `pr_card_expiry`, `date_of_birth` and `tr_from` in client-facts.csv. Contact only clients
+with `contact_ok: yes` (privacy and anti-spam rules).
+
+## Express Entry and PNP draws
+```
+python3 scripts/draws.py profile 2026-001 --crs 485 --eligible cec,french [--profile-date D] [--pnp BC:115]
+python3 scripts/draws.py check
+python3 scripts/draws.py latest
+python3 scripts/draws.py pnp-add --province BC --stream "Skills Immigration" --date D --min-score 110
+```
+Reads IRCC's rounds feed (public; nothing about clients is sent) and lists open files at or within 10 points of each cut-off. The daily
+alerts read it once a day. A match is not an invitation: check the client's IRCC account.
+
+## Time per file
+```
+python3 scripts/timesheet.py add 2026-001 1.5 "Drafted the letter of explanation"
+python3 scripts/timesheet.py show 2026-001
+python3 scripts/timesheet.py target 150
+python3 scripts/timesheet.py report [--from D] [--to D] [--closed]
+```
+Hours go to `07-billing/time.csv`. The report compares them with professional fees from the billing ledger, by file and by program.
+
+## Precedent library
+```
+python3 scripts/precedents.py add "Output/study/2026-10-02-letter.docx" --issue "study gap" --program study --outcome approved --case 2026-001
+python3 scripts/precedents.py approve P001
+python3 scripts/precedents.py search gap --program study
+python3 scripts/precedents.py show P001
+```
+Anonymised copies in `cases/precedents/` (backed up with the cases). Read each one before approving: automatic anonymising misses things.
+Never for IRB narratives, affidavits or evidence.
+
+## Letters in the client's language
+`/translate` makes a courtesy translation of a client letter as a Word file (`firm.py make translation`), saying the English letter governs.
+Record the client's language in case.md (`client_language`).
+
 ## Rules built in (CICC Client File Management Regulation)
 - A file closes only when fees are settled, property is returned, and the client is told in writing (s.7.1).
 - Closed files are kept at least 6 years, with a closed-files list and a projected destruction date (s.7.2 to s.7.4).

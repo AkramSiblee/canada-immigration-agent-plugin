@@ -1,0 +1,7 @@
+doc,label,months,days,counted_from,must_be_valid,checked_at,basis,knowledge_file,last_verified,confidence
+language_test,Language test result,24,,test date,less than 2 years old at Express Entry profile creation and on the day the PR application (e-APR) is submitted,filing,IRCC Express Entry language test page,knowledge/01-federal-economic/express-entry.md,2026-11-09,H
+eca,Educational credential assessment (ECA),60,,issue date,less than 5 years old at profile creation and at application,filing,IRCC Educational Credential Assessment page,knowledge/01-federal-economic/express-entry.md,2026-11-09,H
+medical,Immigration medical exam,12,,exam date,results are valid 12 months; they must still be valid on the day of entry or landing,landing,IRCC Express Entry medical exam page; study permit entry rules,knowledge/01-federal-economic/express-entry.md,2026-11-09,H
+police_current,Police certificate (country where the person lives now),6,,issue date,issued within 6 months before the PR application is submitted (Express Entry),filing,IRCC Express Entry police certificates page,knowledge/01-federal-economic/express-entry.md,2026-11-09,H
+ee_profile,Express Entry profile,12,,profile submission date,a profile is removed after 12 months; a new one must be created,,IRCC Express Entry profile pages (Help Centre 1164),knowledge/01-federal-economic/express-entry.md,2026-11-09,H
+ita,Invitation to apply (Express Entry),,60,invitation date,the PR application must be submitted within 60 days,,Express Entry ITA period,knowledge/01-federal-economic/express-entry.md,2026-11-09,H
