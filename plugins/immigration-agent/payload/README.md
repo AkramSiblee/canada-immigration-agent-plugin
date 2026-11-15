@@ -31,7 +31,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - Use `research-prompts/gap-pass-01.md` for the uncovered areas
 
 ## Slash commands
-`/consult-notes` `/prospects` `/processing` `/monthly-updates` `/licence` `/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
+`/dropbox` `/reply` `/quote` `/evidence` `/tasks` `/portal-sheet` `/accounting` `/consult-notes` `/prospects` `/processing` `/monthly-updates` `/licence` `/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
 
 ## Layout
 - `CLAUDE.md` : agent rules
@@ -64,6 +64,13 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - `scripts/draws.py` : Express Entry rounds from IRCC's feed and recorded PNP draws matched to clients' scores (`/draws`)
 - `scripts/timesheet.py` : hours per file and effective hourly rate by file and program (`/time`)
 - `scripts/precedents.py` : anonymised library of past letters by issue (`/precedents`)
+- `scripts/dropbox_sweep.py` : files client uploads from a shared cloud folder into their cases (`/dropbox`)
+- `scripts/replies.py` : case facts for answering client messages (`/reply`)
+- `scripts/quote.py` : fee quotes with IRCC fees by program and family (`/quote`; IRCC fees in `templates/quote-fees.csv`)
+- `scripts/evidence.py` : relationship evidence timeline and upload PDFs (`/evidence`)
+- `scripts/tasks.py` : staff tasks and the licensee's review sign-off (`/tasks`)
+- `scripts/portal_sheet.py` : copy sheet of answers for IRCC's online portals (`/portal-sheet`)
+- `scripts/accounting.py` : invoices and payments for QuickBooks, Xero or a bookkeeper (`/accounting`)
 - `scripts/consult_notes.py` : consultation notes from a transcript, with risk scan, advice log and follow-ups (`/consult-notes`)
 - `scripts/prospects.py` : prospect pipeline from enquiry to signed, with conflict check and funnel report (`/prospects`)
 - `scripts/ptimes.py` : files against IRCC's published processing times, with web form enquiry drafts (`/processing`)

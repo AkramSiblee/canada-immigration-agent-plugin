@@ -353,10 +353,15 @@ def extraction_items(report_path, case_id):
 def alert_items(folder, info, today):
     rows = cs.read_deadlines(folder)
     found = al.deadline_alerts(folder.name, rows, today) + al.file_alerts(folder.name, folder, info, rows, today) + al.document_alerts(folder.name, folder, today)
-    found += [al.alert(r, folder.name, k, t, x, s, d, today) for r, k, t, x, s, d in bl.issues(folder, today) + up.issues(folder, today)]
+    import tasks
+    import validity
+    found += [al.alert(r, folder.name, k, t, x, s, d, today) for r, k, t, x, s, d in bl.issues(folder, today) + up.issues(folder, today)
+              + validity.issues(folder, today) + tasks.issues(folder, today)]
     out = []
     for a in found:
-        if a["kind"] == "File setup" and a["text"].startswith("Missing:"):
+        if a["kind"] == "Review":  # prepared work the licensee hasn't approved yet (Code s.38)
+            out.append(item(MUST, "Review", a["text"], a["step"]))
+        elif a["kind"] == "File setup" and a["text"].startswith("Missing:"):
             out.append(item(MUST, "Intake", a["text"] + " (Code s.23-24; IMM 5476 for IRCC)", a["step"]))
         elif a["tier"] in ("overdue", "expired", "unreadable", "negative", "late") and a["rank"] == 1:
             out.append(item(MUST if a["kind"] in ("Deadline", "Expiry", "Unreadable file") else URGENT, a["kind"], a["text"] + (f" ({a['day']})" if a["day"] else ""), a["step"]))

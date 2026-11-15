@@ -2,6 +2,15 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.8.0
+- /dropbox: clients upload documents to their own folder in your OneDrive, Google Drive or Dropbox (through an upload-only link you share). One command files each document into the right case with its type in the name, says what the checklist still lacks, and keeps anything it can't match aside for you. The daily alerts tell you when uploads are waiting.
+- /reply: drafts the answer to "what's happening with my file?" from the case's own facts (last events, what the client still owes, missing documents, IRCC's current processing time), as a Gmail draft when Gmail is connected. You read and send it.
+- /quote: set your fees once per program, then get a quote letter in seconds: your fees and tax, IRCC's fees for the program and family size (with the family caps), totals and payment schedule. A prospect moves to "quoted" automatically.
+- /evidence: spousal and partner evidence sorted into a dated timeline (camera dates, file names, document dates), with gaps flagged. Mark the photos and add captions, and it builds the upload PDFs: captioned photos (20 at most), proof of contact (10 pages at most) and the other categories, with an index.
+- /tasks: give staff tasks on each file, and sign off what they prepare. Only a licensee can approve, and only the exact version sent for review. Work waiting for your review shows in the readiness report, the alerts and the case page (Code s.38).
+- /portal-sheet: for forms filed online, a Word copy sheet of the client's answers in each form's order, with a box to tick, and a list of what to settle before you start.
+- /accounting: invoices, payments and client account movements in one Excel for your bookkeeper, plus import files for QuickBooks Online and Xero. Client account money is kept apart from income.
+
 ## 1.7.0
 - /consult-notes: give the agent the transcript of a recorded consultation (from Zoom, Teams, Otter or Word), or your typed notes. It flags risks (previous refusals, family not declared, possible misrepresentation, an unlicensed agent, criminality, medical, matters for a lawyer), drafts the notes for you to correct, and files them as a Word record in the client's file, with the advice added to the file's advice log and follow-ups as deadlines. A recording needs the client's consent.
 - /prospects: track every enquiry from first contact to paid consultation, quote and signed client. Each new name is conflict-checked, you are reminded of the consultation agreement and that an advance fee goes to the client account, prospects waiting for a follow-up show in the alerts, and a report shows conversion by source and why people didn't sign.

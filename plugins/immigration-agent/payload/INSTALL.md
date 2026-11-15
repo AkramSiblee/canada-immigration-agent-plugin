@@ -59,6 +59,13 @@ Ask in plain English, or use a command:
 | Which files are past IRCC's times? | `/processing check` |
 | Monthly "still in process" letters | `/monthly-updates` |
 | My CPD hours, fee and insurance | `/licence status` |
+| File documents clients uploaded | `/dropbox sweep` |
+| Answer "what's happening with my file?" | `/reply 2026-001` or `/reply gmail` |
+| Quote for a prospect | `/quote` |
+| Spousal relationship evidence | `/evidence 2026-001` |
+| Staff tasks and your sign-off | `/tasks` |
+| Answers to type into IRCC's portal | `/portal-sheet 2026-001` |
+| Export to QuickBooks or Xero | `/accounting` |
 
 Folders:
 - `Input/`: files you give the agent (it never changes them)

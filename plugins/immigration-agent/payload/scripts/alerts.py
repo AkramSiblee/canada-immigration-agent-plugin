@@ -42,6 +42,8 @@ import draws as dr  # noqa: E402
 import practice as pc  # noqa: E402
 import prospects as ps  # noqa: E402
 import ptimes as pt  # noqa: E402
+import tasks as tk  # noqa: E402
+import dropbox_sweep as dbx  # noqa: E402
 
 REPO = de.REPO
 TASK_NAME = "Canada Immigration Agent Alerts"
@@ -205,11 +207,11 @@ def scan_cases(today):
             info, rows = cs.read_case(folder), cs.read_deadlines(folder)
             cases.append({"name": folder.name, "program": info.get("program", ""), "province": info.get("province", "")})
             alerts += deadline_alerts(folder.name, rows, today) + file_alerts(folder.name, folder, info, rows, today) + document_alerts(folder.name, folder, today)
-            alerts += [alert(rank, folder.name, kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in bl.issues(folder, today) + up.issues(folder, today) + vd.issues(folder, today) + dr.issues(folder, today) + pt.issues(folder, today)]
+            alerts += [alert(rank, folder.name, kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in bl.issues(folder, today) + up.issues(folder, today) + vd.issues(folder, today) + dr.issues(folder, today) + pt.issues(folder, today) + tk.issues(folder, today)]
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
             alerts.append(alert(URGENT, folder.name, "Unreadable file", "error", f"Could not check this file ({type(e).__name__})", "Open the file and repair it. Its deadlines were not checked"))
     alerts += retention_alerts(today)
-    for source in (pc.issues, ps.issues):  # your licence and CPD; prospects waiting for a follow-up
+    for source in (pc.issues, ps.issues, dbx.issues):  # your licence and CPD; prospects waiting for a follow-up
         try:
             alerts += [alert(rank, "All files", kind, tier, text, step, day, today) for rank, kind, tier, text, step, day in source(today)]
         except Exception as e:  # one damaged file must not stop the others

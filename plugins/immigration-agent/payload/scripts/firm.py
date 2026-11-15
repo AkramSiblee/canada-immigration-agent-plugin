@@ -48,7 +48,7 @@ CODE_TEXT = {
     "IRB-AI": "the IRB's required declaration on the use of AI (IRB Practice Notice, in force 2026-09-07)",
     "22(3)(a)": "notice of what was submitted or received", "22(3)(b)": "copies available on request", "22(1)(f)": "how to check the application online",
     "36(1)(a)": "return of documents and property", "36(1)(b)": "accounting of all money received", "36(1)(c)": "final invoice", "36(1)(d)": "refund of excess trust money",
-    "NOTES-DRAFT": "the note that an AI draft was reviewed by the consultant", "TR-NOTICE": "the notice that this is a courtesy translation and the English letter governs",
+    "QUOTE-NOTES": "IRCC fees can change, the quote isn't a service agreement, and no outcome is guaranteed", "NOTES-DRAFT": "the note that an AI draft was reviewed by the consultant", "TR-NOTICE": "the notice that this is a courtesy translation and the English letter governs",
 }
 TYPES = {  # type: (template, required Code elements, case folder, what it is)
     "consultation-agreement": ("consultation-agreement.md", [f"23(2)({c})" for c in "abcde"], "02-agreements", "before the first consultation (Code s.23)"),
@@ -60,6 +60,7 @@ TYPES = {  # type: (template, required Code elements, case folder, what it is)
     "letter": ("letter.md", [], "06-correspondence", "any letter on your letterhead"),
     "submission-letter": ("submission-letter.md", [], "05-forms-submissions", "cover letter, letter of explanation or submissions to IRCC or the IRB"),
     "status-update": ("status-update.md", ["22(3)(a)", "22(3)(b)", "22(1)(f)"], "06-correspondence", "tells the client what was submitted or received (s.22(3)); use updates.py"),
+    "quote": ("quote.md", ["QUOTE-NOTES"], "02-agreements", "fee quote for a prospect or client; use quote.py"),
     "consultation-notes": ("consultation-notes.md", ["NOTES-DRAFT"], "04-advice", "record of a consultation from a transcript or notes; use consult_notes.py"),
     "translation": ("translation.md", ["TR-NOTICE"], "06-correspondence", "courtesy copy of a letter in the client's language; the English letter governs"),
 }
@@ -86,7 +87,8 @@ TERM_HELP = {
     "notice_translated": "the courtesy-translation notice, translated",
     "meeting_date": "date of the consultation", "method": "how it was held (in person, phone, video)", "attendees": "who was present",
     "source": "where the notes come from (recording transcript or typed notes)", "goals": "list of the client's goals", "facts": "list of facts the client gave",
-    "advice": "list of advice given", "title": "the letter's title, translated",
+    "advice": "list of advice given", "program_label": "the program", "fee_lines": "list of fee lines", "gov_lines": "list of IRCC fee lines",
+    "totals": "list of totals", "schedule": "payment schedule", "fees_checked": "date IRCC fees were checked", "valid_days": "days the quote is valid", "title": "the letter's title, translated",
 }
 
 
@@ -369,6 +371,7 @@ CHECKLISTS = {
                           "Check every legal citation on an official source such as Justice Laws or CanLII.",
                           "IRB: never use this for a narrative, affidavit, statement or other evidence. Those are the person's own words (IRB Practice Notice; CLAUDE.md rule 7)."],
     "letter": [],
+    "quote": ["A quote isn't a service agreement: sign one before any work (Code s.24)."],
     "consultation-notes": ["Read the notes against the recording or your memory before relying on them.", "The client can ask for a copy (Code s.22(3))."],
     "translation": ["Send it with the English letter, never instead of it.",
                     "For deadlines, money or a refusal, have someone who reads the language check it, or explain those points by phone.",

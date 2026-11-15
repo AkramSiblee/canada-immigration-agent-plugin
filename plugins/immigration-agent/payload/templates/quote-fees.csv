@@ -1,0 +1,28 @@
+program,match,label,who,amount,cap,description,last_verified
+express-entry,express|\bee\b|fsw|cec|fst|skilled|economic,Express Entry (economic permanent residence),principal,1590,,Principal applicant: processing fee $990 + right of permanent residence fee $600,2026-11-12
+express-entry,,,spouse,1590,,Accompanying spouse or partner: processing fee $990 + right of permanent residence fee $600,2026-11-12
+express-entry,,,child,270,,Each dependent child,2026-11-12
+express-entry,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+pnp,pnp|nominee,Provincial Nominee Program (permanent residence),principal,1590,,Principal applicant: processing fee $990 + right of permanent residence fee $600,2026-11-12
+pnp,,,spouse,1590,,Accompanying spouse or partner: processing fee $990 + right of permanent residence fee $600,2026-11-12
+pnp,,,child,270,,Each dependent child,2026-11-12
+pnp,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+spousal,spous|partner|common-law|conjugal,Spouse or partner sponsorship,principal,1260,,Sponsorship fee $90 + principal applicant processing fee $570 + right of permanent residence fee $600,2026-11-12
+spousal,,,child,180,,Each dependent child of the sponsored person,2026-11-12
+spousal,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+pgp,pgp|parent|grandparent,Parent or grandparent sponsorship,principal,1260,,Sponsorship fee $90 + principal applicant processing fee $570 + right of permanent residence fee $600,2026-11-12
+pgp,,,spouse,1260,,Spouse or partner of the parent or grandparent,2026-11-12
+pgp,,,child,180,,Each dependent child,2026-11-12
+pgp,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+visitor,visit|\btrv\b,Visitor visa,each,100,500,Visitor visa: $100 per person (family of 5 or more: $500 at most),2026-11-12
+visitor,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+super-visa,super,Super visa,each,100,,Super visa: $100 per person,2026-11-12
+super-visa,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+study,stud,Study permit,each,150,,Study permit: $150 per person,2026-11-12
+study,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+work,work|lmia|owp|cusma|\bict\b,Work permit,each,155,,Work permit: $155 per person,2026-11-12
+work,,,owp,100,,Open work permit holder fee: $100 per open work permit,2026-11-12
+work,,,biometrics,85,170,Biometrics: $85 per person (family applying together: $170 at most),2026-11-12
+citizenship,citizen,Citizenship grant,adult,653,,Adult (18 and over): processing fee $530 + right of citizenship fee $123,2026-11-12
+citizenship,,,minor,100,,Minor (under 18),2026-11-12
+pr-card,pr-?card,PR card,each,50,,PR card: $50 per person,2026-11-12

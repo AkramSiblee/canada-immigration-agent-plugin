@@ -49,6 +49,7 @@ import opportunities as op  # noqa: E402
 import practice as pc  # noqa: E402
 import prospects as ps  # noqa: E402
 import ptimes as pt  # noqa: E402
+import tasks as tk  # noqa: E402
 import timesheet as ts  # noqa: E402
 import validity as vd  # noqa: E402
 
@@ -76,6 +77,10 @@ CASE_COMMANDS = [
     ("Client's language", "/translate {id}", "Courtesy translation of a client letter"),
     ("Consultation notes", "/consult-notes {id}", "Turn a consultation transcript into a filed record with risk flags"),
     ("Processing time", "/processing set {id}", "Track this file against IRCC's posted processing time"),
+    ("Answer the client", "/reply {id}", "Draft a reply to 'what's happening with my file?' from the case facts"),
+    ("Portal copy sheet", "/portal-sheet {id}", "Answers laid out to type into IRCC's online portal"),
+    ("Relationship evidence", "/evidence {id}", "Dated timeline and upload-ready PDFs for spousal files"),
+    ("Tasks and review", "/tasks list --case {id}", "Staff tasks and the licensee's sign-off"),
 ]
 GENERAL_COMMANDS = [
     ("New client intake", "/intake", "Start a new client matter"),
@@ -91,6 +96,11 @@ GENERAL_COMMANDS = [
     ("IRCC letters", "/ircc-letter", "Read new IRCC letters in Input (or Gmail), file them and add deadlines"),
     ("Express Entry draws", "/draws check", "Which clients are at or near the latest round's cut-off"),
     ("Prospects", "/prospects", "Enquiries, paid consultations, quotes and sign-ups"),
+    ("Fee quote", "/quote", "Your fees plus IRCC's fees, as a quote letter"),
+    ("Client uploads", "/dropbox sweep", "File documents clients uploaded into their cases"),
+    ("Client emails", "/reply gmail", "Draft replies to clients asking about their file"),
+    ("Reviews waiting", "/tasks reviews", "Work prepared by staff waiting for your sign-off"),
+    ("Accounting export", "/accounting", "Invoices and payments for QuickBooks, Xero or your bookkeeper"),
     ("Processing times", "/processing check", "Files past IRCC's posted times, with enquiry drafts"),
     ("Monthly client updates", "/monthly-updates", "A 'still in process' letter for every quiet file"),
     ("Licence and CPD", "/licence status", "CICC fee, insurance and CPD hours"),
@@ -336,6 +346,7 @@ def case_detail(name):
         ptime = None
     return {
         "checklist": checklist, "validity": validity, "ptime": ptime,
+        "tasks": [r for r in tk.read(folder / "tasks.csv") if r["status"] != "done"], "reviews": [r for r in tk.read(folder / "reviews.csv") if r["status"] == "pending"],
         "folder": folder.name, "path": rel(folder), "closed": folder.parent == cs.CLOSED, "info": info,
         "alerts": alerts, "deadlines": deadlines, "log": log_entries(folder), "updates": up.load(folder)[-10:][::-1],
         "money": money, "files": files_of(folder),

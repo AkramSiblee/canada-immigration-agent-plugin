@@ -219,6 +219,48 @@ python3 scripts/practice.py status
 ```
 16 CPD hours per term (July 1 to June 30), 1 on professionalism or the Code; annual fee and insurance from July 1. Kept in `cases/practice/`.
 
+## Client upload folder
+```
+python3 scripts/dropbox_sweep.py setup --folder "C:/Users/me/OneDrive/Client uploads"
+python3 scripts/dropbox_sweep.py folders
+python3 scripts/dropbox_sweep.py sweep [--dry-run]
+```
+Clients upload to their own subfolder (named by case id) through an upload-only link from your cloud service. Sweep files each document
+into `03-documents/from-client/` with its type in the name, moves the original to `_filed/`, and leaves anything unmatched in `_unsorted/`.
+
+## Client replies
+`python3 scripts/replies.py find EMAIL`, `replies.py facts CASE`, `replies.py log CASE --summary "..."`. `/reply` drafts the answer
+(as a Gmail draft when Gmail is connected) from the file's facts only; you send it.
+
+## Quotes
+```
+python3 scripts/quote.py fee express-entry --base 3500 --extra 500 --schedule "50% at signing; 50% before filing"
+python3 scripts/quote.py tax --rate 13 --name HST
+python3 scripts/quote.py make --program express-entry --spouse --children 2 --prospect L001
+```
+Your fees are kept in `cases/.fee-table.csv`; IRCC's fees come from `templates/quote-fees.csv` (dated, from the knowledge base).
+
+## Relationship evidence
+`python3 scripts/evidence.py timeline CASE`, then edit the Excel timeline (Include, captions), then `evidence.py build CASE`.
+Evidence goes in `03-documents/relationship/`; PDFs and the index go to `05-forms-submissions/relationship-evidence/`.
+
+## Staff tasks and review
+```
+python3 scripts/tasks.py staff add "Pat Helper" --role assistant
+python3 scripts/tasks.py add 2026-001 "Prepare IMM 5257 worksheet" --to "Pat Helper" --due 2026-12-01
+python3 scripts/tasks.py review 2026-001 05-forms-submissions/imm5257.pdf --by "Pat Helper"
+python3 scripts/tasks.py approve 2026-001 1 --by "Your Name"
+```
+Each case keeps `tasks.csv` and `reviews.csv`. Only a licensee approves, and only the exact version that was sent for review.
+
+## Portal copy sheet
+`python3 scripts/portal_sheet.py 2026-001 [--forms imm0008,imm5669] [--person "Name"]`: answers in each form's order, to type into
+IRCC's online portals, saved in `05-forms-submissions`.
+
+## Accounting export
+`python3 scripts/accounting.py setup --fees-account 200 --tax-type "HST on Sales"`, then `accounting.py export [--from D] [--to D]`:
+Excel in Output/general, and Xero and QuickBooks import files in `cases/exports/` (delete them once imported).
+
 ## Rules built in (CICC Client File Management Regulation)
 - A file closes only when fees are settled, property is returned, and the client is told in writing (s.7.1).
 - Closed files are kept at least 6 years, with a closed-files list and a projected destruction date (s.7.2 to s.7.4).
