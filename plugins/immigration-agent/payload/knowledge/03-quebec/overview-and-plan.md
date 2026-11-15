@@ -36,7 +36,7 @@ sources:
 - Work CAQ renewals after 3 yrs need oral French 4 (from 2028-12-17).
 
 ### Programs status (2026-11-07)
-- PSTQ: open (Arrima invitations). PEQ: **closed since 2026-10-31**. Quebec business programs: status not confirmed (MIFI pages not retrieved); figures in 01-federal-economic/business-and-self-employed.md. Never present as open.
+- PSTQ: open (Arrima invitations). PEQ: **closed since 2026-10-31**. Quebec business programs (Investor, Entrepreneur, Self-Employed): **open, no cap** (quebec.ca 2026-11-09/10); see business-immigration.md.
 
 ## Recent changes (2025-2027)
 - Quebec plan: 45,000 PR/yr (M)

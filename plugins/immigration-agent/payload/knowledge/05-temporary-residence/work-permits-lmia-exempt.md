@@ -60,7 +60,8 @@ sources:
 - CUSMA professionals: the job must match the **Appendix 2 profession and its credential**, e.g. "Management Consultant" requires a degree or experience.
 - C10 is discretionary. Build a strong evidence package and avoid templated letters.
 - C16 needs a French test (TEF/TCF) proving NCLC 5. It is good for TEER 4-5 roles in francophone communities.
-- The employer must keep compliance (wages, duties as offered). Inspections and AMPs apply to IMP too.
+- The employer must keep compliance (wages, duties as offered). Inspections and AMPs apply to IMP too: points, AMP and ban tables in employer-compliance-inspections.md.
+- Non-CUSMA trade agreements (CETA, CUKTCA, CPTPP, GATS, Chile, Peru, Colombia, Korea, Panama, Ukraine): see trade-agreement-work-permits.md. 2-week processing and 15/30/120-day exemptions: global-skills-strategy.md.
 
 ## Common refusal reasons
 - Qualifying relationship or 1-yr employment not proven (ICT); profession mismatch (CUSMA); benefit not shown (C10); French below NCLC 5 (C16)

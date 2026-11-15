@@ -29,6 +29,10 @@ sources:
 - Stay within competence (Code s.19). No legal advice outside immigration/citizenship (e.g. criminal defence, family law, tax). **Refer** (CLAUDE.md rule 4).
 - Escalate: Federal Court, criminal equivalency, retroactive asylum bars, multigenerational C-3, citizenship revocation actions.
 
+### Foreign residence and citizenship-by-investment programs
+- Programs of other countries (e.g. Antigua and Barbuda CBI, Portugal and Spain residence-by-investment) are **outside the RCIC licence and this knowledge base**. An RCIC can't advise on another country's law; refer to a lawyer or licensed agent of that country.
+- Canadian angle you can advise on: a second citizenship can change **Canadian visa/eTA needs** (visa-requirements-by-nationality.md), and must be declared on every IRCC form (misrepresentation risk, IRPA s.40). Status of those foreign programs changes often (e.g. Spain ended its golden visa in 2025): never present them as open from this KB.
+
 ### IMM 5476 (Use of a Representative)
 - Required to appoint a paid or unpaid representative with IRCC. Paid representatives must give their CICC/law society ID. Withdraw it on termination (M: form not re-read).
 

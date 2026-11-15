@@ -75,7 +75,7 @@ sources:
 ### Processing and changes (read 2026-11-09) (H)
 - Average LMIA processing, September 2026 (page 2026-10-07): high-wage 98 business days, low-wage 82, GTS 9, PR stream 79. Updated monthly. Positive LMIA valid up to 6 months.
 - **Modifications (page 2026-01-20):** no report: minor duty change with same NOC; raise up to the highest of 2%, prevailing wage or CPI (2.1% for 2026). Report: admin errors, employment breakdown, move within same economic region. **Material:** NOC change, employer or affiliated site, any wage cut, larger raise, hours, benefits, stream change, transition plan failure, education requirement. ESDC won't pre-approve; voluntary disclosure recommended.
-- Non-compliance: warning, up to $100,000 per violation and $1M a year, bans, publication. Food services are a high-risk review sector (ESDC 2026-07-09).
+- Non-compliance: warning, up to $100,000 per violation and $1M a year, bans, publication. Food services are a high-risk review sector (ESDC 2026-07-09). Full conditions, procedure and Schedule 2 tables: employer-compliance-inspections.md.
 - Chefs (NOC 62200): Job Bank provincial medians $19.00-$24.00 (wages updated 2025-11-19), far below high-wage thresholds, so restaurant chef LMIAs are usually low-wage and subject to the CMA refusal list.
 
 ### Pending (proposed for 2027-03-01, provincial opt-in)

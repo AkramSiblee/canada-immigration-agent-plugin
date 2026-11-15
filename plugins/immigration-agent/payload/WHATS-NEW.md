@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.5.1
+- New knowledge for corporate files: employer compliance inspections (who inspects, the employer conditions, the 30-day response, and the official penalty and ban tables), work permits under trade agreements other than CUSMA (CETA, UK, CPTPP, GATS, Chile, Peru, Colombia, Korea, Panama, Ukraine), and the Global Skills Strategy (2-week processing, the 15/30/120-day work permit exemptions, Global Talent Stream wages).
+- Quebec business immigration: Investor, Entrepreneur (3 streams) and Self-Employed programs, with net worth, investment, French level 7 and 2026 fees. Correction: these programs are open and take applications at any time; the agent previously said their status was unconfirmed.
+- Investment programs of other countries (such as Antigua and Barbuda, Portugal, Spain) are outside an RCIC's licence; the agent now says so and refers them out.
+
 ## 1.5.0
 - /conflicts: checks a new client, spouse, sponsor, co-signer or employer against every open and closed file (clients, family members and every name in the client facts) and a list of other parties you keep, such as people you declined. Spelling variants and reversed names are found. Every check is kept on record, and you record your decision (clear, consented in writing, or conflict). Opening a new case now compares the client's name automatically.
 - /calendar: puts every open deadline and status and passport expiry date into Outlook, Google or Apple Calendar, with reminders 7 days and 1 day before. Titles show the case number only, so no client names go to your calendar provider. The dashboard's Cases page has an "Add deadlines to calendar" button.

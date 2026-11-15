@@ -29,7 +29,7 @@ sources:
 | SUV work permit | Closed to new applicants (since 2025-12-19; extensions only for those in Canada) |
 | **Self-Employed Persons** | **Paused** (cultural/athletic experience; significant contribution) |
 | **Federal entrepreneur pilot** | Announced 2025-12-19 ("more information in 2026"); **not launched** |
-| Quebec business programs | Separate (MIFI); CSQ needed before the federal stage (IRCC page 2026-06-15, which gives no intake status). Status not confirmed, so never present as open. Official figures only: 2026 fees investor $18,241, entrepreneur or self-employed $1,272; French required since 2024-01-01; 2026 plan target about 500 (the plan shows both 450-550 and 500-600) (M) |
+| Quebec business programs | **Open** (quebec.ca pages 2026-11-09/10): Investor, Entrepreneur (3 streams) and Self-Employed accept applications at any time, no cap. French oral 7. Detail: 03-quebec/business-immigration.md (H) |
 - **Levels: Federal Business** 1,500 (2027), 2,725 (2028), 1,000 (2029).
 - **2027 workers cohort**: people waiting on SUV or Self-Employed PR decisions can be identified by provinces through extra PNP allocations (no new application).
 - Fees (for existing files): business principal $1,895 + RPRF $600.

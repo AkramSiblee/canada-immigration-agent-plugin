@@ -28,6 +28,10 @@
 27. Alberta: 2022 Rural Renewal designations past their 3-year term. Allocation row RESOLVED 2026-11-08 (Law Enforcement, 12)
 28. Ontario REDI fit under Workforce Priority: not stated on OINP pages (confirm with OINP); BC Campbell River and Comox regional intake
 29. RESOLVED 2026-11-08: SOR/2026-219 read; in force 2026-11-03
+30. GTS Category B wage floors after the Job Bank update on 2026-11-18 (global-skills-strategy.md)
+31. UK CPTPP accession: IRCC lists "ratified 2026-09-01"; confirm entry into force for temporary entry (trade-agreement-work-permits.md)
+32. Quebec Entrepreneur applying/after-CSQ pages not read (fees, post-CSQ conditions) (03-quebec/business-immigration.md)
+33. ESDC 2026-07-09 TFWP enforcement release: primary not read; figures are secondary (employer-compliance-inspections.md)
 30. Quebec business programs: MIFI status still not confirmed; official fees and targets recorded; circular pointers removed
 31. State care PR pathway ends 2027-01-21; TR to PR open work permit ends 2026-12-31; check for extensions
 32. Physician Express Entry round history and reserved PNP doctor spaces
