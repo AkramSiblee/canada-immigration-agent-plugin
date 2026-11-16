@@ -7,15 +7,12 @@ allowed-tools: Bash(immigration-agent-sync:*)
 
 Speak plainly: the user is a consultant, not a programmer.
 
-1. Run `immigration-agent-sync --status` and explain the result in one or two sentences. It shows the version in this folder, the version Claude has downloaded, and the latest release on GitHub.
-   - Latest release newer than the downloaded one: give the steps in 2.
-   - Downloaded version newer than this folder: run `immigration-agent-sync --init` to install it now.
+Updates install themselves: when a conversation starts, the agent checks GitHub once a day and, if there is a newer release, downloads it, checks every file, and installs it into this folder. Client files (cases, Input, Output) are never changed.
+
+1. Run `immigration-agent-sync --status` and explain the result in one or two sentences: the version in this folder and the latest release.
    - If the folder is not an agent folder yet, offer the setup command instead.
-2. If the user wants the newest version, tell them how to fetch it, because Claude cannot run `/plugin` for them:
-   - Type `/plugin`, open **Marketplaces**, select the agent's marketplace, choose **Update marketplace**.
-   - Recommend **Enable auto-update** there too, so future updates arrive by themselves.
-   - Then start a new conversation. The new version installs into this folder automatically when it starts.
-3. If the status shows pending changes on the current version, run `immigration-agent-sync --init` to apply them now.
+2. If the latest release is newer than this folder, or the user asks to update now, run `immigration-agent-sync --update`. It downloads and installs the newest release straight away. Tell the user the new commands work from their next new conversation.
+3. If `--update` says it couldn't install automatically (no internet, or the download didn't check out), nothing was changed. Suggest trying again later; if it keeps failing, give the manual steps it printed.
 4. To show what's new, read `WHATS-NEW.md` in this folder and summarise the latest entries.
 
-Client files (cases, Input, Output) are never changed by updates. Files the firm edited are backed up in `.immigration-agent/backup/` before they are replaced; their own permanent instructions belong in `CLAUDE.local.md`.
+Files the firm edited are backed up in `.immigration-agent/backup/` before they are replaced; their own permanent instructions belong in `CLAUDE.local.md`. To turn off automatic installs (and only be told about updates), the firm can set the environment variable `IMMIGRATION_AGENT_NO_AUTO_UPDATE=1`.

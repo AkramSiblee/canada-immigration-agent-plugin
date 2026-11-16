@@ -2,6 +2,10 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.1
+- The agent now updates itself. When you start a conversation, it checks for a newer version once a day and, if there is one, downloads it, checks every file, and installs it into your agent folder. You see "Immigration Agent updated" with what's new. No /plugin steps, no other software. Your client files are never changed, and any file you edited is backed up first.
+- /immigration-agent:update installs the newest version straight away.
+
 ## 1.9.0
 - /autofill fills much more: Yes/No answers given with details ("Yes: maiden name"), answers in parts (employer, place of work, job title and duties, work dates, school address, PAL/TAL and CAQ, spouse's names), the education and 10-year employment tables, national ID details, and your name and address on IMM 5476 from the firm profile. When an answer isn't on a form's list, the closest choices are shown. Running it again with the same answers no longer makes a new copy.
 - /final-check checks each person's forms separately (no more false "date of birth differs" between spouse and children), uses the newest version of each form, and checks the spouse and children across everyone's forms.

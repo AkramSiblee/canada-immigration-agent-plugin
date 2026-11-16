@@ -4,6 +4,7 @@
   python3 agent_sync.py --hook      (run by the plugin at every Claude start; silent unless something changed)
   python3 agent_sync.py --init      (make the current folder the firm's agent folder, then install)
   python3 agent_sync.py --status    (installed version, plugin version, pending changes)
+  python3 agent_sync.py --update    (check GitHub now and install a newer release if there is one)
 
 The plugin carries payload/ (the agent: CLAUDE.md, .claude/, scripts/, knowledge/, templates/ ...) and
 payload-manifest.json ({path: sha256}). This copies it into the agent folder.
@@ -16,9 +17,16 @@ Guarantees:
   - A file that fails to copy is retried at the next start.
 
 Update check (--hook and --status, at most once a day): reads the public version number of the latest release from
-the plugin's GitHub repository. Nothing about the firm, its folder or its clients is sent. If a newer release exists,
-the user is told how to install it. The result is kept in .immigration-agent/update-check.json so the dashboard
-(which never goes online) can show it too. Set IMMIGRATION_AGENT_NO_UPDATE_CHECK=1 to turn it off.
+the plugin's GitHub repository. Nothing about the firm, its folder or its clients is sent. The result is kept in
+.immigration-agent/update-check.json so the dashboard (which never goes online) can show it too.
+
+Automatic updates: the Claude app doesn't reliably update plugins from a firm's own marketplace, so when a newer release
+exists the agent downloads that release's archive from the same public GitHub repository, checks every file against the
+release's own list of files (sha256), keeps it in .immigration-agent/releases/<version>/ and installs it into the folder
+with the same rules as above. The newer release's own copy of this script does the installing, so improvements to the
+updater arrive too. If the download fails or any file doesn't match, nothing changes and the user is told how to update by
+hand. Set IMMIGRATION_AGENT_NO_AUTO_UPDATE=1 to only be told (no download), or IMMIGRATION_AGENT_NO_UPDATE_CHECK=1 to
+turn off the check entirely.
 """
 import argparse
 import datetime
@@ -40,6 +48,11 @@ PROTECTED = re.compile(r"^(cases/|Input/|Output/|forms-cache/|\.extraction/|\.im
 CHECK_FILE = "update-check.json"
 MARKETPLACE = "immigration-agent-marketplace"
 LATEST_URL = os.environ.get("IMMIGRATION_AGENT_LATEST_URL") or "https://raw.githubusercontent.com/AkramSiblee/canada-immigration-agent-plugin/main/plugins/immigration-agent/.claude-plugin/plugin.json"
+ARCHIVE_URL = os.environ.get("IMMIGRATION_AGENT_ARCHIVE_URL") or "https://codeload.github.com/AkramSiblee/canada-immigration-agent-plugin/tar.gz/refs/tags/v{version}"
+PLUGIN_IN_ARCHIVE = "plugins/immigration-agent/"
+RELEASES = "releases"
+DELEGATED = "IMMIGRATION_AGENT_DELEGATED"
+MAX_ARCHIVE = 60 * 1024 * 1024
 CHECK_EVERY = datetime.timedelta(hours=20)
 HOW_TO_UPDATE = (f"In the Claude app type /plugin, open Marketplaces, choose {MARKETPLACE}, then Update marketplace "
                  "(and Enable auto-update if it is offered). Then quit and reopen Claude and start a new conversation in "
@@ -81,10 +94,104 @@ def check_latest(ws, plugin_version, force=False):
     return latest
 
 
-def update_notice(plugin_version, latest):
+def update_notice(plugin_version, latest, why=""):
     if latest and vtuple(latest) > vtuple(plugin_version):
-        return f"A newer Immigration Agent is available: version {latest} (this computer has {plugin_version}). To install it: {HOW_TO_UPDATE}"
+        return (f"A newer Immigration Agent is available: version {latest} (this computer has {plugin_version}). "
+                + (f"It couldn't be installed automatically ({why}). " if why else "") + f"To install it: {HOW_TO_UPDATE}")
     return ""
+
+
+# ---- automatic updates from the public release archive ----
+def release_dir(ws, version):
+    return ws / STATE_DIR / RELEASES / str(version)
+
+
+def release_ok(root):
+    """(version, manifest) if root is a complete plugin release whose payload matches its own file list, else None."""
+    try:
+        version, manifest = plugin_info(root)
+    except Exception:
+        return None
+    for rel, digest in manifest.items():
+        f = root / "payload" / rel
+        if not exists(f) or not same(f, digest):
+            return None
+    return version, manifest
+
+
+def downloaded(ws):
+    """The newest complete release already downloaded into this folder: (root, version) or (None, None)."""
+    base = ws / STATE_DIR / RELEASES
+    best = (None, None)
+    for d in sorted(base.iterdir(), key=lambda x: vtuple(x.name), reverse=True) if base.exists() else []:
+        if d.is_dir() and (d / "agent_sync.py").exists() and (d / ".claude-plugin" / "plugin.json").exists():
+            try:
+                v = json.loads((d / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8")).get("version")
+            except Exception:
+                continue
+            if v == d.name:
+                return d, v
+    return best
+
+
+def download_release(ws, version):
+    """Download release `version` from GitHub into .immigration-agent/releases/<version>/. Returns (root, None) or (None, why)."""
+    import io
+    import tarfile
+    import urllib.request
+    dest = release_dir(ws, version)
+    if dest.exists() and release_ok(dest):
+        return dest, None
+    try:
+        req = urllib.request.Request(ARCHIVE_URL.format(version=version), headers={"User-Agent": "immigration-agent-update"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = r.read(MAX_ARCHIVE + 1)
+    except Exception as e:
+        return None, f"download failed: {type(e).__name__}"
+    if len(data) > MAX_ARCHIVE:
+        return None, "the download was larger than expected"
+    tmp = ws / STATE_DIR / RELEASES / f".{version}.part"
+    shutil.rmtree(L(tmp), ignore_errors=True)
+    try:
+        with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+            for m in tar.getmembers():
+                parts = pathlib.PurePosixPath(m.name).parts
+                inside = "/".join(parts[1:])  # drop the archive's top folder (repo-version/)
+                if not inside.startswith(PLUGIN_IN_ARCHIVE) or not (m.isfile() or m.isdir()):
+                    continue  # only the plugin's own files; never links or devices
+                rel = inside[len(PLUGIN_IN_ARCHIVE):]
+                if not rel or rel.startswith("/") or ".." in pathlib.PurePosixPath(rel).parts:
+                    continue
+                out = tmp / rel
+                if m.isdir():
+                    os.makedirs(L(out), exist_ok=True)
+                    continue
+                os.makedirs(L(out.parent), exist_ok=True)
+                with tar.extractfile(m) as src, open(L(out), "wb") as f:
+                    shutil.copyfileobj(src, f)
+    except Exception as e:
+        shutil.rmtree(L(tmp), ignore_errors=True)
+        return None, f"the download couldn't be opened ({type(e).__name__})"
+    got = release_ok(tmp)
+    if not got or got[0] != version:
+        shutil.rmtree(L(tmp), ignore_errors=True)
+        return None, "the downloaded files didn't match the release's file list"
+    shutil.rmtree(L(dest), ignore_errors=True)
+    os.replace(L(tmp), L(dest))
+    for old in (ws / STATE_DIR / RELEASES).iterdir():  # keep only this release
+        if old != dest:
+            shutil.rmtree(L(old), ignore_errors=True)
+    return dest, None
+
+
+def delegate(root, args):
+    """Run a newer release's own copy of this script, so a newer updater does the work. Returns its exit code."""
+    import subprocess
+    env = {**os.environ, DELEGATED: "1", "CLAUDE_PROJECT_DIR": str(workspace())}
+    r = subprocess.run([sys.executable, str(root / "agent_sync.py"), *args], env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if r.stdout:
+        sys.stdout.write(r.stdout)
+    return r.returncode
 
 
 def hook_output(text, notice, latest=None):
@@ -130,9 +237,9 @@ def same(path, digest):
     return b"\r\n" in data and hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest() == digest
 
 
-def plugin_info():
-    manifest = json.loads((HERE / "payload-manifest.json").read_text(encoding="utf-8"))
-    version = json.loads((HERE / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8")).get("version", "?")
+def plugin_info(root=HERE):
+    manifest = json.loads((root / "payload-manifest.json").read_text(encoding="utf-8"))
+    version = json.loads((root / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8")).get("version", "?")
     return version, manifest
 
 
@@ -280,8 +387,10 @@ def main():
     g.add_argument("--hook", action="store_true")
     g.add_argument("--init", action="store_true")
     g.add_argument("--status", action="store_true")
+    g.add_argument("--update", action="store_true")
     a = p.parse_args()
     ws = workspace()
+    args = [x for x in sys.argv[1:]]
     try:
         version, manifest = plugin_info()
     except Exception as e:
@@ -308,6 +417,22 @@ def main():
         return 0
     if a.hook and state is None:
         return 0  # not an agent folder: stay silent and touch nothing
+    if a.update and state is None:
+        print(f"This folder is not an agent folder yet: {ws}. Run the setup command here first.")
+        return 1
+    if not os.environ.get(DELEGATED):
+        root, got = downloaded(ws)  # a newer release fetched earlier: its own updater installs it
+        if root and vtuple(got) > vtuple(version):
+            return delegate(root, ["--init" if a.update else args[0]])
+        latest = check_latest(ws, version, force=a.update)
+        if latest and vtuple(latest) > vtuple(version) and vtuple(latest) > vtuple((state or {}).get("version")) \
+                and os.environ.get("IMMIGRATION_AGENT_NO_AUTO_UPDATE") != "1" and os.environ.get("IMMIGRATION_AGENT_NO_UPDATE_CHECK") != "1":
+            root, why = download_release(ws, latest)
+            if root:
+                return delegate(root, ["--init" if a.update else args[0]])
+            check_latest.why = why
+    if a.update:
+        a.init = True
     first = state is None
     if first:
         state = {"version": None, "files": {}, "created": datetime.date.today().isoformat()}
@@ -319,7 +444,9 @@ def main():
     elif a.init:
         msg = f"Immigration Agent {version} is already installed and up to date in {ws}."
     latest = check_latest(ws, version)
-    notice = update_notice(version, latest)
+    notice = update_notice(version, latest, getattr(check_latest, "why", ""))
+    if a.update and not msg and not notice:
+        msg = f"Immigration Agent {version} is the latest version, and it is installed in {ws}."
     if a.hook:
         out = hook_output(msg, notice, latest)
         if out:
