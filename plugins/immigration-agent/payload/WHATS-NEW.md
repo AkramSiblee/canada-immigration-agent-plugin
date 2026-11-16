@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.10
+- case.py review: any IRCC letter in the file (procedural fairness, biometrics, medical, passport request, refusal, approval) or an IRCC application number now counts as proof that an application exists. A submitted date earlier than the date you opened the file is asked as a question (filed before you took the file?), not reported as an error.
+
 ## 1.9.9
 - case.py review: clearing or changing a header field no longer counts as proof that an application was filed, so fields such as the IRCC processing line are still flagged when nothing shows a submission.
 

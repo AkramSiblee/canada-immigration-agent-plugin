@@ -353,11 +353,17 @@ def header_issues(folder):
     out = []
     opened = info.get("opened", "")
     submitted = info.get("submitted", "")
-    filed = re.search(r"submitted|filed with ircc|application filed|\baor\b|acknowledg", " ".join([log, updates, corr]), re.I)
-    if submitted:
+    record = " ".join([log, updates, corr])
+    # proof that IRCC has an application: a submission or receipt, any IRCC letter about it, or an IRCC application number
+    filed = re.search(r"submitted|filed with ircc|application filed|\baor\b|acknowledg|ircc letter filed|ircc-[a-z]|procedural.fairness|"
+                      r"biometric|medical (?:request|instruction)|passport request|\bppr\b|refus|approv", record, re.I) \
+        or re.search(r"\b[BEFGHNSVWX]\d{9}\b", record)
+    if submitted and not filed:
         if opened and submitted < opened:
-            out.append(("submitted", submitted, f"is before the file was opened ({opened})"))
-        elif not filed:
+            out.append(("submitted", submitted, f"is before the file was opened ({opened}) and nothing in the file shows the application: "
+                                                "if it was filed before you took the file (by the client or a previous representative), "
+                                                "record the IRCC letter or application number; otherwise correct it"))
+        else:
             out.append(("submitted", submitted, "nothing in the log, updates or IRCC letters shows an application was submitted"))
     for field in ("ircc_line", "application_number"):
         if info.get(field) and not filed:
