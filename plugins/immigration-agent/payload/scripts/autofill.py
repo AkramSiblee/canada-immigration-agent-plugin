@@ -3,10 +3,12 @@
 
   fetch --form imm5257                        download the current blank form from IRCC into forms-cache/
   fill --form imm5257 --person "Name" (--case CASE | --report REPORT [--facts FACTS.csv])
-       [--blank BLANK.pdf] [--include-confirm] [--out FILE]
+       [--blank BLANK.pdf] [--include-confirm] [--passport-number FULL] [--out FILE]
 
 Only answers the worksheet marks "Ready" (and firm-profile details) are written; with --include-confirm,
-answers read from images ("please confirm") too. Conflicts, open questions, masked numbers, joined fields
+answers read from images ("please confirm") too. The passport number is written in full when it is found again
+(client facts, a text passport's code lines, or --passport-number for a scan) and matches the extracted one.
+Conflicts, open questions, other masked numbers, joined fields
 (addresses) and signatures are left blank for you. Each answer goes to the one field the extractor reads it
 from, and the filled form is read back to prove every answer landed on the right question.
 
@@ -552,12 +554,67 @@ def blank_problem(path):
     return None
 
 
-def answers(form, person, case=None, report=None, facts=None, include_confirm=False):
+# ---- full numbers ----
+# The worksheet and extraction report keep these masked (****356). Autofill writes the full number only when it
+# finds it again, at fill time, and its hash matches the one number every source agrees on. It is never stored or printed.
+FULL_NUMBERS = {"passport_number"}
+
+
+def mrz_numbers(path):
+    """Document numbers in a text PDF's machine-readable zone whose check digits are all valid."""
+    try:
+        pages = de.read_pdf(path, de.MAX_PAGES)[0] if path.suffix.lower() == ".pdf" else de.read_text(path)
+    except Exception:
+        return []
+    out = []
+    for _, text in pages:
+        lines = [re.sub(r"\s", "", x).upper() for x in text.splitlines()]
+        for size, count in ((44, 2), (36, 2), (30, 3)):
+            for i in range(len(lines) - count + 1):
+                group = lines[i:i + count]
+                if not (all(len(x) == size for x in group) and group[0][:1] == "P" and re.fullmatch(r"[A-Z0-9<]+", "".join(group))):
+                    continue
+                p = de.mrz_parts(group)
+                if p and all(ok for _, ok in de.mrz_valid(p)):
+                    out.append(p["doc"].replace("<", ""))
+    return out
+
+
+def full_number(key, person, hashes, report=None, facts_path=None, given=None):
+    """(full number, where it came from) matching the worksheet's one masked number, or (None, why not)."""
+    if len(hashes) != 1:
+        return None, "the sources disagree on the number"
+    target = next(iter(hashes))
+    shown = None
+    candidates = []
+    if given:
+        candidates.append((given, "the number you gave"))
+    if facts_path and facts_path.exists():
+        candidates += [(r["value"], "client facts") for r in fp.load_csv(facts_path)
+                       if r.get("key") == key and r.get("value") and de.same_person(person, r.get("person", ""))]
+    if report:
+        root = pathlib.Path(report.get("source") or "")
+        for d in report.get("documents", []):
+            name = de.doc_name(d)
+            if d.get("doc_type") == "passport" and name and de.same_person(person, name):
+                candidates += [(n, d["file"]) for n in mrz_numbers(root / d["file"])]
+                shown = shown or next((f["value"] for f in d["fields"] if f["field"] == key), None)
+    for value, source in candidates:
+        if de.number_hash(value) == target:
+            return re.sub(r"[\s-]", "", value).upper(), source
+    if given:
+        return None, "the number you gave doesn't match the one read from the passport" + (f" ({shown})" if shown else "") + ": read it again"
+    return None, ("masked number: the passport is a scan, so give the full number with --passport-number "
+                  "(it is checked against the passport's code lines)")
+
+
+def answers(form, person, case=None, report=None, facts=None, include_confirm=False, numbers=None):
     """{key: answer} that may be written, and {key: why not} for the rest."""
     _, spec = fp.load_spec(form)
     folder = de.active_case(case) if case else None
     report_path = pathlib.Path(report) if report else (fp.latest_report(folder / "03-documents" / "_extraction") if folder else None)
-    pool = fp.facts_from_report(json.loads(report_path.read_text(encoding="utf-8")), person)[0] if report_path else {}
+    report_data = json.loads(report_path.read_text(encoding="utf-8")) if report_path else None
+    pool = fp.facts_from_report(report_data, person)[0] if report_data else {}
     facts_path = pathlib.Path(facts) if facts else (folder / "client-facts.csv" if folder else None)
     client = fp.facts_from_file(facts_path, person) if facts_path else {}
     ok, skipped = {}, {}
@@ -577,6 +634,13 @@ def answers(form, person, case=None, report=None, facts=None, include_confirm=Fa
             skipped[q["key"]] = "signature"
         elif r["status"] in allowed and r["answer"] and "*" not in r["answer"]:
             ok[q["key"]] = r["answer"]
+        elif q["key"] in FULL_NUMBERS and r["status"] == fp.COPY:
+            hashes = {c["hash"] for c in pool.get(q["key"], []) + client.get(q["key"], [])}
+            value, why = full_number(q["key"], person, hashes, report_data, facts_path, (numbers or {}).get(q["key"]))
+            if value:
+                ok[q["key"]] = value
+            else:
+                skipped[q["key"]] = why
         else:
             skipped[q["key"]] = r["status"] if r["answer"] or r["status"] != fp.READY else "no answer"
     return ok, skipped, spec, folder
@@ -740,7 +804,8 @@ def cmd_fetch(a):
 
 def cmd_fill(a):
     form = a.form.lower()
-    ready, skipped, spec, folder = answers(form, a.person, a.case, a.report, a.facts, a.include_confirm)
+    ready, skipped, spec, folder = answers(form, a.person, a.case, a.report, a.facts, a.include_confirm,
+                                           {"passport_number": a.passport_number} if a.passport_number else None)
     blank = pathlib.Path(a.blank) if a.blank else fetch(form)
     stem = f"{datetime.date.today().isoformat()}-{form}-{re.sub(r'[^a-z0-9]+', '-', a.person.lower()).strip('-')}-autofill"
     if a.out:
@@ -763,6 +828,11 @@ def cmd_fill(a):
         print(f"Ready but not filled ({len(missed)}):")
         for k, why in missed.items():
             print(f"  - {questions.get(k, k)[:80]}: {why}")
+    for k in FULL_NUMBERS:
+        if k in filled and k not in wrong:
+            print(f"{questions.get(k, k)}: written in full, matched to the passport read at extraction. Check it against the original.")
+        elif k in skipped and k in questions:
+            print(f"{questions[k]} NOT filled: {skipped[k]}")
     left = {k: v for k, v in skipped.items() if v != "signature"}
     print(f"Left blank for you: {len(left)} question(s) not ready (see the worksheet), and every signature.")
     print("Next: open it in Adobe Acrobat or the free Adobe Acrobat Reader (right-click > Open with > Adobe Acrobat), check every page,")
@@ -779,6 +849,7 @@ def main():
     x = s.add_parser("fill"); x.add_argument("--form", required=True); x.add_argument("--person", required=True)
     g = x.add_mutually_exclusive_group(required=True); g.add_argument("--case"); g.add_argument("--report")
     x.add_argument("--facts"); x.add_argument("--blank"); x.add_argument("--out"); x.add_argument("--include-confirm", action="store_true")
+    x.add_argument("--passport-number", help="the full number read from a scanned passport; written only if it matches the extracted one")
     x.set_defaults(fn=cmd_fill)
     a = p.parse_args()
     a.fn(a)

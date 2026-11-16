@@ -2,6 +2,10 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.8.1
+- /autofill now writes the passport number in full. The agent finds it again in the client's facts or the passport itself (for a scanned passport, the agent reads the code lines at the bottom of the page), and writes it only if it matches the number checked when the documents were read. It stays hidden everywhere else (worksheets, reports, screen output). Always check it against the original passport.
+- Word documents (agreements, letters, quotes, PR plans, translations, portal copy sheets) now share one house style with the PDFs: navy headings, a letterhead with a rule under it, page numbers and banded tables.
+
 ## 1.8.0
 - /dropbox: clients upload documents to their own folder in your OneDrive, Google Drive or Dropbox (through an upload-only link you share). One command files each document into the right case with its type in the name, says what the checklist still lacks, and keeps anything it can't match aside for you. The daily alerts tell you when uploads are waiting.
 - /reply: drafts the answer to "what's happening with my file?" from the case's own facts (last events, what the client still owes, missing documents, IRCC's current processing time), as a Gmail draft when Gmail is connected. You read and send it.

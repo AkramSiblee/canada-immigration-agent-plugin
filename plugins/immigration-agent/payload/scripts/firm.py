@@ -274,43 +274,30 @@ def runs(par, text, size=None):
 
 
 def write_docx(path, blocks, profile, client_name):
+    """Firm letterhead, in the same house style as the PDFs (scripts/docstyle.py)."""
     import docx
     from docx.enum.text import WD_ALIGN_PARAGRAPH
-    from docx.shared import Pt, RGBColor, Inches
+    from docx.shared import Pt, Inches
+    import docstyle as ds
     d = docx.Document()
-    style = d.styles["Normal"]
-    style.font.name, style.font.size = "Calibri", Pt(11)
-    sec = d.sections[0]
-    sec.left_margin = sec.right_margin = Inches(0.9)
-    head = sec.header.paragraphs[0]
-    if profile.get("logo") and pathlib.Path(profile["logo"]).exists():
-        head.add_run().add_picture(profile["logo"], height=Inches(0.55))
-        head = sec.header.add_paragraph()
-    if profile.get("business") or profile.get("name"):  # no firm details: plain paper, no empty letterhead
-        runs(head, f"**{profile.get('business') or profile.get('name', '')}**", 12)
-        line = "  |  ".join(x for x in (profile.get("address"), profile.get("phone"), profile.get("email"), profile.get("website")) if x)
-        if line:
-            runs(sec.header.add_paragraph(), line, 9)
+    sec = ds.setup(d, body_size=10.5)
+    ds.letterhead(sec, profile)  # no firm details: plain paper, no empty letterhead
+    licence = None
     if profile.get("name") and profile.get("rcic"):
-        foot = sec.footer.paragraphs[0]
-        foot.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r = foot.add_run(f"{profile['name']}, Regulated Canadian Immigration Consultant, licence no. {profile['rcic']}. Regulated by the College of Immigration and Citizenship Consultants.")
-        r.font.size, r.font.color.rgb = Pt(8), RGBColor(0x55, 0x55, 0x55)
+        licence = f"{profile['name']}, Regulated Canadian Immigration Consultant, licence no. {profile['rcic']}. Regulated by the College of Immigration and Citizenship Consultants."
+    ds.footer(sec, licence)
     previous = None
     for kind, text in blocks:
         if kind == "space":
             if previous == "para":  # a blank line between paragraphs, as in letters
-                d.add_paragraph().paragraph_format.space_after = Pt(0)
+                ds.spacer(d, 6)
             previous = kind
             continue
         previous = kind
         if kind == "title":
-            p = d.add_paragraph()
-            runs(p, f"**{text}**", 16)
+            ds.title(d, text.replace("**", ""))
         elif kind == "heading":
-            p = d.add_paragraph()
-            p.paragraph_format.space_before = Pt(10)
-            runs(p, f"**{text}**", 12)
+            ds.heading(d, text.replace("**", ""), 1)
         elif kind == "bullet":
             runs(d.add_paragraph(style="List Bullet"), text)
         elif kind in ("para", "body"):
@@ -319,21 +306,38 @@ def write_docx(path, blocks, profile, client_name):
             runs(p, text)
         elif kind == "table":  # text = [header row, row, ...]
             rows = [[str(c) for c in r] for r in text]
-            t = d.add_table(rows=len(rows), cols=max(len(r) for r in rows))
-            t.style = "Table Grid"
+            cols = max(len(r) for r in rows)
+            t = d.add_table(rows=len(rows), cols=cols)
             for i, r in enumerate(rows):
                 for j, c in enumerate(r):
                     cell = t.cell(i, j)
                     cell.text = ""
-                    runs(cell.paragraphs[0], f"**{c}**" if i == 0 else c, 9.5)
-            d.add_paragraph().paragraph_format.space_after = Pt(2)
+                    runs(cell.paragraphs[0], c.replace("**", "") if i == 0 else c)
+            ds.style_table(t, size=9.5)
+            ds.spacer(d, 6)
         elif kind == "signatures":
-            t = d.add_table(rows=4, cols=2)
-            for col, who in enumerate((f"{profile.get('name', '')}, RCIC {profile.get('rcic', '')}", client_name)):
-                t.cell(0, col).text = "\n\n_______________________________"
-                t.cell(1, col).text = who
-                t.cell(2, col).text = "\nDate: ____________________"
-                t.cell(3, col).text = ""
+            ds.spacer(d, 14)
+            t = d.add_table(rows=3, cols=3)
+            ds.no_borders(t)
+            widths = (Inches(3.0), Inches(0.5), Inches(3.0))
+            for col, who in ((0, f"{profile.get('name', '')}, RCIC {profile.get('rcic', '')}"), (2, client_name)):
+                line = t.cell(0, col).paragraphs[0]
+                line.paragraph_format.space_before = Pt(36)
+                line.paragraph_format.space_after = Pt(0)
+                ds.border(line, "bottom", "555555", 6, 1)
+                name = t.cell(1, col).paragraphs[0]
+                ds.text_run(name, who, 10, True)
+                name.paragraph_format.space_after = Pt(0)
+                date = t.cell(2, col).paragraphs[0]
+                date.paragraph_format.space_before = Pt(14)
+                ds.text_run(date, "Date: ____________________", 9.5, color=ds.GREY)
+            for row in t.rows:
+                for j, cell in enumerate(row.cells):
+                    cell.width = widths[j]
+            t.alignment = 0
+    for p in d.paragraphs:  # justified body text in long documents reads unevenly; keep everything left-aligned
+        if p.alignment is None:
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     fd, tmp = tempfile.mkstemp(dir=str(path.parent), suffix=".tmp.docx")
     os.close(fd)
     try:

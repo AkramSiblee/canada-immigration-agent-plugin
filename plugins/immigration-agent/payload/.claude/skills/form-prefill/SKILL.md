@@ -33,4 +33,4 @@ description: Build a plain-English Excel worksheet of answers for an IRCC form f
 - For IRB forms and narratives, follow rule 7 in CLAUDE.md.
 
 ## Autofill
-- Once answers are Ready, `python3 scripts/autofill.py fill --form FORM --person NAME --case CASE` writes them into IRCC's official blank PDF and reads it back to confirm each one. Everything else stays blank. The consultant opens it in Adobe, completes it, validates and has it signed.
+- Once answers are Ready, `python3 scripts/autofill.py fill --form FORM --person NAME --case CASE` writes them into IRCC's official blank PDF and reads it back to confirm each one. The passport number is written in full once matched to the extracted one (for a scanned passport, read it from the code lines and pass `--passport-number`; see `/autofill`). Everything else stays blank. The consultant opens it in Adobe, completes it, validates and has it signed.

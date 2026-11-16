@@ -63,17 +63,21 @@ def cmd(a):
         die(f"no worksheet for: {', '.join(bad)}. Available: {', '.join(sorted(known))}")
     people = a.person or [info.get("client", "")]
     sets, report_path = gather(folder, forms, people)
+    from docx.shared import Inches
+    import docstyle as ds
     d = docx.Document()
-    d.styles["Normal"].font.name = "Calibri"
-    d.styles["Normal"].font.size = Pt(10)
-    d.add_heading(f"Portal copy sheet: {info.get('client', '')} ({info.get('case_id', '')})", 0)
-    d.add_paragraph(f"Made {datetime.date.today()}. Answers from {'the extraction ' + report_path.name if report_path else 'client facts only (no extraction yet)'} and client-facts.csv.")
+    sec = ds.setup(d, body_size=10)
+    ds.footer(sec, f"Portal copy sheet - {info.get('client', '')} ({info.get('case_id', '')}) - internal working copy")
+    ds.title(d, f"Portal copy sheet: {info.get('client', '')} ({info.get('case_id', '')})",
+             f"Made {datetime.date.today()}. Answers from {'the extraction ' + report_path.name if report_path else 'client facts only (no extraction yet)'} and client-facts.csv.")
     d.add_paragraph("Type each answer into the portal and tick the box. The portal may split or reorder a form's questions across screens: "
                     "match by the wording of the question. Numbers shown as ****123 must be copied from the original document. "
                     "Anything marked 'Ask client' or 'Consultant decides' must be settled before you start.")
+    widths = (Inches(0.5), Inches(2.6), Inches(2.0), Inches(1.4))
+    tables = []
     open_items, counts = [], {"answered": 0, "open": 0}
     for person, form_info, rows in sets:
-        d.add_heading(f"{form_info['title']} - {person}", 1)
+        ds.heading(d, f"{form_info['title']} - {person}", 1)
         section = None
         table = None
         for r in rows:
@@ -87,9 +91,9 @@ def cmd(a):
                 counts["answered"] += 1
             if r["section"] != section:
                 section = r["section"]
-                d.add_heading(section or "Questions", 2)
+                ds.heading(d, section or "Questions", 2)
                 table = d.add_table(rows=1, cols=4)
-                table.style = "Table Grid"
+                tables.append(table)
                 for c, h in zip(table.rows[0].cells, ("Done", "Question", "Answer", "Check")):
                     c.text = h
             cells = table.add_row().cells
@@ -97,8 +101,12 @@ def cmd(a):
             cells[1].text = f"{r['no']} {r['question']}".strip()
             cells[2].text = r["answer"] or "—"
             cells[3].text = r["status"] + (f". {r['note']}" if r["note"] else "")
+    for t in tables:  # styled once filled, so banding and widths cover every row
+        ds.style_table(t, widths, size=9)
+        for row in t.rows[1:]:
+            row.cells[0].paragraphs[0].alignment = 1
     if open_items:
-        d.add_heading("Settle these before you start", 1)
+        ds.heading(d, "Settle these before you start", 1)
         for person, form, r in open_items:
             d.add_paragraph(f"{form} ({person}): {r['question']} [{r['status']}]", style="List Bullet")
     out = folder / "05-forms-submissions"
