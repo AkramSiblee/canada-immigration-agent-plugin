@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.7
+- Readiness report: your own letters to the client (closing letters, agreements, quotes, status updates) are no longer fact-checked against the client's documents, so your fees aren't flagged as "amount not shown in any document". Letters of explanation and submission letters are still checked.
+
 ## 1.9.6
 - /final-check and the readiness report now check the form saved most recently. Before, a version from an earlier day with a higher number (for example yesterday's -v3) was checked instead of today's.
 

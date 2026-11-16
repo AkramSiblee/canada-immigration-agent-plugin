@@ -300,6 +300,8 @@ def checklist_items(info, rows, today):
 
 
 LETTER_NAMES = r"letter|explanation|\bloe\b|submission"
+# The firm's own letters to the client (fees, terms, updates): their amounts are the firm's fees, not facts to match against documents
+FIRM_LETTERS = r"closing|non-engagement|agreement|amendment|risk-acknowledgement|quote|invoice|receipt|status-update|consultation-notes|translation|monthly-update|follow-up"
 
 
 def letter_items(folder, docs):
@@ -308,7 +310,8 @@ def letter_items(folder, docs):
     out = []
     for sub in ("05-forms-submissions", "06-correspondence"):
         for path in sorted((folder / sub).glob("*")):
-            if path.suffix.lower() not in (".docx", ".pdf") or not re.search(LETTER_NAMES, path.name, re.I) or "readiness" in path.name:
+            if path.suffix.lower() not in (".docx", ".pdf") or not re.search(LETTER_NAMES, path.name, re.I) or "readiness" in path.name \
+                    or re.search(FIRM_LETTERS, path.name, re.I):
                 continue
             try:
                 found = lc.check(lc.letter_text(path), docs, lc.case_numbers(folder))
