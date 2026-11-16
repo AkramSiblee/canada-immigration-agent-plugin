@@ -315,6 +315,8 @@ def file_evidence(folder):
     info = read_case(folder)
     notes = " ".join([body, info.get("next_action", "")])
     log = (folder / "log.md").read_text(encoding="utf-8") if (folder / "log.md").exists() else ""
+    # header edits ("Set submitted: ...") are the agent's own record of a change, not evidence that something happened
+    log = "\n".join(line for line in log.splitlines() if not re.match(r"^\|\s*\d{4}-\d{2}-\d{2}\s*\|\s*Set \w+:", line))
     updates = (folder / "updates.csv").read_text(encoding="utf-8") if (folder / "updates.csv").exists() else ""
     docs = {}
     rep_dir = folder / "03-documents" / "_extraction"
