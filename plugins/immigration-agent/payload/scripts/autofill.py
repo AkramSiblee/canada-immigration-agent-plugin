@@ -137,7 +137,11 @@ def template_fields(template):
             seen[n] = i + 1
             here = f"{path}/{n}" + (f"[{i}]" if names.count(n) > 1 else "")
             bind = next((b for b in k if tag(b) == "bind"), None)
-            if bind is not None and bind.get("match") in ("none", "global", "dataRef"):
+            match = bind.get("match") if bind is not None else None
+            if tag(k) == "subform" and match == "none":
+                walk(k, path)  # a layout-only wrapper (IMM 5257's Fragment1): its fields are stored under the parent
+                continue
+            if match in ("none", "global", "dataRef"):
                 continue  # not stored under its own name
             if tag(k) == "subform":
                 walk(k, here)
@@ -149,6 +153,23 @@ def template_fields(template):
     if top is not None:
         walk(top, f"/data/{top.get('name')}")
     return out
+
+
+def text_limits(template):
+    """{data path: maxChars} for text boxes that declare a limit."""
+    root = ET.fromstring(template)
+    limits = {}
+    by_name = {}
+    for k in root.iter():
+        if tag(k) == "field" and k.get("name"):
+            m = next((t for v in k if tag(v) == "value" for t in v if tag(t) == "text" and t.get("maxChars")), None)
+            if m is not None:
+                by_name.setdefault(k.get("name"), set()).add(int(m.get("maxChars")))
+    for path in template_fields(template):
+        got = by_name.get(path.split("/")[-1].split("[")[0])
+        if got and len(got) == 1:  # only when every box of that name has the same limit
+            limits[path] = got.pop()
+    return limits
 
 
 def find_path(paths, rx, exclude=None):
@@ -210,17 +231,37 @@ def encode(value, how, path, lists):
     return v, None
 
 
+STOP_WORDS = {"and", "the", "of", "in", "for", "a", "an", "to", "with", "or", "studies", "study", "program", "programme", "course"}
+SYNONYMS_LIST = {"general": {"general", "other", "unspecified"}, "business": {"business", "commerce", "management"}, "it": {"computer", "information"},
+                 "computing": {"computer"}, "medicine": {"medical", "health"}, "nursing": {"nursing", "health"}, "engineering": {"engineering"},
+                 "arts": {"arts", "humanities"}, "law": {"law", "legal"}, "cooking": {"culinary"}, "culinary": {"culinary", "cooking"}}
+
+
+def _words(text):
+    return {w for w in re.findall(r"[a-z]+", str(text).lower()) if w not in STOP_WORDS and len(w) > 1}
+
+
 def closest(value, lists, n=3):
-    """'. Closest: "A", "B"' from the form's own list, or '' if nothing is near."""
+    """'. Closest on the list: "A", "B"' from the form's own list, or '' when nothing shares a word with the answer.
+
+    Whole words first (with a few synonyms), then near spellings of those words; if nothing is close, the list's own
+    general or "Other" choice is offered."""
     import difflib
     labels = list(dict.fromkeys(label.strip() for m in lists for label in m.values() if label.strip()))
-    low = {label.lower(): label for label in labels}
-    v = str(value).strip().lower()
-    words = [w for w in re.findall(r"[a-z]{4,}", v)]
-    picks = [low[x] for x in difflib.get_close_matches(v, list(low), n=n, cutoff=0.5)]
-    picks += [label for label in labels if any(w in label.lower() for w in words) and label not in picks]
-    picks = picks[:n]
-    return (". Closest on the list: " + ", ".join(f'"{x}"' for x in picks)) if picks else ""
+    want = _words(value)
+    want |= {s for w in list(want) for s in SYNONYMS_LIST.get(w, ())}
+    scored = []
+    for label in labels:
+        have = _words(label)
+        exact = len(want & have)
+        near = sum(1 for w in want for h in have if w not in have and len(w) > 3 and difflib.SequenceMatcher(None, w, h).ratio() >= 0.85)
+        if exact or near:
+            scored.append((-(exact * 2 + near), len(label), label))
+    picks = [label for *_, label in sorted(scored)[:n]]
+    if not picks:
+        picks = [label for label in labels if _words(label) & {"other", "general", "unspecified"}][:2]
+        return (". Nothing close; the list's general choice: " + ", ".join(f'"{x}"' for x in picks)) if picks else ""
+    return ". Closest on the list: " + ", ".join(f'"{x}"' for x in picks)
 
 
 # Answers made of several boxes, given part by part (client-facts keys like "contacts_in_canada.Name").
@@ -295,11 +336,20 @@ TABLES = {
                                                           "City": "CityTown", "Country": "Country", "Province": "ProvState"}),
     "employment_history": (r"Occupation/OccupationRow(\d+)/", {"From": "From", "To": "To", "Occupation": "Occupation", "Employer": "Employer",
                                                                  "City": "CityTown", "Country": "Country", "Province": "ProvState"}),
+    "previous_countries": (r"PreviousCOR/Row(\d+)/", {"Country": "Country", "Status": "Status", "From": "FromDate", "To": "ToDate"}),
 }
+# a Yes on these questions needs at least one row in its table, or the Yes isn't written
+INDICATOR_TABLES = {"post_secondary": "education_history", "previous_countries": "previous_countries"}
+# one-line answers (from older questionnaires) that can be read back into rows: key -> (table, columns)
+SUMMARY_ROWS = {"employment_history": ("employment_history", ("From", "To", "Occupation", "Employer", "City", "Country")),
+                "education_history": ("education_history", ("From", "To", "School", "City", "Country", "Field", "Award?")),
+                "previous_countries_details": ("previous_countries", ("Country", "Status", "From", "To"))}
+NO_EXPIRY = re.compile(r"^(?:none|no expiry(?: date)?|no expiration(?: date)?|does not expire|doesn'?t expire|n/?a|not applicable|nil|-+|never|unlimited)\.?$", re.I)
+NOT_A_NUMBER = re.compile(r"\b(?:not required|not applicable|n/?a|none|exempt|not received|pending|waiting|applied|no\b|not yet)", re.I)
 CELL_ALIASES = {"Field": ("Field", "FieldOfStudy", "Program"), "Occupation": ("Occupation", "Job", "JobTitle", "Title"),
                 "School": ("School", "Institution"), "Employer": ("Employer", "Company"), "City": ("City", "CityTown", "Town"),
                 "Province": ("Province", "ProvState", "State"), "From": ("From", "FromDate", "Start"), "To": ("To", "ToDate", "End"),
-                "Country": ("Country",)}
+                "Country": ("Country",), "Status": ("Status",)}
 
 
 def table_facts(ready, key):
@@ -745,6 +795,9 @@ def answers(form, person, case=None, report=None, facts=None, include_confirm=Fa
                 skipped[q["key"]] = why
         else:
             skipped[q["key"]] = r["status"] if r["answer"] or r["status"] != fp.READY else "no answer"
+    duties = {e["value"] for e in client.get("job_duties", []) if e.get("value")}
+    if "job_title" in asked and len(duties) == 1 and "job_title.Duties" not in ok:
+        ok["job_title.Duties"] = duties.pop()  # the questionnaire asks duties on their own
     if "spouse_name" in asked and not any(k.startswith("spouse_name.") for k in ok):
         ok.update(spouse_parts(ok.get("spouse_name"), family_people(client).get("spouse", {}), facts_path))
     if ok.get("rep_name") or ok.get("rep_address"):
@@ -848,6 +901,7 @@ def fill(form, blank, ready, out):
     placed, uses, plain = de.choice_maps(ET.fromstring(datasets), template)
     exclude = de.NOT_PA if number == "0008" else None
     values, filled, missed = {}, {}, {}
+    limits, owner = text_limits(template), {}
     ready, inferred = prepare(ready, maps, joins)
     for key, rx, *how in maps:
         if key not in ready or key in filled:
@@ -860,7 +914,7 @@ def fill(form, blank, ready, out):
         if why:
             missed[key] = why
             continue
-        values[path], filled[key] = code, ready[key]
+        values[path], filled[key], owner[path] = code, ready[key], key
     parts_written, split = {}, set()
     for role, boxes in (getattr(fill, "family", None) or {}).items():
         for box, value in boxes.items():
@@ -893,7 +947,7 @@ def fill(form, blank, ready, out):
         if why:
             missed[key] = why
             continue
-        values[path], filled[key] = code, value
+        values[path], filled[key], owner[path] = code, value, key
         parts_written[path] = value
     for key, stem in SPLIT_DATES.items():  # dates kept as year, month and day boxes (IMM 5257, IMM 0008 ...)
         if key in ready and key not in filled:
@@ -916,20 +970,42 @@ def fill(form, blank, ready, out):
             if why:
                 missed[f"{key}.{n}"] = why
             for path, (code, meant) in got.items():
-                values[path], parts_written[path] = code, meant
+                values[path], parts_written[path], owner[path] = code, meant, f"{key}.{n}"
             if got:
                 filled[f"{key}.{n}"] = "; ".join(f"{c}: {v}" for c, v in row.items())
         for n in list(rows)[len(slots):]:
             missed[f"{key}.{n}"] = f"no room: the form has {len(slots)} row(s). List it on a separate sheet headed with the question, and attach it"
         missed.pop(key, None)
+    for path, value in list(values.items()):  # never cut an answer short: a box's limit is reported instead
+        lim = limits.get(path)
+        if lim and len(str(value)) > lim and owner.get(path):
+            key = owner[path]
+            del values[path]
+            parts_written.pop(path, None)
+            filled.pop(key, None)
+            missed[key] = f"too long for the box ({len(str(value))} characters; it takes {lim}): shorten it, or continue on a separate sheet"
+    for ind, table in INDICATOR_TABLES.items():  # a Yes with an empty table isn't written
+        rx = next((m[1] for m in maps if m[0] == ind), None)
+        path = find_path(paths, rx, exclude) if rx else None
+        has_rows = any(re.search(TABLES[table][0], p) for p in paths)
+        if path in values and ready.get(ind) == "Yes" and has_rows and not any(k.startswith(table + ".") for k in filled):
+            del values[path]
+            filled.pop(ind, None)
+            missed[ind] = ("answered Yes, but no rows could be filled, so the Yes was left blank too: give each row "
+                           f"({table.replace('_history', '')}.1.From, ...) or type them in Adobe")
     for key, _, _ in joins:
         if key in ready and key not in filled and not any(k.startswith(key + ".") for k in filled):
-            missed[key] = "made of several boxes (e.g. an address): give it in parts, or type it in Adobe"
+            missed[key] = ("your name has more than two words, so it isn't split by guessing. Set your family name once: "
+                           "firm.py setup --family-name SURNAME" if key == "rep_name" else
+                           "made of several boxes (e.g. an address): give it in parts, or type it in Adobe")
     family_written = any(k.startswith("family.") for k in filled)
     for key in ready:
         if (key in BOXES or key in TABLES) and any(k.startswith(key + ".") for k in filled):
             missed.pop(key, None)
             continue  # written from its parts or rows
+        if key in SUMMARY_ROWS and any(k.startswith(SUMMARY_ROWS[key][0] + ".") for k in filled):
+            missed.pop(key, None)
+            continue  # the one-line answer was written row by row
         if key.split(".")[0] in TABLES and key.count(".") == 2:
             continue  # a table cell: reported by its row
         if family_written and key in COVERED_BY_FAMILY:
@@ -958,6 +1034,31 @@ def prepare(ready, maps, joins):
 
     Returns (answers, {key: note}) where the note says a Yes/No was read from details."""
     ready, inferred = dict(ready), {}
+    for key in [k for k in ready if re.search(r"expiry(?:_date)?$|ExpiryDate$", k)]:
+        if NO_EXPIRY.match(str(ready[key]).strip()):
+            inferred[key] = "no expiry date: left blank"
+            ready.pop(key)
+    for key in ("pal_number", "caq_number"):
+        number = ready.get(f"{key}.Number", ready.get(key, ""))
+        if number and (NOT_A_NUMBER.search(str(number)) or not re.search(r"\d", str(number))):
+            inferred[key] = f"'{str(number)[:40]}' isn't a document number: the box is left blank"
+            for k in [k for k in ready if k == key or k.startswith(key + ".")]:
+                ready.pop(k)
+    join_keys = {j[0] for j in joins}
+    for key in ("work_location", "study_address"):
+        if key in ready and key in join_keys and not any(k.startswith(key + ".") for k in ready):
+            parts, why = split_city_province(ready[key])
+            if parts:
+                ready.update({f"{key}.{n}": v for n, v in parts.items()})
+            else:
+                inferred[key] = f"'{str(ready[key])[:50]}' not split ({why}): give {key}.Province, .City and .Address"
+    for key, (table, cols) in SUMMARY_ROWS.items():
+        if key in ready and not any(k.startswith(table + ".") for k in ready):
+            rows, bad = summary_rows(ready[key], cols)
+            for n, row in enumerate(rows, 1):
+                ready.update({f"{table}.{n}.{c}": v for c, v in row.items() if v})
+            for line in bad:
+                inferred[f"{table}.unread"] = f"couldn't read '{line[:60]}' as {', '.join(c.lower() for c in cols)}: give the rows one by one"
     yn_keys = {m[0] for m in maps if len(m) > 2 and m[2] == "yn"}
     map_keys = {m[0] for m in maps}
     for key in [k for k in ready if k in yn_keys]:
@@ -982,15 +1083,78 @@ def prepare(ready, maps, joins):
             ready.setdefault(target, details)
         elif details:
             inferred[f"{key}.details"] = f"details '{details[:40]}' have no single box: give them as their own answers"
-    join_keys = {j[0] for j in joins}
     for key, (sep, names) in SPLITS.items():
-        if key in ready and key in join_keys and not any(k.startswith(key + ".") for k in ready):
+        if key in ready and key in join_keys and not all(f"{key}.{n}" in ready for n in names):
             bits = [b.strip() for b in str(ready[key]).split(sep, 1)]
             if len(bits) == 2 and all(bits):
-                ready.update({f"{key}.{n}": b for n, b in zip(names, bits)})
+                for n, b in zip(names, bits):
+                    ready.setdefault(f"{key}.{n}", b)  # a part given on its own (job duties) wins
             elif key != "work_period" and bits[0] and len(bits[0]) <= 60:
-                ready[f"{key}.{names[0]}"] = bits[0]
+                ready.setdefault(f"{key}.{names[0]}", bits[0])
+    if "employer_name" in ready and "employer_name" in join_keys and not any(k.startswith("employer_name.") for k in ready):
+        name = str(ready["employer_name"]).strip()
+        if "," not in name and not re.search(r"\d", name):  # a name alone: the address is asked for separately
+            ready["employer_name.Name"] = name
     return ready, inferred
+
+
+PROVINCE_NAMES = {**{k: v for k, v in PROVINCES.items()}, "PEI": "Prince Edward Island", "NFLD": "Newfoundland and Labrador",
+                  "NEWFOUNDLAND": "Newfoundland and Labrador", "LABRADOR": "Newfoundland and Labrador", "YUKON TERRITORY": "Yukon", "QUÉBEC": "Quebec"}
+
+
+def province_of(text):
+    """The full province or territory name for 'AB', 'Alberta' or 'Alberta T5J 0A1', else None."""
+    t = re.sub(r"\s+[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$", "", str(text).strip()).strip(" .").upper()
+    if t in PROVINCE_NAMES:
+        return PROVINCE_NAMES[t]
+    return next((v for v in PROVINCES.values() if v.upper() == t), None)
+
+
+def split_city_province(text):
+    """({Province, City[, Address]}, None) for 'Calgary, Alberta', 'AB, Calgary' or '12 Main St, Calgary, AB'; (None, why) otherwise."""
+    parts = [x.strip() for x in str(text).split(",") if x.strip()]
+    hits = [i for i, x in enumerate(parts) if province_of(x)]
+    if len(hits) != 1:
+        return None, "no Canadian province or territory named" if not hits else "more than one province named"
+    i = hits[0]
+    rest = parts[:i] + parts[i + 1:]
+    out = {"Province": province_of(parts[i])}
+    if len(rest) == 1:
+        out["City"] = rest[0]
+    elif len(rest) == 2 and i == len(parts) - 1:  # street address, city, province
+        out["Address"], out["City"] = rest
+    else:
+        return None, "the city isn't clear"
+    if re.search(r"\d", out["City"]):
+        return None, "the city isn't clear"
+    return out, None
+
+
+def summary_rows(text, cols):
+    """([{col: value}], [lines not read]) from a one-line answer such as
+    '2015-01, 2025-03, Chef, Hotel Sample, Dubai, United Arab Emirates; ...'. A line is read only when it has exactly
+    one value per column, its dates look like dates and its country is a country: anything else is reported."""
+    rows, bad = [], []
+    for line in [x.strip() for x in re.split(r";|\n", str(text)) if x.strip()]:
+        line = re.sub(r"^\d+\)\s*", "", line)
+        bits = [b.strip() for b in line.split(",")]
+        names = [c.rstrip("?") for c in cols]
+        ok = len(bits) == len(cols) or (cols[-1].endswith("?") and len(bits) == len(cols) - 1)
+        if ok:
+            row = dict(zip(names, bits))
+            for c in ("From", "To"):
+                v = row.get(c, "")
+                if c in row and not (re.fullmatch(r"\d{4}-\d{2}(?:-\d{2})?", v) or (c == "To" and v.lower() in ("now", "present", "current", "ongoing"))):
+                    ok = False
+            if "Country" in row:
+                country = de.known_country(row["Country"])
+                ok = ok and bool(country)
+                row["Country"] = country or row["Country"]
+        if ok:
+            rows.append(row)
+        else:
+            bad.append(line)
+    return rows, bad
 
 
 def table_row(row, base, cells, paths, placed, uses, plain):
@@ -998,6 +1162,15 @@ def table_row(row, base, cells, paths, placed, uses, plain):
     out, problems = {}, []
     for cell, value in row.items():
         target = cells.get(cell)
+        if cell in ("From", "To") and target and target.endswith("Date") and base + target in paths:
+            if str(value).strip().lower() in ("present", "current", "now", "ongoing", ""):
+                continue
+            iso, _ = de.parse_date(str(value))
+            if not iso:
+                problems.append(f"{cell} '{value}' needs a full date (YYYY-MM-DD) on this form")
+                continue
+            out[base + target] = (iso, iso)
+            continue
         if cell in ("From", "To"):
             if str(value).strip().lower() in ("present", "current", "now", "ongoing", ""):
                 continue  # a current activity: the To date stays empty

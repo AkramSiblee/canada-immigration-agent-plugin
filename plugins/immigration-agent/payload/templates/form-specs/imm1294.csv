@@ -11,6 +11,7 @@ Personal details,,Place of birth: country or territory,birth_country,auto,
 Personal details,,Citizenship,citizenship,auto,
 Personal details,,"Current country or territory of residence: country, status, from and to dates",current_residence,client,
 Personal details,,During the past five years have you lived in any country or territory other than your country of citizenship or your current country of residence for more than six months?,previous_countries,client,Give details if yes
+Personal details,,"If yes: each country or territory, your status there, and the dates (from, to)",previous_countries_details,client,Full dates (YYYY-MM-DD). Must match passport stamps
 Marital status,,Your current marital status,marital_status,client,
 Marital status,,Date on which you were married or entered into the common-law relationship,marriage_date,auto,
 Marital status,,Name of your current spouse or common-law partner,spouse_name,client,

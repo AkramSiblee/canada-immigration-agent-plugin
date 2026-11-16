@@ -15,6 +15,7 @@ Nothing is uploaded anywhere. Word, Excel and PowerPoint files are converted wit
 Outputs go to Output/general/ unless you name a place. Existing files are never overwritten (-v2, -v3 ...).
 Input/ is read-only and client-ids folders are never opened.
 """
+import logging
 import argparse
 import datetime
 import io
@@ -25,6 +26,18 @@ import shutil
 import subprocess
 import sys
 import tempfile
+
+
+class _QuietPadding(logging.Filter):
+    """pypdf logs 'Ignoring padding error' for every IRCC form it opens (their encryption is padded oddly); it is harmless.
+    Only that message is dropped, and only on pypdf's two decryption loggers: every other warning still shows."""
+
+    def filter(self, record):
+        return "Ignoring padding error" not in record.getMessage()
+
+
+for _name in ("pypdf._crypt_providers._cryptography", "pypdf._crypt_providers._pycryptodome"):
+    logging.getLogger(_name).addFilter(_QuietPadding())
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 OUTPUT = REPO / "Output" / "general"

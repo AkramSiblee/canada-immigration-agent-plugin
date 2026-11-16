@@ -633,6 +633,52 @@ def make_pdf(path, person, program, firm=""):
 
 
 # ---- reading a returned form ----
+# Questionnaire tables also saved row by row, in the keys autofill fills the form's tables from.
+# column -> part; "@place" is "City, country" and "@school" is "School, city, country".
+TABLE_ROWS = {"hist": ("employment", {"from": "From", "to": "To", "activity": "Occupation", "employer": "Employer", "place": "@place"}),
+              "edu": ("education", {"from": "From", "to": "To", "field": "Field", "school": "@school"}),
+              "prevcor": ("previous_countries", {"country": "Country", "status": "Status", "from": "From", "to": "To"}),
+              "travel": ("travel", {"from": "From", "to": "To", "country": "Country", "purpose": "Purpose"})}
+
+
+def split_place(text, lead=None):
+    """(parts, ok) for 'Dubai, United Arab Emirates' -> City, Country (and 'School, city, country' with lead='School').
+    Only a recognised country at the end is split off; otherwise the text is kept whole and ok is False."""
+    bits = [b.strip() for b in str(text).split(",") if b.strip()]
+    country = de.known_country(bits[-1]) if bits else None
+    if not country:
+        return ({lead: text} if lead else {"City": text}), False
+    rest = bits[:-1]
+    if lead:
+        if len(rest) < 2:
+            return {lead: ", ".join(rest) or text, "Country": country}, False  # no city given
+        return {lead: ", ".join(rest[:-1]), "City": rest[-1], "Country": country}, True
+    return {"City": ", ".join(rest), "Country": country} if rest else {"Country": country}, bool(rest)
+
+
+def table_rows(name, cells_by_row):
+    """({key: value}, [notes]) for one questionnaire table, row by row."""
+    if name not in TABLE_ROWS:
+        return {}, []
+    prefix, cols = TABLE_ROWS[name]
+    out, notes = {}, []
+    for n, cells in enumerate(cells_by_row, 1):
+        for col, part in cols.items():
+            v = cells.get(col, "").strip()
+            if not v:
+                continue
+            if part in ("@place", "@school"):
+                got, ok = split_place(v, "School" if part == "@school" else None)
+                if not ok:
+                    notes.append(f"{prefix} row {n}: '{col}' not split into city and country. Check it")
+                out.update({f"{prefix}.{n}.{k}": x for k, x in got.items()})
+            elif part == "Country":
+                out[f"{prefix}.{n}.Country"] = de.known_country(v) or v
+            else:
+                out[f"{prefix}.{n}.{part}"] = v
+    return out, notes
+
+
 def summary_line(cells, columns):
     parts = [cells.get(col[0], "").strip() for col in columns]
     return ", ".join(p for p in parts if p)
@@ -676,14 +722,18 @@ def collect(answers, program):
                 group, _, part = it["key"].partition("__")
                 facts[f"{group}.{part}" if group in BOX_GROUPS and part else it["key"]] = v
             elif it["type"] == "table":
-                lines = []
+                lines, filled_rows = [], []
                 for i in range(1, it["rows"] + 1):
                     cells = {col[0]: (answers.get(f"t__{it['name']}__{i}__{col[0]}") or "").strip() for col in it["columns"]}
                     if any(cells.values()):
                         lines.append(summary_line(cells, it["columns"]))
+                        filled_rows.append(cells)
                 qs.append({"key": it["summary"], "kind": "table", "question": it["label"]})
                 if lines and it["summary"]:
-                    facts[it["summary"]] = "; ".join(lines)
+                    facts[it["summary"]] = "; ".join(lines)  # the worksheet shows the whole table as one answer
+                rows, notes = table_rows(it["name"], filled_rows)
+                facts.update(rows)
+                flags += notes
             elif it["type"] == "people":
                 for role in it["roles"]:
                     person = {b: (answers.get(f"p__{role}__{b}") or "").strip() for b in person_boxes(role)}

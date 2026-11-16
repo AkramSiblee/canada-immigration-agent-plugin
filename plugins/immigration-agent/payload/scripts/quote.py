@@ -110,10 +110,27 @@ def biometrics_ages():
     return (int(low.group(1)) if low else None), (int(high.group(1)) if high else None)
 
 
+OWP_KB = de.REPO / "knowledge" / "05-temporary-residence" / "open-work-permits.md"
+
+
+def children_get_owp():
+    """False when the knowledge base says dependent children are no longer eligible for a family open work permit."""
+    try:
+        return not re.search(r"dependent children (?:are )?(?:no longer|not) eligible", OWP_KB.read_text(encoding="utf-8"), re.I)
+    except OSError:
+        return False  # unknown: never assume a child gets one
+
+
+def principal_is_open(a):
+    """The principal's own permit is open only when the program says so (owp, open work permit, PGWP, BOWP)."""
+    return bool(re.search(r"\bowp\b|open[ -]?work|pgwp|post-?graduation|bowp|bridging", str(a.program), re.I))
+
+
 def members(prog, a):
     """[(who, application, age or None, assumed)] for a visa or permit application, principal first."""
-    own = "owp" if prog["key"] == "work" and (a.open_work_permit or 0) > 0 else prog["key"]  # --open-work-permit: the principal's own permit is open
+    own = "owp" if prog["key"] == "work" and principal_is_open(a) else prog["key"]
     out = [("principal applicant", own, getattr(a, "age", None), False)]
+    members.unassigned = 0
     given = getattr(a, "member", None) or []
     for i, m in enumerate(given, 1):
         bits = [b.strip() for b in m.split(":")]
@@ -133,6 +150,15 @@ def members(prog, a):
     extra = (a.people or 0) - len(out)
     for i in range(max(0, extra)):  # people with no role given
         out.append((f"family member {i + 1}", child_app, None, child_app != prog["key"]))
+    owps = (a.open_work_permit or 0) - sum(1 for p in out if p[1] == "owp")
+    if prog["key"] == "work" and owps > 0:  # --open-work-permit N: spouse first, then dependants only if the rules allow
+        order = [i for i, p in enumerate(out) if p[0].startswith("spouse")] +                 ([i for i, p in enumerate(out) if p[0].startswith(("child", "family member"))] if children_get_owp() else [])
+        for i in order:
+            if owps and out[i][1] != "owp":
+                who, _, age, _ = out[i]
+                out[i] = (who, "owp", age, True)
+                owps -= 1
+        members.unassigned = owps
     return out
 
 
@@ -167,6 +193,9 @@ def temporary_lines(prog, a):
         note = f" ({exempt} exempt by age: under {low} or over {high})" if exempt else ""
         out.append((bio["description"] + note, len(giving), total.quantize(CENT), bio["last_verified"]))
     assumed = [f"{w}: {APP_LABEL[app]}" for w, app, _, s in people if s]
+    if getattr(members, "unassigned", 0):
+        assumed.append(f"{members.unassigned} open work permit(s) not priced: no spouse in the quote, the principal's own permit isn't open, "
+                       "and dependent children aren't eligible (open-work-permits.md)")
     return out, len(people), assumed
 
 

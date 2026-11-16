@@ -45,6 +45,8 @@ SIGN = "Signature needed"
 FROM_FIRM = "From your firm profile: confirm"
 NO_PROFILE = "Set up your firm profile"
 EXPIRED = "Problem: expired"
+NOT_NEEDED = "Not needed (answered No)"
+CONDITIONAL = re.compile(r"^\s*if yes\b", re.I)
 
 
 def load_csv(path):
@@ -170,7 +172,34 @@ def resolve(row, docs, client):
 
 
 def build_rows(spec_rows, docs, client):
-    return [{"section": r["section"], "no": r["no"], "question": r["question"], **dict(zip(("answer", "status", "source", "sure", "note"), resolve(r, docs, client)))} for r in spec_rows]
+    rows = [{"section": r["section"], "no": r["no"], "question": r["question"], **dict(zip(("answer", "status", "source", "sure", "note"), resolve(r, docs, client)))} for r in spec_rows]
+    for i, (q, r) in enumerate(zip(spec_rows, rows)):
+        if not CONDITIONAL.match(q["question"]) or q["rule"] == "sign":
+            continue
+        parents = conditional_parents(spec_rows, i)
+        answers = [(rows[j]["answer"] or "").strip() for j in parents]
+        if not parents or any(a != "No" for a in answers):
+            continue  # a parent is Yes or still open: the details question stands
+        if r["answer"] and "*" not in r["answer"]:
+            r["note"] = ". ".join(x for x in (r["note"], "The question before it is answered No: check this answer") if x)
+            continue
+        r.update(answer="", status=NOT_NEEDED, source="", sure="", note="")
+    return rows
+
+
+def conditional_parents(spec_rows, i):
+    """Rows an 'If yes ...' question depends on: those it names ('If yes to 2a, 2b or 2c'), else the nearest question before it."""
+    q = spec_rows[i]
+    named = re.findall(r"\b(\d+[a-z])\b", re.split(r"[,:]\s*(?:details|dates)", q["question"], 1)[0]) if re.match(r"(?i)^\s*if yes to\b", q["question"]) else []
+    if named:
+        return [j for j, r in enumerate(spec_rows[:i]) if r["section"] == q["section"] and r["no"] in named]
+    for j in range(i - 1, -1, -1):
+        r = spec_rows[j]
+        if r["section"] != q["section"]:
+            return []
+        if not CONDITIONAL.match(r["question"]):
+            return [j]
+    return []
 
 
 def next_path(folder, form, person=""):

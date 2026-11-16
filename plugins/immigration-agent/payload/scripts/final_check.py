@@ -257,8 +257,10 @@ def logic(number, got, values):
     return out
 
 
-def across(found):
-    """The same core answers on every form, and the extractor's own cross-checks."""
+def across(found, docs=()):
+    """The same core answers on every form, and the extractor's own cross-checks.
+    A 'Yes' to a refusal is a 'Confirm' (not a 'Must fix') when this person's refusal letter is already in the documents."""
+    letters = [d["file"] for d in docs if d.get("doc_type") == "refusal_letter"]
     out, seen = [], {}
     for number, (path, values, got) in found.items():
         for key in ("family_name", "given_name", "date_of_birth", "marital_status"):
@@ -267,14 +269,19 @@ def across(found):
     for key, by_form in seen.items():
         if len({de.squash(v) for v in by_form.values()}) > 1:
             out.append(item("MUST", ", ".join(by_form), "Across", f"{key.replace('_', ' ')} differs: " + "; ".join(f"{f} '{v}'" for f, v in by_form.items())))
-    docs = []
+    form_docs = []
     for number, (path, values, got) in found.items():
-        docs.append({"file": path.name, "doc_type": "imm_form", "status": "ok", "detail": "", "sha256": "", "needs_vision": [],
+        form_docs.append({"file": path.name, "doc_type": "imm_form", "status": "ok", "detail": "", "sha256": "", "needs_vision": [],
                      "fields": [de.field("form_number", f"IMM {number}" if number.isdigit() else number, 0, "form")] + list(got.values())})
-    for f in de.cross_check(docs):
+    for f in de.cross_check(form_docs):
         if f["rule"] in ("form_version_unknown", "duplicate"):
             continue
-        out.append(item("MUST" if f["severity"] == "HIGH" else "URGENT" if f["severity"] == "MEDIUM" else "TODO", ", ".join(f["files"]) or "forms", "Across", f["message"][:240]))
+        level = "MUST" if f["severity"] == "HIGH" else "URGENT" if f["severity"] == "MEDIUM" else "TODO"
+        text = f["message"]
+        if f["rule"] == "background_yes" and letters and re.search(r"refused a visa", text, re.I):
+            level = "TODO"
+            text = re.sub(r"\s*Get every refusal letter.*$", "", text) + f" Refusal letter on file: {', '.join(letters[:3])}. Confirm it covers every refusal"
+        out.append(item(level, ", ".join(f["files"]) or "forms", "Across", text[:240]))
     return out
 
 
@@ -319,7 +326,7 @@ def check_forms(found, folder, person, docs):
     items = []
     for number, (path, values, got) in sorted(found.items()):
         items += blanks(number, got) + details_boxes(number, got, values) + family_rows(number, values) + logic(number, got, values) + edited(number, got, folder, person)
-    items += across(found) + documents(found, docs)
+    items += across(found, docs) + documents(found, docs)
     if found:
         items.append(item("TODO", ", ".join(f"IMM {n}" for n in sorted(found)), "Sign", "Signatures and dates are not checked here: validate each form in Adobe, then sign and date it"))
     return items

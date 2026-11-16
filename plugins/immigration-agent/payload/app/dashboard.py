@@ -54,7 +54,7 @@ import timesheet as ts  # noqa: E402
 import validity as vd  # noqa: E402
 
 # Checklist states as the page shows them.
-STATE_OF = {rd.FOUND: "received", rd.MISSING: "missing", rd.IF_APPLIES: "confirm", rd.BY_HAND: "confirm", rd.NOT_NEEDED: "not-needed"}
+STATE_OF = {rd.FOUND: "received", rd.PREPARED: "prepared", rd.MISSING: "missing", rd.IF_APPLIES: "confirm", rd.BY_HAND: "confirm", rd.NOT_NEEDED: "not-needed"}
 
 STATE = cs.ROOT / ".dashboard.json"
 ERROR_LOG = cs.ROOT / ".dashboard-error.log"

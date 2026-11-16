@@ -107,6 +107,7 @@ def default_forms(program, marital="", residence=""):
 
 CHECKLISTS = de.REPO / "templates" / "checklists"
 FOUND, MISSING, IF_APPLIES, BY_HAND, NOT_NEEDED = "Found", "Missing", "Only if it applies", "Confirm by hand", "Not needed"
+PREPARED = "Prepared, not yet signed"  # an application form filled in 05-forms-submissions
 CHECKLIST_STALE_DAYS = 180
 # The consultant's marks (from the dashboard or `readiness.py mark`), kept in the case folder; they beat the automatic match.
 MARKS_FILE = "checklist-marks.csv"
@@ -142,6 +143,15 @@ def case_files(folder):
         return []
     return sorted(str(p.relative_to(root)).replace("\\", "/") for p in root.rglob("*")
                   if p.is_file() and not {"client-ids", "_extraction"} & {x.lower() for x in p.relative_to(root).parts})
+
+
+def prepared_forms(folder, spec):
+    """Filled application forms in 05-forms-submissions that a checklist item's 'form:' detectors name (by file name)."""
+    sub = folder / "05-forms-submissions"
+    numbers = [re.sub(r"\D", "", v) for kind, v in detectors(spec) if kind == "form"]
+    if not numbers or not sub.exists():
+        return []
+    return sorted(p.name for p in sub.glob("*.pdf") if any(re.search(rf"(?:imm|cit)[\s_-]?{n}(?!\d)", p.name, re.I) for n in numbers if n))
 
 
 def matches(spec, docs, files):
@@ -235,6 +245,10 @@ def checklist_rows(folder, program, docs):
     for it in items:
         hits = matches(it["detect"], docs, files) if it["detect"] else []
         auto = FOUND if hits else MISSING if it.get("extra") else BY_HAND if not it["detect"] else MISSING if it["required"] == "always" else IF_APPLIES
+        if auto in (MISSING, IF_APPLIES) and it["detect"]:
+            made = prepared_forms(folder, it["detect"])
+            if made:
+                auto, hits = PREPARED, made
         m = marks.get(it["no"], {})
         status = {RECEIVED_MARK: FOUND, MISSING_MARK: MISSING, NOT_NEEDED_MARK: NOT_NEEDED}.get(m.get("mark"), auto)
         rows.append({**it, "status": status, "auto": auto, "mark": m.get("mark", ""), "marked": m.get("date", ""), "mark_note": m.get("note", ""),
@@ -244,7 +258,8 @@ def checklist_rows(folder, program, docs):
 
 def progress(rows):
     """Counts for a progress view. Percent = received / (received + still missing); items still to confirm are counted apart."""
-    c = {"received": sum(1 for r in rows if r["status"] == FOUND), "missing": sum(1 for r in rows if r["status"] == MISSING),
+    c = {"received": sum(1 for r in rows if r["status"] in (FOUND, PREPARED)), "missing": sum(1 for r in rows if r["status"] == MISSING),
+         "prepared": sum(1 for r in rows if r["status"] == PREPARED),
          "confirm": sum(1 for r in rows if r["status"] in (IF_APPLIES, BY_HAND)), "not_needed": sum(1 for r in rows if r["status"] == NOT_NEEDED)}
     c["needed"] = c["received"] + c["missing"]
     c["total"] = len(rows)
@@ -268,6 +283,8 @@ def checklist_items(info, rows, today):
     label = f"{info['source']} ({info['version']})"
     out = [item(MUST, "Checklist", f"Missing: {r['item']} [{label} item {r['no']}]"[:300], "Add it to 03-documents and run the extraction again, or record why it isn't needed")
            for r in rows if r["status"] == MISSING]
+    out += [item(TODO, "Checklist", f"{PREPARED}: {r['item']} ({r['files']})"[:300], "Have it signed and dated, then include the signed copy")
+            for r in rows if r["status"] == PREPARED]
     maybe = sum(1 for r in rows if r["status"] == IF_APPLIES)
     by_hand = sum(1 for r in rows if r["status"] == BY_HAND)
     if maybe or by_hand:
@@ -386,6 +403,19 @@ def extraction_items(report_path, case_id):
     return out + note, report.get("documents", [])
 
 
+def firm_items(forms):
+    """Firm-profile details IMM 5476 can't use as they are."""
+    if "imm5476" not in forms:
+        return []
+    import firm
+    profile = firm.load_profile()
+    name = (profile.get("name") or "").strip()
+    if len(name.split()) > 2 and not profile.get("family_name"):
+        return [item(TODO, "Firm profile", f"Your name '{name}' has more than two words, so IMM 5476's family and given name boxes are left blank",
+                     "Set your family name once: firm.py setup --family-name SURNAME")]
+    return []
+
+
 def alert_items(folder, info, today):
     rows = cs.read_deadlines(folder)
     found = al.deadline_alerts(folder.name, rows, today) + al.file_alerts(folder.name, folder, info, rows, today) + al.document_alerts(folder.name, folder, today)
@@ -441,7 +471,7 @@ def cmd_report(a):
         what = f"Follow-up {row['request']} #{row['no']} ({row['status']}): {row['text']}"
         items.append(item(URGENT if late else TODO, "Follow-up", (what + (f" - reply was due {row['due']}" if late else ""))[:300],
                           "Chase the client" if late else "Wait for the reply, then import it with followup.py import"))
-    items += ex_items + ws_items + alert_items(folder, info, today) + checklist_items(cl_info, cl_rows, today) + letter_items(folder, docs) +         [item({"MUST": MUST, "URGENT": URGENT}.get(i["level"], TODO), "Final forms", f"{i['form']} | {i['check']}: {i['text']}"[:300],
+    items += firm_items(forms) + ex_items + ws_items + alert_items(folder, info, today) + checklist_items(cl_info, cl_rows, today) + letter_items(folder, docs) +         [item({"MUST": MUST, "URGENT": URGENT}.get(i["level"], TODO), "Final forms", f"{i['form']} | {i['check']}: {i['text']}"[:300],
               "Fix it on the form in Adobe, or confirm it is right") for i in final_items if i["level"] != "OK"]
     if re.search(r"super", info.get("program", ""), re.I):
         items += supervisa_items(folder, person, docs, today)

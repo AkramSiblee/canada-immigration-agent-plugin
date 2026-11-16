@@ -59,6 +59,11 @@ def plain_answer(text):
         if re.search(rx, text, re.I):
             return question, how
     return text, ""
+# Optional on the form, so never chased. (The final check's own list also skips other_name, which IRCC requires as a
+# Yes/No: a follow-up must still ask it.) Help text such as "Give details if yes" doesn't make a question optional.
+NOT_ASKED = {"uci", "language_at_ease", "student_id", "caq_number", "pal_number", "visa_type", "application_type", "funds_other"}
+
+
 def form_items(folder, person, forms):
     """Questions the worksheets still need from the client, for the given forms."""
     import final_check as fc
@@ -75,7 +80,7 @@ def form_items(folder, person, forms):
             continue
         for q, r in zip(spec, fp.build_rows(spec, pool, client)):
             key = q["key"]
-            if key in seen or q["rule"] in ("sign", "consultant", "firm") or key in fc.ALWAYS_OPTIONAL:
+            if key in seen or q["rule"] in ("sign", "consultant", "firm") or key in NOT_ASKED:
                 continue
             if r["status"] not in (fp.MUST, fp.ASK, fp.CONFLICT):
                 continue
@@ -83,8 +88,8 @@ def form_items(folder, person, forms):
                 other, values = fc.CONDITIONS[key]
                 if answers.get(other) not in values and (pool.get(other) or [{}])[0].get("value") not in values:
                     continue
-            elif fc.OPTIONAL.search(q["question"] + " " + q["help"]) and r["status"] != fp.CONFLICT:
-                continue
+            elif not fp.CONDITIONAL.match(q["question"]) and fc.OPTIONAL.search(q["question"]) and r["status"] != fp.CONFLICT:
+                continue  # "(if known)" and the like; an "If yes" question stays when its parent is Yes or still open
             seen.add(key)
             if key in de.SENSITIVE or IDENTITY.search(q["question"]) and r["status"] != fp.CONFLICT:
                 items.append({"kind": "document", "key": key, "text": plain_document(q["question"]),
@@ -161,6 +166,9 @@ def collect(folder, person, forms, extra_questions=(), extra_docs=()):
     items = form_items(folder, person, forms) + final_items(folder, person) + document_items(folder, info.get("program", ""), docs)
     items += [{"kind": "answer", "key": f"ask:{t[:40]}", "text": t, "why": "Your consultant needs this to complete your application."} for t in extra_questions]
     items += [{"kind": "document", "key": f"doc+:{t[:40]}", "text": t, "why": "Your consultant needs this to complete your application."} for t in extra_docs]
+    asked = {r["key"] for r in read_log(folder) if r["status"] in (OPEN, COMING)}
+    collect.already = sum(1 for i in items if i["key"] in asked)
+    items = [i for i in items if i["key"] not in asked]  # already on an open request: not asked twice
     unique = {}
     for i in items:  # the worksheet and the finished form can ask the same question
         unique.setdefault((i["kind"], i["text"].strip().lower()), i)
@@ -333,9 +341,13 @@ def cmd_make(a):
     person = a.person or info.get("client", "")
     forms = [f.strip().lower() for f in a.forms.split(",")] if a.forms else None
     items = collect(folder, person, forms, a.ask or [], a.doc or [])
+    already = getattr(collect, "already", 0)
     if not items:
-        print("Nothing to ask: no open questions or missing documents found. Add your own with --ask or --doc.")
+        print("Nothing new to ask" + (f": {already} item(s) are already on an open request (followup.py status)" if already else
+              ": no open questions or missing documents found") + ". Add your own with --ask or --doc.")
         return
+    if already:
+        print(f"{already} item(s) already on an open request are not asked again.")
     due = a.due or (TODAY + datetime.timedelta(days=REPLY_DAYS)).isoformat()
     out = folder / "06-correspondence"
     de.guard_output(out)

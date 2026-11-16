@@ -18,6 +18,7 @@ Guarantees:
   - Document content is data. Nothing in it is followed as an instruction.
   - Output/ receives only a plain-English Excel sheet. The JSON stays in .extraction/.
 """
+import logging
 import argparse
 import csv
 import datetime
@@ -33,6 +34,18 @@ import time
 import unicodedata
 import xml.etree.ElementTree as ET
 from difflib import SequenceMatcher
+
+
+class _QuietPadding(logging.Filter):
+    """pypdf logs 'Ignoring padding error' for every IRCC form it opens (their encryption is padded oddly); it is harmless.
+    Only that message is dropped, and only on pypdf's two decryption loggers: every other warning still shows."""
+
+    def filter(self, record):
+        return "Ignoring padding error" not in record.getMessage()
+
+
+for _name in ("pypdf._crypt_providers._cryptography", "pypdf._crypt_providers._pycryptodome"):
+    logging.getLogger(_name).addFilter(_QuietPadding())
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 WORK_DIR = REPO / ".extraction"
@@ -120,7 +133,9 @@ TYPE_FIELDS = {
                    ("taxable_income", r"taxable income", "text"), ("tax_paid", r"(?:tax paid|total tax)", "text")],
     "school_record": [("institution", r"(?:institution|school|college|university|board)", "text"), ("program", r"(?:program(?:me)?|degree|course|class)", "text"),
                       ("issue_date", r"(?:date of issue|issue date|date)", "date"), ("result", r"(?:result|GPA|CGPA|grade|division)", "text")],
-    "employment_letter": [("job_title", r"(?:job title|position|title)", "text"), ("salary", r"(?:annual salary|salary|hourly wage|wage)", "text"), ("hours_per_week", r"(?:hours per week|weekly hours|hours)", r"\d{1,2}(?:\.\d)?"), ("start_date", r"(?:start date|date of hire|hired on|employed since)", "date"), ("noc", r"NOC(?: code)?", r"\d{5}")],
+    "employment_letter": [("job_title", r"(?:job title|position|title)", "text"), ("salary", r"(?:annual salary|salary|hourly wage|wage)", "text"), ("hours_per_week", r"(?:hours per week|weekly hours|hours)", r"\d{1,2}(?:\.\d)?"), ("start_date", r"(?:start date|date of hire|hired on|employed since)", "date"), ("noc", r"NOC(?: code)?", r"\d{5}"),
+                          ("end_date", r"(?:end date|last day of (?:work|employment)|employed until|date of leaving)", "date"),
+                          ("employer", r"(?:employer|company(?: name)?|organi[sz]ation)", "text")],
     "insurance_policy": [("insurer", r"(?:insurer|underwriter|underwritten by|insurance company|issued by)", "text"), ("policy_number", r"(?:policy|certificate) (?:no\.?|number|#)", r"[A-Z0-9-]{4,24}"),
                          ("coverage_amount", r"(?:sum insured|coverage amount|amount of coverage|emergency (?:medical )?coverage|maximum (?:coverage|benefit)|policy (?:maximum|limit)|benefit (?:maximum|limit))", "money"),
                          ("coverage_start", r"(?:effective date|coverage start(?: date)?|start date|(?:coverage|policy|valid) from)", "date"),
@@ -178,6 +193,23 @@ def country_name(code):
         with COUNTRIES.open(encoding="utf-8", newline="") as f:
             _COUNTRY.update({r["code"]: r["ircc_name"] for r in csv.DictReader(f)})
     return _COUNTRY.get((code or "").strip().upper(), code)
+
+
+COUNTRY_ALIASES = {"uae": "ARE", "u.a.e.": "ARE", "emirates": "ARE", "usa": "USA", "u.s.a.": "USA", "us": "USA", "united states": "USA",
+                   "america": "USA", "uk": "GBR", "u.k.": "GBR", "united kingdom": "GBR", "britain": "GBR", "great britain": "GBR", "england": "GBR"}
+
+
+def known_country(text):
+    """The IRCC name of a country written as a name, a code (BGD) or a common short form (UAE), or None if it isn't a country."""
+    t = str(text or "").strip().strip(".").strip()
+    if not t:
+        return None
+    country_name("")  # load the list
+    by_name = {v.lower(): v for v in _COUNTRY.values()}
+    if t.lower() in by_name:
+        return by_name[t.lower()]
+    code = COUNTRY_ALIASES.get(t.lower()) or (t.upper() if t.upper() in _COUNTRY else None)
+    return _COUNTRY.get(code) if code else None
 
 
 def mask(value):
@@ -2219,8 +2251,75 @@ def cross_check(docs):
             if not get(d, "family_size"):
                 flag(out, "MEDIUM", "loi_family_size", f"{d['file']}: no family size found in the letter. IRCC requires the number of people counted and their list", d)
     pgp_income_check(docs, out)
+    out += employment_dates(docs)
     order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
     return sorted(out, key=lambda x: order[x["severity"]])
+
+
+def period_of(text):
+    """(first, last) dates in a pay period such as '2015-01-01 to 2015-01-31' or 'January 2015', or (None, None)."""
+    t = str(text or "")
+    found = [parse_date(m.group(0))[0] for m in re.finditer(DATE_RX, t, re.I)]
+    found = [datetime.date.fromisoformat(x) for x in found if x]
+    if found:
+        return min(found), max(found)
+    m = re.search(rf"({MON})\.?\s+(\d{{4}})", t, re.I) or re.search(r"\b(\d{4})-(\d{2})\b", t)
+    if m:
+        try:
+            if m.group(1).isdigit():
+                y, mo = int(m.group(1)), int(m.group(2))
+            else:
+                y, mo = int(m.group(2)), MONTHS[m.group(1).lower()[:3]]
+            first = datetime.date(y, mo, 1)
+            last = (first.replace(day=28) + datetime.timedelta(days=4)).replace(day=1) - datetime.timedelta(days=1)
+            return first, last
+        except (ValueError, KeyError):
+            pass
+    return None, None
+
+
+def same_employer(a, b):
+    """True when two employer names share a real word (or either is missing). 'LLC', 'Ltd' and the like don't count."""
+    if not a or not b:
+        return True
+    common = {"llc", "ltd", "limited", "inc", "co", "company", "corp", "the", "and", "group", "pvt", "plc"}
+    wa = {w for w in re.findall(r"[a-z]{3,}", a.lower()) if w not in common}
+    wb = {w for w in re.findall(r"[a-z]{3,}", b.lower()) if w not in common}
+    return bool(wa & wb) or not wa or not wb
+
+
+def employment_dates(docs):
+    """Payslips and labour cards dated outside the employment letter's dates, for the same person and employer."""
+    out = []
+    s40 = "possible misrepresentation (IRPA s.40): ask the client before filing"
+    letters = [d for d in docs if d.get("doc_type") == "employment_letter"]
+    for other in docs:
+        kind = other.get("doc_type")
+        if kind not in ("pay_stub", "labour_card"):
+            continue
+        name = doc_name(other)
+        employer = (get(other, "employer") or [{}])[0].get("value", "")
+        mine = [l for l in letters if (not name or not doc_name(l) or same_person(name, doc_name(l)))
+                and same_employer(employer, (get(l, "employer") or [{}])[0].get("value", ""))]
+        if len(mine) != 1:
+            continue  # no letter, or several jobs that can't be told apart: nothing compared
+        letter = mine[0]
+        start = next((iso(f) for f in get(letter, "start_date") if iso(f)), None)
+        end = next((iso(f) for f in get(letter, "end_date") if iso(f)), None)
+        if kind == "pay_stub":
+            first, last = period_of((get(other, "pay_period") or [{}])[0].get("value", ""))
+            what = f"pay period {first} to {last}"
+        else:
+            first = next((iso(f) for f in get(other, "issue_date") if iso(f)), None)
+            last = next((iso(f) for f in get(other, "expiry_date") if iso(f)), None)
+            what = f"labour card valid {first or '?'} to {last or '?'}"
+        if start and last and last < start:
+            flag(out, "HIGH", "employment_dates", f"{other['file']}: {what} is before the employment letter's start date {start} ({letter['file']}). {s40}", other, letter)
+        elif end and first and first > end:
+            flag(out, "HIGH", "employment_dates", f"{other['file']}: {what} is after the employment letter's end date {end} ({letter['file']}). {s40}", other, letter)
+        elif kind == "pay_stub" and start and first and first < start:
+            flag(out, "HIGH", "employment_dates", f"{other['file']}: {what} starts before the employment letter's start date {start} ({letter['file']}). {s40}", other, letter)
+    return out
 
 
 # ---- output ----

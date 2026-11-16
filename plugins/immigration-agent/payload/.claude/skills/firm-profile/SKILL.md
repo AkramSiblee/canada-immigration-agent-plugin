@@ -16,6 +16,7 @@ Speak plainly: the user is a consultant, not a programmer.
 2. If the user wants one, ask one question at a time:
    - Required for agreements: full name; RCIC licence number (R + 6 digits); business address; phone; email; incapacity plan (who takes over the files if they cannot continue: successor's name, licence number, contact).
    - Optional: business name, website, logo (path to an image file), own complaints procedure, own confidentiality wording, language of service.
+   - If the full name has more than two words, ask which part is the family name and save it with `--family-name SURNAME`: IMM 5476 keeps the family and given names in separate boxes, and the agent never splits a longer name by guessing. The address parts can also be given (`--address-unit`, `--address-streetnum`, `--address-streetname`, `--address-city`, `--address-province`, `--address-postalcode`, `--address-country`) when the address isn't a standard Canadian one.
    - The user may skip anything. Never invent or guess any detail.
 3. Save with `python3 scripts/firm.py setup --name "..." --rcic R123456 ...` (only the flags given), then show the result of `firm.py show`.
 4. To change one detail later, run `firm.py setup` with just that flag.

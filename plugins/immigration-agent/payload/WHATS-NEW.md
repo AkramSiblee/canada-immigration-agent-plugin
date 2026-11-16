@@ -2,6 +2,15 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.2
+- The client questionnaire now reaches the forms: work history, education and countries lived in are saved row by row, so /autofill fills those tables; "Calgary, Alberta" style answers fill the province and city boxes; job duties fill the duties box. A Yes to education or previous countries is only written when at least one row is filled, and answers too long for a box are reported, never cut short.
+- /autofill: "No expiry" leaves the expiry date blank; "Not required" is never written in the PAL/TAL or CAQ number box; better suggestions when an answer isn't on a form's list; IMM 5476 tells you to set your family name once when your name has more than two words.
+- Worksheets: "If yes" questions show "Not needed" when the question before them is answered No. /follow-up now asks every open question (other names, previous marriage) and doesn't repeat what's already on an open request.
+- Readiness checklist: filled forms are "Prepared, not yet signed", not missing. Final check: a Yes to a refusal is "Confirm" when the refusal letter is already on file.
+- /extract flags payslips and labour cards dated outside the employment letter's dates (possible misrepresentation).
+- /quote gives open work permits to the spouse, never to a principal on an employer-specific permit.
+- The "Ignoring padding error" messages are gone.
+
 ## 1.9.1
 - The agent now updates itself. When you start a conversation, it checks for a newer version once a day and, if there is one, downloads it, checks every file, and installs it into your agent folder. You see "Immigration Agent updated" with what's new. No /plugin steps, no other software. Your client files are never changed, and any file you edited is backed up first.
 - /immigration-agent:update installs the newest version straight away.

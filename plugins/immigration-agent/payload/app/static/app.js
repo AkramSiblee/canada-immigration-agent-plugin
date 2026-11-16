@@ -415,6 +415,7 @@ const pages = {
 // ---- Document checklist: progress summary on top, the full checklist below ----
 const STATES = {
   received: { label: "Received", tone: "ok" },
+  prepared: { label: "Prepared, not yet signed", tone: "Soon" },
   missing: { label: "Still missing", tone: "Urgent" },
   confirm: { label: "To confirm", tone: "Soon" },
   "not-needed": { label: "Not needed", tone: "done" },
