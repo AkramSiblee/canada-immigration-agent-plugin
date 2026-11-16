@@ -403,7 +403,7 @@ def main():
             print("This is the agent's source folder (where releases are built). It is never synced. Open the firm's agent folder instead.")
         return 0 if a.hook else 1
     state = load_state(ws)
-    if a.status and state is not None and not os.environ.get(DELEGATED):
+    if a.status and state is not None:
         root, got = downloaded(ws)  # a newer release installed here: it reports on itself
         if root and vtuple(got) > vtuple(version):
             return delegate(root, ["--status"])
@@ -424,17 +424,21 @@ def main():
     if a.update and state is None:
         print(f"This folder is not an agent folder yet: {ws}. Run the setup command here first.")
         return 1
-    if not os.environ.get(DELEGATED):
-        root, got = downloaded(ws)  # a newer release fetched earlier: its own updater installs it
-        if root and vtuple(got) > vtuple(version):
-            return delegate(root, ["--init" if a.update else args[0]])
-        latest = check_latest(ws, version, force=a.update)
-        if latest and vtuple(latest) > vtuple(version) and vtuple(latest) > vtuple((state or {}).get("version")) \
-                and os.environ.get("IMMIGRATION_AGENT_NO_AUTO_UPDATE") != "1" and os.environ.get("IMMIGRATION_AGENT_NO_UPDATE_CHECK") != "1":
-            root, why = download_release(ws, latest)
-            if root:
-                return delegate(root, ["--init" if a.update else args[0]])
+    # The newest release wins: one downloaded earlier, or a newer one on GitHub (fetched now). Its own updater installs it.
+    # Every updater does this check, including one started by an older updater, so a folder never stops at a release it
+    # downloaded once. Versions only go up, so this ends: the newest release finds nothing newer and installs itself.
+    root, got = downloaded(ws)
+    newest = got if root and vtuple(got) > vtuple(version) else version
+    latest = check_latest(ws, version, force=a.update)
+    if latest and vtuple(latest) > vtuple(newest) and vtuple(latest) > vtuple((state or {}).get("version")) \
+            and os.environ.get("IMMIGRATION_AGENT_NO_AUTO_UPDATE") != "1" and os.environ.get("IMMIGRATION_AGENT_NO_UPDATE_CHECK") != "1":
+        fetched, why = download_release(ws, latest)
+        if fetched:
+            root, newest = fetched, latest
+        else:
             check_latest.why = why
+    if root and vtuple(newest) > vtuple(version):
+        return delegate(root, ["--init" if a.update else args[0]])
     if a.update:
         a.init = True
     first = state is None

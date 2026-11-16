@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.4
+- Automatic updates keep working after the first one. Before, an agent folder that had updated itself once stopped at that version.
+
 ## 1.9.3
 - Family members are no longer mixed up. Before, two people whose names shared two words (for example two brothers whose names both start with Md and end with the same family name, or a mother and daughter with the same two-word family name) could be treated as one person, so one person's answers could reach the other's forms. Now names must match fully (middle names and word order don't matter), and prefixes such as Md, Mohammad or Syed don't count. Close spellings are still flagged for you to check.
 - "Check for updates" (/immigration-agent:update) reports correctly after the agent has updated itself.
