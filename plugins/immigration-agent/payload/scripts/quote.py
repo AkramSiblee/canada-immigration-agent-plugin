@@ -10,8 +10,11 @@ Usage:
   python3 scripts/quote.py calc ... (same options as make, prints the numbers only)
 
 PROGRAM is one of: express-entry, pnp, spousal, pgp, visitor, super-visa, study, work, citizenship, pr-card (or text that matches one).
---people counts everyone applying for visas and permits (each pays); --spouse and --children are for permanent residence;
---people and --minors for citizenship (adults = people - minors).
+--spouse and --children are for permanent residence, and for visas and permits (each family member is priced by their own
+application). --member role:application[:age] states one family member exactly, e.g. --member spouse:owp:34 --member child:study:12
+(applications: visitor, super-visa, study, work, owp). Without --member, a worker's spouse is assumed to need an open work
+permit and children a visitor visa; the quote says so. --people (visas and permits) counts everyone when roles aren't known;
+for citizenship, --people and --minors (adults = people - minors).
 
 Guarantees:
   - IRCC fees come from templates/quote-fees.csv, taken from knowledge/11-forms-fees-processing/fee-schedule.md (each row dated).
@@ -95,8 +98,85 @@ def tax():
         return None, ""
 
 
+TEMPORARY = {"visitor", "super-visa", "study", "work"}
+APP_LABEL = {"visitor": "visitor visa", "super-visa": "super visa", "study": "study permit", "work": "work permit", "owp": "open work permit"}
+BIOMETRICS_KB = de.REPO / "knowledge" / "05-temporary-residence" / "flagpoling-biometrics-medicals.md"
+
+
+def biometrics_ages():
+    """(youngest who gives biometrics, oldest), from the exemptions in the knowledge base ('children under 14', 'over 79')."""
+    text = BIOMETRICS_KB.read_text(encoding="utf-8") if BIOMETRICS_KB.exists() else ""
+    low, high = re.search(r"children under (\d+)", text), re.search(r"over (\d+)\*?\*?\s*\(", text) or re.search(r"over (\d+)", text)
+    return (int(low.group(1)) if low else None), (int(high.group(1)) if high else None)
+
+
+def members(prog, a):
+    """[(who, application, age or None, assumed)] for a visa or permit application, principal first."""
+    own = "owp" if prog["key"] == "work" and (a.open_work_permit or 0) > 0 else prog["key"]  # --open-work-permit: the principal's own permit is open
+    out = [("principal applicant", own, getattr(a, "age", None), False)]
+    given = getattr(a, "member", None) or []
+    for i, m in enumerate(given, 1):
+        bits = [b.strip() for b in m.split(":")]
+        app = bits[1].lower() if len(bits) > 1 and bits[1] else ""
+        if app not in APP_LABEL:
+            die(f"--member {m}: give role:application[:age], application one of {', '.join(APP_LABEL)}")
+        age = int(bits[2]) if len(bits) > 2 and bits[2].isdigit() else None
+        out.append((bits[0] or f"family member {i}", app, age, False))
+    if given:
+        return out
+    spouse_app = "owp" if prog["key"] == "work" else prog["key"] if prog["key"] in ("visitor", "super-visa") else "visitor"
+    child_app = prog["key"] if prog["key"] in ("visitor", "super-visa") else "visitor"
+    if a.spouse:
+        out.append(("spouse or partner", spouse_app, None, spouse_app != prog["key"] or prog["key"] == "work"))
+    for i in range(a.children or 0):
+        out.append((f"child {i + 1}", child_app, None, child_app != prog["key"]))
+    extra = (a.people or 0) - len(out)
+    for i in range(max(0, extra)):  # people with no role given
+        out.append((f"family member {i + 1}", child_app, None, child_app != prog["key"]))
+    return out
+
+
+def temporary_lines(prog, a):
+    """IRCC fees for a family's visas and permits, each person priced by their own application."""
+    programs = gov_rows()
+    people = members(prog, a)
+    out = []
+    by_app = {}
+    for who, app, age, assumed in people:
+        by_app.setdefault(app, []).append((who, age, assumed))
+    for app, group in by_app.items():
+        key = "work" if app == "owp" else app
+        lines = programs[key]["lines"]
+        each = next(r for r in lines if r["who"] == "each")
+        n = len(group)
+        total = Decimal(each["amount"]) * n
+        if each["cap"] and total > Decimal(each["cap"]):
+            total = Decimal(each["cap"])
+        names = ", ".join(w + (f" (age {g})" if g is not None else "") + (" - assumed" if s else "") for w, g, s in group)
+        cap_note = f" (family maximum ${each['cap']})" if each["cap"] else ""
+        out.append((f"{APP_LABEL[app].capitalize()}: ${each['amount']} each{cap_note}: {names}", n, total.quantize(CENT), each["last_verified"]))
+        if app == "owp":
+            holder = next(r for r in lines if r["who"] == "owp")
+            out.append((f"{holder['description']}: {names}", n, (Decimal(holder["amount"]) * n).quantize(CENT), holder["last_verified"]))
+    bio = next(r for r in programs[prog["key"]]["lines"] if r["who"] == "biometrics")
+    low, high = biometrics_ages()
+    giving = [p for p in people if p[2] is None or ((low is None or p[2] >= low) and (high is None or p[2] <= high))]
+    exempt = len(people) - len(giving)
+    if giving:
+        total = min(Decimal(bio["amount"]) * len(giving), Decimal(bio["cap"])) if bio["cap"] else Decimal(bio["amount"]) * len(giving)
+        note = f" ({exempt} exempt by age: under {low} or over {high})" if exempt else ""
+        out.append((bio["description"] + note, len(giving), total.quantize(CENT), bio["last_verified"]))
+    assumed = [f"{w}: {APP_LABEL[app]}" for w, app, _, s in people if s]
+    return out, len(people), assumed
+
+
 def gov_lines(prog, a):
     """[(description, count, amount)] for IRCC's fees."""
+    if prog["key"] in TEMPORARY:
+        lines, people, assumed = temporary_lines(prog, a)
+        gov_lines.assumed = assumed
+        return lines, people
+    gov_lines.assumed = []
     people = a.people if a.people else 1 + (1 if a.spouse else 0) + (a.children or 0)
     out = []
     for r in prog["lines"]:
@@ -127,7 +207,8 @@ def numbers(a):
     rate, tax_name = tax()
     tax_amount = (prof_total * rate / 100).quantize(CENT) if rate else Decimal("0")
     gov_total = sum((x for *_, x, _ in gov), Decimal("0"))
-    return {"prog": prog, "fees": fees, "gov": gov, "prof": prof, "prof_total": prof_total, "tax": tax_amount, "tax_name": tax_name, "rate": rate,
+    return {"assumed": getattr(gov_lines, "assumed", []), "people": members(prog, a) if prog["key"] in TEMPORARY else [],
+            "prog": prog, "fees": fees, "gov": gov, "prof": prof, "prof_total": prof_total, "tax": tax_amount, "tax_name": tax_name, "rate": rate,
             "gov_total": gov_total, "total": prof_total + tax_amount + gov_total, "checked": max((d for *_, d in gov), default="")}
 
 
@@ -141,6 +222,10 @@ def show(n):
         print(f"  IRCC: {d}{f' x{c}' if c > 1 else ''}: {dollars(x)}")
     print(f"  Professional fees {dollars(n['prof_total'] + n['tax'])} + IRCC fees {dollars(n['gov_total'])} = {dollars(n['total'])}")
     print(f"  IRCC fees from the fee schedule checked {n['checked']}.")
+    if n["people"]:
+        print("  Each person's application: " + "; ".join(f"{w}: {APP_LABEL[app]}" for w, app, _, _ in n["people"]))
+    if n["assumed"]:
+        print("  Assumed (confirm, or give --member role:application[:age]): " + "; ".join(n["assumed"]))
 
 
 def cmd_fee(a):
@@ -178,6 +263,14 @@ def cmd_calc(a):
     show(numbers(a))
 
 
+def who_applies(n):
+    """The sentence in the quote that says which application each person's IRCC fee is for."""
+    if not n["people"]:
+        return ""
+    each = "; ".join(f"{w}, {APP_LABEL[app]}" for w, app, _, _ in n["people"])
+    return f"IRCC fees assume each person applies for: {each}. If anyone needs a different application, the IRCC fees change."
+
+
 def cmd_make(a):
     import firm
     n = numbers(a)
@@ -202,7 +295,8 @@ def cmd_make(a):
              "gov_lines": [f"{d}{f' (x{c})' if c > 1 else ''}: {dollars(x)}" for d, c, x, _ in n["gov"]],
              "totals": [f"Our fees{' with tax' if n['tax'] else ''}: {dollars(n['prof_total'] + n['tax'])}", f"IRCC fees: {dollars(n['gov_total'])}", f"Total: {dollars(n['total'])}"],
              "schedule": [s.strip() for s in (n["fees"].get("schedule") or "").split(";") if s.strip()] or ["As set out in the service agreement"],
-             "fees_checked": n["checked"], "valid_days": str(a.valid), "notes": a.notes or ""}
+             "fees_checked": n["checked"], "valid_days": str(a.valid),
+             "notes": " ".join(x for x in (who_applies(n), a.notes or "") if x)}
     if not folder:
         terms["client"] = {"name": name}
     path, _ = firm.draft("quote", folder, terms, out)
@@ -220,6 +314,8 @@ def cmd_make(a):
 def add_family(x):
     x.add_argument("--program", required=True); x.add_argument("--spouse", action="store_true"); x.add_argument("--children", type=int, default=0)
     x.add_argument("--people", type=int, default=0); x.add_argument("--minors", type=int, default=0); x.add_argument("--open-work-permit", type=int, default=0)
+    x.add_argument("--member", action="append", help="one family member of a visa or permit application: role:application[:age], e.g. child:study:12")
+    x.add_argument("--age", type=int, help="the principal applicant's age (biometrics exemptions)")
 
 
 def main():

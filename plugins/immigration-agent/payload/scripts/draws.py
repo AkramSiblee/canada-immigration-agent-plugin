@@ -254,7 +254,22 @@ def cmd_match(a):
     rnd = next((r for r in rounds if r["number"] == a.round), None) if a.round else rounds[0]
     if not rnd:
         die(f"round #{a.round} isn't among the {len(rounds)} saved rounds")
-    print_matches(rnd, match_round(rnd))
+    if not getattr(a, "case", None):
+        print_matches(rnd, match_round(rnd))
+        return
+    folder = cs.find(a.case)  # one file: its score against the round, however far from the cut-off
+    info, crs, eligible, _ = profile_of(folder)
+    print(describe(rnd))
+    who = f"{info.get('case_id', folder.name[:8])} {info.get('client', '')}"
+    if crs is None:
+        print(f"  {who}: no CRS score recorded. Record it: draws.py profile {a.case} --crs SCORE")
+    elif rnd["category"] != "general" and rnd["category"] not in eligible:
+        print(f"  {who}: recorded CRS {crs}, but the file isn't marked eligible for this round's category ({rnd['category']}). draws.py profile {a.case} --eligible ...")
+    else:
+        gap = crs - rnd["crs"]
+        print(f"  {who}: recorded CRS {crs} ({f'{gap:+d} over the cut-off' if gap >= 0 else f'{-gap} below'})")
+        if gap >= 0:
+            print("  Check the client's IRCC account for an invitation. The ITA period is 60 days.")
 
 
 def cmd_pnp_add(a):
@@ -309,7 +324,7 @@ def main():
     x = s.add_parser("profile"); x.add_argument("case"); x.add_argument("--crs", type=int); x.add_argument("--eligible"); x.add_argument("--profile-date"); x.add_argument("--pnp"); x.set_defaults(fn=cmd_profile)
     x = s.add_parser("check"); x.set_defaults(fn=cmd_check)
     x = s.add_parser("latest"); x.add_argument("--n", type=int, default=10); x.set_defaults(fn=cmd_latest)
-    x = s.add_parser("match"); x.add_argument("--round", type=int); x.set_defaults(fn=cmd_match)
+    x = s.add_parser("match"); x.add_argument("case", nargs="?", help="one file only (default: every open file)"); x.add_argument("--round", type=int); x.set_defaults(fn=cmd_match)
     x = s.add_parser("pnp-add"); x.add_argument("--province", required=True); x.add_argument("--stream", required=True); x.add_argument("--date", required=True)
     x.add_argument("--min-score", type=int, required=True); x.add_argument("--note"); x.set_defaults(fn=cmd_pnp_add)
     x = s.add_parser("categories"); x.set_defaults(fn=cmd_categories)

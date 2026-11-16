@@ -15,4 +15,7 @@ Request: $ARGUMENTS
    "recording_consent": "yes". Then `python3 scripts/consult_notes.py save --notes FILE --case CASE --transcript TRANSCRIPT`
    (or `--prospect ID` before a file is opened). It saves a Word record in 04-advice, adds the advice to case.md's "Advice given" table,
    adds the follow-ups as deadlines and files the transcript. Delete the scratchpad file.
+Typed notes the consultant wrote (.txt, .md, .docx) can be filed as they are: `consult_notes.py save --notes NOTES.txt --case CASE
+--date YYYY-MM-DD [--method ...] [--attendees ...]`. Lines starting "Advice:" or "Goal:" are picked out; the rest are kept as facts, with
+the risk scan. If no line is marked as advice, nothing is added to "Advice given": mark it and file again, or use the JSON route.
 Never use this for an IRB narrative, statement or evidence: those are the person's own words (rule 7).

@@ -113,7 +113,8 @@ def save_profile(p):
 
 def cmd_setup(a):
     p = load_profile()
-    for key in ("name", "rcic", "business", "address", "phone", "email", "website", "incapacity_plan", "complaints", "confidentiality", "technology_notice", "language"):
+    for key in ("name", "rcic", "business", "address", "phone", "email", "website", "incapacity_plan", "complaints", "confidentiality", "technology_notice", "language",
+                "family_name", "address_unit", "address_streetnum", "address_streetname", "address_city", "address_province", "address_postalcode", "address_country"):
         value = getattr(a, key)
         if value is not None:
             p["complaints_procedure" if key == "complaints" else key] = value.strip()
@@ -452,6 +453,10 @@ def main():
     s = p.add_subparsers(dest="cmd", required=True)
     x = s.add_parser("setup")
     for flag in ("name", "rcic", "business", "address", "phone", "email", "website", "logo", "incapacity-plan", "complaints", "confidentiality", "technology-notice", "language"):
+        x.add_argument(f"--{flag}")
+    # optional: IMM 5476 keeps your name and address in separate boxes. Without these, a two-word name and a standard
+    # Canadian address ('Suite 300, 10 Main St, Ottawa, ON K1P 5G4') are split automatically
+    for flag in ("family-name", "address-unit", "address-streetnum", "address-streetname", "address-city", "address-province", "address-postalcode", "address-country"):
         x.add_argument(f"--{flag}")
     x.add_argument("--no-technology-notice", action="store_true")
     x.set_defaults(fn=cmd_setup)

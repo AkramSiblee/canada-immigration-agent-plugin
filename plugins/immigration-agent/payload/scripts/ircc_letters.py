@@ -68,6 +68,10 @@ IRCC_RX = r"immigration,? refugees and citizenship|\bIRCC\b|citoyennet[ée] cana
 APP_RX = r"\b([BEFGHNSVWX]\d{9})\b"
 UCI_RX = r"\b(\d{4}-?\d{4}(?:-?\d{2})?)\b"
 WITHIN_RX = r"within\s+(\d{1,3}|" + "|".join(WORDS) + r")\s*(?:\(\d{1,3}\)\s*)?(calendar\s+|business\s+)?days?"
+# "You have 30 days from the date of this letter", "30 calendar days after receipt of this letter"
+FROM_RX = (r"(\d{1,3}|" + "|".join(WORDS) + r")\s*(?:\(\d{1,3}\)\s*)?(calendar\s+|business\s+)?days?\s+(?:from|of|after|following)\s+"
+           r"(?:the\s+)?(date\s+(?:of|on)\s+(?:this|the)\s+(?:letter|request|notice|e-?mail|message)|this\s+(?:letter|request|notice)|"
+           r"(?:the\s+)?(?:receipt|date\s+you\s+receive(?:d)?)(?:\s+of)?(?:\s+this\s+(?:letter|request|notice))?)")
 BY_RX = rf"(?:by|no later than|on or before|before|deadline(?: is|:)?|due(?: date)?(?: is|:)?)\s+({de.DATE_RX})"
 
 
@@ -146,6 +150,22 @@ def time_limits(text, sent):
             out.append((sent + datetime.timedelta(days=n), quote, f"{n} days from the letter date {sent}"))
         else:
             out.append((None, quote, f"{n} {'business ' if business else ''}days: count them from the date the letter gives"))
+    taken = [m.span() for m in re.finditer(WITHIN_RX, flat, re.I)]
+    for m in re.finditer(FROM_RX, flat, re.I):
+        if any(a <= m.start() < b or m.start() <= a < m.end() for a, b in taken):
+            continue  # "within 30 days of the date of this letter": already counted above
+        g = m.group(1).lower()
+        n = int(g) if g.isdigit() else WORDS[g]
+        if not 1 <= n <= 365:
+            continue
+        business = bool(m.group(2) and "business" in m.group(2).lower())
+        from_receipt = "receiv" in m.group(3).lower() or "receipt" in m.group(3).lower()
+        quote = around(flat, m.start(), m.end())
+        if sent and not business and not from_receipt:
+            out.append((sent + datetime.timedelta(days=n), quote, f"{n} days from the letter date {sent}"))
+        else:
+            out.append((None, quote, f"{n} {'business ' if business else ''}days from {'receipt' if from_receipt else 'the date the letter gives'}: "
+                                     "confirm the date the client received it, then count"))
     for m in re.finditer(BY_RX, flat, re.I):
         day = iso(m.group(1))
         if day and (not sent or day > sent):

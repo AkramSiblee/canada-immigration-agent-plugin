@@ -1,4 +1,5 @@
-"""Guided client questionnaire (intake form version 2) for five programs: visitor, study, work, Express Entry, family / PR.
+"""Guided client questionnaire (intake form version 2) for five programs (visitor, study, work, Express Entry, family / PR),
+plus a short supplement for each child who needs their own application.
 
 Each program's questionnaire is a fillable PDF with a cover page, plain-language numbered sections, examples,
 "why we ask" notes, one card per family member, one row per period in history tables, the background questions
@@ -21,7 +22,9 @@ PICK = "Select"
 CHECKED_ON = "2026-11-11"
 # Extra forms a visa office may ask for that this questionnaire already covers, so it can be used for them too.
 COVERS_EXTRA = {"imm5707": "IMM 5707 (Family information): the family cards, marriage questions and present occupation cover it"}
-BOX_GROUPS = {"mailing_address", "contacts_in_canada", "current_residence"}  # answers written box by box on IRCC forms
+BOX_GROUPS = {"mailing_address", "contacts_in_canada", "current_residence", "other_name"}  # answers written box by box on IRCC forms
+# Yes/No questions that older questionnaires asked as free text: the answer is split into Yes/No and details on import
+SPLIT_ON_IMPORT = {"other_name": "other_name_details", "previous_countries": "previous_countries_details"}
 
 PROGRAMS = {
     "visitor": {"title": "Visitor visa", "forms": ["imm5257", "imm5645"], "background": "imm5257"},
@@ -29,6 +32,7 @@ PROGRAMS = {
     "work": {"title": "Work permit", "forms": ["imm1295", "imm5645"], "background": "imm1295"},
     "express-entry": {"title": "Express Entry (permanent residence)", "forms": ["imm0008", "imm5669", "imm5406", "imm5562"], "background": "imm5669"},
     "family-pr": {"title": "Family sponsorship / permanent residence", "forms": ["imm0008", "imm5669", "imm5406", "imm5562", "imm1344"], "background": "imm5669"},
+    "child": {"title": "Child's own application (supplement)", "forms": ["imm1294", "imm5257"], "background": "imm1294"},
 }
 
 
@@ -74,7 +78,9 @@ def about_you():
     return ("About you", "So we can match your answers to your passport and identity documents.", [
         q("family_name", "Family name (surname), exactly as in your passport", example="ADEYEMI"),
         q("given_name", "Given name(s), exactly as in your passport", example="FOLAKE GRACE"),
-        q("other_name", "Any other names you have used (maiden name, nickname, other spellings)", "long", "Write None if you have not used any other name.", "Folake Bello (name before marriage)"),
+        q("other_name", "Have you ever used any other name (maiden name, nickname, other spellings)?", "yesno"),
+        q("other_name__FamilyName", "If yes: the other family name", help="Leave blank if not applicable.", example="BELLO (name before marriage)"),
+        q("other_name__GivenName", "If yes: the other given name(s), if different", help="Leave blank if not applicable."),
         q("name_native_script", "Your name in your own language's script (for example Arabic, Chinese, Cyrillic, Bengali or Hindi), if you write it differently", help="Leave blank if not applicable."),
         q("sex", "Sex", "choice", options=["Female", "Male", "Another gender"]),
         q("date_of_birth", "Date of birth", "date", DATE_HELP, "1972-03-20"),
@@ -83,13 +89,68 @@ def about_you():
         q("citizenship", "Country of citizenship (all of them, if more than one)", example="Nigeria"),
         q("current_residence", "Where do you live now, your status there, and since when?", "long",
           "Status means citizen, permanent resident, worker, student or visitor.", "United Arab Emirates, worker, since 2018-03"),
-        q("previous_countries", "In the last 5 years, have you lived in another country for more than 6 months?", "long",
-          "Give the country, your status and the dates, or write No.", "No"),
+        q("previous_countries", "In the last 5 years, have you lived in another country (not your citizenship or current residence) for more than 6 months?", "yesno"),
+        table("prevcor", "If yes: each country, your status there and the dates",
+              [("country", "Country", 2), ("status", "Status (worker, student, visitor...)", 2.5), ("from", "From (YYYY-MM-DD)", 1.6), ("to", "To", 1.6)], 3,
+              "Leave the table empty if you answered No.", summary="previous_countries_details"),
         q("native_language", "Native language (mother tongue)", example="Yoruba"),
         q("communicate_language", "Can you communicate in English or French?", "choice", options=["English", "French", "Both", "Neither"]),
         q("language_test_taken", "Have you taken an English or French test (IELTS, CELPIP, PTE Core, TEF, TCF)?", "yesno"),
-        q("national_id", "Do you have a national identity card?", "yesno", "Do not write the number here. Send a copy of the card with your documents."),
+    ])
+
+
+def identity():
+    return ("Passport and identity documents", "Copy these exactly from the documents. Your consultant checks every number against "
+            "the copies you send; the numbers are stored hidden (only the last 3 characters show).", [
+        q("passport_number", "Passport number", example="A01234567"),
+        q("passport_country", "Country that issued the passport", example="Bangladesh"),
+        q("passport_issue_date", "Passport issue date", "date", DATE_HELP),
+        q("passport_expiry_date", "Passport expiry date", "date", DATE_HELP),
+        q("national_id", "Do you have a national identity card?", "yesno"),
+        q("national_id_number", "If yes: national identity card number", help="Leave blank if not applicable."),
+        q("national_id_country", "If yes: country that issued it"),
+        q("national_id_issue_date", "If yes: issue date", "date", DATE_HELP),
+        q("national_id_expiry_date", "If yes: expiry date (blank if none)", "date", DATE_HELP),
         q("us_lpr", "Do you hold a United States green card (permanent residence)?", "yesno"),
+        q("us_lpr_number", "If yes: green card number", help="Leave blank if not applicable."),
+        q("us_lpr_expiry_date", "If yes: green card expiry date", "date", DATE_HELP),
+    ])
+
+
+def about_child():
+    return ("About the child", "One supplement per child who needs their own application (study permit or visitor visa). "
+            "A parent or legal guardian fills it in. The child's family members are taken from the parent's questionnaire.", [
+        q("family_name", "Child's family name (surname), exactly as in the passport"),
+        q("given_name", "Child's given name(s), exactly as in the passport"),
+        q("sex", "Sex", "choice", options=["Female", "Male", "Another gender"]),
+        q("date_of_birth", "Date of birth", "date", DATE_HELP),
+        q("birth_city", "City or town of birth"),
+        q("birth_country", "Country of birth"),
+        q("citizenship", "Country of citizenship"),
+        q("current_residence", "Where does the child live now, their status there, and since when?", "long", example="United Arab Emirates, resident, since 2018-03"),
+        q("relationship_to_principal", "The child is the applicant's", "choice", options=["Son", "Daughter", "Stepson", "Stepdaughter", "Adopted son", "Adopted daughter", "Other"]),
+        q("travelling_with", "Who will the child travel and live with in Canada?", "long", example="Both parents"),
+        q("other_parent_consent", "If only one parent is travelling: will the other parent sign a consent letter?", "choice", options=["Yes", "No", "Not applicable"]),
+    ])
+
+
+def child_school():
+    return ("Child's schooling", "For a study permit, or to show the child's ties at home for a visit.", [
+        q("current_school", "School the child attends now (name, city, country)", "long"),
+        q("current_grade", "Current grade or level", example="Grade 6"),
+        q("needs_study_permit", "Will the child study in Canada?", "yesno"),
+        q("school_name", "If yes: school in Canada", example="Edmonton Public Schools"),
+        q("dli_number", "If yes: DLI number, if the school has one (not needed for primary or secondary schools)"),
+        q("study_level", "If yes: level", "choice", options=["Primary", "Secondary", "Other"]),
+        q("study_field", "If yes: grade or program", example="Grade 7"),
+        q("study_from", "If yes: start date", "date", DATE_HELP),
+        q("study_to", "If yes: end date", "date", DATE_HELP),
+        q("tuition", "If yes: tuition for the first year, in Canadian dollars (0 if free)", example="0"),
+        q("room_board", "Living costs for one year, in Canadian dollars", example="6000"),
+        q("expenses_paid_by", "Who pays the child's costs?", "choice", options=["Parents", "Other family", "Scholarship", "Other"]),
+        q("custodian", "Under 17 and travelling without a parent: name of the custodian in Canada", "long"),
+        q("stay_from", "Visitor only: planned arrival date", "date", DATE_HELP),
+        q("stay_to", "Visitor only: planned departure date", "date", DATE_HELP),
     ])
 
 
@@ -287,6 +348,9 @@ DOCUMENTS = {
                       "Job offer letter or provincial nomination certificate, if you have one", "Marriage certificate and children's birth certificates",
                       "After an invitation: police certificates (each country of 6 months or more since age 18, last 10 years), medical exam, photos",
                       "Certified English or French translation of any document in another language"],
+    "child": ["Child's passport", "Child's birth certificate naming both parents", "Letter of acceptance from the school (study permit)",
+              "Custodianship declaration (IMM 5646), if under 17 and travelling without a parent", "Consent letter from a parent who is not travelling",
+              "Proof of funds for the child's costs", "Current school records or report card", "Certified English or French translation of any document in another language"],
     "family-pr": ["Passport (each family member)", "Birth certificate (each family member)", "Marriage certificate, or proof of living together for common-law",
                   "Divorce, annulment or death certificate for any earlier marriage", "Your sponsor's proof of status in Canada",
                   "Relationship evidence: photos together, messages, joint documents, visits", "Police certificates (each country of 6 months or more since age 18)",
@@ -296,7 +360,9 @@ DOCUMENTS = {
 
 def sections(program):
     """[(title, why, items)] for a program, in order."""
-    out = [about_you(), contact(), marital(), family(), education(), work_history(), history(), background(PROGRAMS[program]["background"]),
+    if program == "child":
+        return [about_child(), identity(), child_school(), background(PROGRAMS[program]["background"])]
+    out = [about_you(), identity(), contact(), marital(), family(), education(), work_history(), history(), background(PROGRAMS[program]["background"]),
            PROGRAM_SECTION[program]]
     return out
 
@@ -596,6 +662,14 @@ def collect(answers, program):
                         flags.append(f"{it['label'][:60]}: not a clear date. Not imported")
                         continue
                     v = iso
+                if it["kind"] == "yesno" and v not in YES_NO and it["key"] in SPLIT_ON_IMPORT:  # an older questionnaire's free text
+                    import autofill as af
+                    yn, details, _ = af.split_yes_no(it["key"], v)
+                    if yn:
+                        if details:
+                            facts.setdefault(SPLIT_ON_IMPORT[it["key"]], details)
+                        flags.append(f"{it['label'][:60]}: written as text, imported as {yn}{' with details' if details else ''}. Confirm")
+                        v = yn
                 if it["kind"] == "yesno" and v not in YES_NO:
                     flags.append(f"{it['label'][:60]}: not Yes or No. Not imported")
                     continue
@@ -666,6 +740,14 @@ def collect(answers, program):
         facts.setdefault("personal_history", facts["employment_history"])
     if "previous_applications" in facts:
         facts.setdefault("tr_previous_application", "Yes")
+    for key, details in (("previous_countries", "previous_countries_details"), ("other_name", "other_name.FamilyName")):
+        if facts.get(key) == "Yes" and not (facts.get(details) or facts.get("other_name.GivenName") and key == "other_name" or facts.get(SPLIT_ON_IMPORT[key])):
+            flags.insert(0, f"URGENT: '{key.replace('_', ' ')}' is Yes but no details were given")
+        if facts.get(key) == "No" and (facts.get(details) or key == "other_name" and facts.get("other_name.GivenName")):
+            flags.insert(0, f"URGENT: '{key.replace('_', ' ')}' is No but details were given. Check with the client (IRPA s.40)")
+    for key in ("national_id", "us_lpr"):
+        if facts.get(key) == "No" and facts.get(f"{key}_number"):
+            flags.insert(0, f"URGENT: '{key.replace('_', ' ')}' is No but a number was given. Check with the client")
     if facts.get("previous_relationship") is None and facts.get("marital_status") == "Single":
         facts["previous_relationship"] = "No"
     ticked = [d for i, d in enumerate(DOCUMENTS[program], 1) if str(answers.get(f"d__{i}", "")).strip().lower() in ("yes", "on", "1", "/yes", "true")]
@@ -681,4 +763,5 @@ def describe(program):
     secs = sections(program)
     n_q = sum(1 for _, _, items in secs for it in items if it["type"] == "q")
     n_t = sum(1 for _, _, items in secs for it in items if it["type"] == "table")
-    return f"{len(secs) + 2} sections, {n_q} questions, {n_t} tables, 11 family cards, {len(DOCUMENTS[program])} documents in the checklist"
+    n_p = sum(len(it["roles"]) for _, _, items in secs for it in items if it["type"] == "people")
+    return f"{len(secs) + 2} sections, {n_q} questions, {n_t} tables, {n_p} family cards, {len(DOCUMENTS[program])} documents in the checklist"

@@ -51,7 +51,39 @@ def item(priority, source, what, step):
     return {"priority": priority, "source": source, "what": what, "step": step}
 
 
-def default_forms(program, marital=""):
+VISA_OFFICES = de.REPO / "knowledge" / "05-temporary-residence" / "visitor-country-reference.md"
+COUNTRY_ALIASES = {"united arab emirates": "uae", "turkey": "türkiye", "turkiye": "türkiye", "cote d'ivoire": "ivory coast", "côte d'ivoire": "ivory coast",
+                   "central african republic": "car", "democratic republic of the congo": "drc", "cape verde": "cabo verde"}
+
+
+def family_form_for(residence):
+    """(imm5645 or imm5707, where the rule comes from) for someone applying from this country, from the visa-office table
+    in the knowledge base (the same rule the visitor checklist names). (None, why) when the table doesn't name one."""
+    country = de.country_name(str(residence).split(",")[0].strip()).strip().lower()
+    country = COUNTRY_ALIASES.get(country, country)
+    if not country or not VISA_OFFICES.exists():
+        return None, "country of residence not recorded"
+    for line in VISA_OFFICES.read_text(encoding="utf-8").splitlines():
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 4 or not cells[0].startswith("IMM 5"):
+            continue
+        listed = [c.strip(" *").lower() for c in re.sub(r"\*\*", "", cells[2]).split(",")]
+        if country not in listed:
+            continue
+        form = re.search(r"IMM (5645|5707)", cells[3])
+        only = re.search(r"residents of ([^)]+)\)", cells[3])
+        if form and (not only or only.group(1).strip().lower() == country):
+            return f"imm{form.group(1)}", f"{cells[0]} ({cells[1]} visa office), {VISA_OFFICES.name}"
+        return None, f"{cells[0]} names no family form: use the portal checklist"
+    return None, f"no local visa-office instruction for {residence} in {VISA_OFFICES.name}"
+
+
+def residence_of(folder, person):
+    client = fp.facts_from_file(folder / "client-facts.csv", person)
+    return fact(client, "current_residence.Country") or fact(client, "current_residence") or fact(client, "citizenship")
+
+
+def default_forms(program, marital="", residence=""):
     topics = al.topics_for(program)
     if re.search(r"super", program, re.I):
         topics.discard("pgp")  # a super visa is a visitor application, not a sponsorship
@@ -64,6 +96,10 @@ def default_forms(program, marital=""):
         forms[forms.index("cit0002")] = "cit0001"  # proof of citizenship, not a grant
     if "cit0002" in forms and re.search(r"minor|5\(2\)", program, re.I):
         forms[forms.index("cit0002")] = "cit0003"  # a minor's s.5(2) application
+    if "imm5645" in forms and residence:  # the visa office for the country the person applies from may name IMM 5707
+        chosen, _ = family_form_for(residence)
+        if chosen and chosen != "imm5645":
+            forms[forms.index("imm5645")] = chosen
     if forms and re.search(r"common.?law", f"{program} {marital}", re.I) and "imm5409" not in forms:
         forms.insert(len(forms) - 1 if forms[-1] == "imm5476" else len(forms), "imm5409")
     return forms
@@ -258,7 +294,7 @@ def letter_items(folder, docs):
             if path.suffix.lower() not in (".docx", ".pdf") or not re.search(LETTER_NAMES, path.name, re.I) or "readiness" in path.name:
                 continue
             try:
-                found = lc.check(lc.letter_text(path), docs)
+                found = lc.check(lc.letter_text(path), docs, lc.case_numbers(folder))
             except SystemExit:
                 out.append(item(TODO, "Letters", f"{path.name}: couldn't be read for the fact check", "Check its facts by hand"))
                 continue
@@ -385,9 +421,14 @@ def cmd_report(a):
     info = cs.read_case(folder)
     person = a.person or info.get("client", "")
     marital = fact(fp.facts_from_file(folder / "client-facts.csv", person), "marital_status")
-    forms = a.form or default_forms(info.get("program", ""), marital)
+    residence = residence_of(folder, person)
+    forms = a.form or default_forms(info.get("program", ""), marital, residence)
     report_path = fp.latest_report(folder / "03-documents" / "_extraction")
     items = []
+    if not a.form and {"imm5645", "imm5707"} & set(forms):
+        chosen, why = family_form_for(residence)
+        items.append(item(TODO, "Forms", f"Family information form: {(chosen or 'imm5645').upper()} ({why})",
+                          "Confirm against the visa-office instructions and the portal checklist"))
     if not forms:
         items.append(item(TODO, "Forms", f"No forms matched the program '{info.get('program', '')}'", "Run again with --form imm1234 for each form"))
     ws_items, counts, questions = worksheet_items(folder, person, forms, report_path)

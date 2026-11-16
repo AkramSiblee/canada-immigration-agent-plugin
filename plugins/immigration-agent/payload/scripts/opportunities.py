@@ -5,13 +5,17 @@
   python3 scripts/opportunities.py report [--days 120] [--out DIR] save Output/general/YYYY-MM-DD-client-opportunities.xlsx
   python3 scripts/opportunities.py consent CASE yes|no            record whether the client agreed to hear about future services
 
-What it looks for (only from dates already in the files):
+What it looks for (only from dates already in the files: client facts, case.md, the family table, the latest document
+extraction and validity.csv; each item says which date it used):
   - Citizenship: PR date known and 1,095 days reached, or reached within the window (travel-history.csv counted, as /presence does)
   - PR card: pr_card_expiry within 180 days or passed
   - Permit or status ending on a closed file (status_expiry): extension, PGWP, or a PR route
   - Study, PGWP or work files a year or more old: Canadian experience may now open CEC or a PNP stream
   - Express Entry: next birthday from age 30 lowers CRS age points; language test or profile running out
   - Family left behind: spouse, partner or child listed as not accompanying on a file where the client got PR
+  - Passport running out (no permit can run past it), and permits or visitor records read from the documents
+  - Children reaching 18 (own application and adult forms) or the dependent-child age limit (read from the knowledge base)
+  - An Express Entry profile date recorded in the facts (12-month life, from templates/validity-rules.csv)
 
 Guarantees:
   - Reads case files only. Nothing is sent and no file is changed (except 'consent', which sets contact_ok in case.md).
@@ -62,6 +66,90 @@ def facts(folder, client):
     return out
 
 
+PR_DATE_KEYS = ("pr_date", "landing_date", "pr_landing_date", "date_became_pr", "copr_date")
+PR_CARD_KEYS = ("pr_card_expiry", "pr_card_expiry_date")
+PERMIT_KEYS = ("status_expiry", "permit_expiry_date", "permit_expiry", "study_permit_expiry", "work_permit_expiry", "visitor_record_expiry")
+PERMIT_DOCS = ("study_permit", "work_permit", "visitor_record")
+PASSPORT_DAYS = 180
+DEPENDANT_KB = de.REPO / "knowledge" / "04-family" / "dependent-children-adoption.md"
+
+
+def report_docs(folder):
+    import json
+    import form_prefill as fp
+    path = fp.latest_report(folder / "03-documents" / "_extraction")
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("documents", []) if path else []
+    except (OSError, ValueError):
+        return []
+
+
+def first_date(f, info, keys, docs=(), doc_types=(), fields=("expiry_date",), client=""):
+    """(date, where it came from): client facts first, then case.md, then the newest date read from the client's own documents."""
+    for k in keys:
+        d = date_of(f.get(k, ""))
+        if d:
+            return d, f"client facts: {k}"
+    for k in keys:
+        d = date_of(info.get(k, ""))
+        if d:
+            return d, f"case.md: {k}"
+    best = (None, "")
+    for doc in docs:
+        name = de.doc_name(doc)
+        if doc.get("doc_type") not in doc_types or (name and client and not de.same_person(client, name)):
+            continue
+        for fld in doc.get("fields", []):
+            d = date_of(fld.get("value", "")) if fld.get("field") in fields else None
+            if d and (best[0] is None or d > best[0]):
+                best = (d, f"{doc['file']} ({fld['field'].replace('_', ' ')})")
+    return best
+
+
+def dependant_age():
+    """The dependent-child age limit from the knowledge base ('under 22'), or None if it isn't found."""
+    try:
+        m = re.search(r"under (\d+)\*?\*? and not a spouse", DEPENDANT_KB.read_text(encoding="utf-8"))
+    except OSError:
+        return None
+    return int(m.group(1)) if m else None
+
+
+def children(folder):
+    """[(name, date of birth, where)] from client facts (family.childN) and the case.md family table."""
+    out, seen = [], set()
+    path = folder / "client-facts.csv"
+    rows = {}
+    if path.exists():
+        with path.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                m = re.fullmatch(r"family\.(child\d+)\.(\w+)", r.get("key") or "")
+                if m and r.get("value"):
+                    rows.setdefault(m.group(1), {})[m.group(2)] = r["value"].strip()
+    for role, c in sorted(rows.items()):
+        dob = date_of(c.get("DOB", ""))
+        name = " ".join(x for x in (c.get("GivenNames"), c.get("FamilyName")) if x) or role
+        if dob:
+            out.append((name, dob, f"client facts: family.{role}.DOB"))
+            seen.add(dob)
+    text = (folder / "case.md").read_text(encoding="utf-8")
+    m = re.search(r"## Family members.*?\n((?:\|.*\n?)+)", text)
+    for line in (m.group(1).splitlines() if m else [])[2:]:
+        c = [x.strip() for x in line.strip().strip("|").split("|")]
+        if len(c) >= 3 and c[0] and re.search(r"son|daughter|child", c[1], re.I):
+            dob = date_of(c[2])
+            if dob and dob not in seen:
+                out.append((c[0], dob, "case.md family table"))
+    return out
+
+
+def turns(dob, age):
+    try:
+        return dob.replace(year=dob.year + age)
+    except ValueError:
+        return datetime.date(dob.year + age, 3, 1)
+
+
 def family_left(folder):
     text = (folder / "case.md").read_text(encoding="utf-8")
     m = re.search(r"## Family members.*?\n((?:\|.*\n?)+)", text)
@@ -106,7 +194,7 @@ def first_sign(pr, trips, today, horizon, pr_date, tr):
 
 def for_case(folder, today, days):
     import presence as pr
-    import validity as vd
+    import validity as vd  # noqa: F401 (also used for the profile life)
     info = cs.read_case(folder)
     program = info.get("program", "")
     closed = folder.parent == cs.CLOSED
@@ -114,7 +202,9 @@ def for_case(folder, today, days):
     out = []
     horizon = today + datetime.timedelta(days=days)
 
-    pr_date = date_of(f.get("pr_date", "")) or date_of(info.get("pr_date", ""))
+    docs = report_docs(folder)
+    client = info.get("client", "")
+    pr_date, pr_from = first_date(f, info, PR_DATE_KEYS)
     if pr_date and not re.search(r"citizen", program, re.I):
         trips = pr.read_trips(pr.trips_path(folder))
         tr = date_of(f.get("tr_from", ""))
@@ -129,17 +219,45 @@ def for_case(folder, today, days):
             if first:
                 note = "" if trips else " No trips recorded: confirm travel history."
                 when = "may already have 1,095 days of presence" if first <= today else f"may reach 1,095 days of presence on {first}"
-                out.append(item(folder, info, first, "Citizenship", f"PR since {pr_date}: {when} (trips listed so far).{note}",
+                out.append(item(folder, info, first, "Citizenship", f"PR since {pr_date} ({pr_from}): {when} (trips listed so far).{note}",
                                 "Citizenship grant application", today))
 
-    card = date_of(f.get("pr_card_expiry", "")) or date_of(info.get("pr_card_expiry", ""))
+    card, card_from = first_date(f, info, PR_CARD_KEYS)
     if card and (card - today).days <= PR_CARD_DAYS:
-        out.append(item(folder, info, card, "PR card", f"PR card {'expired' if card < today else 'expires'} {card}", "PR card renewal (check the 730-day residency obligation first)", today))
+        out.append(item(folder, info, card, "PR card", f"PR card {'expired' if card < today else 'expires'} {card} ({card_from})",
+                        "PR card renewal (check the 730-day residency obligation first)", today))
 
-    status = date_of(info.get("status_expiry", ""))
-    if closed and status and today - datetime.timedelta(days=30) <= status <= today + datetime.timedelta(days=STATUS_DAYS):
-        out.append(item(folder, info, status, "Status ending", f"Status in Canada {'ended' if status < today else 'ends'} {status} (closed file)",
-                        "Extension, restoration (90 days), PGWP or a PR route", today))
+    status, status_from = first_date(f, info, PERMIT_KEYS, docs, PERMIT_DOCS, client=client)
+    if status and today - datetime.timedelta(days=30) <= status <= today + datetime.timedelta(days=STATUS_DAYS):
+        if closed or not re.search(r"exten|renew|restor|pgwp|" + PR_PROGRAMS, program, re.I):
+            out.append(item(folder, info, status, "Status ending", f"Status in Canada {'ended' if status < today else 'ends'} {status} ({status_from}"
+                            f"{', closed file' if closed else ''})", "Extension, restoration (90 days), PGWP or a PR route", today))
+
+    passport, pass_from = first_date(f, info, ("passport_expiry_date",), docs, ("passport",), client=client)
+    if passport and (passport - today).days <= PASSPORT_DAYS and not (pr_date and re.search(r"citizen", program, re.I)):
+        out.append(item(folder, info, passport, "Passport", f"Passport {'expired' if passport < today else 'expires'} {passport} ({pass_from}). "
+                        "No permit or visa is issued past the passport", "Renew the passport first, then any extension or new application", today))
+
+    limit = dependant_age()
+    for name, dob, where in children(folder):
+        for age, why, service in ((18, "turns 18: needs their own application and the adult forms (and police certificates for PR)",
+                                   "Own application for the child; update the family's forms"),
+                                  (limit, f"turns {limit}: no longer a dependent child for PR unless dependent because of a condition "
+                                          f"({DEPENDANT_KB.name})", "Apply before the birthday so the child is locked in as a dependant")):
+            if not age:
+                continue
+            day = turns(dob, age)
+            if today <= day <= horizon:
+                out.append(item(folder, info, day, "Child's age", f"{name} {why} on {day} (born {dob}, {where})", service, today))
+
+    profile = date_of(f.get("ee_profile_date", "")) or date_of(info.get("ee_profile_date", ""))
+    if profile and re.search(EE, program, re.I):
+        rule = vd.rules().get("ee_profile")
+        if rule:
+            ends = vd.valid_until(rule, profile)
+            if ends and ends <= horizon:
+                out.append(item(folder, info, ends, "Expiring document", f"Express Entry profile created {profile} (ee_profile_date) runs out about {ends}",
+                                "A new Express Entry profile", today))
 
     opened = date_of(info.get("opened", ""))
     if re.search(TR_TO_PR, program, re.I) and not re.search(PR_PROGRAMS, program, re.I) and opened and (today - opened).days >= CEC_MONTHS * 30 and not pr_date:
@@ -147,7 +265,7 @@ def for_case(folder, today, days):
                         "PR assessment (/pr-plan)", today))
 
     dob = date_of(f.get("date_of_birth", ""))
-    if dob and re.search(EE, program, re.I) and not pr_date:
+    if dob and re.search(EE, program, re.I) and not pr_date:  # client facts: date_of_birth
         b = next_birthday(dob, today)
         if b and (b - today).days <= BIRTHDAY_DAYS and age_on(dob, b) >= 30:
             out.append(item(folder, info, b, "CRS age points", f"Turns {age_on(dob, b)} on {b}: CRS age points go down each year from age 30",

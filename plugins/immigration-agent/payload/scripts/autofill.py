@@ -196,6 +196,9 @@ def encode(value, how, path, lists):
         if not code:  # labels like "F Female": the leading code or the rest of the label, if only one label fits
             fits = {c for label, c in codes.items() if v.lower() in (label.split(" ", 1)[0], label.split(" ", 1)[-1].strip("()"))}
             code = fits.pop() if len(fits) == 1 else None
+        if not code:  # a province given by name on a list of codes (NS), or the reverse
+            alt = PROVINCES.get(v.upper()) or next((c for c, n in PROVINCES.items() if n.lower() == v.lower()), None)
+            code = codes.get(alt.lower()) if alt else None
         if not code:  # labels like "BGD (Bangladesh)": the name in brackets, or a passport code
             name = de.country_name(v).lower()
             fits = {c for label, c in codes.items() if label.split(" ", 1)[-1].strip("()") in (v.lower(), name)}
@@ -203,8 +206,21 @@ def encode(value, how, path, lists):
         if not code:  # "Bangladeshi" for "Bangladesh": the answer starts with exactly one label and adds at most 3 letters
             fits = {c for label, c in codes.items() if len(label) >= 4 and v.lower().startswith(label) and len(v) - len(label) <= 3}
             code = fits.pop() if len(fits) == 1 else None
-        return (code, None) if code else (None, f"'{v}' isn't in the form's list: choose it in Adobe")
+        return (code, None) if code else (None, f"'{v}' isn't in the form's list" + closest(v, lists) + ": choose it in Adobe")
     return v, None
+
+
+def closest(value, lists, n=3):
+    """'. Closest: "A", "B"' from the form's own list, or '' if nothing is near."""
+    import difflib
+    labels = list(dict.fromkeys(label.strip() for m in lists for label in m.values() if label.strip()))
+    low = {label.lower(): label for label in labels}
+    v = str(value).strip().lower()
+    words = [w for w in re.findall(r"[a-z]{4,}", v)]
+    picks = [low[x] for x in difflib.get_close_matches(v, list(low), n=n, cutoff=0.5)]
+    picks += [label for label in labels if any(w in label.lower() for w in words) and label not in picks]
+    picks = picks[:n]
+    return (". Closest on the list: " + ", ".join(f'"{x}"' for x in picks)) if picks else ""
 
 
 # Answers made of several boxes, given part by part (client-facts keys like "contacts_in_canada.Name").
@@ -219,7 +235,88 @@ BOXES = {
                         "District": r"contact/AddressRow2/District$"},
     "contacts_in_canada": {"Name": r"Contacts_Row1/Name/Name$", "Relationship": r"Contacts_Row1/(?:RelationshipToMe|Relationship)/RelationshipToMe$",
                            "Address": r"Contacts_Row1/AddressInCanada/AddressInCanada$"},
+    "spouse_name": {"FamilyName": r"MaritalStatus/(?:SectionA|Current/c)/FamilyName$", "GivenName": r"MaritalStatus/(?:SectionA|Current/c)/GivenName$"},
+    "other_name": {"FamilyName": r"AliasName/AliasFamilyName$", "GivenName": r"AliasName/AliasGivenName$"},
+    "employer_name": {"Name": r"(?:PurposeRow\d*/EmployerName/EmployerName|DetailsOfWork/Employer/Name)$",
+                      "Address": r"(?:DetailsOfWork/PurposeRow\d*/Address/Address|DetailsOfWork/Employer/Addr)$"},
+    "work_location": {"Province": r"(?:intendedLocation/ProvinceState/ProvinceState|DetailsOfWork/Location/Prov)$",
+                      "City": r"(?:intendedLocation/CityTown/CityTown|DetailsOfWork/Location/City)$",
+                      "Address": r"(?:intendedLocation/Address|DetailsOfWork/Location/Addr)$"},
+    "job_title": {"Title": r"(?:DetailsOfWorkCont/details/jobTitle|DetailsOfWork/Occupation/Job)$",
+                  "Duties": r"(?:DetailsOfWorkCont/details/posDesc|DetailsOfWork/Occupation/Desc)$"},
+    "work_period": {"FromDate": r"(?:DetailsOfWorkCont/details/HowLongStudy|DetailsOfWork/Duration)/FromDate$",
+                    "ToDate": r"(?:DetailsOfWorkCont/details/HowLongStudy|DetailsOfWork/Duration)/ToDate$"},
+    "study_address": {"Province": r"(?:DetailsOfStudy/PurposeRow\d*/ProvinceState/Prov|SchoolDetails/Prov)$",
+                      "City": r"(?:DetailsOfStudy/PurposeRow\d*/CityTown/CityTown|SchoolDetails/CityTown)$",
+                      "Address": r"(?:DetailsOfStudy/PurposeRow\d*/Address/Address|SchoolDetails/Address)$"},
+    "pal_number": {"Number": r"PAL/(?:DocNum|PALDocNum)$", "ExpiryDate": r"PAL/DocExpiry$"},
+    "caq_number": {"Number": r"CAQ/CertNum$", "ExpiryDate": r"CAQ/CertExpiry$"},
+    "rep_name": {"FamilyName": r"SectionB/familyName$", "GivenName": r"SectionB/givenName$"},
+    "rep_address": {"Unit": r"question7/unit$", "StreetNum": r"question7/streetNo$", "StreetName": r"question7/streetName$", "City": r"question7/city$",
+                    "Province": r"question7/province$", "PostalCode": r"question7/postalcode$", "Country": r"question7/country$"},
 }
+# Shorter names accepted in client-facts.csv: employer.Name is employer_name.Name
+ALIASES = {"employer": "employer_name", "spouse": "spouse_name", "school_address": "study_address", "pal": "pal_number", "tal": "pal_number",
+           "caq": "caq_number", "job": "job_title", "employment": "employment_history", "education": "education_history", "alias": "other_name"}
+# A whole answer that splits cleanly into its boxes: (separator, part names)
+SPLITS = {"work_period": (" to ", ("FromDate", "ToDate")), "job_title": (": ", ("Title", "Duties")),
+          "pal_number": (", expires ", ("Number", "ExpiryDate")), "caq_number": (", expires ", ("Number", "ExpiryDate"))}
+DATE_BOXES = ("Date",)
+
+# ---- Yes/No questions answered with details ----
+# question: where its details go (another answer key, or a several-box group)
+YN_DETAILS = {"other_name": "other_name", "tr_refused": "tr_refusal_details", "tr_overstay": "tr_refusal_details",
+              "tr_previous_application": "tr_refusal_details", "tr_criminal": "tr_criminal_details", "tr_military": "tr_military_details",
+              "tr_tb": "tr_health_details", "tr_health_services": "tr_health_details", "previous_countries": None, "previous_relationship": None,
+              "national_id": None, "us_lpr": None}
+UNSURE = re.compile(r"\b(?:maybe|perhaps|not sure|unsure|don'?t know|do not know|unknown|possibly|tbc|tbd)\b|\?", re.I)
+NO_WORDS = re.compile(r"^(?:none|never|n/?a|not applicable|nil|no one|nothing)\.?$", re.I)
+
+
+def split_yes_no(key, value):
+    """(Yes or No, details, inferred) for answers like 'Yes: KHATUN' or 'Bangladesh (2015-2018)'; (None, '', False) if unclear."""
+    v = str(value).strip()
+    if NO_WORDS.match(v):
+        return "No", "", True
+    if UNSURE.search(v):
+        return None, "", False  # an uncertain answer stays with the consultant
+    m = re.match(r"^(yes|no|y|n)\b[\s:;,.\-\u2013\u2014()]*(.*)$", v, re.I | re.S)
+    if m:
+        yes = m.group(1).lower().startswith("y")
+        return ("Yes" if yes else "No"), (m.group(2).strip(" ()") if yes else ""), False
+    if key in YN_DETAILS and v:  # details given to a "have you ..." question: that is a Yes
+        return "Yes", v, True
+    return None, "", False
+
+
+# ---- tables: education and the 10-year employment history ----
+TABLES = {
+    "education_history": (r"Education/Edu_Row(\d+)/", {"From": "From", "To": "To", "Field": "FieldOfStudy", "School": "School",
+                                                          "City": "CityTown", "Country": "Country", "Province": "ProvState"}),
+    "employment_history": (r"Occupation/OccupationRow(\d+)/", {"From": "From", "To": "To", "Occupation": "Occupation", "Employer": "Employer",
+                                                                 "City": "CityTown", "Country": "Country", "Province": "ProvState"}),
+}
+CELL_ALIASES = {"Field": ("Field", "FieldOfStudy", "Program"), "Occupation": ("Occupation", "Job", "JobTitle", "Title"),
+                "School": ("School", "Institution"), "Employer": ("Employer", "Company"), "City": ("City", "CityTown", "Town"),
+                "Province": ("Province", "ProvState", "State"), "From": ("From", "FromDate", "Start"), "To": ("To", "ToDate", "End"),
+                "Country": ("Country",)}
+
+
+def table_facts(ready, key):
+    """{row number: {cell: value}} from answers like 'employment_history.1.Employer'."""
+    rows = {}
+    for k, v in ready.items():
+        parts = k.split(".")
+        if len(parts) == 3 and parts[0] == key and parts[1].isdigit():
+            cell = next((c for c, names in CELL_ALIASES.items() if parts[2].lower() in (n.lower() for n in names)), None)
+            if cell:
+                rows.setdefault(int(parts[1]), {})[cell] = v
+    return dict(sorted(rows.items()))
+
+
+def year_month(text):
+    m = re.match(r"^(\d{4})[-/.](\d{1,2})", str(text).strip())
+    return (m.group(1), m.group(2).zfill(2)) if m else None
 # Family tables (IMM 5645, IMM 5707), given person by person: client-facts keys like "family.child1.GivenNames".
 # People: applicant, spouse, mother, father, child1-child9, sibling1-sibling9. Boxes: FamilyName, GivenNames, NativeName, DOB, COB,
 # Address, Occupation, MaritalStatus, Relationship, Accompanying (Yes/No), MarriageInPerson (Yes/No). A box the form doesn't have is skipped.
@@ -557,7 +654,7 @@ def blank_problem(path):
 # ---- full numbers ----
 # The worksheet and extraction report keep these masked (****356). Autofill writes the full number only when it
 # finds it again, at fill time, and its hash matches the one number every source agrees on. It is never stored or printed.
-FULL_NUMBERS = {"passport_number"}
+FULL_NUMBERS = {"passport_number", "national_id_number", "us_lpr_number"}
 
 
 def mrz_numbers(path):
@@ -592,7 +689,7 @@ def full_number(key, person, hashes, report=None, facts_path=None, given=None):
     if facts_path and facts_path.exists():
         candidates += [(r["value"], "client facts") for r in fp.load_csv(facts_path)
                        if r.get("key") == key and r.get("value") and de.same_person(person, r.get("person", ""))]
-    if report:
+    if report and key == "passport_number":
         root = pathlib.Path(report.get("source") or "")
         for d in report.get("documents", []):
             name = de.doc_name(d)
@@ -604,6 +701,8 @@ def full_number(key, person, hashes, report=None, facts_path=None, given=None):
             return re.sub(r"[\s-]", "", value).upper(), source
     if given:
         return None, "the number you gave doesn't match the one read from the passport" + (f" ({shown})" if shown else "") + ": read it again"
+    if key != "passport_number":
+        return None, "masked number: copy it from the original document"
     return None, ("masked number: the passport is a scan, so give the full number with --passport-number "
                   "(it is checked against the passport's code lines)")
 
@@ -621,20 +720,23 @@ def answers(form, person, case=None, report=None, facts=None, include_confirm=Fa
     fill.family = family_people(client)
     allowed = FILL | ({fp.CONFIRM} if include_confirm else set())
     asked = {q["key"] for q in spec}
-    for key, entries in client.items():  # parts of a several-box answer, confirmed by the consultant
+    for key, entries in client.items():  # parts of a several-box answer or a table row, confirmed by the consultant
         group, _, box = key.partition(".")
-        if group in BOXES and box in BOXES[group] and group in asked:
+        group = ALIASES.get(group, group)
+        is_part = group in BOXES and box in BOXES[group]
+        is_row = group in TABLES and re.fullmatch(r"\d+\.\w+", box)
+        if (is_part or is_row) and group in asked:
             values = {e["value"] for e in entries if e.get("value")}
             if len(values) == 1:
-                ok[key] = values.pop()
+                ok[f"{group}.{box}"] = values.pop()
             elif values:
-                skipped[key] = "conflict: more than one value given"
+                skipped[f"{group}.{box}"] = "conflict: more than one value given"
     for q, r in zip(spec, fp.build_rows(spec, pool, client)):
         if q["rule"] == "sign":
             skipped[q["key"]] = "signature"
         elif r["status"] in allowed and r["answer"] and "*" not in r["answer"]:
             ok[q["key"]] = r["answer"]
-        elif q["key"] in FULL_NUMBERS and r["status"] == fp.COPY:
+        elif q["key"] in FULL_NUMBERS and r["status"] in (fp.COPY, fp.READY):
             hashes = {c["hash"] for c in pool.get(q["key"], []) + client.get(q["key"], [])}
             value, why = full_number(q["key"], person, hashes, report_data, facts_path, (numbers or {}).get(q["key"]))
             if value:
@@ -643,7 +745,84 @@ def answers(form, person, case=None, report=None, facts=None, include_confirm=Fa
                 skipped[q["key"]] = why
         else:
             skipped[q["key"]] = r["status"] if r["answer"] or r["status"] != fp.READY else "no answer"
+    if "spouse_name" in asked and not any(k.startswith("spouse_name.") for k in ok):
+        ok.update(spouse_parts(ok.get("spouse_name"), family_people(client).get("spouse", {}), facts_path))
+    if ok.get("rep_name") or ok.get("rep_address"):
+        ok.update(firm_parts(ok))
+    for k in list(skipped):  # given in parts or rows: not "left blank"
+        if any(o.startswith(k + ".") for o in ok):
+            skipped.pop(k)
     return ok, skipped, spec, folder
+
+
+def spouse_parts(whole, family, facts_path):
+    """The spouse's family and given names, from the family table answers or the spouse's own facts, never by guessing a split."""
+    given, family_name = family.get("GivenNames"), family.get("FamilyName")
+    if not (given and family_name) and whole and facts_path and facts_path.exists():
+        rows = [r for r in fp.load_csv(facts_path) if r.get("value") and r.get("person") and de.same_person(whole, r["person"])]
+        given = given or next((r["value"] for r in rows if r["key"] == "given_name"), None)
+        family_name = family_name or next((r["value"] for r in rows if r["key"] == "family_name"), None)
+    if given and family_name and (not whole or de.same_person(whole, f"{given} {family_name}")):
+        return {"spouse_name.GivenName": given, "spouse_name.FamilyName": family_name}
+    return {}
+
+
+PROVINCES = {"AB": "Alberta", "BC": "British Columbia", "MB": "Manitoba", "NB": "New Brunswick", "NL": "Newfoundland and Labrador",
+             "NS": "Nova Scotia", "NT": "Northwest Territories", "NU": "Nunavut", "ON": "Ontario", "PE": "Prince Edward Island",
+             "QC": "Quebec", "SK": "Saskatchewan", "YT": "Yukon"}
+
+
+def split_address(text):
+    """{Unit, StreetNum, StreetName, City, Province, PostalCode, Country} from a Canadian address, or {} if it doesn't read cleanly.
+
+    Reads '1200-55 King St W, Toronto, ON M5K 1A1, Canada' or 'Suite 1200, 55 King St W, Toronto, ON M5K 1A1'."""
+    parts = [x.strip() for x in str(text).split(",") if x.strip()]
+    out = {}
+    if parts and parts[-1].lower() == "canada":
+        out["Country"] = "Canada"
+        parts = parts[:-1]
+    if not parts:
+        return {}
+    m = re.fullmatch(r"([A-Za-z]{2})\.?\s+([A-Za-z]\d[A-Za-z])\s?(\d[A-Za-z]\d)", parts[-1])
+    if not m or m.group(1).upper() not in PROVINCES or len(parts) < 2:
+        return {}
+    out.update(Province=PROVINCES[m.group(1).upper()], PostalCode=f"{m.group(2)} {m.group(3)}".upper(), City=parts[-2])
+    out.setdefault("Country", "Canada")
+    street = parts[:-2]
+    if len(street) == 2:  # 'Suite 1200, 55 King St W'
+        u = re.fullmatch(r"(?:suite|unit|apt\.?|apartment|#)\s*([\w-]+)", street[0], re.I)
+        if not u:
+            return {}
+        out["Unit"], street = u.group(1), street[1:]
+    if len(street) != 1:
+        return {}
+    m = re.fullmatch(r"(?:(\w+)\s*-\s*)?(\d+[A-Za-z]?)\s+(.+)", street[0])
+    if not m:
+        return {}
+    if m.group(1):
+        out["Unit"] = m.group(1)
+    out["StreetNum"], out["StreetName"] = m.group(2), m.group(3)
+    return out
+
+
+def firm_parts(ok):
+    """IMM 5476 section B in its boxes, from the firm profile: name and address parts."""
+    import firm
+    profile = firm.load_profile()
+    out = {}
+    name = (profile.get("name") or "").strip()
+    family_name = (profile.get("family_name") or "").strip()
+    if ok.get("rep_name") and name:
+        words = name.split()
+        if family_name and name.lower().endswith(family_name.lower()):
+            out["rep_name.FamilyName"], out["rep_name.GivenName"] = family_name, name[:-len(family_name)].strip()
+        elif len(words) == 2:
+            out["rep_name.GivenName"], out["rep_name.FamilyName"] = words
+    if ok.get("rep_address"):
+        parts = {k: profile[f"address_{k.lower()}"] for k in BOXES["rep_address"] if profile.get(f"address_{k.lower()}")}
+        for k, v in (parts or split_address(profile.get("address", ""))).items():
+            out[f"rep_address.{k}"] = v
+    return out
 
 
 def fill(form, blank, ready, out):
@@ -669,6 +848,7 @@ def fill(form, blank, ready, out):
     placed, uses, plain = de.choice_maps(ET.fromstring(datasets), template)
     exclude = de.NOT_PA if number == "0008" else None
     values, filled, missed = {}, {}, {}
+    ready, inferred = prepare(ready, maps, joins)
     for key, rx, *how in maps:
         if key not in ready or key in filled:
             continue
@@ -707,6 +887,8 @@ def fill(form, blank, ready, out):
         if not path:
             missed[key] = "no matching box on this form"
             continue
+        if group == "other_name" and box in ("FamilyName", "GivenName") and str(value).strip().lower() in ("yes", "no"):
+            continue
         code, why = encode(value, "date" if box.endswith("Date") else None, path, de.lists_for(path, placed, uses, plain))
         if why:
             missed[key] = why
@@ -722,13 +904,34 @@ def fill(form, blank, ready, out):
                 split.add(key)
                 filled[key] = ready[key]
                 missed.pop(key, None)
+    for key, (row_rx, cells) in TABLES.items():  # education and employment rows
+        rows = table_facts(ready, key)
+        if not rows:
+            continue
+        slots = sorted({int(m.group(1)) for p in paths for m in [re.search(row_rx, p)] if m})
+        for (n, row), slot in zip(rows.items(), slots):
+            base = next(p for p in paths if re.search(row_rx, p) and int(re.search(row_rx, p).group(1)) == slot)
+            base = base[:re.search(row_rx, base).end()]
+            got, why = table_row(row, base, cells, paths, placed, uses, plain)
+            if why:
+                missed[f"{key}.{n}"] = why
+            for path, (code, meant) in got.items():
+                values[path], parts_written[path] = code, meant
+            if got:
+                filled[f"{key}.{n}"] = "; ".join(f"{c}: {v}" for c, v in row.items())
+        for n in list(rows)[len(slots):]:
+            missed[f"{key}.{n}"] = f"no room: the form has {len(slots)} row(s). List it on a separate sheet headed with the question, and attach it"
+        missed.pop(key, None)
     for key, _, _ in joins:
         if key in ready and key not in filled and not any(k.startswith(key + ".") for k in filled):
             missed[key] = "made of several boxes (e.g. an address): give it in parts, or type it in Adobe"
     family_written = any(k.startswith("family.") for k in filled)
     for key in ready:
-        if key in BOXES and any(k.startswith(key + ".") for k in filled):
-            continue  # written from its parts
+        if (key in BOXES or key in TABLES) and any(k.startswith(key + ".") for k in filled):
+            missed.pop(key, None)
+            continue  # written from its parts or rows
+        if key.split(".")[0] in TABLES and key.count(".") == 2:
+            continue  # a table cell: reported by its row
         if family_written and key in COVERED_BY_FAMILY:
             missed.pop(key, None)
             continue  # written row by row in the family table
@@ -746,13 +949,90 @@ def fill(form, blank, ready, out):
     except FillError as e:
         sys.exit(f"ERROR: the form could not be filled safely, so nothing was saved: {e}. "
                  "Fill this form by hand in Adobe, and tell your agent provider.")
-    fill.parts_written, fill.split = parts_written, split
+    fill.parts_written, fill.split, fill.inferred = parts_written, split, inferred
     return filled, missed
+
+
+def prepare(ready, maps, joins):
+    """Answers made ready for their boxes: Yes/No with details split, and whole answers split into their parts.
+
+    Returns (answers, {key: note}) where the note says a Yes/No was read from details."""
+    ready, inferred = dict(ready), {}
+    yn_keys = {m[0] for m in maps if len(m) > 2 and m[2] == "yn"}
+    map_keys = {m[0] for m in maps}
+    for key in [k for k in ready if k in yn_keys]:
+        value = str(ready[key]).strip()
+        if value in ("Yes", "No"):
+            continue
+        yn, details, guessed = split_yes_no(key, value)
+        if not yn:
+            continue
+        ready[key] = yn
+        if guessed:
+            inferred[key] = f"'{value[:40]}' read as {yn}"
+        target = YN_DETAILS.get(key)
+        if details and target in BOXES:
+            if not any(k.startswith(target + ".") for k in ready):
+                words = details.split()
+                if len(words) == 1:  # one name: a maiden or former family name
+                    ready[f"{target}.FamilyName"] = details
+                else:
+                    inferred[f"{target}.details"] = f"details '{details[:40]}' not split: give {target}.FamilyName and {target}.GivenName"
+        elif details and target in map_keys and target != key:
+            ready.setdefault(target, details)
+        elif details:
+            inferred[f"{key}.details"] = f"details '{details[:40]}' have no single box: give them as their own answers"
+    join_keys = {j[0] for j in joins}
+    for key, (sep, names) in SPLITS.items():
+        if key in ready and key in join_keys and not any(k.startswith(key + ".") for k in ready):
+            bits = [b.strip() for b in str(ready[key]).split(sep, 1)]
+            if len(bits) == 2 and all(bits):
+                ready.update({f"{key}.{n}": b for n, b in zip(names, bits)})
+            elif key != "work_period" and bits[0] and len(bits[0]) <= 60:
+                ready[f"{key}.{names[0]}"] = bits[0]
+    return ready, inferred
+
+
+def table_row(row, base, cells, paths, placed, uses, plain):
+    """({path: stored value}, why not) for one education or employment row."""
+    out, problems = {}, []
+    for cell, value in row.items():
+        target = cells.get(cell)
+        if cell in ("From", "To"):
+            if str(value).strip().lower() in ("present", "current", "now", "ongoing", ""):
+                continue  # a current activity: the To date stays empty
+            ym = year_month(value)
+            if not ym:
+                problems.append(f"{cell} '{value}' isn't a year and month (YYYY-MM)")
+                continue
+            for suffix, part in (("Year", ym[0]), ("Month", ym[1])):
+                path = base + f"{cell}{suffix}"
+                if path not in paths:
+                    continue
+                codes = {c for m in de.lists_for(path, placed, uses, plain) for c in m}
+                code = next((c for c in (part, part.lstrip("0")) if c in codes), None) if codes else part
+                if code is None:
+                    problems.append(f"{cell} month '{part}' isn't in the form's list")
+                    continue
+                out[path] = (code, part)
+            continue
+        path = next((p for p in paths if p.startswith(base) and re.search(rf"(?:^|/){target}(?:/{target})?$", p[len(base):])), None)
+        if not path:
+            problems.append(f"no {cell} box")
+            continue
+        code, why = encode(value, None, path, de.lists_for(path, placed, uses, plain))
+        if why:
+            problems.append(f"{cell}: {why}")
+            continue
+        out[path] = (code, value)
+    return out, "; ".join(problems)
 
 
 def matches(got, value):
     """Does the value read back from the form say what was written? Allows 'F' for 'F Female' and '160' for '160 cm'."""
     g, v = got.strip().lower(), value.strip().lower()
+    if PROVINCES.get(got.strip().upper(), "").lower() == v or PROVINCES.get(value.strip().upper(), "").lower() == g:
+        return True  # NS and Nova Scotia
     if "*" in g and g.strip("*") and v.endswith(g.strip("*")) and len(g) == len(v):  # numbers are read back masked: ******567
         return True
     g, v = re.sub(r"\s*cm$", "", g), re.sub(r"\s*cm$", "", v)
@@ -774,7 +1054,7 @@ def verify(form, out, filled):
     wrong = {}
     raw = form_values
     for key, value in filled.items():
-        if key.startswith("family.") or key in (getattr(fill, "split", None) or ()):
+        if key.startswith("family.") or key in (getattr(fill, "split", None) or ()) or key.split(".")[0] in TABLES:
             continue  # checked below, box by box
         group, _, box = key.partition(".")
         if group in BOXES and box in BOXES[group]:  # a part: read its own box back
@@ -798,6 +1078,32 @@ def verify(form, out, filled):
     return wrong
 
 
+def latest_version(path):
+    """The newest existing file of this name (name.pdf, name-v2.pdf ...), or None."""
+    found, n = None, 1
+    while True:
+        p = path if n == 1 else path.with_name(f"{path.stem}-v{n}{path.suffix}")
+        if not p.exists():
+            return found
+        found, n = p, n + 1
+
+
+def same_answers(a, b):
+    """Do two filled forms hold the same form and the same answers?"""
+    import pypdf
+    try:
+        parts = []
+        for path in (a, b):
+            r = pypdf.PdfReader(str(path), strict=False)
+            if r.is_encrypted:
+                r.decrypt("")
+            x = xfa_parts(r)
+            parts.append((x["template"].get_data(), x["datasets"].get_data() if "datasets" in x else b""))
+        return parts[0] == parts[1]
+    except Exception:
+        return False
+
+
 def cmd_fetch(a):
     print(f"Blank form: {fetch(a.form)}")
 
@@ -814,8 +1120,13 @@ def cmd_fill(a):
         out = folder / "05-forms-submissions" / f"{stem}.pdf"
     else:
         out = ps.OUTPUT / f"{stem}.pdf"
+    latest = None if a.out else latest_version(out)
     out = ps.free_name(out)
     filled, missed = fill(form, blank, ready, out)
+    if latest and same_answers(latest, out):
+        out.unlink()
+        print(f"Unchanged: the answers are the same as {latest.name}. No new version saved.")
+        return
     wrong = verify(form, out, filled)
     questions = {r["key"]: r["question"] for r in spec}
     print(f"Saved: {out}")
@@ -828,10 +1139,12 @@ def cmd_fill(a):
         print(f"Ready but not filled ({len(missed)}):")
         for k, why in missed.items():
             print(f"  - {questions.get(k, k)[:80]}: {why}")
+    for k, note in (getattr(fill, "inferred", None) or {}).items():
+        print(f"  Check: {questions.get(k.split('.')[0], k)[:70]}: {note}")
     for k in FULL_NUMBERS:
         if k in filled and k not in wrong:
-            print(f"{questions.get(k, k)}: written in full, matched to the passport read at extraction. Check it against the original.")
-        elif k in skipped and k in questions:
+            print(f"{questions.get(k, k)}: written in full, matched to the number on file. Check it against the original.")
+        elif k in skipped and k in questions and skipped[k].startswith(("masked", "the number", "the sources")):
             print(f"{questions[k]} NOT filled: {skipped[k]}")
     left = {k: v for k, v in skipped.items() if v != "signature"}
     print(f"Left blank for you: {len(left)} question(s) not ready (see the worksheet), and every signature.")

@@ -24,7 +24,13 @@ Passport,,Country or territory of issue,passport_country,auto,
 Passport,,Issue date,passport_issue_date,auto,
 Passport,,Expiry date,passport_expiry_date,auto,Must be valid for the whole stay
 National identity document,,Do you have a national identity document?,national_id,client,Give details if yes
+National identity document,,If yes: national identity document number,national_id_number,auto,Copy the full number from the document
+National identity document,,If yes: country or territory of issue,national_id_country,auto,
+National identity document,,If yes: issue date,national_id_issue_date,auto,
+National identity document,,If yes: expiry date,national_id_expiry_date,auto,Leave blank if the document has no expiry date
 US PR card,,Are you a lawful permanent resident of the United States with a valid green card?,us_lpr,client,Give details if yes
+US PR card,,If yes: green card number,us_lpr_number,auto,Copy the full number from the card
+US PR card,,If yes: green card expiry date,us_lpr_expiry_date,auto,
 Contact information,,Current mailing address,mailing_address,client,
 Contact information,,Telephone number,telephone,client,
 Contact information,,E-mail address,email,client,

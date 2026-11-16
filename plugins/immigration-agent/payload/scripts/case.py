@@ -44,6 +44,22 @@ SUBFOLDERS = ["01-intake", "02-agreements", "03-documents", "04-advice", "05-for
 DEADLINE_FIELDS = ["due", "type", "description", "basis", "status"]
 CLOSING_KEYS = ["fees_settled", "property_returned", "client_notified_in_writing"]
 INTAKE_KEYS = {"conflict_check": "conflict check", "agreement_signed": "service agreement", "imm5476_on_file": "IMM 5476"}
+PREPARED_5476 = "IMM 5476 prepared, not yet signed (when signed: case.py set CASE imm5476_on_file yes)"
+
+
+def intake_gaps(folder, info):
+    """Intake steps not done. A filled IMM 5476 in 05-forms-submissions counts as prepared, not as signed:
+    imm5476_on_file is set only once the consultant confirms it is signed."""
+    out = []
+    for key, label in INTAKE_KEYS.items():
+        if info.get(key, "no").lower() == "yes":
+            continue
+        forms = folder / "05-forms-submissions"
+        if key == "imm5476_on_file" and forms.exists() and any(re.search(r"imm[\s_-]?5476", p.name, re.I) for p in forms.glob("*.pdf")):
+            out.append(PREPARED_5476)
+        else:
+            out.append(label)
+    return out
 
 
 def die(msg):
@@ -179,7 +195,7 @@ def collect():
         for r in open_rows:
             due = parse_date(r["due"], f"due date in {folder.name}")
             items.append(((due - TODAY).days, due, folder.name, r))
-        miss = [label for key, label in INTAKE_KEYS.items() if info.get(key, "no").lower() != "yes"]
+        miss = intake_gaps(folder, info)
         if miss:
             gaps.append((folder.name, "missing: " + ", ".join(miss)))
         if not open_rows:

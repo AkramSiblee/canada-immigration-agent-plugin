@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Final form check: the finished IRCC forms in a case's 05-forms-submissions, as they stand after editing in Adobe.
 
-  check CASE [--person NAME]
+  check CASE [--person NAME]     each person's forms are checked separately; --person checks one person
 
 For the newest PDF of each IRCC form it reports:
   Blank      required questions still empty (conditional ones only when their condition applies)
@@ -50,10 +50,30 @@ IF_YES_BOXES = {
 }
 
 
-def finals(folder):
-    """{form number: (path, raw values)} for the newest PDF of each IRCC form in 05-forms-submissions (subfolders skipped)."""
+VERSION_RX = re.compile(r"-v(\d+)$")
+
+
+def version_of(path):
+    m = VERSION_RX.search(path.stem)
+    return int(m.group(1)) if m else 1
+
+
+def name_in_file(path):
+    """The person in an agent-made file name: 2026-11-15-imm5257-abul-bashar-autofill-v2.pdf -> 'Abul Bashar'."""
+    m = re.search(r"(?:imm|cit)\d{4}[a-z]?-(.+?)-(?:autofill|final|data-sheet|signed|filled)(?:-|$)", VERSION_RX.sub("", path.stem.lower()))
+    return m.group(1).replace("-", " ").title() if m else ""
+
+
+def form_person(got, path):
+    """Whose form this is: the applicant's name on the form itself, else the name in the file name."""
+    name = " ".join(x for x in (got.get("given_name", {}).get("value", ""), got.get("family_name", {}).get("value", "")) if x).strip()
+    return name or name_in_file(path)
+
+
+def all_finals(folder):
+    """[(person, number, path, values, answers)]: the newest version (-v2, -v3 ..., then the latest saved) of each form per person."""
     import pypdf
-    out = {}
+    best = {}
     sub = folder / "05-forms-submissions"
     for path in sorted(sub.glob("*.pdf"), key=lambda p: p.stat().st_mtime) if sub.exists() else []:
         try:
@@ -69,12 +89,43 @@ def finals(folder):
         if not label:
             continue
         number = label.split()[1] if label.startswith("IMM") else label.replace(" ", "")
-        out[number] = (path, values)  # newest wins
+        got = answers_of(number, values)
+        person = form_person(got, path)
+        same = next((k for k in best if k[1] == number and ((not k[0] and not person) or (k[0] and person and de.same_person(k[0], person)))), None)
+        key = same or (person, number)
+        rank = (version_of(path), path.stat().st_mtime)
+        if key not in best or rank >= best[key][0]:
+            best[key] = (rank, (person or key[0], number, path, values, got))
+    return [v for _, v in best.values()]
+
+
+def group_people(entries, client=""):
+    """{person: {number: (path, values, answers)}}, people matched loosely by name; forms with no name go to the client."""
+    groups = {}
+    for person, number, path, values, got in entries:
+        who = person or client or "Unnamed"
+        key = next((k for k in groups if de.same_person(k, who)), who)
+        groups.setdefault(key, {})[number] = (path, values, got)
+    return groups
+
+
+def finals(folder, person=None):
+    """{form number: (path, raw values)} for one person's newest forms (every form when no person is given)."""
+    out = {}
+    for who, number, path, values, _ in all_finals(folder):
+        if person and who and not de.same_person(person, who):
+            continue
+        out[number] = (path, values)
     return out
 
 
 def answers_of(number, values):
     return {f["field"]: f for f in de.form_answers(values, number)}
+
+
+def children_on(number, values):
+    """[{name, dob}] for each child row on a family form."""
+    return [f["person"] for f in de.form_answers(values, number) if f["field"] == "child" and f.get("person", {}).get("name")]
 
 
 def producible(number):
@@ -112,7 +163,7 @@ def blanks(number, got):
                 continue
         elif OPTIONAL.search(r["question"] + " " + r["help"]):
             continue
-        out.append(item("MUST", f"IMM {number}", "Blank", r["question"][:110]))
+        out.append({**item("MUST", f"IMM {number}", "Blank", r["question"][:110]), "key": key, "rule": r["rule"]})
     return out
 
 
@@ -264,36 +315,110 @@ def edited(number, got, folder, person):
     return out
 
 
-def check(folder, person):
-    """(items, forms checked) for a case."""
-    found = {}
-    for number, (path, values) in finals(folder).items():
-        found[number] = (path, values, answers_of(number, values))
-    report = fp.latest_report(folder / "03-documents" / "_extraction")
-    docs = json.loads(report.read_text(encoding="utf-8")).get("documents", []) if report else []
+def check_forms(found, folder, person, docs):
     items = []
     for number, (path, values, got) in sorted(found.items()):
         items += blanks(number, got) + details_boxes(number, got, values) + family_rows(number, values) + logic(number, got, values) + edited(number, got, folder, person)
     items += across(found) + documents(found, docs)
     if found:
         items.append(item("TODO", ", ".join(f"IMM {n}" for n in sorted(found)), "Sign", "Signatures and dates are not checked here: validate each form in Adobe, then sign and date it"))
-    return items, {n: p.name for n, (p, _, _) in found.items()}
+    return items
+
+
+def case_docs(folder):
+    report = fp.latest_report(folder / "03-documents" / "_extraction")
+    return json.loads(report.read_text(encoding="utf-8")).get("documents", []) if report else []
+
+
+def own_docs(docs, person):
+    """The case's documents that belong to this person (or name nobody)."""
+    return [d for d in docs if not de.doc_name(d) or de.same_person(person, de.doc_name(d))]
+
+
+def check(folder, person):
+    """(items, forms checked) for one person's forms in a case."""
+    groups = group_people(all_finals(folder), person)
+    key = next((k for k in groups if person and de.same_person(k, person)), None)
+    found = groups.get(key, {}) if key else (next(iter(groups.values())) if len(groups) == 1 and not person else {})
+    return check_forms(found, folder, person, own_docs(case_docs(folder), person) if person else case_docs(folder)), {n: p.name for n, (p, _, _) in found.items()}
+
+
+def first_value(found, key):
+    return next((g[key]["value"] for _, _, g in found.values() if g.get(key, {}).get("value")), "")
+
+
+def spouse_of(found):
+    return first_value(found, "spouse_name") or first_value(found, "spouse_details").split(" | ")[0]
+
+
+def between_people(groups, principal):
+    """Across people: the spouse named on each form against the spouse's own forms, and children on the family forms."""
+    out = []
+    listed = []
+    for who, found in groups.items():
+        spouse = spouse_of(found)
+        other = next((k for k in groups if k != who and spouse and de.same_person(k, spouse)), None)
+        if other:
+            back = spouse_of(groups[other])
+            if back and not de.same_person(back, who):
+                out.append(item("MUST", f"{who} / {other}", "People", f"{who}'s forms name {spouse} as spouse, but {other}'s forms name '{back}'"))
+            else:
+                out.append(item("OK", f"{who} / {other}", "People", f"Spouse {spouse} matches their own forms"))
+        for number, (path, values, got) in found.items():
+            for child in children_on(number, values):
+                listed.append(child["name"])
+                kid = next((k for k in groups if k != who and de.same_person(k, child["name"])), None)
+                dob = first_value(groups[kid], "date_of_birth") if kid else ""
+                if kid and dob and child["dob"] and dob != child["dob"]:
+                    out.append(item("MUST", f"IMM {number} / {kid}", "People", f"{who}'s IMM {number} gives {child['name']}'s date of birth as {child['dob']}, {kid}'s own forms say {dob}"))
+                elif kid:
+                    out.append(item("OK", f"IMM {number} / {kid}", "People", f"Child {child['name']} matches their own forms"))
+    named = listed + [spouse_of(f) for f in groups.values()]
+    for who in groups:
+        if principal and de.same_person(who, principal):
+            continue
+        if not any(n and de.same_person(who, n) for n in named):
+            out.append(item("URGENT", who, "People", f"{who} has forms in this file but isn't named as a spouse or child on any family form"))
+    unique = {}
+    for it in out:  # both parents' family forms list the same children
+        unique.setdefault((it["level"], it["text"]), it)
+    return list(unique.values())
 
 
 ORDER = {"MUST": 0, "URGENT": 1, "TODO": 2, "OK": 3}
 LABEL = {"MUST": "Must fix", "URGENT": "Check", "TODO": "Confirm", "OK": "OK"}
 
 
-def cmd_check(a):
-    folder = de.active_case(a.case)
-    person = a.person or cs.read_case(folder).get("client", "")
-    items, forms = check(folder, person)
-    if not forms:
-        sys.exit("No finished IRCC forms found in 05-forms-submissions")
-    print("Final forms checked: " + "; ".join(f"IMM {n}: {name}" for n, name in sorted(forms.items())))
+def show(items):
     for it in sorted(items, key=lambda x: (ORDER[x["level"]], x["form"], x["check"])):
         print(f"  [{LABEL[it['level']]}] {it['form']} | {it['check']}: {it['text']}")
-    must = sum(1 for i in items if i["level"] == "MUST")
+
+
+def cmd_check(a):
+    folder = de.active_case(a.case)
+    client = cs.read_case(folder).get("client", "")
+    if a.person:
+        items, forms = check(folder, a.person)
+        if not forms:
+            sys.exit(f"No finished IRCC forms for {a.person} found in 05-forms-submissions")
+        print(f"Final forms checked for {a.person}: " + "; ".join(f"IMM {n}: {name}" for n, name in sorted(forms.items())))
+        show(items)
+        must = sum(1 for i in items if i["level"] == "MUST")
+    else:
+        groups = group_people(all_finals(folder), client)
+        if not groups:
+            sys.exit("No finished IRCC forms found in 05-forms-submissions")
+        docs, must = case_docs(folder), 0
+        for who, found in sorted(groups.items(), key=lambda kv: (not (client and de.same_person(kv[0], client)), kv[0])):
+            items = check_forms(found, folder, who, own_docs(docs, who))
+            print(f"{who}: forms checked " + "; ".join(f"IMM {n}: {p.name}" for n, (p, _, _) in sorted(found.items())))
+            show(items)
+            must += sum(1 for i in items if i["level"] == "MUST")
+        if len(groups) > 1:
+            items = between_people(groups, client)
+            print("Across people:")
+            show(items)
+            must += sum(1 for i in items if i["level"] == "MUST")
     print(f"{must} must-fix item(s)." + (" Not ready to submit." if must else " No blocking items found; your own final review is still needed."))
 
 

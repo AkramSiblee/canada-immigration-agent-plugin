@@ -98,7 +98,10 @@ def facts_from_file(path, person):
         if r.get("key") and r.get("value") and de.same_person(person, r.get("person", "")):
             value, digest = r["value"], None
             if r["key"] in de.SENSITIVE:
-                digest, value = de.number_hash(value), de.mask(value)
+                if r.get("value_hash") and "*" in value:  # stored hidden by the intake import
+                    digest = r["value_hash"]
+                else:
+                    digest, value = de.number_hash(value), de.mask(value)
             add(client, r["key"], value, r.get("source") or "Client facts", "M", "client", digest)
     return client
 

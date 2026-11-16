@@ -83,9 +83,41 @@ def collect(docs):
     return dates, hashes, plain, amounts, names, forms
 
 
-def check(text, docs):
-    """[(severity, message)]; severity HIGH, MEDIUM or LOW."""
+APP_NO = r"\b([A-Z]{1,2}\d{6,12})\b"
+
+
+def case_numbers(folder):
+    """Application numbers the case already knows from IRCC: letters in 06-correspondence, updates.csv, case.md, client facts."""
+    found = set()
+    if not folder:
+        return found
+    texts = []
+    corr = folder / "06-correspondence"
+    for path in sorted(corr.glob("*")) if corr.exists() else []:
+        try:
+            if path.suffix.lower() == ".pdf":
+                texts += [t for _, t in de.read_pdf(path, 30)[0]]
+            elif path.suffix.lower() == ".docx":
+                texts += [t for _, t in de.read_docx(path)]
+            elif path.suffix.lower() in (".txt", ".eml", ".md"):
+                texts += [t for _, t in de.read_text(path)]
+        except Exception:
+            continue
+    for name in ("updates.csv", "case.md", "client-facts.csv"):
+        if (folder / name).exists():
+            texts.append((folder / name).read_text(encoding="utf-8", errors="replace"))
+    for t in texts:
+        for m in re.finditer(r"(?:application|file)(?: no\.?| number| #)\D{0,12}" + APP_NO, t, re.I):
+            found.add(m.group(1).upper())
+        found |= {m.upper() for m in re.findall(r"\b([BEFGHNSVWX]\d{9})\b", t)}  # IRCC's own format, as ircc_letters reads it
+    return found
+
+
+def check(text, docs, known_numbers=None):
+    """[(severity, message)]; severity HIGH, MEDIUM or LOW. known_numbers: application numbers from the case's IRCC correspondence."""
     dates, hashes, plain, amounts, names, forms = collect(docs)
+    for n in known_numbers or ():
+        plain.setdefault("application_number", {})[n] = n
     out = []
     flat = re.sub(r"\s+", " ", text)
     for m in re.finditer(de.DATE_RX, flat, re.I):
@@ -106,7 +138,7 @@ def check(text, docs):
             if label == "application number":
                 known = {k: v for key in keys for k, v in plain.get(key, {}).items()}
                 if known and re.sub(r"[\s-]", "", raw).upper() not in known:
-                    out.append(("HIGH", f"Application number {raw} isn't in the documents (they show {', '.join(sorted(known.values()))})"))
+                    out.append(("HIGH", f"Application number {raw} isn't in the documents or IRCC correspondence (they show {', '.join(sorted(known.values()))})"))
                 continue
             known = {h: v for key in keys for h, v in hashes.get(key, {}).items()}
             if known and de.number_hash(raw) not in known:
@@ -122,8 +154,11 @@ def check(text, docs):
             near = min(amounts, key=lambda x: abs(x[0] - value))
             out.append(("MEDIUM", f"Amount {de.dollars(value)} isn't shown in any document (closest: {de.dollars(near[0])} {near[1].replace('_', ' ')} in {near[2]}). Check the source"))
     seen = set()
-    for w in re.findall(r"\b[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]{2,}\b", text):
+    for w in re.findall(r"\b[A-ZÀ-Ý][A-Za-zÀ-ÿ'’-]{2,}\b", text):
+        w = re.sub(r"['’]s$|['’]$", "", w)  # Smith's, Jones' are the names Smith and Jones
         up = w.upper()
+        if len(up) < 3:
+            continue
         if up in names or up in seen:
             continue
         close = difflib.get_close_matches(up, list(names), n=1, cutoff=0.8)
@@ -148,7 +183,7 @@ def report_docs(case=None, report=None):
 
 
 def cmd_check(a):
-    found = check(letter_text(a.letter), report_docs(a.case, a.report))
+    found = check(letter_text(a.letter), report_docs(a.case, a.report), case_numbers(de.active_case(a.case)) if a.case else None)
     name = pathlib.Path(a.letter).name
     if not found:
         print(f"{name}: no conflicts found with the extracted documents. This doesn't check legal content, tone or facts no document covers.")

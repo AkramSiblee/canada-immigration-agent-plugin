@@ -162,7 +162,10 @@ def residency(trips, as_of, pr_date):
     best = days + max(still, 0)
     return {"start": start, "end": as_of, "under_five": under_five, "anniversary": anniversary, "present": len(present),
             "counted_abroad": len(counted_abroad), "days": days, "still_possible": max(still, 0), "needed": PR_DAYS,
-            "met": (best if under_five else days) >= PR_DAYS, "margin": (best if under_five else days) - PR_DAYS,
+            "met": (best if under_five else days) >= PR_DAYS,
+            # days counted over 730; a PR under 5 years who hasn't reached 730 yet gets the days that can still be spent abroad
+            "margin": days - PR_DAYS if days >= PR_DAYS or not under_five else best - PR_DAYS,
+            "projected": under_five and days < PR_DAYS,
             "abroad": len(abroad & window)}
 
 
@@ -238,6 +241,15 @@ def save(folder, kind, sheets):
 def show_flags(flags):
     for level, text in flags:
         print(f"  [{'Fix' if level == 'MUST' else 'Check'}] {text}")
+
+
+def pr_verdict(r):
+    """The PR result: days over 730, or, under 5 years and not yet at 730, what is still needed before the 5th anniversary."""
+    if r.get("projected") and r["met"]:
+        need = PR_DAYS - r["days"]
+        return (f"NOT YET MET, but still possible: {r['days']:g} of 730 so far; {need:g} more day(s) in Canada needed before {r['anniversary']} "
+                f"({r['margin']:g} day(s) of that time can still be spent abroad)")
+    return verdict(r["met"], r["margin"], "730")
 
 
 def verdict(met, margin, what):
@@ -333,7 +345,7 @@ def cmd_pr(a):
     print(f"  Days in Canada: {r['present']} | days abroad that count: {r['counted_abroad']} | total {r['days']} of 730")
     if r["under_five"]:
         print(f"  5th anniversary of PR: {r['anniversary']}; {r['still_possible']} more day(s) possible before then")
-    print("  " + verdict(r["met"], r["margin"], "730"))
+    print("  " + pr_verdict(r))
     if back:
         print(f"  If the client leaves Canada now: back by {back} at the latest to still meet 730 days")
     show_flags(flags)
@@ -347,7 +359,7 @@ def cmd_pr(a):
                [f"Days in Canada: {r['present']}"], [f"Days abroad that count (s.28(2)(a)): {r['counted_abroad']}"], [f"Total: {r['days']} of 730"]]
     if r["under_five"]:
         summary.append([f"PR for under 5 years: 5th anniversary {r['anniversary']}, {r['still_possible']} more day(s) possible before then"])
-    summary.append([verdict(r["met"], r["margin"], "730")])
+    summary.append([pr_verdict(r)])
     if back:
         summary.append([f"If the client leaves now: back by {back} at the latest"])
     summary += [[""]] + [[f"Check: {t}"] for _, t in flags] + [[f"Note: {n}"] for n in notes] + [[""],

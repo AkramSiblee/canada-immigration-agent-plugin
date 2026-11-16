@@ -4,6 +4,8 @@
 Usage:
   python3 scripts/consult_notes.py scan TRANSCRIPT                         risk words, money and dates mentioned (changes nothing)
   python3 scripts/consult_notes.py save --notes NOTES.json (--case CASE | --prospect ID) [--transcript FILE]
+  python3 scripts/consult_notes.py save --notes NOTES.txt|.docx (--case CASE | --prospect ID) [--date YYYY-MM-DD] [--method ...]
+       [--attendees ...] [--recording-consent yes]        plain typed notes: filed as the body, with the risk scan
 
 NOTES.json (Claude drafts it from the transcript; the consultant corrects it):
   {"meeting_date": "YYYY-MM-DD", "method": "video call", "attendees": "...", "source": "transcript of the recorded consultation" or "typed notes",
@@ -110,12 +112,50 @@ def advice_rows(folder, day, advice, out_name):
     return len(advice)
 
 
+JSON_HELP = ('the notes JSON needs: "meeting_date" (YYYY-MM-DD), "source" ("typed notes" or "transcript of the recorded consultation"), '
+             '"advice" (a list), and optionally "method", "attendees", "goals", "facts", "options", "risks", "documents_requested", '
+             '"next_steps", "fees_discussed", "follow_ups" [{"due": "YYYY-MM-DD", "what": "..."}], "recording_consent": "yes". '
+             "Or give the notes as plain text (.txt or .docx) and they are filed as typed")
+NO_ADVICE = "Advice not separated in the typed notes: it is within the notes above. Mark the advice given before relying on this record"
+ADVICE_RX = r"^(?:advice|advised|we advised|i advised|recommend(?:ed|ation)?|told (?:the )?client)\b\s*[:\-]?\s*"
+GOAL_RX = r"^(?:goals?|wants? to|client wants|objective)\b\s*[:\-]?\s*"
+
+
+def plain_notes(path, a):
+    """A notes record from typed notes: every line kept, advice and goals picked out only where the notes mark them."""
+    text = read(path)
+    lines = [re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", x).strip() for x in text.splitlines()]
+    lines = [x for x in lines if x]
+    if not lines:
+        die(f"{path.name} is empty")
+    advice = [re.sub(ADVICE_RX, "", x, flags=re.I) for x in lines if re.match(ADVICE_RX, x, re.I)]
+    goals = [re.sub(GOAL_RX, "", x, flags=re.I) for x in lines if re.match(GOAL_RX, x, re.I)]
+    facts = [x for x in lines if not re.match(ADVICE_RX, x, re.I) and not re.match(GOAL_RX, x, re.I)]
+    found, money, dates = scan(text)
+    risks = [f"{label} ({n} mention{'s' if n > 1 else ''}): check the notes" for label, _, n in found]
+    recorded = path.suffix.lower() in (".vtt", ".srt") or bool(a.transcript)
+    return {"meeting_date": a.date or datetime.date.today().isoformat(), "method": a.method or "not recorded", "attendees": a.attendees or "not recorded",
+            "source": "transcript of the recorded consultation" if recorded else "typed notes", "recording_consent": a.recording_consent or "",
+            "goals": goals or ["Not recorded in the typed notes"], "facts": facts, "advice": advice or [NO_ADVICE],
+            "risks": risks + ([f"Amounts mentioned: {', '.join(money)}"] if money else [])}
+
+
 def cmd_save(a):
     import firm
-    try:
-        notes = json.loads(pathlib.Path(a.notes).read_text(encoding="utf-8"))
-    except (OSError, ValueError) as e:
-        die(f"can't read the notes file ({type(e).__name__})")
+    path_in = pathlib.Path(a.notes)
+    if not path_in.is_file():
+        die(f"no such file: {path_in}")
+    if path_in.suffix.lower() == ".json":
+        try:
+            notes = json.loads(path_in.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as e:
+            die(f"can't read the notes file ({type(e).__name__}). {JSON_HELP}")
+        if not isinstance(notes, dict):
+            die(JSON_HELP)
+    else:
+        notes = plain_notes(path_in, a)
+        print(f"Typed notes read: {len(notes['facts'])} line(s), {0 if notes['advice'] == [NO_ADVICE] else len(notes['advice'])} marked as advice, "
+              f"{len(notes['risks'])} risk flag(s)")
     source = str(notes.get("source", "")).strip()
     if not source:
         die('say where the notes come from ("source": "transcript of the recorded consultation" or "typed notes")')
@@ -142,8 +182,9 @@ def cmd_save(a):
     path, _ = firm.draft("consultation-notes", folder, terms, out)
     print(f"Saved: {path}")
     if folder:
-        n = advice_rows(folder, day.isoformat(), notes["advice"], path.name)
-        print(f"Advice given: {n} line(s) added to case.md")
+        advice = [x for x in notes["advice"] if x != NO_ADVICE]
+        n = advice_rows(folder, day.isoformat(), advice, path.name) if advice else 0
+        print(f"Advice given: {n} line(s) added to case.md" + ("" if advice else " (none marked in the typed notes: add them to case.md once marked)"))
         if follow:
             rows = cs.read_deadlines(folder)
             rows += [{"due": d.isoformat(), "type": "custom", "description": w, "basis": f"consultation {day}", "status": "open"} for d, w in follow]
@@ -170,7 +211,9 @@ def main():
     p = argparse.ArgumentParser(description="Consultation notes")
     s = p.add_subparsers(dest="cmd", required=True)
     x = s.add_parser("scan"); x.add_argument("transcript"); x.set_defaults(fn=cmd_scan)
-    x = s.add_parser("save"); x.add_argument("--notes", required=True); g = x.add_mutually_exclusive_group(required=True); g.add_argument("--case"); g.add_argument("--prospect")
+    x = s.add_parser("save"); x.add_argument("--notes", required=True)
+    x.add_argument("--date", help="typed notes: date of the consultation (default today)"); x.add_argument("--method"); x.add_argument("--attendees")
+    x.add_argument("--recording-consent", help="yes, if the notes come from a recording the client agreed to"); g = x.add_mutually_exclusive_group(required=True); g.add_argument("--case"); g.add_argument("--prospect")
     x.add_argument("--transcript"); x.set_defaults(fn=cmd_save)
     a = p.parse_args()
     a.fn(a)

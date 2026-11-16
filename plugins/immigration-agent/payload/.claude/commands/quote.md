@@ -9,6 +9,9 @@ Request: $ARGUMENTS
 2. IRCC fees come from templates/quote-fees.csv (dated). Read `knowledge/11-forms-fees-processing/fee-schedule.md`; if it is stale, or
    `python3 scripts/watch.py status` shows a fee change, verify on IRCC's fee list first and tell the consultant (CLAUDE.md rule 2).
 3. `python3 scripts/quote.py calc --program P [--spouse] [--children N] [--people N] [--minors N] [--open-work-permit N]` and show the numbers.
-   --people counts everyone applying for a visa or permit; --spouse/--children for permanent residence; --people/--minors for citizenship.
+   Visas and permits: each person is priced by their own application. State each one with `--member role:application[:age]`
+   (visitor, super-visa, study, work, owp), e.g. `--member spouse:owp:34 --member child:study:12`; ages apply the biometrics exemptions.
+   Without --member the quote assumes a worker's spouse needs an open work permit and children a visitor visa, and says so: confirm
+   with the consultant. --people/--minors for citizenship.
 4. On approval: `python3 scripts/quote.py make ... --prospect ID` (moves the prospect to "quoted"), or `--case CASE`, or `--name "Client"`.
    Relay: a quote isn't a service agreement (Code s.24); offer /agreement service-agreement once the client accepts.

@@ -4,7 +4,10 @@ argument-hint: [case id]
 ---
 Run `python3 scripts/final_check.py check CASE` for: $ARGUMENTS
 
-It checks the newest PDF of each IRCC form in the case's 05-forms-submissions, as edited in Adobe:
+It checks each person's forms separately (spouse and children are not compared with the principal's own answers), using the newest
+version (-v2, -v3 ...) of each form per person, and names the file it checked. `--person "Name"` checks one person. Across people it
+checks that the spouse named on each form matches the spouse's own forms, and that children on the family forms match their applications.
+For each form:
 - required questions still blank (conditional ones only when they apply), and a Yes whose details boxes are empty (national ID, US green card)
 - family table rows missing a name, date of birth, country of birth or address
 - logic: passport valid past the departure date, dates in order, a visit over 6 months, family ages, marriage after age 14

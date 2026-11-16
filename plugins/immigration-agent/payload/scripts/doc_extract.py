@@ -44,7 +44,8 @@ MIN_PAGE_CHARS = 40
 TEXT_EXT = {".txt", ".md", ".csv", ".eml", ".text"}
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".webp", ".bmp"}
 SKIP_DIRS = {"client-ids", "_extraction", ".git", "__pycache__"}
-SENSITIVE = {"passport_number", "uci", "account_number", "document_number", "sin", "previous_document_number", "pr_card_number"}
+SENSITIVE = {"passport_number", "uci", "account_number", "document_number", "sin", "previous_document_number", "pr_card_number",
+             "national_id_number", "us_lpr_number"}
 MONTHS = {m: i + 1 for i, m in enumerate("jan feb mar apr may jun jul aug sep oct nov dec".split())}
 MON = r"(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)"
 DATE_RX = rf"(?:\d{{4}}[-/.]\d{{1,2}}[-/.]\d{{1,2}}|\d{{1,2}}[-/.]\d{{1,2}}[-/.]\d{{4}}|\d{{1,2}}(?:st|nd|rd|th)?[ -]{MON}\.?,?[ -]\d{{4}}|{MON}\.? \d{{1,2}}(?:st|nd|rd|th)?,? \d{{4}})"
@@ -65,7 +66,13 @@ DOC_RULES = {
     "provincial_attestation_letter": [(r"provincial attestation|territorial attestation", 6), (r"\bPAL\b", 2)],
     "bank_statement": [(r"(?:account|bank) statement|statement of account", 4), (r"(?:closing|ending|opening) balance|balance forward", 3), (r"\b(?:deposits?|withdrawals?)\b", 1), (r"\baccount\b", 1)],
     "employment_letter": [(r"employment (?:letter|confirmation|verification)|letter of employment", 5), (r"to whom it may concern", 1), (r"\bemployed\b|\bemployee\b", 1), (r"annual salary|hourly|per week", 1), (r"job title|position", 1)],
-    "pay_stub": [(r"pay (?:stub|statement|slip)|earnings statement", 5), (r"\bYTD\b|year.to.date", 2), (r"gross pay|net pay", 2)],
+    "pay_stub": [(r"pay ?(?:stub|statement|slip)|salary (?:slip|statement)|pay advice|earnings statement", 5), (r"\bYTD\b|year.to.date", 2),
+                 (r"gross pay|net pay|basic salary|pay period", 2)],
+    "labour_card": [(r"labou?r card|work card|labou?r (?:permit|contract) card", 6), (r"ministry of (?:human resources|labou?r)|\bMOHRE\b", 2), (r"card (?:no\.?|number)", 1)],
+    "tax_return": [(r"notice of assessment", -6), (r"income tax return|tax return|return of income|form 1040|\bITR\b", 5),
+                   (r"assessment year|tax year|taxable income|taxpayer identification|\bTIN\b|\bPAN\b", 2)],
+    "school_record": [(r"transcript|mark ?sheet|report card|academic record|statement of marks|grade report|certificate of (?:completion|graduation)|diploma", 5),
+                      (r"\bGPA\b|\bCGPA\b|semester|marks obtained|credits?\b", 1), (r"\bgrade\b", 1)],
     "tax_assessment": [(r"notice of assessment", 6), (r"canada revenue agency", 2), (r"\b15000\b", 1)],
     "language_test": [(r"\bIELTS\b|\bCELPIP\b|\bPTE\b|\bTEF\b|\bTCF\b", 4), (r"\blistening\b", 1), (r"\breading\b", 1), (r"\bwriting\b", 1), (r"\bspeaking\b", 1)],
     "credential_assessment": [(r"educational credential assessment|\bECA\b", 5), (r"\bWES\b|world education services|\bICAS\b|comparative education|\bIQAS\b", 3), (r"canadian equivalen", 2)],
@@ -82,7 +89,7 @@ DOC_RULES = {
 }
 
 COMMON_FIELDS = [
-    ("full_name", r"(?:full name|name of applicant|applicant(?:'s)? name|client name|employee name|account holder|name)", "name"),
+    ("full_name", r"(?:full name|name of applicant|applicant(?:'s)? name|client name|employee name|account holder|name|employee|student)", "name"),
     ("family_name", r"(?:surname|family name|last name)(?:\(s\))?", "name"),
     ("given_name", r"(?:given names?|first name)(?:\(s\))?", "name"),
     ("date_of_birth", r"(?:date of birth|birth date|DOB|born on)", "date"),
@@ -104,6 +111,15 @@ TYPE_FIELDS = {
     "letter_of_acceptance": [("institution", r"(?:institution|school|college|university)", "text"), ("dli_number", r"(?:DLI (?:no\.?|number|#)?)", r"O\d{8,14}"), ("program", r"(?:program(?:me)?(?: name| of study)?)", "text"), ("start_date", r"(?:program start date|start date|commencement)", "date"), ("tuition", r"(?:tuition(?: fees?)?)", "money")],
     "provincial_attestation_letter": [("expiry_date", r"(?:expiry date|valid until|expires on)", "date"), ("pal_number", r"(?:PAL (?:no\.?|number|#)|attestation (?:no\.?|number))", r"[A-Z0-9-]{5,24}")],
     "bank_statement": [("statement_period", r"(?:statement period|period)", "text"), ("closing_balance", r"(?:closing balance|ending balance|balance at end)", "money"), ("opening_balance", r"(?:opening balance|balance at start|balance forward|previous balance)", "money"), ("account_number", r"(?:account (?:no\.?|number|#))", r"[0-9][0-9 -]{5,22}[0-9]")],
+    "pay_stub": [("employer", r"(?:employer|company)(?: name)?", "text"), ("pay_period", r"pay period", "text"),
+                 ("gross_pay", r"(?:gross pay|gross salary|gross earnings|basic salary)", "text"), ("net_pay", r"net pay", "text")],
+    "labour_card": [("document_number", r"(?:card (?:no\.?|number)|labou?r card (?:no\.?|number))", r"[A-Z0-9-]{5,20}"), ("employer", r"(?:employer|establishment|company)", "text"),
+                    ("occupation", r"(?:occupation|profession|job title)", "text"), ("expiry_date", r"(?:expiry date|date of expiry|valid until)", "date"),
+                    ("issue_date", r"(?:issue date|date of issue)", "date")],
+    "tax_return": [("tax_year", r"(?:assessment year|tax year|income year|year)", r"20\d{2}(?:-\d{2,4})?"), ("total_income", r"(?:total income|gross income)", "text"),
+                   ("taxable_income", r"taxable income", "text"), ("tax_paid", r"(?:tax paid|total tax)", "text")],
+    "school_record": [("institution", r"(?:institution|school|college|university|board)", "text"), ("program", r"(?:program(?:me)?|degree|course|class)", "text"),
+                      ("issue_date", r"(?:date of issue|issue date|date)", "date"), ("result", r"(?:result|GPA|CGPA|grade|division)", "text")],
     "employment_letter": [("job_title", r"(?:job title|position|title)", "text"), ("salary", r"(?:annual salary|salary|hourly wage|wage)", "text"), ("hours_per_week", r"(?:hours per week|weekly hours|hours)", r"\d{1,2}(?:\.\d)?"), ("start_date", r"(?:start date|date of hire|hired on|employed since)", "date"), ("noc", r"NOC(?: code)?", r"\d{5}")],
     "insurance_policy": [("insurer", r"(?:insurer|underwriter|underwritten by|insurance company|issued by)", "text"), ("policy_number", r"(?:policy|certificate) (?:no\.?|number|#)", r"[A-Z0-9-]{4,24}"),
                          ("coverage_amount", r"(?:sum insured|coverage amount|amount of coverage|emergency (?:medical )?coverage|maximum (?:coverage|benefit)|policy (?:maximum|limit)|benefit (?:maximum|limit))", "money"),
@@ -621,6 +637,12 @@ def extract_fields(kind, pages, large):
             out.append(rec)
             have.add(name)
     text_pages = [(n, t) for n, t in pages]
+    if kind in ("refusal_letter", "procedural_fairness_letter") and "full_name" not in have:  # "Dear Salma Begum," names the person
+        for no, raw in text_pages:
+            m = re.search(r"(?m)^\s*Dear\s+(?:(?:Mr|Mrs|Ms|Miss|Dr)\.?\s+)?([A-Z][A-Za-z'\-]+(?:\s+[A-Z][A-Za-z'\-]+){1,3})\s*[,:]", raw)
+            if m:
+                out.append(field("full_name", m.group(1), no, m.group(0), "text", "M", "the person the letter is addressed to"))
+                break
     if kind in ("refusal_letter", "procedural_fairness_letter"):
         for no, raw in text_pages:
             t = re.sub(r"\s+", " ", raw)  # sentences wrap across lines
@@ -869,6 +891,9 @@ MAP_TR = [
     ("passport_number", r"Passport/(?:PassportNum/)?PassportNum$"), ("passport_country", r"Passport/(?:CountryofIssue/)?CountryofIssue$"),
     ("passport_issue_date", r"Passport/(?:IssueDate/)?IssueDate$", "date"), ("passport_expiry_date", r"Passport/ExpiryDate$", "date"),
     ("national_id", r"natIDIndicator$", "yn"), ("us_lpr", r"usCardIndicator$", "yn"),
+    ("national_id_number", r"natIDdocs/DocNum/DocNum$"), ("national_id_country", r"natIDdocs/CountryofIssue/CountryofIssue$"),
+    ("national_id_issue_date", r"natIDdocs/IssueDate/IssueDate$", "date"), ("national_id_expiry_date", r"natIDdocs/ExpiryDate$", "date"),
+    ("us_lpr_number", r"usCarddocs/DocNum/DocNum$"), ("us_lpr_expiry_date", r"usCarddocs/ExpiryDate$", "date"),
     ("email", r"(?:FaxEmail|contact|ContactInformation)/(?:.*/)?Email$"), ("telephone", r"(?:PhoneNumbers|q3-4)/Phone/ActualNumber$"),
     ("post_secondary", r"Education/EducationIndicator$", "yn"),
 ]
@@ -1931,6 +1956,35 @@ def same_family_member(a, b):
     return bool(pa.get("dob")) and pa.get("dob") == pb.get("dob")
 
 
+def review_limits():
+    """{type: (days, basis)} for review of a refusal, read from deadline_rules.csv (judicial review, IAD, RAD)."""
+    path = pathlib.Path(__file__).resolve().parent / "deadline_rules.csv"
+    try:
+        with path.open(encoding="utf-8", newline="") as f:
+            return {r["type"]: (int(r["days"]), r["basis"]) for r in csv.DictReader(f) if r["type"].startswith(("jr-", "iad-", "rad-"))}
+    except (OSError, ValueError, KeyError):
+        return {}
+
+
+def refusal_limits(d):
+    """(severity, rule, message, doc) for a refusal letter: the review time limits, or that they have all passed."""
+    limits = review_limits()
+    names = ", ".join(f"{t} {n} days ({b})" for t, (n, b) in limits.items())
+    dates = [iso(f) for f in get(d, "decision_date") if iso(f)]
+    if dates and limits:
+        age = (TODAY - dates[0]).days
+        longest = max(n for n, _ in limits.values())
+        if age > longest:
+            return ("MEDIUM", "refusal_old", f"{d['file']}: refusal dated {dates[0]}, {age} days ago. Every review time limit has passed, counted from the "
+                    f"letter's date ({names}). Unless the client received it much later, don't add a deadline: request the GCMS notes (ATIP) to see the "
+                    "officer's reasons before a new application, and declare this refusal on every form that asks", d)
+        left = ", ".join(f"{t} by {dates[0] + datetime.timedelta(days=n)}" for t, (n, _) in limits.items() if age <= n)
+        return ("HIGH", "refusal_deadline", f"{d['file']}: refusal dated {dates[0]}. Confirm the application type and the date the client received it. "
+                f"Still open, counted from the letter's date: {left}. Add the deadline that applies", d)
+    return ("HIGH", "refusal_deadline", f"{d['file']}: refusal found, date not read. Confirm the application type and the date the client received it, "
+            f"then add the deadline that applies ({names or 'see deadline_rules.csv'})", d)
+
+
 def cross_check(docs):
     out = []
     seen = {}
@@ -2145,7 +2199,7 @@ def cross_check(docs):
                 if e and (TODAY - e).days > 1825:
                     flag(out, "MEDIUM", "eca_old", f"{d['file']}: assessment dated {e} is over 5 years old", d)
         if t == "refusal_letter":
-            flag(out, "HIGH", "refusal_deadline", f"{d['file']}: refusal found. Confirm the application type and the date the client received it, then add the 15, 30 or 60-day deadline", d)
+            flag(out, *refusal_limits(d))
         if t == "procedural_fairness_letter":
             days = get(d, "days_stated")
             stated = f" The letter mentions {days[0]['value']} days." if days else ""
@@ -2354,6 +2408,7 @@ PLAIN_TYPES = {
     "birth_certificate": "Birth certificate", "acknowledgement_of_receipt": "Acknowledgement of Receipt",
     "invitation_to_apply": "Invitation to Apply", "police_certificate": "Police certificate", "medical_exam": "Medical exam",
     "insurance_policy": "Insurance policy (super visa)", "letter_of_invitation": "Letter of invitation (super visa)",
+    "labour_card": "Labour card", "tax_return": "Tax return (outside Canada)", "school_record": "School record or transcript",
 }
 PLAIN_FIELDS.update({"insurer": "Insurer", "policy_number": "Policy number", "coverage_amount": "Coverage amount", "coverage_start": "Coverage starts", "coverage_end": "Coverage ends",
                      "premium": "Premium", "ins_health": "Mentions health care", "ins_hospital": "Mentions hospitalization", "ins_repatriation": "Mentions repatriation",
@@ -2559,6 +2614,9 @@ def cmd_extract(a):
     docs = [process_file(p, root, a) for p in files]
     report = {"schema": SCHEMA, "created": datetime.datetime.now().isoformat(timespec="seconds"), "source": str(src), "documents": docs}
     report["flags"] = cross_check(docs)
+    if case:  # what the documents say against what the client told us
+        import case as cs_mod
+        report["flags"] += facts_check(docs, case / "client-facts.csv", cs_mod.read_case(case).get("client", ""))
     path, sheet = next_report_paths(work_dir, review_dir)
     report["review_file"] = str(sheet)
     write_report(report, path)
@@ -2566,6 +2624,112 @@ def cmd_extract(a):
         with (case / "log.md").open("a", encoding="utf-8") as f:
             f.write(f"| {TODAY.isoformat()} | Documents extracted: {len(docs)} files, {len(report['flags'])} flags ({path.name}) |\n")
     print_summary(report, path)
+
+
+def words(text):
+    return {w for w in re.findall(r"[a-z]{3,}", str(text).lower()) if w not in ("the", "and", "senior", "junior", "assistant")}
+
+
+def facts_by_person(path):
+    """{person: {key: [values]}} from client-facts.csv."""
+    out = {}
+    if not path or not path.exists():
+        return out
+    with path.open(encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            if r.get("person") and r.get("key") and r.get("value"):
+                out.setdefault(r["person"], {}).setdefault(r["key"], []).append(r["value"])
+    return out
+
+
+def owner(d, people, client):
+    """The person in client-facts.csv a document belongs to (by the name on it), else the case's client."""
+    name = doc_name(d)
+    if name:
+        return next((p for p in people if same_person(name, p)), None)
+    return next((p for p in people if client and same_person(client, p)), None)
+
+
+def work_rows(facts):
+    """[{From, To, Occupation, Employer, Hours}] from the work history the client gave (table rows or one-line summaries)."""
+    rows = {}
+    for k, vals in facts.items():
+        m = re.fullmatch(r"(?:employment_history|employment|ee_work)\.(\d+)\.(\w+)", k)
+        if m:
+            rows.setdefault(m.group(1), {})[m.group(2).title()] = vals[0]
+    out = list(rows.values())
+    for key in ("employment_history", "ee_work", "personal_history"):
+        for line in "; ".join(facts.get(key, [])).split(";"):
+            if line.strip():
+                out.append({"Text": line.strip(), "From": (re.findall(r"\d{4}-\d{2}", line) or [""])[0]})
+    return out
+
+
+def facts_check(docs, facts_path, client=""):
+    """Flags where a document disagrees with what the client told us. Each is a question to put to the client, not a finding."""
+    out = []
+    people = facts_by_person(facts_path)
+    if not people:
+        return out
+    s40 = "possible misrepresentation (IRPA s.40): ask the client before filing"
+    for d in docs:
+        who = owner(d, people, client)
+        if not who:
+            continue
+        facts = people[who]
+        said = lambda k: (facts.get(k) or [""])[-1]  # noqa: E731
+        t = d.get("doc_type")
+        if t == "refusal_letter":
+            for k, q in (("tr_refused", "refused a visa or permit"), ("bg_refused_visa", "refused a visa or permit"), ("tr_previous_application", "applied before")):
+                if said(k) == "No":
+                    flag(out, "HIGH", "facts_refusal", f"{d['file']}: a refusal letter for {who}, but the client answered No to '{q}' ({k}). {s40}", d)
+        if t == "employment_letter":
+            rows = work_rows(facts)
+            titles = [r.get("Occupation") or r.get("Title") or r.get("Text", "") for r in rows] + facts.get("occupation", []) + facts.get("current_occupation", []) + facts.get("job_title", [])
+            for f in get(d, "job_title"):
+                if titles and not any(words(f["value"]) & words(x) for x in titles):
+                    flag(out, "HIGH", "facts_job_title", f"{d['file']}: job title '{f['value']}' isn't in the work history {who} gave. {s40}", d)
+            starts = [r.get("From", "") for r in rows if r.get("From")]
+            for f in get(d, "start_date"):
+                ym = f["value"][:7]
+                if starts and ym not in [x[:7] for x in starts]:
+                    flag(out, "HIGH", "facts_start_date", f"{d['file']}: start date {f['value']} doesn't match any start date in {who}'s work history ({', '.join(x[:7] for x in starts[:4])}). {s40}", d)
+            claimed_hours = [h for r in rows for h in re.findall(r"\d{1,2}", str(r.get("Hours", "")))] + facts.get("hours_per_week", [])
+            for f in get(d, "hours_per_week"):
+                if claimed_hours and not any(abs(float(f["value"]) - float(h)) < 1 for h in claimed_hours):
+                    flag(out, "HIGH", "facts_hours", f"{d['file']}: {f['value']} hours a week, but {who}'s answers say {', '.join(claimed_hours[:3])}. {s40}", d)
+            for f in get(d, "noc"):
+                claimed = [re.sub(r"\D", "", x) for x in facts.get("noc_code", []) + facts.get("noc", [])]
+                if claimed and f["value"] not in claimed:
+                    flag(out, "HIGH", "facts_noc", f"{d['file']}: NOC {f['value']} on the letter, but {who}'s file claims NOC {', '.join(claimed)}. {s40}", d)
+        if t in ("passport", "birth_certificate", "school_record", "employment_letter", "pay_stub", "labour_card", "police_certificate", "language_test"):
+            name = doc_name(d)
+            fam, giv = said("family_name"), said("given_name")
+            other = " ".join(facts.get("other_name.FamilyName", []) + facts.get("other_name.GivenName", []) + facts.get("other_name_details", []))
+            if name and fam and giv and not same_person(name, f"{giv} {fam}"):
+                if other and same_person(name, f"{giv} {other}") or set(norm_name(name)) <= set(norm_name(f"{giv} {fam} {other}")):
+                    continue
+                flag(out, "HIGH", "facts_name", f"{d['file']}: name '{name}' differs from the name {who} gave ('{giv} {fam}'). "
+                     f"If it's an earlier or other name, declare it as an other name on the forms; otherwise {s40}", d)
+        if t == "marriage_certificate":
+            on_cert = [f["value"] for f in get(d, "spouse_1") + get(d, "spouse_2")]
+            couple = {who}
+            spouse = said("spouse_name") or " ".join(x for x in (said("family.spouse.GivenNames"), said("family.spouse.FamilyName")) if x)
+            if spouse:
+                couple.add(spouse)
+            for name in on_cert:
+                if any(same_person(name, c) for c in couple):
+                    continue
+                close = next((c for c in couple if set(norm_name(name)) & set(norm_name(c))), None)
+                if close:
+                    others = " ".join(v for p in people if same_person(p, close) for k in ("other_name.FamilyName", "other_name_details") for v in people[p].get(k, []))
+                    if others and set(norm_name(name)) <= set(norm_name(f"{close} {others}")):
+                        continue
+                    flag(out, "MEDIUM", "other_name_to_declare", f"{d['file']}: the certificate names '{name}', the file has '{close}'. "
+                         "If it's a name before marriage, declare it as an other name on every form (other name: Yes)", d)
+                else:
+                    flag(out, "HIGH", "marriage_name", f"{d['file']}: '{name}' on the marriage certificate doesn't match {who} or the spouse on file. {s40}", d)
+    return out
 
 
 def load_report(p):

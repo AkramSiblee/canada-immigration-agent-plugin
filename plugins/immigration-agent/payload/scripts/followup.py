@@ -108,13 +108,39 @@ def document_items(folder, program, docs):
             for r in rows if r["status"] == rd.MISSING] if info else []
 
 
+FOR_YOU = ("firm", "consultant", "sign")  # answered by the consultant or the firm profile, never asked of the client
+
+
+def consultant_items(folder, person, forms):
+    """What the consultant (not the client) still has to supply: firm-profile details and consultant decisions."""
+    import final_check as fc
+    import json
+    out = {}
+    items, _ = fc.check(folder, person)
+    for i in items:
+        if i.get("rule") in ("firm", "consultant"):
+            out.setdefault(i["text"][:80], f"{i['form']}: {i['text']}" + (" (firm profile: run firm.py setup)" if i["rule"] == "firm" else " (your decision)"))
+    report = fp.latest_report(folder / "03-documents" / "_extraction")
+    pool = fp.facts_from_report(json.loads(report.read_text(encoding="utf-8")), person)[0] if report else {}
+    client = fp.facts_from_file(folder / "client-facts.csv", person)
+    for form in forms or []:
+        try:
+            _, spec = fp.load_spec(form)
+        except SystemExit:
+            continue
+        for q, r in zip(spec, fp.build_rows(spec, pool, client)):
+            if q["rule"] == "firm" and r["status"] in (fp.NO_PROFILE, fp.ASK):
+                out.setdefault(q["question"][:80], f"IMM {form[3:]}: {q['question'][:90]} (firm profile: run firm.py setup)")
+    return list(out.values())
+
+
 def final_items(folder, person):
     """Blanks in the finished forms that the client can supply."""
     import final_check as fc
     items, _ = fc.check(folder, person)
     out = []
     for i in items:
-        if i["level"] != "MUST" or i["check"] not in ("Blank", "Family"):
+        if i["level"] != "MUST" or i["check"] not in ("Blank", "Family") or i.get("rule") in FOR_YOU:
             continue
         if IDENTITY.search(i["text"]):
             out.append({"kind": "document", "key": f"final:{i['text'][:40]}", "text": plain_document(i["text"]),
@@ -131,10 +157,14 @@ def collect(folder, person, forms, extra_questions=(), extra_docs=()):
     info = cs.read_case(folder)
     report = fp.latest_report(folder / "03-documents" / "_extraction")
     docs = json.loads(report.read_text(encoding="utf-8")).get("documents", []) if report else []
-    forms = forms or [f for f in rd.default_forms(info.get("program", "")) if f != "imm5476"]
+    forms = forms or [f for f in rd.default_forms(info.get("program", ""), "", rd.residence_of(folder, person) if person else "") if f != "imm5476"]
     items = form_items(folder, person, forms) + final_items(folder, person) + document_items(folder, info.get("program", ""), docs)
     items += [{"kind": "answer", "key": f"ask:{t[:40]}", "text": t, "why": "Your consultant needs this to complete your application."} for t in extra_questions]
     items += [{"kind": "document", "key": f"doc+:{t[:40]}", "text": t, "why": "Your consultant needs this to complete your application."} for t in extra_docs]
+    unique = {}
+    for i in items:  # the worksheet and the finished form can ask the same question
+        unique.setdefault((i["kind"], i["text"].strip().lower()), i)
+    items = list(unique.values())
     have = {d.get("doc_type") for d in docs}
     if "passport" in have:  # a number missing on the form is typed from the copy already on file, not asked again
         items = [i for i in items if not (i["kind"] == "document" and i["text"] == plain_document("passport"))]
@@ -327,6 +357,12 @@ def cmd_make(a):
     for n, it in enumerate(items, 1):
         print(f"  {n}. [{it['kind']}] {it['text'][:110]}")
     print("Request:", path)
+    import readiness as rd
+    mine = consultant_items(folder, person, forms or [f for f in rd.default_forms(info.get("program", ""), "", rd.residence_of(folder, person) if person else "")])
+    if mine:
+        print(f"For you, not on the client's request ({len(mine)}):")
+        for x in mine:
+            print("  -", x[:150])
 
 
 # ---- reading the reply ----

@@ -11,7 +11,8 @@ study and work files IMM 1294 or IMM 1295 with IMM 5645, everything else the per
 (IMM 0008, IMM 5669, IMM 5406). The form records which set it used, so the import reads it back correctly.
 
 Guarantees:
-  - Passport, UCI and other identity numbers are not requested. They come from the documents.
+  - The classic form never asks for identity numbers. The guided questionnaire asks for passport, national ID and green card
+    details; the numbers are stored hidden (last 3 characters) with a fingerprint, as the document extractor stores them.
   - Yes/No answers have no default, so a blank is never read as No.
   - Nothing is imported without the client's consent and declaration.
   - Answers are added to client-facts.csv. Existing answers are never overwritten.
@@ -317,20 +318,19 @@ def write_import(a, case, keep, flags, qs, sent):
     added, same, conflicts, new_rows = 0, 0, 0, []
     for key, value in keep.items():
         old = [r for r in existing if r["key"] == key]
-        if any(fp.norm(r["value"]) == fp.norm(value) for r in old):
+        digest = de.number_hash(value) if key in de.SENSITIVE else None
+        if any((digest and (r.get("value_hash") or de.number_hash(r["value"])) == digest) or fp.norm(r["value"]) == fp.norm(value) for r in old):
             same += 1
             continue
         if old:
             conflicts += 1
             flags.append(f"{key}: differs from an earlier answer. Both are kept")
-        new_rows.append({"person": a.person, "key": key, "value": value, "source": source})
+        row = {"person": a.person, "key": key, "value": value, "source": source}
+        if digest:  # identity numbers: stored hidden, with a fingerprint to compare against the documents
+            row.update(value=de.mask(value), value_hash=digest)
+        new_rows.append(row)
         added += 1
-    fresh = not facts_path.exists()
-    with facts_path.open("a", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, ["person", "key", "value", "source"])
-        if fresh:
-            w.writeheader()
-        w.writerows(new_rows)
+    append_facts(facts_path, new_rows)
     blank = [q for q in qs if q["key"] not in keep]
     background = {q["key"] for q in qs if q["key"] in BACKGROUND or (q["key"].startswith("tr_") and q["kind"] == "yesno")}
     yes = [q for q in qs if q["key"] in background and keep.get(q["key"]) == "Yes"]
@@ -340,6 +340,8 @@ def write_import(a, case, keep, flags, qs, sent):
             flags.insert(1, "URGENT: background answer is Yes but no details were given")
     if not keep.get("children_details"):
         flags.append("Children left blank: confirm the client has none (IRPR 117(9)(d))")
+    flags[:0] = [f for f in spouse_owp_check(case, a.person, keep) if f.startswith("URGENT")]
+    flags += [f for f in spouse_owp_check(case, a.person, keep) if not f.startswith("URGENT")]
     if any(q["key"] in background for q in blank):
         flags.append(f"{sum(q['key'] in background for q in blank)} background question(s) left blank")
     log = case / "log.md"
@@ -349,6 +351,95 @@ def write_import(a, case, keep, flags, qs, sent):
     print(f"Added: {added} | unchanged: {same} | conflicts: {conflicts} | left blank: {len(blank)}")
     for x in flags:
         print(" ", x)
+
+
+COLUMNS = ["person", "key", "value", "source"]
+
+
+def append_facts(facts_path, new_rows):
+    """Add rows to client-facts.csv. A fingerprint column is added (and the file rewritten once) only when a hidden number needs it."""
+    fresh = not facts_path.exists()
+    header = COLUMNS
+    if not fresh:
+        with facts_path.open(encoding="utf-8", newline="") as f:
+            header = next(csv.reader(f), COLUMNS) or COLUMNS
+    if any(r.get("value_hash") for r in new_rows) and "value_hash" not in header:
+        rows = read_facts(facts_path) if not fresh else []
+        header = list(header) + ["value_hash"]
+        fd, tmp = tempfile.mkstemp(dir=str(facts_path.parent), suffix=".tmp")
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, header, restval="", extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rows)
+        de.replace_with_retry(tmp, facts_path)
+        fresh = False
+    with facts_path.open("a", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, header, restval="", extrasaction="ignore")
+        if fresh:
+            w.writeheader()
+        w.writerows(new_rows)
+
+
+def spouse_owp_check(case, person, keep):
+    """Warnings when a spouse asks for an open work permit and the principal's job or studies may not qualify.
+
+    The rules are read from knowledge/05-temporary-residence/open-work-permits.md, never written here."""
+    if keep.get("work_permit_type") != "Open work permit":
+        return []
+    import case as cs
+    principal = cs.read_case(case).get("client", "")
+    if not principal or de.same_person(principal, person):
+        return []
+    kb = REPO / "knowledge" / "05-temporary-residence" / "open-work-permits.md"
+    text = kb.read_text(encoding="utf-8") if kb.exists() else ""
+    worker = next((l for l in text.splitlines() if l.startswith("| **Spouse of worker**")), "")
+    student = next((l for l in text.splitlines() if l.startswith("| **Spouse of student**")), "")
+    m_ok = re.search(r"TEER (\d)-(\d)\*\*", worker)
+    m_sel = re.search(r"select TEER (\d)-(\d)", worker)
+    m_months = re.search(r"at least (\d+) months", worker)
+    m_study = re.search(r"master'?s of (\d+)\+ months", student)
+    if not (m_ok and m_months):
+        return ["Spouse open work permit: the rule wasn't found in open-work-permits.md. Check the principal's eligibility by hand"]
+    eligible = set(range(int(m_ok.group(1)), int(m_ok.group(2)) + 1))
+    listed = set(range(int(m_sel.group(1)), int(m_sel.group(2)) + 1)) if m_sel else set()
+    months = int(m_months.group(1))
+    facts = [r for r in read_facts(case / "client-facts.csv") if de.same_person(principal, r.get("person", ""))]
+    get = lambda k: next((r["value"] for r in facts if r["key"] == k and r.get("value")), "")  # noqa: E731
+    out, where = [], "knowledge/05-temporary-residence/open-work-permits.md"
+    noc, level = re.sub(r"\D", "", get("noc_code")), get("study_level")
+    if len(noc) == 5:
+        teer = int(noc[1])
+        if teer in listed:
+            out.append(f"Spouse open work permit: {principal}'s NOC {noc} is TEER {teer}. Only select TEER {m_sel.group(1)}-{m_sel.group(2)} "
+                       f"occupations qualify: check IRCC's list ({where})")
+        elif teer not in eligible:
+            out.append(f"URGENT: spouse open work permit: {principal}'s NOC {noc} is TEER {teer}. TEER {teer} principals don't give "
+                       f"a spouse an open work permit ({where}). Consider another route")
+    elif level:
+        if re.search(r"doctor|phd", level, re.I):
+            pass
+        elif re.search(r"master", level, re.I) and m_study:
+            start, end = de.parse_date(get("study_from"))[0], de.parse_date(get("study_to"))[0]
+            if start and end:
+                length = (datetime.date.fromisoformat(end) - datetime.date.fromisoformat(start)).days / 30.44
+                if length < int(m_study.group(1)):
+                    out.append(f"URGENT: spouse open work permit: {principal}'s master's is about {length:.0f} months; "
+                               f"it must be {m_study.group(1)}+ months ({where})")
+            else:
+                out.append(f"Spouse open work permit: confirm {principal}'s master's runs {m_study.group(1)}+ months ({where})")
+        else:
+            out.append(f"URGENT: spouse open work permit: {principal} studies at '{level}' level. Only some programs "
+                       f"(a long enough master's, doctoral, listed professional degrees) qualify ({where})")
+    else:
+        out.append(f"Spouse open work permit: no NOC code or study level recorded for {principal}. Record it to check eligibility ({where})")
+    dates = re.findall(r"\d{4}-\d{2}-\d{2}", get("work_period"))
+    end = de.parse_date(get("permit_expiry_date"))[0] if get("permit_expiry_date") else (dates[-1] if len(dates) >= 2 else "")
+    if end and noc:  # the principal's permit end (or the job's end date when the permit isn't recorded)
+        left = (datetime.date.fromisoformat(end) - TODAY).days / 30.44
+        if left < months:
+            out.append(f"URGENT: spouse open work permit: {principal}'s permit or job runs about {left:.0f} more months; it must be valid "
+                       f"{months}+ months when the spouse applies ({where})")
+    return out
 
 
 def case_program(ref):
@@ -368,7 +459,7 @@ def main():
     s = p.add_subparsers(dest="cmd", required=True)
     x = s.add_parser("make"); x.add_argument("--case"); x.add_argument("--person"); x.add_argument("--out")
     x.add_argument("--classic", action="store_true", help="the original one-list form instead of the guided questionnaire")
-    x.add_argument("--program", help="questionnaire: visitor, study, work, express-entry or family-pr (default: from the case)")
+    x.add_argument("--program", help="questionnaire: visitor, study, work, express-entry, family-pr, or child (a short supplement per child) (default: from the case)")
     x.add_argument("--add-form", action="append", help="also ask this form's questions, e.g. imm5707 for residents of Bangladesh (IMM 5890)"); x.set_defaults(fn=cmd_make)
     x = s.add_parser("import"); x.add_argument("file"); x.add_argument("--case", required=True); x.add_argument("--person", required=True); x.set_defaults(fn=cmd_import)
     a = p.parse_args()

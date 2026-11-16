@@ -174,9 +174,13 @@ def file_alerts(name, folder, info, rows, today):
                 out.append(alert(URGENT, name, "Expiry", "unreadable", f"{label} has an unreadable date", "Correct the date in the file"))
             else:
                 out.append(expiry_alert(name, label, day, warn, "from the case file", today))
-    gaps = [label for key, label in cs.INTAKE_KEYS.items() if info.get(key, "no").lower() != "yes"]
-    if gaps:
-        out.append(alert(HOUSEKEEPING, name, "File setup", "gaps", "Missing: " + ", ".join(gaps), "Complete these, or record why not"))
+    gaps = cs.intake_gaps(folder, info)
+    missing = [g for g in gaps if g != cs.PREPARED_5476]
+    if missing:
+        out.append(alert(HOUSEKEEPING, name, "File setup", "gaps", "Missing: " + ", ".join(missing), "Complete these, or record why not"))
+    if cs.PREPARED_5476 in gaps:
+        out.append(alert(HOUSEKEEPING, name, "File setup", "imm5476", "IMM 5476 prepared, not yet signed",
+                         "Have it signed, then: case.py set CASE imm5476_on_file yes"))
     if not info.get("next_action"):
         out.append(alert(HOUSEKEEPING, name, "File setup", "next action", "No next action set", "Set the next step"))
     if not [r for r in rows if r.get("status", "").lower() != "done"]:

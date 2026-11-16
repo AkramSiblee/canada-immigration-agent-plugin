@@ -2,6 +2,18 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.0
+- /autofill fills much more: Yes/No answers given with details ("Yes: maiden name"), answers in parts (employer, place of work, job title and duties, work dates, school address, PAL/TAL and CAQ, spouse's names), the education and 10-year employment tables, national ID details, and your name and address on IMM 5476 from the firm profile. When an answer isn't on a form's list, the closest choices are shown. Running it again with the same answers no longer makes a new copy.
+- /final-check checks each person's forms separately (no more false "date of birth differs" between spouse and children), uses the newest version of each form, and checks the spouse and children across everyone's forms.
+- Client questionnaire: Yes/No plus details for other names and countries lived in, a passport and ID section (numbers stored hidden), a short supplement for each child's own application, and a warning when a spouse asks for an open work permit the principal's job or studies may not support.
+- /extract compares documents with the client's answers and flags differences as possible misrepresentation (refusals, job title, dates, hours, NOC, names); old refusals say the time limits have passed and suggest the GCMS notes; payslips, labour cards, foreign tax returns and school records are recognised; a different name on the marriage certificate is flagged as an other name to declare.
+- /ircc-letter reads "30 days from the date of this letter" and similar wording.
+- Letter check: possessive names ("Smith's") aren't flagged, and application numbers from IRCC letters are known. Readiness picks IMM 5645 or IMM 5707 by the visa office for the client's country.
+- /follow-up: questions for you (representative details, your decisions) are listed for you, not put on the client's request.
+- /quote prices each family member by their own application (spouse open work permit, children's study permits or visas), applies biometrics age exemptions, and states its assumptions.
+- /presence: "days to spare" for the PR residency obligation is now the days over 730.
+- /consult-notes accepts plain typed notes (.txt or Word). /draws match takes a case id. /opportunities uses dates already in the file (documents, family table, children's birthdays) and says where each came from. A filled IMM 5476 shows as "prepared, not yet signed".
+
 ## 1.8.1
 - /autofill now writes the passport number in full. The agent finds it again in the client's facts or the passport itself (for a scanned passport, the agent reads the code lines at the bottom of the page), and writes it only if it matches the number checked when the documents were read. It stays hidden everywhere else (worksheets, reports, screen output). Always check it against the original passport.
 - Word documents (agreements, letters, quotes, PR plans, translations, portal copy sheets) now share one house style with the PDFs: navy headings, a letterhead with a rule under it, page numbers and banded tables.

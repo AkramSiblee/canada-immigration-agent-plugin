@@ -9,7 +9,7 @@ Request: $ARGUMENTS
    Get the score from /crs or the client's profile. Category eligibility is the consultant's assessment
    (read `knowledge/01-federal-economic/category-draws-history.md`). Update it whenever the profile changes.
 2. `python3 scripts/draws.py check` reads IRCC's rounds feed (public; nothing about clients is sent) and lists clients at, above or within
-   10 points of each new round's cut-off. `latest` shows the saved rounds; `match --round N` re-checks one.
+   10 points of each new round's cut-off. `latest` shows the saved rounds; `match [CASE] [--round N]` re-checks every file, or just one.
 3. Provincial draws aren't in one feed: when the consultant gives one (from the province's official page), record it with
    `python3 scripts/draws.py pnp-add --province XX --stream "..." --date D --min-score N`.
 4. A match isn't an invitation: ties go by profile submission time, and the profile must have been in the pool before the round's cut-off
