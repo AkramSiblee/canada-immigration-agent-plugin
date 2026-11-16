@@ -259,9 +259,27 @@ def norm_name(text):
     return sorted(x for x in re.sub(r"[^A-Z ]", " ", t).split() if len(x) > 1)
 
 
+# Name parts many people share, so they say nothing about who someone is: titles, and prefixes common in South Asian
+# and Arabic names. They are ignored when comparing (but kept when the name has nothing else).
+NAME_PREFIXES = {"MD", "MOHD", "MOHAMMAD", "MOHAMMED", "MOHAMED", "MOHAMAD", "MUHAMMAD", "MUHAMMED", "MOHAMMOD", "SYED", "SAYED", "SAIYED",
+                 "SHEIKH", "SHAIKH", "SK", "KAZI", "QAZI", "MST", "MOST", "MOSAMMAT", "MOSAMMOT", "MOSAMAT", "MR", "MRS", "MS", "MISS", "DR",
+                 "BIN", "BINTI", "BINT"}
+
+
+def name_words(text):
+    words = set(norm_name(text))
+    return (words - NAME_PREFIXES) or words
+
+
 def same_person(a, b):
-    x, y = set(norm_name(a)), set(norm_name(b))
-    return bool(x and y) and (x <= y or y <= x or len(x & y) >= 2)
+    """Two names for the same person: the same words in any order, or every word of a name of two or more words in the other
+    ('Anna Eriksson' and 'Anna Maria Eriksson'). Sharing a family name, or a prefix such as Md, isn't enough: two relatives
+    named Md <first name> <same family name> are two people. Spelling differences are flagged separately by the cross-check."""
+    x, y = name_words(a), name_words(b)
+    if not x or not y:
+        return False
+    small, large = (x, y) if len(x) <= len(y) else (y, x)
+    return x == y or (len(small) >= 2 and small <= large)
 
 
 def field(name, value, page, quote, method="text", confidence="M", note=""):

@@ -2,6 +2,10 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.3
+- Family members are no longer mixed up. Before, two people whose names shared two words (for example two brothers whose names both start with Md and end with the same family name, or a mother and daughter with the same two-word family name) could be treated as one person, so one person's answers could reach the other's forms. Now names must match fully (middle names and word order don't matter), and prefixes such as Md, Mohammad or Syed don't count. Close spellings are still flagged for you to check.
+- "Check for updates" (/immigration-agent:update) reports correctly after the agent has updated itself.
+
 ## 1.9.2
 - The client questionnaire now reaches the forms: work history, education and countries lived in are saved row by row, so /autofill fills those tables; "Calgary, Alberta" style answers fill the province and city boxes; job duties fill the duties box. A Yes to education or previous countries is only written when at least one row is filled, and answers too long for a box are reported, never cut short.
 - /autofill: "No expiry" leaves the expiry date blank; "Not required" is never written in the PAL/TAL or CAQ number box; better suggestions when an answer isn't on a form's list; IMM 5476 tells you to set your family name once when your name has more than two words.

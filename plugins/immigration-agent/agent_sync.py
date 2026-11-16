@@ -403,6 +403,10 @@ def main():
             print("This is the agent's source folder (where releases are built). It is never synced. Open the firm's agent folder instead.")
         return 0 if a.hook else 1
     state = load_state(ws)
+    if a.status and state is not None and not os.environ.get(DELEGATED):
+        root, got = downloaded(ws)  # a newer release installed here: it reports on itself
+        if root and vtuple(got) > vtuple(version):
+            return delegate(root, ["--status"])
     if a.status:
         if state is None:
             print(f"This folder is not an agent folder yet: {ws}\nPlugin version: {version}. Run the setup command here to install.")
