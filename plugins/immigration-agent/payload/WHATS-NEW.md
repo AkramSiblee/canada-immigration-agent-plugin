@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.6
+- /final-check and the readiness report now check the form saved most recently. Before, a version from an earlier day with a higher number (for example yesterday's -v3) was checked instead of today's.
+
 ## 1.9.5
 - /autofill reads more of the work and education history written on one line: dates written "2011-07 to present", homemaker, unemployed or retired lines with no employer, and "field, school" written before the place when the school is clearly named (college, university, school ...). An answer of "None" means no rows. Anything that still can't be read for certain is reported, as before.
 - School and work addresses written "Province, City, street address" (in any order) are split when the street is the part with a number.

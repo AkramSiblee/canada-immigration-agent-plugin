@@ -58,6 +58,12 @@ def version_of(path):
     return int(m.group(1)) if m else 1
 
 
+def date_of_file(path):
+    """The date at the start of an agent-made file name (2026-11-16-imm1295-...), else the day the file was saved."""
+    m = re.match(r"(\d{4}-\d{2}-\d{2})", path.name)
+    return m.group(1) if m else datetime.date.fromtimestamp(path.stat().st_mtime).isoformat()
+
+
 def name_in_file(path):
     """The person in an agent-made file name: 2026-11-15-imm5257-abul-bashar-autofill-v2.pdf -> 'Abul Bashar'."""
     m = re.search(r"(?:imm|cit)\d{4}[a-z]?-(.+?)-(?:autofill|final|data-sheet|signed|filled)(?:-|$)", VERSION_RX.sub("", path.stem.lower()))
@@ -93,7 +99,7 @@ def all_finals(folder):
         person = form_person(got, path)
         same = next((k for k in best if k[1] == number and ((not k[0] and not person) or (k[0] and person and de.same_person(k[0], person)))), None)
         key = same or (person, number)
-        rank = (version_of(path), path.stat().st_mtime)
+        rank = (date_of_file(path), version_of(path), path.stat().st_mtime)  # newest date first, then -v2, -v3 on that date
         if key not in best or rank >= best[key][0]:
             best[key] = (rank, (person or key[0], number, path, values, got))
     return [v for _, v in best.values()]
