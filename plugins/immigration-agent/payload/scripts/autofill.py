@@ -1121,8 +1121,10 @@ def split_city_province(text):
     out = {"Province": province_of(parts[i])}
     if len(rest) == 1:
         out["City"] = rest[0]
-    elif len(rest) == 2 and i == len(parts) - 1:  # street address, city, province
+    elif len(rest) == 2 and i == len(parts) - 1 and not re.search(r"\d", rest[1]):  # street address, city, province
         out["Address"], out["City"] = rest
+    elif len(rest) == 2 and sum(bool(re.search(r"\d", x)) for x in rest) == 1:  # any order: the part with a number is the street
+        out["Address"], out["City"] = (rest[0], rest[1]) if re.search(r"\d", rest[0]) else (rest[1], rest[0])
     else:
         return None, "the city isn't clear"
     if re.search(r"\d", out["City"]):
@@ -1130,18 +1132,45 @@ def split_city_province(text):
     return out, None
 
 
+DATE_YM = r"\d{4}-\d{2}(?:-\d{2})?"
+NO_ROWS = re.compile(r"^(?:none|n/?a|not applicable|nil|no|-+)\.?$", re.I)
+NO_EMPLOYER = re.compile(r"^(?:homemaker|housewife|house ?wife|home ?maker|unemployed|retired)$", re.I)
+SCHOOL_WORDS = re.compile(r"\b(?:college|university|school|institute|academy|polytechnic|madrasa|conservatory)\b", re.I)
+
+
+def known_order(bits, names):
+    """The same cells in the table's order, for two common ways of writing a line that leave no doubt:
+    a homemaker, unemployed or retired line with no employer, and 'field, school' instead of 'school, city, country, field'
+    when exactly one of the two names a school and the line ends with a country."""
+    if names[:6] == ["From", "To", "Occupation", "Employer", "City", "Country"] and len(bits) == 5 and NO_EMPLOYER.match(bits[2]):
+        return bits[:3] + [""] + bits[3:]
+    if names[:6] == ["From", "To", "School", "City", "Country", "Field"] and len(bits) == 6 and de.known_country(bits[5]) \
+            and not de.known_country(bits[4]):
+        a, b = bits[2], bits[3]
+        if bool(SCHOOL_WORDS.search(a)) != bool(SCHOOL_WORDS.search(b)):
+            school, field = (a, b) if SCHOOL_WORDS.search(a) else (b, a)
+            return [bits[0], bits[1], school, bits[4], bits[5], field]
+    return bits
+
+
 def summary_rows(text, cols):
     """([{col: value}], [lines not read]) from a one-line answer such as
     '2015-01, 2025-03, Chef, Hotel Sample, Dubai, United Arab Emirates; ...'. A line is read only when it has exactly
     one value per column, its dates look like dates and its country is a country: anything else is reported."""
     rows, bad = [], []
+    if NO_ROWS.match(str(text).strip()):
+        return rows, bad  # "None": nothing to read and nothing to report
     for line in [x.strip() for x in re.split(r";|\n", str(text)) if x.strip()]:
         line = re.sub(r"^\d+\)\s*", "", line)
+        line = re.sub(rf"^({DATE_YM})\s*(?:\bto\b|–|—|\s-\s)\s*({DATE_YM}|present|now|current|ongoing)\b", r"\1, \2", line, flags=re.I)
         bits = [b.strip() for b in line.split(",")]
         names = [c.rstrip("?") for c in cols]
+        bits = known_order(bits, names)
         ok = len(bits) == len(cols) or (cols[-1].endswith("?") and len(bits) == len(cols) - 1)
         if ok:
             row = dict(zip(names, bits))
+            if row.get("Employer") == "-":
+                row["Employer"] = ""
             for c in ("From", "To"):
                 v = row.get(c, "")
                 if c in row and not (re.fullmatch(r"\d{4}-\d{2}(?:-\d{2})?", v) or (c == "To" and v.lower() in ("now", "present", "current", "ongoing"))):
