@@ -2,7 +2,7 @@
 domain: 11-forms-fees-processing
 topic: fee-schedule
 status: verified
-last_verified: 2026-11-12
+last_verified: 2026-11-16
 confidence: H
 review_every_days: 30
 sources:
@@ -12,7 +12,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/right-citizenship-fee-increasing.html
   - https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low/requirements.html
 ---
-# Fee schedule (CAD; IRCC fee list modified 2026-09-21; all amounts H unless marked)
+# Fee schedule (CAD; IRCC fee list modified 2026-11-10, all 77 amounts re-checked 2026-11-16; all amounts H unless marked)
 
 ## Must cover
 - All current fees with effective dates; RPRF trap; change log
@@ -108,13 +108,13 @@ The fee that applies is the one in force on the **date the application is receiv
 - Old fee paid after an increase date
 
 ## Re-verify before advising
-- All fees on IRCC fee list (check "Date modified" on the page; it was 2026-09-21)
+- All fees on IRCC fee list (check "Date modified" on the page; it was 2026-11-10 on 2026-11-16)
 - Indexation: IRCC indexes some fees (privileges every 2 years, RPRF/PR fees). Watch for a 2027 notice.
 - PNP fees still unverified: MB ($500, M), YT, NWT. Verified: SK $500, PEI $300, ON, BC, AB, NS; NB/NL none stated (see each 02-pnp file).
 - ATIP fee ($5 under the Access to Information Act; not on the IRCC fee list; see 09-procedure-litigation/atip-gcms-notes.md)
 
 ## Sources
-- IRCC fee list (modified 2026-11-10; read 2026-11-12, visitor and biometrics rows re-checked; other rows read 2026-11-07): https://ircc.canada.ca/english/information/fees/fees.asp
+- IRCC fee list (modified 2026-11-10; all 77 amounts read and matched 2026-11-16): https://ircc.canada.ca/english/information/fees/fees.asp
 - IRCC fee changes: https://ircc.canada.ca/english/information/fees/fee-changes.asp
 - PR fees notice (2026-03-27): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/permanent-residence-fees-increasing.html
 - Citizenship fee notice (2026-03-27): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/right-citizenship-fee-increasing.html

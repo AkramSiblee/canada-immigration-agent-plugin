@@ -115,10 +115,24 @@ OWP_KB = de.REPO / "knowledge" / "05-temporary-residence" / "open-work-permits.m
 
 def children_get_owp():
     """False when the knowledge base says dependent children are no longer eligible for a family open work permit."""
-    try:
-        return not re.search(r"dependent children (?:are )?(?:no longer|not) eligible", OWP_KB.read_text(encoding="utf-8"), re.I)
-    except OSError:
-        return False  # unknown: never assume a child gets one
+    import owp_rules
+    r = owp_rules.rules(OWP_KB)
+    return bool(r and r["children"])  # unknown: never assume a child gets one
+
+
+def principal_job(a):
+    """(NOC, permit end) for the principal: --noc and --permit-end, else the case's client facts (noc_code, permit_expiry_date)."""
+    noc, end = getattr(a, "noc", None), getattr(a, "permit_end", None)
+    if (not noc or not end) and getattr(a, "case", None):
+        import csv
+        folder = de.active_case(a.case)
+        client = cs.read_case(folder).get("client", "")
+        path = folder / "client-facts.csv"
+        rows = list(csv.DictReader(path.open(encoding="utf-8", newline=""))) if path.exists() else []
+        mine = [r for r in rows if r.get("value") and (not client or de.same_person(client, r.get("person", "")))]
+        noc = noc or next((r["value"] for r in mine if r["key"] == "noc_code"), None)
+        end = end or next((r["value"] for r in mine if r["key"] == "permit_expiry_date"), None)
+    return noc, end
 
 
 def principal_is_open(a):
@@ -141,10 +155,15 @@ def members(prog, a):
         out.append((bits[0] or f"family member {i}", app, age, False))
     if given:
         return out
-    spouse_app = "owp" if prog["key"] == "work" else prog["key"] if prog["key"] in ("visitor", "super-visa") else "visitor"
+    members.spouse_note = ""
+    spouse_ok = None
+    if prog["key"] == "work" and not principal_is_open(a):  # the worker-spouse rule, read from the knowledge base
+        import owp_rules
+        spouse_ok, members.spouse_note = owp_rules.spouse_check(*principal_job(a))
+    spouse_app = ("visitor" if spouse_ok == "no" else "owp") if prog["key"] == "work" else prog["key"] if prog["key"] in ("visitor", "super-visa") else "visitor"
     child_app = prog["key"] if prog["key"] in ("visitor", "super-visa") else "visitor"
     if a.spouse:
-        out.append(("spouse or partner", spouse_app, None, spouse_app != prog["key"] or prog["key"] == "work"))
+        out.append(("spouse or partner", spouse_app, None, spouse_ok != "yes" and (spouse_app != prog["key"] or prog["key"] == "work")))
     for i in range(a.children or 0):
         out.append((f"child {i + 1}", child_app, None, child_app != prog["key"]))
     extra = (a.people or 0) - len(out)
@@ -152,7 +171,7 @@ def members(prog, a):
         out.append((f"family member {i + 1}", child_app, None, child_app != prog["key"]))
     owps = (a.open_work_permit or 0) - sum(1 for p in out if p[1] == "owp")
     if prog["key"] == "work" and owps > 0:  # --open-work-permit N: spouse first, then dependants only if the rules allow
-        order = [i for i, p in enumerate(out) if p[0].startswith("spouse")] +                 ([i for i, p in enumerate(out) if p[0].startswith(("child", "family member"))] if children_get_owp() else [])
+        order = [i for i, p in enumerate(out) if p[0].startswith("spouse") and spouse_ok != "no"] +                 ([i for i, p in enumerate(out) if p[0].startswith(("child", "family member"))] if children_get_owp() else [])
         for i in order:
             if owps and out[i][1] != "owp":
                 who, _, age, _ = out[i]
@@ -193,9 +212,12 @@ def temporary_lines(prog, a):
         note = f" ({exempt} exempt by age: under {low} or over {high})" if exempt else ""
         out.append((bio["description"] + note, len(giving), total.quantize(CENT), bio["last_verified"]))
     assumed = [f"{w}: {APP_LABEL[app]}" for w, app, _, s in people if s]
+    if getattr(members, "spouse_note", "") and any(w.startswith("spouse") for w, *_ in people):
+        assumed.append(("Spouse priced as a visitor: " if any(w.startswith("spouse") and app == "visitor" for w, app, *_ in people) else "")
+                       + members.spouse_note)
     if getattr(members, "unassigned", 0):
-        assumed.append(f"{members.unassigned} open work permit(s) not priced: no spouse in the quote, the principal's own permit isn't open, "
-                       "and dependent children aren't eligible (open-work-permits.md)")
+        assumed.append(f"{members.unassigned} open work permit(s) not priced: no eligible spouse in the quote, the principal's own permit "
+                       "isn't open, and dependent children aren't eligible (open-work-permits.md)")
     return out, len(people), assumed
 
 
@@ -345,6 +367,8 @@ def add_family(x):
     x.add_argument("--people", type=int, default=0); x.add_argument("--minors", type=int, default=0); x.add_argument("--open-work-permit", type=int, default=0)
     x.add_argument("--member", action="append", help="one family member of a visa or permit application: role:application[:age], e.g. child:study:12")
     x.add_argument("--age", type=int, help="the principal applicant's age (biometrics exemptions)")
+    x.add_argument("--noc", help="the principal's NOC code, to check the spouse's open work permit (default: the case's noc_code)")
+    x.add_argument("--permit-end", help="the principal's permit end date (default: the case's permit_expiry_date)")
 
 
 def main():

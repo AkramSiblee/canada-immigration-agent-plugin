@@ -407,15 +407,17 @@ def spouse_owp_check(case, person, keep):
     get = lambda k: next((r["value"] for r in facts if r["key"] == k and r.get("value")), "")  # noqa: E731
     out, where = [], "knowledge/05-temporary-residence/open-work-permits.md"
     noc, level = re.sub(r"\D", "", get("noc_code")), get("study_level")
-    if len(noc) == 5:
-        teer = int(noc[1])
-        if teer in listed:
-            out.append(f"Spouse open work permit: {principal}'s NOC {noc} is TEER {teer}. Only select TEER {m_sel.group(1)}-{m_sel.group(2)} "
-                       f"occupations qualify: check IRCC's list ({where})")
-        elif teer not in eligible:
-            out.append(f"URGENT: spouse open work permit: {principal}'s NOC {noc} is TEER {teer}. TEER {teer} principals don't give "
-                       f"a spouse an open work permit ({where}). Consider another route")
-    elif level:
+    dates = re.findall(r"\d{4}-\d{2}-\d{2}", get("work_period"))
+    end = de.parse_date(get("permit_expiry_date"))[0] if get("permit_expiry_date") else (dates[-1] if len(dates) >= 2 else "")
+    if len(noc) == 5:  # the same check as the fee quote: TEER and IRCC's eligible list, read from the knowledge base
+        import owp_rules
+        verdict, why = owp_rules.spouse_check(noc, end or None, TODAY)
+        if verdict == "no":
+            out.append(f"URGENT: spouse open work permit: {principal}'s {why}. Consider another route for the spouse")
+        elif verdict == "confirm":
+            out.append(f"Spouse open work permit: {principal}'s {why}")
+        return out
+    if level:
         if re.search(r"doctor|phd", level, re.I):
             pass
         elif re.search(r"master", level, re.I) and m_study:
@@ -432,13 +434,6 @@ def spouse_owp_check(case, person, keep):
                        f"(a long enough master's, doctoral, listed professional degrees) qualify ({where})")
     else:
         out.append(f"Spouse open work permit: no NOC code or study level recorded for {principal}. Record it to check eligibility ({where})")
-    dates = re.findall(r"\d{4}-\d{2}-\d{2}", get("work_period"))
-    end = de.parse_date(get("permit_expiry_date"))[0] if get("permit_expiry_date") else (dates[-1] if len(dates) >= 2 else "")
-    if end and noc:  # the principal's permit end (or the job's end date when the permit isn't recorded)
-        left = (datetime.date.fromisoformat(end) - TODAY).days / 30.44
-        if left < months:
-            out.append(f"URGENT: spouse open work permit: {principal}'s permit or job runs about {left:.0f} more months; it must be valid "
-                       f"{months}+ months when the spouse applies ({where})")
     return out
 
 

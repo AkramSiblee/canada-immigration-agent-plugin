@@ -6,6 +6,18 @@ last_verified: 2026-11-07
 confidence: M
 review_every_days: 90
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/ineligible.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/asylum-process-changes.html
+  - https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors218-eng.html
+  - https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-13.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-22.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/complete-claim.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-23.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/how-to-apply.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/humanitarian-compassionate-grounds.html
+  - https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-9.html
   - knowledge/06-protection-humanitarian/*.md
   - knowledge/09-procedure-litigation/*.md
 ---
@@ -45,4 +57,17 @@ sources:
 - IRB practice notices; PRRA access rules for ineligibles
 
 ## Sources
+Official pages for each time-sensitive rule (read when the linked knowledge files were last verified):
+- Eligibility and the 1-year / 14-day bars (C-12, claims after 2025-06-02): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/eligibility.html
+- Ineligible claims, conditional removal order, PRRA notice: https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/ineligible.html
+- Asylum process changes (C-12 regime in force 2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/asylum-process-changes.html
+- SOR/2026-218 (Gazette II 2026-11-04): https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors218-eng.html
+- IRPA s.101 eligibility (text): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-13.html
+- STCA and its exceptions (IRPR s.159.1-159.7): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-22.html
+- Completing the claim online (60 days): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/complete-claim.html
+- RAD time limits: 15 / 30 days (IRPR s.159.91): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-23.html
+- PRRA eligibility and how to apply (15 / 22 days): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/eligibility.html
+- PRRA how to apply: https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/how-to-apply.html
+- H&C (12-month bar and exceptions): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/humanitarian-compassionate-grounds.html
+- Federal Court judicial review (IRPA s.72): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-9.html
 - Derived from knowledge/06-protection-humanitarian and 09-procedure-litigation (verified 2026-11-07)

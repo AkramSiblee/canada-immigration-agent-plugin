@@ -993,6 +993,13 @@ def fill(form, blank, ready, out):
             filled.pop(ind, None)
             missed[ind] = ("answered Yes, but no rows could be filled, so the Yes was left blank too: give each row "
                            f"({table.replace('_history', '')}.1.From, ...) or type them in Adobe")
+    rx = next((m[1] for m in maps if m[0] == "other_name"), None)  # the same rule for the other-name boxes
+    path = find_path(paths, rx, exclude) if rx else None
+    if path in values and ready.get("other_name") == "Yes" and any(re.search(p_rx, de.clean_path(p)) for p in paths for p_rx in BOXES["other_name"].values()) \
+            and not any(k.startswith("other_name.") for k in filled):
+        del values[path]
+        filled.pop("other_name", None)
+        missed["other_name"] = "Client must answer: other name, family name and given name separately. The Yes was left blank too"
     for key, _, _ in joins:
         if key in ready and key not in filled and not any(k.startswith(key + ".") for k in filled):
             missed[key] = ("your name has more than two words, so it isn't split by guessing. Set your family name once: "
@@ -1074,11 +1081,20 @@ def prepare(ready, maps, joins):
         target = YN_DETAILS.get(key)
         if details and target in BOXES:
             if not any(k.startswith(target + ".") for k in ready):
-                words = details.split()
+                name = re.sub(r"\s*[(\[].*$", "", details).strip(" ,;:-")  # drop a note such as "(name before marriage)"
+                words = name.split()
+                own = str(ready.get("given_name", "")).strip().lower()
                 if len(words) == 1:  # one name: a maiden or former family name
-                    ready[f"{target}.FamilyName"] = details
+                    ready[f"{target}.FamilyName"] = name
+                elif own and len(words) - len(own.split()) == 1 and " ".join(words).lower().startswith(own):
+                    ready[f"{target}.GivenName"] = " ".join(words[:-1])  # their own given name, then the other family name
+                    ready[f"{target}.FamilyName"] = words[-1]
+                elif len(words) == 2:
+                    ready[f"{target}.GivenName"], ready[f"{target}.FamilyName"] = words
                 else:
-                    inferred[f"{target}.details"] = f"details '{details[:40]}' not split: give {target}.FamilyName and {target}.GivenName"
+                    ready.pop(key, None)  # a Yes with empty name boxes isn't written
+                    inferred[key] = (f"Client must answer: other name, family name and given name separately ('{details[:40]}' "
+                                     f"can't be split for certain; give {target}.FamilyName and {target}.GivenName). The Yes was left blank too")
         elif details and target in map_keys and target != key:
             ready.setdefault(target, details)
         elif details:

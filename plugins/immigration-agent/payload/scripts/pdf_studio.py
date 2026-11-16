@@ -28,6 +28,17 @@ import sys
 import tempfile
 
 
+def dedupe(writer):
+    """Merge identical objects and drop unused ones, with the argument names the installed pypdf supports
+    (remove_duplicates/remove_unreferenced from pypdf 5; remove_identicals/remove_orphans before)."""
+    import inspect
+    params = inspect.signature(writer.compress_identical_objects).parameters
+    if "remove_unreferenced" in params:
+        writer.compress_identical_objects(remove_duplicates=True, remove_unreferenced=True)
+    else:
+        writer.compress_identical_objects(remove_identicals=True, remove_orphans=True)
+
+
 class _QuietPadding(logging.Filter):
     """pypdf logs 'Ignoring padding error' for every IRCC form it opens (their encryption is padded oddly); it is harmless.
     Only that message is dropped, and only on pypdf's two decryption loggers: every other warning still shows."""
@@ -272,7 +283,7 @@ def cmd_combine(a):
             if not a.no_bookmarks:
                 w.add_outline_item(p.stem, start)
         if a.compact:
-            w.compress_identical_objects(remove_identicals=True, remove_orphans=True)
+            dedupe(w)
         path = save(w, out_path(a.out, "combined"))
     report(path, f"Combined {len(files)} files in this order: " + ", ".join(p.name for p in files))
 
@@ -377,7 +388,7 @@ def shrink(r, quality, max_side):
             page.compress_content_streams()
         except Exception:
             pass
-    w.compress_identical_objects(remove_identicals=True, remove_orphans=True)
+    dedupe(w)
     buf = io.BytesIO()
     w.write(buf)
     return buf.getvalue(), done

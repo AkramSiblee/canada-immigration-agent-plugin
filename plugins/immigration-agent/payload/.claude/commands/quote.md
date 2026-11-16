@@ -11,7 +11,8 @@ Request: $ARGUMENTS
 3. `python3 scripts/quote.py calc --program P [--spouse] [--children N] [--people N] [--minors N] [--open-work-permit N]` and show the numbers.
    Visas and permits: each person is priced by their own application. State each one with `--member role:application[:age]`
    (visitor, super-visa, study, work, owp), e.g. `--member spouse:owp:34 --member child:study:12`; ages apply the biometrics exemptions.
-   Without --member the quote assumes a worker's spouse needs an open work permit and children a visitor visa, and says so: confirm
-   with the consultant. --people/--minors for citizenship.
+   A worker's spouse is checked against the knowledge base (`--noc`, `--permit-end`, or the case's noc_code and permit_expiry_date): a
+   spouse who doesn't qualify is priced as a visitor, with the reason; with no NOC on file the open work permit is shown as
+   unconfirmed. Children get a visitor visa unless --member says otherwise. --people/--minors for citizenship.
 4. On approval: `python3 scripts/quote.py make ... --prospect ID` (moves the prospect to "quoted"), or `--case CASE`, or `--name "Client"`.
    Relay: a quote isn't a service agreement (Code s.24); offer /agreement service-agreement once the client accepts.

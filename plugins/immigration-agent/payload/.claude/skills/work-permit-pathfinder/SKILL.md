@@ -12,7 +12,7 @@ description: Pick the right work permit stream (LMIA, IMP, CUSMA, ICT, IEC, Fran
 ## Workflow
 1. Determine employer-specific vs open; LMIA required or exempt code
 2. Check wage tier, refusal-to-process list, caps, employer compliance fee
-3. Check spouse OWP eligibility rules
+3. Check spouse OWP eligibility: `python3 scripts/owp_rules.py check NOC [--permit-end YYYY-MM-DD]` (TEER and IRCC's eligible TEER 2-3 list from open-work-permits.md; children aren't eligible under this measure)
 4. Output: stream, code, documents, fees, timeline, risks
 
 ## Guardrails

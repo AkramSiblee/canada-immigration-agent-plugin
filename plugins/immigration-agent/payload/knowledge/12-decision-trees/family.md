@@ -6,6 +6,17 @@ last_verified: 2026-11-07
 confidence: M
 review_every_days: 90
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/act-changes/rules-2025.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/who-you-can-sponsor.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-277/page-1.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/other-goals/mi89.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/changes-parents-grandparents-super-visa-income-requirement-calculated.html
+  - https://ircc.canada.ca/english/information/fees/fees.asp
   - knowledge/04-family/*.md
   - knowledge/07-citizenship-pr-status/citizenship-proof-bill-c3.md
 ---
@@ -48,4 +59,16 @@ sources:
 - PGP intake announcements
 
 ## Sources
+Official pages for each time-sensitive rule (read when the linked knowledge files were last verified):
+- Proof of citizenship and Bill C-3 ($75 certificate): https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship.html
+- Bill C-3 rules (citizenship by descent): https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/act-changes/rules-2025.html
+- Sponsor eligibility and bars (IRPR s.130, s.133): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
+- IRPR s.117(9), s.130, s.133 (text): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
+- Who you can sponsor; 117(9)(d) public policy ended 2026-09-10: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/who-you-can-sponsor.html
+- Spouse in Canada class: open work permit: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
+- IAD appeal: 30 days (IRPA s.63; IAD Rules 2022 r.16): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-277/page-1.html
+- PGP paused (MI89): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/other-goals/mi89.html
+- Super Visa eligibility, income and insurance: https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/eligibility.html
+- Super Visa income change (2026-03-31): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/changes-parents-grandparents-super-visa-income-requirement-calculated.html
+- Fees: spouse $1,260; child $180; Super Visa $100; biometrics $85 (fee list modified 2026-11-10): https://ircc.canada.ca/english/information/fees/fees.asp
 - Derived from knowledge/04-family and 07-citizenship-pr-status (verified 2026-11-07)

@@ -6,6 +6,20 @@ last_verified: 2026-11-07
 confidence: M
 review_every_days: 90
 sources:
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-25.html
+  - https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-4.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/language-results.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/open-work-permit.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/eligibility.html
+  - https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low/requirements.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
+  - https://www.ontario.ca/page/ontario-workforce-priority-stream
+  - https://liveinnovascotia.com/resources/update-nova-scotia-nominee-program-and-atlantic-immigration-program-2026-selection
+  - https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - knowledge/05-temporary-residence/*.md
   - knowledge/01-federal-economic/*.md
   - knowledge/14-policy-tracker/announced-for-2027.md
@@ -51,4 +65,19 @@ sources:
 - 2027 measure implementation; provincial allocations
 
 ## Sources
+Official pages for each time-sensitive rule (read when the linked knowledge files were last verified):
+- Restoration within 90 days (IRPR s.182) and maintained status: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-25.html
+- TRP (IRPA s.24): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-4.html
+- PGWP eligibility (180 days, language, field of study): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html
+- PGWP field of study list: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html
+- PGWP language results: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/language-results.html
+- BOWP and other open work permits: https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/open-work-permit.html
+- Spouse OWP: TEER 0-1 or listed TEER 2-3, 16+ months: https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/eligibility.html
+- LMIA (low-wage stream duration): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low/requirements.html
+- CEC and high-wage Canadian experience points: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
+- Ontario Workforce Priority stream (6 months in the offered job): https://www.ontario.ca/page/ontario-workforce-priority-stream
+- Nova Scotia one-time expanded selection (2026): https://liveinnovascotia.com/resources/update-nova-scotia-nominee-program-and-atlantic-immigration-program-2026-selection
+- PSTQ Stream 2 (Quebec): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
+- 2027 time-limited measures: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
+- 2027-2029 levels plan: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
 - Derived from knowledge/05-temporary-residence, 01-federal-economic, 14-policy-tracker (verified 2026-11-07)

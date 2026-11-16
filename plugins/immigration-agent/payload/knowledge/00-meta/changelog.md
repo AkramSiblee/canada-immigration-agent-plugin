@@ -79,3 +79,4 @@
 | 2026-09-07 | IRB Practice Notice on AI in force: no AI for narratives or evidence; declaration required | H |
 | 2027-03-01 | (Proposed) TFWP Low-Wage access reforms (provincial opt-in) | H |
 | 2027-04-16 | CICC public register (SOR/2026-68 s.22) | H |
+| 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (recommendations dated by 2026-12-31 stay usable until they expire) | H |

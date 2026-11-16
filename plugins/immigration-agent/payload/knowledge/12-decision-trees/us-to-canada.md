@@ -42,7 +42,7 @@ Re-check each branch's source file before advising; the H-1B branch changes fast
       -> CUSMA ICT (T37 executive/manager, T38 specialized knowledge).
    c. Any citizenship, same multinational, 1 yr continuous full-time in last 3 yrs (e.g. L-1 / H-1B with a global employer)
       -> Intra-company transferee C12 (C62 exec/manager max 7 yrs; C63 specialized knowledge max 5 yrs).
-   d. Otherwise -> LMIA-based permit (work-permits-lmia.md) or another IMP code; spouse may qualify for an OWP (open-work-permits.md).
+   d. Otherwise -> LMIA-based permit (work-permits-lmia.md) or another IMP code; spouse qualifies for an OWP only if the principal's NOC is TEER 0-1 or on IRCC's TEER 2-3 list, with 16+ months left (open-work-permits.md; scripts/owp_rules.py).
    - Where to apply: port of entry ONLY if visa-exempt (US citizen, LPR, eTA national) and the LMIA / offer number is ready
      (work-permit-process-and-status.md). Visa-required nationals apply online before travel.
      Flagpoling (leaving to the US and re-entering just for a permit) ended 2024-12-23 for most people already in Canada.

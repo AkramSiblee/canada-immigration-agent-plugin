@@ -306,6 +306,40 @@ def documents(found, docs):
     return out
 
 
+# answers autofill writes from facts kept under other keys: parts (current_residence.Country), table rows (employment.1.From)
+FACT_GROUPS = {"employment_history": ("employment", "employment_history"), "education_history": ("education", "education_history"),
+               "previous_countries_details": ("previous_countries",), "employer_name": ("employer", "employer_name"),
+               "study_address": ("study_address", "school_address"), "pal_number": ("pal", "pal_number"), "caq_number": ("caq", "caq_number"),
+               "job_title": ("job", "job_title", "job_duties")}
+
+
+def fact_words(text):
+    """Words and numbers in an answer, with provinces and countries also under their full names (NS = Nova Scotia, BGD = Bangladesh)."""
+    out = set()
+    for w in re.findall(r"[A-Za-z0-9]+", str(text)):
+        out.add(w.lower())
+        full = af.PROVINCES.get(w.upper()) or (de.country_name(w) if len(w) == 3 and w.isupper() else None)
+        if full and full != w:
+            out |= {x.lower() for x in re.findall(r"[A-Za-z0-9]+", full)}
+    return out
+
+
+def from_facts(key, value, client):
+    """True when every word of the form's answer is in the client's current facts for that question (whole, parts or rows)."""
+    prefixes = FACT_GROUPS.get(key, (key,))
+    texts = [c["value"] for k, entries in client.items() for c in entries
+             if k == key or any(k == pre or k.startswith(pre + ".") for pre in prefixes)]
+    if not texts:
+        return False
+    have = set().union(*(fact_words(t) for t in texts))
+    stated = [w for w in re.findall(r"[A-Za-z0-9]+", str(value)) if not re.fullmatch(r"\d{1,2}", w)]  # skip "01" month boxes etc.
+
+    def known(w):  # the word itself, or the full name of a code (NS = Nova Scotia, BGD = Bangladesh)
+        full = fact_words(w) - {w.lower()}
+        return w.lower() in have or bool(full) and full <= have
+    return bool(stated) and all(known(w) for w in stated)
+
+
 def edited(number, got, folder, person):
     """Answers that differ from the worksheet, or were added in Adobe."""
     out = []
@@ -321,6 +355,8 @@ def edited(number, got, folder, person):
         if key not in rows or f.get("sensitive"):
             continue
         planned = rows[key]["answer"]
+        if from_facts(key, f["value"], client):
+            continue  # what autofill wrote from the current client facts (parts, rows, codes): not an edit
         if not planned:
             out.append(item("TODO", f"IMM {number}", "Edited", f"{rows[key]['question'][:70]}: typed on the form ('{str(f['value'])[:50]}'), not in the worksheet"))
         elif de.squash(planned) != de.squash(f["value"]) and not same_content(planned, f["value"]) and not af.matches(str(f["value"]), str(planned)):

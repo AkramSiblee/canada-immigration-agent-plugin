@@ -2,6 +2,15 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.8
+- Fee quotes and the questionnaire now check a worker's spouse against IRCC's rules for a spouse open work permit: the principal's NOC must be TEER 0-1, or on IRCC's list of eligible TEER 2-3 occupations (now in the knowledge base), with 16+ months left on the permit. A spouse who doesn't qualify is priced as a visitor, with the reason; with no NOC on file, the quote says "Confirm spouse open work permit eligibility: NOC not on file". New command: owp_rules.py check NOC.
+- /autofill: an other name written "Yes: Nahar Begum (name before marriage)" now fills the name boxes; when a name can't be split for certain, the Yes is left blank too and the client is asked.
+- /evidence: wedding, family, visit and trip pictures go to the captioned photo PDF (the keyword becomes a suggested theme); screenshots and scanned documents keep their category.
+- /final-check no longer lists answers autofill wrote from the client's own facts as "typed on the form".
+- /pdf compress: no more pypdf warning.
+- New: case.py review lists header fields (submitted date, CRS score, expiry dates, program) that the file's facts, documents, log or notes don't support. It never changes the header.
+- Knowledge base: Nova Scotia's four streams with their eligibility rules, the food and accommodation pause and the NOC 62020 pause; the rural pilot closes 2027-01-01 (permanent program from that date) and community intakes re-checked; official sources for every decision tree; the Quebec business programs in the policy tracker; one fee-page date.
+
 ## 1.9.7
 - Readiness report: your own letters to the client (closing letters, agreements, quotes, status updates) are no longer fact-checked against the client's documents, so your fees aren't flagged as "amount not shown in any document". Letters of explanation and submission letters are still checked.
 

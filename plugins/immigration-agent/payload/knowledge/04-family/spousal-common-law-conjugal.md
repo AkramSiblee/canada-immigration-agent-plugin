@@ -9,7 +9,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/who-you-can-sponsor.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
-  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/spouse-common-law-partner-canada-open-work-permit.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
 ---
@@ -99,7 +99,7 @@ sources:
 - Program page (2026-03-05): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html
 - Who you can sponsor (2026-09-11): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/who-you-can-sponsor.html
 - Eligibility (2026-06-23): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
-- Spousal OWP (2026-04-17): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/spouse-common-law-partner-canada-open-work-permit.html
+- Spousal OWP (2026-04-17): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
 - IRPR: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
 - IRCC inventory (processing): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
 All read 2026-11-07.

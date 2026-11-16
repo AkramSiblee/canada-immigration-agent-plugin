@@ -6,6 +6,26 @@ last_verified: 2026-11-08
 confidence: M
 review_every_days: 90
 sources:
+  - https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
+  - https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-trades.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html
+  - https://www.ontario.ca/page/ontario-workforce-priority-stream
+  - https://www.welcomebc.ca/immigrate-to-b-c/skills-immigration
+  - https://www.alberta.ca/aaip-application-streams
+  - https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program
+  - https://immigratemanitoba.com/mpnp/regional-immigration-initiatives/
+  - https://yukon.ca/en/yukon-nominee-program
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - knowledge/01-federal-economic/*.md
   - knowledge/02-pnp/*.md
   - knowledge/03-quebec/*.md
@@ -54,4 +74,25 @@ sources:
 - Post-Nov 3 EE cut-offs; provincial intake status
 
 ## Sources
+Official pages for each time-sensitive rule (read when the linked knowledge files were last verified):
+- PSTQ streams and requirements (Quebec): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
+- PEQ closed since 2026-10-31 (Quebec): https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise
+- FSW, CEC, FST eligibility: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html
+- CEC: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
+- FST: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-trades.html
+- CRS since 2026-11-03 (labour market integration factor): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html
+- Ministerial Instructions amendment 2026-1: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
+- High-wage job offer and Canadian experience points: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
+- Category-based selection and 2026 categories: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html
+- Rounds of invitations and cut-offs: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html
+- Ontario Workforce Priority stream: https://www.ontario.ca/page/ontario-workforce-priority-stream
+- BC Skills Immigration: https://www.welcomebc.ca/immigrate-to-b-c/skills-immigration
+- Alberta (AAIP) streams: https://www.alberta.ca/aaip-application-streams
+- Saskatchewan (SINP): https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program
+- Manitoba regional initiatives: https://immigratemanitoba.com/mpnp/regional-immigration-initiatives/
+- Yukon Nominee Program (Critical Impact intakes): https://yukon.ca/en/yukon-nominee-program
+- Atlantic Immigration Program (TEER 0-4): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/atlantic-immigration.html
+- Rural and Francophone community pilots: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
+- Francophone Community Immigration Pilot: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
+- 2027 time-limited measures (levels plan): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
 - Derived from knowledge/01-federal-economic, 02-pnp, 03-quebec (all verified 2026-11-07)

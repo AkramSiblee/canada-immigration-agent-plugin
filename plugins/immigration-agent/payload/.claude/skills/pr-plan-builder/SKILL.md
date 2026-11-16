@@ -19,6 +19,7 @@ description: Build a client-ready PR Masterplan (full eligibility assessment) co
 6. Tell the consultant it is a draft for their review before it goes to the client.
 
 ## Guardrails
+- Spouse open work permit: never suggest one without `python3 scripts/owp_rules.py check NOC [--permit-end YYYY-MM-DD]` (TEER and IRCC's eligible TEER 2-3 list, read from open-work-permits.md). If it says NO, say why and suggest another route; if CONFIRM, say eligibility is unconfirmed. Dependent children don't get one under the worker-spouse measure, and don't assume the PR-pathway family route for an LMIA-based permit.
 - Read listed knowledge files first; check `last_verified` and `review_every_days`. If stale, needs-seed, or the fact is perishable (fees, caps, cut-offs, processing times, allocations, intake status), verify on the official source before advising, then update the file.
 - Cite knowledge file + source URL + last_verified. Mark confidence H/M/L.
 - Escalate to a licensed lawyer: Federal Court, criminal equivalency, retroactive asylum bars, multigenerational C-3 cases.

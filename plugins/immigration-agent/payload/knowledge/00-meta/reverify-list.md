@@ -32,6 +32,6 @@
 31. UK CPTPP accession: IRCC lists "ratified 2026-09-01"; confirm entry into force for temporary entry (trade-agreement-work-permits.md)
 32. Quebec Entrepreneur applying/after-CSQ pages not read (fees, post-CSQ conditions) (03-quebec/business-immigration.md)
 33. ESDC 2026-07-09 TFWP enforcement release: primary not read; figures are secondary (employer-compliance-inspections.md)
-30. Quebec business programs: MIFI status still not confirmed; official fees and targets recorded; circular pointers removed
-31. State care PR pathway ends 2027-01-21; TR to PR open work permit ends 2026-12-31; check for extensions
-32. Physician Express Entry round history and reserved PNP doctor spaces
+34. RESOLVED 2026-11-16: Quebec business programs (Investor, Entrepreneur, Self-Employed) open, applications at any time, no cap (quebec.ca pages 2026-11-09/10, H); tracker row added in 14-policy-tracker/ministerial-instructions-and-program-delivery.md
+35. State care PR pathway ends 2027-01-21; TR to PR open work permit ends 2026-12-31; check for extensions
+36. Physician Express Entry round history and reserved PNP doctor spaces

@@ -41,7 +41,12 @@ CATEGORIES = [
     ("Events and family", r"wedding|marriage|nikah|ceremony|engagement|reception|invitation|birth|baby|family|anniversary|card|gift"),
 ]
 PHOTOS = "Photos"
-FIELDS = ["No.", "Date", "How dated", "Category", "File", "Include? (yes/no)", "Caption (yours)"]
+FIELDS = ["No.", "Date", "How dated", "Category", "File", "Include? (yes/no)", "Caption (yours)", "Theme (suggested)"]
+# An image whose name says it is a screenshot or a photographed document (chat, call log, ticket, boarding pass, bank statement ...)
+# keeps its category: it is proof of contact or a document, not a photo of the couple.
+NOT_A_PHOTO = (r"chat|whats ?app|message|messenger|wechat|viber|telegram|signal|\bimo\b|sms|\btexts?\b|\bcalls?\b|call ?log|e-?mail|screenshot|screen ?shot|"
+               r"ticket|boarding|itinerary|booking|passport|stamp|lease|rent|tenancy|mortgage|deed|bank|statement|bill|hydro|utility|insurance|"
+               r"licen[cs]e|\btax\b|\bcra\b|\bnoa\b|certificate|receipt|invoice|invitation")
 LIMIT_PHOTOS, LIMIT_CONTACT = 20, 10
 DATE_IN_NAME = [r"(20\d{2}|19\d{2})[-_. ]?(0[1-9]|1[0-2])[-_. ]?(0[1-9]|[12]\d|3[01])"]
 
@@ -108,11 +113,21 @@ def dated(path):
     return datetime.date.fromtimestamp(path.stat().st_mtime), "file date: confirm"
 
 
+def keyword(path):
+    return next((label for label, rx in CATEGORIES if re.search(rx, path.stem, re.I)), "")
+
+
 def category(path):
-    for label, rx in CATEGORIES:
-        if re.search(rx, path.stem, re.I):
-            return label
-    return PHOTOS if path.suffix.lower() in IMAGES else "Other"
+    """Photos for every picture of the couple (wedding, family, visit, trip: the keyword becomes a suggested theme);
+    keyword categories for documents, and for images that are screenshots or photographed documents."""
+    if path.suffix.lower() in IMAGES and not re.search(NOT_A_PHOTO, path.stem, re.I):
+        return PHOTOS
+    return keyword(path) or (PHOTOS if path.suffix.lower() in IMAGES else "Other")
+
+
+def theme(path):
+    """For a photo: the event or trip its name suggests, as a hint for the caption (the consultant writes the caption)."""
+    return keyword(path) if category(path) == PHOTOS else ""
 
 
 def source(folder, given):
@@ -127,7 +142,7 @@ def items(root):
     for p in sorted(root.rglob("*")):
         if p.is_file() and p.suffix.lower() in IMAGES | DOCS and "client-ids" not in {x.lower() for x in p.parts}:
             d, how = dated(p)
-            out.append({"date": d, "how": how, "category": category(p), "file": p.relative_to(root).as_posix(), "include": "", "caption": ""})
+            out.append({"date": d, "how": how, "category": category(p), "file": p.relative_to(root).as_posix(), "include": "", "caption": "", "theme": theme(p)})
     return sorted(out, key=lambda r: (r["date"], r["file"]))
 
 
@@ -159,8 +174,8 @@ def cmd_timeline(a):
         [f"Proof of contact: at most {LIMIT_CONTACT} pages. Choose representative samples across the relationship."],
         ["Captions are yours: dates, places and who is shown. The relationship's story belongs to the client's own IMM 5532 answers."]]
         + [[f"{k}: {v}"] for k, v in sorted(counts.items())], [120])
-    de.add_sheet(book, "Timeline", FIELDS, [[i, r["date"].isoformat(), r["how"], r["category"], r["file"], r["include"], r["caption"]] for i, r in enumerate(rows, 1)],
-                 [6, 12, 30, 28, 50, 16, 50])
+    de.add_sheet(book, "Timeline", FIELDS, [[i, r["date"].isoformat(), r["how"], r["category"], r["file"], r["include"], r["caption"], r["theme"]]
+                                            for i, r in enumerate(rows, 1)], [6, 12, 30, 28, 50, 16, 50, 22])
     years = sorted({r["date"].year for r in rows})
     gaps = [f"{y1} to {y2}" for y1, y2 in zip(years, years[1:]) if y2 - y1 > 1]
     if gaps:

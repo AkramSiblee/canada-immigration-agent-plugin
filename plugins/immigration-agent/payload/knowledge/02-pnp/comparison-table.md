@@ -42,7 +42,7 @@ sources:
 | NU | — | **No PNP** | — | — | — | — | H |
 | QC | — | **No PNP** (own selection, see 03-quebec) | — | — | — | — | H |
 - Community-level routes by province: see regional-community-streams.md and manitoba.md.
-- **Software developers (21231/21232) without a job offer (read 2026-11-09):** AB Accelerated Tech, SK Tech Talent, ON, BC, NB EE, NL EE all need a provincial job or offer. NS EE needs 1 year NS work or a province Notice of Interest. MB SWO needs a connection. SK Occupation In-Demand has no job offer requirement but no scheduled EOI draws; May 2024 excluded list doesn't name 21231/21232 (check current list). PEI EE grid scores non-offer candidates but tech isn't a stated priority (M).
+- **Software developers (21231/21232) without a job offer (read 2026-11-09):** AB Accelerated Tech, SK Tech Talent, ON, BC, NB EE, NL EE all need a provincial job or offer. NS EE needs 1 year of NS work in TEER 0-3 (stream page read 2026-11-16; a Notice of Interest leads to the Critical Vacancies page, not an alternative stated on the stream page). MB SWO needs a connection. SK Occupation In-Demand has no job offer requirement but no scheduled EOI draws; May 2024 excluded list doesn't name 21231/21232 (check current list). PEI EE grid scores non-offer candidates but tech isn't a stated priority (M).
 - National PNP target 2027: 95,000 + extra 2027 workers-cohort allocations (per-province not published).
 - Up to 10,000 extra federal spaces across PNPs for practice-ready physicians / Francophones (2026).
 - **Atlantic 2026 allocations remain unofficial.** Secondary estimates conflict widely: NS 2,265 / 2,344 / 4,127 / 5,236; NB 2,065 / 3,603 / 4,573; NL 1,050 / 1,998 / 2,537; PEI 1,025 / 1,340. Do not quote; confirm with each province (L).

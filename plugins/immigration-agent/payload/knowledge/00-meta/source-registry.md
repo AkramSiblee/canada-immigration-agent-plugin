@@ -23,7 +23,7 @@
 - Saskatchewan: https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program
 - Manitoba: https://immigratemanitoba.com (monthly data: https://immigratemanitoba.com/resources/data/monthly-data-2026/)
 - Quebec: https://www.quebec.ca/en/immigration
-- Nova Scotia: https://novascotiaimmigration.com
+- Nova Scotia: https://liveinnovascotia.com (novascotiaimmigration.com redirects here, checked 2026-11-16)
 - New Brunswick: https://www.welcomenb.ca
 - PEI: https://www.princeedwardisland.ca/en/topic/office-of-immigration (EOI draws: https://www.princeedwardisland.ca/en/information/office-of-immigration/expression-of-interest-draws)
 - Newfoundland and Labrador: https://www.gov.nl.ca/immigration

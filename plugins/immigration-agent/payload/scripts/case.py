@@ -302,6 +302,108 @@ def cmd_log(a):
     print("Logged in", folder.name)
 
 
+# ---- header review: header fields the file itself doesn't support ----
+LANG_DOCS = ("language_test",)
+NOT_YET = r"(?:book|booking|to take|take|sit|register for|waiting for|no|not yet|hasn'?t|has not|pending)"
+
+
+def file_evidence(folder):
+    """What the case's own records show: (text of the notes, log and updates, {doc_type: [doc]}, client facts rows, validity rows)."""
+    import json
+    text = (folder / "case.md").read_text(encoding="utf-8")
+    body = text.split("\n---", 1)[1] if text.startswith("---") and "\n---" in text else text
+    info = read_case(folder)
+    notes = " ".join([body, info.get("next_action", "")])
+    log = (folder / "log.md").read_text(encoding="utf-8") if (folder / "log.md").exists() else ""
+    updates = (folder / "updates.csv").read_text(encoding="utf-8") if (folder / "updates.csv").exists() else ""
+    docs = {}
+    rep_dir = folder / "03-documents" / "_extraction"
+    reports = sorted(rep_dir.glob("*.json")) if rep_dir.exists() else []
+    if reports:
+        try:
+            for d in json.loads(reports[-1].read_text(encoding="utf-8")).get("documents", []):
+                docs.setdefault(d.get("doc_type"), []).append(d)
+        except (OSError, ValueError):
+            pass
+    facts = []
+    if (folder / "client-facts.csv").exists():
+        with (folder / "client-facts.csv").open(encoding="utf-8", newline="") as f:
+            facts = [r for r in csv.DictReader(f) if r.get("value")]
+    validity = []
+    if (folder / "validity.csv").exists():
+        with (folder / "validity.csv").open(encoding="utf-8", newline="") as f:
+            validity = list(csv.DictReader(f))
+    corr = " ".join(p.name.lower() for p in (folder / "06-correspondence").glob("*")) if (folder / "06-correspondence").exists() else ""
+    return notes, log, updates, docs, facts, validity, corr
+
+
+def header_issues(folder):
+    """[(field, value, why)] for header fields with no support in the file, or that the file's own notes contradict.
+    Each is a question for the consultant: the header is never changed here."""
+    info = read_case(folder)
+    notes, log, updates, docs, facts, validity, corr = file_evidence(folder)
+    import doc_extract as de
+    client = info.get("client", "")
+    facts = [r for r in facts if not r.get("person") or not client or de.same_person(client, r["person"])]  # the client's own facts
+    docs = {k: [d for d in v if not de.doc_name(d) or not client or de.same_person(client, de.doc_name(d))] for k, v in docs.items()}
+    said = lambda *keys: [r["value"] for r in facts if r["key"] in keys]  # noqa: E731
+    doc_dates = lambda kinds, field: {f["value"] for k in kinds for d in docs.get(k, []) for f in d.get("fields", []) if f.get("field") == field}  # noqa: E731
+    out = []
+    opened = info.get("opened", "")
+    submitted = info.get("submitted", "")
+    filed = re.search(r"submitted|filed with ircc|application filed|\baor\b|acknowledg", " ".join([log, updates, corr]), re.I)
+    if submitted:
+        if opened and submitted < opened:
+            out.append(("submitted", submitted, f"is before the file was opened ({opened})"))
+        elif not filed:
+            out.append(("submitted", submitted, "nothing in the log, updates or IRCC letters shows an application was submitted"))
+    for field in ("ircc_line", "application_number"):
+        if info.get(field) and not filed:
+            out.append((field, info[field], "no submitted application is recorded in the log, updates or IRCC letters"))
+    tested = bool(docs.get("language_test")) or bool(said("clb", "ee_language", "language_test_result", "ielts", "celpip")) or \
+        any(r.get("doc") == "language_test" for r in validity)
+    pending = re.search(rf"{NOT_YET}\W+(?:\w+\W+){{0,3}}(?:english|french|language|ielts|celpip|pte|tef|tcf)\b", notes, re.I)
+    for field in ("crs_score", "ee_eligible"):
+        if info.get(field):
+            if pending:
+                out.append((field, info[field], f"the notes say '{pending.group(0).strip()[:60]}': a CRS score or eligibility needs a language result"))
+            elif not tested:
+                out.append((field, info[field], "no language test result is in the documents, facts or validity list"))
+    for field, keys, kinds in (("passport_expiry", ("passport_expiry_date",), ("passport",)),
+                               ("status_expiry", ("permit_expiry_date", "status_expiry"), ("study_permit", "work_permit", "visitor_record")),
+                               ("pr_card_expiry", ("pr_card_expiry", "pr_card_expiry_date"), ())):
+        value = info.get(field, "")
+        if not value:
+            continue
+        known = set(said(*keys)) | doc_dates(kinds, "expiry_date")
+        if known and value not in known:
+            out.append((field, value, f"the file shows {', '.join(sorted(known))}"))
+        elif not known:
+            out.append((field, value, "no document or client fact on file shows this date"))
+    if info.get("pr_date") and not (said("pr_date", "landing_date") or docs.get("confirmation_of_pr")):
+        out.append(("pr_date", info["pr_date"], "no client fact or document on file shows this date"))
+    program = info.get("program", "")
+    if re.search(r"lmia|work", program, re.I) and re.search(r"no job offer|without a job offer|job offer not|hasn'?t (?:got|received) a job offer", notes, re.I):
+        out.append(("program", program, "the notes say there is no job offer yet"))
+    if re.search(r"express|\bee\b", program, re.I) and pending:
+        out.append(("program", program, f"the notes say '{pending.group(0).strip()[:60]}'"))
+    return out
+
+
+def cmd_review(a):
+    targets = [find(a.case, include_closed=True)] if a.case else folders(ACTIVE)
+    total = 0
+    for folder in targets:
+        issues = header_issues(folder)
+        total += len(issues)
+        if a.case or issues:
+            print(f"{folder.name}: " + ("header matches the file" if not issues else f"{len(issues)} header field(s) to confirm"))
+        for field, value, why in issues:
+            print(f"  - {field}: {value}: {why}. Confirm it, or clear it with: case.py set {read_case(folder).get('case_id', folder.name[:8])} {field} \"\"")
+    if not a.case:
+        print(f"{total} header field(s) to confirm across {len(targets)} open file(s). Nothing was changed.")
+
+
 def cmd_set(a):
     folder = find(a.case)
     if a.key in ("case_id", "status", "closed", "destroy_after"):
@@ -430,6 +532,7 @@ def main():
     x = s.add_parser("done"); x.add_argument("case"); x.add_argument("row", type=int); x.set_defaults(fn=cmd_done)
     x = s.add_parser("log"); x.add_argument("case"); x.add_argument("text"); x.set_defaults(fn=cmd_log)
     x = s.add_parser("set"); x.add_argument("case"); x.add_argument("key"); x.add_argument("value"); x.set_defaults(fn=cmd_set)
+    x = s.add_parser("review", help="header fields the file doesn't support (changes nothing)"); x.add_argument("case", nargs="?"); x.set_defaults(fn=cmd_review)
     x = s.add_parser("close"); x.add_argument("case"); x.add_argument("--date"); x.set_defaults(fn=cmd_close)
     x = s.add_parser("calendar"); x.add_argument("case", nargs="?"); x.add_argument("--details", action="store_true"); x.add_argument("--out"); x.set_defaults(fn=cmd_calendar)
     a = p.parse_args()

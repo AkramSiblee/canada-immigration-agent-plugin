@@ -2,7 +2,7 @@
 domain: 14-policy-tracker
 topic: ministerial-instructions-and-program-delivery
 status: verified
-last_verified: 2026-11-12
+last_verified: 2026-11-16
 confidence: H
 review_every_days: 30
 sources:
@@ -52,6 +52,7 @@ sources:
 | Refugee sponsorship: Groups of Five and Community Sponsors | **PAUSED** until 2026-12-31 (first paused 2024-11-29) | Re-check in Jan 2027 | notice 2025-11-21 | H |
 | Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws paused for rescoring (last round 2026-10-28). **No round published and no restart date announced as of 2026-11-12** | Restart date: re-verify | MI 2026-1 | H/M |
 | Rural Community Immigration | **Pilot OPEN until 2026-12-31** (recommendations dated 2026-12-31 or earlier; apply for PR before they expire). **Pilot closes 2027-01-01**; the permanent **Rural Community Immigration Program opens 2027-01-01** (IRCC page 2026-11-09). Class in IRPR s.87.4 since 2026-10-22; pilot MIs to 2027-06-30 | Class in force 2026-10-22; program opens 2027-01-01 | SOR/2026-217; IRCC RCI Program and Pilot pages (2026-11-09) | H |
+| **Quebec business programs** (Investor, Entrepreneur, Self-Employed) | **OPEN**: applications accepted at any time, no cap, no Arrima step (paper to MIFI). French oral level 7 since 2024-01-01. About 500 admissions planned for 2026 (M) | Since 2024-01-01 (current rules) | quebec.ca business pages (2026-11-09 / 2026-11-10); 03-quebec/business-immigration.md | H |
 | **PEQ (Quebec)** | **CLOSED** since 2026-10-31 (window opened 2026-07-02); no new window announced | 2026-10-31 | Quebec PEQ page (2026-10-29) | H |
 | **Ontario (OINP)** | Only the **Ontario Workforce Priority stream** is open; all 8 legacy streams closed (EOI closed 2026-06-26) | In force 2026-06-25 | O. Reg. 422/17; OINP page | H |
 | **Agri-Food Pilot** | **CLOSED** 2025-05-14 (pending files processed) | 2025-05-14 | IRCC Agri-Food page | H |

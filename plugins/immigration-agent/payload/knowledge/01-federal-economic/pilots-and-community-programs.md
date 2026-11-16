@@ -48,7 +48,7 @@ sources:
 | Funds, family of 5 | $8,042 (table 2025-07-29); not needed if working in Canada on a valid permit | $22,143 (table 2025-07-29) |
 | Work permit | 2 yrs, employer-specific; job offer + provincial referral letter | 2 yrs, employer-specific; offer + community recommendation |
 - **AIP job offer (IRCC page 2026-09-22, read 2026-11-09):** full-time 30+ h, non-seasonal; TEER 0-3 at least 1 year from PR; **TEER 4 permanent, no end date**; not from a company majority-owned by applicant or spouse. Settlement plan required from an approved provider, individualized per accompanying family member. IRCC estimate about 26 months, about 11,500 waiting (2026-10-09).
-- **Nova Scotia AIP:** designation then endorsement through online EOI; endorsement needs failed local hiring, full-time non-seasonal co-signed offer, co-signed settlement plan. NOC 62020 paused.
+- **Nova Scotia AIP:** designation then endorsement through online EOI; endorsement needs failed local hiring, full-time non-seasonal co-signed offer, co-signed settlement plan. **NOC 62020 paused** for AIP job offers, and NAICS 72 employers can't support NSNP EOIs since 2024-04-17 (liveinnovascotia.com AIP page, read 2026-11-16).
 - AIP forms: IMM 0155 checklist; portal IMM 0008, 5669, 5406, 5562; upload IMM 5501, IMM 0157. AIP applicants may be abroad.
 
 ## Recent changes (2025-2027)
