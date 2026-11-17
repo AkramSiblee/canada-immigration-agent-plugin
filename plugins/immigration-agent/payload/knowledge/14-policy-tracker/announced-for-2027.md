@@ -23,6 +23,14 @@ sources:
   - https://www.quebec.ca/en/immigration/permanent/immigrate-business
   - https://www.alberta.ca/aaip-updates.aspx
   - https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/transition-binders/deputy-minister-2026/international-student-program.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/help-your-spouse-common-law-partner-work-canada.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/acts-regulations/forward-regulatory-plan/list/steamline-study-work-authorizations.html
+  - https://gazette.gc.ca/rp-pr/p2/2024/2024-11-20/html/sor-dors219-eng.html
+  - https://www.quebec.ca/en/news/actualites/detail/management-applications-international-student-program-next-two-years-comes-into-effect-67763
 ---
 # Announced for 2027
 
@@ -81,7 +89,26 @@ sources:
 | AAIP entrepreneur streams | No 2027 change announced. 2026-08-12: guidance on "economic establishment" clarified; criteria unchanged | 2026-08-12 | https://www.alberta.ca/aaip-updates.aspx | H | AAIP updates page |
 | C11 (owner-operator) work permit | No 2026/2027 change found. Rules per 2025-05-27 instructions (51% ownership; max 18 months; temporary intent only; read on the C11 page 2026-11-17) | 2025-05-27 | https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/entrepreneurs-self-employed-seeking-only-temp-residence-r205-c11.html | H | Any new program delivery update on business owners |
 
-### 5. Other announced, not yet in force
+### 5. Student watch list (checked 2026-11-17)
+Nothing below is a new 2027 rule in force. Rows marked NOT PUBLISHED mean no official text was found.
+| Item | Status | Date | Official URL | Conf. | Re-verify trigger |
+|---|---|---|---|---|---|
+| 2027 national study permit cap | **NOT PUBLISHED.** No 2027 cap notice on the IRCC notices page; latest notices are 2026-11-05 (levels) and 2026-10-27. No MI found. DM binder fall 2026 milestone: "Set the 2027 study permit cap in conjunction with the Immigration Levels Plan" and "seek Ministerial approval of provincial and territorial allocations". The 2026 notice came out 2025-11-25, so late Nov-Dec 2026 is plausible (inference) | Binder 2026-09-04; notices checked 2026-11-17 | https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html ; https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/transition-binders/deputy-minister-2026/international-student-program.html | H | New notice "2027 provincial and territorial allocations under the international student cap" |
+| 2027 PAL/TAL provincial allocations | **NOT PUBLISHED.** No per-province 2027 figures. 2026 PALs expire 2026-12-31 and can't be used for 2027 applications (05-temporary-residence/study-permits.md). Any 2027 provincial numbers on blogs are unofficial | 2026-11-17 | https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html (2026 baseline: 408,000 issuance target; 309,670 PAL/TAL spaces) | H | IRCC allocations notice; provincial PAL program pages |
+| Levels 2027-2029 student arrivals | **TABLED (plan, not cap).** Students **150,000** in each of 2027, 2028, 2029; no separate student range (overall temporary 370,000, range 355,000-385,000). 2028-2029 "Notional ... will be confirmed or adjusted by November 1 of next year". Page does not mention the study cap, allocations or PAL. 150,000 is an arrivals target, not the cap; the 2026 cap (408,000) was much higher than the 2026 arrivals target (155,000) because it counts extensions | 2026-11-05 | https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html | H | 2027 cap notice; next levels plan by 2027-11-01 |
+| PGWP field-of-study list, 2026 | **FROZEN for 2026, in force.** "For 2026, we won't add or remove any eligible fields of study." Page dated 2026-03-09 | 2026 | https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html | H | Page update |
+| PGWP field-of-study list, 2027 | **NO ANNOUNCEMENT.** IRCC page says nothing about 2027. Secondary sites claim a review "in early 2027": unverified. Not in the DM binder milestones | 2026-11-17 | same as above | H (no official text); L (early-2027 review claim) | Field-of-study page change or IRCC notice; 2027-01-01 passing |
+| Other PGWP rules | No 2027 change announced (language and field-of-study rules from 2024-11-01 stand; see 05-temporary-residence/pgwp.md) | 2026-11-17 | https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html | H (absence of notice) | Any IRCC notice or program delivery update |
+| Spouse of student OWP | No 2026 or 2027 change on the page. Rules from 2025-01-21 (master's 16+ months, PhD, listed programs, listed professional degrees). Extension under this stream needs "You're not in the last term of your study program". Secondary sites describing a "2026-03-04" final-term refusal change: not found on the IRCC page | Page 2026-02-03; read 2026-11-17 | https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/help-your-spouse-common-law-partner-work-canada.html | H | Page update |
+| Off-campus work hours | No 2027 change announced. 24 hours/week in session (in force; the 2024-11-08 start date is from secondary sources, M); DM binder lists no change | 2026-09-04 | DM binder URL above | H (no change) | IRCC notice |
+| Proof of funds (living costs) | In force: **$23,448** (single, outside Quebec) for applications on or after **2026-09-01**. 2027 amount not announced. DM binder: adjusted "on September 1 annually in line with updates to Statistics Canada's Low-Income Cut-Off", so next change expected 2027-09-01 (amount unknown) | Page 2026-08-28 | https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html | H | Financial-support page change before 2027-09-01 |
+| DLI compliance | No new 2027 regulation found in Canada Gazette. Base rules: SOR/2024-219 (DLI conditions, verification). DM binder spring 2026 milestone: "Issue the first set of regulatory penalties against non-compliant DLIs" (whether issued: not confirmed) | 2026-09-04 | https://gazette.gc.ca/rp-pr/p2/2024/2024-11-20/html/sor-dors219-eng.html ; DM binder URL above | H (rules); M (penalty status unknown) | Canada Gazette I/II IRPR amendments; IRCC DLI compliance reports |
+| Study/work authorization regulations | **PROPOSED, not in Gazette.** Forward Regulatory Plan (first listed 2026-04-01): IRPR amendments to drop the co-op work permit requirement and the study permit requirement for some foreign apprentices. No Gazette I date. The co-op change is already applied administratively since 2026-04-01 (see 05-temporary-residence/study-permit-status-and-compliance.md) | Page 2026-04-07 | https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/acts-regulations/forward-regulatory-plan/list/steamline-study-work-authorizations.html | H | Canada Gazette I prepublication |
+| Work permit holders studying without a study permit | **In force, temporary,** until **2027-12-31** (up to 6 months or permit expiry; no PGWP eligibility) | 2026-09-09 | see ministerial-instructions-and-program-delivery.md | H | Expiry 2027-12-31 or extension |
+| Quebec CAQ application caps | **In force.** Décret 1488-2025 (Gazette officielle, 2025-12-17) sets maximum CAQ applications per institution, school service centre and school board for two periods: 2025-12-17 to 2026-12-16 and **2026-12-17 to 2027-12-16**. CAQ renewals for the same program, level and institution are exempt. Private vocational institutions: -35% vs 2024; non-protected AEC: -75%; protected AEC, DEC, university: about 2024 levels. Total of 124,760 is from secondary sources only (M); quebec.ca gives no total. **Risk:** new PQ government (2026-10-21) could amend the decree | 2025-12-17 | https://www.quebec.ca/en/news/actualites/detail/management-applications-international-student-program-next-two-years-comes-into-effect-67763 | H (decree, periods); M (total) | New decree in Gazette officielle; Quebec 2027 plan |
+| Francophone Minority Communities Student Pilot PR path | **ANNOUNCED: "Opening winter 2027"**, not open | 2026-09-04 | see 05-temporary-residence/study-permit-status-and-compliance.md | H | IRCC launch notice |
+
+### 6. Other announced, not yet in force
 - **TFWP Low-Wage Stream reforms, proposed for 2027-03-01**, contingent on provinces opting in:
   - CMAs with unemployment of 6% or more: refusal to process continues, except priority sectors
   - CMAs over 250,000 with unemployment under 6%, rural parts of large CMAs, and CMAs of 100,000-250,000: targeted access to COPS occupations plus provincial additions
@@ -108,6 +135,7 @@ sources:
 - The PNP allocation boost under the workers cohort is extra to the 95,000 target. Watch for provincial notices.
 - TFWP March 2027 reforms are proposals contingent on provincial opt-in. Don't advise on them as law.
 - SUV/Self-Employed waiting applicants: don't promise PR via the workers cohort. It is province-chosen, optional, one-time and framed for workers already in Canada. No province has published criteria. Never tell a client to submit a fresh SUV or Self-Employed application, and never market the entrepreneur pilot as open.
+- Students: don't quote "150,000" as the 2027 study cap. It is the Levels arrivals target; the cap and provincial PAL numbers are not published. Don't tell 2027 applicants a field of study stays PGWP-eligible after 2026; the freeze is for 2026 only.
 - Quebec business clients: programs open today, but a PQ moratorium on economic PR from abroad is proposed. Flag the risk before the client pays investment or fees.
 
 ## Common refusal reasons
@@ -123,6 +151,7 @@ sources:
 - Provincial notices on 2027 workers cohort allocations and whether they cover SUV/Self-Employed applicants (deadline to use 2027-03-31)
 - Quebec 2027 immigration plan and any business-program suspension under the new PQ government
 - H-1B accelerated pathway (Budget 2025): launch notice, eligibility, whether it is an Express Entry category
+- Students: 2027 cap and PAL/TAL allocations notice (expected late 2026); PGWP field-of-study page for 2027; DLI penalty status; study/work authorization regs in Gazette I; Quebec decree 1488-2025 amendments under PQ government
 
 ## Sources
 - Supplementary Information 2027-2029 Levels: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
@@ -138,4 +167,4 @@ All read 2026-11-07.
 - DM transition binder, economic immigration (2026-09-04): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/transition-binders/deputy-minister-2026/economic-immigration.html
 - Quebec business immigration: https://www.quebec.ca/en/immigration/permanent/immigrate-business
 - Secondary (PQ platform/plan timing): https://www.fragomen.com/insights/canada-incoming-quebec-government-proposes-lower-immigration-targets-and-stricter-french-language-requirements.html (2026-10-12)
-Business rows above read 2026-11-17.
+Business rows above read 2026-11-17. Student watch list rows read 2026-11-17.

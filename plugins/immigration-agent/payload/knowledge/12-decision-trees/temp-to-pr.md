@@ -2,7 +2,7 @@
 domain: 12-decision-trees
 topic: temp-to-pr
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: M
 review_every_days: 90
 sources:
@@ -21,6 +21,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - knowledge/05-temporary-residence/*.md
+  - knowledge/12-decision-trees/study.md
   - knowledge/01-federal-economic/*.md
   - knowledge/14-policy-tracker/announced-for-2027.md
 ---
@@ -35,7 +36,11 @@ sources:
    - Expired under 90 days -> restoration (stop working) + new permit
    - Over 90 days -> TRP or leave; check s.41
 2. Student near graduation?
-   - PGWP: 180 days; CLB 7 (univ) / 5 (college); field of study (2026 list frozen); 1 per lifetime
+   - PGWP: 180 days; CLB 7 (university or any degree) / 5 (other college); field of study
+     (2026 list frozen; scripts/cip_check.py); 1 per lifetime. Full student route: study.md
+   - Unauthorized work (excess hours) -> no work while the PGWP is pending; R200(3)(e)
+     6-month bar. Restoration (R182) not available to a student who stopped studying
+     (R182(2)); restoration needs a new PAL. Spouse C42 OWP: student not in last term
    - Passport validity limits the PGWP length -> renew first
 3. Worker with expiring permit?
    - PR application filed? -> BOWP

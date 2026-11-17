@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: open-work-permits
 status: verified
-last_verified: 2026-11-16
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -26,7 +26,7 @@ Fee: $155 + **$100 open work permit holder fee** (except fee-exempt categories).
 | OWP | Who | Key conditions |
 |---|---|---|
 | **Spouse of worker** (since 2025-01-21) | Spouse/partner of a principal in **TEER 0-1** or **select TEER 2-3** | Principal's permit valid for **at least 16 months** after the spouse applies (exceptions: certain Quebec health recruitment from 2026-05-25; SIP BC spouses from 2026-03-23). **Dependent children no longer eligible.** TEER 4-5 principals: no family OWP |
-| **Spouse of student** (since 2025-01-21) | Student in a master's of 16+ months, PhD, listed professional degree, or eligible program | Valid with the study permit (see study-permits.md) |
+| **Spouse of student** (since 2025-01-21) | Student full time at a PGWP-eligible DLI, not in the last term, in a master's of 16+ months, PhD, listed professional degree, or eligible program (full list: study-permit-status-and-compliance.md) | Valid with the study permit (see study-permits.md) |
 | **Sponsored spouse in Canada** | Spouse/partner being sponsored, living with sponsor, with AOR; accompanying dependent child | No POE applications (see 04-family/spousal-common-law-conjugal.md) |
 | **PGWP** | Graduates | see pgwp.md |
 | **BOWP** (bridging) | Workers in Canada with a pending PR application (EE, PNP, etc.) whose permit is expiring | EE/PNP-EE: in Canada, outside Quebec for EE; valid permit, maintained status or restorable; **principal applicant only**; complete application past completeness check; AOR letter. PNP: no employment restriction in nomination; non-EE PNP needs eligibility assessment passed. Other programs have own sections. No "expires within X months" condition on the page (IRCC 2026-10-16, read 2026-11-09) (H) |

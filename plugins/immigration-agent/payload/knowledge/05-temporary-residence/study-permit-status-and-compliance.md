@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: study-permit-status-and-compliance
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -30,6 +30,27 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/study-permit-tool.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/fmc-student-pilot/eligibility/participating-dlis.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/virtual-sessions.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/campus-work.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/designated-learning-institutions.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/attestation-letters.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/help-your-spouse-common-law-partner-work-canada.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/public-policy-competitiveness-economy/c42.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/after-you-apply.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5551-applying-change-conditions-extend-your-stay-canada.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5552-applying-change-conditions-extend-your-stay-canada-student.html
+  - https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=499&top=15
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-182.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-183.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-185.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-209.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-220.1.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-221.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-222.html
+  - https://gazette.gc.ca/rp-pr/p2/2024/2024-11-20/html/sor-dors219-eng.html
+  - https://gazette.gc.ca/rp-pr/p2/2025/2025-02-12/html/sor-dors11-eng.html
 ---
 # Study permits: applying, conditions, extensions, minors
 
@@ -44,7 +65,7 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - Members of designated armed forces under the Visiting Forces Act
 - A course or program of **6 months or less**, finished within the authorized stay (may still apply before entering)
 - An Indian under the Act
-- Work permit holders may study up to 6 months under a 2026 public policy, to 2027-12-31 (see `study-permits.md`)
+- Work permit holders may study up to 6 months (or until the work permit expires, if sooner) under public policy 2026-2, to 2027-12-31; longer or full-time programs still need a study permit; this study gives no PGWP eligibility (14-policy-tracker/ministerial-instructions-and-program-delivery.md)
 - **Construction apprentices:** valid work permit, eligible construction occupation, apprenticeship agreement registered with the province or territory (temporary measure)
 - **IRCC conflict:** the "do you need a study permit" page (2026-09-09) still describes a worker measure limited to permits or letters issued on or before 2023-06-07, while public policy 2026-2 (2026-09-09) covers current work permit holders for up to 6 months. Confirm on the public policy before advising
 - A minor without a study permit must still have valid visitor status. On reaching the age of majority (18 or 19), they must apply for a study permit to keep studying
@@ -92,19 +113,49 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - **Not eligible:** ESL or FSL, general interest, courses preparing for another program, courses outside Canada.
 - Existing co-op permits stay valid for their whole term.
 
+### Off-campus hours, scheduled breaks, graduate thesis stage (read 2026-11-17)
+- **In term: up to 24 h/week** off campus, across all jobs. (Work off campus 2026-04-15; off-campus PDI 2025-04-23) (H)
+- **Scheduled breaks: unlimited hours**, whatever the course load during the break. (Same) (H)
+- **What counts as a break:** must be in the **DLI's academic calendar** (winter, summer, reading week). Each break max **150 days** (back-to-back breaks: work full time only for the first 150 consecutive days). Max **180 days of breaks per calendar year**. (Off-campus PDI 2025-04-23) (H). The 7-consecutive-day minimum appears in Help Centre 503 (2026-11-03) and university sources, but not in the PDI or Help Centre 499 (M)
+- **Programs with no scheduled breaks:** 24 h/week for the **whole program**. A break the student creates is a **leave**: no on or off-campus work during it. (Off-campus PDI 2025-04-23) (H)
+- **Graduate thesis/research stage:** no IRCC page addresses it. The rule follows the DLI calendar. If the thesis program has no calendar break, the cap is 24 h/week year-round (H as the rule; application to thesis students M). Universities differ: McGill and SFU say thesis programs have no scheduled breaks; University of Alberta pages say thesis students may work full time during reading week and winter break (old pages still cite 20 h). Get written confirmation from the DLI's academic calendar. (M, conflict)
+- **Full-time status** is set by the DLI; officers defer to it. Stop off-campus work at once if the student drops to part time mid-session. (Off-campus PDI 2025-04-23) (H)
+- **Final session part time:** if full time for the whole program and only a part-time load is needed to finish: 24 h/week off campus in the final session, plus full time in the break before it. (Off-campus PDI 2025-04-23; Work off campus 2026-04-15) (H). The 2021 program delivery update said 20 h; it was superseded by 24 h.
+- **Exceeding the hours:** breach of conditions. May lose status, face enforcement, and be refused a future study or work permit. (Work off campus 2026-04-15; PDI 2025-04-23) (H). It also blocks working while waiting for a PGWP (see restoration and bars below).
+
 ### Changing schools or programs (page 2026-06-10)
 | Situation | Action |
 |---|---|
 | Different school, post-secondary (same or different level), or changing schools for prerequisite courses | **Extend the study permit first.** Include a letter explaining the change and a new PAL/TAL unless exempt. New school must be a DLI |
 | Joint program with a single credential; changing schools within primary or secondary; moving from primary to secondary | Can keep studying on the current permit if valid and no condition prevents it |
 | Secondary to post-secondary | New study permit by extension. Can continue while waiting, even with a "primary or secondary" condition |
-| Same school, new program or level | May need an extension and possibly a new PAL/TAL. Can study while waiting; stop at once if refused |
+| Same school, new program or level | Can continue on a valid permit unless a printed condition prevents it. A PAL/TAL is needed only when an extension or new permit is filed and the level group changes (see the PAL/TAL rules below). Can study while waiting on an extension; stop at once if refused |
 | To Quebec | CAQ attestation, with few exceptions. Vocational centre to vocational centre: new CAQ only |
 | While the application is in progress | Send new LOA and PAL/TAL through the web form |
 - **Start before approval only if:** no exit from Canada since the new LOA; still meeting conditions; and the old DLI closed, ended the program, was suspended or lost designation. Otherwise get the permit before finishing at the current school.
 - **Faster processing: 60 days** for a change to a new post-secondary DLI, if the online question is answered "Yes".
 - **Unreported change:** old school reports non-enrolment. Permit may become invalid or be cancelled, and future applications are at risk.
 - **DLI loses designation or is suspended:** can study until the permit expires. A designation loss blocks extensions at that school. A suspended DLI allows extension only to finish the current program. Can change DLI and start right after applying.
+
+### Program, level and DLI changes: legal rules and PAL/TAL (read 2026-11-17)
+- **Since 2024-11-08 (SOR/2024-219, in force on registration):** post-secondary permits name the DLI. R220.1(1)(a): enrol at the DLI **named in the permit** and stay enrolled until studies are complete. R217.1: to switch DLI, apply for a **new study permit naming the new DLI**. (Gazette II 2024-11-20; Justice Laws current to 2026-10-29) (H)
+- **R222(1)(a.1):** permit becomes **invalid the day the holder is no longer enrolled at the named DLI**, unless they finished their studies. Other invalidity triggers: 90 days after completion; cancellation (R222.7 admin error, R243.2 enforceable removal order); expiry. (Justice Laws, current to 2026-10-29) (H)
+- **R189.1:** may start at the new DLI while the application is pending **only** if: no exit from Canada since the new LOA; still compliant (except enrolment at the old DLI); old DLI closed, ended the program, was suspended or lost designation. Must send a letter of explanation and proof. (DLI PDI 2025-11-24) (H)
+- **Pre-2024-11-08 permits** (no DLI printed): IRCC encourages a new permit when switching. (DLI PDI 2025-11-24) (H)
+- **Same DLI, new program or level:** can continue on a valid permit if no printed condition prohibits it (example: bachelor's to master's at the same DLI). Secondary to post-secondary needs a new permit (can start if applied before expiry). Work during post-secondary studies starts only once the new permit with work authorization is issued. (DLI PDI 2025-11-24) (H)
+- **"Level of study" for PAL/TAL purposes:** (1) primary/secondary; (2) post-secondary incl. vocational, college and undergraduate; (3) graduate or above. (PAL PDI 2026-02-06) (H)
+
+| Extension scenario (in Canada) | PAL/TAL? (PAL PDI 2026-02-06) |
+|---|---|
+| Same DLI, same level, new program (bachelor's to bachelor's, **college to bachelor's**, **master's to doctorate**) | **No** |
+| Renewal for a new program filed before expiry or within 90 days of completing the first program, same DLI and level | No |
+| Same DLI, **different level** (e.g., master's to an undergraduate/college program) | **Yes**, unless exempt |
+| New DLI, same or different level | **Yes**, unless exempt (change-schools page: required since 2025-01-22) |
+| Master's or doctoral **degree** at a **public** DLI (from 2026-01-01) | No. Still required for private DLIs, graduate diplomas/certificates, microprograms, DESS, visiting graduate students, and prerequisite programs |
+| Restoration of status, or permit expired/invalidated | **Yes, new PAL/TAL even at the same DLI**; the same-DLI exemption doesn't apply |
+| Quebec | Valid CAQ acts as the PAL; secondary-level vocational programs exempt; CEGEP needs one |
+- **Changing DLI without telling IRCC:** permit invalid under R222(1)(a.1) once no longer enrolled; non-compliance; future refusals. (Change schools 2026-06-10; Guide 5552 2026-09-25) (H)
+- **Printed conditions:** level of study, work authorization, DLI name (post-2024-11-08), "date to stop studying". Check them before a same-DLI switch. (Conditions page 2026-04-24) (H)
 
 ### Extending or restoring (pages 2024-08-09)
 - Apply **at least 30 days before expiry**, in the IRCC secure account, even if another account was used before. Minors: at least 90 days.
@@ -113,6 +164,33 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - **Extension timing and passport (read 2026-11-09):** IRCC says apply at least 30 days before expiry and Help Centre 475 recommends more; IRPR 189 only requires filing before expiry. Permit can't run past the passport; with a new passport in Canada the student can apply again (Help Centre 1504). Same DLI and level: no new PAL. **Restoration needs a new PAL even at the same DLI.** Work continues if the student still qualifies and applied before expiry (work pages 2026-04-15, 05-01). Study extension estimate 53 days (2026-11-04). Conflict: Help Centre 475 still shows a $200 restoration fee; the fee list shows $246.25 ($396.25 with the permit). Use the fee list.
 - **Permit expired, or conditions changed without authorization, or conditions breached:** status lost. Cannot study until restored and the new permit is received.
 - **Restore:** select "Restore my status", explain why, pay the restoration fee ($396.25 with the permit, see `11-forms-fees-processing/fee-schedule.md`). Family members apply and pay separately. TRP applicants do not get maintained status.
+
+### Restoration (R182) and unauthorized work/study bars (read 2026-11-17; Justice Laws current to 2026-10-29)
+- **R182(1):** apply **within 90 days** of losing status. Restoration is available only where status was lost for breaching a **R185(a)** condition (period of stay), **R185(b)(i)-(iii)** (type of work, employer, location) or **R185(c)** (studies: type, institution, location, times). The applicant must also meet the initial requirements, have complied with all other conditions, and not be subject to an IRPA s.22.1 declaration. (H)
+- **Not restorable under R182(1):** breaches of R185(b)(iv) (times and periods of work) or of the general R183(1) conditions (e.g., unauthorized work). Example: working off campus over 24 h/week is unauthorized work. This is a reading of the regulation text; no IRCC page found states it directly. (M)
+- **R182(2):** a student **not complying with R220.1(1)** (not enrolled at the named DLI, or not actively pursuing studies) **cannot be restored as a student**. Consider a visitor-record restoration or departure. (H)
+- **While waiting:** may stay in Canada (Expired permit page 2024-08-09) but **may not study or work until restoration and the associated permit are approved**. (Guide 5551, 2026-06-05; expired-permit page) (H). A work permit filed with restoration is processed only after the restoration and study permit decisions. (Guide 5552, 2026-09-25) (H)
+- **Restoration needs a new PAL/TAL**, even at the same DLI. (PAL PDI 2026-02-06) (H)
+- **R200(3)(e), work permit bar:** no work permit for someone who engaged in **unauthorized work or study** or breached a condition, **unless**: (i) **6 months** have passed since the unauthorized work or study ended or the breach; (ii) the breach was only of an R185(a), (b)(i)-(iii) or (c) condition (i.e., restorable conditions); (iii) R206 applies (refugee claimants or unenforceable removal order); (iv) a TRP was later issued. (H)
+- **R221, study permit bar:** same structure. **6 months** have passed, a restorable-condition breach only, or a later TRP. (H)
+- **R183(1) general conditions:** leave by the end of the authorized stay; no work unless authorized (Part 9/11); no study unless authorized (IRPA, Part 9/12); comply with Emergencies/Quarantine Act orders. R183(5)-(6): maintained status while an extension filed before expiry is pending. (H)
+- **PGWP consequences:**
+  - The PGWP is a work permit, so the R200(3)(e) 6-month bar applies to unauthorized work or study (e.g., excess off-campus hours, or studying after the permit became invalid) unless an exception fits. (Statutory reading, H)
+  - **No work while the PGWP is pending** if the student worked more hours than allowed. Work while waiting also requires a study permit that was valid (not expired) at filing. (PGWP after you apply 2026-04-24) (H)
+  - If the permit expired, the student must restore before applying for a PGWP (or get a visitor record, or apply from outside). The study permit must have been valid at some point in the 180-day window. (PGWP eligibility 2026-06-24) (H)
+  - **Full-time status in every semester** except the final one. (PGWP eligibility 2026-06-24) (H)
+  - Undisclosed unauthorized work is a potential **IRPA s.40 misrepresentation** risk. (M, secondary)
+- Cancellation powers (SOR/2025-11, in force **2025-01-31**): study permit R222.7 (administrative error); work permit R209.01 (administrative error); R209.02 (automatic on PR or death); R243.2 (automatic on an enforceable removal order). (Justice Laws; Gazette II 2025-02-12) (H)
+
+### Spouse open work permit (C42, R205(c)(ii)) and the student's status (read 2026-11-17)
+- **Eligible since 2025-01-21** (applications on or after that date): the student holds a valid (or provisionally approved) study permit; is **not in the last term**; is full time at a PGWP-eligible DLI; resides in Canada; and is in a **master's of 16 months or longer**, a **doctoral** program, or a listed **professional degree** at a university. Listed degrees: MD; LLB, JD or BCL; DDS or DMD; OD; Pharmacy; DVM; nursing degrees; BEd; BEng, BE or BASc. Also eligible: some listed provincial programs (from 2025-01-21), FMCSP (from 2024-08-26) and the Quebec international nurse project (from 2024-04-30). (Spouse page 2026-02-03; C42 PDI 2026-08-24) (H)
+- **Validity:** no later than the student's study permit, passport or biometrics, whichever is earliest. An extension can't go past the study permit. (C42 PDI 2026-08-24) (H)
+- **Extensions:** applications before 2025-01-21 are assessed on the old criteria. Limited exception: spouses of short master's or college/undergraduate students may extend on the criteria at issue, capped at the principal's current authorization. A new program or level doesn't qualify. Officers check that the principal **still complies** with study conditions **at decision**. If the principal is studying under R189 (extension pending), the spouse's file is **put on hold**. (C42 PDI 2026-08-24) (H)
+- **If the student's permit ends early or becomes invalid:**
+  - **R209:** a work permit becomes invalid **only** when it expires or is cancelled under R209.01 (administrative error), R209.02 (PR or death) or R243.2 (enforceable removal order). R222 invalidity of the student's permit does not on its own invalidate the spouse's OWP. (Justice Laws, current to 2026-10-29) (H for text)
+  - **No IRCC page found** says whether the spouse may keep working to the printed expiry once the principal's permit is invalid (R222(1)(a), (a.1)) or cancelled. (Unknown)
+  - Practical risk: an extension or new C42 will be refused, because the principal must be compliant and full time at decision; the spouse's authorized stay ends at the printed date. Assess the file before advising the spouse to keep working. (M)
+  - R222(2): the 90-day post-completion invalidity in R222(1)(a) doesn't apply to R300(2) persons or to the **study permits** of family members described in R215(2) (e.g., a child of a worker or student). (H)
 
 ### Travel outside Canada (page 2026-08-28)
 - Re-entry needs a valid permit or approval; valid passport; attending a DLI; valid visa or eTA; other entry requirements.
@@ -155,6 +233,11 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - Study or work; **most fees waived**; no PAL/TAL or proof of funds for study; no medical; open work permit up to 3 years. Not at the port of entry.
 
 ## Recent changes (2025-2027)
+- 2024-11-08: SOR/2024-219. Permit names the DLI; switching DLI needs a new permit (R217.1); invalid when no longer enrolled at the named DLI (R222(1)(a.1)); R189.1 early start only for DLI closure or suspension cases (H). Secondary sources say 24 h/week off campus took effect the same date; not confirmed in the Gazette text (M)
+- 2025-01-21: C42 spouse OWP limited to master's of 16 months or longer, doctoral, listed professional degrees and listed programs; student not in last term (H)
+- 2025-01-22: new PAL/TAL required for a DLI change by extension (H)
+- 2025-01-31: SOR/2025-11, cancellation powers for study and work permits (H)
+- 2026-01-01: master's and doctoral degrees at public DLIs exempt from PAL/TAL; restoration still needs a PAL/TAL (H)
 - 2026-04-01: post-secondary co-op work permit ended; secondary students still need one (H)
 - 2026: 60-day processing for students changing post-secondary DLI; 2-week doctoral processing (H)
 - 2026-09-04: FMCSP eligibility page updated; PR path listed as opening winter 2027 (H)
@@ -166,6 +249,10 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - Check that the work condition is printed on the permit before the student applies for a SIN.
 - Unaccompanied children under 17 need a notarized custodian form from both sides. Start early.
 - Never describe the FMCSP PR path as open.
+- Off-campus hours over 24/week: unauthorized work. Not restorable under R182; 6-month R200(3)(e)/R221 bar; no work while the PGWP is pending. Ask for hour records and disclose (s.40 risk).
+- Thesis students: don't assume summer is a scheduled break. Get the DLI calendar in writing.
+- Student not enrolled or not active (R220.1(1)): R182(2) bars restoration as a student.
+- Spouse C42 holder: if the principal withdraws, transfers or finishes early, plan the spouse's next status. Extensions will fail.
 
 ## Common refusal reasons
 - See `study-permits.md`. Also: LOA not validated by the DLI; non-compliance with enrolment conditions; change of school without extension
@@ -174,6 +261,9 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - Conflict: the "While you study" page (2026-04-24) says a new co-op work permit is needed when changing co-op programs. The change-schools (2026-06-10) and placement (2026-05-01) pages say post-secondary students don't. Treat the later pages as current
 - Extension pages dated 2024; list of FMCSP participating DLIs
 - 2026 fast-track eligibility on the day of filing
+- Unknown: whether a C42 spouse may keep working to the printed expiry after the principal's study permit becomes invalid or is cancelled; no IRCC statement found (2026-11-17)
+- Unknown: IRCC guidance specific to thesis-stage graduate students and scheduled breaks; universities conflict
+- PGWP program delivery instructions eligibility page returned 404 (2026-11-17); unauthorized work treatment for PGWP rests on R200(3)(e) and the public "after you apply" page
 
 ## Sources
 - Study in Canada menu: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html
@@ -201,3 +291,18 @@ Requirements, PAL/TAL, cap, funds and off-campus work are in `study-permits.md`.
 - FMCSP participating DLIs (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/fmc-student-pilot/eligibility/participating-dlis.html
 - Virtual sessions on PR pathways (2025-02-13): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/virtual-sessions.html
 All read 2026-11-09.
+- Work off campus (2026-04-15): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html
+- Off-campus work PDI (2025-04-23): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/campus-work.html
+- DLI PDI (2025-11-24): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/designated-learning-institutions.html
+- PAL/TAL PDI (2026-02-06): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/attestation-letters.html
+- Spouse OWP public page (2026-02-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/help-your-spouse-common-law-partner-work-canada.html
+- C42 PDI (2026-08-24): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/public-policy-competitiveness-economy/c42.html
+- PGWP eligibility (2026-06-24): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html
+- PGWP after you apply (2026-04-24): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/after-you-apply.html
+- Guide 5551 (2026-06-05): https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5551-applying-change-conditions-extend-your-stay-canada.html
+- Guide 5552 (2026-09-25): https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5552-applying-change-conditions-extend-your-stay-canada-student.html
+- Help Centre 499 (2026-11-03): https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=499&top=15
+- IRPR s.182, 183, 185, 200, 209, 209.01, 209.02, 220.1, 221, 222, 222.7, 243.2 (current to 2026-10-29): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
+- SOR/2024-219 (Gazette II 2024-11-20): https://gazette.gc.ca/rp-pr/p2/2024/2024-11-20/html/sor-dors219-eng.html
+- SOR/2025-11 (Gazette II 2025-02-12): https://gazette.gc.ca/rp-pr/p2/2025/2025-02-12/html/sor-dors11-eng.html
+Above read 2026-11-17.

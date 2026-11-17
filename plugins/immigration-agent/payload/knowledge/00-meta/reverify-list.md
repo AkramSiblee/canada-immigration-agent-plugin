@@ -40,3 +40,4 @@
 39. Quebec: the PQ government's proposed moratorium on economic immigration from abroad and the 2027 Quebec plan (business targets); Quebec Entrepreneur fee from the stream pages; Investor work permit code
 40. Business case law: read the full Federal Court decisions in 13-case-law/business-immigration-refusals.md before citing (FC and CanLII blocked automated reads); add judicial review routes for AB, NL, PEI, NWT, YT refusals; BC JRPA time limit
 41. Source-of-funds file: add AB, NL, PEI, NWT, YT and Quebec verifier and gift rules
+42. Students (2026-11-17 pass): 2027 study cap and PAL allocations (expected late Nov-Dec 2026); Quebec CAQ cap second period from 2026-12-17; 2027 PGWP field-of-study list; PAL process pages for ON, NB, PE, NT (unreadable); thesis-stage scheduled breaks; whether a C42 spouse can keep working after the student's permit ends; read the student case law decisions before citing

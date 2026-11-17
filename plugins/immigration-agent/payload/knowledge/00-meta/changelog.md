@@ -4,6 +4,7 @@
 |---|---|---|
 | 2022-12-15 | C60 (R205(a)) created for provincial business candidates seeking PR (previously C11); C11 left for temporary-only business owners | H |
 | 2024-02-16 | C60: the province's support letter now covers the significant-benefit test; officers focus on R200 (intent, ability) (IRCC update; C60 page 2026-04-16) | H |
+| 2024-11-08 | Study permits name the DLI (SOR/2024-219): new DLI needs a new permit (R217.1); permit invalid on leaving the named DLI without completing (R222(1)(a.1)) | H |
 | 2025-01-21 | Family OWPs for spouses of students/workers restricted (not sponsorship OWP) | H |
 | 2025-03-25 | CRS arranged-employment (job-offer) points removed | H |
 | 2025-03-27 | Saskatchewan Entrepreneur and Farm categories permanently closed | H |
