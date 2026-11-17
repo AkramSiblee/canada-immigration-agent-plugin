@@ -5,13 +5,14 @@ description: Recommend immigration pathways for a client profile across federal,
 # Program Selector
 
 ## Read first
-- knowledge/12-decision-trees/
+- knowledge/12-decision-trees/ (business.md for business clients)
 - knowledge/01-federal-economic/
 - knowledge/02-pnp/comparison-table.md
 - knowledge/14-policy-tracker/legislation-and-regulations.md
 
 ## Workflow
 1. Confirm program is open (policy tracker) before recommending
+   - Client wants to start, buy or run a business, invest, or be self-employed: walk knowledge/12-decision-trees/business.md, then use the entrepreneur-assessor skill (`/entrepreneur`) for the provincial and Quebec entrepreneur streams. Start-Up Visa is closed, Self-Employed is paused, the federal entrepreneur pilot is not launched. PR-intent entrepreneurs use C60, never C11.
 2. Walk the relevant decision tree; list eligible and near-eligible routes
 3. Rank by realistic odds and timeline; note CRS/points gap
 4. Output table: route, eligibility status, gap, timeline, fees, risks

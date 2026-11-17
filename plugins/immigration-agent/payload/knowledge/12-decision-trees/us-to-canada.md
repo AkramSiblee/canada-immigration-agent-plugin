@@ -123,7 +123,7 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
      exception list) (study-permits.md).
    - F-1 students moving to Canada: PGWP rules apply to the Canadian program only; US study doesn't count (pgwp.md).
 6. Business / self-employed
-   - CUSMA trader/investor (4c), C11 entrepreneur, Start-up Visa, PNP entrepreneur streams, Quebec business programs
+   - CUSMA trader/investor (4c), C11 entrepreneur (temporary only; PR-intent provincial candidates use C60 -> 12-decision-trees/business.md), Start-up Visa (closed), PNP entrepreneur streams, Quebec business programs
      (business-and-self-employed.md; 03-quebec/business-immigration.md). Check 14-policy-tracker for pauses first.
 7. PR routes (run /crs, /fsw, /clb, /pnp)
    - Express Entry FSW: US experience counts as foreign skilled experience; needs 67/100 grid + CLB 7 + ECA for US degree.

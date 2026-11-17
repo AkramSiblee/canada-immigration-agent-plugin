@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: alberta
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
@@ -16,6 +16,13 @@ sources:
   - https://www.alberta.ca/aaip-graduate-entrepreneur-stream-eligibility
   - https://www.alberta.ca/aaip-foreign-graduate-entrepreneur-stream-eligibility
   - https://www.alberta.ca/aaip-farm-stream-eligibility
+  - https://www.alberta.ca/aaip-farm-stream-how-to-apply
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-how-to-apply
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-after-you-are-nominated
+  - https://www.alberta.ca/aaip-graduate-entrepreneur-stream-how-to-apply
+  - https://www.alberta.ca/aaip-foreign-graduate-entrepreneur-stream-how-to-apply
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/canadian-interests-significant-benefit-entrepreneurs-self-employed-candidates-seeking-operate-business-r205-c11.html
   - https://www.alberta.ca/system/files/im-worker-stream-expression-of-interest-points-grid.pdf
   - https://www.alberta.ca/system/files/jeti-aaip-fee-schedule.pdf
 ---
@@ -103,6 +110,87 @@ sources:
 - Graduate Entrepreneur: 2-yr Alberta public program; valid PGWP at EOI; CLB 7; 34% ownership; no minimum investment.
 - Foreign Graduate Entrepreneur: non-Canadian degree in last 10 yrs with ECA; 6 months' experience; CLB 5; 34% (Calgary/Edmonton CMA) or 51% (regional); $100,000 or $50,000 invested; designated agency letter (Elite Global Group, Empowered Startups, Platform Calgary); listed sectors; settlement funds; grid 200.
 - Farm: net worth $500,000; investment $500,000 in Alberta primary production; farm management proof; plan reviewed by Alberta Agriculture.
+- Full detail: see "## Entrepreneur streams" below.
+
+## Entrepreneur streams
+Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 2026" only). Latest entrepreneur notice on AAIP updates: 2026-08-12. (H unless marked)
+
+### Status and 2026 draws
+- Rural Entrepreneur, Graduate Entrepreneur, Foreign Graduate Entrepreneur: each eligibility page says "AAIP is currently accepting EOIs" (read 2026-11-17).
+- Farm: **status not stated** on the stream, eligibility or how-to-apply pages. No pause notice on AAIP updates. Applications are paper only, by mail or courier. Confirm intake with AAIP before filing. (M)
+- **No entrepreneur EOI draws published for 2026.** Processing page (updated 2026-11-04) lists worker draws only; no entrepreneur minimum scores or pool sizes.
+- Allocation (all entrepreneur streams combined): 60; 39 issued; 21 remaining; 211 in process; "business applications are evaluated upon receipt" (processing page, 2026-11-04). No split by stream.
+- 2026-08-12 update: the "economic establishment" requirement was explained on the Rural, Graduate and Foreign Graduate pages. "Program eligibility criteria and requirements have not changed." AAIP checks it during monitoring. Existing EOIs need no update.
+
+### Shared process (Rural, Graduate, Foreign Graduate)
+- **EOI:** AAIP portal (Alberta.ca Account). Draft purged after 120 days. **$200**, non-refundable, paid within 24 h or cancelled. Pool validity 12 months. Highest-ranked are invited; invitations depend on volume, sector and nominations left.
+- **Business Application:** by invitation only. Due within **90 days** of the invitation email. **$3,500**, non-refundable, paid within 24 h. Needs a Business Plan Evaluation Report from an approved provider, and a Qualified Service Provider Report on net worth and investment from Grant Thornton, KPMG or MNP (always for Rural; only if requested for Graduate and Foreign Graduate). Documents must match the EOI.
+- **Business Performance Agreement (BPA):** emailed on approval. Sign within **14 days**. Covers industry sector, term length, job creation, succession, business location and investment. After signing, only term extensions can be requested. A BPA change request costs **$150**.
+- After all parties sign: signed BPA, Business Application Approval Letter, and a **205(a) Letter of Support** (first one free). The approval letter is **not** a nomination.
+- **Work permit:** apply to IRCC within **3 months** of the 205(a) letter. Register in the IRCC Employer Portal and pay the employer compliance fee; no LMIA fee. IRCC code **C60** (R205(a), provincial business candidates; replaced C11 for these on 2022-12-15), NOC 88888. Permit up to 2 years. After nomination, R204(c)/T13 with a 204(c) letter. Sources: IRCC C60 page (modified 2026-04-16); IRCC exemption codes list (modified 2026-09-23).
+- **Arrive** in Alberta within **12 months** of the approval letter (Rural, Foreign Graduate).
+- **Reports:** Arrival Report within 30 days of the work permit issue date (Rural, Foreign Graduate); Start-up Report within 30 days of the approval letter (Graduate). Business Progress Report after each 6-month period.
+- **Minimum operation before nomination:** own and operate for at least **12 months**; business must be generating products or services after 1 year; all BPA conditions met.
+- **Final Report for Nomination:** form plus supporting business documents, filed once BPA conditions are met. AAIP checks BPA compliance against the criteria in place at the start. Full form fields and filing deadline are not on the official pages (unknown).
+- **Established businesses:** must have operated in Alberta at least 1 year immediately before the EOI. No BPA; nomination certificate issued directly. Must keep operating while PR is processed.
+- **After nomination:** apply to IRCC within 6 months. One-time nomination extension, **$150**. Rural after-nomination page: Business Progress Report 6 months after nomination (2-week window). Work permit renewal: bridging open work permit, or a 205(a) letter (**$150**, waived on a written IRCC request; up to 28 days). A further 205(a) request goes in within 90 days before expiry.
+- **Request for reconsideration:** for declines, nomination withdrawals, or other named decisions. Within **30 calendar days** of the decision letter. **$250**, paid within 24 h, refunded only if the decision is overturned. Must show an error in applying criteria. No new evidence, exemptions or H&C.
+- **Deposit:** none mentioned on any AAIP entrepreneur page.
+- Fees: AAIP Fee Schedule effective 2026-04-07 (https://www.alberta.ca/system/files/jeti-aaip-fee-schedule.pdf).
+
+### Ineligible businesses (Rural, Graduate, Foreign Graduate)
+- IRPA-contravening or immigration-linked or passive investment schemes; payday loans and cheque cashing; used-goods trading
+- Passive or unmanaged businesses: property rental, investment or leasing, real estate development or brokerage, insurance or business brokerage, coin-operated businesses (laundromats, car washes)
+- Project-based or seasonal businesses; home-based businesses not zoned commercial or industrial; B&Bs and lodging houses
+- Pornography and sexually oriented businesses; anything AAIP finds would bring it into disrepute
+- Succession: relative-owned; held by an AAIP entrepreneur candidate or nominee in the last 4 years; ownership changed in the last 3 years (Rural, Graduate). Foreign Graduate excludes succession businesses entirely.
+- Ineligible people: active AAIP nomination; reapplication bar; IRCC or CBSA removal order; refugee claimant or in an appeal or removal process; no valid temporary resident status in Canada.
+
+### Graduate Entrepreneur
+- Valid **PGWP** at EOI. 2+ years full-time study for a degree or diploma at an Alberta publicly funded institution.
+- **CLB/NCLC 7** in each skill; test under 2 years old at EOI.
+- New business or buy-out, **34%+** ownership; partners must be citizens or PRs. No business needs to be set up until the Business Application is approved. Must live in Alberta and manage day to day.
+- **No minimum investment, net worth or job creation stated.** Points only.
+- EOI grid **max 125**: business establishment 75 (management experience 15; economic benefit 40, including jobs up to 15 and rural location 5; investment 20, from 5 for $25,000 or less to 20 for $75,001+); human capital 25 (CLB 7 = 5, CLB 8 = 12, CLB 9+ = 15; Alberta education up to 10); adaptability 25 (age 21-49 5; spouse 10; Alberta relatives 10).
+- Nomination can be used to renew the work permit.
+
+### Foreign Graduate Entrepreneur
+- Degree from a non-Canadian institution within 10 years of EOI, with ECA. 6 months' full-time experience as business owner or manager (incubator or accelerator counts). **CLB/NCLC 5**.
+- **Designated agency recommendation letter** (Elite Global Group, Edmonton; Empowered Startups, Vancouver; Platform Calgary). The agency prepares the Business Plan Evaluation Report. Business plan with financials, plus a 10-minute pitch deck.
+- Ownership **34%** in Calgary or Edmonton CMA, **51%** regional. Investment before arrival **$100,000** urban or **$50,000** regional, from own or spouse's equity or a Canadian financial institution, VC or angel. Initial investment within 12 months of launch.
+- Key sectors: technology, aerospace, financial services, energy, agriculture, tourism, life sciences, pharmaceuticals.
+- Settlement funds by LICO (one person about $8,922 to $12,961, by community size). Jobs not mandatory; points only.
+- Pass/fail: ownership, key sector, settlement funds, pitch deck, recommendation letter.
+- EOI grid **max 200**: language 30; education 35; experience 35; business plan 40 (mandatory); pre-arrival investment 25; post-launch investment 20; jobs 15 (1 = 5, 2 = 10, 3+ = 15).
+
+### Farm
+- Net worth **$500,000** (or access to it); invest **$500,000** equity in an Alberta primary production farm. May be asked to invest more.
+- Proof of farm management skills: farm financial records, education, training or experience, business plan, or Canadian lender financing.
+- Business plan reviewed by Alberta Agriculture and Irrigation. Priority to plans with the best growth potential for Alberta agri-food targets.
+- No separate language or education minimum stated. No EOI, BPA, 205(a) letter or operating period stated: a successful applicant is nominated directly.
+- Ineligible: active nomination; reapplication bar; removal order; no valid status; live-in caregivers in Canada; TFWs working in another province; international students (including co-op).
+- **Paper application** by registered mail or courier to Farm Stream, AAIP, Commerce Place, 10155 102 Street, Edmonton T5J 1S6. Forms: Farm Stream Application, IMM 0008, Schedule 4 and 4A, IMM 5669, IMM 5406, IMM 5476. Fee **$3,500**, receipt included (10 business days to supply it). Incomplete applications are declined and the fee is lost.
+- Reconsideration: 30 days, $250, emailed to the officer.
+- Source: https://www.alberta.ca/aaip-farm-stream-how-to-apply (read 2026-11-17).
+
+### Entrepreneur pitfalls
+- Business Application due within 90 days of invitation. Third-party reports (Business Plan Evaluation, QSP) take time; start early.
+- Approval letter and 205(a) letter are not nominations. Clients cannot apply for PR until the Final Report is approved.
+- Work permit must be filed within 3 months; arrival within 12 months. Missed reports (arrival or start-up, 6-monthly progress) risk BPA breach.
+- Only 21 entrepreneur nominations remained in 2026 with 211 files in process. Expect long waits.
+- Funds must be in the candidate's or spouse's own name; gifts shortly before EOI draw scrutiny. Inflated net worth or jobs claims risk IRPA s.40 misrepresentation and an AAIP reapplication bar (Farm page: up to 5 years).
+- Graduate Entrepreneur: PGWP must be valid at EOI. A PGWP close to expiry may lapse before approval; plan the 205(a) letter.
+- Foreign Graduate: only 3 designated agencies; sector must match the list. Avoid unlicensed "agents" offering guaranteed agency letters (ghost-consultant risk).
+- Partners in all three streams must be citizens or PRs.
+- Reconsideration cannot fix missing evidence; file complete the first time.
+
+### Entrepreneur sources (read 2026-11-17)
+- https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility ; -how-to-apply ; -after-you-are-nominated
+- https://www.alberta.ca/aaip-graduate-entrepreneur-stream-eligibility ; https://www.alberta.ca/aaip-graduate-entrepreneur-stream-how-to-apply
+- https://www.alberta.ca/aaip-foreign-graduate-entrepreneur-stream-eligibility ; https://www.alberta.ca/aaip-foreign-graduate-entrepreneur-stream-how-to-apply
+- https://www.alberta.ca/aaip-farm-stream ; https://www.alberta.ca/aaip-farm-stream-eligibility ; https://www.alberta.ca/aaip-farm-stream-how-to-apply
+- https://www.alberta.ca/aaip-updates (latest entry 2026-08-12); https://www.alberta.ca/aaip-processing-information (2026-11-04)
+- IRCC C60: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/canadian-interests-significant-benefit-entrepreneurs-self-employed-candidates-seeking-operate-business-r205-c11.html (modified 2026-04-16)
 
 ### Latest draws
 - 2026-10-30 Alberta Opportunity: minimum 59, 132 invited. 2026-11-02 Rural Renewal: minimum 51, 173 invited.
@@ -129,6 +217,8 @@ sources:
 ## Re-verify before advising
 - 2027 allocation and stream split
 - WEOI points grid (PDF)
+- Farm Stream intake status (not stated on official pages)
+- Entrepreneur EOI selections (not published); Final Report for Nomination contents and deadline
 
 ## Sources
 - AAIP: https://www.alberta.ca/alberta-advantage-immigration-program

@@ -11,6 +11,7 @@ description: Match a client to provincial/territorial nominee streams and EOI sy
 
 ## Workflow
 1. Verify stream is open and not paused for the province
+   - Business owner, investor or self-employed client (entrepreneur, farm, business purchase, graduate entrepreneur streams): hand off to the entrepreneur-assessor skill (`/entrepreneur`) for the eligibility, points, investment, jobs and compliance check; this skill only lists which entrepreneur streams are open.
 2. Match occupation, job offer, ties, education, language to streams
 3. Explain base vs enhanced and Express Entry interaction (+600)
 4. Warn on intent-to-reside evidence (SOR/2026-63) and multi-province applications

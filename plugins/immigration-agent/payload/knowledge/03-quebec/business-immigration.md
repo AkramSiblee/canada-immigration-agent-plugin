@@ -2,7 +2,7 @@
 domain: 03-quebec
 topic: business-immigration
 status: verified
-last_verified: 2026-11-14
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 60
 sources:
@@ -52,6 +52,13 @@ sources:
 - **Net worth $100,000**; deposit **$50,000 (CMM) / $25,000 (outside)** at a Quebec institution on MIFI request.
 - Must practise the profession in Quebec; 3-month self-sufficiency.
 - **2026 fee $1,272** principal, **$201** spouse and each child.
+
+## Work permits before PR
+- Entrepreneurs and self-employed with a CSQ or a MIFI support letter: **C60** (R205(a)); may apply before the CSQ is issued; up to **3 years** in Quebec (IRCC C60 page 2026-04-16) (H). Detail: 05-temporary-residence/work-permits-lmia-exempt.md.
+- Investor: a work permit after the notice of intent to select (to meet the 12-month stay); the C60 page doesn't name investors: confirm the code on IRCC's instructions before filing (unknown).
+
+## Political risk (watch)
+- Parti Quebecois minority government sworn in 2026-10-21; its platform proposes a moratorium on permanent economic immigration directly from outside Quebec. Not adopted; the 2027 Quebec plan is not yet tabled (14-policy-tracker/announced-for-2027.md, M).
 
 ## Recent changes (2025-2027)
 - 2024-01-01: business program reform in force (French 7; new Investor terms) (H)

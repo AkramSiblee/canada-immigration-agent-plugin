@@ -2,6 +2,16 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.10.0
+- New **/entrepreneur**: give it a business client's profile (net worth, liquid funds, ownership history, language, education, age, target province, business idea) and it checks every open provincial and Quebec entrepreneur stream: eligible or not and why, points estimate, investment and jobs against the minimums, excluded businesses, compliance risks (spending before the performance agreement, related employees, family living elsewhere, source of funds), the work permit code and next steps. /select-program and /pnp send business clients to it; the dashboard has a "Business client" button.
+- New business decision tree: provincial entrepreneur (C60 work permit, nomination, PR), Quebec business programs, temporary-only routes (C11, ICT start-up C12/C61, CUSMA traders and investors T34/T35), an LMIA for the owner's own job, and clients with a Start-up Visa or Self-Employed file still in process.
+- **Correction:** provincial entrepreneur candidates who want PR use a **C60** work permit with the province's support letter (then T13 after nomination), not C11. C11 is for temporary stays only (51%+ owner, up to 18 months); PR plans on a C11 file risk refusal.
+- Entrepreneur rules filled in from official guides and pages for BC (Base, Regional, Strategic Projects), Alberta (Rural, Graduate, Foreign Graduate, Farm), Manitoba, New Brunswick, Nova Scotia (full process from the September 2026 guide), PEI, Newfoundland and Labrador, Northwest Territories and Yukon. A new "Entrepreneur streams" table in the PNP comparison shows status, net worth, investment, ownership, jobs, language, deposit, operating period, fee and work permit for each.
+- Corrections: Manitoba's business fee is $2,500 (the $500 fee is for worker streams); Yukon does have a Business Nominee Program (intake status not stated, confirm with Yukon); Manitoba is not running business draws; PEI has issued no business invitations in 2026.
+- Federal status unchanged: Start-up Visa closed, Self-Employed paused, the new start-up pilot announced but not launched. Provinces may nominate people still waiting on a Start-up Visa or Self-Employed application through the extra 2027 spaces (by 2027-03-31; applicants don't need to do anything).
+- Quebec business programs are still open; the new Quebec government has proposed a pause on economic immigration from abroad (not adopted).
+- New: source-of-funds and net worth checklist, business refusal case law, and business checklists in /checklist (business plan, net worth verification, performance agreement, work permit, arrival, nomination request, PR).
+
 ## 1.9.12
 - US-based clients: the facts that were only medium confidence were checked on the full official pages. Confirmed: study permits at the border for US citizens and green-card holders (they still need a PAL/TAL), SWAP Working Holidays for Americans aged 18-35, and how IRCC treats a US pardon or expungement (not automatic; the Saini test).
 - Remote work as a visitor now follows IRCC's new digital nomad instructions (2026-05-26): up to 6 months at a time, income earned outside Canada, and the documents officers may ask for.

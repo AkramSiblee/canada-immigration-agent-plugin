@@ -3,7 +3,7 @@
 2. High-wage list: about 186 (31/89/66), counted on the IRCC page 2026-11-07 (M on exact count); watch for list updates
 3. 2027 200,000 measure: two cohorts of 100,000, no application; open: implementation instructions, per-province PNP allocations, interaction with the 2026-2027 initiatives
 4. Atlantic 2026 PNP allocations (NS/NB/NL/PEI): no official figures; secondary estimates conflict
-5. PNP fees still unverified: MB ($500, M), YT, NWT. Verified: SK $500, PEI $300, ON, BC, AB, NS. NB/NL: none stated on official pages
+5. PNP fees: MB $500 worker streams / $2,500 Business Investor (H); NB business $2,000 (H); NWT business $2,800 (M); YT not found. Verified: SK $500, PEI $300 (worker), ON, BC, AB, NS. NB/NL worker streams: none stated on official pages
 6. Ontario Workforce Priority stream: grid details, first draw results, Phase 2 timing
 7. Federal entrepreneur pilot: promised "in 2026", not launched
 8. PGP: paused from 2026-01-01 (MI89), confirmed until further notice 2026-07-15. No reopening date. The 15,000/yr admissions target is inventory processing, not intake
@@ -35,3 +35,8 @@
 34. RESOLVED 2026-11-16: Quebec business programs (Investor, Entrepreneur, Self-Employed) open, applications at any time, no cap (quebec.ca pages 2026-11-09/10, H); tracker row added in 14-policy-tracker/ministerial-instructions-and-program-delivery.md
 35. State care PR pathway ends 2027-01-21; TR to PR open work permit ends 2026-12-31; check for extensions
 36. Physician Express Entry round history and reserved PNP doctor spaces
+37. Business streams (2026-11-17 pass): Manitoba BIS pages and PDFs (site blocked automated reads; points grid, Farm Investor figures and status); Yukon Business Nominee intake status, fee, deposit; PEI Work Permit Stream guide (encrypted PDF: ownership %, points grid, refund rule); NWT business deposit ($75k unconfirmed) and fee; NL IE/IGE guide PDFs (points 120/72, BPA terms); BC EI Post-Arrival Guide (final report checklist) and Comox/Campbell River sector pauses (past their dates); Alberta Farm stream status
+38. Federal start-up pilot: IRCC said "in 2026"; recheck Canada Gazette I and IRCC notices before 2026-12-31. Any province announcing outreach to SUV/Self-Employed applicants under the 2027 cohort (use by 2027-03-31)
+39. Quebec: the PQ government's proposed moratorium on economic immigration from abroad and the 2027 Quebec plan (business targets); Quebec Entrepreneur fee from the stream pages; Investor work permit code
+40. Business case law: read the full Federal Court decisions in 13-case-law/business-immigration-refusals.md before citing (FC and CanLII blocked automated reads); add judicial review routes for AB, NL, PEI, NWT, YT refusals; BC JRPA time limit
+41. Source-of-funds file: add AB, NL, PEI, NWT, YT and Quebec verifier and gift rules

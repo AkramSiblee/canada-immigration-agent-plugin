@@ -92,6 +92,7 @@ GENERAL_COMMANDS = [
     ("FSW 67 points", "/fsw", "Federal Skilled Worker grid with what would add points"),
     ("Test scores to CLB", "/clb", "IELTS, CELPIP, PTE Core, TEF, TCF to CLB/NCLC"),
     ("US-based client", "/us-pathway", "H-1B, TN, L-1, green card and US citizens"),
+    ("Business client", "/entrepreneur", "Provincial and Quebec entrepreneur streams: eligibility, investment, jobs, risks"),
     ("Government fees", "/fees", "Fees for an application"),
     ("IRCC letters", "/ircc-letter", "Read new IRCC letters in Input (or Gmail), file them and add deadlines"),
     ("Express Entry draws", "/draws check", "Which clients are at or near the latest round's cut-off"),

@@ -2,6 +2,8 @@
 
 | Effective | Change | Conf. |
 |---|---|---|
+| 2022-12-15 | C60 (R205(a)) created for provincial business candidates seeking PR (previously C11); C11 left for temporary-only business owners | H |
+| 2024-02-16 | C60: the province's support letter now covers the significant-benefit test; officers focus on R200 (intent, ability) (IRCC update; C60 page 2026-04-16) | H |
 | 2025-01-21 | Family OWPs for spouses of students/workers restricted (not sponsorship OWP) | H |
 | 2025-03-25 | CRS arranged-employment (job-offer) points removed | H |
 | 2025-03-27 | Saskatchewan Entrepreneur and Farm categories permanently closed | H |
@@ -17,6 +19,7 @@
 | 2025-12-17 | Quebec study CAQ cap per institution (to 2027-12-16); oral French 4 for work CAQ after 3 yrs (from 2028-12-17) | H |
 | 2025-12-19 | Home Care pilots paused; SUV work permit closed; Self-Employed pause extended | H |
 | 2025-12-31 | Start-Up Visa closed except 2025-commitment holders (final deadline 2026-06-30) | H |
+| 2026-01-01 | MI90 in force: SUV and Self-Employed intake paused until further notice (SUV files after 2026-06-30 returned with fees) | H |
 | 2026 (annual) | Excessive demand threshold $144,390 / 5 yrs ($28,878/yr) | H |
 | 2026-01-01 | MI89: no new PGP applications in 2026 (pause start) | H |
 | 2026-01-01 | Public master's/PhD exempt from PAL/TAL | H |
@@ -43,6 +46,7 @@
 | 2026-06-05 | eTA for marine arrivals from St. Pierre and Miquelon (SOR/2026-101) | H |
 | 2026-06-25 | Ontario Workforce Priority replaces 8 OINP streams (in force; announced 2026-06-26) | H |
 | 2026-06-30 | Start-Up Visa final deadline for 2025-commitment holders | H |
+| 2026-08-12 | Alberta explains "economic establishment" for Rural, Graduate and Foreign Graduate Entrepreneur streams (criteria unchanged; checked during monitoring) | H |
 | 2026-07-02 | Quebec PEQ intake window opened | H |
 | 2026-07-15 | PGP pause confirmed until further notice | H |
 | 2026-07-15 | CICC Regulations SOR/2026-68 in force | H |
@@ -72,6 +76,8 @@
 | 2026-11-03 | Asylum System Reform regs (SOR/2026-218); C-12 provisions in force (SI/2026-59) | H |
 | 2026-11-03 | RPD Rules amended (SOR/2026-219): single application, personal documents 30 days after referral, no fax | H |
 | 2026-11-05 | 2027-2029 Levels Plan tabled | H |
+| 2026-11-05 | 2027 workers cohort: provinces may nominate SUV / Self-Employed applicants already in process (optional extra PNP space, use by 2027-03-31, no action by applicants) | H |
+| 2026-11-10 | NWT PNP allocation raised to 350 (+50) | M |
 | 2026-11-06 | TFWP: Low-Wage LMIA up to 2 years; ECE exempt from 6% CMA rule | H |
 | 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (IRCC pages 2026-11-09) | H |
 | 2027 | Time-limited measure: up to 200,000 in-Canada TR-to-PR (100k workers via PNP + 100k humanitarian), outside Levels, no application | H |

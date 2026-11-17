@@ -2,10 +2,20 @@
 domain: 02-pnp
 topic: manitoba
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-17
 confidence: M
 review_every_days: 30
 sources:
+  - https://immigratemanitoba.com/mpnp/bis/
+  - https://immigratemanitoba.com/mpnp/bis/ep/eligibility/
+  - https://immigratemanitoba.com/mpnp/bis/ep/apply/
+  - https://immigratemanitoba.com/?p=15379
+  - https://immigratemanitoba.com/?p=18204
+  - https://immigratemanitoba.com/?p=15370
+  - https://immigratemanitoba.com/wp-content/uploads/2024/07/BIS-Entrepreneur-Stream-Guidelines-final-July-2024.pdf
+  - https://immigratemanitoba.com/wp-content/uploads/2024/07/BIS-FIP-Guidelines-Kit-072024.pdf
+  - https://immigratemanitoba.com/wp-content/uploads/2022/05/bis-bpa-sample-may-2022.pdf
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2022-self-employed-provincially-supported-entrepreneurs.html
   - https://immigratemanitoba.com/draws/
   - https://immigratemanitoba.com/mpnp/regional-immigration-initiatives/
   - https://immigratemanitoba.com/mpnp/skilled-worker/swo/eligibility/
@@ -98,7 +108,8 @@ sources:
 - Target occupations: commercial guides list welders, carpenters, plumbers/pipefitters and cooks (L, undated). **Outdated against the City's current list.** City page governs.
 
 ### Fees and allocation
-- MPNP application fee: **$500** non-refundable, paid after LAA (secondary, consistent across sources) (M); Business Investor fee higher (one source: $2,500) (L)
+- MPNP application fee: **$500** non-refundable, paid after LAA (secondary, consistent across sources) (M). Applies to the Skilled Worker and International Education streams.
+- **Business Investor Stream fee: $2,500 CAD, non-refundable**, paid by wire transfer when the full application is submitted after the LAA. Source: official BIS FAQ (https://immigratemanitoba.com/?p=15379) and EP process page (https://immigratemanitoba.com/?p=18197). Read via search extract 2026-11-17; direct fetch blocked (HTTP 403); page dates not visible (H). Federal PR and RPRF fees are extra. Ignore secondary guides that quote $500 for BIS.
 - **2026 allocation: 8,000** = 6,239 (January) + 1,761 (August top-up) per official MPNP Monthly Data 2026 page (H). Secondary sources quoting 6,239 omit the top-up.
 
 ### Official MPNP monthly data (Jan-Sep 2026; preliminary)
@@ -115,6 +126,92 @@ sources:
 | #281 | 2026-10-08 | 46 + 211 (education/early childhood) + 83 | 340 |
 - Draws #281-282 confirmed against the official page (previously secondary).
 - 22 rounds in 2026 to 2026-11-05. Oct 22 (1,304) is the largest since July; July's monthly total was 2,989 LAAs, so a larger July draw may exist (H for totals; per-draw July not checked).
+
+## Business Investor Stream
+**Basis (2026-11-17):** every immigratemanitoba.com HTML page returned HTTP 403 to direct fetch, and the PDF guides downloaded but could not be text-extracted. Official facts below come from **search extracts of official pages and guides** (marked official-extract) and are cross-checked against secondary guides. **A browser read is needed before advising on any figure.**
+- Official guides: EP Program Guide, July 2024 (https://immigratemanitoba.com/wp-content/uploads/2024/07/BIS-Entrepreneur-Stream-Guidelines-final-July-2024.pdf); FIP Guidelines Kit, file dated 07-2024 but cover June 2022 and footer 062023 (https://immigratemanitoba.com/wp-content/uploads/2024/07/BIS-FIP-Guidelines-Kit-072024.pdf); sample BPA, May 2022 (https://immigratemanitoba.com/wp-content/uploads/2022/05/bis-bpa-sample-may-2022.pdf); EP checklist, 12-2023 (https://immigratemanitoba.com/wp-content/uploads/2023/12/bis-enp-checklist-122023.pdf).
+- Two pathways: **Entrepreneur Pathway (EP)** and **Farm Investor Pathway (FIP)**. Stream hub: https://immigratemanitoba.com/mpnp/bis/
+
+### Status and 2026 selections
+- **No BIS EOI draws.** Official EP page: "EOI draws for the Business Investor Stream are not currently being conducted" (official-extract, undated) (M).
+- **Interim paper/email intake (EP):** email the EOI to **MPNP-BusinessStream@gov.mb.ca** with the Business Concept Form, Self-Assessment Form and MPNP Code of Conduct. This stays in place until MPNP Online is updated. MPNP "aims to review all EOIs within four weeks". Each EOI gets either an **LAA** or a **feedback letter**. Source: https://immigratemanitoba.com/mpnp/bis/ep/apply/ (official-extract) (M).
+  - Treat this as **case-by-case intake, not an open ranked draw**. Confirm by email before a client spends money.
+  - Conflict: the July 2024 guide says documents go by mail or in person; the apply page says email. The newer web page governs, but confirm.
+- **2026 output is minimal:** **5 BIS nominations** Jan-Sep 2026, against 4,584 Skilled Worker nominations (official Monthly Data 2026, H).
+- No 2026 BIS draw appears on https://immigratemanitoba.com/draws/ (read 2026-11-07).
+- Feedback letter: secondary sources say wait **at least 2 months** before resubmitting (L).
+
+### Entrepreneur Pathway (EP)
+Eligibility source: https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ (official-extract, undated). Grid, timing and BPA details: July 2024 guide and secondary sources.
+
+| Item | Rule | Conf. |
+|---|---|---|
+| Net worth | **$500,000 CAD** minimum, verified by an MPNP-approved third-party supplier | M |
+| Investment | **$250,000** in the Winnipeg Metropolitan Region (Manitoba Capital Region); **$150,000** outside it. Must be in an eligible business | M |
+| Ownership | At least **33 1/3%** for owner points. A secondary source says $1,000,000+ equity can replace the 33 1/3%; not confirmed officially | M / L |
+| Jobs | Create or maintain **at least 1 job** for a citizen or PR, excluding owners and their close relatives | M |
+| Experience | **3 yrs full-time in last 5** as an active owner or senior manager of a successful business. Owners score more than managers | M |
+| Language | **CLB/NCLC 5** minimum | M |
+| Education | Canadian high-school equivalent (secondary) | L |
+| Age | No maximum. Ranking points for about 25-49 (sources say 25-48 or 25-49) | L |
+| Exploratory (research) visit | Strongly encouraged and earns points if made **within 1 yr before the EOI**. Secondary sources disagree on whether it is required | L |
+| Deposit | **No deposit.** The old $100,000 MPNP-B good-faith deposit was replaced by the BPA at the 2017-2018 redesign. Secondary sources still quoting $75,000-$100,000 for EP are outdated or confused with FIP | M |
+
+- **EOI points:** applicants are ranked by the MPNP Entrepreneur ranking system (age, business experience, adaptability, language, net worth/investment, research visit). **Official grid values and the pass mark were not retrievable.** Secondary sources conflict (one gives a 150-point grid with adaptability 55 and business experience 35; another reuses the SWO 100/60 grid). Unknown (L).
+- **Process (official guide + secondary, M):**
+  1. Email the EOI.
+  2. LAA, then the full application, **net worth verification report** and the **$2,500 fee within 120 days** of the LAA. Late files may be refused.
+  3. Approval letter, then sign the **Business Performance Agreement (BPA)** with Manitoba.
+  4. MPNP issues a **work permit support letter** ("Entrepreneur Work Permit Support Letter" plus a candidate letter of confirmation, per secondary sources), valid about **3 months** (secondary, L). The temporary-resident applicant then applies for a work permit. This is not PR.
+  5. Arrive and establish or buy the business within **24 months of arrival**.
+  6. Operate the business for **at least 6 months** before the final report or nomination.
+  7. Submit the nomination request (final report), then nomination, then the federal PR application.
+- **Work permit code:** IRCC **C60**, the R205(a) administrative exemption for entrepreneurs supported by a province or territory, which replaced C11 for these cases from Dec 2022 (IRCC program delivery update 2022 and the C60 instructions; search extract) (M).
+  - Formal nominees use **T13** (R204(c)) instead.
+  - IRCC says the support letter **should not be the only evidence** for the permit.
+  - Sources: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2022-self-employed-provincially-supported-entrepreneurs.html
+- **Deadlines (sample BPA May 2022 + secondary, M/L):**
+  - Report arrival within **30 days** of arriving on the work permit (L).
+  - First progress report about **6 months** after arrival (L).
+  - Business established and operating within **24 months** of arrival (BPA) (M).
+  - **Final report no later than 20 months** after arrival (L). This leaves time for the 6-month operation before the 24-month limit.
+  - Operate the business **at least 6 months** before the final report (sample BPA) (M).
+- **Nomination request contents (sample BPA + secondary, M/L):** final report; proof the investment was made (amount, location, eligible expenses); ownership documents; proof of job creation (payroll, ROEs or T4s for citizen or PR staff); proof of active day-to-day senior management from Manitoba; business financial statements and bank records; proof of residence in Manitoba. **Exact checklist not retrieved.**
+- **BPA not met by the deadline:** the application can be refused and no nomination issues. The work permit is not converted to PR.
+- **Nomination validity:** some guides say 6 months, so file PR promptly (L).
+
+### Farm Investor Pathway (FIP)
+Sources: eligibility https://immigratemanitoba.com/?p=18204 (official-extract); FIP Guidelines Kit (above); secondary guides. **Figures conflict across sources (M/L).**
+
+| Item | Rule | Conf. |
+|---|---|---|
+| Net worth | **$500,000** (official eligibility-page extract; may need third-party verification). Older guides say $350,000, likely outdated | M |
+| Investment | **$300,000** in eligible tangible farm assets in **rural Manitoba**. Older guides say $150,000. No speculative or passive investment | M / L |
+| Farm experience | **3 yrs farm ownership and operation**, documented (one source: within the last 5 yrs) | M |
+| Research visit | **Mandatory farm business research visit.** No EOI or interest submission accepted without proof. Length: one source says 5 business days within 1 yr before applying (L) | M |
+| Deposit | **$75,000 CAD** refundable deposit under a **Deposit Agreement** (Manitoba Development Corporation). Separate from the investment; refunded once the farm requirements are met. Some sources say $100,000 (outdated) | M |
+| Agreement | **Deposit Agreement, not a BPA** | M |
+| Language | Interview in English or French may be required; numeric CLB not confirmed | L |
+| Nomination timing | **Nominated for PR before arrival** (direct nomination). The farm must be established and run day-to-day from rural Manitoba within **2 years of arrival** under the Deposit Agreement. Deposit is refunded after that. No work-permit stage | M |
+| Fee | $2,500 (BIS fee, official FAQ); not separately confirmed for FIP | M |
+
+- FIP intake status: **not confirmed**. The "no BIS EOI draws" notice covers the stream. Do not present FIP as open without confirming by email.
+
+### Refusals and review
+- **No appeal.** BIS decisions are final (FIP kit, official-extract) (M).
+- **Procedural fairness letter:** **30 days** from the letter date to respond. This is the only chance to address concerns. Source: https://immigratemanitoba.com/?p=15370 (official-extract) (M).
+- **Request for review (RFR)** applies only to applications submitted **before 2015-04-30** (official-extract) (M). It is not available now.
+- After a refusal, file a new EOI. Secondary sources say refusal in the last 12 months, or for misrepresentation in the last 24 months, bars reapplying (L).
+
+### BIS pitfalls
+- No draws; only a handful of nominations in 2026 (5 to September). Do not sell EP as a predictable route. Manage the client's expectations in writing.
+- Net worth must be **verified by an MPNP-approved third party**, and funds legally obtained. Unverifiable source of funds is fatal. Flag misrepresentation risk (IRPA s.40).
+- Mixing up EP and FIP: EP has **no deposit**, a BPA and a C60 work permit first. FIP has a **$75,000 deposit**, a Deposit Agreement and a direct PR nomination.
+- Passive or speculative investment, or management without daily hands-on control from Manitoba, does not count.
+- Job created for a relative or co-owner does not count.
+- Missing the 120-day LAA window, the 24-month BPA window or the 6-month operating minimum leads to refusal.
+- Support letter is not a work permit approval. IRCC assesses C60 independently and wants more than the letter.
+- Ghost consultants and "guaranteed nomination" business-purchase packages: screen them (IRPA s.91). A business bought only for immigration fails the genuineness test.
 
 ## Recent changes (2025-2027)
 - 2026-08: +1,761 federal top-up, total 8,000 (official monthly data) (H)
@@ -138,7 +235,7 @@ sources:
 ## Re-verify before advising
 - MPNP fee schedule (not found on FAQ or draw pages, 2026-11-07)
 - Morden priority occupation list (changes with its Labour Market Report)
-- **Browser read needed:** Skilled Worker in Manitoba, International Education, Business Investor rules; IDOL row for chefs (62200); SWMII priority occupations; WCMII 2023 survey list
+- **Browser read needed:** Skilled Worker in Manitoba, International Education rules; **BIS pages and PDF guides** (official EP points grid, FIP figures, nomination-request checklist, FIP intake status; the 2026-11-17 section relies on search extracts); IDOL row for chefs (62200); SWMII priority occupations; WCMII 2023 survey list
 - Intake status of Winkler-Stanley, Parkland and Northwest
 - SWO language floor for strategic-initiative invitations (conflict above)
 
@@ -156,6 +253,9 @@ sources:
   - Morden Immigration: https://morden.ca/immigration ; Employers: https://morden.ca/immigration/employers
   - FAQ: https://immigratemanitoba.com/faq/pre-application ; Annual Report 2024: https://immigratemanitoba.com/resources/data/annual-report-2024/
   - IDOL: https://immigratemanitoba.com/mpnp/idol/ ; Policy guidelines (2022): https://immigratemanitoba.com/wp-content/uploads/2022/09/mpnp-policy-guidelines-public.pdf
+- Business Investor Stream (search extracts of official pages and PDFs, 2026-11-17; direct fetch HTTP 403): https://immigratemanitoba.com/mpnp/bis/ ; https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ ; https://immigratemanitoba.com/mpnp/bis/ep/apply/ ; BIS FAQ https://immigratemanitoba.com/?p=15379 ; EP process https://immigratemanitoba.com/?p=18197 ; FIP eligibility https://immigratemanitoba.com/?p=18204 ; procedural fairness FAQ https://immigratemanitoba.com/?p=15370 ; guides listed in the BIS section
+- C60 (IRCC, search extract): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2022-self-employed-provincially-supported-entrepreneurs.html
+- BIS secondary cross-checks (M/L): https://moving2canada.com/immigration/pnp/provinces/manitoba/manitoba-business-investor-stream-entrepreneur-pathway/ (modified 2025-09-10) ; https://moving2canada.com/immigration/pnp/provinces/manitoba/manitoba-farm-investor-pathway/ ; https://www.cicnews.com/2017/11/manitoba-restructures-provincial-nominee-program-119864.html
 - Commercial guides, conflicts only (L): https://www.myvisasource.com/canadian-immigration/provincial-nominee-program/manitoba-mpnp/morden-immigration-initiative/ ; https://www.canadacareersite.com/immigration/morden-community-driven-immigration-initiative
 - 2026-05 draw (906 LAAs, secondary): https://www.cicnews.com/2026/05/manitoba-holds-largest-selection-round-of-the-year-inviting-over-900-provincial-nominee-candidates-0575155.html
 

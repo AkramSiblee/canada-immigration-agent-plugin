@@ -2,13 +2,16 @@
 domain: 02-pnp
 topic: regional-community-streams
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-17
 confidence: M
 review_every_days: 30
 sources:
   - https://www.alberta.ca/aaip-rural-renewal-stream-eligibility
   - https://www.alberta.ca/aaip-rural-renewal-stream-community-designation
   - https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-how-to-apply
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-after-you-are-nominated
+  - https://www.alberta.ca/system/files/jeti-aaip-fee-schedule.pdf
   - https://www.alberta.ca/aaip-rural-entrepreneur-stream-participating-communities
   - https://www.alberta.ca/tourism-and-hospitality-stream-eligibility
   - https://www.ontario.ca/page/regional-economic-development-through-immigration-redi-initiative
@@ -72,6 +75,17 @@ Funds needed if outside Canada, or in Canada and not working.
 - Currently accepting EOIs. Requires a **Community Support Letter** and an exploratory visit.
 - 3 yrs as active owner/manager or 4 yrs as senior manager in last 10; high school with ECA; CLB 4; net worth $300,000; investment $100,000; 51% ownership (100% for succession); 1 full-time job for a citizen or PR, not a relative (not for succession). Grid maximum 175.
 - Ineligible: passive investment, rentals, home-based, B&B, seasonal or project businesses, payday loans.
+- **Detail (read 2026-11-17, H):** https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility and -how-to-apply. Shared process, fees, BPA, C60 work permit, reconsideration: see alberta.md "## Entrepreneur streams".
+- Status: "currently accepting EOIs" (2026-11-17). No 2026 Rural Entrepreneur EOI draws published. Entrepreneur allocation (all 4 streams) 60, 39 issued, 21 left (processing page, 2026-11-04).
+- Sequence: exploratory visit, then Business Proposal Summary, then **Community Support Letter** (needed before the EOI), then EOI ($200), invitation, Business Application ($3,500, within 90 days), BPA (sign within 14 days), 205(a) letter, work permit, arrival within 12 months, 12+ months operating, Final Report, nomination.
+- **Exploratory visit:** in person or by video, as candidate and community agree. No AAIP or community visa support letter. **Exploratory Visit Report** with the Business Application: providers and settlement agencies met, description of each meeting, business cards (in person), and for a buy-out the business name, location, owners and site visits. No minimum length stated.
+- Funds: net worth and investment in candidate's or spouse's own name and own equity. QSP report (Grant Thornton, KPMG or MNP) on net worth and investment required.
+- Ownership 51% new (partners citizens or PRs) or 100% succession (complete change of ownership). Job: 1 full-time citizen or PR, not a relative, for 6+ months (new businesses only).
+- Language test under 2 years old at EOI (CELPIP, IELTS GT, PTE, TEF, TCF).
+- **EOI grid (max 175):** rural factor (under 10,000 = 25; 10,001-50,000 = 17; 50,001-99,999 = 10); experience 20 (owner 3-4 yrs 12, 4-5 16, 5+ 20; senior manager 4-5 12, 5-6 16, 6+ 20); investment 20 ($100k-399k 5; 400k-599k 10; 600k-799k 15; 800k+ 20); net worth 10 ($300k-399k 6; 400k-499k 8; 500k+ 10); jobs 20 (4 per job, max 5); succession 10; language 25 (CLB 4 = 15, 5 = 20, 6+ = 25); education 10 (high school 4; 1-yr diploma 7; bachelor's+ 10); adaptability 35 (Canada/Alberta experience 15, relatives 10, spouse 5, age 21-49 5).
+- Also ineligible: used-goods trading; coin-operated (laundromats, car washes); real estate or insurance brokerage; succession of relative-owned businesses, businesses held by an AAIP entrepreneur candidate or nominee in last 4 yrs, or ownership changed in last 3 yrs.
+- After approval: Arrival Report within 30 days of work permit issue; Business Progress Report every 6 months; live in a rural Alberta community; operate 12+ months and be generating products or services. Established Alberta businesses (1 yr before EOI) skip the BPA.
+- A Lethbridge page (secondary) says the city suspended participation over backlogs; Lethbridge is not on the 57-community list. Check each community's own status before an exploratory visit (M).
 
 **Participating communities (57):** Brooks, Camrose, Cold Lake, Grande Prairie, Lacombe, Wetaskiwin (cities); Camrose, Wetaskiwin, Flagstaff, Foothills, Lacombe, Lac La Biche, Red Deer counties; Fort McMurray Wood Buffalo; Montana First Nation; MDs of Peace 135, Smoky River 130, Spirit River 133; Special Areas Board; towns of Blackfalds, Bonnyville, Bow Island, Coronation, Claresholm, Falher, Fort Macleod, Fox Creek, Grimshaw, High Prairie, Innisfail, McLennan, Mundare, Olds, Oyen, Peace River, Penhold, Ponoka, Provost, Sedgewick, Slave Lake, Stettler, Sundre, Sylvan Lake, Two Hills, Viking, Wainwright, Westlock, Whitecourt; villages of Acme, Berwyn, Chauvin, Clive, Consort, Donnelly, Forestburg, Girouxville, Vilna. Newest: Fort Macleod 2026-03-10, Foothills 2026-05-13. Named contacts are on the Alberta page.
 
@@ -105,6 +119,7 @@ Funds needed if outside Canada, or in Canada and not working.
 - Alberta Rural Renewal limits applicants abroad to TEER 0-3.
 - Alberta Tourism and Hospitality looks open to hospitality workers abroad but is not.
 - A community letter is never a nomination.
+- Alberta Rural Entrepreneur: no EOI without the Community Support Letter; the Exploratory Visit Report must back up the Business Application. The 205(a) letter and approval letter are not nominations.
 - BC regional is for entrepreneurs only.
 
 ## Common refusal reasons

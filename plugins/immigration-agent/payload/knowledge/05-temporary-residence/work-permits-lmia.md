@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: work-permits-lmia
 status: verified
-last_verified: 2026-11-10
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -14,6 +14,11 @@ sources:
   - https://www.canada.ca/en/employment-social-development/services/foreign-workers/global-talent.html
   - https://www.canada.ca/en/employment-social-development/services/foreign-workers/agricultural.html
   - https://canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
+  - https://www.canada.ca/en/employment-social-development/services/foreign-workers/variations.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/genuineness.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/experience/qualifying-work-experience.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2025-1.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
 ---
 # LMIA work permits (TFWP)
 
@@ -78,6 +83,18 @@ sources:
 - Non-compliance: warning, up to $100,000 per violation and $1M a year, bans, publication. Food services are a high-risk review sector (ESDC 2026-07-09). Full conditions, procedure and Schedule 2 tables: employer-compliance-inspections.md.
 - Chefs (NOC 62200): Job Bank provincial medians $19.00-$24.00 (wages updated 2025-11-19), far below high-wage thresholds, so restaurant chef LMIAs are usually low-wage and subject to the CMA refusal list.
 
+### Owner-operator LMIA (read 2026-11-17)
+- **No dedicated owner-operator stream on ESDC pages now (H for absence).** The variations-to-advertising list (page 2026-08-18, 18 categories) and the high-wage requirements page (2026-11-10) make no mention of owner-operators, controlling interest or business plans. Secondary sources say ESDC ended the advertising-exempt owner/operator LMIA on **2021-04-01** (settler.ca, 2021) or "in 2021" (Bridgepoint Law, 2026-08-04) (M; no ESDC notice found).
+- **What remains (M):** an owner can still be named in a **standard high-wage or low-wage LMIA** with full recruitment (4 or 8 weeks), prevailing/median wage, caps and the CMA refusal list (low-wage), transition plan (high-wage, unless exempt e.g. limited-duration or unique skills), and the **$1,000** processing fee (H, fee applies to every LMIA position).
+- **Historic definition (M, older ESDC guidance quoted by Meurrens):** controlling interest (majority or plurality of shares, cannot be fired) and active involvement; shares received as compensation don't count; usually a business plan showing funding and job creation.
+- **Genuineness (H, IRPR s.200(5); IRCC genuineness page):** employer actively engaged in the business, offer consistent with reasonable needs, employer can fulfil the terms, past compliance. ESDC also checks business legitimacy and financial ability. When employer and worker are the same person these are hard to show; buying/selling LMIAs = AMPs up to $1M and bans.
+- **Compared with IMP:** C11 = temporary intent only, at least 51% ownership, significant benefit, max 18 months, no LMIA/recruitment. C60 = PR intent with provincial support letter (or Quebec CSQ), max 2 yrs outside Quebec, then T13 after nomination. See work-permits-lmia-exempt.md. In practice C11/C60 replace the old owner-operator LMIA.
+- **PR implications:**
+  - **CEC (H, PDI 2023-05-25):** self-employment excluded; people who "hold substantial ownership and/or exercise management control of a business" while working for it are **generally treated as self-employed**, so owner-operator time is unlikely to count. The C11 page (2025-05-27) also says entrepreneur time doesn't count for CEC.
+  - **Express Entry job-offer points (H):** arranged employment points removed **2025-03-25** (MI 2025-1). From **2026-11-03** (MI 2026-1) a **"qualifying offer of employment"** gives 50/70/100 points by wage level (1.3x / 1.5x / 2x median) for TEER 0-3 (single employer), skilled trades (up to 2 employers) or public medical services, **no LMIA**, genuineness assessed. MI 2026-1 has **no owner/shareholder exclusion**; treat a self-made offer as high genuineness risk (unknown how IRCC applies it).
+  - FSW treatment of self-employed or owner experience: **not verified**.
+- **Common refusals (M):** insufficient recruitment or Canadians available; business not genuine or not actively operating; no financial capacity to pay the wage; wage below median/prevailing; job created for the owner (offer not consistent with reasonable needs); IRCC finds the worker is the employer in substance.
+
 ### Pending (proposed for 2027-03-01, provincial opt-in)
 - Targeted COPS-occupation access by CMA size; cap 15% on province request (see 14-policy-tracker/announced-for-2027.md).
 
@@ -105,6 +122,7 @@ sources:
 - Median wage table (annual, July)
 - Montréal/Laval low-wage LMIA suspension status
 - March 2027 TFWP reforms opt-ins
+- Owner-operator: no ESDC page confirms the 2021 end date; confirm with ESDC/Service Canada before advising. FSW treatment of owner experience unverified
 
 ## Sources
 - ESDC TFWP (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers.html
@@ -116,3 +134,10 @@ sources:
 - Agricultural (2026-09-16): https://www.canada.ca/en/employment-social-development/services/foreign-workers/agricultural.html
 - ESDC news 2026-11-06: https://canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
 All read 2026-11-07.
+- Advertising variations (2026-08-18, read 2026-11-17): https://www.canada.ca/en/employment-social-development/services/foreign-workers/variations.html
+- High-wage requirements rechecked (2026-11-10, read 2026-11-17)
+- IRCC genuineness of offer: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/genuineness.html
+- CEC qualifying work experience PDI (2023-05-25): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/experience/qualifying-work-experience.html
+- EE MI 2025-1 (effective 2025-03-25): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2025-1.html
+- EE MI 2026-1 (effective 2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
+- Secondary (M): https://bridgepointlaw.ca/owner-operator-lmia-buying-canadian-business-2026/ ; https://www.settler.ca/english/the-end-of-owner-operator-lmia-what-is-the-alternative/ ; https://meurrensonimmigration.com/tag/owner-operator/

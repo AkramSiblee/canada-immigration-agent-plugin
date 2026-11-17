@@ -31,11 +31,11 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - Use `research-prompts/gap-pass-01.md` for the uncovered areas
 
 ## Slash commands
-`/dropbox` `/reply` `/quote` `/evidence` `/tasks` `/portal-sheet` `/accounting` `/consult-notes` `/prospects` `/processing` `/monthly-updates` `/licence` `/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
+`/dropbox` `/reply` `/quote` `/evidence` `/tasks` `/portal-sheet` `/accounting` `/consult-notes` `/prospects` `/processing` `/monthly-updates` `/licence` `/case` `/ircc-letter` `/validity` `/draws` `/opportunities` `/time` `/precedents` `/translate` `/readiness` `/status-update` `/agreement` `/billing` `/extract` `/prefill` `/intake` `/select-program` `/crs` `/fsw` `/clb` `/us-pathway` `/entrepreneur` `/pr-plan` `/pnp` `/checklist` `/fees` `/refusal` `/pf-response` `/compliance` `/update-kb` `/audit-kb` `/changelog`
 
 ## Layout
 - `CLAUDE.md` : agent rules
-- `.claude/skills/` : 29 skills (practice + KB maintenance)
+- `.claude/skills/` : 35 skills (practice + KB maintenance)
 - `.claude/agents/` : kb-researcher, kb-auditor, case-reviewer
 - `.claude/commands/` : slash commands
 - `knowledge/` : domains 00-14, `_inbox/`, `kb-manifest.yaml`

@@ -7,6 +7,18 @@ description: Build a document checklist for a specific program and client. Use f
 ## Read first
 - knowledge/11-forms-fees-processing/forms-directory.md
 - knowledge/11-forms-fees-processing/portals-and-submission.md
+- Business streams: the province file in knowledge/02-pnp/, knowledge/11-forms-fees-processing/source-of-funds-net-worth.md, knowledge/03-quebec/business-immigration.md
+
+## Business checklists (provincial entrepreneur streams)
+Build each from the province file's own list (forms, deadlines and fees differ by province); the stages below are the skeleton. Mark which stage the client is at.
+1. **EOI / registration:** passport, language test (validity window set by the stream), education credential (and ECA if required), business ownership or management proof (registration, share certificates, financial statements, tax returns), self-declared net worth, exploratory visit evidence (itinerary, meetings, receipts) where required.
+2. **Business Establishment Plan / business plan:** business concept, NAICS code and check against the excluded list, location, market research, investment budget (eligible vs excluded spending), jobs plan (permanent full-time, not related persons, wage), ownership %, purchase file if buying (prior-owner years, valuation at fair market value, site visit, purchase agreement).
+3. **Net worth verification:** designated verifier's report; for every asset: title or statement, valuation, how acquired; 5-year (or the stream's) trail of income and transfers; gifts (gift deed, donor's means, date received), loans (agreement, counted net of liability), sale of property (deed, sale proceeds, deposit trail); tax returns; currency conversion date; spouse's share. See source-of-funds-net-worth.md.
+4. **Performance agreement:** signed agreement returned by the deadline; deposit if the province requires one; note the date: spending counts only after it.
+5. **Work permit (C60):** province's work permit support letter, Employer Portal offer and compliance fee, IRCC application within the province's deadline; family permits; then arrival.
+6. **Arrival meeting / landing:** arrival report or meeting within the province's window, proof the family lives in the province (lease, school enrolment), company registration, business bank account, licences.
+7. **Nomination request / final report:** operating period met; accountant's review engagement or special-purpose report; proof of investment (invoices, bank statements), payroll records for each new employee (T4, ROE, citizenship/PR proof, not related), active management proof; proof of residence in the province.
+8. **PNP-based PR (IRCC):** nomination certificate; IMM 0008 and schedules (see forms-directory); police certificates; medicals; proof of funds not required for nominees unless stated; fees (fee-schedule.md); work permit extension (T13) if nominated and permit is expiring.
 
 ## Workflow
 0. If the program has a stored official checklist (`templates/checklists/index.csv`: visitor visa, study permit and work permit applied outside Canada, Express Entry, adult, minor and proof of citizenship, parents and grandparents, spousal, PR card, super visa), start from it, not from memory. For an open case, run `python3 scripts/readiness.py checklist CASE` to see what is found, missing, conditional or to confirm by hand, with the progress percentage. Check the checklist's `read` date and IRCC's page before relying on it.
