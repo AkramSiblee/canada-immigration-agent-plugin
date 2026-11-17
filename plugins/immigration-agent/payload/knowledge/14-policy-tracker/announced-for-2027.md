@@ -7,6 +7,8 @@ confidence: H
 review_every_days: 30
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
+  - https://budget.canada.ca/2025/report-rapport/chap1-en.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/building-a-stronger-canada-through-a-well-managed-predictable-immigration-system.html
@@ -73,6 +75,7 @@ sources:
 ## Recent changes (2025-2027)
 - 2027-2029 Levels Plan (2026-11-05); 200,000 in-Canada TR-to-PR measure (H) - **criteria now partially published: two cohorts of 100,000, outside targets, no application**
 - Planned federal entrepreneur pilot (H) - still not launched
+- Accelerated pathway for H-1B visa holders (Budget 2025, chapter 1) (H) - **announced, not launched**: no IRCC notice or Express Entry category as of 2026-11-17 (notices page 2026-11-05; category page 2026-10-16). The 2023 H-1B open work permit (10,000 cap) is closed. See 12-decision-trees/us-to-canada.md
 - 2026-11-06: TFWP - Low-Wage LMIA duration up to 2 years; early childhood educators exempt from the 6% CMA refusal-to-process rule (H)
 
 ## Consultant pitfalls
@@ -91,6 +94,7 @@ sources:
 - Quebec 2027 plan (fall 2026)
 - TFWP provincial opt-ins before 2027-03-01
 - Federal entrepreneur pilot
+- H-1B accelerated pathway (Budget 2025): launch notice, eligibility, whether it is an Express Entry category
 
 ## Sources
 - Supplementary Information 2027-2029 Levels: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html

@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.11
+- /us-pathway now covers every kind of US-based client, not only workers: business visitors and after-sales service under CUSMA, remote work for a US employer as a visitor, CUSMA traders and investors, SWAP Working Holidays for young Americans, study permits at the border, Canadian citizens in the US sponsoring a spouse (must show a plan to live in Canada), US-born children and Bill C-3, PRs living in the US, the asylum 14-day rule, and US expungements, cannabis and removals.
+- Correction: US citizens and green-card holders can still apply for a work or study permit at the border (they are an exception to the end of flagpoling). H-1B, L-1 and F-1 holders without a green card cannot.
+- The H-1B pathway from Budget 2025 is now in the policy tracker: announced, not open as of 2026-11-17.
+
 ## 1.9.10
 - case.py review: any IRCC letter in the file (procedural fairness, biometrics, medical, passport request, refusal, approval) or an IRCC application number now counts as proof that an application exists. A submitted date earlier than the date you opened the file is asked as a question (filed before you took the file?), not reported as an error.
 
