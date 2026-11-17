@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.9.12
+- US-based clients: the facts that were only medium confidence were checked on the full official pages. Confirmed: study permits at the border for US citizens and green-card holders (they still need a PAL/TAL), SWAP Working Holidays for Americans aged 18-35, and how IRCC treats a US pardon or expungement (not automatic; the Saini test).
+- Remote work as a visitor now follows IRCC's new digital nomad instructions (2026-05-26): up to 6 months at a time, income earned outside Canada, and the documents officers may ask for.
+- Biometrics in the US corrected: an application support centre or the Los Angeles / New York visa application centre, booked free on the USCIS website.
+- Cannabis offences stay medium confidence: conduct now legal in Canada should not count, but no IRCC page says so directly.
+
 ## 1.9.11
 - /us-pathway now covers every kind of US-based client, not only workers: business visitors and after-sales service under CUSMA, remote work for a US employer as a visitor, CUSMA traders and investors, SWAP Working Holidays for young Americans, study permits at the border, Canadian citizens in the US sponsoring a spouse (must show a plan to live in Canada), US-born children and Bill C-3, PRs living in the US, the asylum 14-day rule, and US expungements, cannabis and removals.
 - Correction: US citizens and green-card holders can still apply for a work or study permit at the border (they are an exception to the end of flagpoling). H-1B, L-1 and F-1 holders without a green card cannot.

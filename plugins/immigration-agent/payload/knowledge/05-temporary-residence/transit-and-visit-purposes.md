@@ -81,6 +81,13 @@ sources:
 - **There is no separate business visa.** Use the visitor visa or eTA. Include the **event code** if the event is registered with IRCC.
 - **Carry at the border:** passport valid for the entire stay; visa or the same passport used for the eTA; US PRs: green card and passport; letters of support from the parent company; letter of invitation from the Canadian host or CBSA letter of recognition; warranty, service agreements or contracts if relevant; 24-hour contact for the host; proof of funds.
 
+### Digital nomads (IRCC instructions 2026-05-26, read 2026-11-17) (H)
+- Person who works remotely for a **foreign employer or foreign clients**: visitor status, "up to 6 months at a time"; longer stay needs a visitor record.
+- Income must be earned outside Canada; self-employed nomads serve clients "exclusively" outside Canada.
+- Work for a Canadian employer needs a work permit "before starting work for that employer" unless exempt under R186.
+- Officers may ask for: foreign employment letter or contract, pay stubs, client contracts and invoices, foreign business registration, foreign tax documents, bank statements; plus funds, no entry into the Canadian labour market, and intent to leave.
+- Source: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/service-delivery/digital-nomads.html
+
 ### Canadian businesses and event organizers (pages 2023-09-14)
 - Do due diligence on the foreign partner. Give each visitor **2 original invitation letters** (one for the application, one for the border) and a 24-hour contact.
 - Register international events with IRCC's Special Events Unit for support. Report equipment and goods for the event to CBSA.

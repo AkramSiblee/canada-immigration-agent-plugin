@@ -35,12 +35,21 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/admissibility-enforcement/overcome-criminal-convictions.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/how-to-give.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-214.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/apply.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/attestation-letters.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/service-delivery/digital-nomads.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/standard-requirements/tran.html
+  - https://laws-lois.justice.gc.ca/eng/acts/I-2.5/section-36.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/impaired-driving-cannabis-penalties-affect-immigration-status.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec/recognized-organizations.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates/how/united-states.html
 ---
 # Decision tree: US-based applicant to Canada (US citizens, green-card holders, H-1B, TN, L-1, F-1, Canadians living in the US)
 
 Confidence M overall: built from the linked knowledge files (each verified on its own date) plus official pages read 2026-11-13 and 2026-11-17.
+The 2026-11-17 recheck raised study permit at POE, biometrics, SWAP, foreign pardons and digital nomads to H; the cannabis conclusion stays M.
 Individual facts marked (H) were read on an official page. Re-check each branch's source file before advising; the H-1B branch changes fast.
 
 ## Must cover
@@ -70,9 +79,12 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
       cannot be made prior to arriving in Canada"; usually 6 months or less. After-sales service: original sales
       contract + warranty/service agreement, commercial or industrial equipment bought outside Canada, specialized
       knowledge, no hands-on construction; referred to Immigration Secondary (CUSMA business visitors page 2025-12-22) (H).
-   c. Remote work for a US employer: visitor status only, up to 6 months at a time, no work permit
-      (IRCC Tech Talent page 2024-04-24; no newer wording found 2026-11-17) (M). Work for a Canadian client or employer
-      needs a permit. Ask what the client actually does in Canada.
+   c. Remote work for a US employer (digital nomad): visitor status, "up to 6 months at a time"; longer needs a visitor
+      record. Income must be earned outside Canada; self-employed nomads must serve clients "exclusively" outside Canada.
+      Work for a Canadian employer needs a permit "before starting work" unless R186-exempt. Officers may ask for the
+      foreign employment letter or contract, pay stubs, client contracts/invoices, foreign business registration, tax
+      returns, bank statements, plus funds and intent to leave (IRCC digital nomads instructions 2026-05-26) (H).
+      Ask what the client actually does in Canada.
 4. Work permit routes
    a. US citizen with a job offer in one of the 63 CUSMA professions, qualified, pre-arranged, not self-employed
       -> CUSMA professional T36 (formerly T23), LMIA-exempt, up to 3 yrs, unlimited 3-yr extensions (work-permits-lmia-exempt.md).
@@ -92,8 +104,9 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
    - Spouses: CUSMA "does not extend special privileges to spouses" (CUSMA index 2024-10-03) (H). Spouse OWP only under
      the domestic rules: principal's NOC TEER 0-1 or on IRCC's TEER 2-3 list, 16+ months left (open-work-permits.md;
      scripts/owp_rules.py).
-   - Under 36, US citizen: not an IEC country. Only the Recognized Organization SWAP Working Holidays accepts US
-     citizens (IEC RO page) (H); check the IEC season status first (iec.md).
+   - Age 18-35, US citizen: not an IEC country. Only the Recognized Organization SWAP Working Holidays lists
+     "citizens of IEC countries or territories and the United States" (IEC RO page 2025-12-18) (H). ROs "might have
+     their own eligibility requirements"; confirm intake dates with SWAP (the RO page gives no season status).
    - Where to apply: port of entry if visa-exempt (US citizen, LPR, eTA national) with the offer number / LMIA ready
      (work-permit-process-and-status.md). Visa-required nationals apply online before travel.
    - Flagpoling ended 2024-12-23 for work and study permits, BUT "citizens and lawful Permanent Residents of the United
@@ -101,9 +114,13 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
      apply at the border. H-1B / L-1 / F-1 holders without a green card cannot, unless another exception applies
      (FTA professionals/technicians, truck drivers, pre-booked CBSA appointment).
 5. Study
-   - US citizens, US nationals, US LPRs (and residents of Greenland / Saint-Pierre and Miquelon) may apply for a study
-     permit at the port of entry (R214; IRCC study permit instructions) (H). They still need a PAL/TAL unless exempt
-     (study-permits.md). Canada.ca's public page is confusingly worded; confirm on the day.
+   - "A national or a permanent resident of the United States", a person "lawfully admitted to the United States for
+     permanent residence", and residents of Greenland or St. Pierre and Miquelon may apply for a study permit when
+     entering Canada (IRPR s.214, current to 2026-10-29; study permit instructions 2025-12-22) (H). At the border:
+     "Tell the officer that you want a study permit" (apply page 2026-09-02) (H).
+   - PAL/TAL: "required by all study permit applicants unless they fall under an exception"; there is no exception for
+     US applicants or port-of-entry applications (attestation-letters instructions 2026-02-06) (H; inferred from the
+     exception list) (study-permits.md).
    - F-1 students moving to Canada: PGWP rules apply to the Canadian program only; US study doesn't count (pgwp.md).
 6. Business / self-employed
    - CUSMA trader/investor (4c), C11 entrepreneur, Start-up Visa, PNP entrepreneur streams, Quebec business programs
@@ -149,11 +166,18 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
    - Ask about every arrest, charge, diversion, deferred adjudication and juvenile matter, in every state.
    - US expungement, sealing, set-aside or governor's pardon: NOT automatically recognized. IRCC: "check with the visa
      office that serves the country or region where you live"; it "will tell you if the pardon is valid in Canada"
-     (overcome-criminal-convictions page 2026-07-23) (H). Officers ask whether the foreign law erases the conviction
-     or only recognizes rehabilitation (ENF 3) (M). Get certified court records for every disposition anyway.
-   - Cannabis: conduct that is no longer an offence in Canada (simple possession within Canadian limits) is generally not
-     a ground (ENF 3 policy on offences no longer in the Criminal Code) (M). Possession for distribution, cultivation
-     over limits, trafficking, and cannabis-impaired driving still count; equivalency is offence-by-offence -> lawyer if unclear.
+     (overcome-criminal-convictions page 2026-07-23) (H). "A foreign pardon does not necessarily make the person
+     admissible to Canada." Saini test: the foreign legal system as a whole is similar to Canada's; the specific law is
+     similar in aim, content and effect; no valid reason not to recognize it. Then: does it erase the conviction
+     (admissible) or only recognize rehabilitation (inadmissible; apply for rehabilitation)? (IRCC instructions
+     "Tran", 2019-11-14) (H). Nothing official is specific to US expungement; get certified court records for every
+     disposition and a lawyer's view where it decides admissibility.
+   - Cannabis: IRPA s.36 requires that the act, "if committed in Canada", would be an offence under an Act of
+     Parliament, so conduct now legal in Canada (possession within Canadian limits) should not meet the equivalency
+     test; penalty is measured at the date of assessment (Tran instructions 2019-11-14) (M: follows from the law; no
+     IRCC page states the cannabis rule). Possession for distribution, cultivation over limits, trafficking and
+     cannabis-impaired driving still count, "inside or outside Canada" (IRCC notice 2018-10-22) (H).
+     Equivalency is offence-by-offence -> lawyer if unclear.
    - Rehabilitation for eTA/visa-exempt travellers: apply by mail/courier to the visa office for the region before
      travel; IRCC's page names no port-of-entry route (page 2026-07-23) (H). Don't promise a border decision.
    - Prior US removal, deportation, voluntary departure, US visa refusal or overstay: every IRCC form asks about refusals
@@ -162,9 +186,12 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
    - Police certificate: FBI Identity History Summary (IRCC US page 2025-06-17), not a state check; for PR, each country
      with 6+ months in a row in the last 10 years since 18. Order at intake (slow).
 12. Logistics in the US
-   - Biometrics: at a USCIS Application Support Center, only with IRCC's biometric instruction letter, by appointment,
-     only if already legally in the US; don't travel to the US just for biometrics (IRCC how-to-give page) (H).
-     US citizens are exempt from TR biometrics (flagpoling-biometrics-medicals.md). Fee $85 / $170 family.
+   - Biometrics: at a USCIS application support centre (ASC) or the Los Angeles / New York VAC. "You must already be
+     legally in the US"; book the ASC appointment on the USCIS website after the biometric instruction letter arrives;
+     appointments are free, "Don't pay anyone to book an appointment" (where-to-give page 2026-08-24) (H).
+     IRCC fee $85 / $170 family max / $255 performing artists (how-to-give page 2026-03-30) (H).
+     US nationals are exempt from biometrics for work, study and TRP applications (R12.2(1)(c)(ii); M, search snippet)
+     (flagpoling-biometrics-medicals.md).
    - Medicals: IRCC panel physician in the US (panel physician finder); results valid 12 months.
    - IRCC VACs in the US: Los Angeles and New York (visitor-country-reference.md).
 ```
@@ -174,7 +201,7 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
   US-LPR flagpoling / study-permit-at-POE exceptions.
 - TN status is a US status; a Mexican or Canadian citizen's CUSMA eligibility comes from citizenship, not TN.
 - Undisclosed US arrests (even dismissed or expunged) are a misrepresentation risk (s.40).
-- "Remote work as a visitor" fails when the work is really for Canadian clients, or the stay becomes residence.
+- "Remote work as a visitor" fails when the work is really for Canadian clients or a Canadian employer, or the stay becomes residence.
 - A Canadian citizen sponsor in the US with no concrete plan to move is a common refusal point.
 
 ## Sources (read dates)
@@ -182,9 +209,12 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
 - CBSA flagpoling notice (2024-12-23): read 2026-11-17 (H)
 - Spousal sponsor eligibility (2026-06-23): read 2026-11-17 (H)
 - Overcome criminal convictions (2026-07-23): read 2026-11-17 (H)
-- Study permits: making an application (R214 list): search result 2026-11-17 (M; page not read in full)
-- IEC Recognized Organizations (SWAP for US citizens): search result 2026-11-17 (M)
-- Biometrics how-to-give (ASC by appointment): search result 2026-11-17 (M)
-- Tech Talent campaign (digital nomads; H-1B OWP closed) (2024-04-24): read 2026-11-17 (M, old page)
+- IRPR s.214 (current to 2026-10-29), study permit instructions (2025-12-22), study permit apply page (2026-09-02),
+  attestation-letters instructions (2026-02-06): read 2026-11-17 (H)
+- IEC Recognized Organizations (2025-12-18): read 2026-11-17 (H)
+- Biometrics where-to-give (2026-08-24) and how-to-give (2026-03-30): read 2026-11-17 (H); R12.2 US exemption (M)
+- Digital nomads instructions (2026-05-26): read 2026-11-17 (H)
+- Tech Talent campaign (H-1B OWP closed) (2024-04-24): read 2026-11-17 (H for the closed status)
 - IRCC notices (2026-11-05) and category-based selection (2026-10-16): read 2026-11-17, no H-1B pathway (H)
-- ENF 3 (2022-03-03) on foreign pardons and offences no longer in Canadian law: search result 2026-11-17 (M)
+- Tran instructions (foreign pardons, Saini test, penalty at assessment) (2019-11-14), IRPA s.36 (current to 2026-10-29),
+  IRCC cannabis/impaired notice (2018-10-22): read 2026-11-17 (H; cannabis conclusion M)
