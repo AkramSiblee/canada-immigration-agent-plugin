@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: trp-restoration-maintained-status
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -44,7 +44,8 @@ sources:
 - **Maintained status only exists if the extension was filed before expiry.** Keep proof of submission time and date.
 - A refusal of an extension during maintained status puts the client out of status immediately. The 90-day restoration clock starts then.
 - Restoration applicants must **stop working** at once. Continuing work is unauthorized work, which brings A41 inadmissibility risk.
-- A TRP needs compelling reasons that outweigh the risk. A criminal TRP is not a substitute for rehabilitation where that is available (see 08-inadmissibility).
+- A TRP is usually framed as needing compelling reasons that outweigh the risk; the Federal Court is split: *Howlader* 2025 FC 274 says s.24(1) isn't limited to "unique/compelling" reasons, *Jasmeet Kaur* 2026 FC 1095 applies the compelling-reason test (13-case-law/work-permit-status-refusals.md, M). A criminal TRP is not a substitute for rehabilitation where that is available (see 08-inadmissibility).
+- Restoration and a new permit go in one application; restoration is only to the status last held (work-permit-process-and-status.md; *Kohli* 2026 FC 381, M). Exception to the 90 days: Manitoba Workforce Transition Bridge for MB support-letter holders (received before 2027-12-31).
 - Once the 90 days pass, restoration is impossible. Only a TRP or leaving Canada remain.
 
 ## Common refusal reasons

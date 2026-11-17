@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: crs-scoring
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
@@ -11,6 +11,9 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/10/changes-to-express-entry-for-high-wage-occupations.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
 ---
 # CRS scoring (in force 2026-11-03)
 
@@ -86,16 +89,62 @@ _(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other inte
 - No dollar thresholds published. Update frequency not stated.
 - The level is locked at the ITA date.
 
-### Qualifying job offer (s.15.2)
-- Full-time (at least 30 h/wk), continuous, at least 1 yr from PR visa issuance, in a high-wage NOC, and:
-  (a) NOC 31100/31101/31102 for publicly funded medical services, or
-  (b) TEER 0-3 from 1 employer, paid wages or commission, or
-  (c) skilled trade from up to 2 employers
-- Embassies, high commissions and consulates are excluded. The officer must find the offer genuine. A revoked offer stops counting.
-- **No LMIA required** (temporary public policy from 2026-11-03).
-- High-wage status goes by the NOC's median wage, **not the person's own salary** (IRCC high-wage page).
-- **Profile workaround (IRCC job offer page 2026-11-03, read 2026-11-09):** system not yet updated. Answer "Yes" to positive LMIA; LMIA number 00000; issuance January 1, 2026; expiry January 1, 2029. An LMIA gives no extra points or priority.
-- Public policy covers FSW and FST eligibility for ITAs on or after 2026-11-03; employer must have no previous non-compliance with employment or recruitment laws. Does not authorize work: a work permit still needs an LMIA or exemption.
+### Job offer and high-wage experience points (MI 2026-1, from 2026-11-03)
+_Read in full 2026-11-17: MI 2026-1 (page 2026-11-03), CRS criteria page (2026-11-03), high-wage list page (2026-10-16), job offer page (2026-11-03), LMIA-exemption public policy (2026-11-03). Conf. H unless marked._
+
+**Legal basis.** MI 2026-1 signed 2026-10-15 under IRPA s.10.3(1)(h), in force 2026-11-03. Adds "labour market integration" as a core factor (MI s.8(1)(a)(iv)). Deletes "qualifying offer of arranged employment" and adds "qualifying offer of employment" (s.15.2(2)). Repeals MI s.29 and ss.33-34. **No transitional or grandfathering clause.**
+
+**Point values** (s.15; greater of s.15.1 or s.15.2, never both; cap 150 single / 140 with spouse)
+
+| Route | 2x level | 1.5x level | 1.3x level | Not high-wage |
+|---|---|---|---|---|
+| Qualifying job offer (s.15.2) | 100 | 70 | 50 | 0 |
+| High-wage CWE bonus, 12+ months (s.15.1(8)), on top of CWE duration points | 70 | 40 | 20 | 0 |
+
+- CWE duration points (s.15.1): single 40/53/64/72/80; with spouse 35/46/56/63/70 for 1 to 5+ yrs (table above).
+- Combinations (s.15.1(8)): 70 only if 12+ months at the 2x level. 40 if 12+ months at 1.5x "or a combination of that level and" 2x. 20 if 12+ months at 1.3x or any combination of the three levels.
+- Simultaneous jobs: one period for duration points (s.15.1(5)). "Despite subsection (5)", they count as **distinct periods** when deciding the high-wage level (s.15.1(9)).
+- Self-employment excluded (s.15.1(6)(b)), except publicly funded physicians (NOC 31100-31102). Full-time study and unauthorized work are excluded. Temporary resident status is required. CRS page: remote work for a Canadian employer counts only if the person was physically in Canada.
+
+**Wage thresholds: which median?**
+- **National, by NOC.** A NOC is high-wage if the median wage of everyone in Canada in that NOC is at least 1.3x the median wage of the whole Canadian workforce. MI s.1 and the high-wage page. **Not provincial**, and **not the ESDC LMIA provincial median wage table**.
+- Tiers: 2x or more; 1.5x to under 2x; 1.3x to under 1.5x. Each NOC sits at the highest tier it reached in any of the 3 data years (2023-2025: Job Bank, Labour Force Survey, Census).
+- **Not the client's own salary.** The high-wage page says it "is **not** determined based on a person's specific job position or salary". A low offered wage in a 2x NOC still earns 100. A high wage in a non-listed NOC earns 0. _Wording trap: the CRS criteria page table says "Job in a high-wage occupation paying 2x the median wage". Read it as the NOC's median (MI s.1 definition governs)._
+- IRCC publishes no dollar figure for the national median or the multiples (M: unknown).
+- List: IRCC prepares and publishes it and updates it "from time to time" (MI s.1). No cadence is stated. The tier in effect **on the ITA date** applies, even if the NOC later moves or drops (s.15.1, s.15.2; high-wage page). About 186 NOCs (31 / 89 / 66); count not stated by IRCC (M).
+
+**Which offers qualify** (s.15.2(2)-(5))
+- Full-time (30+ h/wk, s.15.2(3)), "continuous duration of at least one year" from the day the **PR visa is issued**, in a high-wage NOC, and one of these:
+  (a) NOC 31100, 31101 or 31102 for publicly funded medical services;
+  (b) TEER 0-3, from **one employer**, paid by wages or commission;
+  (c) **skilled trade**, from **up to two employers**.
+- Excluded employers: embassies, high commissions and consulates in Canada, and employers under IRPR s.200(3)(h)(ii)-(iii). These are employers made ineligible under s.209.95(1)(b) (non-compliance list), and employers in default on an administrative monetary penalty. Justice Laws, read 2026-11-17.
+- **Genuineness** (s.15.2(4)): an officer must find the offer genuine. Factors: the employer is actively engaged in the business, the offer fits the employer's reasonable needs, the employer can reasonably fulfil the terms, the candidate is qualified and likely to accept, and the employer's past compliance with federal/provincial employment and recruitment laws.
+- A revoked offer stops being qualifying (s.15.2(5)). Update the profile; claiming it after revocation is an IRPA s.40 risk.
+- An existing or new position, with an existing or new employer (job offer page). Physician public policy (ITAs from 2023-04-25): the offer may be non-continuous or under 1 year and still earn points (job offer page).
+
+**Evidence (no LMIA)**
+- **No LMIA and no LMIA-exemption code needed** for any Express Entry job offer (CRS page and job offer page, 2026-11-03). Holding an LMIA gives **no extra points or priority**.
+- Offer letter: recent, in writing, signed by the employer. It sets out pay and deductions, duties, and conditions such as hours. Profile entries for new offers: start date, employer name and address, NOC (job offer page). IRCC publishes no fuller checklist. Good practice (M, derived from s.15.2(4)): show 30+ h/wk, a permanent or at least 1-year continuous term from PR visa issuance, the NOC code and duties matching the lead statement, the employer's business details, and the signatory's contact information.
+- **Profile workaround** (system not updated): Work history, positive LMIA "Yes", number 00000, issued January 1, 2026, expiry January 1, 2029.
+
+**Transition (candidates with LMIA-based offers)**
+- No transitional provision. Arranged-employment CRS points (50/200) were already repealed on 2025-03-25, so before 2026-11-03 an LMIA only mattered for FSW/FST eligibility, not CRS. All profiles were rescored automatically from 2026-11-03 (up to 2 weeks; rounds paused).
+- An existing LMIA-backed offer earns points only if the NOC is on the high-wage list on the ITA date. Otherwise it earns 0, even though the offer is still valid for FSW/FST.
+- LMIA exemption public policy for FSW and FST eligibility: ITAs **on or after 2026-11-03**. ITAs issued before that date fall under the old rules (eAPR filed under the old LMIA conditions; conf. M on how pending files are treated: not addressed by IRCC).
+
+**When is an LMIA no longer needed for Express Entry, and when is one still needed?**
+| Purpose | LMIA needed? | Authority |
+|---|---|---|
+| CRS job offer points (s.15.2) | **No** | MI 2026-1; CRS page |
+| FSW arranged employment (10 grid points; proof of funds exemption) for ITAs from 2026-11-03 | **No**: IRPR s.82(2)(a)-(d) LMIA limbs and s.83(1)(e) exempted. The offer must still be from an active employer, fit the employer's needs, be fulfillable, be in an occupation the applicant has experience or education in, and the employer must have no prior non-compliance | Public policy (IRPA s.25.2) "until revoked" |
+| FST job offer for ITAs from 2026-11-03 | **No**: IRPR s.87.2(3)(d) LMIA limbs exempted; same conditions | Same policy |
+| PNP employer streams | Provincial rules: some PNP streams require a job offer for eligibility (job offer page). Check each stream | Province |
+| **Work permit to actually start work** before PR | **Yes**, unless an LMIA exemption applies (IRPR s.204-205, e.g. CUSMA, ICT, C10, PGWP, spousal OWP). The policy exempts selection rules only and says nothing on work authorization. **Derived (H on logic, policy silent)** | IRPR s.200, 203 |
+| FSW/FST proof-of-funds exemption | Needs a valid offer **and** current authorization to work in Canada | IRPR s.76(2)(b)/(c) logic; express-entry.md |
+| ITA issued before 2026-11-03 | The old LMIA/exempt-offer rules apply (M) | Policy scope |
+
+**Calculator.** The `crs-calculator` skill (`.claude/skills/crs-calculator/SKILL.md`) is prompt-driven and has no CRS script. Apply this section by hand: compute (CWE duration + high-wage bonus) and job offer separately, take the higher, then cap. `scripts/fsw.py` (FSW 67-point grid) awards 10 points for arranged employment with no LMIA test from 2026-11-03. That is consistent.
 
 ## Recent changes (2025-2027)
 - 2025-03-25: arranged-employment additional points (50/200) repealed (H)
@@ -120,6 +169,8 @@ _(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other inte
 - High-wage list changes (no stated cadence); exact count per tier
 - Intermediate age points (17-19, 30-44)
 - LMIA exemption public policy still in force
+- First round after 2026-11-03: none published as of 2026-11-17 (last #453 on 2026-10-28; IRCC rounds JSON)
+- Whether IRCC fixes the profile LMIA field (00000 workaround)
 
 ## Sources
 - CRS criteria (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html
@@ -127,4 +178,7 @@ _(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other inte
 - Consolidated MI: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html
 - High-wage list: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
 - News 2026-10-16: https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/10/changes-to-express-entry-for-high-wage-occupations.html
-All read 2026-11-07.
+- Job offer page (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment.html
+- LMIA exemption public policy (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
+- IRPR s.200(3)(h): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
+Read 2026-11-07. MI 2026-1, the CRS page, the high-wage page, the job offer page and the public policy were re-read 2026-11-17.

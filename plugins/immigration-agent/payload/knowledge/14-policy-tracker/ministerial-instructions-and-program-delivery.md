@@ -21,6 +21,9 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
   - https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors217-eng.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
+  - https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/minors-pr.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/tr-pr-pathway.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-northern-immigration-pilot.html
@@ -50,7 +53,7 @@ sources:
 | Home Care Worker pilots | **PAUSED/CLOSED** "until further notice" (IRCC caregivers page labels "Closed"); will not reopen in March 2026 | Since 2025-12-19 | notice 2025-12-19; MI86-88 | H |
 | Hong Kong PR pathways | **CLOSED** to new applications 2026-08-31. The Hong Kong OWP policy stays until May 2029 | — | notice 2026-08-28 | H |
 | Refugee sponsorship: Groups of Five and Community Sponsors | **PAUSED** until 2026-12-31 (first paused 2024-11-29) | Re-check in Jan 2027 | notice 2025-11-21 | H |
-| Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws paused for rescoring (last round 2026-10-28). **No round published and no restart date announced as of 2026-11-12** | Restart date: re-verify | MI 2026-1 | H/M |
+| Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws paused for rescoring, "up to 2 weeks" (last round #453, 2026-10-28). **No round published and no restart date announced as of 2026-11-17** (IRCC rounds JSON). Profile LMIA field not yet updated: use the 00000 workaround | Restart date: re-verify | MI 2026-1; CRS page (2026-11-03) | H |
 | Rural Community Immigration | **Pilot OPEN until 2026-12-31** (recommendations dated 2026-12-31 or earlier; apply for PR before they expire). **Pilot closes 2027-01-01**; the permanent **Rural Community Immigration Program opens 2027-01-01** (IRCC page 2026-11-09). Class in IRPR s.87.4 since 2026-10-22; pilot MIs to 2027-06-30 | Class in force 2026-10-22; program opens 2027-01-01 | SOR/2026-217; IRCC RCI Program and Pilot pages (2026-11-09) | H |
 | **Quebec business programs** (Investor, Entrepreneur, Self-Employed) | **OPEN**: applications accepted at any time, no cap, no Arrima step (paper to MIFI). French oral level 7 since 2024-01-01. About 500 admissions planned for 2026 (M). Watch: the PQ government (sworn in 2026-10-21) proposes a moratorium on permanent economic immigration from abroad; not adopted (M; see announced-for-2027.md) | Since 2024-01-01 (current rules) | quebec.ca business pages (2026-11-09 / 2026-11-10); 03-quebec/business-immigration.md | H |
 | **PEQ (Quebec)** | **CLOSED** since 2026-10-31 (window opened 2026-07-02); no new window announced | 2026-10-31 | Quebec PEQ page (2026-10-29) | H |
@@ -72,8 +75,15 @@ sources:
 | **Home Child Care / Home Support pilots; Live-in Caregiver** | **CLOSED** | 2024-06-17 | IRCC caregivers page | H |
 
 ### Key 2026 Ministerial Instructions and public policies
-- **MI 2026-1 (Express Entry amendment)**, in force 2026-11-03: adds points for high-wage Canadian experience and job offers, removes LMIA-linked job-offer provisions. IRCC maintains the high-wage occupation list on its website (3-year wage data).
-- **LMIA exemption for Express Entry job offers** (FSW/FST), a temporary public policy in force 2026-11-03 until revoked.
+- **MI 2026-1 (Express Entry amendment)**, signed 2026-10-15 under IRPA s.10.3(1)(h), in force 2026-11-03. Adds a core "labour market integration" factor, the greater of two routes and capped at 150 single / 140 with spouse:
+  - Canadian work experience: 40-80 single, 35-70 with spouse, plus 20/40/70 for 12+ months in a high-wage NOC at 1.3x/1.5x/2x.
+  - High-wage job offer: 50/70/100.
+  - Maximum CRS is 1,270. The "qualifying offer of arranged employment" definition is replaced by "qualifying offer of employment" (s.15.2). MI ss.29, 33-34 are repealed. No transitional clause.
+  - High-wage tier: the **national** NOC median vs the national workforce median, not the client's salary. The list is IRCC-published (2023-2025 data, page 2026-10-16) and updated "from time to time". The tier is locked at the ITA date. Details: 01-federal-economic/crs-scoring.md (H, read 2026-11-17).
+- **LMIA exemption for Express Entry job offers**, a temporary public policy under IRPA s.25.2, signed 2026-10-15. In force 2026-11-03 "until it is revoked".
+  - Covers FSW (IRPR s.82(2) LMIA limbs and s.83(1)(e)) and FST (s.87.2(3)(d) LMIA limbs), for ITAs on or after 2026-11-03.
+  - Conditions: active employer, genuine need, fulfillable terms, applicant experience or education in the occupation, and no prior employer non-compliance.
+  - It does not address work permits: an LMIA or exemption is still needed to work before PR (H).
 - **Study without a study permit (2026-2)**, 2026-09-09: work permit holders can study up to 6 months (or until permit expiry) without a study permit, until 2027-12-31. Full-time study still needs a permit.
 - **Haiti and Sudan OWP renewals**, 2026-10-28. **Palestinian measures**, 2026-08-24: covers arrivals on or before 2027-09-30.
 - **Ukraine OWP extensions**, 2026-04-01; Ukrainian family reunification temporary residence access, 2026-01-16.
@@ -115,7 +125,9 @@ sources:
 
 ## Re-verify before advising
 - Every open/closed status before advising
-- Express Entry draw restart date and first post-Nov 3 cut-offs
+- Express Entry draw restart date and first post-Nov 3 cut-offs. **Trigger:** first round numbered 454 or later in the IRCC rounds JSON. Then update crs-scoring.md and category-draws-history.md
+- **High-wage occupation list:** the page is dated 2026-10-16 (2023-2025 data, about 186 NOCs). **Trigger:** any change in the page's modified date or data years. Re-tier affected clients; the tier locks at the ITA date
+- LMIA exemption public policy (Express Entry) still in force; IRCC profile LMIA field fixed (00000 workaround retired?)
 - Federal entrepreneur pilot launch (promised "in 2026")
 - Groups of Five / community sponsor pause after 2026-12-31
 - RCI permanent program from 2027-01-01: community list, application process, allocations (IRCC program page lists no communities yet, 2026-11-09)
@@ -134,7 +146,9 @@ sources:
 - Groups of Five pause 2025-11-21: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/temporary-pause-extended-refugee-sponsorship-applications-groups-five.html
 - Public policies index: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies.html
 - MI 2026-1 Express Entry: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
-- LMIA exemption policy: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
+- LMIA exemption policy (2026-11-03; read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
+- CRS criteria (2026-11-03) and high-wage list (2026-10-16), read 2026-11-17: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html ; https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
+- Express Entry rounds JSON (latest #453, 2026-10-28; read 2026-11-17): https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json
 - SOR/2026-217 (Gazette II, 2026-11-04): https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors217-eng.html
 - SINP FAQ (2025-12-19): https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/immigration-faqs
 - SINP Entrepreneur EOI (closure 2025-03-27): https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/browse-sinp-programs/entrepreneur/entrepreneur-eoi-system

@@ -2,10 +2,14 @@
 domain: 05-temporary-residence
 topic: employer-compliance-inspections
 status: verified
-last_verified: 2026-11-14
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
+  - https://laws-lois.justice.gc.ca/eng/acts/i-2.5/page-16.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
+  - https://www.canada.ca/en/border-services-agency/news/2026/04/cbsa-and-rcmp-joint-immigration-investigation-into-banff-area-hotels-leads-to-conviction-and-70k-fine.html
+  - https://www.canada.ca/en/border-services-agency/news/2026/02/charges-laid-following-a-cbsa-investigation-on-the-hiring-of-unauthorized-foreign-workers.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/work-without-permit/employer-compliance-inspections.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/work-without-permit/application-consequences-where-employer-found-non-compliant-conditions.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2024-emplyoer-compliance-inspections.html
@@ -100,6 +104,41 @@ sources:
 - Name, address, violations and penalty **published** on the IRCC non-compliant employers list (live page; check the page itself). AMP without ban: employer stays eligible unless the AMP is unpaid.
 - Worker impact: work permits of workers at a non-compliant employer **may be revoked** under Ministerial Instructions, depending on severity (bulletin; 2024-07-26 update). Vulnerable workers: see open-work-permits.md (VWOWP).
 
+### IRPA s.124 offence and consequences of unauthorized work (IRPA laws-lois page-16, current to 2026-10-29, last amended 2026-03-26; read 2026-11-17) (H)
+- **s.124(1)(c):** offence for **every person** who employs a foreign national in a capacity the person is not authorized under IRPA to be employed in. Covers recruiters and agencies, not only the payroll employer (CBSA 2026-04-13: agency owner convicted).
+- **s.124(2) deemed knowledge:** a person who fails to exercise **due diligence** to determine whether the employment is authorized is **deemed to know** it is not authorized. In practice, due diligence is the employer's defence.
+- **s.124(3) is NOT an employer defence:** it covers only persons under **s.148(1) (transporters)** charged under **s.124(1)(a)**. Don't cite it for employers.
+- **s.125 penalties (hybrid offence, per count):** indictment: fine up to **$50,000** and/or up to **2 years**; summary: fine up to **$10,000** and/or up to **6 months**.
+- **Related:** s.131 (knowingly inducing, aiding or abetting a s.124 offence, e.g., a recruiter or HR staff); s.126/127 misrepresentation, penalty under s.128 up to **$100,000 / 5 years** on indictment.
+- **2026 amendments:** IRPA last amended 2026-03-26 (Bill C-12 Royal Assent reported 2026-03-27, secondary). The page shows **no amendment history on ss.124-125**, so the fines are unchanged. (H on text; C-12 date M)
+- **Two separate tracks:**
+  - **AMPs/bans (IRPR Schedule 2):** administrative. Run by IRCC (IMP) or ESDC (TFWP) against employers bound by R209.2/209.3 conditions. Civil standard. See the tables above.
+  - **s.124 prosecution:** criminal. CBSA Criminal Investigations lays charges and the Crown must prove the case. Applies to any employer, including ones that never used the TFWP or IMP (e.g., hiring visitors or out-of-status people). Both tracks can apply to the same facts.
+- **Recent CBSA cases:**
+  - 2026-04-13 (page date): Banff/Jasper hotels case. Agency owner pleaded guilty 2026-03-02 to 2 counts under s.124(1)(c) and a s.131 count. Sentence: **$70,000 fine**, 2 years' probation, 50 hours' community service. His second s.124(1)(c) conviction. (H)
+  - 2026-02-27: Granby QC campground. Directors charged with 1 count under s.124(1)(c) for **21 workers**, offences May 2022 to April 2024; employee charged with 2 counts under s.131. CBSA: "Anyone who hires foreign workers without authorization is subject to criminal prosecution." (H)
+  - Earlier cases (secondary search, CBSA releases not opened): 2025 Winnipeg construction manager, $50,000 fine plus 20-month conditional sentence; 2025 Ontario (OPP joint), three businesses fined, 700+ workers; 2016 Edmonton, 18 months' jail for 68 workers. (M)
+  - Report tips: CBSA Border Watch Line **1-888-502-9060**.
+- **What due diligence looks like (practice; no IRCC/CBSA checklist found) (M):**
+  - See the original permit (not just a copy) and check each condition against the job: **employer name** (employer-specific), **occupation**, **location**, **expiry date**, and any restrictions (e.g., "not authorized to work in childcare", medical restrictions).
+  - **Students:** off-campus work only if the permit allows it and the student is enrolled full time at the named DLI. **Up to 24 h/week in term**, full time only in scheduled breaks. A drop to part time or a leave means no off-campus work. Keep timesheets across all jobs if possible (see study-permit-status-and-compliance.md, read 2026-11-17, H).
+  - **Maintained status (R183(5)-(6)):** worker may keep working **under the same conditions** if an extension was filed **before expiry**. Get proof of submission date and time. No change of employer until the new permit issues (except a valid PPCHANGEWORK2020 filing). Ends if the worker leaves Canada or on refusal (see trp-restoration-maintained-status.md).
+  - **Restoration:** **no work** until restoration and the new permit are approved (see study-permit-status-and-compliance.md, H).
+  - **Visitors / eTA holders:** no work unless R186 lists the activity as no-permit work (see work-permit-process-and-status.md).
+  - Diarize expiry dates. Re-check at each renewal. Keep copies for 6 years (also the R209 record rule).
+  - Get a SIN starting with 9 and check its expiry (supporting evidence only, not proof of authorization) (M).
+- **Employer consequences:**
+  - Criminal record and fine/jail (s.125).
+  - Schedule 2 AMPs and bans if the employer is bound by R209.2/209.3 conditions.
+  - **Workers can't get a permit for an ineligible employer:** R200(3)(h) bars a permit where the employer is ineligible under R209.95(1)(b) or in default of an AMP, including a missed payment agreement (R200, current to 2026-10-29) (H).
+  - Ineligible employers are published on the non-compliant list; pending LMIAs are refused.
+  - Unknown: whether a s.124 conviction alone makes the employer ineligible or counts in the LMIA genuineness assessment. No provision found linking them; treat as a risk factor.
+- **Worker consequences:**
+  - **R200(3)(e):** no work permit if the person did **unauthorized work or study** or breached a prior condition, **unless 6 months have passed since it stopped**; or the breach was only of R185(a), 185(b)(i)-(iii) or 185(c) (restorable conditions); or R206 applies; or a TRP was later issued. R200(3.1) exempts R207.1(1) vulnerable-worker cases (R200 current to 2026-10-29) (H). Same bar applies to a PGWP.
+  - Unauthorized work breaches R183(1). Risk of **A41 inadmissibility**, an A44 report and a removal order (see 09-procedure-litigation removals file). Can also feed **A40 misrepresentation** if not disclosed later. (H on R200; removal pathway M)
+  - Victims of abuse or exploitation: consider the VWOWP (open-work-permits.md).
+- **Escalate:** any client charged or under CBSA investigation for s.124/131 goes to a **criminal lawyer** (outside RCIC scope).
+
 ### Enforcement figures (secondary; ESDC release 2026-07-09 not read) (M)
 - TFWP 2025-26: **1,488 inspections**, about 12% non-compliant, **AMPs over $10.2M** (2024-25: $4.5M), **30 employers banned**.
 - IMP 2024-25 (secondary): 4,328 inspections, 55 penalties. Don't mix the two programs.
@@ -108,6 +147,8 @@ sources:
 - 2024-07-26: IRCC inspection instructions updated (R209.2(3.1) justification; 2022 conditions) (H)
 - 2026-07-09: ESDC reports AMPs more than doubled (M)
 - 2026-11-02: IRPR Schedule 2 page current (laws-lois) (H)
+- 2026-03-26: IRPA last amended (C-12 period). ss.124-125 unchanged: $50,000/2 yrs indictment, $10,000/6 months summary (laws-lois, current to 2026-10-29) (H)
+- 2026-02/04: CBSA s.124(1)(c) charges (Granby, 21 workers) and conviction (Banff, $70,000) (H)
 
 ## Consultant pitfalls
 - Most common real-world breach: **wage or duty drift** (raise withheld, new title, different worksite, reduced hours). Any change to occupation needs a new offer and permit before the change.
@@ -126,6 +167,9 @@ sources:
 - ESDC 2026-07-09 release figures (primary not read)
 - Bulletin justification list (read from summary portion of the page)
 - Any IRPR amendment to Schedule 2
+- Whether any C-12 provision not yet in force touches ss.124-125/131 (check IRPA "amendments not in force")
+- 2025 Winnipeg / Ontario / 2016 Edmonton CBSA case details (secondary only)
+- Limitation period for summary s.124 proceedings (not checked)
 
 ## Sources
 - IRCC employer compliance inspections (2026-09-18): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/work-without-permit/employer-compliance-inspections.html
@@ -135,3 +179,8 @@ sources:
 - IRPR Schedule 2 (current to 2026-10-19): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-48.html
 - Non-compliant employers list (live): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/employers-non-compliant.html
 All read 2026-11-14.
+- IRPA ss.124-131 (current to 2026-10-29; last amended 2026-03-26): https://laws-lois.justice.gc.ca/eng/acts/i-2.5/page-16.html
+- IRPR s.200 (current to 2026-10-29): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
+- CBSA Banff conviction (2026-04-13): https://www.canada.ca/en/border-services-agency/news/2026/04/cbsa-and-rcmp-joint-immigration-investigation-into-banff-area-hotels-leads-to-conviction-and-70k-fine.html
+- CBSA Granby charges (2026-02-27): https://www.canada.ca/en/border-services-agency/news/2026/02/charges-laid-following-a-cbsa-investigation-on-the-hiring-of-unauthorized-foreign-workers.html
+These four read 2026-11-17.

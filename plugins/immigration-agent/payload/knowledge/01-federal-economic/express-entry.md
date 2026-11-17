@@ -2,10 +2,20 @@
 domain: 01-federal-economic
 topic: express-entry
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/express-entry/applications-received-on-after-january-1-2016-completeness-check.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-10.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-12.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/apply-permanent-residence.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/after-apply.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/police-certificates.html
+  - https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1137
+  - https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1220
+  - https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/pr-work-permits/bridging.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-trades.html
@@ -51,6 +61,40 @@ sources:
 - **Passport (page 2026-10-16):** expiring within 6 months of application: "should" renew and update the application after.
 - **Minimum at submission:** processing and biometrics fees; RPRF can follow. Couple: $2,150 minimum, $3,350 in full (fee list checked 2026-11-09).
 
+### Completeness check, late documents, returns, AOR (read 2026-11-17)
+**Legal test (IRPR R10, R12; Justice Laws current to 2026-10-29) (H)**
+- R10(1): on IRCC form; **signed by the applicant**; all information and documents the Regs require; **proof of payment of applicable fees**; principal applicant and accompanying spouse identified. R10(2): details of applicant **and all family members, accompanying or not**; class; representative's name, contact, regulator ID (c.1-c.3); declaration info is "complete and accurate".
+- R12: if R10/R11 not met, the application and supporting documents "shall be returned" (biometric info excepted).
+
+**What "complete" means for an e-APR (PDI "Applications ... subject to the Express Entry completeness check", modified 2026-09-22) (H)**
+- Complete = e-APR + cost recovery fees + RPRF "as applicable" + all supporting documents; incomplete "should be rejected as per section 10".
+- Fees: processing fee is the minimum; RPRF can be paid later (EE apply page 2026-10-16). So unpaid RPRF alone doesn't make it incomplete.
+- Mandatory documents: medical proof (UMI/IME + info printout or IMM 1017B); police certificates (current country within 6 months before submission; others after the last stay; colour scans; certified copies unacceptable); passport bio page; proof of work experience (employer letter; self-declarations or affidavits not acceptable).
+- Conditional ("if applicable"): children's birth certificates, proof of studies/ECA reference, certificate of qualification, job offer (+ LMIA number), proof of funds, IMM 5476, marital status documents (IMM 5409 + cohabitation evidence, marriage/divorce/death/adoption certificates).
+- Not grounds for rejection as incomplete (can still lead to refusal): relative in Canada, photos, other names, IMM 5475, general documents field.
+- Signatures: IMM 5476 signed by PA (and spouse; adult dependants sign their own); IMM 5475 by applicant and spouse; employer letter by supervisor or personnel officer; translations need certified translator stamp or affidavit.
+- **LOE in place of a document:** only where the delay is outside the applicant's control. Police: proof of request + best-effort LOE in the country field. Medical: "in exceptional circumstances" proof of scheduled appointment or best-effort LOE. **Neither guaranteed**; officer may reject as incomplete (PDI; police page 2026-10-16).
+- Medicals: e-APRs received **on or after 2025-10-21 without an IME may be rejected** (PDI transition rule).
+- ECA and LMIA scans aren't needed at submission; may be requested later. Validity is assessed when the file enters processing (PDI).
+- **No request-before-reject step for missing mandatory items.** IRCC rejects; it doesn't hold the file (After you apply page 2026-10-16; PDI). The portal blocks submission until each required field has an upload (apply page). An LOE in the field lets you submit but is no guarantee.
+
+**Late documents (Help Centre 1137, modified 2026-11-03) (H)**
+- After submission, the portal accepts uploads **only when IRCC requests them** (message in account; upload via "View submitted application").
+- Unrequested documents (e.g. a police certificate that arrives later, updated travel history): **IRCC Web form**. Officers may also request new or additional police certificates (PDI).
+- **Unknown:** no official text says a late certificate sent by web form cures an application already rejected, or how fast it gets linked. Send immediately; the officer decides on the LOE at the completeness check.
+
+**Rejected/returned as incomplete (H unless marked)**
+- Processing: GCMS "promote then cancel", reason "incomplete application"; reasons recorded; **all associated fees repaid** (PDI). Apply page: processing fee and RPRF (if paid) refunded. Help Centre 1220 (2026-11-03): refund on return; **biometrics fee refunded only if biometrics not given or given by mistake**; refunds up to **8 weeks**.
+- **ITA is used up.** To be considered in future rounds: **new EE profile**, meet eligibility, be accepted into the pool again (PDI; After you apply page). No resubmission under the same ITA. The PR-portal 90-day re-sign resubmission rule (Help Centre 1492) is for paper/portal returns, **not EE**.
+- Timing: no waiting period before a new profile (M: none stated). The new profile gets a new submission date for the tie-break. Re-check claims (language, ECA, CEC 3-year window, age) on the new date.
+- The 6-month EE service standard starts on the GCMS received date (PDI).
+
+**AOR and BOWP (BOWP page modified 2026-10-16) (H)**
+- EE BOWP (FSW, CEC, FST, PNP via EE): must have "submitted a complete application for permanent residence and **passed the completeness check**" and **have the AOR letter**. Upload the AOR in "Client information" (PNP-EE: also nomination letter). A profile or ITA alone doesn't count.
+- AOR = IRCC's notice in the account after the R10 check passes (PDI index). The After you apply page says IRCC confirms in the account that it "reviewed your application".
+- **No AOR yet:** not BOWP-eligible. Extend the work permit another way (new LMIA or offer if needed); **don't let the permit expire**. No AOR time standard published (Help Centre: days to months, general). Applying for a BOWP without the AOR risks refusal (M: inference; no official text on pre-AOR BOWP).
+- Unknown: whether IRCC GCMS-checks completeness instead of relying on the uploaded AOR; no published text.
+
 ### Educational Credential Assessment (IRCC page 2026-10-16; read 2026-11-09)
 - Must be under 5 years old at profile and at application; must be for immigration purposes; enter result and reference number in the profile. Each credential needs its own ECA to claim two or more credentials.
 - **Designated:** WES, IQAS, ICAS, ICES (BCIT), CES (U of T); professional bodies MCC, PEBC, CACB where the primary occupation requires. IRCC doesn't rank them.
@@ -86,8 +130,8 @@ sources:
 ## Recent changes (2025-2027)
 - 2025-03-25: arranged-employment CRS points repealed (MI s.8(1)(d)(ii) repealed) (H)
 - 2026-02-18: 2026 categories announced; renewed categories need 12 months of experience (was 6) (H)
-- 2026-10-16: MI 2026-1 signed. Candidates had to update their profiles **before Nov 3** to claim job-offer points (H)
-- 2026-10-28: last round before rescoring. Rounds paused for up to 2 weeks during recalculation; **no round as of 2026-11-07** (H)
+- 2026-10-15: MI 2026-1 signed (published 2026-10-16). Candidates had to update their profiles **before Nov 3** to claim job-offer points (H)
+- 2026-10-28: last round before rescoring. Rounds paused for up to 2 weeks during recalculation; **no round as of 2026-11-17** (rounds JSON) (H)
 - 2026-11-03: labour market integration factor in force; qualifying job offers need **no LMIA** (temporary public policy, until revoked) (H)
 - Federal High Skilled admissions target 100,000/yr in 2027-2029 plan (H)
 - 2026-11-07: still no round after #453 (IRCC JSON checked) (H)
@@ -128,3 +172,10 @@ sources:
 - LMIA exemption policy: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
 - Levels supplementary: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
 All read 2026-11-07.
+- Completeness check PDI (2026-09-22): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/express-entry/applications-received-on-after-january-1-2016-completeness-check.html
+- IRPR R10 / R12 (current to 2026-10-29): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-10.html ; https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-12.html
+- EE apply (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/apply-permanent-residence.html
+- EE after you apply (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/after-apply.html
+- Help Centre 1137 / 1220 / 1492 (2026-11-03): https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1137 ; https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1220 ; https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492
+- BOWP (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/pr-work-permits/bridging.html
+Completeness, returns and AOR sources read 2026-11-17.

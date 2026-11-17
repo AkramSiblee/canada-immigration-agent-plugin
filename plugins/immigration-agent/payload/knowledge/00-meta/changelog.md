@@ -55,10 +55,11 @@
 | 2026-07-17 | TFWP median wage thresholds updated (e.g. ON $36.92, BC $38.40) | H |
 | 2026-08 | Manitoba PNP +1,761 top-up (2026 total 8,000) | H |
 | 2026-08-04 | Ontario Workforce Priority EOI portal opened | H |
-| 2026-08-05 | Manitoba workforce transition bridge public policy | H |
+| 2026-08-05 | Manitoba workforce transition bridge public policy (IRCC instructions 2026-08-19 give effect 2026-07-06; applications received before 2027-12-31; waives the 90-day restoration limit for MB support-letter holders) | H |
 | 2026-08-07 | NWT PNP allocation raised to 300 (+103) | H |
 | 2026-08-10 | Alberta PNP +200 top-up (2026 total 6,603) | H |
 | 2026-08-18 | BC PNP +1,000 top-up (2026 total 6,254) | H |
+| 2026-08-21 | Work permit extensions waiting on an LMIA: no decision for 90 days (was 60) (program update; not yet on the instructions page) | M |
 | 2026-08-31 | Hong Kong PR pathways closed to new applications | H |
 | 2026-09-01 | NSNP application fees introduced ($1,000 worker / $2,000 entrepreneur) | H |
 | 2026-09-01 | Study permit proof of funds $23,448 (single) | H |
@@ -74,6 +75,7 @@
 | 2026-10-28 | Haiti work permit renewal measure extended to 2027-12-30 | H |
 | 2026-10-31 | Quebec PEQ intake window closed | H |
 | 2026-11-03 | New CRS labour market integration factor; LMIA not required for EE job offers (MI 2026-1) | H |
+| 2026-11-03 | LMIA exemption public policy (s.25.2): no LMIA for FSW arranged employment and FST job offers for ITAs from this date; high-wage tier = occupation's national median, not the client's pay | H |
 | 2026-11-03 | Asylum System Reform regs (SOR/2026-218); C-12 provisions in force (SI/2026-59) | H |
 | 2026-11-03 | RPD Rules amended (SOR/2026-219): single application, personal documents 30 days after referral, no fax | H |
 | 2026-11-05 | 2027-2029 Levels Plan tabled | H |

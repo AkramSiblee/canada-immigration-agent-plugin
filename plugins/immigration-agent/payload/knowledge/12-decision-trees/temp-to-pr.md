@@ -43,13 +43,14 @@ sources:
      (R182(2)); restoration needs a new PAL. Spouse C42 OWP: student not in last term
    - Passport validity limits the PGWP length -> renew first
 3. Worker with expiring permit?
-   - PR application filed? -> BOWP
+   - PR application filed? -> BOWP (EE/PNP-EE after the completeness check; non-EE PNP after a
+     positive eligibility pass; Quebec CSQ; not AIP, RCIP or business classes) -> permit-expiring.md
    - Spouse OWP only if principal TEER 0-1 / select TEER 2-3 and 16+ months left
    - LMIA renewal (low-wage now up to 2 yrs) or IMP code
 4. PR options in Canada:
    - CEC (1 yr TEER 0-3 in 3 yrs) + high-wage CWE points
    - PNP in-Canada streams (ON Workforce Priority: 6 months in offered job; BC; AB; SK work experience; NS one-time
-     expanded selection for 2026-expiring permits, EOIs filed by 2026-06-30 only)
+     expanded selection for 2026-expiring permits CLOSED: EOIs had to be filed by 2026-06-30)
    - Quebec: PSTQ Stream 2 (PEQ closed)
    - Spousal in-Canada, H&C
 5. 2027 time-limited measure (no application):
@@ -78,11 +79,11 @@ Official pages for each time-sensitive rule (read when the linked knowledge file
 - PGWP language results: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/language-results.html
 - BOWP and other open work permits: https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/open-work-permit.html
 - Spouse OWP: TEER 0-1 or listed TEER 2-3, 16+ months: https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/eligibility.html
-- LMIA (low-wage stream duration): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low/requirements.html
+- LMIA (low-wage up to 2 years for LMIAs submitted from 2026-11-06; ESDC's low-wage page still says 1 year): https://www.canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
 - CEC and high-wage Canadian experience points: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
 - Ontario Workforce Priority stream (6 months in the offered job): https://www.ontario.ca/page/ontario-workforce-priority-stream
 - Nova Scotia one-time expanded selection (2026): https://liveinnovascotia.com/resources/update-nova-scotia-nominee-program-and-atlantic-immigration-program-2026-selection
 - PSTQ Stream 2 (Quebec): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
 - 2027 time-limited measures: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
 - 2027-2029 levels plan: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
-- Derived from knowledge/05-temporary-residence, 01-federal-economic, 14-policy-tracker (verified 2026-11-07)
+- Derived from knowledge/05-temporary-residence, 01-federal-economic, 14-policy-tracker (verified 2026-11-07 to 2026-11-17)

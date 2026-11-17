@@ -2,6 +2,17 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.12.0
+- **New `scripts/status_clock.py`:** give it the dates you have (permit expiry, date an extension was filed, refusal date, program completion, principal's permit end, end of any unauthorized work) and it shows maintained status, the date status was lost, the 90-day restoration deadline, when the 6-month bar ends, whether the spouse passes the 16-month test, and when the 180-day PGWP window closes. The temporary residence advisor and the work permit pathfinder now use it instead of counting by hand.
+- **New decision tree for an expiring permit:** time left, then BOWP, LMIA, PGWP, spouse permits, a visitor fallback and restoration.
+- **Bridging open work permit:** IRCC's new BOWP page is in. Help Centre answer 676 ("expires in 4 months or less") is out of date: the program page and officer instructions have no such window. Express Entry applicants need the acknowledgement of receipt showing the completeness check was passed.
+- **Spouse open work permits:** what happens when the principal is on maintained status, moves to a PGWP, changes job, or holds a BOWP (spouse gets C49), and the renewal rules.
+- **Express Entry completeness:** what makes an application complete, what is rejected and refunded (the invitation is used up), letters of explanation, and late documents.
+- **Work permit process:** restoration and a new permit in one application, the Manitoba bridge policy (the only current exception to the 90-day limit), two applications pending at once, LMIA validity vs permit length (low-wage LMIAs up to 2 years from 2026-11-06), and the PR-only LMIA.
+- **Express Entry points (MI 2026-1):** the high-wage tier is based on the occupation's national median wage, not the client's pay. No LMIA is needed for job-offer points or for FSW/FST arranged employment for invitations from 2026-11-03; a work permit still needs one (or an exemption).
+- **Employers:** IRPA s.124 offence for employing someone without authorization (up to $50,000 and 2 years per count), recent CBSA cases, and what due diligence looks like.
+- New case law on restoration, BOWP, spouse permits, maintained status and PGWP transitions.
+
 ## 1.11.0
 - **PGWP field of study, checked from IRCC's full list:** all 1,107 rows of IRCC's field-of-study list are now stored with the page date (2026-03-09). New command `python3 scripts/cip_check.py 52.0201` answers eligible, not listed, or date-conditioned; add `--applied` (study permit date) and `--pgwp` (PGWP date) to settle the date conditions. The study permit and PGWP assessor runs it for every CIP question instead of answering from memory.
 - **PGWP:** how IRCC measures program length (the program's length per the school, breaks not subtracted, accelerated programs get the full length, Quebec hours), combining programs, and what happens when a student changes program or school after the study permit (the completed program's CIP is what counts; a new school means a new permit and a fresh field-of-study test).

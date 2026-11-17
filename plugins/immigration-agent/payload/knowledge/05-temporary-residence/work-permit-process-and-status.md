@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: work-permit-process-and-status
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 60
 sources:
@@ -25,6 +25,13 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/worker-rights.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/employers-non-compliant.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/hire-temporary-foreign/global-skills-strategy/exemptions.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/visitors/implied-status-extending-stay.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/open-work-permits-province-territory.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/support-letter/eligibility.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/validity-suspension-duration-employment.html
+  - https://www.canada.ca/en/employment-social-development/services/foreign-workers/lmia-expiry.html
+  - https://www.canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
+  - https://www.canada.ca/en/employment-social-development/services/foreign-workers/permanent/requirements.html
 ---
 # Work permits: applying, status, changing jobs, exemptions
 
@@ -79,7 +86,7 @@ Many still need a visa or eTA, and conditions apply.
 - Employer-specific: same employer, job and location. Applying to change job or employer: must stay with the original employer until approved, unless work authorization is granted.
 - Usually **cannot renew a driver's licence or health card**. SIN expires with the permit, can keep working on it, and it can be updated only after the new permit.
 
-- **Pending extension plus a new job offer (read 2026-11-09):** the pending extension doesn't cover the new job. A new in-Canada employer-specific application plus PPCHANGEWORK2020 is the route; the attestation covers a permit "held". IRCC's pages don't address how the two pending applications interact, so don't withdraw the first without review, and file the second before the original expiry where possible. Open permit: can usually change.
+- **Pending extension plus a new job offer (read 2026-11-09):** the pending extension doesn't cover the new job. A new in-Canada employer-specific application plus PPCHANGEWORK2020 is the route; the attestation covers a permit "held". For how two pending applications interact, see "Two pending applications at once" below. Don't withdraw the first without review, and file the second before the original expiry where possible. Open permit: can usually change.
 - Travel with an extension pending: Help Centre 190 adds that the officer may ask for proof of funds; urgent processing can be requested (page 2026-07-17).
 
 ### Changing job or employer (page 2026-10-08)
@@ -113,8 +120,57 @@ Many still need a visa or eTA, and conditions apply.
 - Family members each apply and pay separately; no family rate.
 - 90-day limit and fees: `trp-restoration-maintained-status.md`.
 
+### Restoration plus a new permit in one application (restore page 2026-08-28; read 2026-11-17)
+- **One online IMM 5710 application.** Q3: tick **"Restore my status as a worker"** plus the new permit choice. Upload a letter explaining the overstay under Client information > Optional documents. Guide 5553. Paper only for disability or system failure.
+- **Fees:** restoration $246.25 + work permit $155 (+ $100 open work permit holder fee if open; + $85 biometrics if needed). Worker total $401.25 (closed) or $501.25 (open), before biometrics. **The portal does not charge the $155 when restoration is combined:** pay it separately and upload the receipt in Client information. Each family member applies and pays.
+- **Order of assessment:** the officer restores the original status and authorization first, then processes the new permit. Study example on the page: expired worker restoring and getting a study permit in one application.
+- **What the officer assesses (IRPR s.182):** for restoration, that the person kept to the **initial requirements of the status being restored** and breached no other condition (unauthorized work or study defeats it). The new permit is then assessed on **its own** requirements (R200 for a work permit). Restoring as a worker while seeking a different permit: both tests apply. Secondary sources (CILA) report IRCC limits restoration to the **last status and authorization held** (M).
+- **PGWP:** restore as a **student**, not a worker. Apply online for the PGWP within 90 days of study permit expiry, pay $255 PGWP + the restoration fee **on the IRCC payment page** and attach the receipt. No separate restoration application. No work until the PGWP is approved (PGWP apply page 2026-08-28).
+- **BOWP:** eligible if the person "is eligible to restore your status and get a work permit" (BOWP page 2026-10-16). Same combined IMM 5710 route.
+- **No work (or study) while pending**, even with a combined application (s.183(1)(b)-(c); restore page). The new permit must issue first. No WP-EXT letter.
+- If refused: must leave Canada. Once 90 days have passed, only a TRP or leaving remain.
+
+### Provincial support letter exception to the 90-day rule (read 2026-11-17)
+- **Only current policy: Manitoba Workforce Transition Bridge** temporary public policy (effective 2026-07-06; instructions page 2026-08-19; program update 2026-08-05; eligibility page 2026-08-18).
+  - Who: Manitoba PNP candidates with a **Manitoba support letter issued on or before 2025-12-31** confirming placement in the MPNP **EOI pool**; letter of employment from a current Manitoba employer; work permit valid on 2024-05-07, since expired, or s.186(u) authorization. Not new candidates; not people already nominated (secondary, M). Manitoba may issue up to 2,700 letters (secondary, M).
+  - Status: valid status, maintained status, or **restore when applying**. Expired-permit cohort: **exempt from the 90-day restoration deadline** in s.182 and from the stay and pre-expiry condition requirements.
+  - Apply online: "Applying for an open work permit under an active public policy or pilot program announced by IRCC"; code **MBEOI2024** in both the job title and duties boxes.
+  - Permit: open, Manitoba only ("Manitoba NES"), **2 years** or passport expiry, **no further extension**.
+  - **Expiry: applications must be received before 2027-12-31.** Later applications, including renewals, are refused.
+  - Fees on the instructions page: $155 + restoration "$229" + $85 biometrics. **Conflict:** the $229 restoration fee is out of date. The fee list shows $246.25 since 2025-12-01. Pay the fee-list amount.
+- **Expired:** the 2024 PNP-candidate policy and its Alberta, Manitoba and Yukon extension (instructions page 2026-08-19). The restore page's generic "participating province or territory" text is not a separate open policy.
+- **No other province or territory has a current support-letter work permit policy** on IRCC's instructions page as of 2026-11-17. Quebec PSTQ applicants use a different policy and are not exempt from restoration (see `open-work-permits.md`).
+
+### Two pending applications at once (maintained status instructions 2025-05-28; read 2026-11-17)
+- Examples: an extension and a PGWP, or an LMIA permit and a BOWP. **Officers process both** and don't administratively cancel the outstanding one.
+- **Both filed before status expired:** if the first is refused, maintained status continues while the second is processed.
+- **Second filed after the original expiry** (while on maintained status from the first): the second gives no maintained status (instructions, H). If the first is refused, the person is out of status and must restore within 90 days if eligible. Secondary sources say the second application is then refused (CIC News, Fragomen; M).
+- **Work while both are pending:** s.186(u) work continues only under the **old permit's conditions**. Neither application adds new work authorization until approved.
+- **Withdrawing:** if no other extension is pending, the authorized stay ends on the withdrawal date. Don't withdraw one without checking the filing date of the other.
+- **Which decision governs:** not addressed in the instructions. A refusal of one doesn't cancel an approval of the other. If one is approved first, the person holds that permit; what happens to maintained status under the other is unclear. **Unknown; treat case by case.**
+
+### LMIA validity vs work permit validity
+- **LMIA validity: up to 6 months** from issuance (all streams except SAWP; ESDC can issue shorter). The work permit application must be **submitted before** the LMIA validity date. Processing time after that doesn't matter. Late applications are refused (ESDC expiry page 2026-04-14; IRCC instructions 2026-10-28).
+- **LMIA "duration of employment"** is separate from the validity date. Officers "must not issue work permits for a longer validity than the duration of employment specified in the LMIA". The permit is also limited by the **passport (and biometrics) expiry** (IRCC instructions 2026-10-28; POE apply page 2026-11-16).
+- Overseas: Valid To is generally calculated from approval for the full LMIA duration. Officers may add a remark so CBSA issues the full duration from the date of entry.
+- **Shortened by the passport:** extend under the **same LMIA** after the passport is renewed, even past the LMIA validity date, within the original duration. On maintained status with the same employer, the extension runs from the old permit's expiry date.
+- **Permanent-duration LMIA:** the work permit is capped at **2 years**.
+- **Maximum durations ESDC can approve:**
+  - High-wage: **up to 3 years**, longer only in exceptional circumstances with an adequate rationale (high-wage page 2026-10-07).
+  - Low-wage: **up to 2 years for LMIAs submitted on or after 2026-11-06**, up from 1 year (ESDC release 2026-11-06). **Conflict:** the low-wage page (2026-10-07) and the PR LMIA page (2026-06-09) still say 1 year. The release governs for new applications.
+  - Duration can be changed only while the LMIA is pending, not after a positive decision.
+- **Concurrent processing:** program update 2026-08-21: no decision on concurrent-processing extensions until **90 days** after receipt (was 60). The instructions page (2026-10-28) shows code CPTS2026 but not the 90 days.
+
+### PR-only and dual-intent LMIAs (ESDC pages 2026-06-09, 2026-09-18, 2026-10-27)
+- **PR-only:** "a position in support of a permanent residency application only (no application for work permit)". **No processing fee.** Exempt from the transition plan, the low-wage cap, and the refusal to process in CMAs at 6%+ unemployment.
+- **Dual intent:** supports both a PR visa and a work permit. **$1,000 per position**, not refundable. Transition plan required for high-wage positions since 2024-09-26.
+- Offer must fit FSW (TEER 0-3), FST (TEER 2-3, up to 2 employers) or CEC: full-time 30+ hours, at least 1 year, non-seasonal (FSW/CEC). Excluded: embassies, ineligible employers, businesses under 1 year old, Quebec destinations.
+- **After Express Entry MI 2026-1 (ITAs from 2026-11-03):** no LMIA is needed for FSW arranged employment or the FST job offer, and an LMIA earns **no extra CRS** (see `01-federal-economic/crs-scoring.md`). ESDC's PR LMIA pages (latest 2026-09-18) **still offer the PR-only stream** and don't mention the change.
+- **Remaining uses (derived, M):** ITAs issued before 2026-11-03 under the old rules; a work permit to actually start work (dual intent, unless LMIA-exempt). A PR-only LMIA now has little Express Entry value. Check PNP stream rules before using one for a PNP.
+- **Unknown:** whether ESDC will retire or change the PR-only stream after MI 2026-1.
+
 ### Work permits for PR applicants (IRCC menu 2026-01-09)
-Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-year employer permit; RCIP and FCIP 2-year employer permit; Quebec CSQ holders; Start-up Visa (closed to new applicants); Agri-Food family permits.
+Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-year employer permit; RCIP and FCIP 2-year employer permit; Quebec CSQ holders; Start-up Visa (closed to new applicants; extensions only); Agri-Food family permits (pilot closed 2025-05-14; pending files only).
 
 ### Fee exemptions (page 2025-09-25)
 - **Employer-specific, exempt from processing and compliance fees:** Fulbright, Roosevelt Campobello, cultural agreements with listed countries, family of reciprocal military and accredited missions, IDRC, AECL, NRC, NSERC, research chairs, unpaid charitable or religious workers. US government personnel: processing fee only.
@@ -136,6 +192,9 @@ Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-yea
 - 2026-10-08: changing-jobs and lost-job pages updated (H)
 - 2026-10-14: extension pages updated (H)
 - 2026-11-03: employer pages note Express Entry job offer changes (H)
+- 2026-07-06: Manitoba Workforce Transition Bridge open work permit policy (support letter, 90-day restoration exemption, until 2027-12-31) (H)
+- 2026-08-21: concurrent-processing extensions without an LMIA wait 90 days, up from 60 (H)
+- 2026-11-06: low-wage LMIA maximum duration back to 2 years for LMIAs submitted from this date (H; ESDC stream page not yet updated)
 
 ## Consultant pitfalls
 - Don't let a client start with a new employer until approved or the authorization email arrives.
@@ -152,6 +211,9 @@ Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-yea
 - IRCC "How to extend" and the forms and "submit your application" pages were not summarized here; use the portal checklist
 - Non-compliant list on the day of advice
 - Individual exemption pages not summarized above
+- Manitoba Workforce Transition Bridge: still in force, and its fee table (shows $229 restoration)
+- ESDC low-wage page: updated to 2 years? PR-only LMIA stream after MI 2026-1
+- Two pending applications: which decision governs (not in the instructions)
 
 ## Sources
 - Work in Canada menu (2026-10-28): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html
@@ -174,3 +236,18 @@ Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-yea
 - Non-compliant employers (2026-11-06): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/employers-non-compliant.html
 - Global Skills Strategy exemptions (2025-09-10): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/hire-temporary-foreign/global-skills-strategy/exemptions.html
 All read 2026-11-08.
+Added 2026-11-17:
+- Maintained status instructions (2025-05-28): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/visitors/implied-status-extending-stay.html
+- Open work permits, provinces and territories, Manitoba Workforce Transition Bridge (2026-08-19): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/open-work-permits-province-territory.html
+- Manitoba support letter eligibility (2026-08-18): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/support-letter/eligibility.html
+- Manitoba program update (2026-08-05): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2026-manitoba-pnp.html
+- PGWP apply (2026-08-28): https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/apply.html
+- BOWP (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/pr-work-permits/bridging.html
+- LMIA validity and duration instructions (2026-10-28): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/validity-suspension-duration-employment.html
+- Concurrent processing update (2026-08-21): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2026-lmia-tfwp-90.html
+- POE apply, validity (2026-11-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit-poe/apply.html
+- ESDC LMIA 6-month validity (2026-04-14): https://www.canada.ca/en/employment-social-development/services/foreign-workers/lmia-expiry.html
+- ESDC high-wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/high.html
+- ESDC low-wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low.html
+- ESDC news release (2026-11-06): https://www.canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
+- ESDC PR LMIA overview (2026-06-09), requirements (2026-09-18), refusal to process (2026-10-27): https://www.canada.ca/en/employment-social-development/services/foreign-workers/permanent.html ; https://www.canada.ca/en/employment-social-development/services/foreign-workers/permanent/requirements.html ; https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html
