@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: refugee-claims-inland
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-16
 confidence: H
 review_every_days: 90
 sources:
@@ -14,6 +14,9 @@ sources:
   - https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-13.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-22.html
   - https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors218-eng.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-0174-inland-refugee-claims-portal.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/start/in-canada.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/need-permit/refugee.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada/health-care/interim-federal-health-program/coverage-summary.html
 ---
 # Inland and port-of-entry claims (after Bill C-12)
@@ -31,7 +34,19 @@ sources:
 - **Online claim in the IRCC Portal** (POE claims continue via the CBSA-linked option). The claim becomes official once presented in person to an officer.
 - **Complete the claim within 60 days** of the Notice of Application Due Date; one 30-day extension may be requested in the portal before the due date. Otherwise referred to the IRB for **pre-referral abandonment**.
 - Minister has up to **365 days** of due diligence before IRB referral (SOR/2026-218, H). Designated representatives for minors and incapable persons. DCO regime repealed.
-- Work permit once the claim is eligible for referral (see 05-temporary-residence/open-work-permits.md).
+- Work permit: requested in the claim (Q161), issued after the complete claim and IME (see below and 05-temporary-residence/open-work-permits.md).
+
+### Online inland claim step by step (Guide 0174 and "Start a claim inside Canada", both dated 2026-11-03, read 2026-11-16) (H; Part 2 question list M)
+- **One Portal account** for the whole family group. Add the **head of family first**, then each member (relationship, name); the group is then locked. Complete the head of family's claim first, then each member's. Some questions are for the head of family only.
+- **Part 1** (personal details, family, travel, history, background; about Q1-125): submit within **90 days of starting** in the Portal. Answers can't be changed after submission.
+- **Required uploads:** passport/travel or ID document for each claimant (colour); **IMM 0292 Consent and Declaration** signed by **each claimant 18+** (an adult signs for minors); Interpreter Declaration if used; **IMM 5476** if any representative (paid or unpaid). Optional: Appointment of a Designated Representative for Accompanied Minors, identity, membership, police or medical reports, proof of ill-treatment. Certified translations with translator declaration. Graphic content labelled "Notice: Graphic Content". Upload limits 9.6 MB (passport, basis of claim) / 2 MB others (M, summary).
+- **Country-condition evidence is not uploaded to the Portal**; it goes to the IRB at least 10 days before the hearing.
+- **In-person interview:** the claim is officially made there and eligibility is checked. Bring original passports. Fingerprints for everyone 14+, photos of all. Missing it closes the file.
+- **If eligible, claimants receive:** conditional removal order (not enforced unless withdrawn, abandoned or rejected); **Notice of Application Due Date**; **Refugee Protection Identity Document** (identity, claim, IFHP access); immigration medical exam instructions; information package.
+- **Part 2** (basis of claim information, formerly the BOC Form; about Q126-160): complete within **60 days** of the Notice of Application Due Date; one-time 30-day extension via "Ask for an extension" before the due date (applies to the whole family group). Missing it, missing an appointment or not answering a request leads to pre-referral abandonment.
+- **Work permit:** answer **Yes to Q161 "Would you like to request a work permit?"** in the claim. No separate application, no fee. Issued only after the **complete** application is submitted and the **IME is passed**. Family members only if they also claimed. Claimant work permit page (2026-03-31) still describes a separate application if not requested with the claim.
+- Updates before referral: IRCC web form; after the Confirmation of Referral, send updates to the IRB.
+- Not stated on these pages: IMM 0008, Schedule A, Schedule 12 (replaced by Portal questions).
 
 ### If ineligible (IRCC)
 - STCA-ineligible: returned to the US immediately.

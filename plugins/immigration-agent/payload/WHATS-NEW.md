@@ -2,6 +2,19 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.13.1
+- **Your knowledge base edits are no longer undone by updates.** Until now, a knowledge file you edited in your agent folder was replaced at the next start (after a backup). Now:
+  - if the new release didn't change that file, your version stays;
+  - if the release changed it too, your version stays and the release's version is saved next to it as `<file>.shipped.md`, and the start-up message lists it as a conflict to merge (then delete the .shipped.md file);
+  - when a release includes your edit, the file is reported as merged and follows updates again.
+  The start-up message after an update lists kept, merged and conflicting files. Other files (scripts, commands) still update as before, with a backup of anything you changed.
+- Fees: the right of permanent residence fee is refunded if you withdraw or IRCC refuses the application; it is the only fee refunded once processing has started.
+- Express Entry: children under 14 and people over 79 don't give biometrics.
+- 2027 one-time measure: humanitarian figures added (Hong Kong up to 32,000, Ukraine family reunification 18,800, H&C already found eligible 12,600, spouses, partners and children in Canada 45,000; together more than the stated 100,000, which IRCC doesn't explain). The workers measure also covers people waiting in the Atlantic Immigration Program. Clients don't need to apply.
+- Restoring status as a worker: what IRCC's page requires, the provincial support-letter exception, and the visitor-record fallback ($100, no work while waiting).
+- The 2027 study permit cap is still unpublished.
+- Restored edits the old updater had undone in your folder on 2026-11-16: the online inland refugee claim steps (Guide 0174), the latest Canada Gazette check and the 2027 one-time measure details in the levels plan file.
+
 ## 1.13.0
 - **New CRS calculator (`scripts/crs.py`, used by /crs):** the full grid in force since 2026-11-03, with the new labour market integration factor (the higher of Canadian experience plus the high-wage bonus, or a high-wage job offer), spouse points (education counts only with an ECA), transferability caps, the French bonus and the nomination. It shows a line-by-line breakdown, ranks what would add points, and warns when a birthday before the expected invitation would cost age points.
 - **High-wage list stored:** all 186 occupations with their level (2x, 1.5x, 1.3x). `python3 scripts/crs.py --noc 21231` gives the level. It depends on the occupation, never the client's own pay.

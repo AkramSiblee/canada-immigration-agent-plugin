@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: humanitarian-compassionate
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -28,7 +28,7 @@ sources:
 - Applying does **not** stop removal. No appeal; JR only (lawyer).
 - **Fees:** $660 + RPRF $600 = **$1,260** principal; spouse $1,260; child $180 (since 2026-04-30; fee list).
 - **Levels:** "H&C and other" 5,000/yr 2027-2029 (4,500-8,000). Includes public policies and the permit holder class.
-- **2027 measure:** in-Canada H&C applicants **approved in principle** are in the humanitarian cohort (up to 100,000, outside Levels).
+- **2027 measure:** H&C applicants IRCC has **already found eligible** (stage 1) are in the humanitarian cohort, "up to" 12,600 (cohort up to 100,000, outside Levels; no client step) (see 14-policy-tracker/announced-for-2027.md (IRCC releases 2026-11-10/12)).
 
 ## Recent changes (2025-2027)
 - 2026-04-30: H&C fee $635 rose to $660 (H)

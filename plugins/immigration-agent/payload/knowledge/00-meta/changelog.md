@@ -58,6 +58,7 @@
 | 2026-08-05 | Manitoba workforce transition bridge public policy (IRCC instructions 2026-08-19 give effect 2026-07-06; applications received before 2027-12-31; waives the 90-day restoration limit for MB support-letter holders) | H |
 | 2026-08-07 | NWT PNP allocation raised to 300 (+103) | H |
 | 2026-08-10 | Alberta PNP +200 top-up (2026 total 6,603) | H |
+| 2026-08-11 | IRCC PDI update, family members of foreign workers: new consolidated PDI; renewal facilitation for pre-2025-01-21 family OWPs (lost if principal gets any new permit); FTA principals can't anchor a C41 spousal OWP | H |
 | 2026-08-18 | BC PNP +1,000 top-up (2026 total 6,254) | H |
 | 2026-08-21 | Work permit extensions waiting on an LMIA: no decision for 90 days (was 60) (program update; not yet on the instructions page) | M |
 | 2026-08-31 | Hong Kong PR pathways closed to new applications | H |
@@ -82,6 +83,8 @@
 | 2026-11-05 | 2027 workers cohort: provinces may nominate SUV / Self-Employed applicants already in process (optional extra PNP space, use by 2027-03-31, no action by applicants) | H |
 | 2026-11-10 | NWT PNP allocation raised to 350 (+50) | M |
 | 2026-11-06 | TFWP: Low-Wage LMIA up to 2 years; ECE exempt from 6% CMA rule | H |
+| 2026-11-10 | 2027 humanitarian cohort ceilings: Hong Kong 32,000, Ukraine 18,800, H&C 12,600, in-Canada spouses/children 45,000 (no application; sum 108,400 vs 'up to 100,000': unexplained) | H |
+| 2026-11-12 | 2027 workers cohort: optional extra PNP space for workers already in Canada, used by 2027-03-31; pending AIP and closed-program applicants included | H |
 | 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (IRCC pages 2026-11-09) | H |
 | 2027 | Time-limited measure: up to 200,000 in-Canada TR-to-PR (100k workers via PNP + 100k humanitarian), outside Levels, no application | H |
 | 2026-09-01 | UK CPTPP accession shown as ratified on IRCC CPTPP page (temporary-entry effect unconfirmed) | M |

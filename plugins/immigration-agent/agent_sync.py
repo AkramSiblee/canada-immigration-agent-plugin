@@ -14,6 +14,10 @@ Guarantees:
   - Client and firm data is never written, moved or deleted: cases/, Input/, Output/, forms-cache/, .extraction/,
     .env, CLAUDE.local.md, .claude/settings.local.json. (Their README.md is created only if missing.)
   - A file the firm changed is copied to .immigration-agent/backup/<time>/ before it is replaced or removed.
+  - Knowledge files (knowledge/) the firm edited are never overwritten: if the release didn't change a file, the firm's
+    version stays ("kept"); if both changed, the firm's version stays and the release's copy is saved beside it as
+    <file>.shipped.md to merge ("conflict"). When a release ships the firm's edit, the file follows updates again
+    ("merged"). The session message lists kept / merged / conflicted files.
   - A file that fails to copy is retried at the next start.
 
 Update check (--hook and --status, at most once a day): reads the public version number of the latest release from
@@ -44,6 +48,8 @@ STATE_DIR = ".immigration-agent"
 STATE_FILE = "workspace.json"
 LONG = "\\\\?\\"  # Windows extended-length path prefix
 DATA = re.compile(r"^(cases|Input|Output)/")
+KEEP_LOCAL = re.compile(r"^knowledge/")  # firm edits here are kept across updates, never overwritten
+QUIET = ("keep",)  # plan actions that need no work and never trigger an update run
 PROTECTED = re.compile(r"^(cases/|Input/|Output/|forms-cache/|\.extraction/|\.immigration-agent/|\.git/)|^(\.env|CLAUDE\.local\.md|\.claude/settings\.local\.json)$")
 CHECK_FILE = "update-check.json"
 MARKETPLACE = "immigration-agent-marketplace"
@@ -283,8 +289,15 @@ def backup(ws, stamp, rel, src):
     shutil.copy2(L(src), L(dest))
 
 
+def shipped_name(rel):
+    """Where the shipped copy of a conflicting knowledge file is saved: knowledge/x.md -> knowledge/x.shipped.md."""
+    return rel[:-3] + ".shipped.md" if rel.endswith(".md") else rel + ".shipped"
+
+
 def plan(ws, state, manifest):
-    """[(action, rel)] with action in copy / replace-changed / remove / remove-changed / create-data."""
+    """[(action, rel)] with action in copy / replace-changed / remove / remove-changed / create-data, plus, for
+    knowledge files the firm edited: keep (shipped copy unchanged since the last update: the local edit stays) and
+    conflict (both changed: the local edit stays and the shipped copy is saved beside it as <file>.shipped.md)."""
     old = state.get("files", {})
     todo = []
     for rel, digest in sorted(manifest.items()):
@@ -300,7 +313,12 @@ def plan(ws, state, manifest):
         if not exists(t):
             todo.append(("copy", rel))
         elif not same(t, digest):
-            todo.append(("replace-changed" if not same(t, old.get(rel)) else "copy", rel))
+            if same(t, old.get(rel)):
+                todo.append(("copy", rel))  # untouched since the last update: take the new version
+            elif KEEP_LOCAL.match(rel) and old.get(rel):
+                todo.append(("keep" if old.get(rel) == digest else "conflict", rel))
+            else:
+                todo.append(("replace-changed", rel))
     for rel, digest in sorted(old.items()):
         if rel in manifest or PROTECTED.search(rel):
             continue
@@ -313,9 +331,34 @@ def plan(ws, state, manifest):
 def apply(ws, state, manifest, version):
     stamp = datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S")
     files = dict(state.get("files", {}))
+    local = set(state.get("local_edits", []))
     done, failed, backed_up = 0, [], []
+    kept, conflicts, merged = [], [], []
+    for rel in sorted(local):  # an edited file that now matches the shipped version: the edit is in the release
+        t = target(ws, rel)
+        if rel not in manifest or t is None or not exists(t) or same(t, manifest[rel]):
+            local.discard(rel)
+            if rel in manifest and t is not None and exists(t):
+                merged.append(rel)
     for action, rel in plan(ws, state, manifest):
         t = target(ws, rel)
+        if action == "keep":
+            kept.append(rel)
+            local.add(rel)
+            continue
+        if action == "conflict":
+            try:
+                s = target(ws, shipped_name(rel))
+                tmp = s.with_name(s.name + ".agent-tmp")
+                shutil.copy2(L(PAYLOAD / rel), L(tmp))
+                os.replace(L(tmp), L(s))
+                files[rel] = manifest[rel]  # the shipped version is now known: next time this file is "kept"
+                conflicts.append(rel)
+                local.add(rel)
+                done += 1
+            except OSError as e:
+                failed.append(f"{rel} ({e.strerror or e})")
+            continue
         try:
             if action.endswith("changed"):
                 backup(ws, stamp, rel, t)
@@ -332,16 +375,19 @@ def apply(ws, state, manifest, version):
                     os.chmod(L(t), 0o755)  # Mac launchers must stay double-clickable
                 if action != "create-data":
                     files[rel] = manifest[rel]
+                local.discard(rel)
             done += 1
         except OSError as e:
             failed.append(f"{rel} ({e.strerror or e})")
-    for rel, digest in manifest.items():  # files already identical count as installed
+    for rel, digest in manifest.items():  # files already identical count as installed (incl. a firm edit the release now ships)
         t = target(ws, rel)
-        if t is not None and not DATA.match(rel) and not PROTECTED.search(rel) and rel not in files and exists(t) and same(t, digest):
+        if t is not None and not DATA.match(rel) and not PROTECTED.search(rel) and files.get(rel) != digest and exists(t) and same(t, digest):
             files[rel] = digest
     new_state = {"version": version if not failed else state.get("version"), "files": files,
+                 "local_edits": sorted(local),
                  "updated": datetime.datetime.now().isoformat(timespec="seconds"), "created": state.get("created") or datetime.date.today().isoformat()}
     save_state(ws, new_state)
+    apply.local = {"kept": kept, "conflicts": conflicts, "merged": merged}
     return done, failed, backed_up, stamp
 
 
@@ -371,6 +417,18 @@ def report(old_version, version, done, failed, backed_up, stamp, first):
         if note:
             lines += ["What's new:", note]
         lines.append("New or changed commands work from the next new conversation.")
+    loc = getattr(apply, "local", {}) or {}
+
+    def names(xs):
+        return ", ".join(xs[:10]) + (" ..." if len(xs) > 10 else "")
+    if loc.get("kept"):
+        lines.append(f"Kept your edits ({len(loc['kept'])} knowledge file(s); this release didn't change them): {names(loc['kept'])}")
+    if loc.get("merged"):
+        lines.append(f"Merged ({len(loc['merged'])}): your edits are now in the shipped version, so these files follow updates again: {names(loc['merged'])}")
+    if loc.get("conflicts"):
+        lines.append(f"Conflicts to merge ({len(loc['conflicts'])}): you and this release both changed these files. Your version was kept; "
+                     f"the release's version is beside it as <file>.shipped.md. Merge the two, then delete the .shipped.md file: "
+                     f"{names(loc['conflicts'])}")
     if backed_up:
         lines.append(f"{len(backed_up)} file(s) you had changed were saved first in {STATE_DIR}/backup/{stamp}/: " + ", ".join(backed_up[:10]) + (" ..." if len(backed_up) > 10 else ""))
         lines.append("To keep your own instructions across updates, put them in CLAUDE.local.md (never replaced).")
@@ -411,10 +469,12 @@ def main():
         if state is None:
             print(f"This folder is not an agent folder yet: {ws}\nPlugin version: {version}. Run the setup command here to install.")
             return 0
-        todo = plan(ws, state, manifest)
+        todo = [x for x in plan(ws, state, manifest) if x[0] not in QUIET]
+        kept = [r for act, r in plan(ws, state, manifest) if act == "keep"]
         latest = check_latest(ws, version, force=True)
         print(f"Agent folder: {ws}\nInstalled version: {state.get('version')}\nPlugin version: {version}\n"
-              f"Latest release: {latest or 'unknown (could not check online)'}\nPending changes: {len(todo)}")
+              f"Latest release: {latest or 'unknown (could not check online)'}\nPending changes: {len(todo)}"
+              + (f"\nKnowledge files with your own edits (kept across updates): {len(kept)}" if kept else ""))
         notice = update_notice(version, latest)
         if notice:
             print(notice)
@@ -445,7 +505,7 @@ def main():
     if first:
         state = {"version": None, "files": {}, "created": datetime.date.today().isoformat()}
     msg, failed = "", []
-    if first or state.get("version") != version or plan(ws, state, manifest):
+    if first or state.get("version") != version or [x for x in plan(ws, state, manifest) if x[0] not in QUIET]:
         old_version = state.get("version")
         done, failed, backed_up, stamp = apply(ws, state, manifest, version)
         msg = report(old_version, version, done, failed, backed_up, stamp, first)

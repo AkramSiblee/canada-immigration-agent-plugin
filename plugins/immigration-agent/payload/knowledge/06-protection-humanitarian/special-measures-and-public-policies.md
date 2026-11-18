@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: special-measures-and-public-policies
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -42,7 +42,7 @@ sources:
 ## Consultant pitfalls
 - Most crisis PR pathways are closed. Only renewals or extensions remain. Check eligibility dates (permit issue dates, arrival dates).
 - The Iran measure requires the work permit to have been issued by **2025-02-28**.
-- Remaining Ukraine and Hong Kong PR applications are in the 2027 humanitarian cohort. No new filing is needed.
+- Remaining Ukraine and Hong Kong PR applications are in the 2027 humanitarian cohort ("up to" Hong Kong 32,000; Ukraine Family Reunification 18,800). No new filing is needed (see 14-policy-tracker/announced-for-2027.md (IRCC releases 2026-11-10/12)).
 
 ## Common refusal reasons
 - Outside eligibility window; prior status not under the qualifying public policy

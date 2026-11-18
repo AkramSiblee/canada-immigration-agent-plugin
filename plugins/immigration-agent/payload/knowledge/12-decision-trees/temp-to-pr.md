@@ -54,8 +54,12 @@ sources:
    - Quebec: PSTQ Stream 2 (PEQ closed)
    - Spousal in-Canada, H&C
 5. 2027 time-limited measure (no application):
-   - Workers cohort: closed-program applicants or PNP-eligible, outside Quebec, via PNP allocations
-   - Humanitarian: pending spousal, Hong Kong, Ukraine, H&C approved in principle
+   - Workers cohort (up to 100,000 workers and families): people already waiting under AIP or closed programs
+     (SUV, Self-Employed, Agri-Food, home care) or PNP-eligible, in Canada, outside Quebec, via optional extra
+     PNP allocations used by 2027-03-31; no client application
+   - Humanitarian ("up to"): Hong Kong 32,000; Ukraine Family Reunification 18,800; H&C already found eligible
+     12,600; spouses, partners and children of citizens/PRs living in Canada 45,000 (sum 108,400 vs the
+     stated 100,000: IRCC doesn't explain) -> see 14-policy-tracker/announced-for-2027.md (IRCC releases 2026-11-10/12)
 ```
 
 ## Recent changes (2025-2027)

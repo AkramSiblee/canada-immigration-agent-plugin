@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: pnp-federal-mechanics
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: M
 review_every_days: 30
 sources:
@@ -54,7 +54,7 @@ sources:
 | Saskatchewan | 4,761 | SINP FAQ (2025-12-19) |
 | Manitoba | 8,000 (6,239 + 1,761 Aug top-up) | MPNP Monthly Data 2026 |
 | Yukon | 282 | yukon.ca YNP (2026-11-02) |
-| Northwest Territories | 300 (197 + 103, 2026-08-07) | NTNP newsroom |
+| Northwest Territories | 350 (197 + 103 on 2026-08-07 + 50 on 2026-11-10) | NTNP newsroom |
 | Others | see province files | |
 - Federal pool: up to **10,000 extra spaces** across all PNPs for practice-ready physicians or Francophones (Alberta page, 2026-11-04).
 - **2027:** PNP target 95,000 (83,000-106,000). Extra PNP allocations for the 2027 workers cohort (up to 100,000, outside Levels). **Per-province 2027 numbers not published (2026-11-07).**

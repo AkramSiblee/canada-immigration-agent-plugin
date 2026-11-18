@@ -2,7 +2,7 @@
 domain: 14-policy-tracker
 topic: legislation-and-regulations
 status: verified
-last_verified: 2026-11-12
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
@@ -49,7 +49,7 @@ sources:
 | 2026-217 | IRPR (Rural Community Immigration) | **2026-10-22** | Permanent class (s.87.4); EDOs designate employers, issue recommendations; Ministers designate communities (s.87.41). Pilot recommendations end 2026-12-31; pilot MIs until 2027-06-30; allocations from 2027-01-01 | H |
 | 2026-218 | IRPR (Asylum System Reform) | **2026-11-03** (tied to C-12 ss.31, 43, 45, 51 via SI/2026-59) | Single online claim to Minister; documents due in 60 days (+1 x 30-day extension); 365-day Minister due-diligence limit before IRB referral; designated representatives; work permits once eligible; exceptions (unaccompanied minors; claims within 1 yr of first entry); DCO provisions repealed | H (time limits M) |
 | 2026-219 | RPD Rules amendments | **2026-11-03** (with C-12 s.43(5), SI/2026-59; reg. 2026-10-23) | BOC Form replaced by basis of claim information in the single application to the Minister; personal documents **30 days after referral**; country documents 10 days before hearing; BOC changes within 5 days of notice to appear; abandonment before referral; fax removed | H |
-| 2026-220 | IRPR (Administrative Penalties and Consequences), Part 19.2 | **2026-10-23** | AMPs: unauthorized paid representation (baseline $5,000); misrepresentation ($15,000 + $15,000 if it induces error); formula (A+B+C)xD; prior violations x0.5/1/1.5; 30-day response to preliminary notice; 30-day review request; cap $1.5M per notice; names published | H |
+| 2026-220 | IRPR (Administrative Penalties and Consequences), Part 19.2 | **2026-10-23** | AMPs on paid representatives and advisers (not applicants): unauthorized paid representation (baseline $5,000); misrepresentation or counselling it ($15,000 + $15,000 if it induces error); formula (A+B+C)xD; prior violations x0.5/1/1.5; 30-day response to preliminary notice; 30-day review request; cap $1.5M per notice; names published | H |
 | 2026-221 | Citizenship Regulations (Administrative Penalties) | **2026-10-23** | AMPs in citizenship matters: unauthorized paid representation $5,000; inducing misrepresentation, fraud or false info $15,000; failure to produce $10,000; names published | H |
 
 ## Recent changes (2025-2027)
@@ -57,11 +57,11 @@ sources:
 - SOR/2026-63 (2026-03-30) PNP authority (H) - confirmed
 - SOR/2026-68 CICC Regulations: **in force 2026-07-15 (resolved; 2026-05-06 is the Gazette publication date)** (H)
 - Bill C-3 in force 2025-12-15 (H)
-- New: SOR/2026-220 AMPs on ghost consultants and misrepresentation, in force 2026-10-23 (H)
+- New: SOR/2026-220 AMPs on ghost consultants and on representatives/advisers who misrepresent or counsel it, in force 2026-10-23 (H)
 - New: SOR/2026-217 Rural Community Immigration class, in force 2026-10-22 (H)
 
 ## Consultant pitfalls
-- **AMPs (SOR/2026-220)** apply on top of the s.40 five-year bar. Warn clients: misrepresentation now also brings a monetary penalty (baseline $15,000) and publication of the violator's name.
+- **AMPs (SOR/2026-220)** target paid representatives and advisers (incl. unauthorized ones), not applicants: $15,000 base for misrepresenting or counselling it, names published after review. Applicants still face the s.40 five-year bar (08-inadmissibility/misrepresentation-s40.md).
 - **Unauthorized paid representation** carries a $5,000 baseline AMP. Flag ghost consultants and unlicensed "agents" in the file history.
 - C-12 asylum bars are retroactive to 2025-06-03. Refer retroactivity questions to a lawyer.
 - SOR/2026-68 penalties (verified s.38): Discipline Committee up to **$50,000** (Act s.69(3)(d)) plus an additional penalty up to **$30,000** (or the victim's fees for dishonest acts); suspension up to 2 years. Registrar penalties (s.29) follow a separate by-law schedule. The CICC Act s.79 offence fine is also up to $50,000.
@@ -75,7 +75,7 @@ sources:
 - SOR/2026-218 exact time limits (60-day documents, 30-day extension, 365-day due diligence)
 - Read SOR/2026-221 (Citizenship AMPs) in full
 - RCI transition dates (pilot recommendations end 2026-12-31; MIs until 2027-06-30)
-- New Gazette II issues every second Wednesday. Checked 2026-11-12: newest Part II issue 2026-11-04 (SOR/2026-209 to 228); next 2026-11-18. Part I 2026-11-07: no immigration items
+- New Gazette II issues every second Wednesday. Checked 2026-11-16: newest Part II issue still 2026-11-04 (SOR/2026-209 to 228); 2026-11-18 issue not yet published. Part I 2026-11-14: no immigration items
 
 ## Sources
 - Gazette II 2026-11-04 index: https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/index-eng.html

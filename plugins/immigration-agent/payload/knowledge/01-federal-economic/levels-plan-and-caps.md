@@ -2,13 +2,14 @@
 domain: 01-federal-economic
 topic: levels-plan-and-caps
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2026-2028.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/minister-metlege-diab-highlights-how-canada-is-working-with-provinces-and-territories-to-support-worker-retention.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html
 ---
 # Levels Plan and caps
@@ -36,6 +37,7 @@ sources:
 - 2026-01-01: public master's/PhD exempt from PAL/TAL (H)
 - 2026-11-05: 2027-2029 Levels Plan tabled (H) - confirmed
 - One-time 2027 measure: up to 200,000 in-Canada TR-to-PR (100k workers via PNP, 100k humanitarian), outside Levels, no application (H)
+- 2026-11-12/11-10 details: workers cohort (up to 100,000 workers and their families) is in-Canada only, PNP space optional and used by 2027-03-31, pending AIP applicants included; humanitarian ceilings HK 32,000, Ukraine 18,800, H&C 12,600, spouses/children 45,000. See 14-policy-tracker/announced-for-2027.md (H)
 
 ## Consultant pitfalls
 - The IMP target (170,000) is far larger than the TFWP (50,000). Most work permits will be LMIA-exempt.

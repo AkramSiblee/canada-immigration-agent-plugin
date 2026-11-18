@@ -119,6 +119,10 @@ Many still need a visa or eTA, and conditions apply.
 - **Must stop working.** Restore the original permit and status first, then apply for a different one.
 - Family members each apply and pay separately; no family rate.
 - 90-day limit and fees: `trp-restoration-maintained-status.md`.
+- **Eligibility, exact list (restore page 2026-08-28; read 2026-11-17, H):** "apply within 90 days of losing your status"; "met the requirements for your stay (for example, you didn't work illegally)"; "met all the conditions listed on your expired permit before it expired"; "are not a temporary resident permit (TRP) holder".
+- **Support-letter exemption wording:** "If you're a foreign worker with a letter of support from a participating province or territory" you're exempt from the 90-day limit, the stay requirements and the prior-conditions requirement. **The page names no province**; it links out to the list (current: Manitoba only, see below).
+- **Refusal:** "If your application is refused, you'll have to leave Canada." Work: "Normally, you aren't allowed to work until your status has been restored and your new work permit issued."
+- **Visitor-record fallback, before expiry (not on the restore page):** apply to extend as a visitor, **$100 per person** ("Extend your stay as a visitor - per person"; fee list modified 2026-11-10; no family rate). Work: "You can keep working only until your work permit expires. You cannot continue to work while waiting for a decision on your visitor application." (expired-permit page 2026-07-17). https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/extend/expired-permit.html
 
 ### Restoration plus a new permit in one application (restore page 2026-08-28; read 2026-11-17)
 - **One online IMM 5710 application.** Q3: tick **"Restore my status as a worker"** plus the new permit choice. Upload a letter explaining the overstay under Client information > Optional documents. Guide 5553. Paper only for disability or system failure.

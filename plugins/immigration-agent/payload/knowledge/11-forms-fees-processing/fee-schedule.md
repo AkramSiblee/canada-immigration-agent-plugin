@@ -2,7 +2,7 @@
 domain: 11-forms-fees-processing
 topic: fee-schedule
 status: verified
-last_verified: 2026-11-16
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
@@ -31,6 +31,7 @@ The fee that applies is the one in force on the **date the application is receiv
 | Permit holder class | $390 + $600 = $990 | — | — | 2026-04-30 |
 | **RPRF** (principal and accompanying spouse only) | **$600** | | | 2026-04-30 |
 - RPRF does not apply to dependent children, adopted children, orphaned relatives or protected persons.
+- **RPRF refund** (fee list, modified 2026-11-10; read 2026-11-17, H): "We will refund the RPRF if you withdraw or we refuse your application." "The RPRF is the only fee that we can refund after we start processing your application." Processing, sponsorship, biometrics fees: no refund once processing starts. The fee list gives no separate wording for "approved but never lands"; don't quote one.
 
 ### Family sponsorship (sponsorship $90 + sponsored principal $570 + RPRF $600)
 | Application | Total | Without RPRF |

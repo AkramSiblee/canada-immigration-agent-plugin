@@ -34,6 +34,8 @@ def main():
     dom = sys.argv[sys.argv.index("--domain") + 1] if "--domain" in sys.argv else None
     rows = []
     for p in sorted(ROOT.rglob("*.md")):
+        if p.name.endswith(".shipped.md"):
+            continue  # a release's copy saved beside a firm-edited file (agent_sync conflict), not a KB file
         d = front(p)
         if "status" not in d:
             continue

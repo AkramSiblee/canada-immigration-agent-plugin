@@ -33,6 +33,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/border-crossing.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/processing-times-service-delivery.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/facts.html
 ---
 # Express Entry: FSW, CEC, FST
 
@@ -67,6 +68,7 @@ sources:
 - **Police (page 2026-10-16):** each person 18+, every country of 6+ months in a row in the last 10 years; none for Canada or before 18. Current country: issued within 6 months before submission. Other countries: issued after the last 6-month stay; expired ones accepted if so. Colour scans of originals only; certified copies cause rejection. Request-letter countries: upload IRCC's statement in the police field. **Not in time:** letter of explanation + proof of best effort in the country field; officer may reject as incomplete.
 - **Medical (page 2026-08-04):** upfront exam after ITA and before applying; upload information printout sheet or IMM 1017B; all family members, including non-accompanying; one appointment only. IME within 5 years while living in Canada may be reused. Results valid 12 months. Unable to complete: letter of explanation.
 - **Passport (page 2026-10-16):** expiring within 6 months of application: "should" renew and update the application after.
+- **Biometrics (IRCC biometrics facts page, modified 2026-03-30; read 2026-11-17, H):** PR applicants must give them. Exempt: "children under the age of 14" and "applicants over the age of 79 (there is no upper age exemption for asylum claimants)". Only asylum claimants are carved out of the over-79 exemption, so EE family members 80+ are exempt (page doesn't name PR expressly; reading, not quoted text). Family cap $170 only when applying together. https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/facts.html
 - **Minimum at submission:** processing and biometrics fees; RPRF can follow. Couple: $2,150 minimum, $3,350 in full (fee list checked 2026-11-09).
 
 ### Completeness check, late documents, returns, AOR (read 2026-11-17)

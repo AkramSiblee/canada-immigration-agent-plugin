@@ -113,7 +113,7 @@ sources:
 ### 2026 cap (notice 2025-11-25)
 - Issuance target **408,000**: 155,000 new arrivals + 253,000 extensions (7% below 2025's 437,000).
 - PAL/TAL-required issuance 180,000, distributed by population (ON 70,074; QC 39,474; BC 24,786; ...). **309,670 application spaces** (adjusted for approval rates). Nunavut gets 0.
-- Levels 2027-2029: student arrivals target **150,000**/yr. **2027 cap/allocations not yet published** (2026-11-07).
+- Levels 2027-2029: student arrivals target **150,000**/yr. **2027 cap/allocations still not published** (checked 2026-11-17: IRCC notices page lists only the 2026-11-05 levels notice since 2026-11-01; last cap notice is the 2026 allocations notice of 2025-11-25; no IRCC release found). https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
 
 ### Proof of funds (living costs, excluding tuition and travel; outside Quebec)
 | Persons | 1 | 2 | 3 | 4 | 5 | 6 | 7 | each extra |

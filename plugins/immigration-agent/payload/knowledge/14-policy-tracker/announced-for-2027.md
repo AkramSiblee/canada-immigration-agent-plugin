@@ -15,6 +15,7 @@ sources:
   - https://canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/immigration-measures-entrepreneurs.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/minister-metlege-diab-highlights-how-canada-is-working-with-provinces-and-territories-to-support-worker-retention.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/canada-takes-action-to-efficiently-process-existing-permanent-residence-applications-for-ukrainians-and-hong-kongers.html
   - https://budget.canada.ca/2026/report-rapport/chap3-en.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/other-goals/mi90.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2026-startup-selfemployed-pause.html
@@ -43,15 +44,22 @@ sources:
 - **Outside the Levels targets**, one year (2027). Not a new pathway; no recurring increase. (Measures page)
 - **No separate application.** "Applicants do not need to apply separately or take any additional steps."
 - **Workers cohort, up to 100,000**: workers in communities outside Quebec, plus their families. Two groups:
-  - people waiting on PR under closed programs (Start-Up Visa, Self-Employed, Agri-Food Pilot, home care workers; the backgrounder also names AIP)
+  - people waiting on PR under select federal programs: **Atlantic Immigration Program** (open), Start-Up Visa, Self-Employed, Agri-Food Pilot, home care workers (closed). AIP is named in both the 2026-11-05 backgrounder and the 2026-11-12 release (re-read 2026-11-17, H)
   - people eligible for the PNP. Delivered through **increased PNP allocations**; provinces identify the workers.
-  - 2026-11-12 release: space is "optional, additional"; each province/territory decides how much to use; allocations "intended to be used by March 31, 2027"; measures "do not reopen" closed pathways; applicants "do not need to do anything or contact IRCC". No per-province figures published. (H)
-- **Humanitarian cohort, up to 100,000**:
-  - spouses, partners and children of Canadians and PRs already applied (target: spousal processing "closer to 12 months" outside Quebec)
-  - remaining Hong Kong PR applications (pathways closed 2026-08-31)
-  - remaining Ukraine family reunification applications (closed 2024-10-22)
-  - in-Canada H&C applicants approved in principle
-- Detailed criteria: none published beyond the above (2026-11-07).
+  - 2026-11-12 release: "up to a combined total of 100,000 workers and their families to permanent residence in 2027"; space is optional; provinces/territories "will be able to choose how much of this additional space they use"; allocations to be used by **2027-03-31**; does not reopen closed pathways or create new programs; "Applicants do not need to do anything or contact IRCC". No per-province figures published. (H)
+- **Humanitarian cohort, up to 100,000** (per-group figures: IRCC release 2026-11-10, re-read 2026-11-17, H; the 2026-11-05 backgrounder gives only the 100,000 total):
+
+| Group | 2027 admissions, "up to" | Note |
+|---|---|---|
+| Hong Kong PR pathways (remaining applications) | **32,000** | closed 2026-08-31 |
+| Ukraine Family Reunification Pathway (remaining) | **18,800** | closed 2024-10-22 |
+| H&C, people "already found eligible" for PR | **12,600** | release wording; "approved in principle" is the stage-1 term, not IRCC's phrase here |
+| Spouses, common-law partners, dependent children of citizens/PRs **living in Canada** | **45,000** | spousal processing target "closer to 12 months" outside Quebec (backgrounder) |
+
+- Humanitarian cohort notes:
+  - **Sum = 108,400**, above the 100,000 cohort cap. Figures are "up to" maximums; IRCC gives no reconciliation (H for each figure; the gap is arithmetic).
+  - **No client application step:** "Applicants do not need to do anything or contact IRCC" (2026-11-10 release).
+- Detailed criteria: none published beyond the above (2026-11-17).
 
 ### 2. 2027-2029 Levels Plan (tabled 2026-11-05)
 | Category | 2027 target (range) |
@@ -160,7 +168,8 @@ Nothing below is a new 2027 rule in force. Rows marked NOT PUBLISHED mean no off
 - ESDC TFWP reforms 2026-11-06: https://canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
 - Entrepreneurs notice 2025-12-19: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/immigration-measures-entrepreneurs.html
 All read 2026-11-07.
-- IRCC release 2026-11-12 (workers cohort, provinces): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/minister-metlege-diab-highlights-how-canada-is-working-with-provinces-and-territories-to-support-worker-retention.html
+- IRCC release 2026-11-10 (humanitarian cohort figures; read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/canada-takes-action-to-efficiently-process-existing-permanent-residence-applications-for-ukrainians-and-hong-kongers.html
+- IRCC release 2026-11-12 (workers cohort, provinces; re-read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/minister-metlege-diab-highlights-how-canada-is-working-with-provinces-and-territories-to-support-worker-retention.html
 - Budget 2026, chapter 3: https://budget.canada.ca/2026/report-rapport/chap3-en.html
 - MI90 (modified 2026-02-16): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/other-goals/mi90.html
 - Program delivery update, SUV/SE intake pause (2026-03-12): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2026-startup-selfemployed-pause.html

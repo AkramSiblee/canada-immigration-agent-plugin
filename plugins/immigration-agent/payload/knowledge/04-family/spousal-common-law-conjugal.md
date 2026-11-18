@@ -2,7 +2,7 @@
 domain: 04-family
 topic: spousal-common-law-conjugal
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
@@ -71,7 +71,7 @@ sources:
 - **Correction to baseline:** the 2025-01-21 OWP restriction applied to **family OWPs for spouses of students and workers** (see 05-temporary-residence/open-work-permits.md). It did **not** restrict the in-Canada sponsorship OWP, which remains available as above (H).
 - 2026-04-30: sponsorship fee $90; sponsored principal $570; RPRF $600 (H) - confirmed
 - 2026-09-10: undeclared-family (117(9)(d)) public policy **ended**. Applications after that date get no relief (H)
-- 2027: spousal inventory included in the time-limited humanitarian cohort (up to 100,000; outside Levels) (H)
+- 2027: pending applications for spouses, partners and dependent children of citizens and PRs **living in Canada** are in the time-limited humanitarian cohort ("up to" 45,000 of the cohort; outside Levels; no client step); outland sponsorships are not described as included (see 14-policy-tracker/announced-for-2027.md (IRCC releases 2026-11-10/12)) (H)
 
 ## Consultant pitfalls
 - **Choose the class carefully.** In-Canada gives an OWP but no IAD appeal. Family class has an appeal (s.63(1)), and the applicant can travel.
@@ -80,7 +80,7 @@ sources:
 - **s.117(9)(c.1):** proxy, telephone or online marriages where a spouse was not physically present are not recognized (except CAF).
 - **s.117(9)(b):** an existing undertaking for a previous spouse not yet ended is a bar.
 - **s.117(9)(d) undeclared family:** the sponsor's own undeclared dependants are permanently barred. **The relief public policy ended 2026-09-10.**
-- Misrepresentation leads to a s.40 bar plus an AMP (SOR/2026-220). An IAD appeal is still available for misrepresentation where the applicant is a spouse/partner/child (s.64(3)).
+- Misrepresentation leads to a s.40 five-year bar for the applicant; a paid representative or adviser involved can also get an AMP (SOR/2026-220; applicants are not penalized parties). An IAD appeal is still available for misrepresentation where the applicant is a spouse/partner/child (s.64(3)).
 - Ghost consultants or "marriage brokers": flag them and use IMM 5476 for any representative.
 
 ## Common refusal reasons

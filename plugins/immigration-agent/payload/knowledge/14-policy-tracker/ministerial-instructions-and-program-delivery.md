@@ -46,11 +46,11 @@ sources:
 |---|---|---|---|---|
 | Parents and Grandparents (PGP) | **PAUSED**: no new PR applications; no new interest-to-sponsor forms, no invitations | No new 2026 intake from 2026-01-01 (MI89); pause confirmed 2026-07-15, "until further notice" | MI89; notice 2026-07-15 | H |
 | Super Visa | Open (not affected by PGP pause). Income calculation changed from 2026-03-31 (notice 2026-03-20) | — | notice 2026-03-20; super-visa-2026 MI | H |
-| Start-Up Visa (PR) | **CLOSED** (IRCC page label: "Paused"). Only applicants with a valid 2025 commitment certificate who applied **by 2026-06-30** (IRCC SUV page, 2026-07-21); "closed to all other applications" | Final deadline passed | notice 2025-12-19; SUV page; MI7 | H |
+| Start-Up Visa (PR) | **CLOSED** (IRCC page label: "Paused"). Only applicants with a valid 2025 commitment certificate who applied **by 2026-06-30** (IRCC SUV page, 2026-07-21); "closed to all other applications" | Final deadline passed | notice 2025-12-19; SUV page; MI90 (in force 2026-01-01) | H |
 | SUV optional work permit | **CLOSED** from 2025-12-19, except extensions for people already in Canada on an SUV work permit | — | notice 2025-12-19 | H |
 | Self-Employed Persons | **PAUSED** "until further notice" (pause extended 2025-12-19) | — | notice 2025-12-19; MI72 (amended by MI90, in force 2026-01-01) | H |
 | Federal entrepreneur pilot | **ANNOUNCED, not launched**. "More information ... in 2026"; no details yet | — | notice 2025-12-19 | H |
-| Home Care Worker pilots | **PAUSED/CLOSED** "until further notice" (IRCC caregivers page labels "Closed"); will not reopen in March 2026 | Since 2025-12-19 | notice 2025-12-19; MI86-88 | H |
+| Home Care Worker pilots | **PAUSED/CLOSED** "until further notice" (IRCC caregivers page labels "Closed"); no reopening date | Since 2025-12-19 | notice 2025-12-19; MI86-88 | H |
 | Hong Kong PR pathways | **CLOSED** to new applications 2026-08-31. The Hong Kong OWP policy stays until May 2029 | — | notice 2026-08-28 | H |
 | Refugee sponsorship: Groups of Five and Community Sponsors | **PAUSED** until 2026-12-31 (first paused 2024-11-29) | Re-check in Jan 2027 | notice 2025-11-21 | H |
 | Express Entry | Open. New CRS from 2026-11-03 (MI 2026-1); draws paused for rescoring, "up to 2 weeks" (last round #453, 2026-10-28). **No round published and no restart date announced as of 2026-11-17** (IRCC rounds JSON). Profile LMIA field not yet updated: use the 00000 workaround | Restart date: re-verify | MI 2026-1; CRS page (2026-11-03) | H |
@@ -70,7 +70,7 @@ sources:
 | **Families of flight PS752 victims** | **CLOSED** | — | IRCC page (2025-11-14) | H |
 | **Saskatchewan (SINP) Entrepreneur and Farm Owner/Operator** | **PERMANENTLY CLOSED**: no new EOIs or invitations; existing files processed. ISW EOI: no scheduled draws. Job-offer and SK-experience categories open; capped sectors use 6 windows (Jan/Mar/May/Jul/Sep/Nov 2026) | 2025-03-27 | SINP FAQ (2025-12-19); SINP Entrepreneur EOI page | H |
 | **Manitoba (MPNP)** | **OPEN**: LAA draws ongoing (latest #283 2026-11-05: 526 LAAs; largest recent 2026-10-22: 1,304); allocation 8,000 | — | immigratemanitoba.com/draws (2026-11-07); MPNP Monthly Data 2026 | H |
-| **Northwest Territories (NTNP)** | **OPEN** (Employer-Driven and Francophone from 2026-03-09; Employer-Driven uses EOI draws); allocation 197 raised to **300** (2026-08-07) | — | immigratenwt.ca newsroom | H |
+| **Northwest Territories (NTNP)** | **OPEN** (Employer-Driven and Francophone from 2026-03-09; Employer-Driven uses EOI draws); allocation 197 raised to 300 (2026-08-07), then **350** (+50, 2026-11-10) | — | immigratenwt.ca newsroom | H |
 | **Yukon Nominee Program** | **2026 intakes CLOSED** (EOI windows Jan 19-30 and Jul 6-17); 3 worker streams; allocation 282. Separate Yukon Business Nominee Program pages are live (2026-09-03) with intake status not stated: confirm with Yukon (02-pnp/yukon.md, M) | Next: 2027 windows not announced | yukon.ca YNP page (2026-11-02) | H |
 | **Home Child Care / Home Support pilots; Live-in Caregiver** | **CLOSED** | 2024-06-17 | IRCC caregivers page | H |
 
