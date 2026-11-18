@@ -32,6 +32,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/acts-regulations/forward-regulatory-plan/list/steamline-study-work-authorizations.html
   - https://gazette.gc.ca/rp-pr/p2/2024/2024-11-20/html/sor-dors219-eng.html
   - https://www.quebec.ca/en/news/actualites/detail/management-applications-international-student-program-next-two-years-comes-into-effect-67763
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/04/filling-labour-gaps-in-smaller-communities-by-accelerating-permanent-residence-for-33000-workers.html
 ---
 # Announced for 2027
 
@@ -78,11 +79,14 @@ sources:
 | H&C and other | 5,000 (4,500-8,000) |
 | Temporary arrivals | 370,000 (355,000-385,000): workers 220,000 (IMP 170,000, TFWP 50,000), students 150,000 |
 | Francophone PR outside Quebec | 9.5% (2027), 10.5% (2028), 12% (2029) |
-- 2028-2029 temporary figures are "notional," to be confirmed by Nov 1 each year. Goal: PR admissions under 1% of the population beyond 2027.
+- 2028-2029 temporary figures are "notional," to be confirmed by Nov 1 each year.
+- Goal: "keep permanent resident admissions at less than 1% of Canada's total population beyond 2027" (backgrounder 2026-11-05, read 2026-11-17, H). Not on the supplementary levels page. The supplementary page footnote refers to "the less than 5% non-permanent resident target" (H).
 
-### 3. 2026 one-time initiatives ending 2027
-- In-Canada Workers Initiative: 33,000 work permit holders to PR, ends 2027.
-- Protected persons initiative: up to 115,000 over two years, ends 2027.
+### 3. Budget 2025 one-time initiatives (2026-2027)
+- Supplementary levels page (2026-11-05, read 2026-11-17): IRCC will "continue delivering existing one-time initiatives announced in Budget 2025" and "accelerate the transition of up to 115,000 Protected Persons in Canada (PPiC) and their in-Canada dependants and 33,000 work permit holders to permanent residence in 2026 and 2027" (H).
+- **In-Canada Workers Initiative** (up to 33,000): IRCC release 2026-05-04: at least 20,000 in 2026, remainder 2027; applicants who already applied under PNP, AIP, community pilots, caregiver pilots or Agri-Food Pilot and lived in smaller communities for 2+ years; no action needed. 3,600 admitted 2026-01-01 to 2026-02-28 (H). URL: https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/04/filling-labour-gaps-in-smaller-communities-by-accelerating-permanent-residence-for-33000-workers.html
+- **Protected persons in Canada** (up to 115,000 plus in-Canada dependants, 2026-2027): source is the supplementary levels page only; no per-year split or separate release found (H for the figure).
+- Distinct from the 2027 200,000 time-limited measure (section 1).
 
 ### 4. Business immigration watch list (checked 2026-11-17)
 | Item | Status | Date | Official URL | Conf. | Re-verify trigger |
@@ -177,3 +181,5 @@ All read 2026-11-07.
 - Quebec business immigration: https://www.quebec.ca/en/immigration/permanent/immigrate-business
 - Secondary (PQ platform/plan timing): https://www.fragomen.com/insights/canada-incoming-quebec-government-proposes-lower-immigration-targets-and-stricter-french-language-requirements.html (2026-10-12)
 Business rows above read 2026-11-17. Student watch list rows read 2026-11-17.
+- In-Canada Workers Initiative release 2026-05-04 (read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/04/filling-labour-gaps-in-smaller-communities-by-accelerating-permanent-residence-for-33000-workers.html
+- Section 2 1% goal and section 3 figures re-read 2026-11-17 on the backgrounder and the Levels 2027-2029 page.

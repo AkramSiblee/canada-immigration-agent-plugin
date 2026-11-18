@@ -76,6 +76,7 @@ sources:
 - Read SOR/2026-221 (Citizenship AMPs) in full
 - RCI transition dates (pilot recommendations end 2026-12-31; MIs until 2027-06-30)
 - New Gazette II issues every second Wednesday. Checked 2026-11-16: newest Part II issue still 2026-11-04 (SOR/2026-209 to 228); 2026-11-18 issue not yet published. Part I 2026-11-14: no immigration items
+- Checked 2026-11-17: Part II 2026-11-18 index not yet online (404: https://gazette.gc.ca/rp-pr/p2/2026/2026-11-18/html/index-eng.html); re-check 2026-11-18. Part I 2026-11-14 (latest; https://gazette.gc.ca/rp-pr/p1/2026/2026-11-14/html/index-eng.html) re-read: no immigration, citizenship or IRPA/IRPR items, no MI (incl. no start-up pilot MI) (H)
 
 ## Sources
 - Gazette II 2026-11-04 index: https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/index-eng.html

@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.13.2
+- IRCC's application inventory updated to 2026-09-30: about 348,000 temporary residence and 707,000 permanent residence applications not yet finalized; 22% of economic, 42% of family and 44% of protection files are waiting for space under the yearly targets. IRCC no longer publishes an overall backlog percentage.
+- 2027 figures now sourced on IRCC pages: up to 115,000 protected persons and 33,000 work permit holders moved to PR in 2026-2027 (the 33,000 is the In-Canada Workers Initiative for smaller communities; no action needed by applicants), the goal of PR admissions under 1% of the population after 2027, and temporary residents under 5%.
+- Checked today, nothing new: no Express Entry round since 2026-10-28; 2027 study cap not published; federal start-up pilot not launched; Quebec 2027 plan not tabled; no province has announced how it will use the 2027 workers measure; Ebola measures still end 2026-11-27.
+
 ## 1.13.1
 - **Your knowledge base edits are no longer undone by updates.** Until now, a knowledge file you edited in your agent folder was replaced at the next start (after a backup). Now:
   - if the new release didn't change that file, your version stays;

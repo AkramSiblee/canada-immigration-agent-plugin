@@ -11,6 +11,8 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/measures.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/minister-metlege-diab-highlights-how-canada-is-working-with-provinces-and-territories-to-support-worker-retention.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/building-a-stronger-canada-through-a-well-managed-predictable-immigration-system.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/04/filling-labour-gaps-in-smaller-communities-by-accelerating-permanent-residence-for-33000-workers.html
 ---
 # Levels Plan and caps
 
@@ -26,8 +28,8 @@ sources:
 - Economic detail 2027: Federal High Skilled 100,000; PNP 95,000; AIP 6,000; RCI 5,500; pilots 7,900; Business 1,500; Quebec TBD.
 - **Temporary arrivals: 370,000/yr**: workers 220,000 (**IMP 170,000 / TFWP 50,000**), students 150,000. 2028-29 are notional.
 - **Time-limited 2027 measure:** up to 200,000 in-Canada TR-to-PR (100k workers via PNP + 100k humanitarian), **outside Levels**, no application.
-- One-time 2026-2027 initiatives: 33,000 work permit holders (In-Canada Workers Initiative) and up to 115,000 protected persons. Both end 2027.
-- Goal: PR admissions under 1% of population after 2027; reduce the temporary population (5% of population target, secondary) (M).
+- One-time Budget 2025 initiatives: "up to 115,000 Protected Persons in Canada (PPiC) and their in-Canada dependants and 33,000 work permit holders to permanent residence in 2026 and 2027" (2027-2029 supplementary levels page, 2026-11-05, read 2026-11-17, H). Workers = In-Canada Workers Initiative: at least 20,000 in 2026, rest 2027; already-filed PNP/AIP/community pilot/caregiver/Agri-Food applicants in smaller communities 2+ years (IRCC release 2026-05-04, H).
+- Goal: "keep permanent resident admissions at less than 1% of Canada's total population beyond 2027" (backgrounder 2026-11-05, H). Temporary: "less than 5% non-permanent resident target" (supplementary levels page footnote, H).
 - **Study cap 2026**: 408,000 issuance target; 309,670 application spaces; public master's/PhD PAL-exempt (see 05-temporary-residence/study-permits.md). 2027 cap not yet published.
 
 ### 2026 targets (2026-2028 plan, official)
@@ -56,3 +58,6 @@ sources:
 - 2026 study cap notice: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html
 - Levels 2026-2028 (official; read 2026-11-07): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2026-2028.html
 All read 2026-11-07.
+- Backgrounder 2026-11-05 (1% goal; read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/building-a-stronger-canada-through-a-well-managed-predictable-immigration-system.html
+- In-Canada Workers Initiative release 2026-05-04 (read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/04/filling-labour-gaps-in-smaller-communities-by-accelerating-permanent-residence-for-33000-workers.html
+- Levels 2027-2029 page re-read 2026-11-17 for the 115,000/33,000 sentence and the 5% footnote.
