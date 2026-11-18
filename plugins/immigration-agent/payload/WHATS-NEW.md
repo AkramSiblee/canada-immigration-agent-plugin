@@ -2,6 +2,16 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.13.0
+- **New CRS calculator (`scripts/crs.py`, used by /crs):** the full grid in force since 2026-11-03, with the new labour market integration factor (the higher of Canadian experience plus the high-wage bonus, or a high-wage job offer), spouse points (education counts only with an ECA), transferability caps, the French bonus and the nomination. It shows a line-by-line breakdown, ranks what would add points, and warns when a birthday before the expected invitation would cost age points.
+- **High-wage list stored:** all 186 occupations with their level (2x, 1.5x, 1.3x). `python3 scripts/crs.py --noc 21231` gives the level. It depends on the occupation, never the client's own pay.
+- **Category lists stored:** every 2026 category occupation. `python3 scripts/category_check.py 31102` shows which categories a NOC is in, plus its high-wage level. The 12 months of category experience don't need to be continuous.
+- **Express Entry rounds:** none since #453 (2026-10-28) as of 2026-11-17; the first rounds under the new CRS will be added as they appear.
+- **Police certificates for 25 countries:** what to get, how to apply from Canada or abroad, which countries need an IRCC request letter or send results to IRCC directly (Saudi Arabia, Colombia, Mexico, Qatar), and official fees and times where published.
+- **Express Entry:** proof of funds rules from the regulations and officer instructions (what is official vs. practice for gifts, parents' accounts and fixed deposits), a reference letter template, what to do when a former employer has closed, processing times, and what to report between the invitation and landing.
+- **Correction:** IRCC's new penalties (in force 2026-10-23) apply to paid representatives and advisers, not to applicants. Applicants still face the 5-year misrepresentation bar. No IRCC guidelines published yet.
+- Biometrics sources checked (all links live) and updated.
+
 ## 1.12.0
 - **New `scripts/status_clock.py`:** give it the dates you have (permit expiry, date an extension was filed, refusal date, program completion, principal's permit end, end of any unauthorized work) and it shows maintained status, the date status was lost, the 90-day restoration deadline, when the 6-month bar ends, whether the spouse passes the 16-month test, and when the 180-day PGWP window closes. The temporary residence advisor and the work permit pathfinder now use it instead of counting by hand.
 - **New decision tree for an expiring permit:** time left, then BOWP, LMIA, PGWP, spouse permits, a visitor fallback and restoration.

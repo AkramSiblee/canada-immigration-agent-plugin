@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: category-draws-history
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 30
 sources:
@@ -39,6 +39,27 @@ sources:
 - **STEM list (IRCC page 2026-10-16, read 2026-11-09) does not include 21231 or 21232:** only 20011, 21220, 21300, 21301, 21310, 21321, 21331, 22300, 22301, 22310, 63100. 21231 and 21232 sit in the 1.5x high-wage level (job offer +70). Education list includes 41220, 41221.
 - **Agriculture and agri-food**: not in the 2026 list. Last agri-food round in the feed was 2024-02-16 (#285). Treat as dropped.
 - No per-category targets published. All ITAs fall within the Levels Plan; extra categories don't add ITAs.
+
+### 2026 category NOC lists (stored)
+- Full list: `templates/ee/category-nocs.csv` (95 rows). Columns: category, noc, title, teer, note, page_modified, read_date.
+- Source: IRCC category-based selection page, page details date **2026-10-16**, read **2026-11-17** (H). All categories are on that single page; IRCC has no separate per-category eligibility pages.
+- Check a NOC: `python3 scripts/category_check.py NOC`
+
+| Category (IRCC wording) | NOCs | Experience rule |
+|---|---|---|
+| Healthcare and social services occupations | 37 | 12 months, past 3 yrs, Canada or abroad |
+| Science, Technology, Engineering and Math (STEM) occupations | 11 | 12 months, past 3 yrs, Canada or abroad |
+| Trade occupations | 25 | 12 months, past 3 yrs, Canada or abroad |
+| Education occupations | 5 | 12 months, past 3 yrs, Canada or abroad |
+| Transport occupations | 4 | 12 months, past 3 yrs, Canada or abroad |
+| Physicians with Canadian work experience | 3 (31100, 31101, 31102) | 12 months, past 3 yrs, **in Canada** |
+| Senior managers with Canadian work experience | 4 (00012-00015) | 12 months, past 3 yrs, **in Canada** |
+| Researchers with Canadian work experience | 2 (41200, 41201) | 12 months, past 3 yrs, **in Canada** |
+| Skilled military recruits | 3 (40042, 42102, 43204) | No experience test. FSMA with 10+ yrs continuous foreign service, a CAF offer of 3+ yrs, and a 2-yr+ post-secondary credential |
+| French-language proficiency | none (1 placeholder row) | NCLC 7 in all four abilities; no NOC |
+- **Experience (since 2026-02-18; renewed categories went from 6 to 12 months):** 12 months full-time or equal part-time within the past 3 years, in **one** listed occupation. The IRCC page says the experience "does not need to be continuous", so don't describe it as "12 months continuous".
+- STEM includes 63100 (Insurance agents and brokers, TEER 3). This was re-confirmed on 2026-11-17 and is not a data error. Trades includes 63201 (Butchers) and 22303 (Construction estimators). Transport is the four aviation/automotive NOCs only: 72404, 72600, 22313, 72410.
+- Physicians: the page adds no licensing or practice-ready condition beyond "meet all requirements in the instructions for that round". Read the round's ministerial instructions.
 
 ### 2026 draw log (IRCC rounds JSON; #389-#453)
 | # | Date | Type | ITAs | Min CRS |
@@ -123,12 +144,17 @@ sources:
 - No rounds from 2026-10-29 to 2026-11-07 (recalculation pause of up to 2 weeks). **All cut-offs above are on the OLD CRS.** Don't compare post-Nov 3 scores directly, because job-offer and CWE points shift scores.
 - **Checked 2026-11-08 (IRCC JSON, raw text):** latest round is still **#453 (2026-10-28)**, Transport, 150 ITAs, CRS 477. No round under the new CRS yet. The rounds page itself is dated 2026-10-16 and its latest-round block is script-filled, so use the JSON.
 
+#### First rounds under the new CRS (from 2026-11-03)
+- **None as of 2026-11-17 (JSON checked).** The IRCC rounds JSON (newest first) still starts at #453 (2026-10-28, Transport Occupations 2026-Version 2, 150 ITAs, CRS 477, tie-break 2026-06-04 21:48:22 UTC). No drawNumber above 453 (H). A web search found no secondary report of a November 2026 round either.
+- When the first rounds appear, log: number, date, type/category, ITAs, CRS cut-off and tie-break.
+
 ## Recent changes (2025-2027)
 - 2026-02-18: 2026 categories announced. New: transport, physicians, senior managers, researchers, military. Renewed: French, healthcare, trades, STEM, education. 12-month experience rule (H)
 - 2026-10-28: last round before rescoring (#453) (H)
 - 2026-11-07: still no round after #453 (IRCC JSON checked) (H)
 - 2026-11-08: still no round after #453 (IRCC JSON checked) (H)
 - 2026-11-13: still no round after #453 (IRCC JSON checked) (H)
+- 2026-11-17: still no round after #453 (IRCC JSON checked). Category NOC lists stored in templates/ee/category-nocs.csv (page 2026-10-16) (H)
 
 ## Consultant pitfalls
 - FSW-only candidates outside Canada with no French or PNP have had no realistic route in 2025-2026. CEC, French and PNP dominated. Advise PNP or French as levers.
@@ -145,9 +171,11 @@ sources:
 - Draw trackers disagree; use IRCC rounds page or JSON only
 - Post-Nov 3 cut-offs (first round after rescoring)
 - Researchers category first round
+- First rounds under the new CRS: re-check the IRCC JSON for drawNumber > 453 (last checked 2026-11-17: none)
+- Category NOC lists: if the category-based selection page date moves past 2026-10-16, re-read it and refresh templates/ee/category-nocs.csv
 
 ## Sources
-- IRCC rounds JSON (read 2026-11-07): https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json
+- IRCC rounds JSON (read 2026-11-17): https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json
 - Rounds page: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html
 - Category-based selection: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html
 - News 2026-02-18: https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/02/canada-prioritizes-top-talent-in-2026-immigration-express-entry-categories.html

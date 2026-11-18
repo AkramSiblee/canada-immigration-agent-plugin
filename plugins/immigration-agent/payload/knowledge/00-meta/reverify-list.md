@@ -1,13 +1,13 @@
 # Re-verify before advising
-1. Express Entry post-Nov 3: first round date and cut-offs (no round 2026-10-29 to 2026-11-07; last round #453 on 2026-10-28)
-2. High-wage list: about 186 (31/89/66), counted on the IRCC page 2026-11-07 (M on exact count); watch for list updates
+1. Express Entry post-Nov 3: first round date and cut-offs (no round 2026-10-29 to 2026-11-17, rounds JSON; last round #453 on 2026-10-28)
+2. High-wage list: 186 (31/89/66), every row stored 2026-11-17 (H); watch for list updates
 3. 2027 200,000 measure: two cohorts of 100,000, no application; open: implementation instructions, per-province PNP allocations, interaction with the 2026-2027 initiatives
 4. Atlantic 2026 PNP allocations (NS/NB/NL/PEI): no official figures; secondary estimates conflict
 5. PNP fees: MB $500 worker streams / $2,500 Business Investor (H); NB business $2,000 (H); NWT business $2,800 (M); YT not found. Verified: SK $500, PEI $300 (worker), ON, BC, AB, NS. NB/NL worker streams: none stated on official pages
 6. Ontario Workforce Priority stream: grid details, first draw results, Phase 2 timing
 7. Federal entrepreneur pilot: promised "in 2026", not launched
 8. PGP: paused from 2026-01-01 (MI89), confirmed until further notice 2026-07-15. No reopening date. The 15,000/yr admissions target is inventory processing, not intake
-9. Express Entry proof-of-funds table (still the 2025-07-07 table as of 2026-11-07). Study permit funds RESOLVED: $23,448 from 2026-09-01
+9. Express Entry proof-of-funds table (still the 2025-07-07 table as of 2026-11-17; IRCC updates yearly: re-check before every FSW/FST file). Study permit funds RESOLVED: $23,448 from 2026-09-01
 10. RESOLVED 2026-11-07: fees changed 2025-12-01 (restoration/TRP $246.25, ARC $492.50, IEC $184.75) and 2026-04-30 (child $180 family / $270 economic); see fee-schedule.md
 11. RESOLVED 2026-11-07: CICC SOR/2026-68 in force 2026-07-15; s.38 discipline penalties $50,000 (Act s.69(3)(d)) + additional up to $30,000; suspension up to 2 yrs. CPD 16 h, PLI $1M, file retention 6 yrs verified. Open: Registrar by-law penalty schedule (s.29)
 12. Asylum transition: IRB practice notices; PRRA access for C-12-ineligible claimants (not expressly barred; CBSA decides at the removal interview)
@@ -42,3 +42,4 @@
 41. Source-of-funds file: add AB, NL, PEI, NWT, YT and Quebec verifier and gift rules
 42. Students (2026-11-17 pass): 2027 study cap and PAL allocations (expected late Nov-Dec 2026); Quebec CAQ cap second period from 2026-12-17; 2027 PGWP field-of-study list; PAL process pages for ON, NB, PE, NT (unreadable); thesis-stage scheduled breaks; whether a C42 spouse can keep working after the student's permit ends; read the student case law decisions before citing
 43. Work permits (2026-11-17 pass): ESDC low-wage pages still say 1 year (release: 2 years from 2026-11-06); concurrent-processing 90-day hold not yet on the instructions page; Help Centre Q676 (4-month BOWP) and 475 ($200 restoration) outdated; Manitoba bridge restoration fee shown $229; C41/C46 PDI still shows the 6-month test; spouse permit after the principal is refused; first Express Entry round after 2026-11-03
+44. Express Entry (2026-11-17 pass): URL pairs to settle live: job offer page (documents/job-offer.html vs documents/offer-employment.html), EE police page (documents/police-certificates.html vs apply-permanent-residence/police-certificates.html), FSW page (eligibility/... vs who-can-apply/...); medical-doctors AIP 'work or study in Atlantic Canada' wording; CRS intermediate ages (M); whether a foreign secondary credential needs an ECA for CRS; processing-times tool figures (unreadable); no IRCC misrepresentation PDI yet

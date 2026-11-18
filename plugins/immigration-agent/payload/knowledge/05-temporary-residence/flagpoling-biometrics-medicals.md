@@ -2,13 +2,16 @@
 domain: 05-temporary-residence
 topic: flagpoling-biometrics-medicals
 status: verified
-last_verified: 2026-11-07
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 90
 sources:
   - https://www.canada.ca/en/border-services-agency/news/2024/12/ending-flagpoling-for-work-and-study-permits-at-the-border.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/who-needs-to-give.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/need-biometrics.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/how-to-give.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates/who.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates/when.html
@@ -28,7 +31,9 @@ sources:
 - In-Canada applicants must apply online.
 
 ### Biometrics
-- Fee $85 individual / $170 family / $255 group of 3+ performing artists.
+- Fee $85 individual / $170 family / $255 group of 3+ performing artists; no fee for transit visas. Pay at application (re-confirmed 2026-11-17, biometrics hub and how-to-give pages).
+- **30 days** from the biometric instruction letter (BIL) to give biometrics; can't meet it: explain via IRCC web form. Appointment required (free); bring BIL + passport.
+- Where: VAC outside Canada; in the US, ASC or VAC (must be legally in the US); in Canada, designated Service Canada office via eServiceCanada; at a POE only if eligible to apply for a work/study permit there and the whole application is made there (not after a BIL). Citizenship fingerprints are police/RCMP-accredited, not Service Canada.
 - **Valid 10 years**: no visa or permit beyond 10 yrs from the last biometrics (IRCC; IRPR s.183(4)(c.1)).
 - **Required** for TR (except US nationals), PR, refugee/asylum; also extensions unless visa-exempt.
 - **Exempt**: citizens; existing PRs; visa-exempt eTA applicants; visa-exempt visitor-record extensions; **children under 14**; **over 79** (not for asylum claimants); heads of state; diplomatic/official visas; US visa holders in transit; anyone with biometrics in a pending PR application.
@@ -63,8 +68,12 @@ sources:
 
 ## Sources
 - CBSA flagpoling (2024-12-23): https://www.canada.ca/en/border-services-agency/news/2024/12/ending-flagpoling-for-work-and-study-permits-at-the-border.html
-- Biometrics, who needs to give (2026-07-09): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/who-needs-to-give.html
-- Need biometrics (2026-07-29): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/need-biometrics.html
+- Biometrics hub (2026-03-30; campaigns URL serves the same hub as services/biometrics.html): https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics.html
+- Biometrics, who needs to give (page date 2026-11-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/who-needs-to-give.html
+- Need biometrics tool (2026-07-29): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/need-biometrics.html
+- How to give (2026-03-30): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/how-to-give.html
+- Where to give (2026-08-24): https://www.canada.ca/en/immigration-refugees-citizenship/services/biometrics/where-to-give.html
+Biometrics pages read 2026-11-17.
 - IME for TR (2026-08-04): https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/medical-exams/requirements-temporary-residents.html
 - Police certificates (2026-02-19): https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates/who.html ; https://www.canada.ca/en/immigration-refugees-citizenship/services/application/medical-police/police-certificates/when.html
 All read 2026-11-07.

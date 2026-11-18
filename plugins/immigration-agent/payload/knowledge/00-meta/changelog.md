@@ -70,7 +70,7 @@
 | 2026-10-14 | Ontario REDI new round announced, six communities, to end of 2027 | H |
 | 2026-10-22 | Rural Community Immigration class permanent (SOR/2026-217) | H |
 | 2026-10-22 | U of T Comparative Education Service stopped accepting new ECA applications | H |
-| 2026-10-23 | AMPs: misrepresentation ($15,000 base), unauthorized paid representation ($5,000 base) (SOR/2026-220) | H |
+| 2026-10-23 | AMPs on paid representatives and advisers (not applicants): misrepresentation or counselling it ($15,000 base), unauthorized paid representation ($5,000), refusing documents ($10,000); cap $1.5M (SOR/2026-220) | H |
 | 2026-10-23 | Citizenship AMPs for unauthorized representation ($5,000) and fraud/false info ($15,000) (SOR/2026-221) | H |
 | 2026-10-28 | Haiti work permit renewal measure extended to 2027-12-30 | H |
 | 2026-10-31 | Quebec PEQ intake window closed | H |

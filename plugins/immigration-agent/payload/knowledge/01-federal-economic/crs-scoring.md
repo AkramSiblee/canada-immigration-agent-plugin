@@ -53,6 +53,7 @@ _(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other inte
 - Caps: 150 single, 140 with spouse (s.15(2))
 
 ### B. Spouse factors (max 40)
+- Only when the spouse/partner is accompanying and is not a Canadian citizen or PR; otherwise use the single grid. A foreign credential needs an ECA (as for the principal).
 - Education (max 10): secondary 2; 1-yr 6; 2-yr 7; bachelor's 8; two+ credentials 9; master's/professional 10; doctorate 10
 - First official language per ability (max 20): CLB 5-6: 1; CLB 7-8: 3; CLB 9+: 5
 - Canadian work experience (max 10): 1 yr 5; 2 yrs 7; 3 yrs 8; 4 yrs 9; 5+ yrs 10
@@ -85,9 +86,17 @@ _(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other inte
 ### High-wage occupation list (IRCC page, effective 2026-11-03)
 - High-wage = NOC whose median wage is at least **1.3x the median wage** of the whole Canadian workforce. Levels: **2x**, **1.5x** (under 2x), **1.3x** (under 1.5x).
 - Data: Job Bank, Labour Force Survey and Census over 3 years (2023-2025). Each NOC gets the highest level met in any of those years.
-- About **186 NOCs**: about 31 at 2x, 89 at 1.5x, 66 at 1.3x (counted from the list; IRCC states no total). Matches baseline secondary figures. Conf. M on exact count (reverify-list item 2).
+- **186 NOCs**: 31 at 2x, 89 at 1.5x, 66 at 1.3x (our count of every row on the official list, stored in templates/ee/high-wage.csv; IRCC states no total) (H).
 - No dollar thresholds published. Update frequency not stated.
 - The level is locked at the ITA date.
+
+### High-wage list (stored)
+- File: `templates/ee/high-wage.csv` (columns `noc,title,level,page_modified,read_date`; NOC as 5 digits with leading zeros; level is `2x`, `1.5x` or `1.3x`).
+- Copied from the IRCC high-wage page, Date modified **2026-10-16**, read 2026-11-17. List effective 2026-11-03, based on 2023-2025 data.
+- Counts: **31 at 2x, 89 at 1.5x, 66 at 1.3x = 186 NOCs**. Matches the "about 186 (31/89/66)" figure above. IRCC states no total; counts are ours.
+- Level meaning: the **occupation's national median wage** relative to the median wage of all occupations in Canada (2x = at least 2 times; 1.5x = at least 1.5 but under 2 times; 1.3x = at least 1.3 but under 1.5 times). It is **not** the client's own pay.
+- Look up with `python3 scripts/crs.py --noc NOC`.
+- Re-check the page's Date modified before relying on the CSV. If it is later than 2026-10-16, re-read the page and rebuild the file.
 
 ### Job offer and high-wage experience points (MI 2026-1, from 2026-11-03)
 _Read in full 2026-11-17: MI 2026-1 (page 2026-11-03), CRS criteria page (2026-11-03), high-wage list page (2026-10-16), job offer page (2026-11-03), LMIA-exemption public policy (2026-11-03). Conf. H unless marked._
@@ -144,7 +153,7 @@ _Read in full 2026-11-17: MI 2026-1 (page 2026-11-03), CRS criteria page (2026-1
 | FSW/FST proof-of-funds exemption | Needs a valid offer **and** current authorization to work in Canada | IRPR s.76(2)(b)/(c) logic; express-entry.md |
 | ITA issued before 2026-11-03 | The old LMIA/exempt-offer rules apply (M) | Policy scope |
 
-**Calculator.** The `crs-calculator` skill (`.claude/skills/crs-calculator/SKILL.md`) is prompt-driven and has no CRS script. Apply this section by hand: compute (CWE duration + high-wage bonus) and job offer separately, take the higher, then cap. `scripts/fsw.py` (FSW 67-point grid) awards 10 points for arranged employment with no LMIA test from 2026-11-03. That is consistent.
+**Calculator.** `python3 scripts/crs.py` (used by the crs-calculator skill) applies this grid: the higher of (CWE duration + high-wage bonus) or the job offer, then the cap; spouse education only with an ECA; transferability caps; French bonus; `--what-if` levers; birthday warning. `python3 scripts/crs.py --noc NOC` gives a NOC's high-wage level; `python3 scripts/category_check.py NOC` gives its 2026 categories. test_crs.py checks the script's numbers against this file. `scripts/fsw.py` scores the FSW 67-point grid.
 
 ## Recent changes (2025-2027)
 - 2025-03-25: arranged-employment additional points (50/200) repealed (H)

@@ -25,6 +25,14 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/federal-skilled-workers/making-selection-decision.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/federal-skilled-workers/assessing-applications-against-minimum-requirements.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/express-entry/assessing-electronic-application-on-section-a11-2.html
+  - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-77.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/application-approved/outside-canada.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/border-crossing.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/processing-times-service-delivery.html
 ---
 # Express Entry: FSW, CEC, FST
 
@@ -69,7 +77,7 @@ sources:
 **What "complete" means for an e-APR (PDI "Applications ... subject to the Express Entry completeness check", modified 2026-09-22) (H)**
 - Complete = e-APR + cost recovery fees + RPRF "as applicable" + all supporting documents; incomplete "should be rejected as per section 10".
 - Fees: processing fee is the minimum; RPRF can be paid later (EE apply page 2026-10-16). So unpaid RPRF alone doesn't make it incomplete.
-- Mandatory documents: medical proof (UMI/IME + info printout or IMM 1017B); police certificates (current country within 6 months before submission; others after the last stay; colour scans; certified copies unacceptable); passport bio page; proof of work experience (employer letter; self-declarations or affidavits not acceptable).
+- Mandatory documents: medical proof (UMI/IME + info printout or IMM 1017B); police certificates (current country within 6 months before submission; others after the last stay; colour scans; certified copies unacceptable); passport bio page; proof of work experience (employer letter; PDI bars self-declared duties or affidavits for **self-employed** experience, see "Proof of work experience" below).
 - Conditional ("if applicable"): children's birth certificates, proof of studies/ECA reference, certificate of qualification, job offer (+ LMIA number), proof of funds, IMM 5476, marital status documents (IMM 5409 + cohabitation evidence, marriage/divorce/death/adoption certificates).
 - Not grounds for rejection as incomplete (can still lead to refusal): relative in Canada, photos, other names, IMM 5475, general documents field.
 - Signatures: IMM 5476 signed by PA (and spouse; adult dependants sign their own); IMM 5475 by applicant and spouse; employer letter by supervisor or personnel officer; translations need certified translator stamp or affidavit.
@@ -119,13 +127,78 @@ sources:
 |---|---|---|---|---|---|---|---|---|
 | Funds | 15,263 | 19,001 | 23,360 | 28,362 | 32,168 | 36,280 | 40,392 | 4,112 |
 - Not required for CEC, or for FSW/FST with a valid job offer and current work authorization.
-- **No 2026 update is posted** as of 2026-11-07, although IRCC says it updates the table yearly.
+- **No 2026 update is posted** as of 2026-11-07, although IRCC says it updates the table yearly. Re-checked 2026-11-17: still "Updated July 7, 2025" (page modified 2026-10-16) (H).
+
+### Settlement funds: official rules vs judgment (read 2026-11-17)
+**Official (H)**
+- Law: IRPR 76(1)(b)(i) funds "available and transferable", "unencumbered by debts or other obligations", enough for initial establishment; amount = 50% of LICO (urban 500,000+), family size counts non-accompanying dependants. Can't show funds = **refused** (FSW PDI "Making the selection decision", page 2015-10-06).
+- **Timing: R77** requires R75/R76 criteria met on the date the application is made **and on the date the visa is issued** (Justice Laws current to 2026-10-29). Proof-of-funds page: available "when you apply and when a permanent resident visa is issued".
+- **Exempt:** CEC; FSW/FST **authorized to work in Canada + qualifying job offer**. Upload a letter saying which applies (proof-of-funds page 2026-10-16; A11.2 PDI 2026-03-16). Job-offer page (2026-11-03): FSW without a valid offer needs proof of funds.
+- Joint account **with accompanying spouse** counts; spouse's sole account counts if access proven. **Not borrowed** from another person. **No real-property equity** (proof-of-funds page).
+- Evidence: letter(s) on financial institution letterhead listing **all** current bank and investment accounts and outstanding debts (credit cards, loans); per account: number, opening date, current balance, **average balance for the past six months**. "Other documents may also be requested" (completeness PDI 2026-09-22).
+- New baby or other family change after e-APR: officer **reassesses funds** against the new family size; procedural fairness applies (A11.2 PDI 2026-03-16).
+- Currency devaluation relied on by officer: procedural fairness required (selection-decision PDI).
+- **Landing:** bring "proof you have the funds to support yourself and your family after you arrive in Canada (unless you're exempt)"; **CAN$10,000 or more must be declared to CBSA** or fine/seizure (EE "Outside Canada" approval page 2026-10-16). Conflict in wording: settle-canada border page (2025-02-07) says "more than CAN $10,000". Treat $10,000 exactly as declarable.
+
+**Not in any official text found (M, applied judgment)**
+- **Minimum holding period:** none published. The 6-month average balance in the bank letter is the de facto history test; a recent large deposit lowers the average and invites a source-of-funds request.
+- **Gifts:** no IRCC text. Practice: gift letter/deed stating no repayment, donor's proof of funds and relationship, transfer record, funds **in the applicant's (or spouse's) own account before e-APR** and still there at visa issue. A gift that is really a loan = borrowed = fails R76; false gift = s.40 risk.
+- **Joint account with parents/others:** IRCC addresses only spouse accounts. Expect only the applicant's provable share to count; safer to move the funds to the applicant's sole account with a gift letter (M).
+- **Fixed/term deposits:** count if the bank letter lists them and they are available and transferable (premature-withdrawal allowed). Locked or pledged deposits risk "not available/encumbered" (M; inference from R76).
+- Investments (shares, mutual funds): list in the bank/investment letter; officers may discount volatile assets (M).
+
+### Proof of work experience (completeness PDI 2026-09-22; A11.2 PDI 2026-03-16) (H)
+- **Mandatory for each declared job:** reference/experience letter "should be an official document printed on company letterhead" and "must include": applicant's name; company address, phone, email; **name, title and signature of the immediate supervisor or personnel officer**; all positions held with: job title, duties and responsibilities, job status (if current), dates worked, **hours per week**, **annual salary plus benefits**.
+- Self-employed: articles of incorporation or other ownership evidence, self-employment income, third-party documents showing services and payments. "Self-declared main duties or affidavits are not acceptable proof of **self-employed** work experience" (PDI wording is limited to self-employment).
+- Canadian experience: T4s and CRA notices of assessment for the same years as the claimed work (PA, and spouse if spouse claims Canadian experience).
+- Unauthorized work periods aren't counted (A11.2 PDI).
+- FSW test: performed the NOC **lead statement** and "a substantial number of the main duties, including all essential duties" (FSW minimum-requirements PDI, page 2025-03-05). NOC "employment requirements" need not be met.
+
+**Former employer closed / can't get a letter**
+- **No official IRCC text found** (canada.ca, PDIs, Help Centre topic 29 searched 2026-11-17). The PDI makes the letter mandatory and allows an LOE substitute only for police/medical. So a missing letter = **risk of rejection as incomplete** (H on the rule; officer discretion on substitutes).
+- Practice (M; secondary report of an IRCC IMMREP reply, moving2canada.com): upload in the letter field an LOE (why no letter, efforts made, closure proof such as corporate registry dissolution, bankruptcy or news notice) + secondary evidence: employment contract, offer/appointment letter, pay stubs, bank salary deposits, T4/tax records or foreign tax returns, ROE (Canada), salary-increment/HR letters, letter from a former supervisor (with their ID and proof they worked there) stating all required elements. A bare affidavit alone is weak.
+- Escalate to misrep review if any document is reconstructed or backdated (IRPA s.40).
+
+**Reference letter template (draft; employer completes and signs)**
+> **Duties in the employer's own words; don't copy the NOC.** Duties must cover the NOC lead statement and most main duties (all essential ones), but verbatim NOC text invites credibility concerns (M: officer practice and case law, not an IRCC rule).
+```
+[Company letterhead: legal name, address, phone, email, website]
+[Date]
+To: Immigration, Refugees and Citizenship Canada
+Re: Employment of [Full name, date of birth]
+[Name] was employed by [Company] from [DD/MM/YYYY] to [DD/MM/YYYY / "present"].
+Positions held:
+1. [Job title], [DD/MM/YYYY] to [DD/MM/YYYY]
+   Status: [full-time/part-time; permanent/contract]
+   Hours: [XX] hours per week
+   Salary: [amount, currency] per year, plus benefits: [list]
+   Main duties:
+   - [duty in the employer's words]
+   - [...]
+[Repeat for each position]
+Contact for verification: [name, title, phone, email]
+Signed: ______________  [Name], [Title: immediate supervisor / HR officer]
+[Company stamp if customary]
+```
 
 ### Process
-- Profile, then ranking by CRS (see crs-scoring.md), then rounds (general, program-specific, PNP, category: see category-draws-history.md), then ITA, then e-APR within 60 days (M: long-standing rule, not re-read this pass).
-- Claims must be true on the ITA date and at e-APR. Profile valid 12 months (M).
+- Profile, then ranking by CRS (see crs-scoring.md), then rounds (general, program-specific, PNP, category: see category-draws-history.md), then ITA, then e-APR within 60 days (H; IRCC pages read 2026-11-09).
+- Claims must be true on the ITA date and at e-APR. Profile valid 12 months (H; IRCC pages read 2026-11-09).
 - Tie-break: profile submission date and time.
 - **Levels 2027-2029:** "Federal High Skilled" (FSW + FST + CEC) target 100,000/yr (87,000-123,000).
+
+### Processing time (read 2026-11-17)
+- **Service standard: 80% finalized within 6 months** (H; IRCC CIMM note 2026-03-23; clock starts on GCMS received date per completeness PDI).
+- Last official figures found (CIMM 2026-03-23, data as of **2026-01-31**): CEC 4.5 months (forecast 7); FSW 7.0 (forecast 6); PNP-EE 8.7 (forecast 7); FST not shown (H for that date).
+- **Current tool figure: unknown.** The processing-times JSON (lastupdated 2026-11-12) has no CEC/FSW/PNP-EE keys; FST EE = "Not enough data". Secondary tracker (Oct 2026): CEC 6, FSW 7 months (L). Check https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html before quoting.
+
+### Changes between ITA, e-APR and landing (read 2026-11-17)
+- **Must report** (After you apply page 2026-10-16): family composition (birth, adoption, marriage, divorce), job or job offer changes, contact details, new ECA or language results, representative change. **How:** IRCC web form "as soon as possible". Family members can be added up to landing, even after visa issue; new member: IMM 5406 + fees; must be examined (A11.2 PDI 2026-03-16). Undeclared existing child at e-APR: assessed under A11.2 (and R117(9)(d) bar).
+- **Before e-APR:** profile is locked after ITA; if MEC or score no longer holds, decline (returns to pool). Profile and e-APR are compared; not every discrepancy is a refusal (A11.2 PDI).
+- **A11.2 refusal test (PDI 2026-03-16) (H):** refuse if (category rounds) category criteria not met at ITA or e-APR receipt; MEC not met at ITA or e-APR receipt; or **recalculated CRS at e-APR receipt below the round's lowest-ranked score**. Certificates of qualification must be valid at both dates.
+- **After e-APR:** A11.2 looks only at ITA and e-APR dates. But **R77**: FSW/FST R75-R76 criteria (incl. funds, FSW 67 points) must also hold **at visa issue**. So: job loss or withdrawn offer that ended the funds exemption = must now show funds; offer that gave FSW grid points = re-check 67/100; new baby = higher funds threshold. CEC: no funds test; CEC experience already earned isn't lost by later job loss (M: inference; no official text on post-e-APR CRS drops). Job-offer CRS points don't need to survive past e-APR under A11.2 (M: inference); misrepresentation risk if the offer was not genuine when claimed.
+- Not reporting a material change = possible s.40 misrepresentation (5-year bar). The SOR/2026-220 penalties (in force 2026-10-23) apply to paid representatives and advisers who misrepresent or counsel it, not to applicants (misrepresentation-s40.md).
+- COPR errors after approval: contact via account (approval page 2026-10-16).
 
 ## Recent changes (2025-2027)
 - 2025-03-25: arranged-employment CRS points repealed (MI s.8(1)(d)(ii) repealed) (H)
@@ -141,12 +214,12 @@ sources:
 - The high-wage level is locked at the ITA date. If the list changes after ITA, the invited level stays.
 - The LMIA exemption is a public policy "until revoked". Check before each ITA.
 - Embassy, high commission and consulate offers never qualify. FST offers can come from up to 2 employers; other offers from 1 employer only.
-- Work hours: count only paid hours; cap at 30 h/week for full-time equivalency (M).
+- Work hours: count only paid hours; cap at 30 h/week for full-time equivalency (H; MI s.15.1(5), FSW grid).
 - Language results expire. A test valid at profile creation but expired at e-APR leads to refusal.
 - Proof of funds: IRCC page (2026-10-16, read 2026-11-09) says funds must be available when applying and when the PR visa is issued. Bank letter shows debts and, per account, number, opening date, balance and 6-month average. Can't be borrowed from another person; no real property equity. IRPR 76(1)(b): transferable, available, unencumbered by debts or other obligations.
-  - **No published minimum holding period, and no published rule on parent joint accounts, gifts or fixed deposits** (only spouse joint/sole accounts addressed). Program instructions not located. Gift, parent-account and fixed-deposit treatment is applied judgment (Conf. M).
+  - **No published minimum holding period, and no published rule on parent joint accounts, gifts or fixed deposits** (only spouse joint/sole accounts addressed). FSW PDI located 2026-11-17 (selection-decision page): it adds no gift/joint/deposit rules. See "Settlement funds: official rules vs judgment" above (Conf. M for practice points).
 - **Undeclared family (IRPR 117(9)(d))**: every dependant must be declared and examined, even non-accompanying ones. Otherwise they are permanently barred from family sponsorship.
-- **Misrepresentation (IRPA s.40)**: inflated duties or hours, or fake offers, bring a 5-year bar **plus an AMP since 2026-10-23** (SOR/2026-220, baseline $15,000).
+- **Misrepresentation (IRPA s.40)**: inflated duties or hours, or fake offers, bring a 5-year bar for the applicant; a paid representative or adviser involved also faces an AMP (SOR/2026-220, $15,000 base; in force 2026-10-23, IRCC release dated 2026-10-28; see misrepresentation-s40.md).
 
 ## Common refusal reasons
 - Work experience reference letters lack duties, hours or salary, or the duties don't match the NOC lead statement
@@ -179,3 +252,13 @@ All read 2026-11-07.
 - Help Centre 1137 / 1220 / 1492 (2026-11-03): https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1137 ; https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1220 ; https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=1492
 - BOWP (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/pr-work-permits/bridging.html
 Completeness, returns and AOR sources read 2026-11-17.
+- FSW PDI selection decision / settlement funds (2015-10-06): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/federal-skilled-workers/making-selection-decision.html
+- FSW PDI minimum requirements (2025-03-05): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/federal-skilled-workers/assessing-applications-against-minimum-requirements.html
+- A11.2 PDI (2026-03-16): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/express-entry/assessing-electronic-application-on-section-a11-2.html
+- IRPR R77 (current to 2026-10-29): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-77.html
+- Approved, outside Canada (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/application-approved/outside-canada.html
+- Border crossing (2025-02-07): https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/border-crossing.html
+- Job offer (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html
+- CIMM processing times (2026-03-23, data 2026-01-31): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/processing-times-service-delivery.html
+- Secondary (M/L, locator only): https://moving2canada.com/features/express-entry-reference-letter-alternatives/
+Funds, work-evidence, processing and change sources read 2026-11-17.

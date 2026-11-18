@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: medical-doctors
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-17
 confidence: H
 review_every_days: 60
 sources:
@@ -22,7 +22,7 @@ sources:
 ### With Canadian experience (page 2026-10-19)
 | Route | Requirements |
 |---|---|
-| **Express Entry: physician category** (new in 2026) | Eligible for an Express Entry program; **at least 1 year full-time as a doctor in Canada in the last 3 years**. Can also be invited in general or program rounds |
+| **Express Entry: physician category** (new in 2026) | Eligible for an Express Entry program; **12 months full-time (or equal part-time) as a doctor in Canada in the last 3 years; need not be continuous** (category page 2026-10-16). NOCs 31100-31102 are all at the 2x high-wage level (offer = 100 CRS); publicly funded physicians' offers may be non-continuous or under 1 year, and their self-employed Canadian experience counts (MI 2026-1 ss.15.1(6)(b), 15.2(2)(a); crs-scoring.md). Can also be invited in general or program rounds |
 | **PNP** | Job, job offer or letter of support as a doctor. Provinces have **up to 5,000 federal spaces reserved** for doctors, in addition to regular allocations |
 - Eligible Express Entry occupations (announcement 2025-12-08): general practitioners and family physicians, specialists in surgery, specialists in clinical and laboratory medicine.
 - **Nominated doctors get a work permit processed in 14 days**, so they can work while waiting for PR.

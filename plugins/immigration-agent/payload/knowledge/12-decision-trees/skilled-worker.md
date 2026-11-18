@@ -2,7 +2,7 @@
 domain: 12-decision-trees
 topic: skilled-worker
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-17
 confidence: M
 review_every_days: 90
 sources:
@@ -45,8 +45,9 @@ sources:
    NO  -> 6 (PNP base, pilots, work permit first)
    YES -> 3
 3. Estimate CRS (labour market integration factor since 2026-11-03).
-   - High-wage NOC job offer (no LMIA needed) adds 50/70/100 points
-   - High-wage Canadian experience adds 20/40/70 points
+   - Labour market integration: the HIGHER of (Canadian experience + high-wage bonus 20/40/70) or a
+     high-wage NOC job offer 50/70/100 (no LMIA needed); never both; cap 150 single / 140 with spouse.
+     Run python3 scripts/crs.py (category: scripts/category_check.py NOC)
    - French NCLC 7 x4: +25/50 and French category draws (cut-offs 382-435 in 2026)
 4. Category fit? (12 months in one listed NOC within 3 yrs)
    French | Healthcare | Trades | Transport | Physicians/Senior managers/Researchers (CWE in Canada) | STEM/Education (no 2026 draws)
