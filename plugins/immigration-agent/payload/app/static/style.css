@@ -356,3 +356,6 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 .inv-table td.up { color: var(--soon, inherit); }
 .inv-table a { text-decoration: none; }
 .inv.stale .inv-table td { color: var(--muted); }
+.inv-period { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; font-size: .82rem; }
+.inv-period dt { font-weight: 600; color: var(--muted); }
+.inv-period dd { margin: 0; }

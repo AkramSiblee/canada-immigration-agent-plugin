@@ -30,6 +30,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import case as cs  # noqa: E402
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "templates" / "ircc" / "inventory.csv"
+SOURCE_NAME = "IRCC, Inside IRCC's application processing system"
 SOURCE = "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html"
 STALE_DAYS = 60
 
@@ -77,7 +78,8 @@ def load(path=DATA):
                     "not_finalized": num(r["not_finalized"]), "waiting_pct": num(r["waiting_pct"]),
                     "finalized_ytd": num(r.get("finalized_ytd")), "prev_not_finalized": num(r.get("prev_not_finalized")),
                     "prev_waiting_pct": num(r.get("prev_waiting_pct")), "data_as_of": r["data_as_of"].strip(),
-                    "page_date": r["page_date"].strip()})
+                    "prev_data_as_of": (r.get("prev_data_as_of") or "").strip(),
+                    "page_date": r["page_date"].strip(), "read_date": (r.get("read_date") or "").strip()})
     return out
 
 
@@ -133,7 +135,9 @@ def card(today=None, path=DATA, active=None):
     page = min((d for d in (date_of(r["page_date"]) for r in rows) if d), default=None)
     pr = table(rows, "pr", counts)
     return {
-        "data_as_of": rows[0]["data_as_of"], "page_date": page.isoformat() if page else "",
+        "data_as_of": rows[0]["data_as_of"], "prev_data_as_of": rows[0]["prev_data_as_of"],
+        "period_start": rows[0]["data_as_of"][:4] + "-01-01" if rows[0]["data_as_of"] else "",
+        "page_date": page.isoformat() if page else "", "read_date": rows[0].get("read_date", ""), "source_name": SOURCE_NAME,
         "age": (today - page).days if page else None, "stale": page is None or (today - page).days > STALE_DAYS,
         "stale_after": STALE_DAYS, "source": SOURCE,
         "pr": pr, "tr": table(rows, "tr"), "rows": pr["rows"],

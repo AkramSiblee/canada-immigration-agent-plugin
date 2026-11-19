@@ -169,21 +169,26 @@ function inventoryPanel(inv) {
       t.total.change ? ` (${t.total.change < 0 ? "down" : "up"} ${Math.abs(t.total.change).toLocaleString("en-CA")})` : " (no change)"));
   const tbl = (t, pr) => el("div", { class: "inv-scroll" }, el("table", { class: "inv-table" },
     el("thead", {}, el("tr", {}, th("Category"), th("Inventory", 1), th("Change", 1),
-      pr ? th("Actively processed", 1) : null, pr ? th("Waiting for space", 1) : null, th(finHead, 1), pr ? th("Your files", 1) : null)),
+      pr ? th("Actively processed", 1) : null, pr ? th("Waiting for space", 1) : null, th(finHead, 1))),
     el("tbody", {}, t.rows.map((r) => el("tr", {},
       el("th", { scope: "row" }, r.label),
       td(n(r.not_finalized)),
       td(chg(r.change), r.change > 0 ? "up" : ""),
       pr ? td(pct(r.active_pct)) : null,
       pr ? td(pct(r.waiting_pct), "strong", said[r.pct_trend]) : null,
-      td(n(r.finalized_ytd)),
-      pr ? el("td", { class: "num" }, el("a", { href: "#cases", title: "Your open files in this category" }, String(r.yours))) : null)))));
+      td(n(r.finalized_ytd)))))));
   return panel("IRCC application inventory", el("span", { class: "pill " + (inv.stale ? "Soon" : "ok") }, inv.stale ? "Out of date" : `Data to ${fmtDate(inv.data_as_of)}`),
     el("div", { class: "panel-body inv" + (inv.stale ? " stale" : "") },
+      el("dl", { class: "inv-period" },
+        el("dt", {}, "Inventory"), el("dd", {}, `Applications not yet finalized on ${fmtDate(inv.data_as_of)}`),
+        inv.prev_data_as_of ? [el("dt", {}, "Change"), el("dd", {}, `Since ${fmtDate(inv.prev_data_as_of)} (the month before)`)] : null,
+        el("dt", {}, "Finalized"), el("dd", {}, `${fmtDate(inv.period_start)} to ${fmtDate(inv.data_as_of)}`)),
       head(inv.pr), tbl(inv.pr, true),
       el("p", { class: "hint" }, "“Waiting for space” means the file is held because the yearly admission targets are full. It is not a processing delay."),
       inv.tr ? [head(inv.tr), tbl(inv.tr, false)] : null,
-      el("div", { class: "small muted" }, `IRCC inventory page dated ${fmtDate(inv.page_date)}. Change is since the month before.`,
+      el("div", { class: "small muted inv-source" }, "Source: ",
+        el("a", { href: inv.source, target: "_blank", rel: "noopener" }, inv.source_name),
+        `, page dated ${fmtDate(inv.page_date)}${inv.read_date ? `, read ${fmtDate(inv.read_date)}` : ""}. IRCC rounds figures to the nearest 5.`,
         inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null)));
 }
 
@@ -201,6 +206,15 @@ function profileTip(set) {
       el("button", { class: "btn", onclick: () => copyCommand("/firm-profile") }, icon("copy"), "Copy /firm-profile"),
       el("button", { class: "link-btn", onclick: () => { try { localStorage.setItem(HIDE_PROFILE, "1"); } catch { /* ignore */ } box.remove(); } }, "Not now")));
   return box;
+}
+
+// The dashboard program was started before the last update: it still runs the old code until it is reopened.
+function restartBanner(d) {
+  if (!d.version || d.running_version === d.version) return null;
+  return el("section", { class: "update-banner", role: "status" },
+    el("div", { class: "ub-text" },
+      el("div", { class: "ub-title" }, `Updated to version ${d.version}: reopen the dashboard`),
+      el("div", { class: "small" }, "This dashboard was started before the update, so some parts may be missing or out of date. Close this window, then open the dashboard again from its shortcut.")));
 }
 
 function updateBanner(u) {
@@ -229,6 +243,7 @@ const pages = {
     const attention = [...urgent, ...soon];
     return [
       pageHead(fmtLong(d.today), "Today", d.firm || null),
+      restartBanner(d),
       updateBanner(d.update),
       profileTip(d.profile_set),
       el("div", { class: "stats" },

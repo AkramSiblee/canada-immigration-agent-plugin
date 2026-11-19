@@ -153,6 +153,9 @@ def version():
         return ""
 
 
+RUNNING_VERSION = version()  # the code this server process runs; VERSION on disk moves on when an update installs
+
+
 def vtuple(v):
     return tuple(int(x) for x in re.findall(r"\d+", str(v or ""))[:3]) or (0,)
 
@@ -263,7 +266,7 @@ def home():
     week = [a for a in alerts if a["kind"] == "Deadline" and a["left"] != "" and 0 <= a["left"] <= 7]
     policy = al.last_policy_check()
     return {
-        "firm": firm_name(), "version": version(), "today": today().isoformat(), "update": update_status(), "profile_set": bool(firm_name()),
+        "firm": firm_name(), "version": version(), "running_version": RUNNING_VERSION, "today": today().isoformat(), "update": update_status(), "profile_set": bool(firm_name()),
         "counts": {"cases": len(folders), "urgent": sum(1 for a in alerts if a["rank"] == al.URGENT),
                    "soon": sum(1 for a in alerts if a["rank"] == al.SOON), "week": len(week),
                    "housekeeping": sum(1 for a in alerts if a["rank"] == al.HOUSEKEEPING)},
@@ -517,7 +520,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         url = urllib.parse.urlsplit(self.path)
         q = urllib.parse.parse_qs(url.query)
         if url.path == "/ping":
-            return self.send(200, {"ok": True, "app": "immigration-agent-dashboard"})
+            return self.send(200, {"ok": True, "app": "immigration-agent-dashboard", "version": RUNNING_VERSION})
         if url.path == "/" and q.get("key", [""])[0]:
             if not secrets.compare_digest(q["key"][0], self.server.key):
                 return self.send(403, "This dashboard link has expired. Open the dashboard again from its shortcut.", "text/plain; charset=utf-8")
@@ -574,15 +577,38 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 
 def running():
-    """The dashboard already running for this folder, as its URL, or None."""
+    """The dashboard already running for this folder, as its URL, or None. A dashboard left running from before an update
+    is stopped, so the caller starts one with the new code."""
     try:
         d = json.loads(STATE.read_text(encoding="utf-8"))
         with urllib.request.urlopen(f"http://127.0.0.1:{d['port']}/ping", timeout=2) as r:
-            if json.loads(r.read()).get("app") == "immigration-agent-dashboard":
-                return f"http://127.0.0.1:{d['port']}/?key={d['key']}"
+            info = json.loads(r.read())
+        if info.get("app") != "immigration-agent-dashboard":
+            return None
+        if info.get("version") == version():
+            return f"http://127.0.0.1:{d['port']}/?key={d['key']}"
+        stop_old(d)
     except (OSError, ValueError, KeyError):
         pass
     return None
+
+
+def stop_old(state, wait=5.0):
+    """Stop the dashboard process named in the state file and wait until its port is free."""
+    import signal
+    pid = int(state.get("pid") or 0)
+    if not pid or pid == os.getpid():
+        return
+    try:
+        os.kill(pid, signal.SIGTERM)
+    except OSError:
+        return
+    end = time.monotonic() + wait
+    while time.monotonic() < end:
+        with socket.socket() as s:
+            if s.connect_ex(("127.0.0.1", int(state["port"]))) != 0:
+                return
+        time.sleep(0.2)
 
 
 def make_server(port=0):

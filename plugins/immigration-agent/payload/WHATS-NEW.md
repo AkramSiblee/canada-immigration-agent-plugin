@@ -2,6 +2,13 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.14.4
+- Dashboard, IRCC application inventory card:
+  - shows the time period: inventory on 2026-09-30, change since 2026-08-31, and files finalized from 2026-01-01 to 2026-09-30;
+  - names its source (IRCC, Inside IRCC's application processing system, with a link), the page date and the date it was read;
+  - the "Your files" column is removed.
+- Dashboard left open during an update: the home page now says "reopen the dashboard", and opening it again from its shortcut starts it with the new version. Before, it kept running the old version, and new parts (such as the inventory tables) could be missing.
+
 ## 1.14.3
 - Dashboard: the IRCC card is now "IRCC application inventory", with two tables (data to 2026-09-30):
   - **Permanent residence** (707,405, down 7,935): for economic, family and protection, the files in inventory, the change since the month before, the share actively processed and the share waiting for space, files finalized since January, and your open files in each category.
