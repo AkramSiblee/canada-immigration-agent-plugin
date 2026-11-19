@@ -2,10 +2,11 @@
 domain: 01-federal-economic
 topic: category-draws-history
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-19
 confidence: H
 review_every_days: 30
 sources:
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/express-entry-updates-top-researchers-continue-contributing-canada-innovation-ecosystem.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html
   - https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html
@@ -54,9 +55,10 @@ sources:
 | Transport occupations | 4 | 12 months, past 3 yrs, Canada or abroad |
 | Physicians with Canadian work experience | 3 (31100, 31101, 31102) | 12 months, past 3 yrs, **in Canada** |
 | Senior managers with Canadian work experience | 4 (00012-00015) | 12 months, past 3 yrs, **in Canada** |
-| Researchers with Canadian work experience | 2 (41200, 41201) | 12 months, past 3 yrs, **in Canada** |
+| Researchers with Canadian work experience | 1 (41200) since 2026-11-18; 41201 removed | 12 months, past 3 yrs, **in Canada** |
 | Skilled military recruits | 3 (40042, 42102, 43204) | No experience test. FSMA with 10+ yrs continuous foreign service, a CAF offer of 3+ yrs, and a 2-yr+ post-secondary credential |
 | French-language proficiency | none (1 placeholder row) | NCLC 7 in all four abilities; no NOC |
+- **Researchers change (IRCC notice 2026-11-18) (H):** NOC 41201 (post-secondary teaching and research assistants) "will no longer be eligible" for the researchers category; only 41200 (university professors and lecturers) remains. Canadian 41200 experience and job offers paid by Canadian entities through stipends, grants, bursaries or scholarships now count toward CEC and FSW experience requirements and earn CRS points. No separate effective date (notice dated 2026-11-18), no transition wording, nothing on existing ITAs; IRCC tells candidates to update their profile. Unknown: whether the category page and the MI are amended yet, and how stipend-paid experience is proved (no instructions found).
 - **Experience (since 2026-02-18; renewed categories went from 6 to 12 months):** 12 months full-time or equal part-time within the past 3 years, in **one** listed occupation. The IRCC page says the experience "does not need to be continuous", so don't describe it as "12 months continuous".
 - STEM includes 63100 (Insurance agents and brokers, TEER 3). This was re-confirmed on 2026-11-17 and is not a data error. Trades includes 63201 (Butchers) and 22303 (Construction estimators). Transport is the four aviation/automotive NOCs only: 72404, 72600, 22313, 72410.
 - Physicians: the page adds no licensing or practice-ready condition beyond "meet all requirements in the instructions for that round". Read the round's ministerial instructions.

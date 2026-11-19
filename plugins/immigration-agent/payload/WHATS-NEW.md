@@ -2,6 +2,10 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.13.3
+- **Express Entry researchers category changed (IRCC notice 2026-11-18):** post-secondary teaching and research assistants (NOC 41201) no longer qualify; only university professors and lecturers (NOC 41200) remain. Canadian professor or lecturer experience and job offers paid through stipends, grants, bursaries or scholarships now count for the Canadian Experience Class and Federal Skilled Worker and earn CRS points. Clients with that experience should update their profile. IRCC gave no transition rules and nothing on invitations already issued.
+- Checked today, nothing new: no Express Entry round since 2026-10-28; no immigration regulations in the 2026-11-18 Canada Gazette; 2027 study cap not published; LMIA wage thresholds unchanged since 2026-07-17; Quebec 2027 plan not tabled; no province has announced how it will use the 2027 workers measure.
+
 ## 1.13.2
 - IRCC's application inventory updated to 2026-09-30: about 348,000 temporary residence and 707,000 permanent residence applications not yet finalized; 22% of economic, 42% of family and 44% of protection files are waiting for space under the yearly targets. IRCC no longer publishes an overall backlog percentage.
 - 2027 figures now sourced on IRCC pages: up to 115,000 protected persons and 33,000 work permit holders moved to PR in 2026-2027 (the 33,000 is the In-Canada Workers Initiative for smaller communities; no action needed by applicants), the goal of PR admissions under 1% of the population after 2027, and temporary residents under 5%.

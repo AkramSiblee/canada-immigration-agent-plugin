@@ -85,6 +85,7 @@
 | 2026-11-06 | TFWP: Low-Wage LMIA up to 2 years; ECE exempt from 6% CMA rule | H |
 | 2026-11-10 | 2027 humanitarian cohort ceilings: Hong Kong 32,000, Ukraine 18,800, H&C 12,600, in-Canada spouses/children 45,000 (no application; sum 108,400 vs 'up to 100,000': unexplained) | H |
 | 2026-11-12 | 2027 workers cohort: optional extra PNP space for workers already in Canada, used by 2027-03-31; pending AIP and closed-program applicants included | H |
+| 2026-11-18 | EE researchers category: NOC 41201 removed (41200 only); stipend/grant/bursary/scholarship-paid Canadian 41200 experience and offers count for CEC/FSW and CRS (IRCC notice) | H |
 | 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (IRCC pages 2026-11-09) | H |
 | 2027 | Time-limited measure: up to 200,000 in-Canada TR-to-PR (100k workers via PNP + 100k humanitarian), outside Levels, no application | H |
 | 2026-09-01 | UK CPTPP accession shown as ratified on IRCC CPTPP page (temporary-entry effect unconfirmed) | M |
