@@ -152,19 +152,38 @@ function kbPanel(kb, policy) {
         policy.age > policy.stale_after ? el("span", {}, ". Ask Claude: ", el("code", { class: "mono" }, "/changelog")) : null) : null));
 }
 
-// IRCC permanent residence files held for space under the yearly targets, next to the firm's own open files.
+// IRCC application inventory: permanent residence by category (with the firm's own open files) and temporary residence.
 function inventoryPanel(inv) {
-  if (!inv || !inv.rows || !inv.rows.length) return null;
-  const arrow = { up: "↑", down: "↓", same: "=", "": "" };
+  if (!inv || !inv.pr || !inv.pr.rows.length) return null;
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const m = Number((inv.data_as_of || "").slice(5, 7));
+  const finHead = m ? `Finalized ${m === 1 ? "Jan" : `Jan–${MONTHS[m - 1]}`}` : "Finalized this year";
+  const n = (v) => (v === null || v === undefined ? "–" : v.toLocaleString("en-CA"));
+  const chg = (v) => (v === null || v === undefined ? "–" : v === 0 ? "0" : (v > 0 ? "+" : "−") + Math.abs(v).toLocaleString("en-CA"));
+  const pct = (v) => (v === null || v === undefined ? "–" : `${v}%`);
   const said = { up: "up from the month before", down: "down from the month before", same: "same as the month before", "": "" };
-  return panel("IRCC: files held for space", el("span", { class: "pill " + (inv.stale ? "Soon" : "ok") }, inv.stale ? "Out of date" : `Data to ${fmtDate(inv.data_as_of)}`),
+  const th = (t, num) => el("th", { scope: "col", class: num ? "num" : "" }, t);
+  const td = (v, cls, title) => el("td", { class: "num" + (cls ? " " + cls : ""), title: title || null }, v);
+  const head = (t) => el("h3", { class: "inv-head" }, `${t.label}: ${n(t.total.not_finalized)}`,
+    t.total.change === null ? null : el("span", { class: "muted" },
+      t.total.change ? ` (${t.total.change < 0 ? "down" : "up"} ${Math.abs(t.total.change).toLocaleString("en-CA")})` : " (no change)"));
+  const tbl = (t, pr) => el("div", { class: "inv-scroll" }, el("table", { class: "inv-table" },
+    el("thead", {}, el("tr", {}, th("Category"), th("Inventory", 1), th("Change", 1),
+      pr ? th("Actively processed", 1) : null, pr ? th("Waiting for space", 1) : null, th(finHead, 1), pr ? th("Your files", 1) : null)),
+    el("tbody", {}, t.rows.map((r) => el("tr", {},
+      el("th", { scope: "row" }, r.label),
+      td(n(r.not_finalized)),
+      td(chg(r.change), r.change > 0 ? "up" : ""),
+      pr ? td(pct(r.active_pct)) : null,
+      pr ? td(pct(r.waiting_pct), "strong", said[r.pct_trend]) : null,
+      td(n(r.finalized_ytd)),
+      pr ? el("td", { class: "num" }, el("a", { href: "#cases", title: "Your open files in this category" }, String(r.yours))) : null)))));
+  return panel("IRCC application inventory", el("span", { class: "pill " + (inv.stale ? "Soon" : "ok") }, inv.stale ? "Out of date" : `Data to ${fmtDate(inv.data_as_of)}`),
     el("div", { class: "panel-body inv" + (inv.stale ? " stale" : "") },
-      el("p", { class: "hint" }, "Share of IRCC's permanent residence files that are complete but held until a yearly target space opens. Not a processing time."),
-      inv.rows.map((r) => el("div", { class: "inv-row" },
-        el("span", { class: "inv-label" }, r.label),
-        el("span", { class: "inv-pct", title: said[r.pct_trend] }, `${r.waiting_pct}%`, r.pct_trend ? el("span", { class: "inv-arrow" }, " " + arrow[r.pct_trend]) : null),
-        el("a", { class: "small muted", href: "#cases" }, r.yours ? `${r.yours} of your open file${r.yours === 1 ? "" : "s"}` : "none of your files"))),
-      el("div", { class: "small muted" }, `IRCC inventory page dated ${fmtDate(inv.page_date)}.`,
+      head(inv.pr), tbl(inv.pr, true),
+      el("p", { class: "hint" }, "“Waiting for space” means the file is held because the yearly admission targets are full. It is not a processing delay."),
+      inv.tr ? [head(inv.tr), tbl(inv.tr, false)] : null,
+      el("div", { class: "small muted" }, `IRCC inventory page dated ${fmtDate(inv.page_date)}. Change is since the month before.`,
         inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null)));
 }
 

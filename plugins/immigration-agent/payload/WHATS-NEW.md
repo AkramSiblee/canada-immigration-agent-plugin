@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.14.3
+- Dashboard: the IRCC card is now "IRCC application inventory", with two tables (data to 2026-09-30):
+  - **Permanent residence** (707,405, down 7,935): for economic, family and protection, the files in inventory, the change since the month before, the share actively processed and the share waiting for space, files finalized since January, and your open files in each category.
+  - **Temporary residence** (347,935, down 17,490): visitor visas, work permits and study permits, with inventory, change and files finalized since January.
+- "Waiting for space" means the file is held because the yearly admission targets are full. It is not a processing delay.
+
 ## 1.14.2
 - Dashboard: the "IRCC: files held for space" card moved to the left column of the home page, under Needs attention, so it shows without scrolling. In 1.14.0 it sat below the long Ask Claude list.
 

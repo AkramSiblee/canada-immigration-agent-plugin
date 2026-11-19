@@ -1,4 +1,9 @@
-line,label,not_finalized,waiting_pct,prev_not_finalized,prev_waiting_pct,data_as_of,prev_data_as_of,page_date,read_date
-economic,Economic,250010,22,256555,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
-family,Family,168855,42,167170,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
-protection,Protection,288540,44,291615,43,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+group,line,label,not_finalized,waiting_pct,finalized_ytd,prev_not_finalized,prev_waiting_pct,data_as_of,prev_data_as_of,page_date,read_date
+pr,economic,Economic,250010,22,236710,256555,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+pr,family,Family,168855,42,79705,167170,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+pr,protection,Protection,288540,44,103075,291615,43,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+pr,total,Permanent residence,707405,,,715340,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+tr,visitor,Visitor visas,298060,,1923425,310990,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+tr,work,Work permits,24970,,204250,25995,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+tr,study,Study permits,24910,,164735,28440,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+tr,total,Temporary residence,347935,,2292410,365425,,2026-09-30,2026-08-31,2026-11-17,2026-11-17

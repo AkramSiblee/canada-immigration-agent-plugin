@@ -36,7 +36,7 @@ sources:
 - Values are rounded to multiples of 5 and approximate (TR sub-lines sum to 347,940 vs page total 347,935: rounding). Page gives no system-wide total inventory or backlog %.
 - FSW + CEC (Oct 2025-Sep 2026): about 74% decided within the 6-month standard; about 50% in 5 months or less.
 - Spouses, partners, children (outside Quebec): about 15 months (Oct 2025-Sep 2026). The 2027 humanitarian cohort aims for about 12 months outside Quebec.
-- History (not yet finalized): 2026-08-31: TR 365,425; PR 715,340 (Econ 256,555 / Fam 167,170 / Prot 291,615, 43% waiting); citizenship grants 327,125; proof 135,965; FSW+CEC 76% within standard.
+- History (not yet finalized): 2026-08-31: TR 365,425 (visitor visas 310,990 / work permits 25,995 / study permits 28,440, derived from the page's month-over-month changes); PR 715,340 (Econ 256,555 / Fam 167,170 / Prot 291,615, 43% waiting); citizenship grants 327,125; proof 135,965; FSW+CEC 76% within standard.
 - PGP inventory (Jan 31, 2026, CIMM briefing): about 48,400 outside Quebec and 12,100 Quebec (H).
 - **Note:** IRCC changed format. The page now shows "not yet finalized" and the share "waiting for space under yearly targets", not the old backlog-vs-service-standard split. The old 80% target is not stated on the current page.
 
