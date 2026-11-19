@@ -122,6 +122,10 @@ Listed tests: CELPIP General, **IELTS General Training**, PTE Core, TEF Canada a
 - Authorized leave up to 150 days can still meet permit conditions, with DLI proof at PGWP application; unauthorized leave may make the applicant ineligible. Effect of a leave on PGWP length not stated on public pages. Over 50% distance learning is ineligible. Started on or after 2024-09-01: at least 50% in class in Canada; time online from outside Canada is deducted.
 - Work while waiting (Help Centre 1181, 2026-11-03): applied with valid study permit, program completed, was eligible to work off campus, did not exceed 24 h/week in term.
 
+### Unauthorized work or non-compliance (IRPR 200(3)(e); Justice Laws current to 2026-10-29, read 2026-11-17) (H)
+- No work permit (including a PGWP) for someone who engaged in unauthorized work or study, or breached a permit condition, unless: (i) 6 months have passed since it stopped; (ii) the breach was only of conditions under R185(a), 185(b)(i)-(iii) or 185(c); (iii) s.206 applies; (iv) a TRP was later issued. Study permits: same bar in s.221 (exceptions (i), (ii), TRP).
+- Working over 24 h/week off campus in term is generally treated as unauthorized work (hours are a 'times and periods' condition, R185(b)(iv), outside exception (ii)) (M: our reading; confirm on the facts).
+
 ## Consultant pitfalls
 - Language test results must be valid (under 2 yrs) **at PGWP application**. Many grads test too late. Plan the test before program end.
 - Field of study is tied to the **program's CIP code** on the DLI's list. Confirm the CIP before enrolment.

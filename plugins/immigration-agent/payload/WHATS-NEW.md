@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.14.1
+- PGWP: new section on the work permit bar after unauthorized work or study, or breaking a permit condition (IRPR 200(3)(e)): no PGWP or other work permit until 6 months after it stopped, with the regulation's exceptions (some condition breaches, section 206, a later TRP). Working more than the allowed off-campus hours in term is generally treated as unauthorized work (our reading; check the facts).
+
 ## 1.14.0
 - **New on the dashboard home page: "IRCC: files held for space".** For economic, family and protection permanent residence files, the share IRCC holds complete but waiting until a yearly target space opens (now 22%, 42% and 44%, data to 2026-09-30), whether it rose or fell since the month before, and how many of your open files are in each category. It is not a processing time; use it to set client expectations, for example that a spousal file can wait beyond the posted time. The card turns grey with "Out of date" when IRCC's page is more than 60 days old.
 - Each case page shows the same figure for that case's category (permanent residence files only).
