@@ -220,10 +220,10 @@ const pages = {
       el("div", { class: "grid2" },
         el("div", { class: "col" },
           panel("Needs attention", el("span", { class: "count" }, attention.length ? `${attention.length} item${attention.length === 1 ? "" : "s"}` : ""), alertList(attention, true)),
-          house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null),
+          house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null,
+          inventoryPanel(d.inventory)),
         el("div", { class: "col" },
           panel("Ask Claude", null, el("p", { class: "hint" }, "Copy a command, then paste it in the Claude app (Code tab) in this agent folder."), cmdList(d.commands)),
-          inventoryPanel(d.inventory),
           kbPanel(d.kb, d.policy_check))),
     ];
   },

@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.14.2
+- Dashboard: the "IRCC: files held for space" card moved to the left column of the home page, under Needs attention, so it shows without scrolling. In 1.14.0 it sat below the long Ask Claude list.
+
 ## 1.14.1
 - PGWP: new section on the work permit bar after unauthorized work or study, or breaking a permit condition (IRPR 200(3)(e)): no PGWP or other work permit until 6 months after it stopped, with the regulation's exceptions (some condition breaches, section 206, a later TRP). Working more than the allowed off-campus hours in term is generally treated as unauthorized work (our reading; check the facts).
 
