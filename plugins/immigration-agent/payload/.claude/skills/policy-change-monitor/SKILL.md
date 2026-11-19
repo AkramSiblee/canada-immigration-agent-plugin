@@ -12,7 +12,7 @@ description: Scan official sources for new immigration changes and update the po
 ## Workflow
 1. Search IRCC news, Gazette Part II, LEGISinfo, PNP news pages, the IRCC Refugees menu (https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html), the IRCC Work in Canada menu (https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html), the IRCC Immigrate menu (https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html), the IRCC Study in Canada menu (https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html), and the IRCC Visit Canada menu (https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html)
 2. List changes since last tracker date with effective dates
-3. Update affected knowledge files and changelog
+3. Update affected knowledge files and changelog. When IRCC's inventory page has new data, update `knowledge/14-policy-tracker/backlogs-and-inventory.md` and `templates/ircc/inventory.csv` together (move the current figures to the prev_ columns), then run `python3 scripts/test_inventory.py`
 4. Output: dated change summary with impact on open files
 
 ## Guardrails

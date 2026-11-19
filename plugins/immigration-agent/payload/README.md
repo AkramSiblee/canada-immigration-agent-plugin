@@ -73,6 +73,7 @@ Firms install the agent as a Claude plugin; at every Claude start it copies the 
 - `scripts/accounting.py` : invoices and payments for QuickBooks, Xero or a bookkeeper (`/accounting`)
 - `scripts/consult_notes.py` : consultation notes from a transcript, with risk scan, advice log and follow-ups (`/consult-notes`)
 - `scripts/prospects.py` : prospect pipeline from enquiry to signed, with conflict check and funnel report (`/prospects`)
+- `scripts/inventory.py` : IRCC's share of permanent residence files held for space by category (economic, family, protection), next to the firm's open files; shown on the dashboard home page and case pages. Data: `templates/ircc/inventory.csv`
 - `scripts/ptimes.py` : files against IRCC's published processing times, with web form enquiry drafts (`/processing`)
 - `scripts/practice.py` : CICC annual fee, insurance and CPD hours (`/licence`)
 - `scripts/pdf_studio.py` : private PDF tools on this computer: combine, organize, split, compress (to IRCC's upload limit) and convert, with IRCC forms protected (`/pdf`; tests: `scripts/test_pdf_studio.py`)

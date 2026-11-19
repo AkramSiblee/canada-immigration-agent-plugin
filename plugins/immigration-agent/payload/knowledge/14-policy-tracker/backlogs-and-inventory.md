@@ -55,7 +55,7 @@ sources:
 - n/a
 
 ## Re-verify before advising
-- Refresh monthly. IRCC updates this page about monthly with a lag of about 6-7 weeks.
+- Refresh monthly. IRCC updates this page about monthly with a lag of about 6-7 weeks. Update `templates/ircc/inventory.csv` (dashboard card) at the same time; `scripts/test_inventory.py` checks they match.
 - Per-program processing times: use the IRCC tool (see 11-forms-fees-processing/processing-times.md)
 
 ## Sources

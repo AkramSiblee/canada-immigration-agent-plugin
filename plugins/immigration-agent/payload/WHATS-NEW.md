@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.14.0
+- **New on the dashboard home page: "IRCC: files held for space".** For economic, family and protection permanent residence files, the share IRCC holds complete but waiting until a yearly target space opens (now 22%, 42% and 44%, data to 2026-09-30), whether it rose or fell since the month before, and how many of your open files are in each category. It is not a processing time; use it to set client expectations, for example that a spousal file can wait beyond the posted time. The card turns grey with "Out of date" when IRCC's page is more than 60 days old.
+- Each case page shows the same figure for that case's category (permanent residence files only).
+- The figures come with each update after IRCC publishes new data (about monthly). `python3 scripts/inventory.py` prints the card as text.
+
 ## 1.13.3
 - **Express Entry researchers category changed (IRCC notice 2026-11-18):** post-secondary teaching and research assistants (NOC 41201) no longer qualify; only university professors and lecturers (NOC 41200) remain. Canadian professor or lecturer experience and job offers paid through stipends, grants, bursaries or scholarships now count for the Canadian Experience Class and Federal Skilled Worker and earn CRS points. Clients with that experience should update their profile. IRCC gave no transition rules and nothing on invitations already issued.
 - Checked today, nothing new: no Express Entry round since 2026-10-28; no immigration regulations in the 2026-11-18 Canada Gazette; 2027 study cap not published; LMIA wage thresholds unchanged since 2026-07-17; Quebec 2027 plan not tabled; no province has announced how it will use the 2027 workers measure.

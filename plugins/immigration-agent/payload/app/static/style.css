@@ -341,3 +341,10 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
   .stats { grid-template-columns: minmax(0, 1fr); }
   nav a span { display: none; }
 }
+.inv { display: grid; gap: 8px; }
+.inv-row { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "label pct" "yours yours"; gap: 0 10px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--line); }
+.inv-label { grid-area: label; font-weight: 600; }
+.inv-pct { grid-area: pct; font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.inv-arrow { font-size: .9rem; color: var(--muted); }
+.inv-row a { grid-area: yours; text-decoration: none; }
+.inv.stale .inv-pct { color: var(--muted); }

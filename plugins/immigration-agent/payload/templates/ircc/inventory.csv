@@ -1,0 +1,4 @@
+line,label,not_finalized,waiting_pct,prev_not_finalized,prev_waiting_pct,data_as_of,prev_data_as_of,page_date,read_date
+economic,Economic,250010,22,256555,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+family,Family,168855,42,167170,,2026-09-30,2026-08-31,2026-11-17,2026-11-17
+protection,Protection,288540,44,291615,43,2026-09-30,2026-08-31,2026-11-17,2026-11-17
