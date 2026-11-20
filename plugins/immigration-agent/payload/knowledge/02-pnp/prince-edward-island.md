@@ -2,8 +2,8 @@
 domain: 02-pnp
 topic: prince-edward-island
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.princeedwardisland.ca/sites/default/files/publications/business_impact_application_guide.pdf
@@ -53,40 +53,40 @@ sources:
 - Office: immigratepei@gov.pe.ca; 902-620-3628.
 
 ## Business Impact (Work Permit stream)
-_Researched 2026-11-17. princeedwardisland.ca pages are behind a bot check and the official guide PDF (Feb 2025) is encrypted, so most rule details come from secondary sources that quote the guide. Confirm everything on the official guide/page before advising._
+_Re-verified 2026-11-20 (official Work Permit Stream page, published 2025-01-01, and Business Impact Category Application Guide 'effective October 27, 2022', read in browser 2026-11-20). Items still marked M/L were not in either official source._
 
 ### Status
-- **Not closed, but dormant.** No closure/pause notice; stream page last modified June 2025 (per secondary). **0 business ITAs in every 2026 draw** through 2026-10-16 (official EOI page, read 2026-11-07) (H). A 2026-11-09 draw (192 ITAs, secondary immigration.ca) reportedly also had 0 business ITAs (M).
+- **Not closed, but dormant.** No closure/pause notice; stream page last modified June 2025 (per secondary). **0 business ITAs in every 2026 draw** through 2026-10-16 (official EOI page, read 2026-11-07) (H). **2026-11-09 draw: 192 labour/EE ITAs, 0 business**; 2026 total to date **1,675 ITAs, 0 business** (official EOI draws page, published 2026-11-09, read 2026-11-20) (H). PEI says it is prioritizing healthcare, trades, manufacturing; sales and service workers may not be invited.
 - Do **not** present it as an active route. A profile can be filed but may never be drawn.
 
-### Eligibility (guide Feb 2025, via secondary) (M)
+### Eligibility (official page + guide) (H unless marked)
 - Age 21-59; secondary school minimum; CLB/NCLC 4 minimum (test under 2 yrs).
 - Business ownership or senior-management experience; transferable management skills.
 - **Net worth $600,000**, legally accumulated in own right. Mandatory verification by a **Designated Net Worth Verifier** (since Aug 2022); engage within **15 days** of ITA; report valid 12 months. Business equity counts only if ownership is **70%+**, at 30% of value, capped at $180,000. Gifts, private loans, vehicles excluded.
 - **Investment: $150,000** in the PEI business **within 12 months of landing** (not a pre-arrival lump sum).
-- **Ownership % of PEI business: unclear.** Old secondary text (2016 page) says 1/3 equity or $1M; guide snippet only gives the 70% rule for net worth. (L)
+- **Ownership % of PEI business: not stated** in the official page or guide (only the 70% rule for counting business equity toward net worth). Do not quote a percentage; ask the Office. (Old 1/3-equity rule belonged to closed streams.)
 - **Jobs: no job-creation number** found (M).
 - Ineligible (secondary): passive/rental/leasing, real estate development/brokerage, licensed professional services; no redemption options (L).
-- Registered representative: must be registered with and approved by the PEI Office of Immigration to submit Work Permit Stream files (official page via search snippet) (M).
+- **Representatives:** anyone who helps prepare the file must be on the **PEI PNP Approved Business Representatives** list and submit through it. Self-represented applicants must communicate directly and do the interview **without an interpreter** (official page) (H). Misrepresentation: may be barred **2 years** (official page) (H).
 
-### EOI points (secondary; sources conflict)
+### EOI points (official guide Appendix A) (H)
 - Factors: age, language, education, business experience, community endorsement, adaptability; English+French bonus.
-- **Max values conflict:** moving2canada (age 20, language 40, education 20, experience 50, community 35, adaptability 35 = 200) vs amirismail (30/50/20/50/15/35 = 200) vs pcici (20/40/20/50/15/35 = 180). No minimum score published. (L)
+- **Max 200 + 10 bonus** for proof of both official languages: age **30** (21-24: 10; 25-44: 30; 45-49: 20; 50-54: 10; 55+: 0 - the guide's age table wrongly totals 20); language **50** (CLB 9-10: 50; 8: 45; 7: 40; 6: 30; 5: 20; 4 or post-secondary in EN/FR: 0; lowest of 4 skills); education **20** (master's/PhD 20; 3-yr bachelor 17; 2-yr trade diploma 12; high school 0); business experience **50** (owner >50% 5 of last 7 yrs 50, 3 of 5: 40; owner 20-50%: 35/25; senior manager supervising 3+ staff, <20% ownership: 30/20); community endorsement **15** (rural 15; capital region 10); adaptability **35** (children in PEI school 6+ months 10; spouse PEI post-secondary grad 5; spouse/child CLB 6+ 10; spouse 3 yrs work in last 5: 5; close family PR/citizen in PEI 12+ months 10; farming experience and plan 10). No minimum score published. Secondary grids that differ are wrong.
 - Rural community endorsement scores higher than capital region; the business must then open in that community.
 - EOI free; valid 6 months; one active profile.
 
 ### Process
-- EOI -> ITA -> net worth verification -> application within **60 days** of ITA (secondary) -> in-person **interview** in PEI -> sign **Performance Agreement** -> PEI **work permit support letter** -> IRCC work permit -> arrive, report to Office within **30 days** -> invest, operate -> request nomination -> IRCC PR.
-- **Exploratory visit:** no separate mandatory visit found; the in-person interview in PEI serves this role (M).
-- **Deposit/escrow: none** for the Work Permit Stream (secondary consensus) (M). The old **$200,000 escrow deposit** belonged to the closed 100% Ownership / Entrepreneur streams; do not quote it for this stream.
-- **Performance Agreement terms (secondary):** live in PEI **274+ days/yr**; invest $150,000 within 12 months of landing; day-to-day management; operate **12 consecutive months**; **$75,000+ eligible operating expenses** shown in financial statements.
+- EOI -> ITA -> net worth verification -> application within **60 days** of ITA (guide Step 6, H) -> in-person **interview** in PEI -> sign **Performance Agreement** -> PEI **work permit support letter** -> IRCC work permit -> arrive, report to Office within **30 days** -> invest, operate -> request nomination -> IRCC PR.
+- **Exploratory visit:** not mandatory; the guide "encourage[s]" a visit. Interview location is at the Office's discretion; business plan, settlement plan and the Performance Agreement are reviewed and signed there (B-7 notarized declaration, B-9, B-10) (guide Step 7, H).
+- **Deposit/escrow: none** - neither the official page nor the guide mentions one (H for absence). The old **$200,000 escrow deposit** belonged to the closed 100% Ownership / Entrepreneur streams; do not quote it for this stream.
+- **Performance Agreement terms (guide Step 11, H):** principal applicant and accompanying family (spouse, school-age children) keep a PEI residence and are physically present in PEI **274+ days/yr** (a child at post-secondary outside PEI is exempt); invest $150,000 within 12 months of landing; day-to-day management; operate **12 consecutive months**; **$75,000+ eligible operating expenses** shown in financial statements.
 - **Work permit:** R205(a) **C60** (provincial business candidates; IRCC program delivery update 2024-02-16: province now certifies the significant benefit test, officer focuses on R200 intent/ability). https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2024-self-employed-r205-c60.html (H). After nomination a work permit can be sought under R204(c) (H, IRCC).
 - **Minimum operating period before nomination: 12 consecutive months** (official guide summary: "operating a business for a minimum of one year prior to receiving a nomination") (H for the 1-yr rule).
-- **Nomination request contents:** not readable from official guide. Secondary: financial statements, proof of investment and residency, Performance Agreement compliance. Then PEI issues nomination/letter of instruction. (L)
+- **Nomination:** a reminder letter comes **one year after the business starts**, listing documents to submit; nomination certificate issued once the PA is met; then apply to IRCC (guide Step 11, H). Report in person to the Office within **30 days of arrival** (guide Step 10, H).
 
 ### Fees
-- **$10,000** application fee with application (official PEI page via search snippet; consistent secondary) (M-H).
-- Refund: declined/withdrawn **before interview: $7,500 back**; after interview: nil. Full refund if file not accepted (moving2canada; official snippet silent) (M, conflict on full refund).
+- **$10,000** application fee with the application; bank draft, certified cheque or money order payable to **Island Investment Development Inc.**; EOI free (official page and guide, H).
+- Refund (official page and guide, H): file **not accepted** = full refund; declined/withdrawn **before interview** = $7,500 back; after interview = nil. Conflict resolved.
 - Plus net worth verifier fee, language test, IRCC WP and PR fees.
 
 ### Refusal/review

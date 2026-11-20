@@ -359,7 +359,6 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 .inv.stale .inv-table td { color: var(--muted); }
 .inv-table tr.grp th { padding-top: 14px; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--line-strong); }
 .inv-table.times tbody th { white-space: normal; font-weight: 500; }
-.more-link { font-size: .85rem; font-weight: 600; text-decoration: none; }
 .ctimes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 @media (max-width: 560px) { .ctimes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .ctime { padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); }

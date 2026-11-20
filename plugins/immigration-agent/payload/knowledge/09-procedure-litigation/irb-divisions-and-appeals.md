@@ -22,7 +22,7 @@ sources:
 |---|---|---|
 | **RPD** | Refugee claims | C-12: claim completion 60 days (+30); hearing scheduling no longer time-limited by regulation (SOR/2026-218) |
 | **RAD** | Appeals of RPD decisions | **File 15 days / perfect 30 days** after receiving written reasons (IRPR s.159.91(1)); RAD may extend for fairness and natural justice (s.159.91(2)) (H) |
-| **ID** | Admissibility hearings, detention reviews | Detention reviews at 48 h, 7 days, then every 30 days (IRPA s.57) (M) |
+| **ID** | Admissibility hearings, detention reviews | Detention reviews at 48 h, 7 days, then every 30 days (IRPA s.57); DFN 14 days then 6 months (s.57.1) (H, read 2026-11-20). See `immigration-division-detention-admissibility.md` |
 | **IAD** | Sponsorship, removal order, residency obligation, Minister's appeals | IAD Rules 2022 r.16: **sponsorship 30 days**; **removal order 30 days**; **residency obligation 60 days** (from receipt of decision); Minister 30 days |
 - IAD: notice of appeal plus the decision (r.13); language choice (r.18). The Division can extend or shorten time (r.4). IAD stays (IRPA s.68). De novo hearings with H&C jurisdiction (s.67), subject to s.64-65.
 - **Representation**: paid representatives must be lawyers, notaries (QC) or **CICC licensees with the RCIC-IRB class** (IRPA s.91) (see 10-consultant-practice).

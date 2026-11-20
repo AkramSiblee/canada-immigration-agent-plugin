@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: newfoundland-labrador
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: M
 review_every_days: 30
 sources:
@@ -51,7 +51,7 @@ sources:
 
 ### Fees / allocation
 - Not found on official pages read (unresolved).
-- Fees: **no provincial application fee stated** on the official NLPNP overview (2026-11-07) (M).
+- Fees: **no provincial application fee** on the Skilled Worker or Express Entry Skilled Worker pages (both updated 2026-09-25, re-checked 2026-11-20); IE: "No fee to apply under this category" (H for absence).
 
 ## Entrepreneur streams
 Verified 2026-11-17. Official pages "Last Updated: May 4, 2026" unless noted. Program guides are PDFs (IE guide dated Dec 2020; IGE guide dated Apr 2022) and **could not be text-extracted**. Guide-only facts below come from search snippets of the official PDFs (M) and must be re-checked against the PDF plus the "Updates to Application Guide" PDF.

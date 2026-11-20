@@ -6,6 +6,8 @@ description: Assess family class sponsorship eligibility, evidence, and risks. U
 
 ## Read first
 - knowledge/04-family/
+- knowledge/03-quebec/family-sponsorship-quebec.md (Quebec-destined sponsorships)
+- knowledge/06-protection-humanitarian/family-violence-trafficking-vulnerable-workers.md (abuse in the relationship)
 
 ## Workflow
 1. Check sponsor eligibility and bars (IRPR 130/133) and applicant admissibility

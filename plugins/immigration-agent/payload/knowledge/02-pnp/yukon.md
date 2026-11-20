@@ -2,8 +2,8 @@
 domain: 02-pnp
 topic: yukon
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://yukon.ca/en/immigration/yukon-business-nominee-program
@@ -22,26 +22,28 @@ sources:
 - Skilled Worker, Critical Impact, Express Entry (worker YNP); separate Business Nominee Program (intake status unconfirmed); EOI windows; priorities
 
 ## Current rules
-_Official YNP page read via browser 2026-11-07 (page updated 2026-11-02)._
+_Official YNP pages read in browser 2026-11-07 and 2026-11-20._
 
 ### Streams (3 only)
 - **Skilled Worker**: TEER 0-3, Yukon job offer.
-- **Critical Impact Worker**: TEER 4-5, Yukon job offer. Secondary sources: 6 months Yukon experience, CLB 4 (M).
+- **Critical Impact Worker**: TEER 4-5, full-time Yukon job offer.
+- **Worker requirements (official SW/CIW page, read in browser 2026-11-20) (H):** high school minimum plus the TEER's education; **6 months** relevant work experience (CIW) or **12 months** (SW) - not required to be Yukon experience; **CLB 4** (TEER 4-5), **CLB 5** (TEER 2-3), **CLB 6** (TEER 0-1), test under 2 yrs; intend to live in Yukon; students must finish their program first; keep legal status if in Canada.
+- **Employer requirements (H):** citizen/PR owner; business operating **1+ year**, registered (Yukon or federal); advertise **4+ weeks** in Canada in **3 places** (Job Bank + 2 local); pay at least the Yukon median wage for the NOC; pay inbound airfare (and return airfare if no PR or the nominee leaves the program); free health insurance until territorial coverage; IRCC employer compliance fee; **no fees or cost recovery from the worker**.
 - **Yukon Express Entry**: candidates in the IRCC EE pool.
 - These 3 are the **worker** YNP streams for 2026. Francophones are a selection priority, not a separate stream.
 - **CORRECTION 2026-11-17:** the earlier line "No Business stream in 2026" was wrong. The **Yukon Business Nominee Program (YBNP)** is a separate program, not part of the employer-driven 2026 YNP intakes. See section below.
 
-### Yukon Business Nominee Program (separate; status unconfirmed)
+### Yukon Business Nominee Program (separate; intake not confirmed)
 - **Not discontinued.** Official yukon.ca BNP pages are live (last modified 2026-09-03, per search index and secondary). Yukon's 2025-07-29 release ending the Yukon Community Pilot said the Business Nominee stream remained (secondary report) (M).
-- **Intake status not stated** on the yukon.ca BNP pages. Do not tell clients it is open; confirm with yukon.nominee@yukon.ca / 867-667-5131 first. (M)
-- Official eligibility page (yukon.ca, 2026-09-03; text via search snippets, page itself returned 403) (M-H):
+- **Intake status not stated.** On 2026-11-20 the BNP "apply" page and the "assessment point grid" page **redirect** (to the YNP process page and the eligibility page). Only the eligibility page is live. Treat as **not accepting applications** until Yukon confirms in writing (yukon.nominee@yukon.ca / 867-667-5131) (H for the redirects; status M).
+- Official eligibility page (yukon.ca; read in browser 2026-11-20) (H):
   - Net worth **$500,000**, verified by a Yukon accounting firm as legally obtained.
   - **$300,000 liquid** (cash, bonds, cash derivatives).
   - Plan to invest **$300,000** in capital investments in the **first 2 years**.
-  - **65 points** minimum on the grid; eligible files with an approved concept sit in a **pool for 6 months**; no guarantee of selection.
-  - 3 yrs entrepreneurial/management experience; 5 yrs relevant work experience; high school diploma; TEER 0/1 role in the business; no active application in another PNP.
-  - Language: **IELTS 6** or **TEF Canada 4**.
-  - New business or purchase of an existing Yukon business; actively managed; not passive; strategic sectors only; excluded sectors include retail, restaurants, real estate, holding companies. Must not buy/start before applying.
+  - **65 points** minimum on the assessment grid (grid page no longer published). (The 6-month pool rule came from earlier snippets; not on the current page - M.)
+  - 3 yrs entrepreneurial/management experience; 5 yrs relevant work experience; high school diploma; TEER 0/1 role in the business; no active application in another PNP; **never refused by Canada for immigration**; not a refugee or refugee claimant; capital investments made before acceptance don't count (house, part-business vehicles, operating costs excluded).
+  - Language: **IELTS 6** or **TEF Canada 4** (earlier snippet; not on the current eligibility page - M).
+  - New business or purchase of an existing Yukon business; managed by the applicant; not passive. **Strategic sectors:** IT, manufacturing, value-added processing, forestry, tourism, energy, mining/minerals, agriculture, cultural industry, film/video. **Ineligible:** passive investment, retail/wholesale/distribution, restaurant, financial services, business/consulting/personal services, most professional services, real estate, holding company, gas station. Must not buy/start before applying.
 - Process (secondary): exploratory visit/interview "may" be required; 2-yr work permit support then conditional nomination after performance (L). Deposit: none found (L). Fee: not found for BNP; 2026 operational guidance says no fee for the worker YNP (secondary quote) (M).
 - URLs: https://yukon.ca/en/immigration/yukon-business-nominee-program ; https://yukon.ca/en/immigration/yukon-business-nominee-program/find-eligibility-requirements-apply-run-your-business-yukon-foreign-entrepreneurs ; https://yukon.ca/en/immigration/yukon-business-nominee-program/apply-run-your-own-business-yukon-foreign-entrepreneurs
 
@@ -61,7 +63,7 @@ _Official YNP page read via browser 2026-11-07 (page updated 2026-11-02)._
 - EOI #2 Jul 6-17; ITAs Aug 3-7; applications due Aug 26.
 
 ### Fees
-- Not published on the yukon.ca pages read (2026-11-07). Ask YNP: yukon.nominee@yukon.ca, 867-667-5131.
+- No YNP application fee on the official pages (re-checked 2026-11-20); the only fee named is the **employer's IRCC compliance fee**. BNP fee not published. Ask YNP: yukon.nominee@yukon.ca, 867-667-5131.
 
 ## Recent changes (2025-2027)
 - 2026: intake-window model with 2 EOI windows; allocation 282 (H)
@@ -79,7 +81,7 @@ _Official YNP page read via browser 2026-11-07 (page updated 2026-11-02)._
 ## Re-verify before advising
 - 2027 intake dates and allocation (official yukon.ca)
 - Fees
-- Business Nominee Program: whether intake is open; fee; deposit; points grid (phone/email Yukon)
+- Business Nominee Program: whether intake is open (apply and grid pages redirect since at least 2026-11-20); fee; deposit; points grid (phone/email Yukon)
 
 ## Sources
 - YNP 2026 (official, updated 2026-11-02; read via browser 2026-11-07): https://yukon.ca/en/yukon-nominee-program

@@ -281,7 +281,7 @@ def home():
         "counts": {"cases": len(folders), "urgent": sum(1 for a in alerts if a["rank"] == al.URGENT),
                    "soon": sum(1 for a in alerts if a["rank"] == al.SOON), "week": len(week),
                    "housekeeping": sum(1 for a in alerts if a["rank"] == al.HOUSEKEEPING)},
-        "alerts": alerts, "kb": kb_summary(), "inventory": inventory_card(),
+        "alerts": alerts, "kb": kb_summary(),
         "policy_check": {"date": policy.isoformat() if policy else "", "age": (today() - policy).days if policy else None, "stale_after": al.TRACKER_STALE_DAYS},
         "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS],
     }

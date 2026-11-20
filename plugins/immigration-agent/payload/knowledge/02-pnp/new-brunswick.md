@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: new-brunswick
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: M
 review_every_days: 30
 sources:
@@ -49,7 +49,7 @@ Official site: welcomenb.ca now redirects to gnb.ca.
 
 ### Fees and allocation
 - Not found on the official pages read. **Unresolved.**
-- Fees: **no provincial application fee stated** on the official NB PNP page (2026-11-07) (M).
+- Fees: **no provincial application fee** listed on the NB PNP, AIP or 'Important information for every candidate' pages (re-checked 2026-11-20; only the employer compliance fee for the IRCC offer of employment is mentioned) (H for absence; NBBIS has its own $2,000 fee, below).
 
 ## Business streams
 Sources: stream page `BIS-PAGE` = https://www.gnb.ca/en/topic/family-home-community/immigration/provincial-nominee-program/business-immigration-stream.html (no page date shown; read 2026-11-17). Guide `BIS-GUIDE` = https://www.gnb.ca/content/dam/GNB3/t/fhc-fmc/immigration/docs/nb-business-immigration-stream-guide.pdf (version "NBPNP BIS (2025-03)", March 2025; read 2026-11-17). The guide says it prevails if the website differs.

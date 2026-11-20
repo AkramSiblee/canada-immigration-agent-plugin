@@ -153,7 +153,7 @@ function kbPanel(kb, policy) {
 }
 
 // IRCC application inventory: permanent residence by category (with the firm's own open files) and temporary residence.
-function inventoryPanel(inv, more) {
+function inventoryPanel(inv) {
   if (!inv || !inv.pr || !inv.pr.rows.length) return null;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const m = Number((inv.data_as_of || "").slice(5, 7));
@@ -189,8 +189,7 @@ function inventoryPanel(inv, more) {
       el("div", { class: "small muted inv-source" }, "Source: ",
         el("a", { href: inv.source, target: "_blank", rel: "noopener" }, inv.source_name),
         `, page dated ${fmtDate(inv.page_date)}${inv.read_date ? `, read ${fmtDate(inv.read_date)}` : ""}. IRCC rounds figures to the nearest 5.`,
-        inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null),
-      more ? el("a", { class: "more-link", href: "#ircc" }, "Processing times and more IRCC data →") : null));
+        inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null)));
 }
 
 // The IRCC data page: processing times next to the inventory.
@@ -315,8 +314,7 @@ const pages = {
       el("div", { class: "grid2" },
         el("div", { class: "col" },
           panel("Needs attention", el("span", { class: "count" }, attention.length ? `${attention.length} item${attention.length === 1 ? "" : "s"}` : ""), alertList(attention, true)),
-          house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null,
-          inventoryPanel(d.inventory, true)),
+          house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null),
         el("div", { class: "col" },
           panel("Ask Claude", null, el("p", { class: "hint" }, "Copy a command, then paste it in the Claude app (Code tab) in this agent folder."), cmdList(d.commands)),
           kbPanel(d.kb, d.policy_check))),

@@ -32,6 +32,8 @@ sources:
 ### CBSA deferral request
 - A request to the removals officer to defer removal (short-term reasons: pending H&C filed in time, medical, school year, BIOC). Officer discretion is **narrow**. A refusal can be challenged with a **Federal Court stay motion (lawyer)** (M).
 
+- Danger opinions (s.115(2)) and loss of protection: `06-protection-humanitarian/cessation-vacation-danger-opinions.md`. Detention: `immigration-division-detention-admissibility.md`.
+
 ## Recent changes (2025-2027)
 - 2026-04-01: removal cost repayment indexed (H)
 - 2026-11-03: C-12 ineligible claimants get conditional removal orders enforceable after 7 days (H)

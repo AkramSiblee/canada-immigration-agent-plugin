@@ -7,6 +7,8 @@ description: Triage Federal Court judicial review and urgent removal matters for
 ## Read first
 - knowledge/09-procedure-litigation/federal-court-judicial-review.md
 - knowledge/09-procedure-litigation/removals-cbsa-deferrals.md
+- knowledge/09-procedure-litigation/immigration-division-detention-admissibility.md
+- knowledge/06-protection-humanitarian/cessation-vacation-danger-opinions.md
 - knowledge/13-case-law/
 
 ## Workflow

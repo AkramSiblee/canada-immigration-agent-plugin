@@ -2,6 +2,18 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.16.0
+- **Knowledge base: 7 new topics** the agent now reads before answering:
+  - **Victims of family violence, human trafficking and abused workers**: the family violence permit, the trafficking permit and the open work permit for vulnerable workers (all fee-exempt).
+  - **Quebec family sponsorship**: Quebec's cap of 15,700 undertakings from 2026-07-02 to 2028-06-30 (13,300 spouses; 2,400 parents and other relatives), the filing schedule, undertaking lengths, 2026 income tables, $335 fee.
+  - **Quebec temporary workers**: joint LMIA, $233 Quebec fee, wage threshold $36.00/h, the Montréal/Laval low-wage freeze to 2026-12-31, French at renewal.
+  - **Refugees and protected persons in Quebec**: free CSQ, federal health cover ends 90 days after a positive decision, Quebec collective sponsorship closed to 2029-12-31.
+  - **Immigration Division and detention**: who decides inadmissibility, detention reviews (48 hours, 7 days, 30 days), bonds and release conditions.
+  - **Cessation, vacation and danger opinions**: when a refugee or a PR who was a refugee can lose status (for example by travelling on the home-country passport).
+  - **Caregivers**: the caregiver pilots stay paused; caregiver work permits from outside Canada only for Quebec jobs; LMIA fee waivers for families; PR alternatives.
+- **H&C expanded**: bars and exceptions, forms, naming each exemption you ask for, stay of removal and open work permit after approval in principle.
+- **Manitoba, PEI and Yukon checked on their official sites** (now high confidence): Manitoba fees, deadlines and the business points grid; PEI's official business points grid and refund rules; Yukon worker requirements. Yukon's Business Nominee apply page now redirects, so treat it as not accepting applications until Yukon confirms.
+
 ## 1.15.0
 - **New dashboard page: IRCC data** (left menu). Together these tell a client how long a file may take and whether it may also wait for space:
   - the IRCC application inventory card;

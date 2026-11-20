@@ -7,6 +7,8 @@ description: Triage refugee/protection claims under Bill C-12 and new regulation
 ## Read first
 - knowledge/06-protection-humanitarian/
 - knowledge/09-procedure-litigation/irb-divisions-and-appeals.md
+- knowledge/09-procedure-litigation/immigration-division-detention-admissibility.md (detained clients)
+- knowledge/03-quebec/refugees-protected-persons-quebec.md (clients living in Quebec)
 
 ## Workflow
 1. Establish entry date(s), port vs between ports, prior claims, portal registration

@@ -10,6 +10,9 @@ description: Pick the right work permit stream (LMIA, IMP, CUSMA, ICT, IEC, Fran
 - knowledge/05-temporary-residence/open-work-permits.md
 - knowledge/05-temporary-residence/work-permit-process-and-status.md
 - knowledge/12-decision-trees/permit-expiring.md
+- knowledge/03-quebec/temporary-workers-quebec.md (Quebec jobs)
+- knowledge/01-federal-economic/caregivers.md (NOC 44100/44101)
+- knowledge/06-protection-humanitarian/family-violence-trafficking-vulnerable-workers.md (abused workers: OWP-V)
 
 ## Workflow
 1. Determine employer-specific vs open; LMIA required or exempt code

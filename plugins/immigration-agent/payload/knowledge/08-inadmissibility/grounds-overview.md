@@ -26,12 +26,16 @@ sources:
 | s.39 | Financial | FN | Exclusion | Show funds; protected persons exempt |
 | s.40 | Misrepresentation | PR + FN | Exclusion (5-yr ARC) | Wait 5 yrs; innocent mistake; IAD for spouse/child; + AMP |
 | s.41 | Non-compliance | PR + FN | Exclusion/departure | Restoration, TRP, H&C |
+| s.40.1 | Cessation of refugee protection | PR (108(1)(a)-(d)) + FN | Departure (FN, R228(1)(b.1)) | Lawyer; see `06-protection-humanitarian/cessation-vacation-danger-opinions.md` |
 | s.42 | Inadmissible family member | FN | Exclusion | Separate family member; H&C |
 - Standard of proof: "**reasonable grounds to believe**" for ss.34-37 (s.33).
 - No IAD appeal for security, rights, sanctions, serious criminality (6+ months imposed), organized crime (s.64).
 - H&C (s.25) can overcome most grounds **except** ss.34, 35, 35.1, 37 (s.25(1)).
 
+- Who decides (Minister's delegate under IRPR 228 vs Immigration Division) and detention: `09-procedure-litigation/immigration-division-detention-admissibility.md`.
+
 ## Recent changes (2025-2027)
+- 2026-03-26: 2026, c. 4 added IRPA s.44.1 (no ID admissibility hearing if the person is outside Canada) (H)
 - 2026-10-23: AMPs for misrepresentation (SOR/2026-220) (H)
 
 ## Consultant pitfalls

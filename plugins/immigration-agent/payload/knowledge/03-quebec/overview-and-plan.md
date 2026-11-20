@@ -38,6 +38,8 @@ sources:
 ### Programs status (2026-11-07)
 - PSTQ: open (Arrima invitations). PEQ: **closed since 2026-10-31**. Quebec business programs (Investor, Entrepreneur, Self-Employed): **open, no cap** (quebec.ca 2026-11-09/10); see business-immigration.md.
 
+- Detail files: family-sponsorship-quebec.md, temporary-workers-quebec.md, refugees-protected-persons-quebec.md. The ministry is now the MII (Ministère de l'Immigration et de l'Intégration).
+
 ## Recent changes (2025-2027)
 - Quebec plan: 45,000 PR/yr (M)
 - 2025-11: Montréal/Laval low-wage freeze extended to 2026-12-31 (M)

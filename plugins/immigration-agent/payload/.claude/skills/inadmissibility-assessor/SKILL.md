@@ -6,6 +6,8 @@ description: Assess inadmissibility grounds and remedies. Use for criminality, m
 
 ## Read first
 - knowledge/08-inadmissibility/
+- knowledge/09-procedure-litigation/immigration-division-detention-admissibility.md (A44 reports, ID hearings, detention)
+- knowledge/06-protection-humanitarian/cessation-vacation-danger-opinions.md (refugee-origin PRs)
 
 ## Workflow
 1. Identify ground and section; collect facts and dates

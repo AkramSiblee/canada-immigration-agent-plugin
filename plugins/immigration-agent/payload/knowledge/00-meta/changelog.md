@@ -33,6 +33,7 @@
 | 2026-03-01 | Iran special measures limited to work permit holders (to 2027-03-31) | H |
 | 2026-03-09 | NWT Nominee Program opens; new EOI system for Employer-Driven stream | H |
 | 2026-03-26 | Bill C-12 Royal Assent | H |
+| 2026-03-26 | IRPA s.44.1 (2026, c. 4): Immigration Division may not hold an admissibility hearing if the person is not physically in Canada | H |
 | 2026-03-30 | SOR/2026-63 PNP eligibility authority | H |
 | 2026-03-31 | Citizenship right fee $123 (adult grant $653) | H |
 | 2026-03-31 | Super visa income: 2-year look-back; 75% + parent income top-up | H |
@@ -49,6 +50,7 @@
 | 2026-06-30 | Start-Up Visa final deadline for 2025-commitment holders | H |
 | 2026-08-12 | Alberta explains "economic establishment" for Rural, Graduate and Foreign Graduate Entrepreneur streams (criteria unchanged; checked during monitoring) | H |
 | 2026-07-02 | Quebec PEQ intake window opened | H |
+| 2026-07-02 | Quebec family sponsorship cap 2026-07-02 to 2028-06-30: 15,700 undertakings (13,300 spouses/partners; 2,400 parents, grandparents, other relatives); dependent children exempt; intake schedule by IRCC letter date | H |
 | 2026-07-15 | PGP pause confirmed until further notice | H |
 | 2026-07-15 | CICC Regulations SOR/2026-68 in force | H |
 | 2026-07-15 | CICC discipline penalties: up to $50,000 + additional up to $30,000; suspension up to 2 yrs (SOR/2026-68 s.38) | H |

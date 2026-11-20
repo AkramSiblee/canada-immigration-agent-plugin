@@ -37,7 +37,7 @@ sources:
 | Municipal Nominee Program | Never launched | |
 - Levels "Federal economic pilots" 7,900 (2027).
 
-**Per-community lists, intakes and limits for the Rural and Francophone programs: see rural-franco-communities.md.**
+**Per-community lists, intakes and limits for the Rural and Francophone programs: see rural-franco-communities.md.** Caregivers (pilot status, caregiver work permits, LMIA rules, PR alternatives): see caregivers.md.
 
 ### AIP and Rural eligibility (IRCC pages read 2026-11-08) (H)
 | | AIP | Rural Community Immigration |

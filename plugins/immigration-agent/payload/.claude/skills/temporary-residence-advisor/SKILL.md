@@ -8,6 +8,8 @@ description: Advise on visitor, study, work permits, status maintenance and rest
 - knowledge/05-temporary-residence/
 - knowledge/12-decision-trees/permit-expiring.md
 - knowledge/13-case-law/work-permit-status-refusals.md
+- knowledge/06-protection-humanitarian/family-violence-trafficking-vulnerable-workers.md (family violence / trafficking TRPs)
+- knowledge/03-quebec/temporary-workers-quebec.md (Quebec)
 
 ## Workflow
 1. Establish current status and expiry, then run `python3 scripts/status_clock.py` with the dates you have (`--expiry`, `--stay-end` if a later must-leave date, `--applied`, `--second-applied`, `--refused`, `--completion`, `--study-expiry`, `--principal-end`, `--spouse-applies`, `--unauthorized-ended`, `--spouse-route c41|c49|exempt`, `--mb-bridge`): maintained status, the date status was lost, the 90-day restoration deadline, the 6-month bar end, the spouse 16-month test and the 180-day PGWP window. Never count these dates by hand.

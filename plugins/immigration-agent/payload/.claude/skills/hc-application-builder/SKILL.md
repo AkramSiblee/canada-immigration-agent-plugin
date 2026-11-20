@@ -6,6 +6,8 @@ description: Structure a Humanitarian and Compassionate application. Use for H&C
 
 ## Read first
 - knowledge/06-protection-humanitarian/humanitarian-compassionate.md
+- knowledge/03-quebec/refugees-protected-persons-quebec.md (Quebec CSQ after approval in principle)
+- knowledge/09-procedure-litigation/removals-cbsa-deferrals.md (removal date pending)
 
 ## Workflow
 1. Check bars and prior decisions
