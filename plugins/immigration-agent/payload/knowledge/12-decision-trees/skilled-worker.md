@@ -2,8 +2,8 @@
 domain: 12-decision-trees
 topic: skilled-worker
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
@@ -57,6 +57,8 @@ sources:
    - TEER 4-5: ON Workforce Priority TEER 4-5 pathway; AB; YT Critical Impact (2026 intakes closed); AIP (TEER 0-4 only; no TEER 5)
    - Manitoba regional initiatives (see 02-pnp/manitoba.md). Morden (age 21-45): needs a Morden job or offer, unless physician, RN or French teacher on its current priority list. Several others closed in Nov 2026 (H, 2026-11-08)
    - Community routes: match the NOC to each community's current list (01-federal-economic/rural-franco-communities.md; 02-pnp/regional-community-streams.md). AB Rural Renewal from abroad: TEER 0-3 only. ON REDI communities
+6b. Caregiver (NOC 44100/44101, TEER 4)? -> no EE; home care pilots paused; caregiver WP from
+   abroad only for Quebec jobs; PNP/community lists that include 44101 (01-federal-economic/caregivers.md)
 7. None fits -> temporary route: LMIA / IMP work permit, or study, then CEC / PNP later.
    Check the 2027 workers cohort (provinces identify via PNP; no application).
 ```
@@ -96,4 +98,5 @@ Official pages for each time-sensitive rule (read when the linked knowledge file
 - Rural and Francophone community pilots: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration.html
 - Francophone Community Immigration Pilot: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
 - 2027 time-limited measures (levels plan): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2027-2029.html
-- Derived from knowledge/01-federal-economic, 02-pnp, 03-quebec (all verified 2026-11-07)
+- Caregivers (IRCC 2026-01-27; work permit page 2026-04-14): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/caregivers.html
+- Derived from knowledge/01-federal-economic, 02-pnp, 03-quebec (all H as of 2026-11-20; tree re-checked 2026-11-20)

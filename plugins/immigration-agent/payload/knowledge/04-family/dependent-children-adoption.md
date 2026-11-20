@@ -2,8 +2,8 @@
 domain: 04-family
 topic: dependent-children-adoption
 status: verified
-last_verified: 2026-11-09
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
@@ -34,7 +34,7 @@ sources:
 ### Adoption routes (H for IRPR, M for practice)
 - **Adopted abroad, under 18** (s.117(2)-(3)): best interests, genuine parent-child relationship, not for status (s.4(2)), valid under the law of the adoption place, Hague Convention compliance where applicable, provincial approval.
 - **Intended adoption in Canada** (s.117(1)(g)): orphan/abandoned child under 18 to be adopted in Canada; province confirms no objection.
-- **Adopted 18+**: only if the parent-child relationship existed before 18 (s.117(4)) (M).
+- **Adopted 18+ (IRPR s.117(4), read 2026-11-20) (H):** family class only if (a) the adoption complied with the law where it took place (and provincial law if the sponsor lived in Canada); (b) "a genuine parent-child relationship existed at the time of the adoption and existed before the child reached the age of 18"; and (c) it was not primarily to gain status. The s.4(2) bad-faith test does not apply to these adoptions (s.4(3)); the s.2 dependent-child test (under 22, or 22+ with a condition) still applies (reading of s.117(1)(b), M).
 - **Citizenship route** (Citizenship Act **s.5.1**, read 2026-11-08) (H):
   - **Minor at adoption (s.5.1(1)):** best interests; genuine parent-child relationship; valid under the laws of the place of adoption and the adopting citizen's country of residence; did not circumvent international adoption rules; not primarily for status.
   - **Adult at adoption (s.5.1(2)):** genuine parent-child relationship before 18 and at adoption, plus the same legal and no-status-purpose tests.

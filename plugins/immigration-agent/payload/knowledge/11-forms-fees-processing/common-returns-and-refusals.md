@@ -2,8 +2,8 @@
 domain: 11-forms-fees-processing
 topic: common-returns-and-refusals
 status: verified
-last_verified: 2026-11-07
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/common-supporting-documents.html
@@ -18,7 +18,8 @@ sources:
 
 ## Current rules
 ### Completeness (IRPR s.10, s.12)
-- Applications must be on the prescribed form, signed, with all required information, documents and **fees** (R10). Family class and other classes have extra completeness rules (R12) (M). Incomplete files are **returned** without processing (fees refunded).
+- **R10(1):** in writing on the Department's form (if any), **signed by the applicant**, with all information and documents the Regulations require, and **evidence of fee payment**; R10(2)(d) a declaration that the information is complete and accurate. Online files must use the Minister's electronic means (R9.1). Adoption files may follow up some family details later (R10(2.1)).
+- **R12:** if R10 or R11 is not met, the application and documents "shall be returned" (subject to R140.4). Program instructions add their own completeness checklists (e.g. IMM 5533 for spousal). IRPR current to 2026-10-29, read 2026-11-20 (H). Returned = not processed; IRCC refunds fees on return.
 
 ### Top return/refusal triggers (by program)
 | Program | Check before filing |

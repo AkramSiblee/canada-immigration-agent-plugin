@@ -2,8 +2,8 @@
 domain: 10-consultant-practice
 topic: ai-and-privacy
 status: verified
-last_verified: 2026-11-09
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-128/FullText.html
@@ -11,6 +11,8 @@ sources:
   - https://www.irb-cisr.gc.ca/en/legal-policy/procedures/Pages/practice-notice-ai-proceedings.aspx
   - https://www.fct-cf.ca/Content/assets/pdf/base/FC-Updated-AI-Notice-EN.pdf
   - https://laws-lois.justice.gc.ca/eng/acts/P-8.6/page-7.html
+  - https://college-ic.ca/protecting-the-public/professional-standards-of-practice
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/artificial-intelligence-strategy.html
   - https://www.priv.gc.ca/en/privacy-topics/technology/artificial-intelligence/gd_principles_ai/
   - https://www.priv.gc.ca/en/privacy-topics/airports-and-borders/gl_dab_090127/
   - https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1
@@ -22,8 +24,9 @@ sources:
 - CICC position, confidentiality, client consent, supervision, privacy law, cross-border storage, court and tribunal AI rules
 
 ## Current rules
-### CICC position (M)
-- **No AI-specific CICC rule or guidance found** as of 2026-11-09. Absence is not proof; confirm with the College.
+### CICC position
+- **No AI-specific CICC rule or guidance** on college-ic.ca: site search, News & Insights and Standards and Guidelines checked 2026-11-20 (H for absence). Confirm with the College before relying on silence.
+- **Professional Standards of Practice (approved 2023) that apply to AI use (H):** Standard 10 (maintain competence), **Standard 11 (confidentiality of all client information)**, **Standard 15 (supervise and take responsibility for all contracted services)** - treat an AI tool like a contracted service you must supervise.
 - The College told New Canadian Media (reported 2026) that licensees must meet their duties "competently and diligently, in line with the Code of Professional Conduct, regardless of the tools they may use".
 - Board package, September 2025: a scoping review of how regulators approach AI is complete, so the College can offer guidance "should AI become part of immigration practice". Guidance may follow.
 
@@ -54,7 +57,7 @@ Applies to all four divisions and all parties and counsel.
 - A declaration in the first paragraph is required when material prepared for litigation contains AI-generated content. Lawyer-only forum for RCICs; flag for referral.
 
 ### IRCC applications
-- No IRCC rule requiring disclosure of AI use by applicants or representatives was found (L). Accuracy duties and IRPA s.40 still apply. Don't assume the IRB ban extends to IRCC, but treat a client's own statements as the client's words.
+- **No IRCC rule requires applicants or representatives to disclose AI use** - not on IRCC's "advanced analytics" page (2026-02-20) or its AI Strategy (2026-03-12); both cover only IRCC's own use ("IRCC does not use any autonomous AI agents ... that can refuse client applications") (read 2026-11-20; H for absence). Accuracy duties and IRPA s.40 still apply. Don't assume the IRB ban extends to IRCC, but treat a client's own statements as the client's words.
 
 ### Privacy law (H)
 - **PIPEDA** covers private-sector commercial activity, and information crossing provincial or national borders. Organizations operating entirely within **Alberta, BC or Quebec** fall under those provinces' general private-sector laws for activity there. (OPC page 2018-01-31.)
@@ -76,7 +79,7 @@ Applies to all four divisions and all parties and counsel.
 
 ## Recent changes (2025-2027)
 - 2026-09-07: IRB Practice Notice on AI in force (H)
-- 2025: CICC scoping review of AI (M)
+- 2025-09: CICC Board scoping review of AI (Board package; no guidance issued as of 2026-11-20) (H)
 
 ## Consultant pitfalls
 - Never have AI draft or rewrite a BOC narrative, affidavit or witness statement for the IRB.

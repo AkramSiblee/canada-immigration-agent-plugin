@@ -2,8 +2,8 @@
 domain: 11-forms-fees-processing
 topic: forms-directory
 status: verified
-last_verified: 2026-11-10
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides.html
@@ -28,7 +28,7 @@ sources:
 | IMM 5409 | Statutory Declaration of Common-Law Union | 2023-01 per IRCC page; the current file itself prints 04-2009 (read 2026-11-10) |
 | IMM 5562 | Supplementary Information: Your Travels | 2024-07 (IRCC page and file path, read 2026-11-10; the form carries no version) |
 | IMM 5257 | Application for Visitor Visa | 2023-09 (form file, read 2026-11-10) |
-| IMM 5257 Schedule 1 (IMM 5257B) | Background declaration, visitor visa | No current official version found on IRCC's site; only a 2012 edition circulates. The 2023 IMM 5257 asks the background questions itself; some visa office kits (e.g. Accra, IMM 5854) still list it (L, 2026-11-10) |
+| IMM 5257 Schedule 1 (IMM 5257B) | Background declaration, visitor visa | **Not on IRCC's current forms list** (re-checked 2026-11-20; its form page returns 404). The 2023 IMM 5257 asks the background questions itself. Some visa office kits (e.g. Accra, IMM 5854) still list it: follow the office kit if it asks (H for absence) |
 | IMM 5645 | Family Information (visitors, students, workers) | 2021-01 (form file, read 2026-11-10) |
 | IMM 5707 | Family Information (named by most local visa office forms) | 2023-01 (IRCC page and file path, read 2026-11-10; the form itself carries no version) |
 | IMM 5646 | Custodian Declaration (minor students) | 2023-01 |
@@ -76,7 +76,7 @@ sources:
 | CIT 0008 | Citizenship, minors s.5(2) | 2026-06 | |
 | CIT 0014 | Proof of citizenship | 2026-08 | Scenarios 1-5, including the 1,095-day proof for births on or after 2025-12-15 |
 | IMM 5771 | Parents and grandparents, 2025 intake | 2025-07 | Police certificates and medicals requested later |
-| IMM 5533 | Spouse, partner, dependent children | 2022-09 | Old paper-era checklist; confirm against the PR Portal (M) |
+| IMM 5533 | Spouse, partner, dependent children | 2022-09 | Current edition (form page updated 2025-09-11, read 2026-11-20); online applicants upload the completed checklist (H) |
 | IMM 5644 | PR card or PRTD | 2024-12 | |
 | (page) | Super visa | page read 2026-11-10 | No checklist form; from IRCC's super visa documents page |
 Stored in `templates/checklists/`. Visitor, study and work permit lists are generated per applicant online, so none is stored.

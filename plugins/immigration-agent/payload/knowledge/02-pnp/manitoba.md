@@ -161,7 +161,7 @@ Eligibility source: https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ (offi
 - **EOI points (official Self-Assessment Form, effective May 2019, posted 08-2024; read 2026-11-20) (H): 150 max.** Human capital: age 10 (36-45 = 10), education 10, business experience 30 (owner 11+ yrs = 30, 7-10 = 25, 3-6 = 20; senior manager 7+ = 10, 3-6 = 5), official language 25. Business: net worth 10, business investment 15, economic priorities 5, **business research visit 20**. Adaptability 25. Pass mark: not stated on the form (unknown). Older secondary grids are superseded. URL: https://immigratemanitoba.com/wp-content/uploads/2024/08/bis-enp-self-assessement-Aug-2024.pdf
 - **Process (official guide + secondary, M):**
   1. Email the EOI.
-  2. LAA, then the full application, **net worth verification report** and the **$2,500 fee within 120 days** of the LAA. Late files may be refused.
+  2. LAA, then the full application, **net worth verification report** and the **$2,500 fee within 120 days** of the LAA (official EP Program Guide, H); a new EOI is needed if the LAA expires. Late files may be refused.
   3. Approval letter, then sign the **Business Performance Agreement (BPA)** with Manitoba.
   4. MPNP issues a **work permit support letter** ("Entrepreneur Work Permit Support Letter" plus a candidate letter of confirmation, per secondary sources), valid about **3 months** (secondary, L). The temporary-resident applicant then applies for a work permit. This is not PR.
   5. Arrive and establish or buy the business within **24 months of arrival**.

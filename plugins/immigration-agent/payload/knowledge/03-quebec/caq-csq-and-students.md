@@ -2,8 +2,8 @@
 domain: 03-quebec
 topic: caq-csq-and-students
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.quebec.ca/en/education/study-quebec/temporary-selection-studies
@@ -20,17 +20,17 @@ sources:
 - Fee **$135** (from 2026-01-01; indexed each Jan 1). Decision in **25 business days** (80%).
 - Arrima application; fee paid within 1 hour; documents within 15 days, uploaded by the applicant only (not the representative). CAQ then serves as the attestation for the federal study permit (quebec.ca, updated 2026-11-10) (H).
 - **2026 living-cost amounts (students, per year):** 1 person $24,617; 2 $34,814; 3 $42,638; 4 $49,234; 5 $55,045; 6 $60,299; each extra $5,254 (quebec.ca, 2026-01-01) (H). Plus tuition and travel; these replace IRCC's table for Quebec.
-- **Cap on CAQ applications per institution** (Decree 1488-2025), in **two periods: 2025-12-17 to 2026-12-16, then 2026-12-17 to 2027-12-16** (vocational, college, university). Revised by order of 2026-07-22. Tracking tables are on a Quebec PDF. Renewals for the same program, level and institution are exempt. Compared with 2024: private vocational -35%, non-protected AEC -75%, DEC/university roughly unchanged; 124,760 total from secondary sources only (M). The first period ends 2026-12-16: check the institution's remaining room for the second (quebec.ca news; 14-policy-tracker/announced-for-2027.md).
+- **Cap on CAQ applications per institution** (Decree 1488-2025), in **two periods: 2025-12-17 to 2026-12-16, then 2026-12-17 to 2027-12-16** (vocational, college, university). Revised by order of 2026-07-22. Tracking tables are on a Quebec PDF. Renewals for the same program, level and institution are exempt. Compared with 2024: private vocational -35%, non-protected AEC -75%, DEC/university roughly unchanged. A total of 124,760 appears only in secondary sources and is **not on official pages** (re-checked 2026-11-20): don't quote it; use the institution's tracking table. The first period ends 2026-12-16: check the institution's remaining room for the second (quebec.ca news; 14-policy-tracker/announced-for-2027.md).
 - Cap exemptions: same program and institution; asylum seekers; dependent children of workers/students; health refresher training; certain scholarships; protocol certificate holders; transfers after an institution closes.
 - Institution events: TAQ (2026-07-28) suspended the licence non-renewal of Collège supérieur de Montréal / Sherbrooke pending decision. Herzing Montréal may continue Computing Support to 2027-05-07.
 - The CAQ replaces the PAL for federal study permits.
 
 ### CAQ for work (TFWP)
-- Required with an LMIA in Quebec (joint process). Fee and processing not found this pass.
+- Required with an LMIA in Quebec (joint process). Quebec now calls it the temporary selection application; fee **$233** in 2026, payable by worker or employer (quebec.ca, H). Detail: `temporary-workers-quebec.md`.
 - **New French requirement**: CAQ renewals after a **3-year** work stay in Quebec need **oral French level 4**. Verification applies to applications from **2028-12-17** (transition). Exempt: agricultural workers, foreign-state offices, recognized INGO staff.
 
 ### CSQ
-- Issued after PSTQ (or PEQ) selection. Then federal PR. A CSQ 24 months old or less gives IMP+ OWP eligibility (see pstq.md). CSQ fee not found separately (PSTQ application fee $940 covers selection).
+- Issued after PSTQ (or PEQ) selection. Then federal PR. A CSQ 24 months old or less gives IMP+ OWP eligibility (see pstq.md). No separate CSQ fee: the permanent selection fee is **$940** principal, **$201** spouse, **$201** per child (2026, indexed 1 January; PSTQ page 2026-01-01) (H).
 
 ## Recent changes (2025-2027)
 - 2025-12-17: study CAQ cap per institution (to 2027-12-16) (H)
@@ -47,7 +47,7 @@ sources:
 - CAQ: institution cap reached; insufficient funds (Quebec amounts); incoherent study plan
 
 ## Re-verify before advising
-- Work CAQ fee/processing; cap table (Quebec student funds amounts filled 2026-11-17)
+- Cap table (each institution); 2027 fees (from 2027-01-01) (Quebec student funds amounts filled 2026-11-17)
 
 ## Sources
 - Study CAQ (2026-01-01, notice 2026-07-22): https://www.quebec.ca/en/education/study-quebec/temporary-selection-studies

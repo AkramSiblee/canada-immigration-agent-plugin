@@ -2,8 +2,8 @@
 domain: 11-forms-fees-processing
 topic: source-of-funds-net-worth
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 180
 sources:
   - https://www.gnb.ca/content/dam/GNB3/t/fhc-fmc/immigration/docs/nb-business-immigration-stream-guide.pdf
@@ -26,13 +26,13 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 ### Program snapshot
 | Item | NB Business Immigration (guide Mar 2025) | NS Entrepreneur (guide Sep 2026) | BC EI Base (guide eff. 2024-05-27) | MB Business Investor |
 |---|---|---|---|---|
-| Net worth minimum | $500,000 ($300,000 farm) | $600,000 in HRM / $400,000 outside | $600,000 (Regional $300,000) | $500,000 per `02-pnp/manitoba.md` (M) |
+| Net worth minimum | $500,000 ($300,000 farm) | $600,000 in HRM / $400,000 outside | $600,000 (Regional $300,000) | $500,000 (MPNP EP apply page, read 2026-11-20) (H) |
 | Whose assets | Applicant + spouse; must be **in either or both names** | Applicant; spouse's assets may count | Applicant + spouse + dependent children | Not verified |
 | Legally obtained | Yes, "legally obtained" | "earned your net worth legally" | "legally obtained and verifiable" | Yes (secondary quoting official page, M) |
 | Gifts / inheritances | **Gifts, donations, inheritances received < 6 months before ImmigrationNB receives the application do not count** | No gift rule in the guide | **Future inheritances excluded**; no gift timing rule in the program guide | **Unknown** (only a consultant site claims third-party gifts are a refusal ground, L) |
 | Liquidity | No separate liquid minimum in guide | Amount must be movable "to Canada quickly" | Points for current (liquid) assets; term deposits count if cashable within 12 months | Not verified |
-| Verifier | Designated: Doane Grant Thornton LLP or MNP LLP; wrong verifier = refusal | Designated: Doane Grant Thornton LLP, KPMG-Toronto, MNP (page read 2026-11-17) | BC PNP-authorized accounting firm (list sent with ITA) | MPNP-designated third-party verifier; "verification of net worth and source of funds report" (M) |
-| Timing | Engage after ITA; report due within **90 days** of ITA; valid **12 months** | Pick verifier within **20 days** of ITA; report within **180 days** of ITA | Engage after ITA; up to **60 days**; valid **12 months**; application due 120 days after ITA | Report with application, within 120 days of LAA per `02-pnp/manitoba.md` (M) |
+| Verifier | Designated: Doane Grant Thornton LLP or MNP LLP; wrong verifier = refusal | Designated: Doane Grant Thornton LLP, KPMG-Toronto, MNP (page read 2026-11-17) | BC PNP-authorized accounting firm (list sent with ITA) | Designated: **KPMG LLP** or **MNP LLP** (Winnipeg); "complete verification of net worth and source of funds report" filed with the application (EP apply page, 2026-11-20) (H) |
+| Timing | Engage after ITA; report due within **90 days** of ITA; valid **12 months** | Pick verifier within **20 days** of ITA; report within **180 days** of ITA | Engage after ITA; up to **60 days**; valid **12 months**; application due 120 days after ITA | Report and application within **120 days** of the LAA; verifier needs up to 60 days (official EP Program Guide, posted 2024-07, read 2026-11-20) (H) |
 | Conflict rule | Verifier who helps with the business plan = refusal | Review-engagement provider who helped write the plan cannot review it | CPA for final review engagement must have no conflict | Not verified |
 | Mismatch | Unverifiable net worth = do not apply | NWV report different from EOI = file closed (treated as misrepresentation) | Undeclared net worth or unverified source = may refuse | Not verified |
 | Misrepresentation bar | Refused for misrep in last 5 years = ineligible | **5-year** bar from all NS streams | BC PNP may refuse new files for **up to 2 years** | Not verified |
@@ -88,5 +88,5 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 - IRCC proof of funds (modified 2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/proof-funds.html
 - R98.01: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-98.01.html
 - R87: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-87.html
-- Manitoba figures: `knowledge/02-pnp/manitoba.md` (M)
+- Manitoba figures: `knowledge/02-pnp/manitoba.md` (H, official EP page 2026-11-20)
 All read 2026-11-17.

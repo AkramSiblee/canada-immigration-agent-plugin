@@ -2,8 +2,8 @@
 domain: 12-decision-trees
 topic: protection
 status: verified
-last_verified: 2026-11-07
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/asylum/eligibility.html
@@ -41,7 +41,15 @@ sources:
    CBSA says at the interview if PRRA available -> apply in 15 days (in person) / 22 (mail)
 8. Also consider: H&C (no pending claim; 12-month bar after IRB decision; BIOC/medical exceptions),
    TRP, family sponsorship, other status
-9. REFER TO LAWYER: retroactive-bar challenges, Federal Court JR/stays, s.34/35 issues
+9. Detained? -> ID review within 48 h, then 7 days, then every 30 days; line up a bondsperson
+   (09-procedure-litigation/immigration-division-detention-admissibility.md)
+10. Lives in Quebec and accepted? -> file Quebec CSQ (A-0520-DF, free) with the IRCC PR application;
+    IFHP ends 90 days after the decision (03-quebec/refugees-protected-persons-quebec.md)
+11. Protected person / refugee-PR travelled home or renewed home passport? -> cessation risk;
+    PR lost for s.108(1)(a)-(d) (06-protection-humanitarian/cessation-vacation-danger-opinions.md)
+12. Trafficking or family violence? -> fee-exempt TRPs (family-violence-trafficking-vulnerable-workers.md)
+13. REFER TO LAWYER: retroactive-bar challenges, Federal Court JR/stays, s.34/35 issues,
+    cessation/vacation/danger-opinion notices
 ```
 
 ## Recent changes (2025-2027)
@@ -68,6 +76,9 @@ Official pages for each time-sensitive rule (read when the linked knowledge file
 - RAD time limits: 15 / 30 days (IRPR s.159.91): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-23.html
 - PRRA eligibility and how to apply (15 / 22 days): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/eligibility.html
 - PRRA how to apply: https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/pre-removal-risk-assessment/how-to-apply.html
-- H&C (12-month bar and exceptions): https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/protection/refusal-options/humanitarian-compassionate-grounds.html
+- H&C (Guide 5291, 2026-10-22; 12-month bar and exceptions, IRPA s.25(1.2)-(1.21)): https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5291-humanitarian-compassionate-considerations.html
+- Detention reviews (IRPA s.57): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-7.html
+- Cessation (IRPA s.108, s.46(1)(c.1)): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-14.html
+- Quebec protected persons CSQ (2026-11-09): https://www.quebec.ca/en/immigration/refugees-asylum-seekers/refugees-recognized-in-canada
 - Federal Court judicial review (IRPA s.72): https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-9.html
-- Derived from knowledge/06-protection-humanitarian and 09-procedure-litigation (verified 2026-11-07)
+- Derived from knowledge/06-protection-humanitarian and 09-procedure-litigation (all H; tree re-checked 2026-11-20)

@@ -2,6 +2,15 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.16.2
+- **15 more knowledge files checked on official sources** (now high confidence): Quebec PEQ, CAQ/CSQ and the Quebec plan, adoption, GCMS notes requests, procedural fairness, AI and privacy, application returns, the forms list, source of funds, and all five decision trees.
+  - **Quebec**: official 2026 plan figures (43,000-47,000 admissions; about 64% economic, about 76% French-speaking); PEQ conditions and $940 fee (PEQ stays closed, with no new window decided); no 2027 Quebec plan yet.
+  - **Correction**: US citizens are exempt from biometrics for work and study permits, TRPs, extensions and restoration, but not for visitor visas.
+  - **Adoption at 18 or older**: the exact conditions in the regulations (a genuine parent-child relationship before 18).
+  - **GCMS notes**: 30-day legal deadline, the extension rules, and CBSA records need a separate request.
+  - **Decision trees** now point to the new topics: Quebec sponsorship caps, family violence, detention, cessation risk, caregivers.
+- The five case-law files stay at medium confidence until their citations are checked on CanLII.
+
 ## 1.16.1
 - **All provincial nominee files now checked on official sources** (high confidence):
   - **Newfoundland and Labrador**: entrepreneur points grid (120 points, pass mark 72), no deposit, deadlines after approval (work permit within 2 months, arrival within 6 months), up to 10 partners for International Entrepreneur and 3 for International Graduate Entrepreneur, 5-year bar for misrepresentation.

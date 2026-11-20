@@ -21,7 +21,7 @@ _Holdings summarized from well-established authority. Confirm the pinpoint on Ca
 |---|---|
 | *Canada (MCI) v Vavilov*, 2019 SCC 65 | Reasonableness is the presumptive standard of review. A decision must be justified, transparent and intelligible in light of legal and factual constraints. |
 | *Mason v Canada (MCI)*, 2023 SCC 21 | Applies Vavilov to IRPA s.34(1)(e). Officer interpretations must account for the statutory scheme and international law; an unreasonable interpretation was set aside. |
-| *Kanthasamy v Canada (MCI)*, 2015 SCC 61 | H&C under s.25 is a global, compassionate assessment. "Unusual and undeserved or disproportionate hardship" is not a threshold. BIOC must be well identified and defined. |
+| *Kanthasamy v Canada (MCI)*, 2015 SCC 61, [2015] 3 SCR 909 (decided 2015-12-10; CanLII checked 2026-11-20) | H&C under s.25 is a global, compassionate assessment. "Unusual and undeserved or disproportionate hardship" is not a threshold. BIOC must be well identified and defined. |
 | *Baker v Canada (MCI)*, [1999] 2 SCR 817 | Procedural fairness content varies by context (Baker factors). Children's best interests are central to H&C. |
 | *Agraira v Canada (PSEP)*, 2013 SCC 36 | Ministerial relief (national interest) focuses on national security and public safety; deference to the Minister. |
 | *Tran v Canada (PSEP)*, 2017 SCC 50 | Serious criminality is assessed by the maximum sentence **at the time of the offence**, not later increases. |

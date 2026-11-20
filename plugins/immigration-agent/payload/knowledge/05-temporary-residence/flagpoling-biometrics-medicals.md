@@ -35,7 +35,7 @@ sources:
 - **30 days** from the biometric instruction letter (BIL) to give biometrics; can't meet it: explain via IRCC web form. Appointment required (free); bring BIL + passport.
 - Where: VAC outside Canada; in the US, ASC or VAC (must be legally in the US); in Canada, designated Service Canada office via eServiceCanada; at a POE only if eligible to apply for a work/study permit there and the whole application is made there (not after a BIL). Citizenship fingerprints are police/RCMP-accredited, not Service Canada.
 - **Valid 10 years**: no visa or permit beyond 10 yrs from the last biometrics (IRCC; IRPR s.183(4)(c.1)).
-- **Required** for TR (except US nationals), PR, refugee/asylum; also extensions unless visa-exempt.
+- **Required** for TR, PR, refugee/asylum; also extensions unless visa-exempt. US nationals are exempt for work/study permits, TRPs, extensions and restoration (IRPR 12.2(1)(c)(ii), read 2026-11-20).
 - **Exempt**: citizens; existing PRs; visa-exempt eTA applicants; visa-exempt visitor-record extensions; **children under 14**; **over 79** (not for asylum claimants); heads of state; diplomatic/official visas; US visa holders in transit; anyone with biometrics in a pending PR application.
 
 ### Immigration medical exam (IME)

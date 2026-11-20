@@ -2,8 +2,8 @@
 domain: 09-procedure-litigation
 topic: procedural-fairness-and-refusals
 status: verified
-last_verified: 2026-11-09
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-23.html
@@ -19,7 +19,7 @@ sources:
 
 ## Current rules
 ### Procedural fairness letters (PFL)
-- Sent before a negative decision on concerns the applicant couldn't anticipate (credibility, misrepresentation, medical, genuineness). Medical PFLs: **90 days** to respond (IRCC). Other PFLs set their own deadline (often 30 days) (M).
+- Sent before a negative decision on concerns the applicant couldn't anticipate (credibility, misrepresentation, medical, genuineness). Medical PFLs: **90 days** from the letter date; ask IRCC for an extension if needed (IRCC medical inadmissibility page, 2026-07-23, read 2026-11-20) (H). Other PFLs set their own deadline in the letter - always use the date stated in the letter (often 30 days; practice, not a rule).
 - Duty level varies with the stakes (*Baker v Canada*, 1999 SCC; M).
 
 ### PFL response structure
@@ -32,7 +32,7 @@ sources:
 ### After refusal: options
 | Option | When | Deadline |
 |---|---|---|
-| **Reconsideration request** | Clear officer error/oversight; discretionary (officer *functus* is relaxed for administrative decisions) | No statutory limit; act fast (M) |
+| **Reconsideration request** | Clear officer error/oversight; discretionary (officer *functus* is relaxed for administrative decisions) | No statutory or regulatory limit; officers have discretion to reconsider (*Kurukkal v Canada (MCI)*, 2010 FCA 230). A reconsideration request does **not** stop the 15/60-day JR clock (H) |
 | **Reapplication** | Weak evidence, fixable gaps | Unless barred (s.40 5-yr; H&C 12 months after IRB) |
 | **IAD appeal** | Family class sponsorship, removal orders, RO | 30 / 30 / 60 days (IAD Rules r.16) |
 | **RAD appeal** | Negative RPD decision (no RAD for some claimants, e.g. designated foreign nationals, withdrawn/abandoned claims, manifestly unfounded or no-credible-basis findings, STCA-exception land-border claims: IRPA s.110(2), M) | File **15 days** / perfect **30 days** after receiving written reasons (IRPR s.159.91(1)); extension possible (s.159.91(2)) (H) |
@@ -41,7 +41,7 @@ sources:
 
 - **TR refusals (Help Centre 1675 and 023, 2026-11-03, read 2026-11-09):** no formal appeal. Re-apply only if the situation changed significantly or new information addresses the reason. JR for unreasonableness or error of law or fairness. After a study permit refusal a new PAL is needed.
 
-### Typical refusal grounds by program (M)
+### Typical refusal grounds by program (practice summary; case support in 13-case-law/)
 - TRV/study: R179(b)/R216 (dual intent, ties, funds, purpose)
 - Work: experience/language for the job; LMIA mismatch
 - EE: points unsubstantiated; reference letters
@@ -49,7 +49,7 @@ sources:
 - PR: inadmissibility; incomplete (R10)
 
 ## Recent changes (2025-2027)
-- None structural (M)
+- No structural change to PFL or reconsideration rules found (IRPR/IRPA current to 2026-10-29; IRCC medical page 2026-07-23) (H)
 
 ## Consultant pitfalls
 - Never miss the PFL deadline. Silence leads to a negative decision on the record.

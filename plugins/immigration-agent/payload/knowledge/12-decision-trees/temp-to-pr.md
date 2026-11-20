@@ -2,8 +2,8 @@
 domain: 12-decision-trees
 topic: temp-to-pr
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-25.html
@@ -52,7 +52,9 @@ sources:
    - PNP in-Canada streams (ON Workforce Priority: 6 months in offered job; BC; AB; SK work experience; NS one-time
      expanded selection for 2026-expiring permits CLOSED: EOIs had to be filed by 2026-06-30)
    - Quebec: PSTQ Stream 2 (PEQ closed)
-   - Spousal in-Canada, H&C
+   - Spousal in-Canada, H&C (Guide 5291; open WP after approval in principle, R207(d))
+   - Caregivers (TEER 4): no EE; pilots paused -> 01-federal-economic/caregivers.md
+   - Abused on an employer-specific permit -> OWP-V (fee-free, 1 yr); abused by spouse -> family violence TRP
 5. 2027 time-limited measure (no application):
    - Workers cohort (up to 100,000 workers and families): people already waiting under AIP or closed programs
      (SUV, Self-Employed, Agri-Food, home care) or PNP-eligible, in Canada, outside Quebec, via optional extra

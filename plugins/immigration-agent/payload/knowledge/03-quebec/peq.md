@@ -2,11 +2,13 @@
 domain: 03-quebec
 topic: peq
 status: verified
-last_verified: 2026-11-08
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise
+  - https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise/conditions-selection
+  - https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise/presenter-demande
   - https://www.quebec.ca/nouvelles/actualites/details/programme-de-lexperience-quebecoise-le-gouvernement-frechette-tient-promesse-le-peq-sera-reactive-pour-deux-ans-71024
 ---
 # PEQ (Programme de l'expérience québécoise)
@@ -17,7 +19,12 @@ sources:
 ## Current rules
 - **CLOSED to new applications since 2026-10-31.** "La période de réception des demandes ... qui était ouverte depuis le 2 juillet 2026, est fermée depuis le 31 octobre 2026." No date yet for another window (page updated 2026-10-29). Quebec's reinstatement notice says new periods may open before the program ends on 2028-07-02.
 - After 2026-10-31, only requests to add or remove family members are accepted on existing files.
-- For: temporary foreign workers with Quebec experience; foreign graduates of Quebec programs. French level and stream criteria for the 2026 window were not read this pass.
+- "Il n'y a pas de décision prise quant à une possible nouvelle période de réception des demandes" (PEQ page, updated 2026-10-29, read 2026-11-20) (H).
+
+### Selection conditions (sub-pages updated 2026-10-29, read 2026-11-20) (H)
+- **Volet Travailleurs temporaires:** oral French **level 7+** (Échelle québécoise; spouse oral 4+); job in **FÉER 0-3**, legal, paid, full-time (30+ h/week), held at application and for **24 of the 36 months** before applying; part-time and work for a company you control don't count.
+- **Volet Diplômés du Québec:** oral French **7+** and **written 5+** (spouse oral 4+); diploma within the last **36 months**, full-time, Quebec institution: bachelor's, master's/MBA, doctorate, DEC technique, DEP 1,800+ h (or DEP+ASP 1,800+ h) only; lived in Quebec mainly to study for at least half the program. The French-language-program requirement was removed.
+- **Fee (2026, indexed each 1 January):** principal **$940**, spouse $201, each child $201; credit card; non-refundable (PEQ "Présenter une demande" page, 2026-06-17) (H). Forms unavailable while closed.
 
 ## Recent changes (2025-2027)
 - 2025-11-19: PEQ abolished (H: Quebec government notice)
@@ -34,7 +41,6 @@ sources:
 
 ## Re-verify before advising
 - PEQ windows (any new window after 2026-10-31)
-- PEQ French level and criteria (subpages)
 
 ## Sources
 - PEQ (French, updated 2026-10-29; read 2026-11-07): https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-experience-quebecoise

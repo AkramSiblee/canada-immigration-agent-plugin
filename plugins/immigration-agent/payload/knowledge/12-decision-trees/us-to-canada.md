@@ -2,8 +2,8 @@
 domain: 12-decision-trees
 topic: us-to-canada
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 60
 sources:
   - knowledge/05-temporary-residence/work-permits-lmia-exempt.md
@@ -190,7 +190,7 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
      legally in the US"; book the ASC appointment on the USCIS website after the biometric instruction letter arrives;
      appointments are free, "Don't pay anyone to book an appointment" (where-to-give page 2026-08-24) (H).
      IRCC fee $85 / $170 family max / $255 performing artists (how-to-give page 2026-03-30) (H).
-     US nationals are exempt from biometrics for work, study and TRP applications (R12.2(1)(c)(ii); M, search snippet)
+     US nationals are exempt from biometrics for work and study permits (incl. renewals), TRPs, extensions and restoration, **not** for visitor visas or PR (IRPR 12.2(1)(c)(ii) with 12.1(e)-(i); current to 2026-10-29, read 2026-11-20; H)
      (flagpoling-biometrics-medicals.md).
    - Medicals: IRCC panel physician in the US (panel physician finder); results valid 12 months.
    - IRCC VACs in the US: Los Angeles and New York (visitor-country-reference.md).
@@ -212,7 +212,7 @@ Individual facts marked (H) were read on an official page. Re-check each branch'
 - IRPR s.214 (current to 2026-10-29), study permit instructions (2025-12-22), study permit apply page (2026-09-02),
   attestation-letters instructions (2026-02-06): read 2026-11-17 (H)
 - IEC Recognized Organizations (2025-12-18): read 2026-11-17 (H)
-- Biometrics where-to-give (2026-08-24) and how-to-give (2026-03-30): read 2026-11-17 (H); R12.2 US exemption (M)
+- Biometrics where-to-give (2026-08-24) and how-to-give (2026-03-30): read 2026-11-17 (H); R12.2 US exemption read on Justice Laws 2026-11-20 (H)
 - Digital nomads instructions (2026-05-26): read 2026-11-17 (H)
 - Tech Talent campaign (H-1B OWP closed) (2024-04-24): read 2026-11-17 (H for the closed status)
 - IRCC notices (2026-11-05) and category-based selection (2026-10-16): read 2026-11-17, no H-1B pathway (H)

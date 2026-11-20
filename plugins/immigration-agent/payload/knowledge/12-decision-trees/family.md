@@ -2,8 +2,8 @@
 domain: 12-decision-trees
 topic: family
 status: verified
-last_verified: 2026-11-07
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 90
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/proof-citizenship.html
@@ -43,7 +43,12 @@ sources:
    c) Parent/grandparent -> PGP PAUSED (MI89; no intake) -> Super Visa
       (income table, 2-yr look-back, 75% + parent income; OSFI insurer at least $100k, 1 yr)
    d) Other relatives -> only "lonely Canadian" / orphaned rules (R117(1)(f)-(h)); H&C
-3. Fees: spouse $1,260; child $180; Super Visa $100 + $85 biometrics
+3. Sponsor lives in Quebec? -> also MII undertaking: cap 15,700 to 2028-06-30
+   (13,300 spouses; 2,400 parents/others; children exempt), filing date set by the
+   IRCC letter date (03-quebec/family-sponsorship-quebec.md)
+4. Abuse in the relationship / status depends on abuser? -> family violence TRP
+   (fee-exempt, OWP, IFHP) + H&C (06-protection-humanitarian/family-violence-trafficking-vulnerable-workers.md)
+5. Fees: spouse $1,260; child $180; Super Visa $100 + $85 biometrics
 ```
 
 ## Recent changes (2025-2027)
@@ -56,7 +61,7 @@ sources:
 - See 04-family files
 
 ## Re-verify before advising
-- PGP intake announcements
+- PGP intake announcements; Quebec cap usage per category
 
 ## Sources
 Official pages for each time-sensitive rule (read when the linked knowledge files were last verified):
@@ -71,4 +76,6 @@ Official pages for each time-sensitive rule (read when the linked knowledge file
 - Super Visa eligibility, income and insurance: https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa/eligibility.html
 - Super Visa income change (2026-03-31): https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/changes-parents-grandparents-super-visa-income-requirement-calculated.html
 - Fees: spouse $1,260; child $180; Super Visa $100; biometrics $85 (fee list modified 2026-11-10): https://ircc.canada.ca/english/information/fees/fees.asp
-- Derived from knowledge/04-family and 07-citizenship-pr-status (verified 2026-11-07)
+- Quebec sponsorship caps (MII, 2026-11-11): https://www.quebec.ca/en/immigration/permanent/sponsor-family-member/rules-reception-applications
+- Family violence TRP (PDI 2025-04-04): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/permits/family-violence.html
+- Derived from knowledge/04-family, 03-quebec, 06-protection-humanitarian and 07-citizenship-pr-status (all H; tree re-checked 2026-11-20)
