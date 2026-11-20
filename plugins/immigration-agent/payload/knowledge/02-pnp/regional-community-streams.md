@@ -2,8 +2,8 @@
 domain: 02-pnp
 topic: regional-community-streams
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.alberta.ca/aaip-rural-renewal-stream-eligibility
@@ -39,11 +39,11 @@ sources:
 | Ontario | REDI | Below (H) |
 | BC | Regional Immigration Collaboration (entrepreneurs) | Below (H) |
 | New Brunswick | Critical Workers Pilot (employer-limited) | Below (H) |
-| Yukon | Community Program ended 2025-06-30 | No successor found (M) |
-| Saskatchewan | None found | Search only; sector rules apply (M) |
-| Nova Scotia | None current | "Community Identified" is a historical stream (M) |
-| PEI, Newfoundland | None found | Search only (M) |
-| NWT | None found | Search only (M) |
+| Yukon | Community Program ended 2025-06-30 | No successor: official YNP lists only Skilled Worker, Critical Impact Worker, Express Entry (yukon.ca, read 2026-11-20) (H) |
+| Saskatchewan | None | Not among the official SINP categories in saskatchewan.md (H for absence) |
+| Nova Scotia | None current | Official 4 streams since 2026-02-18 include no community stream; "Community Identified" is historical (nova-scotia.md, H) |
+| PEI, Newfoundland | None | Not on the official PEI stream/draw pages (read 2026-11-20) or NL PNP pages (read 2026-11-20) (H for absence) |
+| NWT | None | Official streams: Employer-Driven, Francophone, Business (immigratenwt.ca; northwest-territories.md) (H for absence) |
 | Nunavut, Quebec | No PNP | See nunavut-note.md, 03-quebec |
 
 ### Alberta: Rural Renewal
@@ -111,7 +111,7 @@ Funds needed if outside Canada, or in Canada and not working.
 - Community Program pilot (up to 3 part-time jobs; Dawson, Carmacks, Carcross, Haines Junction, Watson Lake, Whitehorse) **ended 2025-06-30**.
 
 ## Recent changes (2025-2027)
-- 2025-06-30: Yukon Community Program ended (M)
+- 2025-06-30: Yukon Community Program ended (H: no community stream on the 2026 YNP pages)
 - 2026-10-14: Ontario new REDI round, to end of 2027 (H)
 - 2026-05-13: Foothills County joined Alberta Rural Entrepreneur (H)
 

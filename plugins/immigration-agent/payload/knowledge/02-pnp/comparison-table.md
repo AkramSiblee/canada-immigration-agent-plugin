@@ -3,7 +3,7 @@ domain: 02-pnp
 topic: comparison-table
 status: verified
 last_verified: 2026-11-20
-confidence: M
+confidence: H
 review_every_days: 30
 sources:
   - https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp
@@ -45,7 +45,7 @@ sources:
 - **Software developers (21231/21232) without a job offer (read 2026-11-09):** AB Accelerated Tech, SK Tech Talent, ON, BC, NB EE, NL EE all need a provincial job or offer. NS EE needs 1 year of NS work in TEER 0-3 (stream page read 2026-11-16; a Notice of Interest leads to the Critical Vacancies page, not an alternative stated on the stream page). MB SWO needs a connection. SK Occupation In-Demand has no job offer requirement but no scheduled EOI draws; May 2024 excluded list doesn't name 21231/21232 (check current list). PEI EE grid scores non-offer candidates but tech isn't a stated priority (M).
 - National PNP target 2027: 95,000 + extra 2027 workers-cohort allocations (per-province not published).
 - Up to 10,000 extra federal spaces across PNPs for practice-ready physicians / Francophones (2026).
-- **Atlantic 2026 allocations remain unofficial.** Secondary estimates conflict widely: NS 2,265 / 2,344 / 4,127 / 5,236; NB 2,065 / 3,603 / 4,573; NL 1,050 / 1,998 / 2,537; PEI 1,025 / 1,340. Do not quote; confirm with each province (L).
+- **Atlantic 2026 allocations: not published.** Re-checked 2026-11-20 on NB (gnb.ca notices cite only "limited allocation"), NL, PEI and NS official pages and IRCC: no 2026 numbers (H for absence). Secondary estimates conflict widely (e.g. NS 2,265-5,236; NB 2,065-4,573; NL 1,050-2,537; PEI 1,025-1,340) - **never quote them** (L).
 - National 2026 PNP admissions target 91,500 (official 2026-2028 Levels Plan) (H).
 
 ## Entrepreneur streams (as of 2026-11-17)

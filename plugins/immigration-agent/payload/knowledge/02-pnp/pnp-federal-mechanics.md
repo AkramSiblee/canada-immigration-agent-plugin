@@ -2,8 +2,8 @@
 domain: 02-pnp
 topic: pnp-federal-mechanics
 status: verified
-last_verified: 2026-11-17
-confidence: M
+last_verified: 2026-11-20
+confidence: H
 review_every_days: 30
 sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/immigration-system/levels/supplementary-immigration-levels-2026-2028.html
@@ -29,7 +29,7 @@ sources:
 | How | Province nominates, then PR application to IRCC outside EE | Province nominates via EE profile (or candidate accepts in the EE portal), then +600 CRS, then ITA, then e-APR |
 | Federal eligibility | PNP class (IRPR s.87) + admissibility | Must also meet FSW, CEC or FST |
 | Speed | Slower (months to years) | EE service standard 6 months |
-- IRCC pages no longer use the labels "base" or "enhanced". The terms are industry usage (M).
+- IRCC pages say **"Express Entry process"** and **"non-Express Entry process"**; "base" and "enhanced" are industry usage only (IRCC "Immigrate as a provincial nominee", page 2026-09-14, read 2026-11-20) (H).
 - **Dependent child age lock-in for provincial nominees is the date of the application for nomination to the province** (IRPR s.25.1(4), read 2026-11-09).
 - A nomination doesn't authorize work. BOWP: EE-PNP needs AOR, completeness, principal applicant, no employment restriction; non-EE PNP also needs eligibility assessment passed (IRCC bridging page 2026-10-16).
 
@@ -38,7 +38,7 @@ sources:
 - Candidate has **30 calendar days** to accept or reject an EE nomination in the profile.
 - After an ITA: **60 days** to submit the e-APR.
 - **Linking steps (IRCC get-or-confirm page, read 2026-11-09):** profile details, Nomination and selection, "Yes", choose province; give the province the profile number and Job Seeker validation code; province confirms electronically; accept at top of profile details. Answer "Yes" only after the province has agreed to nominate.
-- **PT portal guide (2024-10-01):** provinces send letters of interest to the candidate's account. Not available for nomination if profile expired, withdrawn or cancelled (including expired language or insufficient funds), or at stages such as another province's pending or accepted nomination or an outstanding ITA (M). Rejecting an ITA returns the candidate to Available.
+- **PT portal guide (2024-10-01):** provinces send a **"notification of interest"** to the candidate's account; it "is not a nomination"; several can arrive at once but only **1 nomination at a time** (IRCC get-or-confirm page 2026-03-24, H). Not available for nomination if profile expired, withdrawn or cancelled (including expired language or insufficient funds), or at stages such as another province's pending or accepted nomination or an outstanding ITA (PT portal guide - provincial-facing; the public get-or-confirm page (2026-03-24) does not repeat the profile-status rule) (M). Rejecting an ITA returns the candidate to Available.
 - 2026 PNP rounds: 21, cut-offs 697-805, last 2026-10-26 (checked 2026-11-09).
 
 ### SOR/2026-63 (in force 2026-03-30)
@@ -58,7 +58,7 @@ sources:
 | Others | see province files | |
 - Federal pool: up to **10,000 extra spaces** across all PNPs for practice-ready physicians or Francophones (Alberta page, 2026-11-04).
 - **2027:** PNP target 95,000 (83,000-106,000). Extra PNP allocations for the 2027 workers cohort (up to 100,000, outside Levels). **Per-province 2027 numbers not published (2026-11-07).**
-- Processing (secondary, Nov 2026): enhanced (EE) PNP about 7 months; base PNP about 13-14 months (M) (secondary: see 11-forms-fees-processing/processing-times.md Pass 2).
+- Processing (IRCC forward-looking data updated 2026-11-17, read 2026-11-19; see 11-forms-fees-processing/processing-times.md) (H): PNP through Express Entry about **7 months** (about 13,800 waiting); base (paper/portal) PNP about **12 months** (about 90,200 waiting). Secondary aggregators said 13-14 months for base.
 - 2026 national PNP admissions target **91,500** (82,000-105,000), official 2026-2028 Levels Plan (H).
 - Official IRCC estimate (2026-10-09): **enhanced (EE) PNP about 7 months; base PNP about 13 months** (H; see 11-forms-fees-processing/processing-times.md).
 

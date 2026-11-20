@@ -3,7 +3,7 @@ domain: 02-pnp
 topic: newfoundland-labrador
 status: verified
 last_verified: 2026-11-20
-confidence: M
+confidence: H
 review_every_days: 30
 sources:
   - https://www.gov.nl.ca/immigration
@@ -54,7 +54,7 @@ sources:
 - Fees: **no provincial application fee** on the Skilled Worker or Express Entry Skilled Worker pages (both updated 2026-09-25, re-checked 2026-11-20); IE: "No fee to apply under this category" (H for absence).
 
 ## Entrepreneur streams
-Verified 2026-11-17. Official pages "Last Updated: May 4, 2026" unless noted. Program guides are PDFs (IE guide dated Dec 2020; IGE guide dated Apr 2022) and **could not be text-extracted**. Guide-only facts below come from search snippets of the official PDFs (M) and must be re-checked against the PDF plus the "Updates to Application Guide" PDF.
+Verified 2026-11-17. Official pages "Last Updated: May 4, 2026" unless noted. Program guides (IE Dec 2020; IGE file dated Apr 2022, text says Dec 2020) and the "Changes to Application Guide" PDF were **text-extracted and read on 2026-11-20**. Where a guide conflicts with a current web page, the web page governs.
 
 ### Common to both
 - Path: EOI (Immigration Accelerator) -> ITA -> full application -> interview / Business Performance Agreement (BPA) -> operate business >= 1 year -> nomination request -> IRCC PR.
@@ -68,7 +68,7 @@ Verified 2026-11-17. Official pages "Last Updated: May 4, 2026" unless noted. Pr
 - Not eligible applicants (both, H): illegal status in home country; under IRCC/CBSA removal order; inadmissible/banned; passive investors; no legal status (until restored).
 - Purchase of existing business (both, H): same owner for past 5 years; active, not in receivership; fair market value; keep current staff on same wages/conditions. IE: must meet current owner during exploratory visit.
 - New business (both, H): >= 1 full-time job for a citizen/PR, not a family member, directly related to the business, fair competitive wage (IGE: "year-round").
-- Refusal/review: General Policies list "Refusal of Application" (Policy 11), "Procedural Fairness" (Policy 9), "Misrepresentation" (Policy 4); **text not read; no reconsideration process found** (page updated 2026-09-03). Unknown (L).
+- Refusal/review (guides, H): failed interview or misrepresentation decisions "cannot be appealed"; no reconsideration process. Ineligible application = closed; a new EOI may be filed once criteria are met. **Misrepresentation: refused and barred from EOI/application for 5 years.** Withdrawal allowed any time before nomination (except suspected misrepresentation).
 
 ### International Entrepreneur (IE)
 Sources: overview https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-entrepreneur/overview/ (2026-05-04); eligibility https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-entrepreneur/eligibility-criteria/ (no date shown, read 2026-11-17).
@@ -82,14 +82,16 @@ Sources: overview https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-
 - Education: Canadian high school diploma or equivalent; **ECA within last 5 years** (H).
 - Exploratory visit: **mandatory** for applicants outside NL, before the full application (H). In-person interview also at applicant's cost (H).
 - Business plan with verified financial documents, at applicant's cost (H).
-- EOI points: max **120**; minimum **72** (M: secondary sources + Dec 2020 guide snippet; not on current HTML pages).
-- Deposit: **none found** on official pages or guide snippets. Do not quote a deposit. A secondary site's "$100,000 refundable deposit" is unverified (L).
-- BPA: issued after successful interview; **return signed within 15 business days**; covers job creation, succession, active management, location (M, guide snippet). Sample BPA PDF linked on overview.
-- Work permit: OIM approval letter -> apply to IRCC for WP **within 2 months** of the letter; IRCC WP refusal = file closed (M, guide). Arrive within **6 months** of approval letter (exceptions possible); arrival meeting with OIM within **30 days** of arrival (M, guide). Proof of transfer of BPA funds to an NL bank account (M).
+- EOI points (IE guide Dec 2020, text-extracted 2026-11-20) (H): max **120**, must score **72**. Language max 32 (first language CLB 7+: 24, CLB 6: 22, CLB 5: 20; second language CLB 5+: 8); education max 30 as printed (PhD 24, master's 20, 2-yr+ post-secondary 15, high school 12, plus 6 for a 2-yr+ Canadian credential); business ownership max 24 (3+ yrs owner 15; 2-3 yrs 5; 5+ yrs senior manager 9); NL economic priorities max 12 (tech/agriculture/aquaculture/natural resources 8, other sector 4, rural outside St. John's CMA +4); age max 12 (21-30: 10, 31-40: 12, 41-50: 8, 51-59: 4); adaptability max 10 (relatives in NL 6; NL work 2+ yrs 4, 1-2 yrs 2).
+- Deposit: **none** - the full IE guide has no deposit requirement (only proof of transferring BPA funds to an NL bank account) (H for absence). Ignore the secondary "$100,000 deposit".
+- BPA: issued after successful interview; **return signed within 15 business days**; states the investment, ownership %, sector, job creation and active management (guide, H). Interview in NL is expected within **60 calendar days** of OIM's request; missing it closes the file (guide, H). Sample BPA PDF linked on overview.
+- Work permit: OIM approval letter -> apply to IRCC for WP **within 2 months** of the letter; IRCC WP refusal = file closed (guide, H). Arrive within **6 months** of the approval letter or the file closes (exception if the IRCC application was filed diligently) (H); start operating within 6 months of arrival (recommended); arrival meeting with OIM within **30 days** (H). Proof of transfer of BPA funds to an NL bank account (H).
 - WP exemption code: provincially supported entrepreneurs = **R205(a), C60** (not C11); provincial support letter "is an indicator of benefit" but not sole evidence; extension beyond 2 yrs needs "letter of continued support"; after nomination can switch to R204(c) (H, IRCC C11/C60 program delivery page, modified 2026-04-16: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/canadian-interests-significant-benefit-entrepreneurs-self-employed-candidates-seeking-operate-business-r205-c11.html).
 - Operate before nomination: **>= 1 full year**, actively managing day-to-day (H, overview).
-- Nomination request: applicant + dependants living in NL; BPA terms met (incl. funds transfer); legal status maintained; >= 1 yr operation; OIM checks BPA compliance; **if nomination info does not materially match the original EOI, the file is rejected and closed** (M, guide).
-- Forms linked on overview: IMM 0008, IMM 5476, Net Worth Verifier Document Checklist, Sample BPA, "Updates to Application Guide" (https://www.gov.nl.ca/immigration/files/Changes-to-Application-Guide-IE.pdf, not readable).
+- Nomination request: applicant + dependants living in NL; BPA terms met (incl. funds transfer); legal status maintained; >= 1 yr operation; OIM checks BPA compliance; **if nomination info does not materially match the original EOI, the file is rejected and closed**; the Nomination Request Form needs a **Review Engagement and Special Purpose Report** (business viability) from an accountant (replaced the audit opinion in Dec 2020; 6-monthly post-nomination reports no longer required) (guides, H).
+- Forms linked on overview: IMM 0008, IMM 5476, Net Worth Verifier Document Checklist, Sample BPA, "Updates to Application Guide" (https://www.gov.nl.ca/immigration/files/Changes-to-Application-Guide-IE.pdf, read 2026-11-20).
+- **Partners (IE guide, H): up to 10** (principal + 9) on one application; citizens/PRs may be partners; each PR-seeking partner invests $200,000 with 33.3%+ ownership, or $1,000,000+; all actively managing.
+- Guide vs web conflict: the guide's experience note says 2 yrs ownership (25%+) **in the past 10 years**; the current eligibility page says **last 5 years**. Use the web page; confirm with OIM.
 
 ### International Graduate Entrepreneur (IGE)
 Sources: overview https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-graduate-entrepreneur/overview/ (2026-05-04); eligibility https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-graduate-entrepreneur/eligibility-criteria/ (read 2026-11-17); guide https://www.gov.nl.ca/immigration/files/International-Graduate-Entrepreneur-Guide-April-2022-1.pdf.
@@ -97,7 +99,7 @@ Sources: overview https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-
 - Graduate of **Memorial University or College of the North Atlantic** only; degree/diploma **>= 2 years, full-time, in-person**, completed **within last 2 years** (H).
 - Holds a **valid PGWP** (H). No provincial WP support letter needed while on PGWP (inference; confirm if PGWP expires before 1-year mark).
 - Age 21+ (no upper limit stated) (H).
-- Ownership: **>= 33.3%**, actively managed, for-profit, **for 1 full year** before applying (H). Guide: up to 3 partners; each PR-seeking partner >= 33.3% (M, Dec 2020 guide snippet).
+- Ownership: **>= 33.3%**, actively managed, for-profit, **for 1 full year** before applying (H). Guide: **up to 3 partners** (principal + 2); citizens/PRs may be partners; each PR-seeking partner >= 33.3% (IGE guide, read 2026-11-20, H). No provincial fee for IGE since 2022-04-07 (H).
 - Jobs: >= 1 full-time year-round job for citizen/PR (H).
 - Language: **CLB 7** each ability, English or French (H).
 - Net worth / minimum investment: **not stated** on official pages (unknown).

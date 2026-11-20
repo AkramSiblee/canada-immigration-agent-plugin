@@ -3,7 +3,7 @@ domain: 02-pnp
 topic: new-brunswick
 status: verified
 last_verified: 2026-11-20
-confidence: M
+confidence: H
 review_every_days: 30
 sources:
   - https://www.gnb.ca/en/topic/family-home-community/immigration/provincial-nominee-program.html
@@ -58,7 +58,7 @@ Sources: stream page `BIS-PAGE` = https://www.gnb.ca/en/topic/family-home-commun
 - **NB Business Immigration Stream (NBBIS):** listed as current and active on BIS-PAGE. EOI system; invitation not guaranteed. No intake pause notice found on important-notices (read 2026-11-17) (H).
 - **2026 EOI selections:** **none published.** The invitation-rounds page lists AIP, SW, EE and SI only (read 2026-11-17). Volume/frequency of business invitations is **unknown** (H that none are published).
 - **Entrepreneurial Stream:** **closed**. Replaced by NBBIS; its forms (NB-013ES, NB-030ES, NB-032ES, NB-033ES refund) are for existing clients only (BIS-PAGE) (H).
-- **Post-Graduate Entrepreneurial Stream:** **not listed** among current streams on the official NB PNP page (read 2026-11-17). Treat as not available; secondary sites still describe it and are outdated. No official closure notice found (M).
+- **Post-Graduate Entrepreneurial Stream: not available.** The official PNP page lists only Skilled Worker, Express Entry, Strategic Initiative and Business Immigration (NBBIS); the NBBIS page says "The Entrepreneurial stream has been replaced by the New Brunswick Business Immigration stream" and old forms are "for existing clients of the Entrepreneurial stream only" (gnb.ca, read 2026-11-20). NBBIS has **no graduate carve-out** (net worth $500,000, or $300,000 for agriculture; 2 yrs experience in last 5; $150,000 eligible investment). No official notice names the PGES itself; secondary sites calling it open or paused are outdated (H for current stream list).
 - **NAICS 72 restriction (2026-02-03)** applies to **SW and EE only** per notice text; it does **not** name NBBIS (H). Restaurants/hotels are not on the NBBIS ineligible list, except small inns/boutique hotels and B&Bs (see below). ImmigrationNB can still limit business types for labour-market/allocation reasons (BIS-PAGE).
 
 ### Eligibility (BIS-PAGE + BIS-GUIDE, H)

@@ -2,6 +2,13 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.16.1
+- **All provincial nominee files now checked on official sources** (high confidence):
+  - **Newfoundland and Labrador**: entrepreneur points grid (120 points, pass mark 72), no deposit, deadlines after approval (work permit within 2 months, arrival within 6 months), up to 10 partners for International Entrepreneur and 3 for International Graduate Entrepreneur, 5-year bar for misrepresentation.
+  - **New Brunswick**: the Post-Graduate Entrepreneurial Stream is not available; the Business Immigration stream has no special rules for graduates.
+  - **PNP processing**: IRCC's own estimates (through Express Entry about 7 months; outside Express Entry about 12).
+  - **Atlantic 2026 allocations**: confirmed not published by any province; the agent will not quote unofficial figures.
+
 ## 1.16.0
 - **Knowledge base: 7 new topics** the agent now reads before answering:
   - **Victims of family violence, human trafficking and abused workers**: the family violence permit, the trafficking permit and the open work permit for vulnerable workers (all fee-exempt).
