@@ -1,0 +1,46 @@
+kind,key,group,label,time,waiting,updated,read_date
+pr,cec,Economic,Express Entry: Canadian Experience Class,6 months,"About 48,200",2026-11-17,2026-11-19
+pr,fsw,Economic,Express Entry: Federal Skilled Worker,About 9 months,"About 60,100",2026-11-17,2026-11-19
+pr,pnp-ee,Economic,"Provincial nominee, through Express Entry",About 7 months,"About 13,800",2026-11-17,2026-11-19
+pr,pnp-base,Economic,"Provincial nominee, base (paper)",About 12 months,"About 90,200",2026-11-17,2026-11-19
+pr,aip,Economic,Atlantic Immigration Program,About 25 months,"About 11,100",2026-11-17,2026-11-19
+pr,caregiver,Economic,Caregivers,About 73 months,"About 35,200",2026-11-17,2026-11-19
+pr,startup-visa,Economic,Start-up Visa,More than 10 years,"About 47,400",2026-11-17,2026-11-19
+pr,self-employed,Economic,Self-employed,More than 10 years,"About 8,000",2026-11-17,2026-11-19
+pr,qsw,Economic,Quebec skilled worker,11 months,"About 20,100",2026-11-17,2026-11-19
+pr,quebec-business,Economic,Quebec business,About 73 months,"About 3,600",2026-11-17,2026-11-19
+pr,spousal-abroad-roc,Family,"Spouse or partner, outside Canada (outside Quebec)",About 19 months,"About 65,900",2026-11-17,2026-11-19
+pr,spousal-abroad-quebec,Family,"Spouse or partner, outside Canada (Quebec)",About 34 months,"About 19,700",2026-11-17,2026-11-19
+pr,spousal-canada-roc,Family,"Spouse or partner, in Canada (outside Quebec)",About 27 months,"About 55,100",2026-11-17,2026-11-19
+pr,spousal-canada-quebec,Family,"Spouse or partner, in Canada (Quebec)",About 33 months,"About 14,700",2026-11-17,2026-11-19
+pr,pgp-roc,Family,Parents and grandparents (outside Quebec),About 26 months,"About 33,800",2026-11-17,2026-11-19
+pr,pgp-quebec,Family,Parents and grandparents (Quebec),About 60 months,"About 10,100",2026-11-17,2026-11-19
+pr,protected-persons-in-canada-roc,Protection and humanitarian,Protected persons in Canada (outside Quebec),About 11 months,"About 71,700",2026-11-17,2026-11-19
+pr,protected-persons-in-canada-quebec,Protection and humanitarian,Protected persons in Canada (Quebec),More than 10 years,"About 42,700",2026-11-17,2026-11-19
+pr,dependants-abroad-roc,Protection and humanitarian,Dependants abroad of protected persons (outside Quebec),About 46 months,"About 60,000",2026-11-17,2026-11-19
+pr,dependants-abroad-quebec,Protection and humanitarian,Dependants abroad of protected persons (Quebec),More than 10 years,"About 23,200",2026-11-17,2026-11-19
+pr,government-refugees-roc,Protection and humanitarian,Government-assisted refugees (outside Quebec),About 14 months,"About 18,500",2026-11-17,2026-11-19
+pr,government-refugees-quebec,Protection and humanitarian,Government-assisted refugees (Quebec),About 8 months,About 300,2026-11-17,2026-11-19
+pr,private-refugees-roc,Protection and humanitarian,Privately sponsored refugees (outside Quebec),About 39 months,"About 70,700",2026-11-17,2026-11-19
+pr,private-refugees-quebec,Protection and humanitarian,Privately sponsored refugees (Quebec),About 52 months,"About 2,200",2026-11-17,2026-11-19
+pr,humanitarian-roc,Protection and humanitarian,Humanitarian and compassionate (outside Quebec),More than 10 years,"About 57,500",2026-11-17,2026-11-19
+pr,humanitarian-quebec,Protection and humanitarian,Humanitarian and compassionate (Quebec),More than 10 years,"About 20,900",2026-11-17,2026-11-19
+pr,citizen-grants,Citizenship,Citizenship grant,About 12 months,"About 322,900",2026-11-17,2026-11-19
+pr,citizen-proofs,Citizenship,Proof of citizenship (certificate),About 35 months,"About 139,200",2026-11-17,2026-11-19
+other,visitor_inside_canada/visitor_inside_canada,In Canada,"Visitor visa, applied from inside Canada",12 days,,2026-11-18,2026-11-19
+other,visitor_extension/visitor_extension,In Canada,Visitor extension (visitor record),296 days,,2026-11-18,2026-11-19
+other,study_extension/study_extension,In Canada,Study permit extension,52 days,,2026-11-18,2026-11-19
+other,work_extension/work_extension,In Canada,Work permit extension or new permit from inside Canada,119 days,,2026-11-18,2026-11-19
+other,pr_card/new_pr,PR card,PR card for a new permanent resident,32 days,,2026-11-18,2026-11-19
+other,pr_card/existing_pr,PR card,PR card renewal or replacement,50 days,,2026-11-18,2026-11-19
+other,eta/eta,Other,eTA,5 minutes,,2026-11-18,2026-11-19
+other,iec/iec,Other,International Experience Canada (work permit),4 weeks,,2026-11-18,2026-11-19
+other,sawp/sawp_current,Other,Seasonal Agricultural Worker Program,7 days,,2026-11-18,2026-11-19
+other,citizenship/cit_renunciation,Citizenship services,Renounce citizenship,4 months,,2026-11-18,2026-11-19
+other,citizenship/cit_search,Citizenship services,Search of citizenship records,18 months,,2026-11-18,2026-11-19
+other,citizenship/cit_adoption_part1,Citizenship services,Citizenship for an adopted child,Part 1: 5 months,,2026-11-18,2026-11-19
+other,citizenship/cit_resumption,Citizenship services,Resume citizenship,Not enough data,,2026-11-18,2026-11-19
+other,rep_documents/vos,Status documents,Verification of status,20 weeks,,2026-11-18,2026-11-19
+other,rep_documents/replacement,Status documents,Replace a status document,11 weeks,,2026-11-18,2026-11-19
+other,rep_documents/amend_imm,Status documents,Amend a PR document (e.g. CoPR),16 weeks,,2026-11-18,2026-11-19
+other,rep_documents/amend_tr,Status documents,Amend a temporary residence document,11 weeks,,2026-11-18,2026-11-19

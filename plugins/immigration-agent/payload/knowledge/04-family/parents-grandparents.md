@@ -43,7 +43,7 @@ sources:
 - Not counted (IMM 5748 (07-2025)): Employment Insurance other than special benefits (2023 and 2024 tax years), provincial training allowances, provincial social assistance, federal resettlement assistance, and the guaranteed income supplement. IMM 5748 is required when the sponsor or co-signer doesn't consent to IRCC getting their tax information from CRA (IMM 5768 questions 8 and 16) (H).
 - Undertaking: **20 years** (s.132(1)(b)(iv)). Quebec: 10 years.
 - Fee: $1,260 per parent/grandparent ($90 + $570 + $600 RPRF); spouse $1,260; dependent child $180.
-- IRCC estimate for files already in process: outside Quebec about 28 months; Quebec about 63 months (2026-10-09) (H).
+- IRCC estimate for a new application: outside Quebec about 26 months (about 33,800 waiting); Quebec about 60 months (about 10,100 waiting) (IRCC forward-looking data updated 2026-11-17, read 2026-11-19) (H).
 
 ## Recent changes (2025-2027)
 - 2026-01-01: MI89. No new PGP applications in 2026 (H)

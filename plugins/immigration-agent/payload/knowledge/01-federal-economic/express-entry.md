@@ -192,7 +192,7 @@ Signed: ______________  [Name], [Title: immediate supervisor / HR officer]
 ### Processing time (read 2026-11-17)
 - **Service standard: 80% finalized within 6 months** (H; IRCC CIMM note 2026-03-23; clock starts on GCMS received date per completeness PDI).
 - Last official figures found (CIMM 2026-03-23, data as of **2026-01-31**): CEC 4.5 months (forecast 7); FSW 7.0 (forecast 6); PNP-EE 8.7 (forecast 7); FST not shown (H for that date).
-- **Current tool figure: unknown.** The processing-times JSON (lastupdated 2026-11-12) has no CEC/FSW/PNP-EE keys; FST EE = "Not enough data". Secondary tracker (Oct 2026): CEC 6, FSW 7 months (L). Check https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html before quoting.
+- **Current tool figure (IRCC forward-looking data, updated 2026-11-17, read 2026-11-19) (H):** new application CEC 6 months (about 48,200 waiting), FSW about 9 months (about 60,100), PNP through EE about 7 months (about 13,800). FST EE = "Not enough data" (non-country data 2026-11-18). Check https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html before quoting.
 
 ### Changes between ITA, e-APR and landing (read 2026-11-17)
 - **Must report** (After you apply page 2026-10-16): family composition (birth, adoption, marriage, divorce), job or job offer changes, contact details, new ECA or language results, representative change. **How:** IRCC web form "as soon as possible". Family members can be added up to landing, even after visa issue; new member: IMM 5406 + fees; must be examined (A11.2 PDI 2026-03-16). Undeclared existing child at e-APR: assessed under A11.2 (and R117(9)(d) bar).

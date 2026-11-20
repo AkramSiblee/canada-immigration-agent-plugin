@@ -46,6 +46,7 @@ import readiness as rd  # noqa: E402
 import updates as up  # noqa: E402
 import draws as dr  # noqa: E402
 import inventory as iv  # noqa: E402
+import ircc_times as it  # noqa: E402
 import opportunities as op  # noqa: E402
 import practice as pc  # noqa: E402
 import prospects as ps  # noqa: E402
@@ -258,6 +259,16 @@ def inventory_card():
         return iv.card(today())
     except Exception:  # a damaged data file must not hide the home page
         return None
+
+
+def ircc():
+    """The IRCC data page: inventory and processing times, from the data files shipped with each release."""
+    out = {"today": today().isoformat(), "inventory": inventory_card(), "times": None}
+    try:
+        out["times"] = it.card(today())
+    except Exception:  # a damaged data file must not break the page
+        pass
+    return out
 
 
 def home():
@@ -480,7 +491,7 @@ def growth():
             "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS if c.split()[0] in ("/draws", "/opportunities", "/time", "/precedents", "/prospects", "/licence", "/monthly-updates", "/processing")]}
 
 
-ROUTES = {"/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent}
+ROUTES = {"/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent, "/api/ircc": ircc}
 
 
 class Handler(http.server.BaseHTTPRequestHandler):

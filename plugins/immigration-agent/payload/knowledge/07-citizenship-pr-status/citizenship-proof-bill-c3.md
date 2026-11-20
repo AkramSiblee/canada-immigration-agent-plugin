@@ -33,7 +33,7 @@ sources:
 - s.5.1 grants are refused where the adoption was mainly for status or created no genuine parent-child relationship.
 
 ### Proof
-- **Apply for a citizenship certificate** to confirm ("you must apply for a citizenship certificate to find out for sure"). Fee **$75**. Add 3-4 months if applying through a mission outside Canada/US. IRCC estimate for a new proof application: **about 34 months** (about 130,700 waiting; IRCC forward-looking data 2026-10-09).
+- **Apply for a citizenship certificate** to confirm ("you must apply for a citizenship certificate to find out for sure"). Fee **$75**. Add 3-4 months if applying through a mission outside Canada/US. IRCC estimate for a new proof application: **about 35 months** (about 139,200 waiting; IRCC forward-looking data updated 2026-11-17, read 2026-11-19).
 - Inventory: 135,965 proof applications not finalized; 38,355 issued since 2026-01-01 (data 2026-08-31).
 - Renunciation is free for those who became citizens automatically under the 2009, 2015 or 2025 changes.
 - Form: **CIT 0001 (08-2026)**. Section 12 asks applicants born on or after 2025-12-15 whether the citizen parent had 1,095 days in Canada before the birth; if Yes, attach **CIT 0555** (parent's physical presence calculation) and proof. For a person adopted outside Canada, CIT 0001 is only for a replacement certificate (H, form read 2026-11-10).

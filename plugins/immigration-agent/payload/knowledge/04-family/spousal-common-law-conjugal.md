@@ -49,7 +49,7 @@ sources:
 - Not available at a port of entry, or if the PR application was refused, withdrawn or returned.
 - Extension: up to 2 more years while PR is in process.
 
-- **OWP applies to both classes (policy 2023-05-26; page 2026-04-17, read 2026-11-09):** family class applicants living in Canada with the sponsor, with status, qualify on the same terms as SCLPC applicants. Permit up to 2 years. So work rights don't by themselves favour inland; compare processing (18 v 26 months), IAD and travel.
+- **OWP applies to both classes (policy 2023-05-26; page 2026-04-17, read 2026-11-09):** family class applicants living in Canada with the sponsor, with status, qualify on the same terms as SCLPC applicants. Permit up to 2 years. So work rights don't by themselves favour inland; compare processing (19 v 27 months, IRCC 2026-11-17), IAD and travel.
 
 ### Fees (since 2026-04-30)
 - $1,260 (sponsorship $90 + principal $570 + RPRF $600). Dependent child $180. OWP $255 ($155 + $100). Biometrics $85.
@@ -57,11 +57,11 @@ sources:
 ### Processing
 - About **15 months** (decisions Sep 2025-Aug 2026, IRCC inventory page). The 2027 humanitarian cohort aims for "closer to 12 months" outside Quebec.
 - Spouses/partners/children target 66,000 per year (2027-2029).
-- IRCC estimate for a new application (2026-10-09): outside Canada about **18 months** (QC 33); in Canada about **26 months** (QC 32) (H). Plan the class choice with this in mind.
+- IRCC estimate for a new application (forward-looking data updated 2026-11-17, read 2026-11-19): outside Canada about **19 months** (QC 34); in Canada about **27 months** (QC 33) (H). Plan the class choice with this in mind.
 
 ### Evidence notes (Guide 5289 page 2026-04-23, read 2026-11-09) (H)
 - Marriage certificate or proof of registration required; a record of solemnization or licence isn't accepted. Proof of communication capped at **10 pages** and must be translated. Letter of explanation can be uploaded in optional documents. A married couple can't use the common-law category (who-you-can-sponsor page 2026-09-11). IMM 5533 checklist couldn't be retrieved this pass; check it before filing.
-- Processing estimates reconfirmed 2026-10-09 data: outside Canada 18 months (QC 33); in Canada 26 months (QC 32).
+- Processing estimates 2026-11-17 data: outside Canada 19 months (QC 34); in Canada 27 months (QC 33) (was 18 / 33 and 26 / 32 on 2026-10-09).
 
 ### Genuineness factors (read 2026-11-09) (M)
 - IRB Ch. 6 (2008) quotes *Chavez* (IAD TA3-24409, 2005): intent, length of relationship, time together, conduct at meeting, engagement and wedding, knowledge of each other, contact, support, extended family. **No single criterion is decisive**; age difference may be considered (*Froment*; *Khera*). Its statement that showing one prong is enough predates the current disjunctive s.4(1): both prongs must be answered (IRB appeal page 2023-03-22 confirms). Verify citations and post-2008 cases before relying on them.

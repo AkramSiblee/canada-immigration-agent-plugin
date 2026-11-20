@@ -2,6 +2,15 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.15.0
+- **New dashboard page: IRCC data** (left menu). Together these tell a client how long a file may take and whether it may also wait for space:
+  - the IRCC application inventory card;
+  - **processing times for permanent residence and citizenship**: IRCC's estimate for a new application and the number of people waiting, for all 28 programs (Express Entry, PNP, AIP, caregivers, spousal, PGP, protected persons, refugees, H&C, citizenship grant and proof);
+  - **visas and permits from outside Canada**: choose the client's country of residence to see visitor visa, super visa, study permit and work permit times (171 countries; the page remembers your choice);
+  - **in Canada and other services**: extensions, PR cards, eTA, IEC, citizenship services and status documents.
+  Each card names its source (IRCC), the date IRCC updated it and the date it was read, and turns "Out of date" after 45 days. The home page inventory card links to the new page.
+- Processing times updated to IRCC's data of 2026-11-17 and 2026-11-18, for example: FSW about 9 months (was 7), spouse outside Canada about 19 months and in Canada about 27, PGP about 26, protected persons in Canada about 11, proof of citizenship about 35, PR card renewal 50 days, work permit extension 119 days. Visitor and super visa times refreshed for 147 countries.
+
 ## 1.14.4
 - Dashboard, IRCC application inventory card:
   - shows the time period: inventory on 2026-09-30, change since 2026-08-31, and files finalized from 2026-01-01 to 2026-09-30;

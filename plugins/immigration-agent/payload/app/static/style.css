@@ -104,6 +104,7 @@ a.stat:hover { text-decoration: none; border-color: var(--line-strong); }
 
 /* ---- panels ---- */
 .grid2 { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(280px, 1fr); gap: 20px; align-items: start; }
+.grid2.even { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .col { display: grid; gap: 20px; min-width: 0; }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); min-width: 0; }
 .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
@@ -318,7 +319,7 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 
 /* ---- narrow windows ---- */
 @media (max-width: 1080px) {
-  .grid2 { grid-template-columns: minmax(0, 1fr); }
+  .grid2, .grid2.even { grid-template-columns: minmax(0, 1fr); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 820px) {
@@ -356,6 +357,19 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 .inv-table td.up { color: var(--soon, inherit); }
 .inv-table a { text-decoration: none; }
 .inv.stale .inv-table td { color: var(--muted); }
+.inv-table tr.grp th { padding-top: 14px; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--line-strong); }
+.inv-table.times tbody th { white-space: normal; font-weight: 500; }
+.more-link { font-size: .85rem; font-weight: 600; text-decoration: none; }
+.ctimes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 560px) { .ctimes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ctime { padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); }
+.ctime .l { font-size: .75rem; color: var(--muted); font-weight: 600; }
+.ctime .n { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ctime .n.none { font-size: .85rem; font-weight: 400; color: var(--muted); }
+.field-label { font-size: .82rem; font-weight: 600; }
+#ircc-country { font: inherit; padding: 7px 10px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--ink); max-width: 100%; }
+.call summary { cursor: pointer; font-size: .85rem; font-weight: 600; }
+.call .inv-scroll { max-height: 420px; overflow-y: auto; margin-top: 8px; }
 .inv-period { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; font-size: .82rem; }
 .inv-period dt { font-weight: 600; color: var(--muted); }
 .inv-period dd { margin: 0; }

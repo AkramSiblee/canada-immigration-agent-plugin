@@ -38,7 +38,7 @@ sources:
 ### Appeals
 - **IAD appeal** of an RO decision made outside Canada (IRPA **s.63(4)**). IAD may allow on H&C (s.67(1)(c)).
 - Deadline: **60 days** after receiving the decision (IAD Rules 2022 r.16(c)) (H). Port of entry: a PR may also face a s.44 report and an IAD appeal of the removal order (s.63(3)).
-- Processing (IRCC, 2026-11-04): new PR card 29 days; renewal 46 days (H).
+- Processing (IRCC, updated 2026-11-18, read 2026-11-19): new PR card 32 days; renewal 50 days (H).
 
 ## Recent changes (2025-2027)
 - None to s.28 found. IRPA last amended 2026-03-26 (H)

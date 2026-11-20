@@ -153,7 +153,7 @@ function kbPanel(kb, policy) {
 }
 
 // IRCC application inventory: permanent residence by category (with the firm's own open files) and temporary residence.
-function inventoryPanel(inv) {
+function inventoryPanel(inv, more) {
   if (!inv || !inv.pr || !inv.pr.rows.length) return null;
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const m = Number((inv.data_as_of || "").slice(5, 7));
@@ -189,7 +189,68 @@ function inventoryPanel(inv) {
       el("div", { class: "small muted inv-source" }, "Source: ",
         el("a", { href: inv.source, target: "_blank", rel: "noopener" }, inv.source_name),
         `, page dated ${fmtDate(inv.page_date)}${inv.read_date ? `, read ${fmtDate(inv.read_date)}` : ""}. IRCC rounds figures to the nearest 5.`,
-        inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null)));
+        inv.stale ? el("span", {}, ` Older than ${inv.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null),
+      more ? el("a", { class: "more-link", href: "#ircc" }, "Processing times and more IRCC data →") : null));
+}
+
+// The IRCC data page: processing times next to the inventory.
+const COUNTRY_KEY = "agent.irccCountry";
+function sourceLine(t, updated) {
+  return el("div", { class: "small muted inv-source" }, "Source: ",
+    el("a", { href: t.source, target: "_blank", rel: "noopener" }, t.source_name),
+    `, IRCC data updated ${fmtDate(updated)}${t.read_date ? `, read ${fmtDate(t.read_date)}` : ""}.`,
+    t.stale ? el("span", {}, ` Older than ${t.stale_after} days. Ask Claude: `, el("code", { class: "mono" }, "/changelog")) : null);
+}
+function timesPill(t, updated) {
+  return el("span", { class: "pill " + (t.stale ? "Soon" : "ok") }, t.stale ? "Out of date" : `Updated ${fmtDate(updated)}`);
+}
+function prTimesPanel(t) {
+  return panel("Processing times: permanent residence and citizenship", timesPill(t, t.pr_updated),
+    el("div", { class: "panel-body inv" },
+      el("p", { class: "hint" }, "IRCC's estimate for an application submitted now, based on the files already ahead in the queue. It is not a promise for any one file, and a PR file may also wait for space under the yearly targets (see the inventory)."),
+      el("div", { class: "inv-scroll" }, el("table", { class: "inv-table times" },
+        el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Program"), el("th", { scope: "col", class: "num" }, "IRCC estimate for a new application"), el("th", { scope: "col", class: "num" }, "People waiting"))),
+        t.pr.map((g) => el("tbody", {},
+          el("tr", { class: "grp" }, el("th", { scope: "rowgroup", colspan: "3" }, g.group)),
+          g.rows.map((r) => el("tr", {}, el("th", { scope: "row" }, r.label), el("td", { class: "num strong" }, r.time || "–"), el("td", { class: "num" }, r.waiting || "–"))))))),
+      sourceLine(t, t.pr_updated)));
+}
+function countryTimesPanel(t) {
+  if (!t.countries.length) return null;
+  let code = "";
+  try { code = localStorage.getItem(COUNTRY_KEY) || ""; } catch { /* storage unavailable */ }
+  if (!t.countries.some((c) => c.code === code)) code = t.countries.some((c) => c.code === "IN") ? "IN" : t.countries[0].code;
+  const out = el("div", { class: "ctimes" });
+  const show = () => {
+    const c = t.countries.find((x) => x.code === code);
+    out.replaceChildren(...t.country_cols.map((col) => el("div", { class: "ctime" },
+      el("div", { class: "l" }, col.label), el("div", { class: "n" + (c[col.key] ? "" : " none") }, c[col.key] || "No time published"))));
+  };
+  const sel = el("select", { id: "ircc-country", onchange: (e) => { code = e.target.value; try { localStorage.setItem(COUNTRY_KEY, code); } catch { /* ignore */ } show(); } },
+    t.countries.map((c) => el("option", { value: c.code, selected: c.code === code }, c.country)));
+  show();
+  const all = el("details", { class: "call" }, el("summary", {}, `All ${t.countries.length} countries`),
+    el("div", { class: "inv-scroll" }, el("table", { class: "inv-table" },
+      el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Country of residence"), t.country_cols.map((col) => el("th", { scope: "col", class: "num" }, col.label)))),
+      el("tbody", {}, t.countries.map((c) => el("tr", {}, el("th", { scope: "row" }, c.country), t.country_cols.map((col) => el("td", { class: "num" }, c[col.key] || "–"))))))));
+  return panel("Processing times: visas and permits from outside Canada", timesPill(t, t.country_updated),
+    el("div", { class: "panel-body inv" },
+      el("label", { class: "field-label", for: "ircc-country" }, "Country the client applies from (where they live, not their citizenship)"), sel,
+      out,
+      el("p", { class: "hint" }, "How long IRCC took to process most recent applications from that country, from a complete application to a decision. Not a promise for any one file."),
+      all,
+      sourceLine(t, t.country_updated)));
+}
+function otherTimesPanel(t) {
+  if (!t.other.length) return null;
+  return panel("Processing times: in Canada and other services", timesPill(t, t.other_updated),
+    el("div", { class: "panel-body inv" },
+      el("div", { class: "inv-scroll" }, el("table", { class: "inv-table times" },
+        el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Service"), el("th", { scope: "col", class: "num" }, "IRCC time"))),
+        t.other.map((g) => el("tbody", {},
+          el("tr", { class: "grp" }, el("th", { scope: "rowgroup", colspan: "2" }, g.group)),
+          g.rows.map((r) => el("tr", {}, el("th", { scope: "row" }, r.label), el("td", { class: "num strong" }, r.time || "–"))))))),
+      sourceLine(t, t.other_updated)));
 }
 
 // Optional reminder: the firm profile adds the letterhead; it can be dismissed and is never required.
@@ -255,7 +316,7 @@ const pages = {
         el("div", { class: "col" },
           panel("Needs attention", el("span", { class: "count" }, attention.length ? `${attention.length} item${attention.length === 1 ? "" : "s"}` : ""), alertList(attention, true)),
           house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null,
-          inventoryPanel(d.inventory)),
+          inventoryPanel(d.inventory, true)),
         el("div", { class: "col" },
           panel("Ask Claude", null, el("p", { class: "hint" }, "Copy a command, then paste it in the Claude app (Code tab) in this agent folder."), cmdList(d.commands)),
           kbPanel(d.kb, d.policy_check))),
@@ -366,6 +427,18 @@ const pages = {
               el("span", { class: "cell-stack" }, el("span", { class: "file-meta" }, fmtDate(u.date)), el("span", { class: "pill " + (u.notified ? "ok" : "Soon") }, u.notified ? "Client told" : "Client not told")))))) : null,
           panel("Recent activity", null,
             d.log.length ? el("div", {}, d.log.map((l) => el("div", { class: "row" }, el("span", {}, l.text), el("span", { class: "file-meta" }, fmtDate(l.date))))) : empty("No activity logged.")))),
+    ];
+  },
+
+  async ircc() {
+    const d = await api("/api/ircc");
+    const t = d.times;
+    return [
+      pageHead("IRCC's own published figures", "IRCC data", "Inventory and processing times to set client expectations. Check IRCC's tool on the day you advise: times change weekly."),
+      el("div", { class: "grid2 even" },
+        el("div", { class: "col" }, inventoryPanel(d.inventory) || panel("IRCC application inventory", null, empty("No inventory data in this version.")),
+          t ? countryTimesPanel(t) : null, t ? otherTimesPanel(t) : null),
+        el("div", { class: "col" }, t ? prTimesPanel(t) : panel("Processing times", null, empty("No processing time data in this version.")))),
     ];
   },
 
