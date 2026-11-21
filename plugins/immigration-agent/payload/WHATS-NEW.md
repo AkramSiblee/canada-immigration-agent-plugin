@@ -2,6 +2,14 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.16.3
+- **How to become a licensed RCIC**: the agent now covers the full route, checked on CICC's own pages and rules.
+  - **Education**: only the Queen's Graduate Diploma or the Université de Montréal D.E.S.S. qualify (the older college programs no longer do). Queen's: IELTS 7.0 in every band, tuition $17,567.12.
+  - **Entry-to-Practice Exam**: 135 questions, 3 hours, online; $75 application, $425 exam, $325 re-write; up to 4 attempts within 3 years of finishing the diploma. Next sitting 2027-03-10 (apply by 2027-02-03).
+  - **After passing**: apply for the licence within 120 days, RCMP fingerprint check, good-character declaration, then the mandatory mentoring program ($665) within 12 months.
+  - **RCIC-IRB**: diploma graduates who pass the exam get it directly; other consultants take 5 courses ($1,000) and a specialization exam.
+  - Where CICC's own documents disagree (the deferral fee is $100 on its website but $75 in its guide), the agent shows both.
+
 ## 1.16.2
 - **15 more knowledge files checked on official sources** (now high confidence): Quebec PEQ, CAQ/CSQ and the Quebec plan, adoption, GCMS notes requests, procedural fairness, AI and privacy, application returns, the forms list, source of funds, and all five decision trees.
   - **Quebec**: official 2026 plan figures (43,000-47,000 admissions; about 64% economic, about 76% French-speaking); PEQ conditions and $940 fee (PEQ stays closed, with no new window decided); no 2027 Quebec plan yet.

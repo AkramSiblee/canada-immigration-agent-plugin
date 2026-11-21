@@ -95,3 +95,5 @@
 | 2027-03-01 | (Proposed) TFWP Low-Wage access reforms (provincial opt-in) | H |
 | 2027-04-16 | CICC public register (SOR/2026-68 s.22) | H |
 | 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (recommendations dated by 2026-12-31 stay usable until they expire) | H |
+| 2026-03-09 | CICC RCIC EPE Candidate Guide 2026-001: 135 MCQ, 3 h, max 4 attempts within 3 years of completing the qualifying program | H |
+| 2027-03-10 | Next RCIC Entry-to-Practice Exam (qualification deadline 2027-02-03; registration 2027-02-17) | H |
