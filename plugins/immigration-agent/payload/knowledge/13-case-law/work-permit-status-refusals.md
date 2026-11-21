@@ -42,6 +42,7 @@ sources:
 
 ## How these were verified (read first)
 - On 2026-11-17 the official Federal Court site and CanLII returned HTTP 403 to automated reading. Decisions were **not opened**.
+- Re-tried 2026-11-20 (decisions.fct-cf.gc.ca only): still HTTP 403. No decision read in full; nothing raised to H. All rows OPEN for a manual browser read.
 - Each row was matched across at least two secondary summaries (mainly dadkhah.ca case-law posts, which link the official item; amcaim.ca case summaries and monthly case-law libraries; canadianimmigration.net applicant case summaries). Official **item numbers** come from those links.
 - Rows marked **(CanLII)** have no confirmed official item number. The CanLII link was built from the citation or taken from a summary and was not opened.
 - Holdings are **M** unless marked otherwise. Read the full decision before citing it to a client, an officer or the Court.

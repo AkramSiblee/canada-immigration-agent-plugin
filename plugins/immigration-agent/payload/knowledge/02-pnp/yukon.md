@@ -19,7 +19,7 @@ sources:
 # Yukon (YNP)
 
 ## Must cover
-- Skilled Worker, Critical Impact, Express Entry (worker YNP); separate Business Nominee Program (intake status unconfirmed); EOI windows; priorities
+- Skilled Worker, Critical Impact, Express Entry (worker YNP); separate Business Nominee Program (pages removed 2026-11-20; not presented as open); EOI windows; priorities
 
 ## Current rules
 _Official YNP pages read in browser 2026-11-07 and 2026-11-20._
@@ -33,8 +33,9 @@ _Official YNP pages read in browser 2026-11-07 and 2026-11-20._
 - These 3 are the **worker** YNP streams for 2026. Francophones are a selection priority, not a separate stream.
 - **CORRECTION 2026-11-17:** the earlier line "No Business stream in 2026" was wrong. The **Yukon Business Nominee Program (YBNP)** is a separate program, not part of the employer-driven 2026 YNP intakes. See section below.
 
-### Yukon Business Nominee Program (separate; intake not confirmed)
-- **Not discontinued.** Official yukon.ca BNP pages are live (last modified 2026-09-03, per search index and secondary). Yukon's 2025-07-29 release ending the Yukon Community Pilot said the Business Nominee stream remained (secondary report) (M).
+### Yukon Business Nominee Program (pages removed as of 2026-11-20; do not present as open)
+- **History (superseded 2026-11-20, see next bullet):** yukon.ca BNP pages were live (last modified 2026-09-03, per search index and secondary). Yukon's 2025-07-29 release ending the Yukon Community Pilot said the Business Nominee stream remained (secondary report) (M).
+- **Re-checked in Chrome 2026-11-20 (H for page text):** the BNP landing page (https://yukon.ca/en/immigration/yukon-business-nominee-program) now redirects to a yukon.ca **"Page not found"** page, and the official YNP page (https://yukon.ca/en/yukon-nominee-program) says **"There are 3 program streams"**: Critical Impact Worker, Skilled Worker, Express Entry. **No business stream is listed.** Do not present the BNP as open; ask yukon.nominee@yukon.ca before any business client relies on it. Fee, deposit and grid: OPEN (no official page).
 - **Intake status not stated.** On 2026-11-20 the BNP "apply" page and the "assessment point grid" page **redirect** (to the YNP process page and the eligibility page). Only the eligibility page is live. Treat as **not accepting applications** until Yukon confirms in writing (yukon.nominee@yukon.ca / 867-667-5131) (H for the redirects; status M).
 - Official eligibility page (yukon.ca; read in browser 2026-11-20) (H):
   - Net worth **$500,000**, verified by a Yukon accounting firm as legally obtained.

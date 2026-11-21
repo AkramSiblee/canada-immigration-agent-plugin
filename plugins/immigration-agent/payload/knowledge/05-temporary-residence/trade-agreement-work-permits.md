@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: trade-agreement-work-permits
 status: verified
-last_verified: 2026-11-14
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 180
 sources:
@@ -54,10 +54,12 @@ sources:
 - CUKTCA mirrors CETA (codes F60-F67); confirm durations on the CUKTCA page before advising (not read in full) (M).
 
 ### CPTPP detail (H)
-- Members on IRCC page (2026-09-02): Canada, Australia, Japan, Mexico, New Zealand, Singapore, Vietnam, Peru, Malaysia, Chile, Brunei; **UK listed "ratified September 1, 2026"** (entry-into-force for mobility not stated: re-verify).
+- Members on IRCC page (2026-09-02): Canada, Australia, Japan, Mexico, New Zealand, Singapore, Vietnam, Peru, Malaysia, Chile, Brunei; **UK listed "ratified September 1, 2026"**.
+- **UK in force with Canada 2026-09-01 (H):** Global Affairs release (2026-07-03) announced Canada's ratification of the UK Accession Protocol; the CPTPP "enters into force between Canada and the UK on September 1, 2026"; CUKTCA stays in effect (choose either). The accession covers the whole agreement, so the temporary entry chapter applies from that date (Global Affairs gives no separate mobility date; M on that inference). **Wording conflict:** IRCC calls 2026-09-01 the ratification date; Global Affairs gives it as entry into force (ratification announced 2026-07-03).
+- **UK categories on IRCC pages (2026-09-02, read 2026-11-20) (H):** professionals (T52) only, under a UK country-specific list of TEER 0-1 occupations, with Canadian educational requirements "deemed to be met" if the UK gives Canadians similar treatment; **no UK technicians**. ICT executives, managers and specialists (T51/T55) open to UK citizens; management trainees not listed for the UK. **T53 spouse OWP:** the ICT page lists UK citizens ("Australia, Brunei, Chile, Japan, Mexico or the United Kingdom"); the professionals page's spouse text does not. UK professional's spouse: use the domestic route (open-work-permits.md) or CUKTCA if eligible. Note: the professionals page's Annex 12-A summary omits the UK although it has a UK section (internal inconsistency).
 - **T52 professionals/technicians:** initial **1 yr**, extensions at officer discretion. Professional: 4+ yr post-secondary degree + **2 yrs** paid sector experience. Technician: 2+ yr diploma + **4 yrs**. Country-specific lists (Annex 12-A s.D) for Australia, Brunei, Chile, Japan, Mexico, Peru, Malaysia (no technicians). **Not available to New Zealand, Singapore, Vietnam.**
 - **ICT:** initial **3 yrs**; T51 renewals 2 yrs, **max 7 yrs**; T55 **max 5 yrs** (Malaysia excluded); T54 trainee 3 yrs, extension only exceptionally. Qualifying: **1 yr** continuous within the previous 3 yrs (one note on the page says 6 months: conflict, use 1 yr).
-- **T53 spouse OWP:** only for certain nationalities (citizens of Australia, Japan, Mexico; Australian PRs; Malaysia only for ICT execs; Brunei for ICT/professionals; UK principals listed). Others: use domestic spousal OWP rules (open-work-permits.md).
+- **T53 spouse OWP:** only for certain nationalities (citizens of Australia, Chile, Japan, Mexico; Australian PRs; Malaysia only for ICT execs; Brunei for ICT/professionals; UK for ICT only, see above). Others: use domestic spousal OWP rules (open-work-permits.md).
 
 ### GATS detail (page 2014-10-28, old but current) (M on currency)
 - WTO-member citizens (plus PRs of Australia, NZ, Armenia, Switzerland). **Max 90 days in 12 months; no extension.** Contract between foreign service provider and Canadian consumer. Not for education, health, recreation/culture/sport services or placement agencies.
@@ -65,7 +67,7 @@ sources:
 
 ## Recent changes (2025-2027)
 - 2025-05-02: CETA ICT page updated (H)
-- 2026-09-02: CPTPP pages list UK ratification 2026-09-01 (H on the text; effect unconfirmed)
+- 2026-09-01: CPTPP in force between Canada and the UK (Global Affairs 2026-07-03); IRCC CPTPP pages updated 2026-09-02 with UK professionals and ICT (H)
 - 2026-09-21: CETA CSS/IP page updated (H)
 
 ## Consultant pitfalls
@@ -80,7 +82,7 @@ sources:
 - Occupation not on the annex list; experience or degree short; no qualifying employer relationship (ICT); nationality not covered; contract missing or exceeds cumulative limit
 
 ## Re-verify before advising
-- UK CPTPP entry-into-force for temporary entry
+- UK T53 spouse eligibility for professionals (pages disagree; confirm with IRCC before filing)
 - CUKTCA durations (page not read in full)
 - New agreements (Indonesia CEPA, Ecuador, Honduras) on the FTA index
 
@@ -91,3 +93,4 @@ sources:
 - CUKTCA (2024-10-03), CPTPP overview/professionals/ICT (2026-09-02), GATS (2014-10-28): URLs in front matter
 - Chile, Peru, Colombia, Panama (2024-10-03), Korea (2025-01-20), CUFTA (2024-07-05): linked from the FTA index
 All read 2026-11-14.
+- Re-read 2026-11-20: CPTPP overview, professionals, ICT (2026-09-02), URLs in front matter; Global Affairs release (2026-07-03): https://www.canada.ca/en/global-affairs/news/2026/07/minister-sidhu-announces-canadas-ratification-of-the-united-kingdoms-cptpp-accession-protocol.html ; UK accession negotiated outcomes (2026-07-03): https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/cptpp-ptpgp/uk-negotiated_outcomes-ru-resultats_negociations.aspx?lang=eng

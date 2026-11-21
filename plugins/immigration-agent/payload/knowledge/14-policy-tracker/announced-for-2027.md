@@ -2,7 +2,7 @@
 domain: 14-policy-tracker
 topic: announced-for-2027
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -154,12 +154,12 @@ Nothing below is a new 2027 rule in force. Rows marked NOT PUBLISHED mean no off
 - n/a (tracker)
 
 ## Re-verify before advising
-- 200,000 measure: implementation instructions and provincial PNP allocations
+- 200,000 measure: implementation instructions and provincial PNP allocations (re-checked 2026-11-20: no IRCC instructions or per-province figures published; only the 2026-11-05 backgrounder and 2026-11-12 release; secondary sites agree)
 - Ontario Workforce Priority Phase 2
 - PGP reopening
 - Quebec 2027 plan (fall 2026)
 - TFWP provincial opt-ins before 2027-03-01
-- Federal entrepreneur pilot: IRCC notice, MI in Canada Gazette I (check monthly; deadline "2026" ends 2026-12-31)
+- Federal entrepreneur pilot: IRCC notice, MI in Canada Gazette I (check monthly; deadline "2026" ends 2026-12-31). Re-checked 2026-11-20: still not launched; no Gazette I notice found
 - Provincial notices on 2027 workers cohort allocations and whether they cover SUV/Self-Employed applicants (deadline to use 2027-03-31)
 - Quebec 2027 immigration plan and any business-program suspension under the new PQ government
 - H-1B accelerated pathway (Budget 2025): launch notice, eligibility, whether it is an Express Entry category

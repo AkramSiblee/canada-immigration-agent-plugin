@@ -2,7 +2,7 @@
 domain: 08-inadmissibility
 topic: misrepresentation-s40
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -33,7 +33,7 @@ sources:
 - **Procedural fairness:** a PFL normally comes first (officers must disclose concerns and allow a response; case law) (M).
 
 ## Administrative monetary penalties for representatives (SOR/2026-220)
-Checked 2026-11-17. **No dedicated IRCC AMP guideline or misrepresentation PDI found.** IRCC's 2026 management action plan committed to publishing new misrepresentation PDIs "by September 2026"; none located on canada.ca as of 2026-11-17. The RIAS says officer guidance, public guidance and notice templates exist; the public guidance is the IRCC "break the rules" page below. (H for what is published; unknown for internal officer guidance.)
+Checked 2026-11-17 and **re-checked 2026-11-20: still no dedicated IRCC AMP guideline or misrepresentation PDI found** (IRCC committed to publish new misrepresentation PDIs by September 2026; not seen on canada.ca). The AMP process page exists: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers/break-rules-advice-representation.html (notice of violation; 30 days to pay or request review). IRCC's 2026 management action plan committed to publishing new misrepresentation PDIs "by September 2026"; none located on canada.ca as of 2026-11-17. The RIAS says officer guidance, public guidance and notice templates exist; the public guidance is the IRCC "break the rules" page below. (H for what is published; unknown for internal officer guidance.)
 - **In force:** SOR/2026-220 is in force on registration, **2026-10-23** (s.2; Gazette II published 2026-11-04). IRCC news release of **2026-10-28** says "starting today". **Conflict: 23 vs 28 Oct.** Use 23 Oct (the regulation text) and flag it. Not retroactive: no penalty for conduct before coming into force (IRCC page) (H).
 - **Who:** a person who, for consideration, represents or advises (or offers to) in connection with an EOI or an IRPA application/proceeding: licensed RCICs, lawyers, other authorized reps **and** unauthorized paid advisers, including outside Canada (s.315.46). Entities for which the person conducts business are covered for document requests (s.315.49). **Applicants are not penalized parties** (H).
 - **Violations and baselines:** unauthorized paid representation **$5,000** (s.315.47); knowingly misrepresenting, or counselling/helping a person to misrepresent **$15,000** each (s.315.48(a)-(c)); failing to produce documents on inspection **$10,000** × multiplier (s.315.49(3), 315.55) (H).

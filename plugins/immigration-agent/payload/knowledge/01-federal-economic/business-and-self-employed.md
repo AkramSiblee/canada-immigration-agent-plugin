@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: business-and-self-employed
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -46,7 +46,7 @@ sources:
 - NB Business Immigration
 - PEI Work Permit Stream (Business Impact category; 0 business ITAs 2026)
 - NL International (Graduate) Entrepreneur
-- YT: Business Nominee Program pages live (2026-09-03), intake status not stated (02-pnp/yukon.md, M); NWT Business (open, first come first served)
+- YT: Yukon Business Nominee Program landing page now redirects to 'Page not found' and the YNP page lists only 3 worker streams (Chrome, 2026-11-20, H): do not present the BNP as open; confirm with Yukon (02-pnp/yukon.md); NWT Business (open, first come first served)
 - ON none
 
 ## Recent changes (2025-2027)
@@ -68,7 +68,7 @@ sources:
 - SUV: commitment not genuine, or business not viable; SE: experience not "relevant" at world-class/national level
 
 ## Re-verify before advising
-- Federal entrepreneur pilot launch
+- Federal entrepreneur pilot launch (still not launched 2026-11-20; no Gazette I notice)
 - 2027 cohort: which provinces take up the extra allocations and how they pick SUV/SE files (2027-03-31 target)
 
 ## Sources

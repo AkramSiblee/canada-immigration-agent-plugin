@@ -69,7 +69,7 @@ sources:
 - **Removal:** applying does **not** stop removal ("You must leave on the specified removal date" - Guide 5291). No stay before stage 1 (2020 PACP briefing).
 - **After AIP:** IRPR **s.233** stays the removal order (incl. family members) where the Minister grants an H&C exemption, until the PR decision. IRCC treats a stage 1 approval as triggering the regulatory stay (PACP 2020) (M for practice; text H).
 - **Work permit:** IRPR **s.207(d)** - open work permit for a PR applicant granted an s.25(1)/25.1(1)/25.2(1) exemption; **s.207(e)** family members. Apply in Canada (R199(f)); a s.207 permit does not by itself confer temporary resident status (R202) (H). IRCC usually invites the AIP client to apply (M).
-- **Quebec:** after AIP, file goes to MIFI. MIFI emails the CSQ invitation, form and document list. CSQ valid 24 months, or until IRCC decides if PR is in process.
+- **Quebec:** after AIP, file goes to MIFI. MII (formerly MIFI) emails the CSQ invitation, form and document list. CSQ valid 24 months, or until IRCC decides if PR is in process.
 - **Family:** spouse/partner and dependent children **in Canada** processed concurrently. Family **abroad** are not included but **must be declared and examined**. An unexamined family member can never be sponsored later (R117(9)(d)).
 - **Sponsorship undertakings:** no longer assessed as a requirement in in-Canada H&C; an existing undertaking may be a factor.
 - No appeal. Refusal -> Federal Court JR (15 days in Canada; lawyer).

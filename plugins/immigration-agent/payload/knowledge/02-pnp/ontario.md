@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: ontario
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -37,7 +37,31 @@ sources:
 - CLB 9+ = 15
 - master's = 8
 - regional: Northern Ontario 15, Toronto 0
-- The full grid is on the stream page. **OWP draw results and cut-offs: none published yet (2026-11-07).**
+- The full grid is on the stream page. **OWP draw results and cut-offs: none published yet (official updates page, 2026-11-20).**
+
+### Full EOI grid (official stream page, read in Chrome 2026-11-20) (H)
+Job-offer pathways (TEER 0-3 and 4-5). Max **130** at launch (July 2026), **132** after the 2026-10-05 earnings change; self-employed physicians **117** (no wage factor).
+| Factor | Points |
+|---|---|
+| Work region | Northern 15; Eastern, Central (outside GTA), Southwestern 10; GTA outside Toronto 5; Toronto 0 |
+| TEER | 0/1 9; 2/3 6; 4/5 0 |
+| Hourly wage | $40+ 15; $35-39.99 12; $30-34.99 10; $25-29.99 8; $20-24.99 5; under $20 0 |
+| NOC broad category | 3 (health) 10; 7 (trades/transport) 8; 2 (sciences) 6; 0, 1, 4, 8, 9 = 4; 5, 6 = 2 |
+| Ontario experience in the job-offer position | over 24 mo 18; 13-24 15; 6-12 12 |
+| Ontario experience, others (alternative) | over 24 mo 12; 13-24 9; 6-12 6; under 6 0 |
+| Canadian income (CRA Notice of Assessment, any year in last 5) | $80k+ 10; $70-79,999 8; $50-69,999 6; $30-49,999 4; under $30k 0 (10-point band from 2026-10-05) |
+| Education (Canadian credential or ECA required) | doctorate or degree in medicine, dentistry, veterinary medicine or optometry 10; master's 8; bachelor's or university certificate above bachelor 6; Ontario College Graduate Certificate, university certificate below bachelor, college/CEGEP diploma, apprenticeship/trades 5; less 0 |
+| Canadian post-secondary credentials (eligible institution, 1+ yr full-time) | 2+ 10; 1 5; none 0 |
+| Official language (lowest of 4 skills; higher of EN/FR test; no Academic or One Skill Retake tests) | CLB 9+ 15; 8 12; 7 8; 6 4; 5 or lower 0 |
+| Knowledge of official languages | 2 languages (CLB 6+ in all 4 skills on both tests) 10; 1 language 5 |
+| Status in Canada | valid work permit 10; study permit 5; other 0 |
+| Physicians: Ontario practice experience | 24+ mo 18; 13-24 15; 6-12 12 |
+- Source (H): https://www.ontario.ca/page/ontario-workforce-priority-stream , Scoring factors section, read in Chrome 2026-11-20. Max **132** for job-offer EOIs (9+10+15+18+10+10+10+10+15+10+15); self-employed physicians have no wage factor (**117**). TEER, broad category and wage are prepopulated from the job offer; region follows the job's work location (physicians: OHIP practice address). Earlier secondary reconstruction (CIC News 2026-07) matched except the earnings bands, now corrected.
+- Conflict: a vgis.ca summary claims OWP cut-offs "mid-80s to mid-90s" from June-July 2026 draws. No other source, and no official page, reports any OWP draw; EOI opened only 2026-08-04. **Disregard.**
+
+### First draw (checked 2026-11-20): **none held / none published** (H)
+- Secondary trackers checked 2026-11-05 to 2026-11-12 (oinp.org "No draws have happened yet", verified against ontario.ca 2026-11-05; chkimmigration.ca 2026-11-12; commonwealthmigration.ca 2026-11-09) all report no Workforce Priority draw. **Official 2026 updates page read in Chrome 2026-11-20 (H):** latest entries are Nov 9 (contravention orders published), Oct 16 (REDI), Oct 7 (earnings factor), Aug 4 (EOI portal open); **no Workforce Priority invitation round is listed.** Early "October 2026 first draw" articles were speculation.
+- Last OINP draw of any kind: 2026-04-30 (old Employer Job Offer stream).
 
 ### Employer requirements (stream page 2026-10-20 and employer guide, read 2026-11-09) (H)
 - **Active business at least 3 years**; premises in Ontario; no outstanding ESA or OHSA orders.
@@ -66,13 +90,16 @@ sources:
 - Last Employer Job Offer draw: 2026-04-30 (GTA, 1,063 invitations)
 
 ### Regional Economic Development through Immigration (REDI)
-- New round to end of 2027. OINP pages don't say how it fits this stream. See `regional-community-streams.md`.
+- **Official (2026 updates page, Oct 16 entry, read 2026-11-20, H):** a new REDI round launched 2026-10-14 and runs **to the end of 2027**. It allocates nomination spaces to selected partner communities: **Greater Sudbury, Kenora District, Nipissing District, Rainy River District, Renfrew County, Thunder Bay**. **No separate application**: applicants must meet OINP eligibility (i.e., the Workforce Priority stream). See `regional-community-streams.md`.
+- Re-checked 2026-11-20: no official or secondary source explains REDI mechanics under Workforce Priority. The grid's regional points (Northern 15; Eastern/SW/Central 10) already favour most REDI partners (Sudbury, Kenora, Nipissing, Rainy River, Thunder Bay = Northern; Renfrew = Eastern). REDI does get **allocated nomination spaces** (official); whether it gets targeted draws: **OPEN**; ask OINP.
 
 ## Recent changes (2025-2027)
 - 2026-06-25/26: all 8 OINP streams replaced by Ontario Workforce Priority (H) - confirmed
 - 2026-08-04: OWP EOI portal opened (H)
 - 2026-10-05: CRA earnings factor updated (H)
 - "First of a 2-phase program redesign". Phase 2 content and timing not published (H)
+- Phase 2 (secondary, M): the Dec 2025 regulatory proposal named three later streams - **priority healthcare** (regulated professionals, no job offer), **entrepreneur** (established/purchased and operating an Ontario business), **exceptional talent** (academia, innovation, science, tech, creative). No launch date announced as of 2026-11-20; final design may differ. Do not advise clients to wait for them. Sources: https://www.cicnews.com/2025/12/ontario-proposes-complete-overhaul-of-provincial-immigration-pathways-1262958.html ; https://cfa.ca/ontario-launches-three-new-pathways-to-permanent-residence/
+- Regulation: O. Reg. 204/26 (filed 2026-06-25) amended O. Reg. 422/17 to create the Workforce Priority categories incl. self-employed physicians (e-Laws index via search; page 403 to fetch) (M)
 
 ## Consultant pitfalls
 - Clients with old-stream advice (Master's/PhD without a job offer, HCP via EE NOI) **have no OINP route now**. Re-assess: they need a TEER 0-3 job offer, or must use federal routes.
@@ -85,8 +112,9 @@ sources:
 - Job offer not genuine / employer criteria not met; experience not in the offered NOC; language below CLB; misrepresented EOI points (points must be provable at application)
 
 ## Re-verify before advising
-- OWP grid details and Phase 2 timing
-- First OWP draw results and cut-offs
+- Phase 2 timing (grid confirmed H 2026-11-20)
+- First OWP draw results and cut-offs (none as of 2026-11-20)
+- REDI mechanics under OWP
 - 2027 allocation; workers-cohort top-up
 
 ## Sources

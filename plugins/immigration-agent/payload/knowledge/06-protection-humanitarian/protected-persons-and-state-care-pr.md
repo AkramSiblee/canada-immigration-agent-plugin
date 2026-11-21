@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: protected-persons-and-state-care-pr
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 60
 sources:
@@ -57,7 +57,7 @@ sources:
 - **Fee: none.**
 - **Forms:** document checklist IMM 0203; IMM 0008 (Program "Other"; Category "In-Canada - Humanitarian & Compassionate Considerations"); IMM 5669; IMM 5406 if applicable; attestation letter and attendance records; photo for each person. Guide IMM 0204. Sent to the Humanitarian Migration Office in Vancouver (M: guide extract).
 - **Removal:** a removal order is stayed once approved in principle (M: guide extract).
-- **Quebec:** application is referred to MIFI, and a CSQ is needed.
+- **Quebec:** application is referred to MII (formerly MIFI), and a CSQ is needed.
 - **TRP alternative:** a temporary resident permit is available to this group. It stays valid until its expiry or PR approval.
 
 ### Family abroad: the one-year window
@@ -89,6 +89,7 @@ sources:
 
 ## Recent changes (2025-2027)
 - 2026-03: state care pages updated; deadline remains 2027-01-21 (H)
+- 2026-11-20: re-checked; Guide IMM 0204 and program page still give 2027-01-21 (no extension posted) (H; https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/minors-pr.html)
 - 2026-10-08: protected person PR pages updated (H)
 
 ## Consultant pitfalls

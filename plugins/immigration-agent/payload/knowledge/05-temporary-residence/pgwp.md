@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: pgwp
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -60,6 +60,7 @@ sources:
 - **Date-conditioned rows (128):** IRCC cell wording is "Your program is eligible if you submitted your study permit application" [and separately "your PGWP application"]: "Before November 1, 2024" / "After June 25, 2025". There are 119 rows with June 25, 2025. There are 9 rows with "After December 17, 2024": 13.1207, 13.1208, 13.1210, 13.1501, 19.0706, 19.0708, 19.0709, 19.0711 and 19.0710. The CSV stores all 128 conditioned rows as `condition_type=other` (meaning "before 2024-11-01 or after condition_date") with `condition_date` = the "after" date. Either application (study permit or PGWP) falling in a window satisfies the row. IRCC says "after", not "on or after"; how an application filed on the date itself is treated is not stated.
 - **No removed-fields table** is published on IRCC pages. Secondary sources say 178 fields were removed on 2025-06-25 and reinstated around 2025-07-04/07 (the date varies by source; M). Because nothing is published, `field-of-study-removed.csv` was not created.
 - **Freeze:** "For 2026, we won't add or remove any eligible fields of study." (H)
+- **2027 list: not published** (checked 2026-11-20). Field-of-study page still shows page details **2026-03-09** and the 2026 freeze text, no 2027 wording. IRCC notices page has no field-of-study notice after 2025-06-25. No secondary source reports a 2027 list. CSV left unchanged. Recheck from January 2027.
 - **Lock-in and transition (IRCC page + PDI):**
   - The CIP "must be on the list of currently eligible CIP codes when you submit either your study permit application or your PGWP application".
   - PDI: "applicants may complete that program and remain eligible for a PGWP even if that field-of-study becomes ineligible".
@@ -89,7 +90,8 @@ sources:
   - Moving to a bachelor's, master's or doctoral degree removes the field-of-study requirement. The PDI says students on a pathway "can follow the PGWP eligibility rules that are associated with acquiring a credential from a bachelor's degree program".
   - Moving down to a college diploma or certificate brings in the field-of-study test and the CLB 5 test.
   - The language level follows the credential completed: CLB 7 for university and degree programs, CLB 5 for other programs. Non-university degree graduates who applied 2024-11-01 to 2025-03-10 needed CLB 5; from 2025-03-11 they need CLB 7.
-- **Unknown:** no IRCC text on a CIP change by the DLI (recoding) mid-program. Get the DLI's letter stating the CIP of the program completed.
+- **Unknown (re-checked 2026-11-20):** no IRCC text on a CIP change by the DLI (recoding) mid-program. Field-of-study page (2026-03-09, read in full) and PGWP PDI (2025-12-11) are silent. What they do say: CIP must be on the list "when you submit either your study permit application or your PGWP application"; IRCC uses "6-digit CIP codes based on the CIP Canada 2021"; a CIP "should be provided on official documentation by the DLI", and if missing, applicants "are encouraged to include the eligible CIP code" (H). Practice (M): get the DLI's letter stating the CIP of the program completed and the recoding date; test **both** codes against the list on the study permit date and the PGWP date; if only the old code qualifies, explain the recoding in a letter and expect officer discretion. A secondary search found no IRCC statement either.
+- **Thesis-stage scheduled breaks (re-checked 2026-11-20):** no IRCC text on thesis or research-stage students in the PGWP PDI, Help Centre 499/503 or the work off campus page. For PGWP length the PDI counts "regularly scheduled breaks" in the program length; for full-time status breaks are excluded. Whether a thesis term without classes is a "scheduled break" depends on the DLI calendar (see study-permit-status-and-compliance.md) (M).
 
 ### Length
 - 8 months to under 2 years: up to the program length. 2+ years: up to 3 years. **Master's of at least 8 months: up to 3 years** (since 2024-02-15).
@@ -148,4 +150,6 @@ Listed tests: CELPIP General, **IELTS General Training**, PTE Core, TEF Canada a
 All read 2026-11-07.
 - Field of study page (page details 2026-03-09), read 2026-11-17 for full CIP extraction to `templates/pgwp/field-of-study.csv`
 - Currently eligible CIP codes ("Last updated: July 4, 2025"), read 2026-11-17: https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study/currently-eligible.html
+- Field of study page re-read 2026-11-20 (still 2026-03-09, freeze text unchanged); IRCC notices page read 2026-11-20: https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
+- PGWP PDI and field-of-study page re-read 2026-11-20 for CIP recoding and thesis breaks (no text found)
 - PGWP program delivery instructions (2025-12-11), read 2026-11-17: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/study-permits/post-graduation-work-permit-program.html

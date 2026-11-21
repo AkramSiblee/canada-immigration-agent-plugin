@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: express-entry
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -34,6 +34,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/processing-times-service-delivery.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/biometrics/facts.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessed.html
 ---
 # Express Entry: FSW, CEC, FST
 
@@ -107,6 +108,7 @@ sources:
 
 ### Educational Credential Assessment (IRCC page 2026-10-16; read 2026-11-09)
 - Must be under 5 years old at profile and at application; must be for immigration purposes; enter result and reference number in the profile. Each credential needs its own ECA to claim two or more credentials.
+- **Foreign high school diploma: ECA needed for CRS points** (MI s.11(3); IRCC ECA page: a non-equivalent post-secondary holder "could get your secondary credential assessed"). Re-read 2026-11-20 (H). See crs-scoring.md.
 - **Designated:** WES, IQAS, ICAS, ICES (BCIT), CES (U of T); professional bodies MCC, PEBC, CACB where the primary occupation requires. IRCC doesn't rank them.
 - **CES stopped accepting new applications 2026-10-22** (U of T notice), though IRCC's page still lists it. Paid applications continue.
 - **Times (provider pages, change often):** IQAS about 15 business days, rush 5 to 7 ($260 + $25 + courier; rush +$250; daily cap; not guaranteed for institution verification); WES about 2 weeks verification + 1 to 2 weeks evaluation (about C$264); ICAS average 20 weeks (about $231, M).
@@ -129,6 +131,7 @@ sources:
 |---|---|---|---|---|---|---|---|---|
 | Funds | 15,263 | 19,001 | 23,360 | 28,362 | 32,168 | 36,280 | 40,392 | 4,112 |
 - Not required for CEC, or for FSW/FST with a valid job offer and current work authorization.
+- **Re-checked 2026-11-20 (H):** page (date modified 2026-11-18) still shows the table "Updated July 7, 2025"; no 2026 table yet. Source: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/proof-funds.html
 - **No 2026 update is posted** as of 2026-11-07, although IRCC says it updates the table yearly. Re-checked 2026-11-17: still "Updated July 7, 2025" (page modified 2026-10-16) (H).
 
 ### Settlement funds: official rules vs judgment (read 2026-11-17)
@@ -237,7 +240,8 @@ Signed: ______________  [Name], [Title: immediate supervisor / HR officer]
 - Any regulatory proposal to merge FSW/CEC/FST into one "federal high-skilled" class (not found on official pages as of 2026-11-07)
 
 ## Sources
-- FSW: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html (2026-11-03)
+- **URL check (2026-11-20, H):** both paths of each pair still load the same page, but the primary (linked) paths are: job offer `express-entry/documents/job-offer.html` (modified 2026-11-18; French twin `documents/offre-emploi.html`; old `documents/offer-employment.html` also serves it); police `express-entry/documents/police-certificates.html` (modified 2026-10-16; linked from the EE Documents index; `apply-permanent-residence/police-certificates.html` also serves it); FSW `express-entry/who-can-apply/federal-skilled-workers.html` (modified 2026-11-18; linked from "Who can apply"; French twin `qui-presenter-demande/`; `eligibility/federal-skilled-workers.html` also serves it). Cite the primary paths.
+- FSW: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html (2026-11-03; modified 2026-11-18)
 - CEC: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html
 - FST: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-trades.html
 - Language tests: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-test.html

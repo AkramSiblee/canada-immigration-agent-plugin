@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: special-measures-and-public-policies
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -49,7 +49,7 @@ sources:
 
 ## Re-verify before advising
 - Public policy end dates (Ebola 2026-11-27; Ukraine/Iran 2027-03-31; Haiti 2027-12-30)
-- After 2026-11-27: check whether the Ebola measures were extended or ended
+- After 2026-11-27: check whether the Ebola measures were extended or ended. **Checked 2026-11-20:** page still reads "Extended until November 27, 2026"; no further extension posted (H; https://www.canada.ca/en/immigration-refugees-citizenship/services/special-measures/ebola-2026.html)
 
 ## Sources
 - Situations abroad (2026-05-27): https://www.canada.ca/en/immigration-refugees-citizenship/services/special-measures/situations-abroad.html

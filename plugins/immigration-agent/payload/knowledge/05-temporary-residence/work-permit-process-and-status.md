@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: work-permit-process-and-status
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 60
 sources:
@@ -141,7 +141,7 @@ Many still need a visa or eTA, and conditions apply.
   - Apply online: "Applying for an open work permit under an active public policy or pilot program announced by IRCC"; code **MBEOI2024** in both the job title and duties boxes.
   - Permit: open, Manitoba only ("Manitoba NES"), **2 years** or passport expiry, **no further extension**.
   - **Expiry: applications must be received before 2027-12-31.** Later applications, including renewals, are refused.
-  - Fees on the instructions page: $155 + restoration "$229" + $85 biometrics. **Conflict:** the $229 restoration fee is out of date. The fee list shows $246.25 since 2025-12-01. Pay the fee-list amount.
+  - Fees on the instructions page: $155 + restoration "$229" + $85 biometrics. **Conflict:** the $229 restoration fee is out of date. The fee list shows $246.25 since 2025-12-01. Pay the fee-list amount. Re-checked 2026-11-20: instructions page still 2026-08-19 with "$229" and no $100 OWP holder fee listed; fee list (2026-11-10) $246.25 (H). Whether the $100 holder fee applies isn't stated on the instructions page (unknown; check the portal fee screen).
 - **Expired:** the 2024 PNP-candidate policy and its Alberta, Manitoba and Yukon extension (instructions page 2026-08-19). The restore page's generic "participating province or territory" text is not a separate open policy.
 - **No other province or territory has a current support-letter work permit policy** on IRCC's instructions page as of 2026-11-17. Quebec PSTQ applicants use a different policy and are not exempt from restoration (see `open-work-permits.md`).
 
@@ -161,9 +161,9 @@ Many still need a visa or eTA, and conditions apply.
 - **Permanent-duration LMIA:** the work permit is capped at **2 years**.
 - **Maximum durations ESDC can approve:**
   - High-wage: **up to 3 years**, longer only in exceptional circumstances with an adequate rationale (high-wage page 2026-10-07).
-  - Low-wage: **up to 2 years for LMIAs submitted on or after 2026-11-06**, up from 1 year (ESDC release 2026-11-06). **Conflict:** the low-wage page (2026-10-07) and the PR LMIA page (2026-06-09) still say 1 year. The release governs for new applications.
+  - Low-wage: **up to 2 years for LMIAs submitted on or after 2026-11-06**, up from 1 year (ESDC release 2026-11-06). **Conflict (re-checked 2026-11-20):** the low-wage page (still 2026-10-07) says "a maximum of 1 year"; the low-wage requirements page (2026-11-10) states no maximum; the PR LMIA page (2026-06-09) still says 1 year. The release governs for new applications (H for all texts).
   - Duration can be changed only while the LMIA is pending, not after a positive decision.
-- **Concurrent processing:** program update 2026-08-21: no decision on concurrent-processing extensions until **90 days** after receipt (was 60). The instructions page (2026-10-28) shows code CPTS2026 but not the 90 days.
+- **Concurrent processing:** program update 2026-08-21: "applications eligible for concurrent processing without a labour market impact assessment (LMIA)" "will not receive a decision until 90 days has elapsed from the date the application was received" (grace period was 60). **Re-checked 2026-11-20: the 90 days is still only in the update notice.** The instructions page it links to (validity/duration PDI, 2026-10-28) says IRCC holds the file "until there is a decision on the LMIA" and gives code CPTS2026, with no day count. Client pages (extend/apply 2026-10-14; employer extend page 2026-10-14) and Help Centre 701 (2026-11-03) give only the 2-week rule and no 60/90 days (H for all texts). Practice: tell the employer the LMIA should be decided within 90 days of IRCC's receipt.
 
 ### PR-only and dual-intent LMIAs (ESDC pages 2026-06-09, 2026-09-18, 2026-10-27)
 - **PR-only:** "a position in support of a permanent residency application only (no application for work permit)". **No processing fee.** Exempt from the transition plan, the low-wage cap, and the refusal to process in CMAs at 6%+ unemployment.
@@ -215,8 +215,9 @@ Bridging open work permit; spouse in Canada; TR to PR (to 2026-12-31); AIP 2-yea
 - IRCC "How to extend" and the forms and "submit your application" pages were not summarized here; use the portal checklist
 - Non-compliant list on the day of advice
 - Individual exemption pages not summarized above
-- Manitoba Workforce Transition Bridge: still in force, and its fee table (shows $229 restoration)
-- ESDC low-wage page: updated to 2 years? PR-only LMIA stream after MI 2026-1
+- Manitoba Workforce Transition Bridge: fee table still shows $229 restoration (2026-11-20)
+- ESDC low-wage page: still 1 year on 2026-11-20; PR-only LMIA stream after MI 2026-1
+- Concurrent processing 90 days: not yet in the officer instructions (2026-11-20)
 - Two pending applications: which decision governs (not in the instructions)
 
 ## Sources
@@ -254,4 +255,5 @@ Added 2026-11-17:
 - ESDC high-wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/high.html
 - ESDC low-wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low.html
 - ESDC news release (2026-11-06): https://www.canada.ca/en/employment-social-development/news/2026/11/government-of-canada-announces-targeted-reforms-to-the-temporary-foreign-worker-program-to-respond-to-labour-market-needs.html
+- Re-read 2026-11-20: ESDC low-wage (2026-10-07), ESDC news release, LMIA validity PDI (2026-10-28), concurrent processing update (2026-08-21), Manitoba instructions (2026-08-19), fee list (2026-11-10), URLs above; low-wage requirements (2026-11-10): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low/requirements.html ; extend/apply (2026-10-14): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/extend/apply.html ; employer extend page (2026-10-14): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/hire-temporary-foreign/extend-permit.html ; Help Centre 701 (2026-11-03): https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=701&top=17
 - ESDC PR LMIA overview (2026-06-09), requirements (2026-09-18), refusal to process (2026-10-27): https://www.canada.ca/en/employment-social-development/services/foreign-workers/permanent.html ; https://www.canada.ca/en/employment-social-development/services/foreign-workers/permanent/requirements.html ; https://www.canada.ca/en/employment-social-development/services/foreign-workers/refusal.html

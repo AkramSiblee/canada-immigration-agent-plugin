@@ -81,7 +81,7 @@ The fee that applies is the one in force on the **date the application is receiv
 
 ### ESDC (not IRCC)
 - **LMIA processing fee: $1,000 per position.** Not refundable on withdrawal or a negative LMIA. Cannot be recovered from the worker. Exempt: primary agriculture and specified NOCs; certain in-home caregivers (medical-needs families).
-- Recognized Employer Pilot: $1,000/position; REP ends 2026-12-31.
+- Recognized Employer Pilot: $1,000/position; REP ends 2026-12-31 (ESDC requirements page re-checked 2026-11-20: "scheduled to conclude on December 31, 2026"; intake closed since 2024-09-16) (H).
 
 ## Recent changes (2025-2027)
 | Effective | Change (old to new) |
@@ -111,7 +111,7 @@ The fee that applies is the one in force on the **date the application is receiv
 ## Re-verify before advising
 - All fees on IRCC fee list (check "Date modified" on the page; it was 2026-11-10 on 2026-11-16)
 - Indexation: IRCC indexes some fees (privileges every 2 years, RPRF/PR fees). Watch for a 2027 notice.
-- PNP fees still unverified: MB ($500, M), YT, NWT. Verified: SK $500, PEI $300, ON, BC, AB, NS; NB/NL none stated (see each 02-pnp file).
+- PNP fees still unverified: YT Business Nominee (not published; pages removed 2026-11-20). MB verified: **$500** worker streams (LAA page, H, 2026-11-20) and **$2,500** Business Investor Stream (official BIS FAQ, H). Verified: SK $500, PEI $300, ON, BC, AB, NS; NB/NL none stated; **NWT (2026-11-20): Employer-Driven and Francophone no NTNP fee (only $230 IRCC employer compliance fee), Business $2,800 non-refundable, no deposit**; **YT worker YNP: no fee on official pages** (see each 02-pnp file).
 - ATIP fee ($5 under the Access to Information Act; not on the IRCC fee list; see 09-procedure-litigation/atip-gcms-notes.md)
 
 ## Sources

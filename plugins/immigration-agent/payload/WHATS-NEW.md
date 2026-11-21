@@ -2,6 +2,18 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.16.4
+- **Gap-closing pass: 50 knowledge files re-checked on official sources** (2026-11-20).
+  - **Still not out**: no Express Entry round since 2026-10-28; proof-of-funds table unchanged ($15,263 for one person); 2027 study permit cap not published; Ebola, TR to PR work permit, Groups of Five pause, Recognized Employer Pilot and state-care deadlines not extended.
+  - **Ontario**: official Workforce Priority points grid (maximum 132); no draw yet; new REDI round to end of 2027 in 6 northern and eastern communities.
+  - **Manitoba**: Business Investor and Farm Investor rules confirmed; Farm Investor runs case by case on paper, $75,000 deposit after approval.
+  - **NWT**: no fee for worker streams; business stream $2,800 with **no deposit**. **Yukon**: Business Nominee pages removed; do not present it as open.
+  - **Quebec**: PSTQ rounds July to September listed; PEQ still closed; 2027 plan not tabled; ministry renamed MII; business fees $1,272 + $201; investor work permit code T10.
+  - **Work permits**: spouse permits are refused with the principal's; UK CPTPP in force 2026-09-01; IRCC Help Centre pages on bridging permits and restoration fees are outdated.
+  - **Rural Community Immigration Program** (from 2027-01-01): recommendations valid 1 year.
+  - **Source of funds**: verifier and gift rules for NL, PEI, NWT and Quebec (PEI excludes gifts).
+  - **Case law**: 9 Federal Court business decisions confirmed; one citation flagged as wrong; BC and NL judicial review time limits added.
+
 ## 1.16.3
 - **How to become a licensed RCIC**: the agent now covers the full route, checked on CICC's own pages and rules.
   - **Education**: only the Queen's Graduate Diploma or the Université de Montréal D.E.S.S. qualify (the older college programs no longer do). Queen's: IELTS 7.0 in every band, tuition $17,567.12.

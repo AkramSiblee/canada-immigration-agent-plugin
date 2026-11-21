@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: crs-scoring
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -11,7 +11,8 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/10/changes-to-express-entry-for-high-wage-occupations.html
-  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessed.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
 ---
@@ -32,9 +33,10 @@ sources:
 | 17 | 18 | 19 | 20-29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45+ |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 0/0 | 90/99 | 95/105 | 100/110 | 95/105 | 90/99 | 85/94 | 80/88 | 75/83 | 70/77 | 65/72 | 60/66 | 55/61 | 50/55 | 45/50 | 35/39 | 25/28 | 15/17 | 5/6 | 0/0 |
-_(Ages 34, 35 and 38 to 42 confirmed on the IRCC CRS page 2026-11-09. Other intermediate ages: long-standing grid, Conf. M.)_
+_(**Every age 17 to 45+ confirmed** against the IRCC CRS criteria page (modified 2026-11-03) on 2026-11-20. Conf. H.)_
 
 **Education** (max 140 / 150): secondary 28/30; 1-yr post-secondary 84/90; 2-yr 91/98; bachelor's or 3+ yr 112/120; two or more credentials, one 3+ yr, 119/128; master's or entry-to-practice professional degree 126/135; doctorate 140/150.
+- **Foreign secondary (high school) diploma needs an ECA to score.** MI s.11(1)(a)(ii) gives 30 points (single) for "a secondary school credential", and s.11(3) requires either a Canadian educational credential or an equivalency assessment from an organization designated under IRPR s.75(4). ECA must be under 5 years old (MI ss.3(3)(b), 11(5)). IRCC's ECA page: the report must show the foreign credential equals "a completed Canadian secondary school (high school) or post-secondary credential"; if a post-secondary credential is not equivalent, "you could get your secondary credential assessed" (page modified 2026-10-16). No ECA = 0 education points (H). The CRS criteria page itself doesn't mention ECAs.
 
 **First official language**, per ability (max 32/34 each; 128/136 total): CLB 4-5: 6/6; CLB 6: 8/9; CLB 7: 16/17; CLB 8: 22/23; CLB 9: 29/31; CLB 10+: 32/34.
 
@@ -176,7 +178,6 @@ _Read in full 2026-11-17: MI 2026-1 (page 2026-11-03), CRS criteria page (2026-1
 
 ## Re-verify before advising
 - High-wage list changes (no stated cadence); exact count per tier
-- Intermediate age points (17-19, 30-44)
 - LMIA exemption public policy still in force
 - First round after 2026-11-03: none published as of 2026-11-17 (last #453 on 2026-10-28; IRCC rounds JSON)
 - Whether IRCC fixes the profile LMIA field (00000 workaround)
@@ -187,7 +188,8 @@ _Read in full 2026-11-17: MI 2026-1 (page 2026-11-03), CRS criteria page (2026-1
 - Consolidated MI: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/current.html
 - High-wage list: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/high-wage.html
 - News 2026-10-16: https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/10/changes-to-express-entry-for-high-wage-occupations.html
-- Job offer page (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/offer-employment.html
+- Job offer page (2026-11-03; modified 2026-11-18): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/job-offer.html (**primary path**: linked from the EE Documents index and the CRS page. The old `documents/offer-employment.html` path still serves the same page, 2026-11-20)
+- ECA page (2026-10-16): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/education-assessed.html
 - LMIA exemption public policy (2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/public-policies/exempt-lmia-express-entry.html
 - IRPR s.200(3)(h): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-200.html
-Read 2026-11-07. MI 2026-1, the CRS page, the high-wage page, the job offer page and the public policy were re-read 2026-11-17.
+Read 2026-11-07. MI 2026-1, the CRS page, the high-wage page, the job offer page and the public policy were re-read 2026-11-17. CRS age table, consolidated MI s.11 and the ECA page re-read 2026-11-20.

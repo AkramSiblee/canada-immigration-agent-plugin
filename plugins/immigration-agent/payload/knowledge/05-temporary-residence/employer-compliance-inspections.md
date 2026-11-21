@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: employer-compliance-inspections
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -139,13 +139,16 @@ sources:
   - Victims of abuse or exploitation: consider the VWOWP (open-work-permits.md).
 - **Escalate:** any client charged or under CBSA investigation for s.124/131 goes to a **criminal lawyer** (outside RCIC scope).
 
-### Enforcement figures (secondary; ESDC release 2026-07-09 not read) (M)
-- TFWP 2025-26: **1,488 inspections**, about 12% non-compliant, **AMPs over $10.2M** (2024-25: $4.5M), **30 employers banned**.
+### Enforcement figures (ESDC release 2026-07-09, primary read 2026-11-20) (H)
+- TFWP 2025-04-01 to 2026-03-31: **1,488 inspections finalized** (risk-targeted), **12% non-compliant**, **AMPs over $10.2M** (2024-25: $4.5M), **30 employers banned**.
+- Examples in the release: Manitoba long-haul trucking $240,000 + 5-yr ban (working conditions); Quebec technical consulting $122,000 + 5-yr ban (not employed in the stated occupation); Nova Scotia restaurant $126,000 + 2-yr ban (wages).
+- Ceiling: AMPs up to **$1 million per year** plus temporary or permanent bans. Release also restates the Low-Wage **8 consecutive weeks** advertising rule (up from 4).
+- Source: https://www.canada.ca/en/employment-social-development/news/2026/07/the-government-of-canada-highlights-doubling-of-compliance-monetary-penalties-under-the-temporary-foreign-worker-program.html
 - IMP 2024-25 (secondary): 4,328 inspections, 55 penalties. Don't mix the two programs.
 
 ## Recent changes (2025-2027)
 - 2024-07-26: IRCC inspection instructions updated (R209.2(3.1) justification; 2022 conditions) (H)
-- 2026-07-09: ESDC reports AMPs more than doubled (M)
+- 2026-07-09: ESDC reports AMPs more than doubled (H, primary read 2026-11-20)
 - 2026-11-02: IRPR Schedule 2 page current (laws-lois) (H)
 - 2026-03-26: IRPA last amended (C-12 period). ss.124-125 unchanged: $50,000/2 yrs indictment, $10,000/6 months summary (laws-lois, current to 2026-10-29) (H)
 - 2026-02/04: CBSA s.124(1)(c) charges (Granby, 21 workers) and conviction (Banff, $70,000) (H)
@@ -164,7 +167,6 @@ sources:
 - n/a (enforcement file). Downstream: LMIA/offer refused because employer ineligible (ban or unpaid AMP).
 
 ## Re-verify before advising
-- ESDC 2026-07-09 release figures (primary not read)
 - Bulletin justification list (read from summary portion of the page)
 - Any IRPR amendment to Schedule 2
 - Whether any C-12 provision not yet in force touches ss.124-125/131 (check IRPA "amendments not in force")

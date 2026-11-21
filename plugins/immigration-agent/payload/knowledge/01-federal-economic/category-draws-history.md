@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: category-draws-history
 status: verified
-last_verified: 2026-11-19
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -147,7 +147,7 @@ sources:
 - **Checked 2026-11-08 (IRCC JSON, raw text):** latest round is still **#453 (2026-10-28)**, Transport, 150 ITAs, CRS 477. No round under the new CRS yet. The rounds page itself is dated 2026-10-16 and its latest-round block is script-filled, so use the JSON.
 
 #### First rounds under the new CRS (from 2026-11-03)
-- **None as of 2026-11-17 (JSON checked).** The IRCC rounds JSON (newest first) still starts at #453 (2026-10-28, Transport Occupations 2026-Version 2, 150 ITAs, CRS 477, tie-break 2026-06-04 21:48:22 UTC). No drawNumber above 453 (H). A web search found no secondary report of a November 2026 round either.
+- **None as of 2026-11-20 (JSON re-checked 2026-11-20: still starts at #453; secondary trackers also report no November round, only predictions).** Earlier check: **none as of 2026-11-17 (JSON checked).** The IRCC rounds JSON (newest first) still starts at #453 (2026-10-28, Transport Occupations 2026-Version 2, 150 ITAs, CRS 477, tie-break 2026-06-04 21:48:22 UTC). No drawNumber above 453 (H). A web search found no secondary report of a November 2026 round either.
 - When the first rounds appear, log: number, date, type/category, ITAs, CRS cut-off and tie-break.
 
 ## Recent changes (2025-2027)

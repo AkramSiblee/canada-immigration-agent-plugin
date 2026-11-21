@@ -2,7 +2,7 @@
 domain: 03-quebec
 topic: temporary-workers-quebec
 status: verified
-last_verified: 2026-11-19
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -34,7 +34,7 @@ sources:
 - **$36.00/h** for LMIAs received from **2026-07-17** (was $34.62). At or above -> high-wage stream; below -> low-wage stream.
 
 ## Low-wage limits in Quebec (H)
-- **Montréal and Laval economic regions:** low-wage LMIAs **not processed until 2026-12-31** (ESDC Quebec page). Applies to facilitated-process files and renewals. Excluded sectors include NAICS 23 (construction), 311 (food manufacturing), 6111, 62 (health/social), certain caregiver positions; NAICS 6244 from 2026-01-09. **No 2027 extension announced as of 2026-11-19** (ESDC, quebec.ca; secondary sources agree) (H for absence on official pages).
+- **Montréal and Laval economic regions:** low-wage LMIAs **not processed until 2026-12-31** (ESDC Quebec page). Applies to facilitated-process files and renewals. Excluded sectors include NAICS 23 (construction), 311 (food manufacturing), 6111, 62 (health/social), certain caregiver positions; NAICS 6244 from 2026-01-09. **No 2027 extension or early end announced as of 2026-11-20** (re-checked: ESDC Quebec page still "Until December 31, 2026", page details 2026-07-24; ESDC refusal page 2026-10-27 only points to the Quebec page; quebec.ca TFWP page 2025-12-17 silent; no MII release) (H for absence on official pages). The PQ government plans to cut TFWP to about 40,000 (platform, M), so an extension is possible; nothing official yet.
 - **Federal CMA 6% rule:** low-wage LMIAs refused in CMAs with unemployment ≥6%. **Montréal CMA 7.2%** for 2026-10-09 to 2027-01-07 -> refusal applies; Québec City 4.3% -> processed. Next table 2027-01-08 (refusal page, 2026-10-27) (H).
 - **Low-wage cap:** 10% of workforce at the location (20% for NAICS 23, 311, 622, 623, some in-home caregivers) (refusal page) (H).
 - Net effect: low-wage jobs on Montréal island / Laval are blocked twice through 2026; after 2026-12-31 the CMA rule still blocks them while Montréal CMA ≥6%.
@@ -68,4 +68,4 @@ sources:
 - quebec.ca temporary selection fee: https://www.quebec.ca/immigration/travailler-quebec/travailleurs-temporaires/programme-travailleurs-etrangers-temporaires/autorisations/demande-selection-temporaire
 - Quebec news 2025-11-19 (French rule): https://www.quebec.ca/nouvelles/actualites/details/modifications-reglementaires-reglement-immigration-67118
 - Secondary: https://www.hrreporter.com/focus-areas/recruitment-and-staffing/quebec-cuts-back-fast-track-list-for-lmias/394122
-All read 2026-11-19.
+All read 2026-11-19; ESDC Quebec, ESDC refusal and quebec.ca TFWP (French: https://www.quebec.ca/immigration/travailler-quebec/travailleurs-temporaires/programme-travailleurs-etrangers-temporaires) re-read 2026-11-20 for the Montréal/Laval measure.

@@ -14,6 +14,7 @@ sources:
   - https://www.welcomebc.ca/immigrate-to-b-c/bc-pnp-ei-regional-pilot-program-guide-pdf
   - https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/regional-immigration
   - https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/documents
+  - https://welcomebc.ca/immigrate-to-b-c/bc-pnp-ei-post-arrival-guide-pdf
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2024-self-employed-r205-c60.html
 ---
 # British Columbia (BC PNP)
@@ -125,7 +126,11 @@ Sources (all read 2026-11-17): EI page "For entrepreneurs and businesses" (page 
 - Northeast: Dawson Creek, Fort St. John.
 - Thompson-Okanagan: Penticton, Salmon Arm, Vernon.
 - Vancouver Island/Coast: Campbell River, Comox, Mount Waddington, Powell River.
-- Pauses apply to sectors, not whole communities. Comox: some sectors "paused until August 2026". Campbell River: some sectors "paused until September 2026". Both dates have passed, but the page was not updated after 2026-06-24. **Re-verify the priority-sector table before advising.** (M)
+- **Comox and Campbell River pauses (re-read 2026-11-20): status after the pause dates is OPEN/unconfirmed.** Neither official page has been updated since the dates passed, and the two pages disagree on scope:
+  - RIC regional-communities table (updated 2026-06-24, https://www.welcomebc.ca/immigrate-to-b-c/entrepreneur-immigration-regional-communities): sector-level notes, Comox "paused until August 2026", Campbell River "paused until September 2026".
+  - Vancouver Island/Coast community page (updated 2026-05-08, https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program-4374589fc5bd099f34c82a0e2623f93d/regional-communities-on-vancouver-island-coast): **whole-community** intake pause for the EI Regional stream, Campbell River until **2026-09-30**, Comox until **2026-08-31**.
+  - Do not tell a client either community is open. Confirm with the community's Designated Contact Person or En.Imm@gov.bc.ca before a Regional registration naming Comox or Campbell River. (H for page text; status unknown)
+  - Listed priority sectors (VI/Coast page): Campbell River - other food mfg; veneer/plywood/engineered wood; scientific R&D; restaurants; aerospace parts; specialized design; computer systems design; traveller accommodation; beverage mfg; motion picture/video; warehousing; freight arrangement. Comox - sugar/confectionery; fruit/vegetable preserving and specialty food; aerospace parts; specialized design; computer systems design; scientific R&D; traveller accommodation.
 
 ### Strategic Projects ([EI-page], 2025-09-10) (H for listed facts; no guide published)
 - **Who:** a well-established foreign corporation in good financial standing, opening a B.C. subsidiary or branch tied to its core business. It must show investment readiness and capacity to expand internationally.
@@ -171,14 +176,27 @@ Sources (all read 2026-11-17): EI page "For entrepreneurs and businesses" (page 
 - **Base check-in:** post-arrival progress check-in due by 365 days after WP issuance.
 
 ### Minimum operation and final report (nomination request)
-- **Base:** final report due between **550 and 610 days** (about 18-20 months) after WP issuance. **Regional:** between **366 and 610 days** (about 12-20 months). **Strategic Projects:** 12-24 months after arrival.
+- **Base:** final report due between **550 and 610 days** (about 18-20 months) after WP issuance. **Regional:** between **365 and 610 days** (Post-Arrival Guide) (about 12-20 months). **Strategic Projects:** 12-24 months after arrival.
 - **One final report only.** You must be physically in Canada when it is filed and stay until the decision.
 - **Contents:**
   - Evidence that every performance agreement term was met: investment amount, job creation (180 days continuous), active management, and residency.
   - CPA review-engagement financial statements from a conflict-free CPA. Regional requires one full year.
   - CLB 4 test result if not already filed.
-  - Documents listed in the EI Post-Arrival Guide (not read; see Unknowns).
+  - Documents listed in the EI Post-Arrival Guide (below).
 - BC PNP may request more information, visit the site, or interview.
+
+### EI Post-Arrival Guide (effective 2024-05-27; official PDF read in full 2026-11-20) (H)
+- Source: https://welcomebc.ca/immigrate-to-b-c/bc-pnp-ei-post-arrival-guide-pdf . Where it conflicts with the Base or Regional program guide, the program guide governs.
+- **Arrival:** in B.C. with the WP within **365 days** of the letter of confirmation or the file closes. WP "date issued" = Commencement Date.
+- **Arrival report within 60 days** (BCPNP Online only): WP, dependants' permits, proof that **$200,000 (Base) / $100,000 (Regional)** has been transferred to a B.C. bank account from the applicant's own foreign accounts (not third-party funds); rep form signed within the last 12 months if a representative is used.
+- **Progress check-in:** Base - applicant files by 365 days after WP issue (business details, investment and staff so far, community services used). Regional - the community's Designated Contact Person files at **6-8 months** after arrival.
+- **Business establishment period: up to 610 days** from Commencement Date.
+- **Residency:** physically in B.C. **75%** of the WP period (e.g. 457 of 610 days). Base registrations after 2022-07-13: live within **50 km** by road of the business, no ferry over 30 minutes. Regional: live within the supporting community's boundaries.
+- **WP extension letter:** request when under 180 days remain; letter valid 90 days.
+- **Final report:** Base 550-610 days; Regional **365**-610 days (the guide says "no earlier than 365 days"; this file previously said 366 - minor wording conflict, use the program guide); business **fully operational 6+ months** before filing; one report only; stay in B.C. while it is processed. Failure = refusal at nomination stage and file closed.
+- **Checklist (Appendix A):** WP; B.C. residence deed/lease; evidence of active management; all passport pages (and previous passport if renewed in the last 20 months); CRA Notice of Assessment; **CBSA Travel History Report** from arrival; 6 months of residential utility bills; language results (Base registrations on/after 2020-01-29, if not filed); incorporation docs, business and trade licences, premises lease/deed, shareholder agreement/registry, purchase or franchise agreements; **CPA review-engagement** statements (plus interim quarter if the review is over 6 months old); proof investment came from personal net worth; investment breakdown by PA category with summary page, invoices and proof of payment (skip items under $1,000); CBSA import statements; employee resumes and accepted offer letters; **T4 Summary, 6 months of pay stubs, 6 months of CRA payroll remittances and payroll records with proof of payment**; ROEs for departed staff; photos and marketing material.
+- **No final-report or nomination fee** appears in the guide.
+- Conditions of Nomination: keep business operations, location and **ownership percentage** in the PA, active management, residency; confirmation of nomination valid **180 days**.
 - **Nomination steps:** sign the Conditions of Nomination, then receive the confirmation of nomination. It is valid **180 days** to apply for PR.
   - Conditions continue until PR: same business, location and ownership; no other employer; status maintained.
   - Report any absence from B.C. over 3 weeks and any material change.
@@ -248,8 +266,8 @@ Sources (all read 2026-11-17): EI page "For entrepreneurs and businesses" (page 
 - 2027 allocation and draw priorities
 - Entrepreneur Strategic Projects details: no guide is published, and intake is by invitation only
 - EI guides: check the documents page for a version newer than 2024-05-27 before each EI file
-- Regional community list and sector pauses (Comox, Campbell River)
-- EI final-report checklist (Post-Arrival Guide, not yet read) and whether a final-report fee exists
+- Regional community list and Comox / Campbell River intake (pause dates passed; pages not updated as of 2026-11-20)
+- Post-Arrival Guide: check for a version newer than 2024-05-27
 
 ### EI conflicts and unknowns (2026-11-17)
 - **Experience wording.** The EI page (2025-09-10) gives Base experience as "3 years as owner-manager in last 10 years" and Regional as "in last 5 years". The guides (which prevail) also accept 48+ months as a senior manager, or a 12 + 24 month mix.
@@ -257,7 +275,7 @@ Sources (all read 2026-11-17): EI page "For entrepreneurs and businesses" (page 
 - **Registration processing time.** The EI page says 6 weeks for all streams; Reg-PG says 4 weeks for Regional.
 - **Work permit code.** The 2024 IRCC update and the C11 page route PR-seeking provincial business candidates to **C60**. The IRCC T13 federal-provincial page and the 2022 update still say **C11**. Use C60 and cite the BC support letter.
 - **Unknowns:**
-  - whether a final-report or nomination fee exists (none listed);
+  - final-report or nomination fee: none in the Post-Arrival Guide (2026-11-20) (resolved);
   - the Strategic Projects deadline to file the final report beyond "12-24 months";
   - 2025 EI draw history (archive not checked);
   - current status of the Comox and Campbell River sector pauses.
@@ -276,3 +294,5 @@ All read 2026-11-07.
 - IRCC, provincial business candidates [R205(a) – C60] (2024-02-16): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2024-self-employed-r205-c60.html
 - IRCC, business owners seeking only temporary residence [R205(a) – C11]: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/entrepreneurs-self-employed-seeking-only-temp-residence-r205-c11.html
 EI sources read 2026-11-17.
+- EI Post-Arrival Guide (effective 2024-05-27): https://welcomebc.ca/immigrate-to-b-c/bc-pnp-ei-post-arrival-guide-pdf (read 2026-11-20)
+- RIC regional communities (updated 2026-06-24): https://www.welcomebc.ca/immigrate-to-b-c/entrepreneur-immigration-regional-communities ; Vancouver Island/Coast (updated 2026-05-08): https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program-4374589fc5bd099f34c82a0e2623f93d/regional-communities-on-vancouver-island-coast (both read 2026-11-20)

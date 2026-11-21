@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: study-permits
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -36,6 +36,8 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/transition-binders/deputy-minister-2026/international-student-program.html
+  - https://www.ece.gov.nt.ca/en/services/post-secondary-education-institutions-and-accreditation/international-students
 ---
 # Study permits
 
@@ -95,7 +97,7 @@ sources:
 
 ### Quebec: CAQ then federal permit (quebec.ca, updated 2026-11-10; read 2026-11-17) (H)
 **Detail and cap tracking: `knowledge/03-quebec/caq-csq-and-students.md`. Don't duplicate here.**
-1. Admission letter from a Quebec institution (check the institution's remaining **CAQ cap**: periods 2025-12-17 to 2026-12-16 and 2026-12-17 to 2027-12-16).
+1. Admission letter from a Quebec institution (check the institution's remaining **CAQ cap**: periods 2025-12-17 to 2026-12-16 and 2026-12-17 to 2027-12-16; Decree 1488-2025; quebec.ca page last updated 2026-11-18, read 2026-11-20).
 2. Create **Arrima** account (names exactly as passport). Complete the MII temporary selection (studies) form in one sitting (no save).
 3. Pay **$135** (2026; indexed each Jan 1; non-refundable) on Arrima **within 1 hour** or it isn't submitted.
 4. File number within 48 h; upload document list **within 15 days**. **Only the applicant can upload on Arrima, not the representative.**
@@ -113,7 +115,8 @@ sources:
 ### 2026 cap (notice 2025-11-25)
 - Issuance target **408,000**: 155,000 new arrivals + 253,000 extensions (7% below 2025's 437,000).
 - PAL/TAL-required issuance 180,000, distributed by population (ON 70,074; QC 39,474; BC 24,786; ...). **309,670 application spaces** (adjusted for approval rates). Nunavut gets 0.
-- Levels 2027-2029: student arrivals target **150,000**/yr. **2027 cap/allocations still not published** (checked 2026-11-17: IRCC notices page lists only the 2026-11-05 levels notice since 2026-11-01; last cap notice is the 2026 allocations notice of 2025-11-25; no IRCC release found). https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
+- Levels 2027-2029: student arrivals target **150,000**/yr. **2027 cap/allocations still not published** (re-checked 2026-11-20: IRCC notices since 2026-10-01 are only 2026-10-07 Ukraine survey, 2026-10-27 Haiti/Sudan, 2026-11-05 levels supplementary, 2026-11-18 Express Entry researchers; last cap notice is still the 2026 allocations notice of 2025-11-25; PAL page (2026-09-02) has no 2027 text). https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html
+- IRCC Deputy Minister transition binder (page 2026-09-04, read 2026-11-20) lists for **fall 2026**: "Set the 2027 study permit cap in conjunction with the Immigration Levels Plan" and "seek Ministerial approval of provincial and territorial allocations" (H that it is pending; no numbers). Secondary 2027 provincial figures circulating online are unofficial: don't quote. https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/transition-binders/deputy-minister-2026/international-student-program.html
 
 ### Proof of funds (living costs, excluding tuition and travel; outside Quebec)
 | Persons | 1 | 2 | 3 | 4 | 5 | 6 | 7 | each extra |
@@ -192,7 +195,7 @@ Common: use with IMM 5483; certified translation of anything not in English/Fren
 - 2027 allocations and cap notice (expected about Nov-Dec 2026)
 - Proof-of-funds table (adjusted each September 1, in line with LICO)
 - Quebec funds amounts (indexed each Jan 1; next change 2027-01-01) and CAQ fee
-- PAL process gaps: ON (ontario.ca 403), PE (bot block), NB (no gnb.ca page), NT (no GNWT page) - recheck official pages
+- PAL process gaps: ON (ontario.ca 403, again 2026-11-20), PE (Radware bot check, again 2026-11-20), NB (no gnb.ca PAL page; gnb.ca "Study and Succeed" page has no PAL text, 2026-11-20), NT (GNWT ECE international students page read 2026-11-20: DLI recognition only, no TAL text; contact Post-Secondary Education, ECE, (867) 767-9351 ext. 71153) - still OPEN; school pages remain the process source (M)
 - Visa office PDFs (versions 02-2026; Iran 08-2026); Ghana form still shows old $20,635
 - IME country list (changes often; last 2026-11-16)
 

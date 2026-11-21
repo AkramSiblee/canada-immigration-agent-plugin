@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: global-skills-strategy
 status: verified
-last_verified: 2026-11-14
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -41,9 +41,11 @@ sources:
 ### 3. Global Talent Stream (ESDC page 2026-10-05) (H)
 - LMIA in **10 business days**, then 2-week permit (80% of the time). **$1,000 per position**, non-refundable, can't be recovered from the worker.
 - **Category A** (designated referral partner): wage at least **$38.46/h ($80,000/yr)** for first 2 positions per year; beyond 2: **$72.11/h ($150,000/yr)**. Mandatory benefit: job creation.
-- **Category B** (Global Talent Occupations List): occupation wage floors (e.g. NOC 22310 $86,000; NOC 22220 $85,000: from page summary, M). Mandatory benefit: skills and training investment.
+- **Category B** (Global Talent Occupations List, "updated December 2022"; requirements page 2026-11-10, read in full 2026-11-20) (H). Mandatory benefit: skills and training investment.
+  - **Prevailing wage only:** 20012, 21300, 21310, 21330, 21390, 21311, sub-set of 21210 (mathematicians and statisticians, excluding actuaries), 21211, 21220, 21221, 21222, 21223, 21230, 21231, 21232, 21233, 21234.
+  - **Fixed floor "or higher prevailing wage":** 22310 $86,000 / $41.35 h; 22220 $85,000 / $40.87 h; 22222 $85,000 / $41.03 h (page text; hourly differs from 22220 at the same annual amount); sub-set of 51120 (VFX and video game producers, directors, project managers; 3 yrs experience) $85,000 / $40.87 h; sub-set of 52120 (digital media designers; 3 yrs experience) $80,000 / $38.46 h. Quebec: MIFI wage floors.
 - Labour Market Benefits Plan: mandatory benefit + **at least 2 complementary benefits**.
-- Wage floors update with Job Bank: **fall 2026 update on 2026-11-18**. Re-check after that date.
+- **Job Bank update 2026-11-18 (checked 2026-11-20):** Job Bank wage reports now say "These wages were updated on November 18, 2026" (H). The requirements page still shows the floors above (page 2026-11-10; it says "The fall 2026 update takes place on November 18, 2026"). No new Category B amounts are published. The fixed floors are minimums: if the new Job Bank prevailing wage is higher, the higher figure applies. Check the Job Bank wage for the NOC and region on the day the LMIA is filed (H for rule text; M for the effect of the update on any one NOC). ESDC median-wage thresholds page is still 2026-10-07 (rates from 2026-07-17).
 - More detail and EMP5713: work-permits-lmia.md.
 
 ### 4. Dedicated Service Channel (page 2026-10-21) (H)
@@ -59,14 +61,13 @@ sources:
 - Missing the 2-week biometrics window silently drops GSS. Book the VAC appointment the day the BIL arrives.
 - Spouse filing later loses GSS; file the family together.
 - The 15/30-day exemption is per period, not per trip: track entries. Repeated use can look like ongoing work in Canada.
-- GTS Category B wage floors change on 2026-11-18; recheck any LMIA prepared before then.
+- Job Bank wages changed on 2026-11-18: recheck the prevailing wage on any GTS LMIA prepared before then (the fixed Category B floors did not change).
 
 ## Common refusal reasons
 - Not GSS-eligible (not TEER 0/1, in-Canada, missing fee proof); short-term exemption used too soon; GTS LMBP commitments unmet (compliance)
 
 ## Re-verify before advising
-- GTS wage floors after 2026-11-18
-- Category B occupation list (requirements page read partly from summary)
+- Requirements page after its next update (still 2026-11-10 on 2026-11-20); Job Bank prevailing wage per NOC/region on filing day
 
 ## Sources
 - GSS for workers (2026-07-30): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/global-skills-strategy.html
@@ -76,3 +77,4 @@ sources:
 - GTS (2026-10-05): https://www.canada.ca/en/employment-social-development/services/foreign-workers/global-talent.html
 - GTS requirements (2026-11-10): https://www.canada.ca/en/employment-social-development/services/foreign-workers/global-talent/requirements.html
 All read 2026-11-14.
+- Re-read 2026-11-20: GTS requirements (2026-11-10, full Category B table); GTS page (2026-10-05); Job Bank wage report (updated 2026-11-18): https://www.jobbank.gc.ca/wagereport/location/pe ; median wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage.html

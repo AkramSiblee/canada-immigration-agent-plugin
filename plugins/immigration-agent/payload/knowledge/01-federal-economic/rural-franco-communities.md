@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: rural-franco-communities
 status: verified
-last_verified: 2026-11-16
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -12,6 +12,8 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/franco-immigration/job-offer.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/rural-franco-pilots/rural-immigration-program.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/overview-of-the-rural-community-immigration-program.html
+  - https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors217-eng.html
 ---
 # Rural and Francophone community directory
 
@@ -21,7 +23,17 @@ sources:
 - Federal rules are in pilots-and-community-programs.md
 
 ## Current rules
-**End of the rural pilot (IRCC pages 2026-11-09, read 2026-11-16) (H):** the Rural Community Immigration **Pilot closes 2027-01-01**; a community recommendation dated **2026-12-31 or earlier** stays usable, but the person must apply for PR before it expires (certificates are valid 6 months). The permanent **Rural Community Immigration Program opens 2027-01-01**; IRCC doesn't say how communities carry over (Pictou County says it will continue). The **Francophone pilot has no end date** on its IRCC pages (2026-04-30).
+**End of the rural pilot (IRCC pages 2026-11-09, re-read 2026-11-20) (H):** the Rural Community Immigration **Pilot closes 2027-01-01**; a community recommendation dated **2026-12-31 or earlier** stays usable, but the person must apply for PR before it expires (certificates are valid 6 months). Applications already received keep being processed. The permanent **Rural Community Immigration Program opens 2027-01-01**. The **Francophone pilot has no end date** on its IRCC page (2026-04-30, re-read 2026-11-20; status "Open"; no 2027 changes).
+
+**Permanent program (read 2026-11-20):**
+- **Regulation SOR/2026-217** (registered 2026-10-22, in force on registration; Gazette II 2026-11-04) adds a rural community immigration class to IRPR (s.87.4 ff.) (H):
+  - Communities outside Quebec designated by the Minister; names published on IRCC's site. Economic development organizations designate employers and issue recommendations.
+  - At least 1 year full-time work (or part-time equivalent) in the 3 years before applying, while authorized to work; language at levels the Minister sets, results under 2 years old; Canadian credential or foreign credential equal to a Canadian secondary diploma with an ECA under 5 years old; funds = half the rural LICO; job offer non-seasonal, full-time, indeterminate.
+  - **Recommendation certificates valid 1 year** from issue (pilot: 6 months).
+  - **Transition:** a pilot certificate "cannot be used" for the new class (s.5). RIAS: communities have until 2026-12-31 to finalize pilot recommendations; the pilot Ministerial Instructions stay in force **until 2027-06-30** so recommended candidates can still apply under them.
+- **Communities:** IRCC backgrounder (2026-11-09) lists the same **14** communities as "expected to participate": Pictou County; North Bay, Sudbury, Timmins, Sault Ste. Marie, Thunder Bay; Steinbach, Altona/Rhineland, Brandon; Moose Jaw; Claresholm; West Kootenay, North Okanagan Shuswap, Peace Liard. Expansion "planned in the future"; criteria to be announced later (news release 2026-11-09) (H). The program page (2026-11-09) names none.
+- **Admissions:** news release: "5,500 admission spaces are targeted" for the permanent program in the 2027-2029 levels plan (H). **Conflict:** the SOR/2026-217 RIAS costs the program on "a target of 3000 admissions per year" and 2,760 recommendations a year. Use the levels plan figure for capacity and treat the RIAS figure as a costing assumption (M).
+- **2027 intakes and priority lists: not published** by IRCC or by any community checked on 2026-11-20 (see table). Communities set priorities from local labour market needs (backgrounder).
 
 **Basis: each community's official page, read 2026-11-08; statuses re-read 2026-11-16 where marked. Intakes and caps change often, so re-read the community page before advising. Items marked (M) came from a summarized part of a long page.**
 
@@ -29,26 +41,26 @@ sources:
 - Employer-driven. Candidates generally do not apply to the community; a **designated employer** submits the recommendation application.
 - Federal: job offer from designated employer; 1,560 h in past 3 yrs; CLB 6 (TEER 0-1), 5 (TEER 2-3), 4 (TEER 4-5); education or ECA; funds.
 - PR forms: portal IMM 0008, 5669, 5406, 5562; upload IMM 0246 (checklist), IMM 0247 (offer of employment), IMM 0248 (Schedule 1), IMM 0249 (recommendation); IMM 5409 and 5604 if applicable (IRCC page 2026-04-23).
-- Each community sets 5-6 priority sectors and 25 NOCs a year, and adds its own limits. Recommendation certificates are valid **6 months** (Timmins, Sault Ste. Marie, Peace Liard pages).
+- Each community sets 5-6 priority sectors and 25 NOCs a year, and adds its own limits. Recommendation certificates are valid **6 months under the pilot** (Timmins, Sault Ste. Marie, Peace Liard pages) and **1 year under the SOR/2026-217 class** from 2027-01-01; a pilot certificate can't be used for the new class.
 - Common employer tests: 2 yrs operating under same management in boundary; 75% of work in boundary; IRCC Employer Onboarding Training and Building Welcoming Workplaces.
 - **Commonly excluded:** gas stations, convenience stores, fast food, staffing agencies, consulates, businesses owned by the candidate or an immigration representative.
 
 ### Rural status table (read 2026-11-08)
 | Community | Operator | 2026 status | Key limits |
 |---|---|---|---|
-| Pictou County NS | Pictou County Partnership (pcrcip.ca) | **2026 intake closed** ("The final intake for 2026 is now closed", read 2026-11-16). 2027 intakes to be announced; Pictou says it continues in the permanent program | Scored pool, drawn month end |
-| North Bay ON | North Bay & Area RCIP | Employer designation for 2026 closed 2026-11-12 (notice 2026-11-03, re-read 2026-11-16). No candidate intake dates on the page | All fast food and retail excluded; 3 per employer a year (health 5) |
+| Pictou County NS | Pictou County Partnership (pcrcip.ca) | **2026 intake closed** ("The final intake for 2026 is now closed"). "Planning for 2027 is underway": employer consultation on priorities; 2027 dates and NOC list not published (re-read 2026-11-20) | Scored pool, drawn month end |
+| North Bay ON | North Bay & Area RCIP | Employer designation for 2026 closed 2026-11-12 (notice 2026-11-03). **179 recommendations in 2026** (stats 2026-11-12). No 2027 dates or list (re-read 2026-11-20) | All fast food and retail excluded; 3 per employer a year (health 5) |
 | Sudbury ON | City of Greater Sudbury / Invest Sudbury | No status or dates published | Minimum 79 points; maintained status needs extra documents |
-| Timmins ON | Timmins EDC | Last listed RCIP window Oct 13-16 | Minimum 79; 5 per employer a year |
-| Sault Ste. Marie ON | SSM EDC | **Closed for 2026: "The next intake will be in 2027"** (re-read 2026-11-16) | Fast food and restaurant-based businesses excluded |
-| Thunder Bay ON | Thunder Bay CEDC | Final candidate deadline 2026-10-15; recommendations in November. 2027 priorities not guaranteed | Maintained status not accepted; work permit needs 4+ months left |
-| Steinbach MB | Steinbach EDC | Portal closed; **last 2026 intake opens 2026-12-01** (re-read 2026-11-16). Monthly: closes 15th or at 7 applications | 5 recommendations per intake; 1 per NOC a month, 2 a year |
+| Timmins ON | Timmins EDC | Last listed RCIP window Oct 13-16; no later window, no 2027 info (re-read 2026-11-20) | Minimum 79; 5 per employer a year |
+| Sault Ste. Marie ON | SSM EDC | **Closed for 2026: "The next intake will be in 2027. IRCC will be sharing a scoring grid that we will be using in 2027."** No 2027 dates or list (re-read 2026-11-20) | Fast food and restaurant-based businesses excluded |
+| Thunder Bay ON | Thunder Bay CEDC | Final candidate deadline 2026-10-15; recommendations in November. 2027 priorities not guaranteed. **Page returned 404 on 2026-11-20 (OPEN: moved?)** | Maintained status not accepted; work permit needs 4+ months left |
+| Steinbach MB | Steinbach EDC | Portal closed; **last 2026 intake opens 2026-12-01** (re-read 2026-11-20). Monthly: closes 15th or at 7 applications. NOC list "subject to review at the end of each year"; no 2027 list | 5 recommendations per intake; 1 per NOC a month, 2 a year. Page gives inconsistent per-NOC caps (14200: 4 vs 3; 42202: 6 vs 5): confirm with SED |
 | Altona/Rhineland MB | A.R.E.D. | First come, first served in 2026; no dates | Food and beverage retailers: 2 per employer |
 | Brandon MB | Economic Development Brandon | Open for recommendation applications (page 2026-04-09) | 15% reserved for health; list reviewed twice a year |
-| Moose Jaw SK | Moose Jaw & District Chamber | **Intake 2026-11-16 8 a.m. to 2026-11-20 4 p.m. (Central)** (re-read 2026-11-16); 12 per intake, first come | **Cooks 63200 and retail supervisors 62010 full for 2026**; SK Certificate of Registration required |
-| Claresholm AB | Town of Claresholm | 36 allocations, 3 a month; monthly intake | Sales and service: cooks in full-service restaurants only, 6 a year |
-| West Kootenay BC | Community Futures Central Kootenay | **2026 closed; next intake 2027, dates not set.** Designation closed. Last minimum score 93 | $21/h minimum; employer caps by size |
-| North Okanagan Shuswap BC | Community Futures North Okanagan and Shuswap | Intake 5 was Nov 8-10; processing Nov 19-30; committee Dec 9. Next dates not announced (re-read 2026-11-16) | $22/h minimum, higher for some NOCs |
+| Moose Jaw SK | Moose Jaw & District Chamber | **Intake 2026-11-16 8 a.m. to 2026-11-20 4 p.m. (Central)** is the last listed 2026 window; no 2027 dates or list (re-read 2026-11-20); 12 per intake, first come | **Cooks 63200 and retail supervisors 62010 full for 2026**; SK Certificate of Registration required |
+| Claresholm AB | Town of Claresholm | 36 allocations for 2026, 3 a month; monthly intake (calendar is an image). No 2027 allocations or list on the page (re-read 2026-11-20) | Sales and service: cooks in full-service restaurants only, 6 a year |
+| West Kootenay BC | Community Futures Central Kootenay | **2026 closed; next intake 2027, dates not set.** Designation closed. Last minimum score 93. Priorities page shows 2026 only (re-read 2026-11-20) | $21/h minimum; employer caps by size; 60030 and 65200 at IRCC 5% cap; no employer cap for 33102 and 42202 |
+| North Okanagan Shuswap BC | Community Futures North Okanagan and Shuswap | Intake 5 was Nov 8-10; processing Nov 19-30; committee Dec 9. Next dates not announced. Priorities page "2026 Priorities", "can be reviewed at the end of each year" (re-read 2026-11-20) | $22/h minimum, higher for some NOCs |
 | Peace Liard BC | RCIP Northeast BC (Community Futures Peace Liard, Northern Lights College) | Second intake Oct 13-20 closed; 60 recommendations plus 25 extra | Wage at or above Job Bank |
 
 ### Rural priority NOCs (2026)
@@ -78,9 +90,9 @@ sources:
 ### Francophone communities (read 2026-11-08)
 | Community | Operator | Status | Priority NOCs and limits |
 |---|---|---|---|
-| Acadian Peninsula NB | Inspire Péninsule acadienne (CSRPA) | Employer designation ongoing; monthly draw, minimum 50 | 11102, 13110, 14201, 33102, 33103, 33109, 41402, 42201, 42202, 63200, 64100*, 64101, 65100*, 65200*, 65201 (closed), 72106, 72200, 72300, 72310, 75101, 75110, 92012, 92013, 94111, 95106. *limited |
+| Acadian Peninsula NB | Inspire Péninsule acadienne (CSRPA) | Employer designation ongoing; monthly draw, minimum 50; pool up to 6 months; certificate 6 months; no dated draws or 2027 list (re-read 2026-11-20) | 11102, 13110, 14201, 33102, 33103, 33109, 41402, 42201, 42202, 63200, 64100*, 64101, 65100*, 65200*, 65201 (closed), 72106, 72200, 72300, 72310, 75101, 75110, 92012, 92013, 94111, 95106. *limited |
 | Sudbury ON | Invest Sudbury | None published | 11200, 11202, 12112, 12200, 13100, 13110, 14101, 14200, 14201, 14404, 21223, 33102, 41402, 42201, 42202, 44101, 63102, 65100 (2 a year), 72106, 72310, 72400, 72410, 73300, 75110, 85100 |
-| Timmins ON | Timmins EDC | Last listed window Oct 26-30; separate FCIP portal; minimum 50 | 11102, 12200, 13110, 31301, 32101, 32104, 33101, 33102, 41221, 42201, 42202, 44101, 64400, 72106, 72400, 72401, 72410, 73300, 73400, 74203, 75110, 84100, 84120, 85103, 95103 |
+| Timmins ON | Timmins EDC | Last listed window Oct 26-30 (no later window, re-read 2026-11-20); separate FCIP portal; minimum 50 | 11102, 12200, 13110, 31301, 32101, 32104, 33101, 33102, 41221, 42201, 42202, 44101, 64400, 72106, 72400, 72401, 72410, 73300, 73400, 74203, 75110, 84100, 84120, 85103, 95103 |
 | Superior East ON | Superior East CFDC | None published; employers submit | 32101, 32102, 33102, 41220, 41221, 42202, 44101, 62010, 62020, 62022, 63200, 65100, 65201, 65310, 72106, 72200, 72310, 72400, 72410, 72429, 73201, 73400, 75110, 83100, 95103 |
 | St. Pierre Jolys MB | Village, with AMBM and CDEM | None published; minimum 50 | 14100, 12200, 13110, 33102, 33109, 42202, 43100, 41302, 41221, 41220, 42201, 65201, 63200, 65310, 63202, 65312, 65100, 65102, 63100, 64400, 72106, 72300, 72410, 72411, 84120 |
 | Kelowna BC | SDÉCB | Intake 15th-30th monthly. **Sales and service closed.** Most employers "not hiring" | Closed: 63202, 62024, 63200, 60010, 64314. Open or limited: 72310, 72200, 72410, 73209, 73112, 72311, 73110, 73102, 42202, 44101, 43100, 41210, 42201, 33102, 33109, 33101, 12200, 12011, 12010, 13100. Local wage floors $21-$28/h; 3 per employer a year; 3 per trade NOC. Fast food, convenience, gas, vape and cannabis stores excluded. Candidate submits form, then SDÉCB referral |
@@ -92,6 +104,8 @@ sources:
 - 2026-11-02: Claresholm 2027 employer survey closed (M)
 - 2026-11-09: IRCC: pilot closes 2027-01-01; permanent Rural Community Immigration Program opens 2027-01-01 (H)
 - 2026-11 (re-read 2026-11-16): Pictou County final 2026 intake closed; Sault Ste. Marie next intake 2027; Steinbach last intake 2026-12-01; Moose Jaw intake Nov 16-20 (H)
+- 2026-10-22: SOR/2026-217 registered (rural community immigration class; 1-year certificates; pilot MIs to 2027-06-30) (H)
+- 2026-11-09: IRCC: 14 pilot communities expected to continue; 5,500 admissions targeted (2027-2029 levels plan); expansion later (H)
 
 ## Consultant pitfalls
 - A TEER or NOC on IRCC's federal rules means nothing locally. The community's list decides, and it changes during the year.
@@ -106,8 +120,8 @@ sources:
 
 ## Re-verify before advising
 - Every intake date and cap above
-- 2027 community lists, priorities and intake dates; how communities carry over into the permanent program (SOR/2026-217)
-- Brandon (site certificate error 2026-11-16) and West Kootenay (moved to westkootenayimmigration.ca) not re-read 2026-11-16
+- 2027 community lists, priorities and intake dates (none published on 2026-11-20); IRCC list of designated communities under SOR/2026-217 (not yet on the program page); 2027 language levels and scoring grid (SSM says IRCC will share one)
+- Brandon (site certificate error 2026-11-16), Altona, Sudbury, Superior East, St. Pierre Jolys not re-read 2026-11-20; Thunder Bay page 404 on 2026-11-20 (find new URL); Kelowna SDÉCB page shows only the 2026 list link, no intake status
 - Sudbury intake dates (none published)
 
 ## Sources (read 2026-11-08; IRCC pages and the communities marked above re-read 2026-11-16)
@@ -115,3 +129,4 @@ sources:
 - Rural: https://pcrcip.ca/ ; https://nbrcip.ca/ ; https://investsudbury.ca/why-sudbury/newcomers/rcipfcip/ ; https://timminsedc.com/immigration/ ; https://welcometossm.com/rcip/ ; https://gotothunderbay.ca/rural-community-immigration-pilot-rcip/ ; https://steinbachedc.com/rcip/ ; https://ared-rpga.com/immigration/rcip-sector/ ; https://economicdevelopmentbrandon.com/rcip/rcip-sector-labour-market-priorities-list ; https://rcip.mjchamber.com/ ; https://www.claresholm.ca/business/labour-resources/rural-community-immigration-pilot ; https://westkootenayimmigration.ca/priorities/ ; https://rcipnorthokanaganshuswap.com/priority-sectors-nocs/ ; https://www.nebcimmigration.ca/priority-occupations
 - Francophone: https://inspirepeninsuleacadienne.ca/programme-pilote-immigration-communautes-francophones/ ; https://superioreastcfdc.ca/superioreastcfdc.ca/index.php/en-ca/fcip ; https://villagestpierrejolys.ca/p/priority-sectors-and-occupations ; https://www.sdecb.com/en/pilot-program/ ; Kelowna 2026 list: https://docs.google.com/document/d/1z5oaVk7P8Eat5acl5ydVUpcZhPvZ0iJQPFPdQJm9fqY/mobilebasic
 - Sault Ste. Marie NOC list: https://welcometossm.com/rcip_employer/
+- Read 2026-11-20: IRCC pilot page and program page (2026-11-09), Francophone page (2026-04-30), URLs in front matter; IRCC backgrounder (2026-11-09): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/overview-of-the-rural-community-immigration-program.html ; IRCC news release (2026-11-09): https://www.canada.ca/en/immigration-refugees-citizenship/news/2026/11/canada-creates-a-permanent-immigration-pathway-to-help-rural-communities-attract-and-retain-talent0.html ; SOR/2026-217 (Gazette II 2026-11-04): https://gazette.gc.ca/rp-pr/p2/2026/2026-11-04/html/sor-dors217-eng.html ; community pages re-read: Pictou, North Bay, Timmins, SSM, Steinbach, Moose Jaw, Claresholm, West Kootenay, North Okanagan Shuswap, Acadian Peninsula, SDÉCB

@@ -27,7 +27,8 @@ sources:
 - Apply **within 90 days** after losing status for breaching the period of stay or specified conditions (s.185(a), (b)(i)-(iii), (c)).
 - Officer "shall restore" if the initial requirements are met, no other conditions were breached, and no s.22.1 declaration applies. Students who fail the s.220.1(1) condition can't be restored (s.182(2)).
 - **No work or study while restoration is pending** (s.183(1)(b)-(c)).
-- Fees: restoration **$246.25** + new permit: worker $401.25 total; student $396.25; visitor $246.25 (since 2025-12-01).
+- Fees: restoration **$246.25** + new permit: worker $401.25 total; student $396.25; visitor $246.25 (since 2025-12-01). Fee list re-read 2026-11-20 (modified 2026-11-10): same amounts (H).
+- **Outdated IRCC text (2026-11-20):** Help Centre Q475 (modified 2026-11-03) still says "CAN$200 fee to restore your status, as well as a CAN$150 fee for the new study permit". Manitoba Workforce Transition Bridge instructions (2026-08-19) still show restoration "$229". Both conflict with the fee list ($246.25). Pay the fee-list amount (H).
 
 ### TRP (IRPA s.24)
 - For a person who is **inadmissible or doesn't meet requirements**, if the officer finds it "justified in the circumstances". Can be cancelled at any time. Officers follow Minister's instructions (s.24(3)).
@@ -60,3 +61,4 @@ sources:
 - IRPA s.24: https://laws-lois.justice.gc.ca/eng/acts/I-2.5/page-4.html
 - Fee list: https://ircc.canada.ca/english/information/fees/fees.asp
 All read 2026-11-07.
+- Fee list re-read 2026-11-20 (modified 2026-11-10); Help Centre Q475 (2026-11-03), read 2026-11-20: https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=475&top=17

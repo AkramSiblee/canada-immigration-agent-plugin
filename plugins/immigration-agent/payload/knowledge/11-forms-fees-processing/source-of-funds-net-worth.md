@@ -13,12 +13,22 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/proof-funds.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-98.01.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-87.html
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-how-to-apply
+  - https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility
+  - https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-entrepreneur/overview/
+  - https://www.gov.nl.ca/immigration/files/Net-Worth-Verifier-Document-Checklist-NL.pdf
+  - https://princeedwardisland.ca/sites/default/files/publications/business_impact_application_guide.pdf
+  - https://www.immigratenwt.ca/sites/immigratenwt/files/resources/ntnp_program_guidelines_-_business_stream.pdf
+  - https://www.quebec.ca/en/immigration/permanent/immigrate-business/investors/conditions
+  - https://www.quebec.ca/en/immigration/permanent/immigrate-business/entrepreneurs/start-acquire-business/conditions
+  - https://www.quebec.ca/en/immigration/permanent/immigrate-business/entrepreneurs/takeover/conditions
+  - https://www.quebec.ca/en/immigration/permanent/immigrate-business/self-employed-workers/conditions
 ---
 # Source of funds and net worth: checklist for business clients
 
 ## Must cover
 - Legally earned funds, gifts, loans, tracing, property valuation, third-party verification, currency, tax, s.40 risk
-- Program-specific rules marked by province (NB, NS, BC, MB)
+- Program-specific rules marked by province (NB, NS, BC, MB; AB, NL, PEI, NWT, YT, QC added 2026-11-20)
 
 ## Current rules
 Confidence: NB, NS and BC rows are from the official guides (H for what they say). Manitoba could not be read (official site returned 403 on 2026-11-17): M/L. Items marked **[practice]** are professional practice, not a written rule.
@@ -37,6 +47,18 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 | Mismatch | Unverifiable net worth = do not apply | NWV report different from EOI = file closed (treated as misrepresentation) | Undeclared net worth or unverified source = may refuse | Not verified |
 | Misrepresentation bar | Refused for misrep in last 5 years = ineligible | **5-year** bar from all NS streams | BC PNP may refuse new files for **up to 2 years** | Not verified |
 
+### Verifier and gift rules: AB, NL, PEI, NWT, YT, QC (read 2026-11-20)
+| Program | Who verifies net worth | Gifts / loans / inheritance | Timing | Conf. |
+|---|---|---|---|---|
+| **AB** AAIP Rural / Graduate / Foreign Graduate Entrepreneur | **Qualified Service Provider Report** on net worth and business investment from **Grant Thornton LLP, KPMG LLP or MNP LLP** only ("AAIP will only accept..."). Always for Rural; Graduate and Foreign Graduate only if the request email asks. Net Worth Worksheet (AINP12608) at EOI | **No gift, loan or inheritance rule on the official pages.** Rural: net worth $300,000; "All assets must be candidate's own personal holdings or spouse's or common-law partner's"; investment $100,000 from own/spouse equity. Farm: checklist (2022) asks for an accountant-prepared statement of $500,000 net worth "in unencumbered Canadian funds" (no QSP named) | Contact the QSP as soon as the Business Application request arrives; application due 90 days after invitation (`02-pnp/alberta.md`) | H (verifier); gifts OPEN |
+| **NL** International Entrepreneur | **Designated Net Worth Verifier**: Grant Thornton LLP, MNP LLP, KPMG LLP, BDO Canada LLP; report **sent directly** by the verifier to OIM with the ITA number; applicant pays (overview page 2026-05-04) | **Gifts/donations received < 6 months before application receipt don't count**; gift: identify the donor and show the donor's financial capacity; inheritance: death certificate / notarized will / court documents + probate + transfer proof. Gift deeds, POA or affidavits are **not** proof of property ownership (India, Pakistan, Bangladesh lists). All assets must be the applicant's or spouse's (Net Worth Verifier Document Checklist, Jan 2019) | Checklist: pick a verifier within **20 days** of the ITA, report within **180 days**. Conflict: the current NLPNP FAQ (2026-09-25) gives **30 days** to file the full application with no extensions (`02-pnp/newfoundland-labrador.md`). Ask OIM which governs | H (checklist old: M on timing) |
+| **NL** International Graduate Entrepreneur | No net worth verifier; NL-licensed CPA **Review Engagement + Special Purpose Report** (`02-pnp/newfoundland-labrador.md`) | No net worth minimum stated | n/a | H |
+| **PEI** Business Impact (Work Permit Stream) | **Designated Net Worth Verifiers: Grant Thornton (Charlottetown) and MNP**. Wrong verifier = **refusal**. Report sent directly to IIDI and to the applicant; IIDI keeps sole discretion | **"Private loans and/or gifts cannot be included"**; "Vehicles and gifts cannot be included"; **inherited assets considered** with death certificate + will. Business equity counts only at 70%+ ownership, 30% of equity, max $180,000. Property appraisal within the past year, must not say it is for immigration | Engage within **15 days** of ITA and tell the Office which firm; verifier must finish within **90 days** of ITA; report valid **12 months**; application due 60 days after ITA. If the verifier also helps with the business plan, disclose it to IIDI | H (guide "effective October 27, 2022", cover Feb 2025) |
+| **NWT** Business Stream | **Third Party Financial Verification Report** from a **Financial Service Provider** "identified by the Nominee Program" (list given with the invitation; **no firm named in the guidelines**). Plus form **NTNP-04** (Personal Statement of Net Worth / Financial Affairs) | **No gift, loan or inheritance rule.** Must prove "personal net worth, the source of funds and the legal accumulation of funds" or the application is denied; all assets and liabilities and their accumulation must be identified | Contact the provider within **1 month** of the invitation; application due 6 months after invitation; applicant pays the provider | H (guidelines eff. 2026-01-01, App. E) |
+| **YT** Business Nominee | "verified by a **Yukon accounting firm** as legally obtained" (no firm named) (`02-pnp/yukon.md`, eligibility page read in browser 2026-11-20) | **Unknown**: yukon.ca returns 403 to automated fetch; the BNP landing page now redirects to "Page not found" and the YNP page lists only 3 worker streams. **Do not present the BNP as open** | Unknown | M (verifier wording); gifts OPEN |
+| **QC** Investor | **No third-party verifier.** MII (formerly MIFI) assesses; applicant and included spouse prove "lawful origin and accrual". Investment goes through a **financial intermediary** (not a verifier) | **Donations received in the 6 months before the application are excluded**; net worth may be shared with an included spouse (conditions page updated 2026-11-20) | n/a | H |
+| **QC** Entrepreneur Streams 2-3 / Self-Employed | No third-party verifier named; MII (formerly MIFI) assesses | Same **6-month donation exclusion**; spouse may share; spouse must prove origin even if not needed for the minimum (pages 2026-11-10 / 2026-06-25). Stream 1 (innovative): no net worth figure or gift rule on its page | n/a | H |
+
 ### Checklist
 1. **Full disclosure first.** Declare all assets and liabilities of the applicant and spouse (and dependants for BC). Hiding a liability or a co-owned asset is a misrepresentation risk even if the minimum is met. BC uses IRCC **Schedule 4A (Personal Net Worth)** plus the **Section J accumulation-of-wealth narrative**; NB uses NBBIS-002 (net worth) and NBBIS-003 (narrative of accumulated funds).
 2. **Legally earned.** Tie each asset to a lawful source: employment income (pay records, tax returns), business profits (financial statements, corporate tax filings, dividend records), sale of property or shares (sale deeds, bank credits), investments. **[practice]** Cash-based business income without tax filings is the most common gap.
@@ -47,6 +69,7 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
    - Funds must sit in the applicant's (or spouse's) name. NB says net worth "must be in either or both of your names". **NB: gifts, donations and inheritances received less than 6 months before the application are not counted.**
    - BC: future inheritances cannot be counted. Past gifts are not excluded by the program guide, but they still need a legal source.
    - NS: no gift rule in the guide. Manitoba: unknown. Check the verifier's checklist.
+   - **6-month gift exclusion:** NB, NL (IE checklist), Quebec (Investor, Entrepreneur, Self-Employed). **No gifts at all:** PEI (also no private loans; inheritances allowed with proof). **No written rule:** AB, NS, NWT, BC (past gifts). **Unknown:** MB, YT.
 5. **Loans and debts.** Net worth = assets minus liabilities (NB, BC definitions). Borrowed money adds nothing to net worth. Investment rules are stricter:
    - BC: the **minimum $200,000 eligible investment must come from personal funds**; external financing only above the minimum; mortgages and loans do not count toward personal investment. External financing and investing **> 50% of net worth** cost risk-factor points.
    - NS: the stated personal investment "must not include cash or loans"; external financing and > 50% of net worth are risk factors in plan review.
@@ -66,7 +89,8 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 - NB: MDD Forensic Accountants no longer accepting new NBBIS clients (see `02-pnp/new-brunswick.md`) (H)
 
 ## Consultant pitfalls
-- Counting a recent gift in NB (6-month rule).
+- Counting a recent gift in NB, NL or Quebec (6-month rule), or **any** gift or private loan in PEI.
+- Using a non-designated verifier: PEI (Grant Thornton, MNP only) and NB refuse; AB accepts only Grant Thornton, KPMG or MNP QSP reports.
 - Counting loans or property equity toward a minimum personal investment (BC, NS).
 - Engaging a verifier before the ITA, or an unlisted verifier.
 - Net worth figure in the EOI/registration that the verifier cannot confirm (NS closes the file; BC may refuse for material difference).
@@ -79,6 +103,10 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 - BC: whether a newer EI Base guide than 2024-05-27 exists; BC EI Application Guide document list (not read).
 - Each verifier's current document checklist and gift rules.
 - NBBIS-002 form text (link returned 404).
+- AB: gift rule (Net Worth Worksheet AINP12608 and Business Application Document Checklist not read).
+- NL: verifier timing (checklist 20/180 days vs FAQ 30-day application window).
+- NWT: current Financial Service Provider list (given only with the invitation).
+- Yukon: BNP status, verifier and gift rules (site 403; BNP pages redirect).
 
 ## Sources
 - NB Business Immigration Stream Guide (March 2025), s.7 Personal net worth, pp.7-8: https://www.gnb.ca/content/dam/GNB3/t/fhc-fmc/immigration/docs/nb-business-immigration-stream-guide.pdf
@@ -90,3 +118,10 @@ Confidence: NB, NS and BC rows are from the official guides (H for what they say
 - R87: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-87.html
 - Manitoba figures: `knowledge/02-pnp/manitoba.md` (H, official EP page 2026-11-20)
 All read 2026-11-17.
+- AB Rural Entrepreneur how-to-apply and eligibility pages (QSP list; own/spouse assets): https://www.alberta.ca/aaip-rural-entrepreneur-stream-how-to-apply ; https://www.alberta.ca/aaip-rural-entrepreneur-stream-eligibility
+- NL IE overview (designated verifiers): https://www.gov.nl.ca/immigration/immigrating-to-newfoundland-and-labrador/provincial-nominee-program/entrepreneurs/international-entrepreneur/overview/ ; NL Net Worth Verifier Document Checklist (Jan 2019), pp.1, 4-5: https://www.gov.nl.ca/immigration/files/Net-Worth-Verifier-Document-Checklist-NL.pdf
+- PEI Business Impact Application Guide (effective 2022-10-27; cover Feb 2025), Step 4 and Appendix C: https://princeedwardisland.ca/sites/default/files/publications/business_impact_application_guide.pdf
+- NWT Business Stream Program Guidelines (effective 2026-01-01), s.5.0, 7.3, 8.4, Appendix E: https://www.immigratenwt.ca/sites/immigratenwt/files/resources/ntnp_program_guidelines_-_business_stream.pdf
+- Quebec conditions pages (Investor 2026-11-20; Entrepreneur Stream 2 2026-11-19, Stream 3 2026-11-10; Self-Employed 2026-06-25): URLs in front matter
+- Yukon: `knowledge/02-pnp/yukon.md` (official page read in browser 2026-11-20; yukon.ca 403 to fetch)
+AB, NL, PEI, NWT and QC sources read 2026-11-20.

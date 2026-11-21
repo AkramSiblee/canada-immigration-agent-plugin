@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: work-permits-lmia
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -51,6 +51,8 @@ sources:
 - No cap for: primary agriculture; PR-support-only positions; positions of 120 days or less; seasonal up to 270 days (once a year per location).
 - **Refusal to process**: low-wage LMIAs in **CMAs with unemployment of 6% or more** (since 2024-09-26). Exempt: primary agriculture, NAICS 23/311/622/623, caregivers, PR-only, 120 days or less. **Current list for applications 2026-10-09 to 2027-01-07** (next update 2027-01-08). Examples at 6% or more: Oshawa 9.8, London 9.1, Moncton 8.1, Kitchener-Cambridge-Waterloo 7.6, Edmonton 7.6, Vancouver 7.0. Full table (41 CMAs, three quarters) stored in `templates/lmia/cma-unemployment.csv` (read 2026-11-10): also at 6% or more: Toronto 7.5, Ottawa-Gatineau 7.9, Montréal 7.2, Calgary 6.4 (Winnipeg 5.9 is under). Check the ESDC page for the next quarter.
 - **From 2026-11-06:** early childhood educators exempt from the 6% CMA rule. **Low-wage LMIA duration up to 2 years** (was 1) for applications on or after 2026-11-06 (ESDC news release).
+  - **Conflict (re-checked 2026-11-20):** the low-wage page (2026-10-07) still says "a maximum of 1 year"; the refusal-to-process page (2026-10-27) doesn't list ECEs (NOC 42202) among the exceptions. The release governs (H for all texts).
+  - **From 2027-03-01, only where a province or territory opts in (release):** large CMAs (250,000+) under 6% unemployment, rural parts of large CMAs, and CMAs of 100,000 to 250,000 get targeted access to COPS occupations plus province-added ones (provinces may also remove occupations). Rural communities keep full access. Cap up to **15%** in identified communities on a province's request (was 10%); priority sectors stay at 20%. Not in force; don't advise as current (H).
 - Recruitment: Job Bank + youth effort + 2 more methods each targeting a different underrepresented group. **8 consecutive weeks** within the 3 months before applying. Invite Job Match candidates rated 2+ stars within the first 30 days.
 
 ### High-wage stream
@@ -59,7 +61,7 @@ sources:
 
 ### Global Talent Stream
 - Category A (designated referral partner) / Category B (Global Talent Occupations List). LMIA in **10 business days** and work permit in **2 weeks** (80% of the time). Up to 3 yrs.
-- **Routing (requirements page, read 2026-11-09):** an occupation on the list is processed as Category B even with a referral. Category B needs no referral; list includes 21211 (NOC example title: machine learning engineer), 21231, 21232, wage = prevailing. Category A: $38.46/h and $80,000 for the first 2 positions a calendar year; $72.11/h and $150,000 for more; referral form per worker; partner list updated 2026-09-15.
+- **Routing (requirements page, read 2026-11-09):** an occupation on the list is processed as Category B even with a referral. Category B needs no referral; list includes 21211 (NOC example title: machine learning engineer), 21231, 21232, wage = prevailing. Fixed Category B floors (5 occupations) and the Job Bank update of 2026-11-18: see global-skills-strategy.md. Category A: $38.46/h and $80,000 for the first 2 positions a calendar year; $72.11/h and $150,000 for more; referral form per worker; partner list updated 2026-09-15.
 - No minimum recruitment; efforts must be described. LMBP: A = job creation; B = skills and training; plus at least 2 complementary benefits; reviewed annually. Independent contractors not allowed (2026-09-18). BC, MB, SK, NS: provincial employer registration first. Quebec: joint with MIFI.
 - 2-week work permit: online from outside Canada, complete application, positive GTS LMIA, biometrics within 2 weeks of applying (GSS pages 2025-09-10). LMIA-exempt TEER 0-1 also eligible; IEC not.
 
@@ -140,4 +142,5 @@ All read 2026-11-07.
 - CEC qualifying work experience PDI (2023-05-25): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/permanent-residence/economic-classes/experience/qualifying-work-experience.html
 - EE MI 2025-1 (effective 2025-03-25): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2025-1.html
 - EE MI 2026-1 (effective 2026-11-03): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-application-management-system/amendment-2026-1.html
+- Re-read 2026-11-20: ESDC low-wage (2026-10-07): https://www.canada.ca/en/employment-social-development/services/foreign-workers/median-wage/low.html ; low-wage requirements (now 2026-11-10); refusal to process (2026-10-27); median wage (2026-10-07, no November update); ESDC news 2026-11-06
 - Secondary (M): https://bridgepointlaw.ca/owner-operator-lmia-buying-canadian-business-2026/ ; https://www.settler.ca/english/the-end-of-owner-operator-lmia-what-is-the-alternative/ ; https://meurrensonimmigration.com/tag/owner-operator/

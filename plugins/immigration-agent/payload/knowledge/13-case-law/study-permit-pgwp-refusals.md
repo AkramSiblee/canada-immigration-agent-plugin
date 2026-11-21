@@ -51,6 +51,7 @@ sources:
 
 ## How these were verified (read first)
 - On 2026-11-17 the official Federal Court site and CanLII returned HTTP 403 to automated reading. Decisions were **not opened**.
+- Re-tried 2026-11-20 (decisions.fct-cf.gc.ca only): still HTTP 403. No decision read in full; nothing raised to H. All rows OPEN for a manual browser read.
 - Each citation, date, docket and outcome below was matched across at least two secondary summaries (mainly dadkhah.ca and amcaim.ca case-law posts). Where a summary linked the official decision, the **official item number** is given.
 - Rows marked **(CanLII)** have no confirmed official item number. The CanLII URL is built from the neutral citation and was not opened.
 - Holdings are **M** across the board. Read the full decision before citing it to a client, an officer or the Court.

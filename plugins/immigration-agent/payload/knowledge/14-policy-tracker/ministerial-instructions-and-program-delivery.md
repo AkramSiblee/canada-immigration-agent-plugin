@@ -71,7 +71,7 @@ sources:
 | **Saskatchewan (SINP) Entrepreneur and Farm Owner/Operator** | **PERMANENTLY CLOSED**: no new EOIs or invitations; existing files processed. ISW EOI: no scheduled draws. Job-offer and SK-experience categories open; capped sectors use 6 windows (Jan/Mar/May/Jul/Sep/Nov 2026) | 2025-03-27 | SINP FAQ (2025-12-19); SINP Entrepreneur EOI page | H |
 | **Manitoba (MPNP)** | **OPEN**: LAA draws ongoing (latest #283 2026-11-05: 526 LAAs; largest recent 2026-10-22: 1,304); allocation 8,000 | — | immigratemanitoba.com/draws (2026-11-07); MPNP Monthly Data 2026 | H |
 | **Northwest Territories (NTNP)** | **OPEN** (Employer-Driven and Francophone from 2026-03-09; Employer-Driven uses EOI draws); allocation 197 raised to 300 (2026-08-07), then **350** (+50, 2026-11-10) | — | immigratenwt.ca newsroom | H |
-| **Yukon Nominee Program** | **2026 intakes CLOSED** (EOI windows Jan 19-30 and Jul 6-17); 3 worker streams; allocation 282. Separate Yukon Business Nominee Program pages are live (2026-09-03) with intake status not stated: confirm with Yukon (02-pnp/yukon.md, M) | Next: 2027 windows not announced | yukon.ca YNP page (2026-11-02) | H |
+| **Yukon Nominee Program** | **2026 intakes CLOSED** (EOI windows Jan 19-30 and Jul 6-17); 3 worker streams; allocation 282. Yukon Business Nominee Program landing page now redirects to 'Page not found' and the YNP page lists only 3 worker streams (Chrome, 2026-11-20, H): do not present the BNP as open; confirm with Yukon (02-pnp/yukon.md) | Next: 2027 windows not announced | yukon.ca YNP page (2026-11-02) | H |
 | **Home Child Care / Home Support pilots; Live-in Caregiver** | **CLOSED** | 2024-06-17 | IRCC caregivers page | H |
 
 ### Key 2026 Ministerial Instructions and public policies

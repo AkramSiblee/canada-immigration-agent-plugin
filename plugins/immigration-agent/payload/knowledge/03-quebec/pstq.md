@@ -2,7 +2,7 @@
 domain: 03-quebec
 topic: pstq
 status: verified
-last_verified: 2026-11-08
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 30
 sources:
@@ -33,7 +33,19 @@ sources:
 - Invitations by stream, in exercises with minimum scores, sometimes targeting Quebec diplomas or NOC lists.
 - 2026 Stream 1 rounds (verbatim): Jan 29: 1,094 (min 674-782); Feb 26: 907 (627-741); Mar 19-20: 893 (588-718); Apr 30: 983 (571-716); Jun 4: 1,094 (from 677).
 - 2026 Stream 2 rounds (verbatim): Jan 29: 683; Feb 26: 495; Mar 19-20: 509; Apr 30: 506; Jun 4: 756.
-- Later rounds (Jul 3, Jul 30, Aug 27, Sep 24) were summary-only and **smaller** (Stream 1 about 74-105). Verify on the page (M).
+- **H2 2026 rounds (French invitations page, "Dernière mise à jour : 24 septembre 2026", read 2026-11-20) (H).** Totals per stream, verbatim; min scores per exercise:
+
+| Date | Stream 1 | Stream 2 | Stream 3 | Stream 4 | All |
+|---|---|---|---|---|---|
+| Jul 3 | 74 (ex. 31 @628; 5 @726; 38 @656) | 289 (35 @628; 14 @726; 240 @628) | 131 (84 @628; 41 @656; <5 @656; <5 @475) | 7 | 501 |
+| Jul 30 | 105 (44 @651; 12 @702; 49 @701) | 296 (37 @656; 10 @702; 249 @621) | 110 (72 @649; 33 @700; 5 @376) | 12 | 523 |
+| Aug 27 | 87 (26 @639; 11 @710; 50 @694) | 314 (51 @638; 10-15 @706; <5 @695; 249 @616) | 109 (77 @639; 25-30 @694; <5 @393) | 21 | 531 |
+| Sep 24 | 86 (37 @634; 8 @706; 41 @696) | 316 (48 @631; 10-15 @706; <5 @698; 254 @611) | 110 (69 @631; 37 @697; <5 @696; <5 @380) | 7 | 519 |
+
+  - "All" column = sum of stream totals (Jul 3 matches the 501 in Quebec's 2026-07-03 release; Sep 24 matches secondary reports of 519).
+  - Targeting: Stream 1 = priority-sector NOC lists (health/science/social; 62020/62200; engineering/trades/data); Stream 2 = health/school/home-care NOC list, NOC 63200/65310, trades list, plus a large **TEER 4-5 exercise with no occupation list**; Stream 3 = regulated professions by NOC lists; Stream 4 = partner opinion or Exceptional Achievements list (no score). All Stream 1-2 exercises required residence in Quebec.
+  - Policy during the PEQ window: monthly rounds "jusqu'en octobre 2026", mostly for people who can't use the PEQ (TEER 4-5, under 2 yrs experience) (Quebec release 2026-07-03) (H).
+- **No round after 2026-09-24 published as of 2026-11-20** (page last updated 2026-09-24; no October/November round on quebec.ca; none in secondary sources) (H for absence). No post-October invitation plan announced; the new PQ government (MII, minister Gentilcore) has not suspended the PSTQ (secondary, immigration.ca 2026-10-26) (M).
 - Accept within **30 days**. Apply within **60 days** of accepting (Stream 3 without recognition: 1 yr).
 
 ### Fees and processing
@@ -50,7 +62,9 @@ sources:
 - 2026-01-01: fees indexed ($940/$201) (H)
 - 2026-05-13: priority for expiring work permits (H)
 - 2026-06-25: requirements page updated (H)
-- H2 2026: smaller invitation rounds (M)
+- H2 2026: smaller rounds, about 500-530 a month across all streams (Jul 3 to Sep 24), down from 1,500+ a month in H1; Stream 2 TEER 4-5 favoured (H)
+- 2026-09-24: last published round as of 2026-11-20 (H)
+- 2026-10-22: ministry renamed MII under the PQ government; PQ platform proposes a moratorium on economic immigration from abroad (proposal only, see `overview-and-plan.md`) (M)
 
 ## Consultant pitfalls
 - Stream 2 needs **12 months in Quebec**. Workers outside Quebec can't qualify.
@@ -63,13 +77,16 @@ sources:
 
 ## Re-verify before advising
 - PSTQ criteria and invitation rounds
-- July-Sept 2026 round figures (verbatim)
+- Next round after 2026-09-24 (none published as of 2026-11-20)
+- Any 2027-plan change to PSTQ for candidates abroad (PQ moratorium proposal)
 - Stream 4 French requirement
 
 ## Sources
 - PSTQ (2025-12-22): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program
 - Requirements (2026-06-25): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/requirements
-- Invitations 2026 (2026-11-03): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/invitation/2026
+- Invitations 2026 (page dated 2026-09-24; read 2026-11-20; an earlier entry here said 2026-11-03, not confirmed): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/invitation/2026 ; French: https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-selection-travailleurs-qualifies/invitation/2026
+- Quebec release 2026-07-03 (invitations during PEQ window; read 2026-11-20): https://www.quebec.ca/nouvelles/actualites/details/programme-de-selection-des-travailleurs-qualifies-poursuite-des-invitations-en-complement-de-louverture-du-programme-de-lexperience-quebecoise-71576
+- Secondary: https://immigration.ca/quebec-invites-519-candidates-arrima-pstq-draws-september-24-2026/ ; https://immigration.ca/quebec-renames-immigration-ministry-as-new-government-prepares-immigration-cuts/
 - Applying (2026-01-01 / 2026-10-13): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/applying
 - After CSQ (2026-11-03): https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/after-selection-certificate
-All read 2026-11-07.
+Others read 2026-11-07.

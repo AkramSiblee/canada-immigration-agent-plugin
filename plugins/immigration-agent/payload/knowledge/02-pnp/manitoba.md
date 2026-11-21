@@ -55,14 +55,15 @@ sources:
 | Initiative | Intake on 2026-11-08 | Key rules |
 |---|---|---|
 | Morden (MCDII) | **Open**, no deadline | See below |
-| Winkler-Stanley (WSEDC) | **Temporarily closed** | Age 21-45 (over 45 only with 60 MPNP points); CLB 4+ (higher by NOC); 2 yrs full-time in last 5; 1-yr post-secondary; funds 50% of LICO; up to 150 applications a year (2024-25); no exploratory visit if endorsed via its labour forecast; application valid 6 months; once a year; 3-4 months to answer |
-| Immigrate Parkland | **Coming soon**: reopening fall 2026, focus on healthcare | No longer run by Parkland Chamber; immigrateparkland@gmail.com |
-| Southwestern (SWMII) | Not stated (page 2026-08-18) | Brandon, Boissevain, Virden, Neepawa. Run by Economic Development Brandon under SWO. Job on priority list, full-time, permanent, at least Job Bank minimum (M). Also business investors, with exploratory visit |
+| Winkler-Stanley (WSEDC) | **Temporarily closed** (re-checked 2026-11-20) | Age 21-45 (over 45 only with 60 MPNP points); CLB 4+ (higher by NOC); 2 yrs full-time in last 5; 1-yr post-secondary; funds 50% of LICO; up to 150 applications a year (2024-25); no exploratory visit if endorsed via its labour forecast; application valid 6 months; once a year; 3-4 months to answer |
+| Immigrate Parkland | **Coming soon**: reopening fall 2026, focus on healthcare (still 'coming soon' 2026-11-20) | No longer run by Parkland Chamber; immigrateparkland@gmail.com |
+| Southwestern (SWMII) | Not stated (page 2026-08-18; the priority-occupations page loads empty in Chrome 2026-11-20, so the list is OPEN) | Brandon, Boissevain, Virden, Neepawa. Run by Economic Development Brandon under SWO. Job on priority list, full-time, permanent, at least Job Bank minimum (M). Also business investors, with exploratory visit |
 | West Central (WCMII) | Application form live (2025 profile) | 8 communities: Russell-Binscarth, Riding Mountain West, Yellowhead, Rossburn, Roblin, Prairie View, Ellice-Archie, Gambler FN. NOC must be on its 2023 Labour Market Survey unless already working there. 2 yrs full-time in last 5; IELTS General; exploratory report required; no age bar but 21-45 scores maximum |
-| Northwest (NWMII) | **Closed for maintenance**; next intake "soon" | The Pas, RM of Kelsey, Flin Flon, Swan River, Snow Lake. Sectors: healthcare; sales and service; manufacturing and utilities; transport; automotive repair; construction and processing; natural and applied sciences; education |
+| Northwest (NWMII) | **Closed for maintenance**; next intake "soon" (unchanged 2026-11-20) | The Pas, RM of Kelsey, Flin Flon, Swan River, Snow Lake. Sectors: healthcare; sales and service; manufacturing and utilities; transport; automotive repair; construction and processing; natural and applied sciences; education |
 
 - **Temporary measure to 2027-12-31** (West Central page): designated initiatives may endorse workers already in their area, including those awaiting MPNP decisions, with a valid work permit and 12 months' continuous full-time local employment.
 - **MPNP settlement funds (official, H):** at least **$10,000 plus $2,000 per accompanying family member**. Applicants with an EE profile and code must meet IRCC's table. Skilled workers employed in Manitoba still show funds, but current income is considered. Not borrowed. Needs bank letters with 6-month average balance and 3 months of statements. Local initiatives can set a different test (Winkler-Stanley: 50% of LICO).
+- **WCMII temporary measure (WCMII application form, read 2026-11-20; M, the initiative's own page, not MPNP):** "until December 31, 2027 (unless extended or modified)", designated regional initiatives may endorse candidates **already working in their area** for an MPNP ITA, including those awaiting an MPNP decision, if they hold a valid work permit (including CUAET and I-PTPP) and have **12 months' full-time continuous employment** in the community with ongoing employment. Current workers may apply even if their NOC is not on the WCMII 2023 survey list. Confirm the MPNP basis before relying on it.
 - A regional initiative is a **strategic recruitment initiative**. An invitation under one is worth **500 EOI points** (EOI ranking) and **20 adaptability points** on the Skilled Worker Overseas (SWO) grid, and it supplies the Manitoba connection that SWO requires.
 - **SWO (official, H):** connection required (close relative or friend in Manitoba; 6 months' Manitoba work or a completed Manitoba program; or an MPNP Invitation under a Strategic Recruitment Initiative, which applicants cannot self-select). Minimum **60 of 100 points**:
   - Language (max 25): first language CLB 8+ 20, 7 18, 6 16, 5 14, 4 12; second language CLB 5+ 5. TEER 4-5 must have at least CLB 4.
@@ -103,7 +104,7 @@ sources:
 - Contact: immigration@mymorden.ca, email only. Morden is not affiliated with any representative and gives them no preferential treatment.
 
 **Conflicts recorded (not resolved):**
-- Language floor: Morden and Winkler-Stanley allow CLB 4 for TEER 4-5. MPNP's SWO page requires CLB 4 for TEER 4-5 generally, and CLB 5 for its own recruitment missions and exploratory visits. West Central says the Strategic Initiative minimum is **CLB 5**. No MPNP page sets a floor for regional-initiative candidates, so treat CLB 5 as the safe floor.
+- Language floor (re-checked in Chrome 2026-11-20, still unresolved): the MPNP regional initiatives page sets no floor; the WSEDC page still says CLB 4 minimum (higher by NOC); the WCMII 2025 application form says "The minimum eligibility language criteria for MPNP - Strategic Initiative is CLB 5" plus NOC TEER minimums. Morden and Winkler-Stanley allow CLB 4 for TEER 4-5. MPNP's SWO page requires CLB 4 for TEER 4-5 generally, and CLB 5 for its own recruitment missions and exploratory visits. West Central says the Strategic Initiative minimum is **CLB 5**. No MPNP page sets a floor for regional-initiative candidates, so treat CLB 5 as the safe floor.
 - Express Entry profile: commercial guides disagree. City page treats it as optional ("whether or not you also have a federal express entry profile"). City page governs.
 - Target occupations: commercial guides list welders, carpenters, plumbers/pipefitters and cooks (L, undated). **Outdated against the City's current list.** City page governs.
 
@@ -143,18 +144,18 @@ sources:
 - **Refusals (official FAQ, Assessment and Procedural Fairness, read 2026-11-20) (H):** no appeal; no reconsideration after the decision date; reapply **6 months** after the refusal letter (or once the refusal reasons are addressed, per the Skilled Worker policy manual); **2 years** if refused for falsified documents, misrepresentation or concealment.
 
 ### Entrepreneur Pathway (EP)
-Eligibility source: https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ (official-extract, undated). Grid, timing and BPA details: July 2024 guide and secondary sources.
+Eligibility source: https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ (**read in Chrome 2026-11-20, H** for net worth, investment, ownership, jobs, experience, language, education, age; undated page). Grid, timing and BPA details: July 2024 guide and secondary sources.
 
 | Item | Rule | Conf. |
 |---|---|---|
-| Net worth | **$500,000 CAD** minimum, verified by an MPNP-approved third-party supplier | M |
-| Investment | **$250,000** in the Winnipeg Metropolitan Region (Manitoba Capital Region); **$150,000** outside it. Must be in an eligible business | M |
-| Ownership | At least **33 1/3%** for owner points. A secondary source says $1,000,000+ equity can replace the 33 1/3%; not confirmed officially | M / L |
-| Jobs | Create or maintain **at least 1 job** for a citizen or PR, excluding owners and their close relatives | M |
-| Experience | **3 yrs full-time in last 5** as an active owner or senior manager of a successful business. Owners score more than managers | M |
-| Language | **CLB/NCLC 5** minimum | M |
-| Education | Canadian high-school equivalent (secondary) | L |
-| Age | No maximum. Ranking points for about 25-49 (sources say 25-48 or 25-49) | L |
+| Net worth | **$500,000 CAD** minimum, verified by an MPNP-approved third-party supplier; report with the application within 120 days of the LAA | H |
+| Investment | **$250,000** in the Winnipeg Metropolitan Region (Manitoba Capital Region); **$150,000** outside it. Must be in an eligible business | H |
+| Ownership | At least **33 1/3%** for owner points. A secondary source says $1,000,000+ equity can replace the 33 1/3%; not on the official eligibility page (2026-11-20) | H / L |
+| Jobs | Create or maintain **at least 1 job** for a citizen or PR, excluding owners and their close relatives | H |
+| Experience | **3 yrs full-time in last 5** as an active owner or senior manager of a successful business. Owners score more than managers | H |
+| Language | **CLB/NCLC 5** minimum | H |
+| Education | Canadian high-school equivalency minimum | H |
+| Age | No minimum or maximum; ranking points for ages 25-49 | H |
 | Exploratory (research) visit | Not a minimum requirement on the EP apply page; worth **up to 20 of 150 points** on the official Self-Assessment Form | H |
 | Deposit | **No deposit.** The old $100,000 MPNP-B good-faith deposit was replaced by the BPA at the 2017-2018 redesign. Secondary sources still quoting $75,000-$100,000 for EP are outdated or confused with FIP | M |
 
@@ -182,21 +183,21 @@ Eligibility source: https://immigratemanitoba.com/mpnp/bis/ep/eligibility/ (offi
 - **Nomination validity:** PR application within **180 days** of nomination (How to Apply page, H; stated for SW/IES - confirm for BIS).
 
 ### Farm Investor Pathway (FIP)
-Sources: eligibility https://immigratemanitoba.com/?p=18204 (official-extract); FIP Guidelines Kit (above); secondary guides. **Figures conflict across sources (M/L).**
+Sources: **read in Chrome 2026-11-20 (H):** eligibility https://immigratemanitoba.com/mpnp/bis/fip/eligibility/ and apply https://immigratemanitoba.com/mpnp/bis/fip/apply/ ; FIP Guidelines Kit 12-2023 (listed on the apply page); older secondary guides carry outdated figures.
 
 | Item | Rule | Conf. |
 |---|---|---|
-| Net worth | **$500,000** (official eligibility-page extract; may need third-party verification). Older guides say $350,000, likely outdated | M |
-| Investment | **$300,000** in eligible tangible farm assets in **rural Manitoba**. Older guides say $150,000. No speculative or passive investment | M / L |
-| Farm experience | **3 yrs farm ownership and operation**, documented (one source: within the last 5 yrs) | M |
-| Research visit | **Mandatory farm business research visit.** No EOI or interest submission accepted without proof. Length: one source says 5 business days within 1 yr before applying (L) | M |
-| Deposit | **$75,000 CAD** refundable deposit under a **Deposit Agreement** (Manitoba Development Corporation). Separate from the investment; refunded once the farm requirements are met. Some sources say $100,000 (outdated) | M |
+| Net worth | **$500,000 CAD**; MPNP may request third-party verification (KPMG or MNP), due with the application within 120 days. Older guides' $350,000 is outdated | H |
+| Investment | **$300,000 CAD** in eligible tangible farm assets in **rural Manitoba**; farm business plan required; no passive or speculative investment; must live on the farm; no third-party farm managers. Older guides' $150,000 is outdated | H |
+| Farm experience | **3 yrs farm ownership and operation**, verifiable documents | H |
+| Research visit | **Mandatory farm business research visit** (official). Length: one source says 5 business days within 1 yr before applying (L) | H |
+| Deposit | **$75,000 CAD** under a **Deposit Agreement**, signed after approval for nomination (official apply page, step 5). Refunded once the farm requirements are met (M). $100,000 figures are outdated | H |
 | Agreement | **Deposit Agreement, not a BPA** | M |
-| Language | Interview in English or French may be required; numeric CLB not confirmed | L |
+| Language | No numeric CLB on the official page; a FIP interview, if invited, is in English or French | H |
 | Nomination timing | **Nominated for PR before arrival** (direct nomination). The farm must be established and run day-to-day from rural Manitoba within **2 years of arrival** under the Deposit Agreement. Deposit is refunded after that. No work-permit stage | M |
 | Fee | $2,500 (BIS fee, official FAQ); not separately confirmed for FIP | M |
 
-- FIP intake status: **not confirmed**. The "no BIS EOI draws" notice covers the stream. Do not present FIP as open without confirming by email.
+- **FIP intake status (official apply page, 2026-11-20, H):** a **paper-based interim process** runs "until technical changes to the MPNP Online system are complete". Email the Interest Guidelines Form and Farm Business Concept Form (plus the Code of Conduct if represented) to MPNP; MPNP emails a response; the concept is not an application. Then LAA; full application, documents, net worth report and fee within **120 days** of the LAA; assessment (may include an interview); nomination certificate; Deposit Agreement and $75,000 deposit; PR application; new contact details to MPNP within 30 days of landing. **Case-by-case, not a ranked draw.** Do not present it as fast or certain; confirm with MPNP-BusinessStream@gov.mb.ca.
 
 ### Refusals and review
 - **No appeal.** BIS decisions are final (FIP kit, official-extract) (M).

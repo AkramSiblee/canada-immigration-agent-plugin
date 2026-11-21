@@ -41,7 +41,7 @@ sources:
 - 18+; citizen, PR or registered Indian; lives in Canada (a citizen abroad must show intent to return; a **PR abroad cannot sponsor**)
 - No income test for spouse, partner or child (s.133(4)) unless the sponsored person has a dependent child who has a child of their own
 - Bars: see sponsor-eligibility-and-bars.md
-- **Undertaking: 3 years** from PR (s.132(1)(b)(i)). Quebec: separate MIFI undertaking.
+- **Undertaking: 3 years** from PR (s.132(1)(b)(i)). Quebec: separate MII (formerly MIFI) undertaking.
 
 ### Open work permit (public policy; IRCC page 2026-04-17)
 - Eligible: a spouse, common-law or conjugal partner **living in Canada with the sponsor**, included in a PR application with an **AOR**; also an accompanying dependent child of the principal applicant.

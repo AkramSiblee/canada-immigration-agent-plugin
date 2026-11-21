@@ -117,7 +117,7 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 
 ### Status and 2026 draws
 - Rural Entrepreneur, Graduate Entrepreneur, Foreign Graduate Entrepreneur: each eligibility page says "AAIP is currently accepting EOIs" (read 2026-11-17).
-- Farm: **status not stated** on the stream, eligibility or how-to-apply pages. No pause notice on AAIP updates. Applications are paper only, by mail or courier. Confirm intake with AAIP before filing. (M)
+- Farm: **status not stated** on the stream, eligibility or how-to-apply pages (stream page re-read 2026-11-20: still no open/paused wording; AAIP updates page has no 2026 Farm notice). Not presented as open or closed. Applications are paper only, by mail or courier. Confirm intake in writing with AAIP before filing. (M)
 - **No entrepreneur EOI draws published for 2026.** Processing page (updated 2026-11-04) lists worker draws only; no entrepreneur minimum scores or pool sizes.
 - Allocation (all entrepreneur streams combined): 60; 39 issued; 21 remaining; 211 in process; "business applications are evaluated upon receipt" (processing page, 2026-11-04). No split by stream.
 - 2026-08-12 update: the "economic establishment" requirement was explained on the Rural, Graduate and Foreign Graduate pages. "Program eligibility criteria and requirements have not changed." AAIP checks it during monitoring. Existing EOIs need no update.
@@ -217,7 +217,8 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 ## Re-verify before advising
 - 2027 allocation and stream split
 - WEOI points grid (PDF)
-- Farm Stream intake status (not stated on official pages)
+- Farm Stream intake status (not stated on official pages; re-checked 2026-11-20)
+- Rural Renewal communities designated in 2022-2023 (past the 3-year term): still listed on the official designation page 2026-11-20, extension status not shown (see regional-community-streams.md)
 - Entrepreneur EOI selections (not published); Final Report for Nomination contents and deadline
 
 ## Sources

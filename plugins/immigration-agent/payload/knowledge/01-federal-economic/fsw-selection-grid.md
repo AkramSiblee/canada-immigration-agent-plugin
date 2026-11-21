@@ -2,7 +2,7 @@
 domain: 01-federal-economic
 topic: fsw-selection-grid
 status: verified
-last_verified: 2026-11-13
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -33,6 +33,6 @@ Calculator: `python3 scripts/fsw.py` (data: `templates/fsw/selection-grid.json`)
 - Admissible; plan to live outside Quebec.
 
 ## Proof of funds (FSW, FST)
-- Family of 1 $15,263; 2 $19,001; 3 $23,360; 4 $28,362; 5 $32,168; 6 $36,280; 7 $40,392; each more $4,112 (updated 2025-07-07).
+- Family of 1 $15,263; 2 $19,001; 3 $23,360; 4 $28,362; 5 $32,168; 6 $36,280; 7 $40,392; each more $4,112 (updated 2025-07-07; still current on the IRCC page re-checked 2026-11-20).
 - Family size counts the spouse and dependent children even if not coming. Funds available at application and at visa issue; not borrowed; no home equity.
 - Not needed: CEC, or authorized to work in Canada with a valid job offer (upload a letter explaining which).

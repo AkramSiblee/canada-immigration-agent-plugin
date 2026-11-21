@@ -2,7 +2,7 @@
 domain: 06-protection-humanitarian
 topic: resettlement-and-private-sponsorship
 status: verified
-last_verified: 2026-11-09
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -31,7 +31,7 @@ sources:
 |---|---|
 | Government-Assisted Refugees (GAR) | Active (UNHCR/referral only; no direct application) |
 | Sponsorship Agreement Holders (SAH) | Sponsoring continues within allocations. **New SAH applications closed; "There won't be a 2026 application intake."** |
-| **Groups of Five** | **Paused until 2026-12-31** (since 2024-11-29) |
+| **Groups of Five** | **Paused until 2026-12-31** (since 2024-11-29). Groups of Five page still shows "New private sponsorship applications: Paused" (checked 2026-11-20, H) |
 | **Community Sponsors** | **Paused until 2026-12-31** |
 | BVOR | Active at token level: **2026 target 50** (Levels 2026-2028) (H) |
 | Economic Mobility Pathways Pilot (EMPP) | **Closed** (refugees page) |

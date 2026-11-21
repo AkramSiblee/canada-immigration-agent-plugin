@@ -53,7 +53,7 @@ sources:
 - Dependent child 22+: 3 yrs
 - Parents/grandparents: **20 yrs**
 - Other relatives: 10 yrs
-- Quebec: MIFI sets its own lengths.
+- Quebec: MII (formerly MIFI) sets its own lengths.
 
 ### Co-signer and undertaking notes (read 2026-11-09) (H)
 - No co-signer when sponsoring a spouse, common-law or conjugal partner (IMM 1344 instructions, page 2026-11-03). Income test applies only if the spouse's dependent child has their own dependent child (s.133(4)). Income under s.134: last NOA, or Canadian income in the prior 12 months; a co-signer's income counts only where one is allowed.

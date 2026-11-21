@@ -2,7 +2,7 @@
 domain: 05-temporary-residence
 topic: open-work-permits
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -201,10 +201,10 @@ Exceptions without the 16-month test: SIP BC (job title SIPSPOUSEBC, since 2026-
 - **Principal on maintained status (R186(u)) when the spouse files:** application held until the principal's extension is decided.
 - **Principal moves to PGWP:** no spouse OWP while principal works under R186(w); principal's PGWP must be issued before the spousal decision and principal employed in eligible TEER; priority request before PGWP approval = refusal. PGWP holders' spouses = C41 (family-members PDI 2026-08-11).
 - **Principal changes job/employer/NOC after the spouse's OWP issued:** no PDI section. R209: a work permit becomes invalid only when it expires or is cancelled under R209.01 (administrative error), R209.02 (PR or death) or R243.2 (SOR/2025-11; Justice Laws current to 2026-10-29). So the issued OWP is not automatically invalidated by a job change (inference, M). Family-members PDI: "If a principal's work permit is revoked, the spousal work permit is also revoked"; family must be linked in GCMS "to ensure the ability to revoke" (C41/C46 PDI). Change of job matters at the next renewal.
-- **Principal refused/loses status:** no express rule for an issued spouse permit (unknown). Family-group filings: principal assessed first; principal refused = family refused.
+- **Principal refused/loses status:** no express rule for an issued spouse permit (unknown). Family-group filings: principal assessed first; principal refused = family refused "for not meeting the requirements of this category" (family-members PDI 2026-08-11, re-read 2026-11-20). Client process page (2026-05-28, read 2026-11-20): filed together, family applications "will also be refused"; at a POE, those "submitted after yours will also be refused"; filed separately, "If your application is refused, your family members can't apply for a work permit." OWP holder fee ($100) refunded on refusal; processing fee not (H).
 - **Renewal (standard):** spouse must still meet C41 at the renewal: principal holds or is approved for a permit with 16+ months from the spouse's filing, eligible TEER. Validity never past principal's authorized stay or spouse's passport.
 - **Renewal (facilitation measure, since 2025-01-21):** in-Canada family whose C41/C46 or C47/C48 issued before 2025-01-21 may renew under old rules under R201(1) only to align with the principal's "existing" permit with 6+ months left. If the principal got any new permit since (even same job/employer), new rules apply (exception: earlier permit shortened by passport). PDI example: principal moved to a lower-TEER job after 2025-01-21, spouse not eligible for renewal.
-- **C41/C46 PDI (2026-08-11):** still lists a 6-month test and TEER 0-3; covers pre-2025-01-21 cases, renewals and family of workers "transitioning to PR" (permit tied to a PR pathway, PR not yet filed: CSQ holders, nominees, AIP, start-up, Yukon), renewable under R201(1) regardless of filing date (M: page mixes old and new rules; read with the C41 PDI).
+- **C41/C46 PDI (2026-08-11; re-read 2026-11-20, unchanged):** still lists a 6-month test ("the authorization to work in Canada is for a period of 6 months or longer" after the family member's receipt date) and TEER 0-3; scope stated as applications "received by IRCC on or before January 21, 2025", renewals received on or after that date aligned with the principal's existing authorization, and family "transitioning to permanent residence". Covers pre-2025-01-21 cases, renewals and family of workers "transitioning to PR" (permit tied to a PR pathway, PR not yet filed: CSQ holders, nominees, AIP, start-up, Yukon), renewable under R201(1) regardless of filing date (M: page mixes old and new rules; read with the C41 PDI).
 - **Spouse of a BOWP holder:** C49 (not C41). Principal holds a permit issued because of an economic PR application (BOWP A75 counts), PR still in process, principal authorized 6+ months after the family member's receipt date, family listed as accompanying dependants; dependent children included; renewal under R201(1) while C49 is still met; refusal ground R200(1)(c)(ii) (C49 PDI 2025-02-03; Refusals/Renewals added per update 2026-08-11). BOWP PDI: "genuine accompanying spouses, common-law partners and dependent children are eligible" under C49 (PDI 2025-07-30). Effect on a C49 permit if PR is refused/withdrawn: not stated (unknown).
 
 ### BOWP notes (read 2026-11-09) (H)
@@ -227,6 +227,7 @@ Exceptions without the 16-month test: SIP BC (job title SIPSPOUSEBC, since 2026-
 - Help Centre Q676 (modified 2026-11-03), answer to "Can I renew my post-graduation work permit?": may apply for a BOWP if waiting on an EE PR decision, "your work permit expires in 4 months or less", valid status, in Canada.
 - Client page (2026-10-16) and A75 PDI (2025-07-30): no expiry window; only status at submission + stage of the PR application.
 - **Governs: the PDI** (officers' instructions), consistent with the client page. The 4-month window was removed in 2021 (secondary sources; PDI 2021 update page exists, text not re-read) (M for the date). Q676 is outdated Help Centre text. Practice: file once eligible; no need to wait until 4 months before expiry.
+- **Re-checked 2026-11-20:** Q676 still dated 2026-11-03 and still says "4 months or less". Not corrected yet (H for the text).
 - PR effect: report job or job offer changes (EE after-apply page 2026-10-16). FSW relying on a valid offer needs funds if the offer is lost; FST needs a certificate of qualification (job offer page 2026-11-03). AOR alone doesn't prove completeness; the biometrics letter issues if the application is complete.
 
 ## Recent changes (2025-2027)
@@ -235,7 +236,7 @@ Exceptions without the 16-month test: SIP BC (job title SIPSPOUSEBC, since 2026-
 - 2026-11-03: asylum work permit rules under SOR/2026-218 (H)
 
 ## Special-measure OWPs (pointer)
-- Still running and tracked in 14-policy-tracker/ministerial-instructions-and-program-delivery.md: TR to PR OWP (to 2026-12-31), Hong Kong OWP (to May 2029), Ukraine extensions, Haiti and Sudan renewals, Palestinian and Iranian measures, OWP for claimants ineligible for IRB referral (2026-03-26). Check the tracker for dates before advising.
+- Still running and tracked in 14-policy-tracker/ministerial-instructions-and-program-delivery.md: TR to PR OWP (to 2026-12-31; IRCC page re-checked 2026-11-20, no further extension: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/tr-pr-pathway/open-work-permit.html), Hong Kong OWP (to May 2029), Ukraine extensions, Haiti and Sudan renewals, Palestinian and Iranian measures, OWP for claimants ineligible for IRB referral (2026-03-26). Check the tracker for dates before advising.
 
 ## Consultant pitfalls
 - The 16-month remaining-validity test is measured **at the spouse's application date**. Time the application.
@@ -270,3 +271,4 @@ All read 2026-11-07.
 - Program delivery update, family members IMP (2026-08-11, page 2026-09-02): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2026-canadian-interest-imp.html
 - IRPR R201, R209, R209.01, R209.02 (current to 2026-10-29): https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/page-28.html
 Read 2026-11-17.
+- Re-read 2026-11-20: Q676, C41/C46 PDI, family-members PDI (URLs above); family of workers, how we process (2026-05-28): https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/special-instructions/spouses-dependent-children/process.html

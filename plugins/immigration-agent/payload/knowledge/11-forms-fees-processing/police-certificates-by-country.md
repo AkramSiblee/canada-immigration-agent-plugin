@@ -2,7 +2,7 @@
 domain: 11-forms-fees-processing
 topic: police-certificates-by-country
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-20
 confidence: H
 review_every_days: 90
 sources:
@@ -30,6 +30,13 @@ sources:
   - https://www.vancouverpcg.org/?p=15
   - https://www.pakconsulate.ca/police-character-certificate
   - https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/identity-history-summary-checks/identity-history-summary-checks-faqs
+  - https://blsindia-canada.com/ottawa-jurisdiction/police-clearance-certificate.php
+  - https://blsindia-canada.com/vancouver-jurisdiction/police-clearance-certificate.php
+  - https://www.philembassy.org.nz/services/nbi-clearance
+  - https://bhclondon.org.uk/police-clearance-certificate
+  - https://bcgdubai.gov.bd/?p=1073
+  - https://vietnamembassy.org.au/en/police-check
+  - https://www.westmidlands-pcc.gov.uk/wp-content/uploads/2026/01/Final-Decision-062-2025-Fees-and-Charges-Booklet-2026.pdf
 ---
 # Police certificates by country (25 countries)
 
@@ -67,14 +74,14 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 
 | Country | Certificate | From abroad (incl. Canada) | IRCC request letter? | Typical time | IRCC page date | Conf. |
 |---|---|---|---|---|---|---|
-| India | Police Clearance Certificate (PCC) | Indian mission; in Canada via BLS International (consulate decides) | No | Toronto: min. ~8 weeks, can be months (BLS) | 2026-02-25 | H (IRCC/BLS) |
+| India | Police Clearance Certificate (PCC) | Indian mission; in Canada via BLS International (consulate decides) | No | CAD 60.70 all three BLS jurisdictions (from 2026-07-01). Toronto min. ~8 weeks; Vancouver min. 4-6 weeks; Ottawa 2 weeks after police report; all "may take several months" | 2026-02-25 | H (IRCC/BLS) |
 | Nigeria | Police Character Certificate | By mail to Force CID with certified fingerprints + IMO (IRCC); POSSAP online portal (secondary) | No | Not official | 2020-10-27 | H IRCC / L current process |
-| Philippines | NBI Multi-purpose Clearance (paper) | Consulate takes/attests fingerprint card (NBI Form 5), sent to NBI Manila | No | Consulate step 2 business days (Vancouver); NBI time unknown | 2026-10-16 | H |
+| Philippines | NBI Multi-purpose Clearance (paper) | Consulate takes/attests fingerprint card (NBI Form 5), sent to NBI Manila | No | Consulate step 2 business days (Vancouver); NBI Mailed Clearance Section max. 5 working days after receipt, mailing extra (PH Embassy NZ) | 2026-10-16 | H / M (NBI time) |
 | Pakistan | Police Character / Clearance Certificate | Pakistani mission; Toronto consulate online ~2 weeks, manual (Sindh, KP) ~3 months | No | See left | 2025-09-04 | H |
-| Bangladesh | Police Clearance Certificate | Online pcc.police.gov.bd; Ottawa mission role unconfirmed | No | Not official | 2025-01-23 | H IRCC / L mission |
+| Bangladesh | Police Clearance Certificate | Online pcc.police.gov.bd (BD mobile number needed, or relative applies); missions only attest passport copy + authorization letter | No | Fee BDT 500 treasury challan (BHC London); time not official | 2025-01-23 | H IRCC / H fee (mission) / L time |
 | China | Certificate of No Criminal Record (or Notification of Non-issuance) | Via hukou-place PSB (online/police station); missions only notarize/authenticate after issue | No (but letter if not obtainable) | Not official | 2026-05-28 | H |
 | Iran | Certificate of no criminal record | Iranian embassy abroad; Canada has none, MFA alternative (Persian only) | No | Not official | 2026-03-16 | H IRCC / L route |
-| Vietnam | Judicial Record Certificate No. 2 | National Center for Judicial Records, in person or mail | No | ~10 (to 15) days (secondary) | 2024-04-09 | H IRCC / L update |
+| Vietnam | Judicial Record Certificate No. 2 | **Since 2025-03-01: provincial police (citizens) / MPS Dept. of Criminal Records (foreigners)** per Vietnam Embassy Australia; IRCC page still says MOJ / National Center | No | ~10 (to 15) days; VND 200,000 (secondary) | 2024-04-09 | H IRCC (stale) / H authority change / L fee-time |
 | Nepal | Police Clearance (Report) | Online Nepal Police OPCR system | No | Not official | 2024-07-23 | H IRCC / L rest |
 | Sri Lanka | Police Clearance Certificate | Online via Sri Lanka Police site; or via SL mission | No | 14 days after receipt (police notice, secondary) | 2026-03-10 | H IRCC / M fee-time |
 | South Korea | Criminal (Investigation) Records Check Report | Foreigners: Korean embassy/consulate | No | Korean nationals: usually immediate; foreigners in Korea: up to 1 week | 2026-07-16 | H |
@@ -84,7 +91,7 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 - **Certificate:** Police Clearance Certificate. **Not accepted:** Character Certificates; certificates with jurisdiction or search-period limits (IRCC).
 - **Issuing:** IRCC lists local district police station, Passport Office (Passport Seva), Indian embassies/consulates, BLS International Centre.
 - **In India:** Passport Seva online form + paid PSK appointment; dispatched by post after clear police verification. **Fee:** current fee structure page shows **Rs. 750**; older official pages still show Rs. 500 (conflict; M). One PCC appointment per year from first appointment date (Passport Seva FAQ, M).
-- **From Canada:** online form on the mission portal (mportal.passportindia.gov.in/mission/; foreign nationals use a PDF form), then submit at **BLS International** (appointment, walk-in or mail). Toronto jurisdiction **fee from 2026-07-01: CAD 59 consular + CAD 1.70 BLS = CAD 60.70** (same for Indian and foreign passport holders); debit/exact cash in person; demand draft or money order to "BLS International Services Canada Inc." by mail. **Processing: minimum ~8 weeks**, longer (several months) if online police verification is unavailable; mail adds 3-4 working days (BLS Toronto page, H). Former Indian citizens/foreign nationals of Indian origin eligible if they show period of stay. Missing documents: email pcc.toronto@mea.gov.in for prior approval. Ottawa and Vancouver jurisdiction fees not re-read (older secondary figure CAD 38.70; treat as stale).
+- **From Canada:** online form on the mission portal (mportal.passportindia.gov.in/mission/; foreign nationals use a PDF form), then submit at **BLS International** (appointment, walk-in or mail). Toronto jurisdiction **fee from 2026-07-01: CAD 59 consular + CAD 1.70 BLS = CAD 60.70** (same for Indian and foreign passport holders); debit/exact cash in person; demand draft or money order to "BLS International Services Canada Inc." by mail. **Processing: minimum ~8 weeks**, longer (several months) if online police verification is unavailable; mail adds 3-4 working days (BLS Toronto page, H). Former Indian citizens/foreign nationals of Indian origin eligible if they show period of stay. Missing documents: email pcc.toronto@mea.gov.in for prior approval. **Ottawa and Vancouver (BLS pages read 2026-11-20, H):** same **CAD 59 consular + CAD 1.70 BLS = CAD 60.70** from 2026-07-01 for Indian and foreign passport holders; postal applications carry an unstated "consular surcharge". Ottawa: issued **2 weeks after receipt of the police verification** (verification time extra). Vancouver: **minimum 4-6 weeks**. Both: police reports from India "may take several months"; mail adds 3-4 working days. The old CAD 38.70 figure is superseded.
 - **Fingerprints:** not stated on IRCC page.
 - **Validity:** general IRCC rules.
 
@@ -95,7 +102,8 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 - **By mail / from abroad:** prepaid return courier envelope, copy of passport photo page, **fingerprints taken and certified by a recognized police authority or Nigerian embassy/consulate**, international money order payable to the Nigerian Police Force, C.I.D. Certificates can be certified at a Nigerian mission for a fee.
 - **Current process (secondary, L):** online via the Nigeria Police **POSSAP** portal with in-person biometric capture at a police command; fee reports conflict (NGN 10,000-40,000). Official portal content could not be read on 2026-11-17.
 - **Conflict / stale:** IRCC page last modified **2020-10-27** and does not mention POSSAP. Confirm the route with the Nigeria Police / Nigerian High Commission before advising.
-- **Fees/time:** not official. **Unknown.**
+- **Fees/time:** not official. **Unknown.** Re-checked 2026-11-20: possap.gov.ng returned no readable content. Secondary only (L, conflicting): in-country NGN 30,000-40,000; a USD 53.76 diaspora fee attributed to a POSSAP social-media reply (May 2026); "minimum 72 hours" processing per reported Force guidelines. Do not quote.
+- **Nigeria High Commission Ottawa (search snippet of its own page, page itself returned 404 on 2026-11-20, M):** authenticates a Force CID certificate after verification by the Ministry of Foreign Affairs, Abuja; **CAD 50 + CAD 50 administrative fee**, money order only; **10 business days**. Confirm with the mission.
 
 ## Philippines
 - **Certificate:** NBI Multi-purpose Clearance, **paper version**. **Digital/online versions are not accepted** by IRCC. In English, no translation.
@@ -103,7 +111,7 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 - **From abroad:** at nearest Philippine embassy/consulate, or by mail to NBI Head Office (Mailed Clearance Section, 3rd Floor, NBI Clearance Building, UN Ave., Ermita, Manila). Mailed to applicants outside the Philippines.
 - **In Canada (Consulate General Vancouver, page modified 2026-07-21):** consulate only consularizes **NBI Form No. 5 (fingerprint card)**; rolled prints at the consulate or an RCMP station. Fee **CAD 38.75** (+ CAD 15.50 same-day expedite); regular 2 business days. Then send to NBI Manila (representative with authorization letter, or by mail). NBI fee **PHP 200**. Renewal possible without new prints if previous clearance issued 2014+ and no change in name/DOB/place of birth/civil status. PNB Canada no longer accepts NBI payments. Toronto/Ottawa posts not checked (fees may differ).
 - **Remarks on certificate** ("no criminal record", "no pending case", "record as stated" per IRCC): also submit NBI written explanation, complete court decision/resolution (clerk-of-court certifications not accepted) and applicant's own explanation.
-- **NBI processing time:** unknown.
+- **NBI processing time (Philippine Embassy Wellington page, read 2026-11-20; official DFA mission, M for Canada):** NBI Mailed Clearance Section issues within **a maximum of 5 working days** after receiving the documents; mailing time to and from Manila is extra. Other DFA posts give NBI fee as PHP 130 clearance + PHP 70 mailing (= PHP 200, matches Vancouver's figure).
 
 ## Pakistan
 - **Certificate:** Police Character Certificate or Police Clearance Certificate.
@@ -116,8 +124,10 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 - **Certificate:** Police Clearance Certificate, issued by **Bangladesh Police** (Special Branch).
 - **How:** online at **pcc.police.gov.bd** (IRCC does not distinguish in-country vs abroad). Submit a scan of the original showing **seal and signature**.
 - **Contact (IRCC):** 6 Phoenix Road, Fulbaria, Dhaka-1000; 01320001824 / 01320001825; help.pcc@police.gov.bd.
-- **From Canada:** Bangladesh High Commission Ottawa role and fee **not confirmed** (secondary claims CAD 65-95, L). Other missions forward applications; certificate is issued in Bangladesh. Government fee BDT 500 via e-Challan (secondary, L).
-- **Time/fees:** not official.
+- **From Canada:** Bangladesh High Commission Ottawa role and fee **not confirmed** (secondary claims CAD 65-95, L).
+- **Government fee (H, Bangladesh High Commission London page, read 2026-11-20):** **BDT 500** by treasury challan (code 1-2201-0001-2681 per BHC London; a secondary source gives 1-7301-0001-2681: conflict, check at payment), payable at Bangladesh Bank or Sonali Bank, in Bangladesh or abroad.
+- **Abroad (BHC London; Consulate General Dubai, read 2026-11-20, H):** apply online yourself (needs a **Bangladeshi mobile number**) or through a relative; the application goes to the police station of the permanent address. The mission only **attests the passport copy and an authorization letter** (Dubai: AED 14 per document, cash, 3+ business days via its service centre). Police contact the authorized person to deliver. Foreign nationals: passport copy attested by a Justice of the Peace where they live; still need a BD mobile number.
+- **Processing time:** not official. Secondary (L): up to 7 working days in Dhaka, 10 outside.
 
 ## China
 - **Certificate:** Certificate of No Criminal Record; if a record exists, "Notification of Non-issuance of Certificate of No Criminal Record".
@@ -125,7 +135,7 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 - **Citizens abroad:** ask the hukou-registration office; may need passport/visa scan and proof of overseas residence (e.g., PR card). **Chinese embassies/consulates cannot issue** hukou-related certificates; they only notarize/authenticate after issue.
 - **Foreigners (180+ days in China):** Exit-Entry Administration of the PSB in the city that issued the Foreigner Residence Permit; some cities require a notary office first.
 - **IRCC notes:** notarized or certified translation required; citizens should have the certificate **cover birth to current date**; QR-code version recommended but not required; if a period cannot be covered, upload a letter saying so (may delay).
-- Hong Kong, Macao, Taiwan have separate IRCC pages (not covered here). Fees/time: unknown.
+- Hong Kong, Macao, Taiwan have separate IRCC pages (not covered here). Fees/time: unknown (re-searched 2026-11-20: no official Chinese source with fee or time; secondary sources say citizens abroad generally use a proxy with a POA, not online).
 
 ## Iran
 - **Certificate:** Certificate of no criminal record. Requirements on epolice.ir (Persian).
@@ -137,7 +147,8 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 ## Vietnam
 - **Certificate:** Judicial Record Certificate No. 2 (Phieu Ly Lich Tu Phap So 2).
 - **IRCC (page 2024-04-09):** in Vietnam, district Department of Justice of permanent-address registration, in person/mail or provincial Public Service Portal; Hanoi online service; foreigners in Hanoi use the Hanoi DOJ online service. Cancelled permanent residence (Art. 29, Residence Law 2020): confirmation from district police, then National Center for Judicial Records. **Abroad:** in person or by mail to the **National Center for Judicial Records** (9 Tran Vi St, Mai Dinh ward, Cau Giay, Hanoi; +84 24 6273 9492; ttlltpqg@moj.gov.vn).
-- **Possible change (L, secondary):** reports say issuance moved to the **Ministry of Public Security** in 2025 with VNeID online filing; normal 10 days (15 if verification). Fee **VND 200,000** (Circular 244/2016/TT-BTC, secondary); a discounted online fee was reported. IRCC page predates this; treat IRCC addresses as possibly stale. No proxy application for No. 2 (secondary).
+- **Authority change confirmed (H, Embassy of Viet Nam in Australia page, read 2026-11-20):** from **2025-03-01** the Department of Justice no longer handles it. **Citizens:** apply to the **Provincial/Municipal Police Department** of permanent residence. **Foreigners:** **Department of Criminal Records, Ministry of Public Security**. Abroad: embassy certifies the signed form, POA and passport/ID copies (5 working days), then file by post or in person with the police authority. **Conflict:** IRCC's Vietnam page (2024-04-09) still names the DOJ and the National Center for Judicial Records. Follow the Vietnamese authority; note the change in the cover letter.
+- Fee/time (L, secondary): **VND 200,000**; normal 10 days (15 if verification); the 2025 online discount (VND 170,000, Circular 16/2025/TT-BTC) ran to 2025-12-31; a 2026 decree (216/2026/ND-CP) reportedly sets 10-15 working days paper / 5-15 online (unverified). No proxy application for No. 2 (secondary).
 
 ## Nepal
 - **Certificate:** Police Clearance (Report), issued by **Nepal Police** (Police HQ, Naxal, Kathmandu; info@nepalpolice.gov.np).
@@ -160,14 +171,15 @@ Confidence: IRCC rows are H (read on canada.ca on 2026-11-17). Fees and times fr
 ## United States
 - **Certificate:** FBI **Identity History Summary**. IRCC page names only the FBI check; it does **not** mention state checks.
 - **How:** online via FBI Identity History Summary Checks, or mail to FBI CJIS Division, Attn: Summary Request, 1000 Custer Hollow Road, Clarksburg, WV 26306. Fingerprints required (electronic at participating post offices or card by mail).
-- **Fee:** **USD 18** (FBI FAQ); post-office fingerprinting may cost extra; waiver by request.
-- **Time:** FBI publishes none; electronic requests processed faster; no expedite. FBI-approved channelers exist (not verified here).
+- **Fee:** **USD 18** (FBI FAQ, read 2026-11-17); post-office fingerprinting may cost extra; waiver by request.
+- **Time:** FBI publishes none; electronic requests processed faster; no expedite. FBI-approved channelers exist (not verified here). Re-check 2026-11-20: fbi.gov returned 403 (OPEN).
 
 ## Unknowns and re-verify
-- Fees/times for Nigeria, Bangladesh (Ottawa), China, Iran, Nepal, NBI Manila processing: not on official pages read.
-- Nigeria route (IRCC page 2020 vs POSSAP) and Vietnam authority (MOJ vs MPS) may be stale on IRCC.
+- Fees/times for Nigeria, Bangladesh (time; Ottawa mission), China, Iran, Nepal, UAE: not on official pages read (2026-11-20 pass).
+- Nigeria route (IRCC page 2020 vs POSSAP) may be stale on IRCC. Vietnam: IRCC page stale (MPS since 2025-03-01, confirmed by Vietnam's embassy).
 - Iran alternative route (MFA) unconfirmed on official Iranian site.
-- India Ottawa/Vancouver BLS fees not re-read; PSK fee Rs 500 vs 750 conflict.
+- PSK fee Rs 500 vs 750 conflict (Passport Seva fee page returned no content on 2026-11-20).
+- UK ACRO fee: see United Kingdom section (police-body figure, ACRO site unreadable).
 - "Cumulative vs consecutive 6 months" wording: current IRCC pages say consecutive.
 
 ## Other countries (part 2)
@@ -190,7 +202,7 @@ All IRCC pages say fingerprints for a police certificate are separate from IRCC 
 | Brazil | Certidao de Antecedentes Criminais (Federal Police only) | Online if holder of CIE+CPF; otherwise in person at Policia Federal; abroad not stated | Not stated | Unknown; valid 90 days; free | H |
 | Colombia | Background Verification Certificate (via Omnitempus) | Contact Omnitempus | YES: wait for IRCC file number and letter; Omnitempus sends directly to IRCC | Unknown (provider advises) | H |
 | Mexico | Constancia de datos registrales (FGR) | VAC route (in person/mail, 8 VACs) or FGR via POA; 10-print fingerprints | FGR route: YES (IRCC Mexico supporting letter); VAC route: no; results go FGR to IRCC | FGR: max 10 business days; FGR fee MXN 240 | H |
-| United Kingdom | Police Certificate (ACRO) | ACRO online (UK or overseas address) | Not stated | Unknown officially | H (IRCC) / fee unknown |
+| United Kingdom | Police Certificate (ACRO) | ACRO online (UK or overseas address) | Not stated | GBP 65 standard / 115 premium (UK PCC 2026 booklet); time not official | H (IRCC) / M fee |
 | France | Bulletin no 3 (extrait de casier judiciaire) | Online casier-judiciaire.justice.gouv.fr or cerfa 10071 by post | Not stated | 1-24 h (FranceConnect); 2 working days by email; ~15 days by post; free | H |
 
 ### Tunisia
@@ -324,7 +336,7 @@ All IRCC pages say fingerprints for a police certificate are separate from IRCC 
 - Contact: +44 (0)2380 479 920; customer.services@acro.pnn.police.uk.
 - Scotland, Northern Ireland, Channel Islands, Gibraltar: page title covers them but no specific instructions (PSNI says it does not issue visa police certificates).
 - Fingerprints: not stated.
-- Time and fee: UNKNOWN officially (ACRO site did not render). Secondary sources conflict: GBP 45 / 55 / 65 standard (~10 working days) and GBP 95 / 115 premium (~2 working days). Do not quote; verify on ACRO.
+- Time and fee: ACRO site still did not render on 2026-11-20. **UK police-body source (M):** West Midlands Police and Crime Commissioner 2026 fees booklet lists **"Police Certificates - Standard Service" GBP 65.00** and **"Premium Service" GBP 115.00**, and refers to ACRO for current rates. Turnaround: not on an official page read; secondary sources say ~10 working days standard and ~2 premium (L). Older figures (GBP 45/55/60 standard; 80/95/105 premium) are superseded.
 - IRCC page modified: 2025-06-17.
 - Confidence: H (process), L (fee/time).
 
@@ -345,3 +357,4 @@ All IRCC pages say fingerprints for a police certificate are separate from IRCC 
 - Gabon Justice: http://justice.gouv.ga/casier-judiciaire/
 - France: https://www.service-public.gouv.fr/particuliers/vosdroits/F1420 ; https://www.service-public.gouv.fr/particuliers/vosdroits/F14710 (verified 2026-08-20)
 - Secondary only (fee hints, not relied on): blog.wego.com (Qatar, UAE), ukvisa.blog (ACRO)
+- 2026-11-20 pass: BLS Ottawa and Vancouver PCC pages; Philippine Embassy Wellington NBI page; Bangladesh High Commission London and Consulate General Dubai PCC pages; Embassy of Viet Nam in Australia police-check page; West Midlands PCC fees booklet 2026 (URLs in front matter). Re-tried and unreadable: acro.police.uk (render error), fbi.gov (403), passportindia.gov.in fee page (empty), possap.gov.ng (empty), pcc.police.gov.bd (redirect), Dubai Police and u.ae (timeout/reset), nigeriahcottawa.ca (404). UAE fees still secondary only (MOI AED 50-100 / Dubai Police AED 100-300 in blogs, L).

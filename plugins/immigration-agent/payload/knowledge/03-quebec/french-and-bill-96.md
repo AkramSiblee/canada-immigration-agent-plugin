@@ -30,8 +30,8 @@ sources:
 - 2025-12-17: French oral 4 for long-stay temporary workers (phased) (H)
 
 ## Consultant pitfalls
-- After 6 months, MIFI correspondence will be in French. Ensure clients (or you) can respond on time. Translation delays are not an excuse.
-- Documents submitted to MIFI in languages other than French/English need certified translation.
+- After 6 months, MII (formerly MIFI) correspondence will be in French. Ensure clients (or you) can respond on time. Translation delays are not an excuse.
+- Documents submitted to MII (formerly MIFI) in languages other than French/English need certified translation.
 
 ## Common refusal reasons
 - French level not met; missed deadlines on French correspondence

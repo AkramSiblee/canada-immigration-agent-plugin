@@ -97,3 +97,9 @@
 | 2027-01-01 | Rural Community Immigration Pilot closes; permanent Rural Community Immigration Program opens (recommendations dated by 2026-12-31 stay usable until they expire) | H |
 | 2026-03-09 | CICC RCIC EPE Candidate Guide 2026-001: 135 MCQ, 3 h, max 4 attempts within 3 years of completing the qualifying program | H |
 | 2027-03-10 | Next RCIC Entry-to-Practice Exam (qualification deadline 2027-02-03; registration 2027-02-17) | H |
+| 2026-09-01 | UK CPTPP accession in force between Canada and the UK (Global Affairs); UK professionals T52 and transferees available | H |
+| 2026-10-14 | Ontario REDI new round to end-2027 (Greater Sudbury, Kenora, Nipissing, Rainy River, Renfrew, Thunder Bay); no separate application | H |
+| 2026-10-22 | SOR/2026-217: Rural Community Immigration class; recommendation certificates valid 1 year; pilot instructions stay to 2027-06-30 | H |
+| 2026-10-22 | Quebec immigration ministry renamed MII (minister Catherine Gentilcore); PQ moratorium on economic immigration from abroad is a proposal only | M |
+| 2026-11-20 | Yukon Business Nominee pages removed ('Page not found'); YNP lists only 3 worker streams | H |
+| 2026 | BC Judicial Review Procedure Act s.11 repealed (SBC 2026 c.15); BC PNP JR limit is PIPA s.7(5): 30 days (60 outside Canada) | H |
