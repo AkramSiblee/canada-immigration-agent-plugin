@@ -449,7 +449,7 @@ def ee_items(today):
         out.append({"id": "pnp" + hashlib.sha256(json.dumps(d, sort_keys=True).encode()).hexdigest()[:8], "source": "pnp-recorded",
                     "source_label": "Provincial draw you recorded", "tag": "provincial", "province": d["province"], "date": d["date"],
                     "title": f"{PROVINCE_NAME.get(d['province'], d['province'])} {d['stream']} draw: minimum score {d['min_score']}",
-                    "detail": [d.get("note", "")], "link": "", "pnp": d, "first_seen": d["date"]})
+                    "detail": [d.get("note", "")], "link": province_page(d["province"]), "pnp": d, "first_seen": d["date"]})
     return [i for i in out if i["date"] >= (today - datetime.timedelta(days=KEEP_DAYS)).isoformat()]
 
 
@@ -465,7 +465,7 @@ def rule_items(today):
         coming = day > today
         out.append({"id": "kb" + c["id"][:8], "source": "kb-changelog", "source_label": "Knowledge base rule changes (verified)", "tag": "rules",
                     "province": al.province_code(c["change"]), "date": day.isoformat(), "title": ("Coming: " if coming else "") + re.sub(r"\*\*", "", c["change"]),
-                    "detail": [f"Confidence {c['conf']} (H = official source)"], "link": "", "coming": coming, "first_seen": day.isoformat()})
+                    "detail": [f"Confidence {c['conf']} (H = official source)"], "link": c.get("source", ""), "coming": coming, "first_seen": day.isoformat()})
     return out
 
 
@@ -478,8 +478,20 @@ def fee_items(today):
         if kind == "Fee change" or (kind == "Form version" and text.startswith("IRCC has a newer")):
             out.append({"id": "fw" + hashlib.sha256(text.encode()).hexdigest()[:8], "source": "watch", "source_label": "IRCC fee list and form pages",
                         "tag": "fees", "province": None, "date": str(checked)[:10], "title": text, "detail": [step],
-                        "link": FEES_PAGE if kind == "Fee change" else "", "first_seen": str(checked)[:10]})
+                        "link": FEES_PAGE if kind == "Fee change" else form_page(text), "first_seen": str(checked)[:10]})
     return out
+
+
+def province_page(code):
+    """The province's own draw page (or its main immigration page when the agent can't read it)."""
+    page = next((url for _, _, prov, url, _ in SOURCES.values() if prov == code), None) or next((url for _, p, url, _ in BY_HAND if p == code), "")
+    return year_url(page, datetime.date.today().year) if "{year}" in page else page
+
+
+def form_page(text):
+    import watch as wt
+    m = re.search(r"\bIMM\s?(\d{4}[A-Z]?)", text)
+    return wt.FORM_PAGE.format("imm" + m.group(1).lower()) if m else ""
 
 
 def all_items(today=None, state=None):
@@ -492,7 +504,25 @@ def all_items(today=None, state=None):
             out += extra(today)
         except Exception:  # a damaged local file must not hide the web items
             pass
-    return sorted(out, key=lambda i: (i.get("date", ""), i.get("first_seen", "")), reverse=True)
+    return dedupe(sorted(out, key=lambda i: (i.get("date", ""), i.get("first_seen", "")), reverse=True))
+
+
+def same_key(it):
+    """Items with the same date and headline (ignoring notes in brackets, case and punctuation) are the same news."""
+    title = re.sub(r"\([^)]*\)", " ", it.get("title", "")).lower()
+    return it.get("date", ""), re.sub(r"[^a-z0-9]+", " ", title).strip()
+
+
+def dedupe(items):
+    """One item per piece of news: keep the one with a source link, then the one that says more."""
+    best = {}
+    for it in items:
+        k = same_key(it)
+        old = best.get(k)
+        if old is None or (bool(it.get("link")), len(it.get("title", "")) + len(" ".join(it.get("detail", [])))) >                 (bool(old.get("link")), len(old.get("title", "")) + len(" ".join(old.get("detail", [])))):
+            best[k] = it
+    keep = {id(v) for v in best.values()}
+    return [it for it in items if id(it) in keep]
 
 
 def window(items, today, days=SHOW_DAYS):

@@ -13,7 +13,7 @@ description: Research and rewrite one knowledge file (or ingest _inbox) from off
 2. Read the stub's Must-cover list; research official sources first, secondary second; run separate searches per sub-topic
 3. Rewrite file: current rules, recent changes, pitfalls, refusal reasons, re-verify items, sources with URLs and dates
 4. Set front matter: status verified, last_verified today, confidence, sources
-5. Append to 00-meta/update-log.md; add notable changes to 00-meta/changelog.md; update comparison/decision-tree files that depend on it
+5. Append to 00-meta/update-log.md; add notable changes to 00-meta/changelog.md (one row per change, with the official page's URL in the Source column: the dashboard's news links to it; never add a second row for a change already listed, extend that row instead); update comparison/decision-tree files that depend on it
 6. Record conflicts instead of silently picking one
 
 ## Guardrails

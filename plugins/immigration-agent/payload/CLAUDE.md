@@ -41,6 +41,6 @@ Decision-support agent for Canadian immigration practice: federal, provincial/te
 - `python3 scripts/kb_status.py` shows OK / STALE / NEEDS-SEED per file.
 - `/update-kb <domain/topic>` researches one file from official sources and rewrites it.
 - `/audit-kb` finds stale, conflicting, or unsourced entries.
-- Every update: set `status: verified`, `last_verified`, `confidence` (H/M/L), `sources`; append to `knowledge/00-meta/update-log.md`; add notable rule changes to `knowledge/00-meta/changelog.md`.
+- Every update: set `status: verified`, `last_verified`, `confidence` (H/M/L), `sources`; append to `knowledge/00-meta/update-log.md`; add notable rule changes to `knowledge/00-meta/changelog.md` (one row per change, official source URL in the Source column).
 - Confidence: H = official source or several consistent reputable sources; M = reputable secondary only; L = single secondary source, estimate, or pre-2026 rule.
 - Seed queue: `research-prompts/`.

@@ -234,8 +234,12 @@ def parse_changes(text):
     out = []
     for line in text.splitlines():
         parts = [p.strip() for p in line.strip().strip("|").split("|")]
+        source = ""
+        if len(parts) >= 4 and (not parts[-1] or parts[-1].startswith("http")):  # optional Source column (official link)
+            source, parts = parts[-1], parts[:-1]
         if len(parts) >= 3 and line.lstrip().startswith("|") and not set(parts[0]) <= set("-:") and parts[0] != "Effective":
-            out.append({"effective": parts[0], "change": " | ".join(parts[1:-1]), "conf": parts[-1], "id": hashlib.sha256((parts[0] + parts[1]).encode("utf-8")).hexdigest()[:16]})
+            out.append({"effective": parts[0], "change": " | ".join(parts[1:-1]), "conf": parts[-1], "source": source,
+                        "id": hashlib.sha256((parts[0] + parts[1]).encode("utf-8")).hexdigest()[:16]})
     return out
 
 

@@ -313,6 +313,8 @@ function filesBadge(files) {
     el("div", { class: "small" }, files.map((f) => el("div", {}, caseTag(f.folder, f.id), ` ${f.client}: ${f.why}`))));
 }
 
+const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\d?\./, ""); } catch { return "source"; } };
+
 function newsRow(n, tags, compact) {
   return el("div", { class: "news-item" + (n.coming ? " coming" : "") },
     el("div", { class: "news-date num" }, fmtDate(n.date)),
@@ -323,7 +325,7 @@ function newsRow(n, tags, compact) {
       !compact && n.detail.length ? el("ul", { class: "news-detail small muted" }, n.detail.map((x) => el("li", {}, x))) : null,
       filesBadge(n.files)),
     el("div", { class: "news-actions" },
-      n.link ? el("button", { class: "btn icon", title: "Open the official source", "aria-label": "Open the official source", onclick: () => openLink(n.id) }, icon("open")) : null,
+      n.link ? el("button", { class: "btn news-src", title: `Read the full official page: ${n.link}`, "aria-label": `Read the full official page on ${hostOf(n.link)}`, onclick: () => openLink(n.id) }, icon("open"), hostOf(n.link)) : null,
       el("button", { class: "btn icon", title: `Copy /news post ${n.id}: Claude drafts a short client message about it`, "aria-label": "Share with clients", onclick: () => copyCommand(`/news post ${n.id}`) }, icon("share"))));
 }
 
@@ -366,7 +368,7 @@ function newsPanel(d, rerender) {
   return el("section", { class: "panel" },
     el("div", { class: "panel-head" }, el("h2", {}, "News and updates"),
       el("div", { class: "head-actions" }, el("span", { class: "count" }, newsChecked(d)), checkNowButton(d, rerender))),
-    el("p", { class: "hint" }, "From official sources only (IRCC, ESDC, Job Bank, each province's own page), last 60 days. \"Your files\" is a keyword or score match: a prompt to review, not a finding. Share copies a command: Claude checks the source and drafts a short message for clients who agreed to hear from you."),
+    el("p", { class: "hint" }, "From official sources only (IRCC, ESDC, Job Bank, each province's own page), last 60 days. Click the site name (canada.ca, alberta.ca…) to read the full official page. \"Your files\" is a keyword or score match: a prompt to review, not a finding. Share copies a command: Claude checks the source and drafts a short message for clients who agreed to hear from you."),
     el("div", { class: "news-filters" }, tabs,
       el("label", { class: "small news-mine" }, el("input", { type: "checkbox", onchange: (e) => { mine = e.target.checked; show(); } }), " Only news that may concern my files"),
       searchBox("Search the news", (v) => { q = v; show(); })),

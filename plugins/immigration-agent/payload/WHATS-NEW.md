@@ -2,6 +2,12 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.2
+- **News on the dashboard: no repeats, and every item links to its official page.**
+  - The same change no longer shows twice (three repeated rule changes merged: rural program opening, the rural class regulation, Ontario's REDI round).
+  - Rule changes from the knowledge base now link to their official source (canada.ca, Canada Gazette, ESDC, the province's own site). Draws you record link to the province's draw page; form changes link to the form's page.
+  - Each item has a button with the site's name (canada.ca, alberta.ca...): click it to read the full official page.
+
 ## 1.17.1
 - **Knowledge updates** (checked on official pages 2026-11-19 and 2026-11-20):
   - **Rural Community Immigration Pilot**: IRCC's eligibility detail (work experience rules, local graduate exemption, accepted tests, ECA, settlement funds and when they are waived), and the community scoring grids (IRCC template plus Pictou County, Claresholm, Timmins and Sudbury, with points for cooks).
