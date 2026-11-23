@@ -46,6 +46,7 @@ import readiness as rd  # noqa: E402
 import updates as up  # noqa: E402
 import draws as dr  # noqa: E402
 import inventory as iv  # noqa: E402
+import news as nw  # noqa: E402
 import ircc_times as it  # noqa: E402
 import opportunities as op  # noqa: E402
 import practice as pc  # noqa: E402
@@ -64,6 +65,7 @@ IDLE_STOP = int(os.environ.get("DASHBOARD_IDLE_SECONDS", "300"))  # stop this lo
 FIRST_VISIT = int(os.environ.get("DASHBOARD_FIRST_VISIT_SECONDS", "600"))  # stop if no window ever connects
 OUTPUT = WORK / "Output"
 CHECKLIST_LOCK = threading.Lock()  # one checklist write at a time
+NEWS_CHECK = {"running": False, "error": ""}  # the Check now button reads the official pages in the background
 HIDDEN = re.compile(r"(^|/)(\.|_extraction(/|$)|__pycache__)")
 CASE_COMMANDS = [
     ("Readiness report", "/readiness {id}", "Everything still open before filing"),
@@ -113,6 +115,7 @@ GENERAL_COMMANDS = [
     ("Conflict check", "/conflicts", "Check a new client, spouse, sponsor or employer against every file"),
     ("Deadlines to calendar", "/calendar", "Outlook, Google or Apple Calendar file with reminders"),
     ("Back up files", "/backup", "Back up case files and client records, or restore"),
+    ("Immigration news", "/news check", "Read IRCC, ESDC and provincial draw pages now, matched to your files"),
     ("Form and fee check", "/watch", "Compare IRCC's form versions and fees with the agent"),
     ("What changed?", "/changelog", "Scan official sources for new immigration changes"),
 ]
@@ -466,6 +469,43 @@ def open_path(relpath):
     return None
 
 
+def news(days=nw.SHOW_DAYS):
+    """News from official sources, saved by the daily alerts or the Check now button, matched to open files."""
+    today_ = today()
+    state = nw.load_state()
+    items = nw.with_files(nw.window(nw.all_items(today_, state), today_, days))
+    return {"checked": state.get("checked", ""), "stale": nw.stale(), "running": NEWS_CHECK["running"], "error": NEWS_CHECK["error"],
+            "tags": nw.TAGS, "items": items, "sources": nw.source_rows(state)}
+
+
+def news_check():
+    """Start reading the official sources in the background (public pages only; nothing about the firm or clients is sent)."""
+    if NEWS_CHECK["running"]:
+        return None
+
+    def run():
+        NEWS_CHECK.update(running=True, error="")
+        try:
+            nw.refresh()
+        except Exception as e:  # shown on the page
+            NEWS_CHECK["error"] = f"The check failed ({type(e).__name__})"
+        finally:
+            NEWS_CHECK["running"] = False
+    threading.Thread(target=run, daemon=True).start()
+    return None
+
+
+def open_link(ident):
+    """Open a news item's source in the usual web browser. Only links of saved news items can be opened."""
+    it_ = nw.find_item(ident, today()) if isinstance(ident, str) and ident else None
+    link = (it_ or {}).get("link", "")
+    if not link.startswith("https://"):
+        return "This item has no web link"
+    if not os.environ.get("DASHBOARD_NO_OPEN"):
+        webbrowser.open(link)
+    return None
+
+
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml"}
 def growth():
     """Client opportunities and the latest Express Entry rounds (saved results only: the dashboard reads no web page)."""
@@ -491,7 +531,7 @@ def growth():
             "commands": [{"label": l, "command": c, "help": h} for l, c, h in GENERAL_COMMANDS if c.split()[0] in ("/draws", "/opportunities", "/time", "/precedents", "/prospects", "/licence", "/monthly-updates", "/processing")]}
 
 
-ROUTES = {"/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent, "/api/ircc": ircc}
+ROUTES = {"/api/news": news, "/api/growth": growth, "/api/home": home, "/api/cases": cases, "/api/documents": documents, "/api/agent": agent, "/api/ircc": ircc}
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -562,7 +602,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/alive":
             self.server.last_seen = time.monotonic()
             return self.send(200, {"ok": True})
-        if path not in ("/api/open", "/api/checklist"):
+        if path == "/api/news/check":
+            news_check()
+            return self.send(200, {"ok": True, "running": True})
+        if path not in ("/api/open", "/api/checklist", "/api/open-link"):
             return self.send(404, {"error": "Not found"})
         try:
             n = min(int(self.headers.get("Content-Length", "0")), 10000)
@@ -573,6 +616,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             with CHECKLIST_LOCK:
                 err, cl = checklist_change(body)
             return self.send(400 if err else 200, {"error": err} if err else {"ok": True, "checklist": cl})
+        if path == "/api/open-link":
+            err = open_link(body.get("id") if isinstance(body, dict) else None)
+            return self.send(400 if err else 200, {"error": err} if err else {"ok": True})
         err = open_path(body.get("path") if isinstance(body, dict) else None)
         return self.send(400 if err else 200, {"error": err} if err else {"ok": True})
 

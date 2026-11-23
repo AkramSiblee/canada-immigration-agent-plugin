@@ -28,6 +28,7 @@ const ICONS = {
   check: "M5 12.5l4.5 4.5L19 7.5",
   folder: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",
   growth: "M3 17l6-6 4 4 8-8M14 7h7v7",
+  share: "M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
   calendar: "M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM12 12v5M9.5 14.5h5",
 };
 function icon(name) {
@@ -292,9 +293,102 @@ function updateBanner(u) {
     u.state === "available" ? el("button", { class: "btn", onclick: () => copyCommand("/plugin") }, icon("copy"), "Copy /plugin") : null);
 }
 
+// ---- News from official sources (saved by the daily alerts or the Check now button; the page itself reads no web page) ----
+async function postJSON(path, body) {
+  const r = await fetch(path, { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-Agent-Key": KEY }, body: JSON.stringify(body || {}) });
+  const out = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(out.error || "That didn't work");
+  return out;
+}
+
+async function openLink(id) {
+  try { await postJSON("/api/open-link", { id }); toast("Opening the official page in your browser…"); } catch (e) { toast(e.message); }
+}
+
+function filesBadge(files) {
+  if (!files || !files.length) return null;
+  const strong = files.some((f) => f.strong);
+  return el("details", { class: "news-files" },
+    el("summary", {}, el("span", { class: "pill " + (strong ? "Soon" : "neutral") }, `${files.length} of your files`)),
+    el("div", { class: "small" }, files.map((f) => el("div", {}, caseTag(f.folder, f.id), ` ${f.client}: ${f.why}`))));
+}
+
+function newsRow(n, tags, compact) {
+  return el("div", { class: "news-item" + (n.coming ? " coming" : "") },
+    el("div", { class: "news-date num" }, fmtDate(n.date)),
+    el("div", { class: "news-body" },
+      el("div", { class: "news-top" }, el("span", { class: "tag news-tag " + n.tag }, tags[n.tag] || n.tag),
+        el("span", { class: "small muted" }, n.source_label)),
+      el("div", { class: "news-title" }, n.title),
+      !compact && n.detail.length ? el("ul", { class: "news-detail small muted" }, n.detail.map((x) => el("li", {}, x))) : null,
+      filesBadge(n.files)),
+    el("div", { class: "news-actions" },
+      n.link ? el("button", { class: "btn icon", title: "Open the official source", "aria-label": "Open the official source", onclick: () => openLink(n.id) }, icon("open")) : null,
+      el("button", { class: "btn icon", title: `Copy /news post ${n.id}: Claude drafts a short client message about it`, "aria-label": "Share with clients", onclick: () => copyCommand(`/news post ${n.id}`) }, icon("share"))));
+}
+
+function newsChecked(d) {
+  if (d.running) return "Checking the official sources…";
+  return d.checked ? `Checked ${fmtDate(d.checked)}${d.stale ? " (over a day ago)" : ""}` : "Not checked yet";
+}
+
+function checkNowButton(d, after) {
+  return el("button", { class: "btn", disabled: d.running, onclick: async (e) => {
+    const b = e.currentTarget;
+    b.disabled = true;
+    b.textContent = "Checking…";
+    try {
+      await postJSON("/api/news/check");
+      toast("Reading IRCC, ESDC and the provincial pages. This takes about a minute.");
+      const wait = async () => { const n = await api("/api/news").catch(() => ({ running: false })); if (n.running) setTimeout(wait, 4000); else after(); };
+      setTimeout(wait, 4000);
+    } catch (err) { toast(err.message); b.disabled = false; b.textContent = "Check now"; }
+  } }, d.running ? "Checking…" : "Check now");
+}
+
+function newsPanel(d, rerender) {
+  let tag = "", mine = false, q = "";
+  const list = el("div", { class: "news-list" });
+  const counts = {};
+  for (const n of d.items) counts[n.tag] = (counts[n.tag] || 0) + 1;
+  const tabs = el("div", { class: "tabs", role: "group", "aria-label": "Show news about" });
+  const show = () => {
+    list.replaceChildren();
+    const rows = d.items.filter((n) => (!tag || n.tag === tag) && (!mine || n.files.length) && (!q || JSON.stringify([n.title, n.detail, n.source_label]).toLowerCase().includes(q)));
+    if (!rows.length) list.append(empty(d.items.length ? "No news matches." : "No news saved yet. Click Check now, or wait for the daily alerts."));
+    for (const n of rows.slice(0, 150)) list.append(newsRow(n, d.tags));
+    for (const b of tabs.children) { const on = b.dataset.tag === tag; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); }
+  };
+  const tab = (key, label, n) => el("button", { class: "tab", "data-tag": key, onclick: () => { tag = key; show(); } }, label, el("span", { class: "tab-n" }, n));
+  tabs.append(tab("", "All", d.items.length), ...Object.entries(d.tags).filter(([k]) => counts[k]).map(([k, l]) => tab(k, l, counts[k])));
+  const failed = d.sources.filter((s) => s.ok === false), hand = d.sources.filter((s) => s.by_hand);
+  show();
+  return el("section", { class: "panel" },
+    el("div", { class: "panel-head" }, el("h2", {}, "News and updates"),
+      el("div", { class: "head-actions" }, el("span", { class: "count" }, newsChecked(d)), checkNowButton(d, rerender))),
+    el("p", { class: "hint" }, "From official sources only (IRCC, ESDC, Job Bank, each province's own page), last 60 days. \"Your files\" is a keyword or score match: a prompt to review, not a finding. Share copies a command: Claude checks the source and drafts a short message for clients who agreed to hear from you."),
+    el("div", { class: "news-filters" }, tabs,
+      el("label", { class: "small news-mine" }, el("input", { type: "checkbox", onchange: (e) => { mine = e.target.checked; show(); } }), " Only news that may concern my files"),
+      searchBox("Search the news", (v) => { q = v; show(); })),
+    d.error ? el("div", { class: "error" }, d.error) : null,
+    list,
+    el("details", { class: "news-sources" }, el("summary", { class: "small" }, `Sources (${d.sources.length - hand.length} read automatically${failed.length ? `, ${failed.length} failed at the last check` : ""}, ${hand.length} to check by hand)`),
+      el("div", {}, d.sources.map((s) => el("div", { class: "row small" },
+        el("span", {}, el("a", { href: s.url, target: "_blank", rel: "noopener noreferrer" }, s.label), s.error ? el("div", { class: "muted" }, s.error) : null),
+        el("span", { class: "pill " + (s.by_hand ? "neutral" : s.ok ? "ok" : s.ok === false ? "Soon" : "neutral") }, s.by_hand ? "Check by hand" : s.ok ? `${s.count} items` : s.ok === false ? "Failed" : "Not read yet"))))));
+}
+
+function latestNewsPanel(d) {
+  if (!d) return null;
+  const recent = d.items.filter((n) => !n.coming).slice(0, 5);
+  return panel("Latest news", el("a", { class: "small", href: "#ircc" }, "All news"),
+    recent.length ? el("div", { class: "news-list compact" }, recent.map((n) => newsRow(n, d.tags, true)))
+      : empty("No news saved yet. Open IRCC data and news, then click Check now."));
+}
+
 const pages = {
   async home() {
-    const d = await api("/api/home");
+    const [d, news] = await Promise.all([api("/api/home"), api("/api/news").catch(() => null)]);
     setFrame(d);
     const c = d.counts;
     const urgent = d.alerts.filter((a) => a.rank === 1), soon = d.alerts.filter((a) => a.rank === 2), house = d.alerts.filter((a) => a.rank === 3);
@@ -316,6 +410,7 @@ const pages = {
           panel("Needs attention", el("span", { class: "count" }, attention.length ? `${attention.length} item${attention.length === 1 ? "" : "s"}` : ""), alertList(attention, true)),
           house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null),
         el("div", { class: "col" },
+          latestNewsPanel(news),
           panel("Ask Claude", null, el("p", { class: "hint" }, "Copy a command, then paste it in the Claude app (Code tab) in this agent folder."), cmdList(d.commands)),
           kbPanel(d.kb, d.policy_check))),
     ];
@@ -429,10 +524,11 @@ const pages = {
   },
 
   async ircc() {
-    const d = await api("/api/ircc");
+    const [d, news] = await Promise.all([api("/api/ircc"), api("/api/news").catch((e) => ({ failed: e.message }))]);
     const t = d.times;
     return [
-      pageHead("IRCC's own published figures", "IRCC data", "Inventory and processing times to set client expectations. Check IRCC's tool on the day you advise: times change weekly."),
+      pageHead("IRCC's own published figures", "IRCC data and news", "News, inventory and processing times to set client expectations. Check IRCC's tool on the day you advise: times change weekly."),
+      news.failed ? el("div", { class: "error" }, news.failed) : newsPanel(news, route),
       el("div", { class: "grid2 even" },
         el("div", { class: "col" }, inventoryPanel(d.inventory) || panel("IRCC application inventory", null, empty("No inventory data in this version.")),
           t ? countryTimesPanel(t) : null, t ? otherTimesPanel(t) : null),

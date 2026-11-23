@@ -2,6 +2,13 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.0
+- **News on the dashboard**: the IRCC data page is now "IRCC data & news", with a News and updates panel; Today shows the 5 latest items.
+  - **Official sources only**: IRCC news releases and notices, Express Entry rounds, ESDC wage thresholds, Job Bank wages, and the draw pages of Alberta, BC, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario and Quebec (Arrima). Rule changes from the knowledge base and IRCC fee and form changes are included too.
+  - **Your files**: each item shows which open files it may concern (by program and province, or by recorded CRS score for Express Entry rounds). It is a prompt to review, not a finding.
+  - **Updated once a day** by the daily alerts, or any time with **Check now**. PEI, Saskatchewan, Yukon and NWT are listed to check by hand (their sites block automated reads or publish no draw list).
+  - **Share**: copies `/news post <id>`. Claude checks the official page, then drafts a short client message and social post that follow CICC advertising rules, only for clients who agreed to hear from you (CASL). With Gmail connected it saves drafts; it never sends.
+
 ## 1.16.4
 - **Gap-closing pass: 50 knowledge files re-checked on official sources** (2026-11-20).
   - **Still not out**: no Express Entry round since 2026-10-28; proof-of-funds table unchanged ($15,263 for one person); 2027 study permit cap not published; Ebola, TR to PR work permit, Groups of Five pause, Recognized Employer Pilot and state-care deadlines not extended.
