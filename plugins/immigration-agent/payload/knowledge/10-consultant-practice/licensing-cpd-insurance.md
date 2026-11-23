@@ -22,6 +22,7 @@ sources:
   - https://college-ic.ca/become-licensed/how-do-i-become-a-risia
   - https://immigrationdiploma.queenslaw.ca/admissions
   - https://immigrationdiploma.queenslaw.ca/Tuition-and-Financing
+  - https://admission.umontreal.ca/programmes/dess-en-reglementation-canadienne-et-quebecoise-de-limmigration/
   - https://college-ic.ca/about-the-college/regulations-and-policies
   - https://college-ic.ca/ICCRC/Assets/Documents/Regulations/CPD%20Regulation%20for%20RCICs%202021-003-Final-EN.pdf
   - https://college-ic.ca/ICCRC/Assets/Documents/Regulations/Professional%20Liability%20Insurance%20Regulation%202021-001-Final-EN.pdf
@@ -52,8 +53,9 @@ sources:
   - A bachelor's degree with a B average. Below a B, two other routes: (a) some university study plus 5+ years of relevant work, or (b) a qualifying route with two undergraduate courses graded A.
   - English test: **IELTS Academic 7.0 in every band**, or CAEL 70 in every component, or PTE Academic 70 in every component. Results must be **no older than 2 years**. Exemptions: native English speaker; 4+ years of full-time university study taught in English; or Queen's ESLA 850 with an A.
   - No residency or status requirement to be admitted.
-  - Format: online, 9 courses, full-time in under 12 months or part-time over 24-36 months. Starts in September and January. Fall 2027 applications run 2026-11-01 to 2027-05-01.
+  - Format: online, 9 courses, full-time in under 12 months or part-time over 24-36 months. Starts in September and January. Fall 2027 applications run 2026-11-01 to 2027-05-01; January 2028 applications 2027-05-03 to 2027-09-15. No course below B- if you want to be eligible for the EPE.
   - **Tuition $17,567.12** total (as of 2026-09-01; subject to Board approval). $400 deposit.
+- UdeM D.E.S.S. (admission.umontreal.ca, read 2026-11-20): 30 credits, fully online, full- or part-time; starts August 2027 or January 2028; fall 2027 applications 2026-08-01 to 2027-02-01. Tuition 2025-26 per 9-credit term: Quebec resident $1,391.26; Canadian from outside Quebec $3,375.13 (H). French admission requirement not confirmed.
 - **Language:** CICC's current pages set **no separate CLB/NCLC licensing test**. The language threshold now comes from program admission. A "CLB 9 after the EPE" rule appears only in a **2018 ICCRC guide**, so do not quote it as current. (H for its absence on current CICC pages; M for the Queen's figures, which are the program's own rules.)
 
 **2. EPE qualification application (H)**
@@ -153,7 +155,7 @@ sources:
 - Licensing refusal on good-character grounds, especially non-disclosure. EPE withdrawal through missed time limits.
 
 ## Re-verify before advising
-- UdeM DESS admission rules, French language requirement and tuition (program page not reached on 2026-11-20)
+- UdeM DESS admission rules and French language requirement (credits, dates and tuition read 2026-11-20)
 - Licence application fee and the post-EPE package (emailed to candidates; not public)
 - Current annual fee invoice (the regulation figure dates from 2021)
 - Whether PME still runs separately from the mentoring program

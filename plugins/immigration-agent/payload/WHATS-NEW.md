@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.1
+- **Knowledge updates** (checked on official pages 2026-11-19 and 2026-11-20):
+  - **Rural Community Immigration Pilot**: IRCC's eligibility detail (work experience rules, local graduate exemption, accepted tests, ECA, settlement funds and when they are waived), and the community scoring grids (IRCC template plus Pictou County, Claresholm, Timmins and Sudbury, with points for cooks).
+  - **Becoming an RCIC**: Université de Montréal D.E.S.S. details (30 credits, online, start dates, application window, tuition), Queen's January 2028 application window, and the B- minimum per course for EPE eligibility.
+
 ## 1.17.0
 - **News on the dashboard**: the IRCC data page is now "IRCC data & news", with a News and updates panel; Today shows the 5 latest items.
   - **Official sources only**: IRCC news releases and notices, Express Entry rounds, ESDC wage thresholds, Job Bank wages, and the draw pages of Alberta, BC, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario and Quebec (Arrima). Rule changes from the knowledge base and IRCC fee and form changes are included too.

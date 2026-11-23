@@ -42,6 +42,20 @@ sources:
 - Federal: job offer from designated employer; 1,560 h in past 3 yrs; CLB 6 (TEER 0-1), 5 (TEER 2-3), 4 (TEER 4-5); education or ECA; funds.
 - PR forms: portal IMM 0008, 5669, 5406, 5562; upload IMM 0246 (checklist), IMM 0247 (offer of employment), IMM 0248 (Schedule 1), IMM 0249 (recommendation); IMM 5409 and 5604 if applicable (IRCC page 2026-04-23).
 - Each community sets 5-6 priority sectors and 25 NOCs a year, and adds its own limits. Recommendation certificates are valid **6 months under the pilot** (Timmins, Sault Ste. Marie, Peace Liard pages) and **1 year under the SOR/2026-217 class** from 2027-01-01; a pilot certificate can't be used for the new class.
+
+### Scoring grids (community PDFs and pages, read 2026-11-19) (H)
+- **IRCC template, used by most communities:** pool entry needs **50 points with at least 10 in each of 5 factors**, each capped at 25 (125 max). Communities set only the job offer points (sector + occupation, 10-25); IRCC fixes the rest.
+  - Work experience: 1 yr 10, 2 yrs 15, 3 yrs 20, 4+ yrs 25; local graduate exemption 10.
+  - Language (all 4 abilities): TEER 4/5 CLB 4/5/6/7+ = 10/15/20/25; TEER 2/3 CLB 5/6/7/8+ = 10/15/20/25; TEER 0/1 CLB 6/7/8/9+ = 10/15/20/25.
+  - Education (ECA for foreign): high school 10; 1-yr+ post-secondary or trade 15; bachelor's (3 yr+) 20; master's/PhD 25.
+  - Intent to reside: genuine written statement 10 (mandatory). Bonus up to 15: prior work or study in the community 1/2/3 yrs = 2/4/6; close PR/citizen family there 12+ months 2; volunteering or networks 2; renting or owning there 2; spouse with 6+ months work or study there 3.
+  - Template states the job offer must be **full-time, non-seasonal, indeterminate**, genuine and valid.
+- **Pictou County** (Scoring_Grids_for_EDOs_June_2026.pdf): all 6 sectors 15; occupation points 2-10 (63200 cooks 2, 63202 bakers 2, 12200 3, 21211/21220/21301/31120 10, most trades 5). About 7 recommendations per intake; highest scores drawn.
+- **Claresholm** (2026 grid PDF): sectors Health 22, Manufacturing 17, Trades 14, Education 13, Natural resources 12, Sales and service 10. Occupation bonus: 33102 +3, 31301 +2, 32101 +1, 13100 +2, 72600 +3; others (including 63200) no bonus shown. Top 4 drawn monthly; minimum 50.
+- **Timmins** (Community-Scoring-Grid-RCIP-2026-EN-2.pdf): sectors Health 10, Education 10, Trades 15, Natural resources 15, Manufacturing 15; occupation 5-10. Minimum to enter pool 50, but **RCIP pool needs 79** (page). No sales and service sector; 63200 not eligible.
+- **Sudbury** (grid page): same structure; Health, Trades, Natural resources 15, others 10; minimum 79; 63200 not eligible.
+- **Moose Jaw:** pass/fail, no grid; 63200 full for 2026. **Altona:** first come, first served, no grid. **West Kootenay:** points-based, last cut-off 93 (Sept 2026), grid not published as text. **Peace Liard:** grid not found. **Thunder Bay:** RCIP page returned 404 on 2026-11-19 and 2026-11-20; find the new URL.
+
 - Common employer tests: 2 yrs operating under same management in boundary; 75% of work in boundary; IRCC Employer Onboarding Training and Building Welcoming Workplaces.
 - **Commonly excluded:** gas stations, convenience stores, fast food, staffing agencies, consulates, businesses owned by the candidate or an immigration representative.
 
