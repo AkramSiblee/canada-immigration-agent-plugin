@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.4
+- **Today page is simpler**: the Latest news panel is removed. All news is on the **IRCC data & news** page.
+
 ## 1.17.3
 - **IRCC data & news page, easier to use.**
   - **Tabs at the top**: IRCC data first, then All news, Federal, Provincial, Quebec, Work and wages, Rules, Forms and fees. Each news tab shows only that category, with its count.

@@ -408,17 +408,9 @@ function newsPanel(d, rerender, tag) {
         el("span", { class: "pill " + (s.by_hand ? "neutral" : s.ok ? "ok" : s.ok === false ? "Soon" : "neutral") }, s.by_hand ? "Check by hand" : s.ok ? `${s.count} items` : s.ok === false ? "Failed" : "Not read yet"))))));
 }
 
-function latestNewsPanel(d) {
-  if (!d) return null;
-  const recent = d.items.filter((n) => !n.coming).slice(0, 5);
-  return panel("Latest news", el("a", { class: "small", href: "#ircc/news" }, "All news"),
-    recent.length ? el("div", { class: "news-list compact" }, recent.map((n) => newsRow(n, d.tags, true)))
-      : empty("No news saved yet. Open IRCC data and news, then click Check now."));
-}
-
 const pages = {
   async home() {
-    const [d, news] = await Promise.all([api("/api/home"), api("/api/news").catch(() => null)]);
+    const d = await api("/api/home");
     setFrame(d);
     const c = d.counts;
     const urgent = d.alerts.filter((a) => a.rank === 1), soon = d.alerts.filter((a) => a.rank === 2), house = d.alerts.filter((a) => a.rank === 3);
@@ -440,7 +432,6 @@ const pages = {
           panel("Needs attention", el("span", { class: "count" }, attention.length ? `${attention.length} item${attention.length === 1 ? "" : "s"}` : ""), alertList(attention, true)),
           house.length ? el("details", { class: "panel" }, el("summary", {}, el("h2", {}, `File housekeeping (${house.length})`)), alertList(house, true)) : null),
         el("div", { class: "col" },
-          latestNewsPanel(news),
           panel("Ask Claude", null, el("p", { class: "hint" }, "Copy a command, then paste it in the Claude app (Code tab) in this agent folder."), cmdList(d.commands)),
           kbPanel(d.kb, d.policy_check))),
     ];
