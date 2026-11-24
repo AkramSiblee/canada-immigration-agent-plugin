@@ -10,7 +10,8 @@ Usage:
 Guarantees:
   - Nothing is sent anywhere, and no case file is changed. Once a week it reads IRCC's public form pages and fee list
     (scripts/watch.py) and processing times (scripts/ptimes.py), and once a day IRCC's Express Entry rounds feed
-    (scripts/draws.py) and the official news sources (scripts/news.py: IRCC, ESDC, Job Bank, provincial draw pages); --offline skips them. When a backup folder is set (backup.py setup), it makes the backup that's due.
+    (scripts/draws.py) and the official news sources (scripts/news.py: IRCC, ESDC, Job Bank, provincial draw pages) and the dashboard's IRCC
+    processing times and inventory (scripts/ircc_data.py); --offline skips them. When a backup folder is set (backup.py setup), it makes the backup that's due.
   - Pop-up notices and printed output show counts only, never client details.
   - One unreadable case file becomes an alert. It doesn't stop the others.
   - A failed run shows a notice, so alerts can't stop silently.
@@ -40,6 +41,7 @@ import watch as wt  # noqa: E402
 import validity as vd  # noqa: E402
 import draws as dr  # noqa: E402
 import news as nw  # noqa: E402
+import ircc_data as idata  # noqa: E402
 import practice as pc  # noqa: E402
 import prospects as ps  # noqa: E402
 import ptimes as pt  # noqa: E402
@@ -401,6 +403,11 @@ def cmd_run(a):
             nw.refresh()  # official news and provincial draw pages, once a day; one failed page doesn't stop the others
         except Exception as e:
             feed_problems.append(alert(HOUSEKEEPING, "All files", "News", "not checked", f"Immigration news couldn't be read ({type(e).__name__})", "Run news.py check"))
+    if not a.offline and idata.stale():
+        try:
+            idata.refresh()  # IRCC processing times and inventory for the dashboard, once a day
+        except Exception as e:
+            feed_problems.append(alert(HOUSEKEEPING, "All files", "IRCC data", "not checked", f"IRCC processing times and inventory couldn't be read ({type(e).__name__})", "Run ircc_data.py check"))
     alerts, cases = scan_cases(today)
     alerts += feed_problems
     changes = parse_changes(CHANGELOG.read_text(encoding="utf-8")) if CHANGELOG.exists() else []

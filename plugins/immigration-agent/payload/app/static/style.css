@@ -438,3 +438,4 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 .footnote { font-size: .78rem; color: var(--muted); margin: 0; line-height: 1.5; }
 .footnote .warn { color: var(--soon); }
 @media (max-width: 1000px) { .isums { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ccard { grid-template-columns: minmax(0, 1fr); } }
+.data-bar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }

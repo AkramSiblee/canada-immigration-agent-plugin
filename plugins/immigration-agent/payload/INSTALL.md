@@ -28,7 +28,8 @@ Open Claude Code in the agent's folder (in VS Code: File > Open Folder, then sta
 1. **Your firm profile** (optional: letterhead, logo, and your details filled in on agreements and letters): type `/firm-profile`.
    Without it, documents are on plain paper and Claude asks for the details each one needs.
 2. **Billing and client account** (optional): `python3 scripts/billing.py setup --model 1` (see `/billing`).
-3. **Daily alerts** (optional, Windows): `python3 scripts/alerts.py install --time 08:30`.
+3. **Daily updates** (Windows; the setup does this): `/daily-updates on`. Once a day the agent reads the official news, IRCC
+   processing times and inventory, and Express Entry rounds for the dashboard, and checks every open file's deadlines.
 4. **Practice run with a made-up client** before using real files: ask
    "Open a practice visitor visa case for a fictional client and walk me through it."
 

@@ -47,6 +47,7 @@ import updates as up  # noqa: E402
 import draws as dr  # noqa: E402
 import inventory as iv  # noqa: E402
 import news as nw  # noqa: E402
+import ircc_data as idata  # noqa: E402
 import ircc_times as it  # noqa: E402
 import opportunities as op  # noqa: E402
 import practice as pc  # noqa: E402
@@ -116,6 +117,7 @@ GENERAL_COMMANDS = [
     ("Deadlines to calendar", "/calendar", "Outlook, Google or Apple Calendar file with reminders"),
     ("Back up files", "/backup", "Back up case files and client records, or restore"),
     ("Immigration news", "/news check", "Read IRCC, ESDC and provincial draw pages now, matched to your files"),
+    ("Daily updates", "/daily-updates", "Turn on or check the daily refresh of news, IRCC figures and deadline alerts"),
     ("Form and fee check", "/watch", "Compare IRCC's form versions and fees with the agent"),
     ("What changed?", "/changelog", "Scan official sources for new immigration changes"),
 ]
@@ -265,8 +267,9 @@ def inventory_card():
 
 
 def ircc():
-    """The IRCC data page: inventory and processing times, from the data files shipped with each release."""
-    out = {"today": today().isoformat(), "inventory": inventory_card(), "times": None}
+    """The IRCC data page: inventory and processing times (the release's data, or the newer copy the daily check saved)."""
+    out = {"today": today().isoformat(), "inventory": inventory_card(), "times": None, "refresh": idata.status(),
+           "running": NEWS_CHECK["running"], "error": NEWS_CHECK["error"]}
     try:
         out["times"] = it.card(today())
     except Exception:  # a damaged data file must not break the page
@@ -485,10 +488,14 @@ def news_check():
 
     def run():
         NEWS_CHECK.update(running=True, error="")
+        errors = []
+        for name, job in (("news", nw.refresh), ("IRCC data", idata.refresh)):  # one failure doesn't stop the other
+            try:
+                job()
+            except Exception as e:  # shown on the page
+                errors.append(f"{name} ({type(e).__name__})")
         try:
-            nw.refresh()
-        except Exception as e:  # shown on the page
-            NEWS_CHECK["error"] = f"The check failed ({type(e).__name__})"
+            NEWS_CHECK["error"] = "The check failed: " + ", ".join(errors) if errors else ""
         finally:
             NEWS_CHECK["running"] = False
     threading.Thread(target=run, daemon=True).start()

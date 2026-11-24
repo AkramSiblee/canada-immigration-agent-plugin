@@ -8,8 +8,10 @@ Usage:
   python3 scripts/inventory.py              print the card as text
   python3 scripts/inventory.py --case NAME  the line for one open case (folder name or case id)
 
-Data: templates/ircc/inventory.csv, copied by hand from IRCC's "Inside IRCC's application processing system" page during the
-monthly watch pass (see knowledge/14-policy-tracker/backlogs-and-inventory.md). Nothing is read from the internet.
+Data: templates/ircc/inventory.csv, shipped with each release (checked against
+knowledge/14-policy-tracker/backlogs-and-inventory.md). scripts/ircc_data.py reads IRCC's "Inside IRCC's application processing
+system" page once a day and saves a local copy (cases/.ircc-data/inventory.csv) when IRCC publishes a newer month; the dashboard
+shows whichever copy has the newer data. The dashboard itself reads no web page.
 
 Guarantees:
   - Figures are IRCC's own, with the date the data runs to; nothing is estimated.
@@ -31,7 +33,13 @@ import case as cs  # noqa: E402
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "templates" / "ircc" / "inventory.csv"
 SOURCE_NAME = "IRCC, Inside IRCC's application processing system"
-SOURCE = "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html"
+SOURCE = "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html"
+FIELDS = ["group", "line", "label", "not_finalized", "waiting_pct", "finalized_ytd", "prev_not_finalized", "prev_waiting_pct",
+          "data_as_of", "prev_data_as_of", "page_date", "read_date"]
+PAGE_LINES = [  # (group, line, label, heading or label on IRCC's page)
+    ("pr", "economic", "Economic", "Economic"), ("pr", "family", "Family", "Family"), ("pr", "protection", "Protection", "Protection"),
+    ("tr", "visitor", "Visitor visas", "Visitor visas"), ("tr", "work", "Work permits", "Work permits"), ("tr", "study", "Study permits", "Study permits"),
+]
 STALE_DAYS = 60
 
 # Program text -> PR category. Temporary and citizenship programs first, so "spousal OWP" or "super visa" never count as PR.
@@ -64,6 +72,111 @@ def date_of(s):
 def num(s):
     s = (s or "").strip().replace(",", "")
     return int(s) if s.isdigit() else None
+
+
+def local_path():
+    return cs.ROOT / ".ircc-data" / "inventory.csv"
+
+
+def current_path():
+    """The local refresh when it holds IRCC data at least as new as the release's file."""
+    local = local_path()
+    if local.exists():
+        a, b = load(local), load(DATA)
+        if a and (not b or a[0]["data_as_of"] >= b[0]["data_as_of"]):
+            return local
+    return DATA
+
+
+def clean(text):
+    import html as h
+    return re.sub(r"\s+", " ", h.unescape(re.sub(r"<[^>]+>", " ", text))).strip()
+
+
+def parse_page(page):
+    """IRCC's figures from the page: {data_as_of, page_date, lines: {line: (not_finalized, waiting_pct, finalized_ytd)}}."""
+    main = page[page.find("<main"):] if "<main" in page else page
+    text = clean(main)
+    m = re.search(r"Data as of ([A-Z][a-z]+ \d{1,2}, \d{4})", text)
+    modified = re.search(r'name="dcterms.modified"[^>]*content="(\d{4}-\d{2}-\d{2})"', page)
+    if not m:
+        raise ValueError("no 'Data as of' date on IRCC's inventory page")
+    as_of = datetime.datetime.strptime(m.group(1), "%B %d, %Y").date().isoformat()
+    lines = {}
+    parts = re.split(r"(<h4[^>]*>.*?</h4>)", main, flags=re.S)
+    for i, part in enumerate(parts):  # permanent residence: one h4 per category
+        head = clean(part) if part.startswith("<h4") else ""
+        for group, line, _, name in PAGE_LINES:
+            if group == "pr" and head == name:
+                body = clean(parts[i + 1]) if i + 1 < len(parts) else ""
+                f = re.search(r"Finalized ([\d,]+)", body)
+                n = re.search(r"not yet finalized ([\d,]+)", body)
+                w = re.search(r"(\d+)% are waiting for space", body)
+                if f and n and w:
+                    lines[line] = (num(n.group(1)), int(w.group(1)), num(f.group(1)))
+    for group, line, _, name in PAGE_LINES:  # temporary residence: label, then its two figures
+        if group == "tr":
+            m2 = re.search(rf"{name} Finalized ([\d,]+)[^%]*?not yet finalized ([\d,]+)", text)
+            if m2:
+                lines[line] = (num(m2.group(2)), None, num(m2.group(1)))
+    tr_total = re.search(r"Temporary residence Data as of [^.]*?\d{4}.*?Finalized ([\d,]+) applications since.*?not yet finalized ([\d,]+)", text)
+    missing = [l for _, l, _, _ in PAGE_LINES if l not in lines]
+    if missing or not tr_total:
+        raise ValueError("IRCC's inventory page changed layout (missing: " + ", ".join(missing or ["temporary residence total"]) + ")")
+    lines["tr-total"] = (num(tr_total.group(2)), None, num(tr_total.group(1)))
+    return {"data_as_of": as_of, "page_date": modified.group(1) if modified else "", "lines": lines}
+
+
+def rows_from(parsed, before, today):
+    """CSV rows for the parsed page; figures in 'before' (the copy in use) become the month-before figures when the month changed."""
+    prev = {r["line"]: r for r in before if r["group"] == "pr"}
+    prev.update({"tr-" + r["line"] if r["line"] == "total" else r["line"]: r for r in before if r["group"] == "tr"})
+    same = bool(before) and before[0]["data_as_of"] == parsed["data_as_of"]
+    out = []
+
+    def add(group, line, label, key, nf, wp, fin):
+        p = prev.get(key) or {}
+        out.append({"group": group, "line": line, "label": label, "not_finalized": nf, "waiting_pct": "" if wp is None else wp,
+                    "finalized_ytd": "" if fin is None else fin,
+                    "prev_not_finalized": (p.get("prev_not_finalized") if same else p.get("not_finalized")) or "",
+                    "prev_waiting_pct": (p.get("prev_waiting_pct") if same else p.get("waiting_pct")) or "",
+                    "data_as_of": parsed["data_as_of"], "prev_data_as_of": (p.get("prev_data_as_of") if same else p.get("data_as_of")) or "",
+                    "page_date": parsed["page_date"] or today.isoformat(), "read_date": today.isoformat()})
+    L = parsed["lines"]
+    for group, line, label, _ in PAGE_LINES:
+        if group == "pr":
+            add("pr", line, label, line, *L[line])
+    add("pr", "total", "Permanent residence", "total", sum(L[l][0] for l in ("economic", "family", "protection")), None, None)
+    for group, line, label, _ in PAGE_LINES:
+        if group == "tr":
+            add("tr", line, label, line, *L[line])
+    add("tr", "total", "Temporary residence", "tr-total", *L["tr-total"])
+    return out
+
+
+def refresh_local(today=None, fetch=None):
+    """Read IRCC's page and save the local copy. Returns 'new month', 'no change' or raises when the page can't be read."""
+    import watch as wt
+    today = today or datetime.date.today()
+    page = (fetch or wt.fetch)(SOURCE)
+    if not page:
+        raise ConnectionError("IRCC's inventory page couldn't be read (no internet, or the page moved)")
+    if "<title>Not Found" in page[:5000]:
+        raise ConnectionError("IRCC's inventory page moved (Not Found)")
+    parsed = parse_page(page)
+    before = load(current_path())
+    if before and parsed["data_as_of"] < before[0]["data_as_of"]:
+        return "no change"
+    rows = rows_from(parsed, [{k: ("" if v is None else v) for k, v in r.items()} for r in before], today)
+    path = local_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    with open(tmp, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    tmp.replace(path)
+    return "no change" if before and before[0]["data_as_of"] == parsed["data_as_of"] else "new month"
 
 
 def load(path=DATA):
@@ -117,10 +230,10 @@ def table(rows, group, counts=None):
     return {"label": tot["label"], "total": row_out(tot), "rows": [row_out(r, counts) for r in lines]}
 
 
-def card(today=None, path=DATA, active=None):
+def card(today=None, path=None, active=None):
     """The home card: PR categories with the firm's open files in each, and temporary residence lines."""
     today = today or datetime.date.today()
-    rows = load(path)
+    rows = load(path or current_path())
     if not [r for r in rows if r["group"] == "pr"]:
         return None
     folders = cs.folders(cs.ACTIVE) if active is None else active
@@ -144,12 +257,12 @@ def card(today=None, path=DATA, active=None):
     }
 
 
-def for_program(program, path=DATA):
+def for_program(program, path=None):
     """The line for one case, or None when the program is not a PR category."""
     c = category_of(program)
     if not c:
         return None
-    for r in load(path):
+    for r in load(path or current_path()):
         if r["group"] == "pr" and r["line"] == c:
             return {"line": c, "label": r["label"], "waiting_pct": r["waiting_pct"], "data_as_of": r["data_as_of"]}
     return None

@@ -11,7 +11,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
   - https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
-  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 ---
 # Spouse, common-law and conjugal sponsorship
 
@@ -101,5 +101,5 @@ sources:
 - Eligibility (2026-06-23): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/eligibility.html
 - Spousal OWP (2026-04-17): https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children/spouse-common-law-partner-canada-open-work-permit.html
 - IRPR: https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/
-- IRCC inventory (processing): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+- IRCC inventory (processing): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 All read 2026-11-07.

@@ -20,7 +20,7 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/citizenship-ceremony/when.html
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/cit0002.html
   - https://ircc.canada.ca/english/information/fees/fees.asp
-  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 ---
 # Citizenship grant (s.5)
 
@@ -188,5 +188,5 @@ sources:
 - Program delivery update 2017-06-21 (C-6, conditional sentences): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/updates/2017-06-21.html
 - Oath proposal, Canada Gazette I 2023-02-25: https://gazette.gc.ca/rp-pr/p1/2023/2023-02-25/html/reg1-eng.html (not read directly; located via search)
 - Fee list (2026-09-21): https://ircc.canada.ca/english/information/fees/fees.asp
-- Inventory (2026-10-20): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+- Inventory (2026-10-20): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 All read 2026-11-10 unless noted.

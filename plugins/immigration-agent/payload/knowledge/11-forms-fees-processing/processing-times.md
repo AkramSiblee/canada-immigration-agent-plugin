@@ -13,7 +13,7 @@ sources:
   - https://www.y-axis.com/news/canada-updates-processing-times-express-entry-provincial-nominee-programs/
   - https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-en.json
   - https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html
-  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 ---
 # Processing times
 
@@ -118,7 +118,7 @@ sources:
 ## Sources
 - IRCC processing JSON (2026-11-18): https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-en.json
 - IRCC tool: https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html
-- Inventory/service standards: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+- Inventory/service standards: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 - Secondary aggregators (Pass 2 table): https://www.y-axis.com/news/canada-updates-processing-times-express-entry-provincial-nominee-programs/ ; https://www.getnorthpath.com/tools/processing-times ; https://trenityconsultants.com/ircc-processing-times-2026/
 - IRCC forward-looking processing data (official, 2026-11-17): https://www.canada.ca/content/dam/ircc/documents/json/flpt-en.json
 - IRCC non-country processing data (official, 2026-11-18): https://www.canada.ca/content/dam/ircc/documents/json/data-ptime-non-country-en.json

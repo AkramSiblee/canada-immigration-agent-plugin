@@ -281,9 +281,21 @@ function irccDataView(d, start) {
     : panel("Processing times", null, empty("No processing time data in this version."));
   const draw = () => body.replaceChildren(view === "inventory" ? inventoryView(inv) : timesView());
   draw();
+  const r = d.refresh || {}, failed = Object.entries(r.parts || {}).filter(([, p]) => p.ok === false);
+  const hours = r.checked ? (Date.now() - new Date(r.checked).getTime()) / 3600000 : null;
+  const off = !d.running && (hours === null || hours > 36);
+  const checked = d.running ? "Checking IRCC's pages…" : r.checked ? `IRCC's pages checked ${fmtDate(r.checked)}.${off ? "" : " Updates by itself every day."}` : "IRCC's pages not checked yet on this computer.";
   return el("div", { class: "ircc-data" },
     irccSummary(inv, t),
-    segmented([["times", "Processing times"], ["inventory", "Application inventory"]], view, (k) => { view = k; try { localStorage.setItem(IRCC_VIEW_KEY, k); } catch { /* ignore */ } draw(); }, "IRCC data"),
+    el("div", { class: "data-bar" },
+      segmented([["times", "Processing times"], ["inventory", "Application inventory"]], view, (k) => { view = k; try { localStorage.setItem(IRCC_VIEW_KEY, k); } catch { /* ignore */ } draw(); }, "IRCC data"),
+      el("div", { class: "head-actions" }, el("span", { class: "small muted" }, checked), checkNowButton({ running: d.running }, route))),
+    off ? el("section", { class: "tip", role: "note" },
+      el("div", { class: "ub-text" }, el("div", { class: "tip-title" }, "Daily updates may be off on this computer"),
+        el("div", { class: "small" }, "The news and IRCC figures refresh by themselves once a day when the daily updates are on. Turn them on once, or click Check now.")),
+      el("button", { class: "btn", onclick: () => copyCommand("/daily-updates on") }, icon("copy"), "Copy /daily-updates on")) : null,
+    failed.length ? el("div", { class: "error" }, "Last check failed for " + failed.map(([k, p]) => `${k === "times" ? "processing times" : "inventory"} (${p.error})`).join("; ") + ". The figures shown are the last good ones.") : null,
+    d.error ? el("div", { class: "error" }, d.error) : null,
     body);
 }
 
@@ -376,7 +388,7 @@ function checkNowButton(d, after) {
     try {
       await postJSON("/api/news/check");
       toast("Reading IRCC, ESDC and the provincial pages. This takes about a minute.");
-      const wait = async () => { const n = await api("/api/news").catch(() => ({ running: false })); if (n.running) setTimeout(wait, 4000); else after(); };
+      const wait = async () => { const n = await api("/api/ircc").catch(() => ({ running: false })); if (n.running) setTimeout(wait, 4000); else after(); };
       setTimeout(wait, 4000);
     } catch (err) { toast(err.message); b.disabled = false; b.textContent = "Check now"; }
   } }, d.running ? "Checking…" : "Check now");

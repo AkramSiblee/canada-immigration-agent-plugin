@@ -2,6 +2,11 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.5
+- **IRCC figures now update by themselves.** Processing times (read from IRCC's own data behind its "Check processing times" tool) and the application inventory (read from IRCC's "Inside IRCC's application processing system" page) refresh once a day with the news, or any time with **Check now** on the IRCC data tab. When IRCC publishes a new month, last month's figures become "the month before". A failed read keeps the last good figures and says so.
+- **Daily updates are now part of setup** (Windows). **Already installed? Type `/daily-updates on` once** to turn them on. `/daily-updates` shows whether they are on and when they run next. The dashboard tells you if they seem to be off.
+- IRCC moved its inventory page; the agent and the knowledge base now use the new address.
+
 ## 1.17.4
 - **Today page is simpler**: the Latest news panel is removed. All news is on the **IRCC data & news** page.
 

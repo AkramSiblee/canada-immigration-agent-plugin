@@ -8,7 +8,7 @@ review_every_days: 30
 sources:
   - https://immigrationtocanada.com/ircc-application-backlog-hits-lowest-point-since-july-2025/
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/family-reunification.html
-  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+  - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 ---
 # Backlogs and inventory
 
@@ -59,6 +59,6 @@ sources:
 - Per-program processing times: use the IRCC tool (see 11-forms-fees-processing/processing-times.md)
 
 ## Sources
-- Inside IRCC's application processing system (data 2026-09-30, page dated 2026-11-17, read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/corporate-initiatives/levels/inventories-backlogs.html
+- Inside IRCC's application processing system (data 2026-09-30, page dated 2026-11-17, read 2026-11-17): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/reports-statistics/statistics-open-data/immigration-stats/application-processing-system.html
 - CIMM briefing, Mar 23, 2026 (PGP inventory): https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-mar-23-2026/family-reunification.html
 - Secondary (April 2026 figures): https://immigrationtocanada.com/ircc-application-backlog-hits-lowest-point-since-july-2025/

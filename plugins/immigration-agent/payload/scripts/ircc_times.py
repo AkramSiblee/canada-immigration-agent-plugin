@@ -11,8 +11,9 @@ Usage:
                                                    data-ptime-non-country-en.json already saved in DIR
 
 Data: templates/ircc/processing-times.csv and templates/ircc/processing-times-country.csv, built from IRCC's own feeds behind
-its "Check processing times" page and checked against knowledge/11-forms-fees-processing/processing-times.md. The dashboard
-reads only these files; nothing is read from the internet.
+its "Check processing times" page and checked against knowledge/11-forms-fees-processing/processing-times.md, and shipped with
+each release. scripts/ircc_data.py rebuilds a local copy from the same public feeds once a day (cases/.ircc-data/); the
+dashboard shows whichever copy has IRCC's newer update date. The dashboard itself reads no web page.
 
 Guarantees:
   - IRCC's words are kept as IRCC publishes them ("About 7 months", "More than 10 years", "Not enough data"), with IRCC's
@@ -37,6 +38,13 @@ FEED = "https://www.canada.ca/content/dam/ircc/documents/json/"
 SOURCE = "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html"
 SOURCE_NAME = "IRCC, Check processing times"
 STALE_DAYS = 45
+
+
+def local_paths():
+    """The copy refreshed on this computer (cases/.ircc-data), kept apart from the release's own files."""
+    import case as cs
+    folder = cs.ROOT / ".ircc-data"
+    return folder / "processing-times.csv", folder / "processing-times-country.csv"
 
 # (IRCC key, group, label), in the order shown. Keys are IRCC's; a key IRCC drops is skipped, a new one is reported by build.
 PR = [
@@ -129,13 +137,14 @@ def read_feeds(folder=None):
             import watch as wt
             text = wt.fetch(FEED + name)
             if not text:
-                sys.exit(f"ERROR: IRCC's {name} couldn't be read (no internet, or the page moved)")
+                raise ConnectionError(f"IRCC's {name} couldn't be read (no internet, or the page moved)")
         out[key] = json.loads(text.lstrip("﻿"))
     return out
 
 
-def build(feeds, today=None):
+def build(feeds, today=None, lines_path=None, country_path=None):
     """Write the two data files from IRCC's feeds. Returns a list of notes (new or missing IRCC keys)."""
+    lines_path, country_path = lines_path or LINES, country_path or COUNTRY
     today = (today or datetime.date.today()).isoformat()
     flpt, country, other = feeds["flpt"], feeds["country"], feeds["other"]
     pr_upd = iso((flpt.get("default-update") or {}).get("flpt_lastupdated", ""))
@@ -143,7 +152,7 @@ def build(feeds, today=None):
     cupd = iso((country.get("visitor-outside-canada") or {}).get("lastupdated", "")) or upd
     times, people = flpt.get("current-flpt") or {}, flpt.get("total-people") or {}
     if not times or not country.get("study") or not pr_upd or not upd:
-        sys.exit("ERROR: IRCC's processing time feeds changed layout; nothing written")
+        raise ValueError("IRCC's processing time feeds changed layout; nothing written")
     notes = [f"new IRCC line not shown: {k}" for k in times if k not in {p[0] for p in PR}]
     rows = []
     for key, group, label in PR:
@@ -160,10 +169,7 @@ def build(feeds, today=None):
             continue
         rows.append({"kind": "other", "key": key, "group": group, "label": label, "time": str(val).strip(), "waiting": "",
                      "updated": upd, "read_date": today})
-    with open(LINES, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["kind", "key", "group", "label", "time", "waiting", "updated", "read_date"])
-        w.writeheader()
-        w.writerows(rows)
+    write_csv(lines_path, ["kind", "key", "group", "label", "time", "waiting", "updated", "read_date"], rows)
     names = country_names()
     codes = sorted(k for k in set().union(*(set(country.get(feed) or {}) for _, feed, _ in COUNTRY_COLS)) if re.fullmatch(r"[A-Z]{2}", k))
     crow = []
@@ -175,11 +181,40 @@ def build(feeds, today=None):
             notes.append(f"country code with no name in the visitor reference: {cc}")
         crow.append({"code": cc, "country": names.get(cc, cc), **vals, "updated": cupd, "read_date": today})
     crow.sort(key=lambda r: r["country"].lower())
-    with open(COUNTRY, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["code", "country"] + [c for c, _, _ in COUNTRY_COLS] + ["updated", "read_date"])
-        w.writeheader()
-        w.writerows(crow)
+    write_csv(country_path, ["code", "country"] + [c for c, _, _ in COUNTRY_COLS] + ["updated", "read_date"], crow)
     return notes
+
+
+def write_csv(path, fields, rows):
+    """Write through a temporary file, so a half-written copy is never shown."""
+    path = pathlib.Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    with open(tmp, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    tmp.replace(path)
+
+
+def refresh_local(today=None, fetch_folder=None):
+    """Rebuild the local copy from IRCC's public feeds. Returns the notes. Raises when the feeds can't be read."""
+    lines_path, country_path = local_paths()
+    return build(read_feeds(fetch_folder), today, lines_path, country_path)
+
+
+def newest(rows):
+    return max((r.get("updated", "") + "|" + r.get("read_date", "") for r in rows), default="")
+
+
+def current():
+    """(lines, countries) from the copy with IRCC's newest update: the local refresh or the release's files."""
+    shipped = (load(LINES), load(COUNTRY))
+    lines_path, country_path = local_paths()
+    local = (load(lines_path), load(country_path))
+    if local[0] and local[1] and newest(local[0]) >= newest(shipped[0]):
+        return local
+    return shipped
 
 
 def load(path):
@@ -198,7 +233,7 @@ def shown(text):
 
 def card(today=None):
     today = today or datetime.date.today()
-    lines, countries = load(LINES), load(COUNTRY)
+    lines, countries = current()
     if not lines:
         return None
     dates = [datetime.date.fromisoformat(r["updated"]) for r in lines + countries if r.get("updated")]
@@ -235,7 +270,11 @@ def main():
     a = ap.parse_args()
     if a.cmd == "build":
         sys.path.insert(0, str(ROOT / "scripts"))
-        for n in build(read_feeds(a.src)):
+        try:
+            notes = build(read_feeds(a.src))
+        except (ConnectionError, ValueError) as e:
+            sys.exit("ERROR: " + str(e))
+        for n in notes:
             print("NOTE: " + n)
         print(f"Written: {LINES.relative_to(ROOT)}, {COUNTRY.relative_to(ROOT)}")
         return
