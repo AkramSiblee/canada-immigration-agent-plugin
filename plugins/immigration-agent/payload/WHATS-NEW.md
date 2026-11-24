@@ -2,6 +2,13 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.3
+- **IRCC data & news page, easier to use.**
+  - **Tabs at the top**: IRCC data first, then All news, Federal, Provincial, Quebec, Work and wages, Rules, Forms and fees. Each news tab shows only that category, with its count.
+  - **IRCC data**, cleaner: four key figures at the top (PR and temporary applications in IRCC's queue, the share of PR files held for space, the Express Entry estimate), then **Processing times** or **Application inventory**, one at a time.
+  - **Processing times**: pick the country the client lives in to see visitor, super visa, study and work permit times in one row; one searchable table for PR, citizenship and in-Canada services.
+  - **Inventory**: "held for space" shown as a bar for each category.
+
 ## 1.17.2
 - **News on the dashboard: no repeats, and every item links to its official page.**
   - The same change no longer shows twice (three repeated rule changes merged: rural program opening, the rural class regulation, Ontario's REDI round).

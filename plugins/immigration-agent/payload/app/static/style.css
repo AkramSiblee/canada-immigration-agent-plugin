@@ -400,3 +400,41 @@ a.plain-link, a.plain-link:hover { color: inherit; text-decoration: none; }
 @media (max-width: 700px) { .news-item { grid-template-columns: minmax(0, 1fr) auto; } .news-date { grid-column: 1 / -1; } }
 .news-src { padding: 5px 10px; font-size: .78rem; font-weight: 600; }
 .news-actions { align-items: flex-start; flex-wrap: wrap; justify-content: flex-end; }
+.page-tabs { margin: 0 0 18px; gap: 8px; }
+.page-tabs .tab { padding: 7px 16px; font-size: .9rem; }
+.page-tabs .tab:first-child { margin-right: 6px; }
+.page-note { margin: -4px 0 14px; }
+
+/* ---- IRCC data tab ---- */
+.ircc-data { display: grid; gap: 16px; }
+.isums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.isum { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); display: grid; gap: 4px; align-content: start; }
+.isum .l { font-size: .74rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.isum .n { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--ink); }
+.isum .h { font-size: .78rem; color: var(--muted); }
+.isum.down .h { color: var(--ok); }
+.isum.up .h { color: var(--soon); }
+.segctl { display: inline-flex; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; justify-self: start; }
+.segctl button { border: 0; background: none; font: inherit; font-size: .86rem; font-weight: 600; color: var(--ink-2); padding: 6px 14px; border-radius: 7px; cursor: pointer; }
+.segctl button.on { background: var(--accent); color: var(--accent-ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.segctl button:not(.on):hover { background: var(--surface); }
+.ccard { display: grid; grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); gap: 18px; align-items: end; }
+.ccard .ctimes { margin: 0; }
+.ccard-pick select { width: 100%; }
+.times-tools { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.inv-table.clean { font-size: .88rem; }
+.inv-table.clean th, .inv-table.clean td { padding: 9px 18px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.inv-table.clean thead th { background: var(--surface-2); }
+.inv-table.clean tbody th { font-weight: 500; white-space: normal; }
+.inv-table.clean td.time { font-weight: 700; color: var(--ink); }
+.inv-table.clean td.down { color: var(--ok); }
+.inv-table.clean tr.grp th { padding-top: 16px; background: none; }
+.inv-table.clean tbody tr:last-child th, .inv-table.clean tbody tr:last-child td { border-bottom: 1px solid var(--line); }
+.inv-table.clean tbody:last-child tr:last-child th, .inv-table.clean tbody:last-child tr:last-child td { border-bottom: 0; }
+.held-cell { display: flex; align-items: center; gap: 10px; min-width: 150px; }
+.held-bar { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; }
+.held-bar span { display: block; height: 100%; background: var(--soon); }
+.held-n { font-weight: 600; font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
+.footnote { font-size: .78rem; color: var(--muted); margin: 0; line-height: 1.5; }
+.footnote .warn { color: var(--soon); }
+@media (max-width: 1000px) { .isums { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ccard { grid-template-columns: minmax(0, 1fr); } }
