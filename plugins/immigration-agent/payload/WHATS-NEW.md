@@ -2,6 +2,9 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.9
+- **Knowledge update (Alberta):** AAIP entrepreneur allocation as of the processing page dated 2026-11-18: 41 of 60 nominations issued, 19 left, 208 applications in process (was 39 / 21 / 211 on 2026-11-04). In the Alberta file and the Rural Entrepreneur section.
+
 ## 1.17.8
 - **Ontario draws in the Provincial draws table.** Each OINP draw from Ontario's program updates page: date, stream, invitations and the minimum score for each stream (for example Foreign Worker 57, International Student 81). Masters and PhD Graduate draws show as separate rows. **ontario.ca ↗** opens that exact draw on Ontario's page.
 - The Provincial draws table now covers about the last 13 months for every province, not 6.

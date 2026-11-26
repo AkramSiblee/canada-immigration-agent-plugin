@@ -61,7 +61,7 @@ sources:
 | AEE Accelerated Tech | 619 | 596 | 23 | 83 | 2026-07-08 |
 | AEE Law Enforcement | 12 | under 10 | n/a | under 10 | 2026-09-24 |
 | AEE priority sectors and others | 619 | 703 (over) | — | 292 | 2026-07-24 |
-| Entrepreneur | 60 | 39 | 21 | 211 | |
+| Entrepreneur (2026-11-18) | 60 | 41 | 19 | 208 | |
 - +200 federal top-up (2026-08-10). The national pool of up to 10,000 extra spaces for practice-ready physicians or Francophones is available.
 
 ### Recent draws
@@ -126,7 +126,7 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 - Rural Entrepreneur, Graduate Entrepreneur, Foreign Graduate Entrepreneur: each eligibility page says "AAIP is currently accepting EOIs" (read 2026-11-17).
 - Farm: **status not stated** on the stream, eligibility or how-to-apply pages (stream page re-read 2026-11-20: still no open/paused wording; AAIP updates page has no 2026 Farm notice). Not presented as open or closed. Applications are paper only, by mail or courier. Confirm intake in writing with AAIP before filing. (M)
 - **No entrepreneur EOI draws published for 2026.** Processing page (updated 2026-11-04) lists worker draws only; no entrepreneur minimum scores or pool sizes.
-- Allocation (all entrepreneur streams combined): 60; 39 issued; 21 remaining; 211 in process; "business applications are evaluated upon receipt" (processing page, 2026-11-04). No split by stream.
+- Allocation (all entrepreneur streams combined): 60; **41 issued; 19 remaining; 208 applications in process**; "business applications are evaluated upon receipt" (processing page, last updated 2026-11-18, read 2026-11-24). No split by stream. Earlier read (2026-11-04): 39 / 21 / 211.
 - 2026-08-12 update: the "economic establishment" requirement was explained on the Rural, Graduate and Foreign Graduate pages. "Program eligibility criteria and requirements have not changed." AAIP checks it during monitoring. Existing EOIs need no update.
 
 ### Shared process (Rural, Graduate, Foreign Graduate)
@@ -189,7 +189,7 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 - Business Application due within 90 days of invitation. Third-party reports (Business Plan Evaluation, QSP) take time; start early.
 - Approval letter and 205(a) letter are not nominations. Clients cannot apply for PR until the Final Report is approved.
 - Work permit must be filed within 3 months; arrival within 12 months. Missed reports (arrival or start-up, 6-monthly progress) risk BPA breach.
-- Only 21 entrepreneur nominations remained in 2026 with 211 files in process. Expect long waits.
+- Only 19 entrepreneur nominations remained in 2026 with 208 files in process (2026-11-18). Expect long waits.
 - Funds must be in the candidate's or spouse's own name; gifts shortly before EOI draw scrutiny. Inflated net worth or jobs claims risk IRPA s.40 misrepresentation and an AAIP reapplication bar (Farm page: up to 5 years).
 - Graduate Entrepreneur: PGWP must be valid at EOI. A PGWP close to expiry may lapse before approval; plan the 205(a) letter.
 - Foreign Graduate: only 3 designated agencies; sector must match the list. Avoid unlicensed "agents" offering guaranteed agency letters (ghost-consultant risk).
