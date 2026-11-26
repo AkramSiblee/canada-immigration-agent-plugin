@@ -2,6 +2,19 @@
 
 Newest first. Each heading is a version number; firms see the entries newer than their own after an update.
 
+## 1.17.8
+- **Ontario draws in the Provincial draws table.** Each OINP draw from Ontario's program updates page: date, stream, invitations and the minimum score for each stream (for example Foreign Worker 57, International Student 81). Masters and PhD Graduate draws show as separate rows. **ontario.ca ↗** opens that exact draw on Ontario's page.
+- The Provincial draws table now covers about the last 13 months for every province, not 6.
+
+## 1.17.7
+- **Provincial draws on the IRCC data tab.** A fourth view next to Express Entry rounds: each provincial draw, one row per stream, with the date, province, stream, minimum score and number of invitations, newest first. Pick a province or search by stream or date. Each row links to the province's own draw page.
+- Covers Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia (monthly totals) and Quebec (PSTQ), read from their official pages with the daily news check, or any time with **Check now**. Draws you record with `/draws pnp-add` show too.
+- Ontario, Saskatchewan, PEI, Yukon and the Northwest Territories can't be read automatically: their official pages are linked under the table.
+
+## 1.17.6
+- **Express Entry rounds on the IRCC data tab.** A third view next to Processing times and Application inventory: every recent round with its date, round number, type, CRS cut-off and invitations, newest first, plus this year's total. Search by type, number or date. **IRCC page ↗** opens IRCC's own page for that round (tie-breaking rule, programs covered, CRS score distribution).
+- Rounds come from IRCC's official rounds feed and refresh with the daily IRCC data check, or any time with **Check now**.
+
 ## 1.17.5
 - **IRCC figures now update by themselves.** Processing times (read from IRCC's own data behind its "Check processing times" tool) and the application inventory (read from IRCC's "Inside IRCC's application processing system" page) refresh once a day with the news, or any time with **Check now** on the IRCC data tab. When IRCC publishes a new month, last month's figures become "the month before". A failed read keeps the last good figures and says so.
 - **Daily updates are now part of setup** (Windows). **Already installed? Type `/daily-updates on` once** to turn them on. `/daily-updates` shows whether they are on and when they run next. The dashboard tells you if they seem to be off.

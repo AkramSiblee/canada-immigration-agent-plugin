@@ -163,7 +163,7 @@ function freshPill(stale, label) {
   return el("span", { class: "pill " + (stale ? "Soon" : "ok") }, stale ? "Out of date" : label);
 }
 
-function irccSummary(inv, t) {
+function irccSummary(inv, t, rd) {
   const tile = (label, value, sub, cls) => el("div", { class: "isum " + (cls || "") }, el("div", { class: "l" }, label), el("div", { class: "n" }, value), sub ? el("div", { class: "h" }, sub) : null);
   const tiles = [];
   if (inv && inv.pr) {
@@ -181,6 +181,8 @@ function irccSummary(inv, t) {
     const cec = t.pr.flatMap((g) => g.rows).find((r) => r.key === "cec");
     if (cec) tiles.push(tile("Express Entry (CEC) estimate", cec.time || "–", cec.waiting ? `${cec.waiting} waiting` : null));
   }
+  const last = rd && rd.rows[0];
+  if (last && tiles.length < 4) tiles.push(tile("Latest Express Entry round", `CRS ${last.crs}`, `#${last.number} · ${fmtDate(last.date)} · ${nf(last.size)} invitations`));
   return tiles.length ? el("div", { class: "isums" }, tiles) : null;
 }
 
@@ -269,8 +271,78 @@ function inventoryView(inv) {
       inv.stale ? el("span", { class: "warn" }, ` Older than ${inv.stale_after} days: ask Claude /changelog.`) : null));
 }
 
+function roundsView(rd) {
+  if (!rd || !rd.rows.length) return panel("Express Entry rounds", null, empty("No rounds saved yet on this computer. Click Check now to read IRCC's rounds page."));
+  let q = "";
+  const year = String(new Date().getFullYear());
+  const thisYear = rd.rows.filter((r) => (r.date || "").startsWith(year));
+  const table = el("div", { class: "inv-scroll" });
+  const draw = () => {
+    const rows = rd.rows.filter((r) => !q || `${r.name} ${r.number} ${r.date} ${fmtDate(r.date)}`.toLowerCase().includes(q));
+    table.replaceChildren(rows.length ? el("table", { class: "inv-table clean rounds" },
+      el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Date"), el("th", { scope: "col", class: "num" }, "Round"), el("th", { scope: "col" }, "Round type"),
+        el("th", { scope: "col", class: "num" }, "CRS cut-off"), el("th", { scope: "col", class: "num" }, "Invitations (ITAs)"), el("th", { scope: "col" }, "Details"))),
+      el("tbody", {}, rows.map((r) => el("tr", { title: r.programs ? `Programs: ${r.programs}` : null },
+        el("td", { class: "nowrap" }, fmtDate(r.date)), el("td", { class: "num muted" }, `#${r.number}`), el("th", { scope: "row" }, r.name),
+        el("td", { class: "num strong" }, nf(r.crs)), el("td", { class: "num" }, nf(r.size)),
+        el("td", {}, el("a", { href: r.url, target: "_blank", rel: "noopener", title: `IRCC's page for round #${r.number}` }, "IRCC page ↗")))))) : empty("Nothing matches your search."));
+  };
+  draw();
+  return el("div", { class: "col" },
+    el("section", { class: "panel" },
+      el("div", { class: "panel-head" }, el("h2", {}, "Express Entry rounds"),
+        rd.rows[rd.rows.length - 1].date < year ? el("span", { class: "count" }, `${thisYear.length} rounds and ${nf(thisYear.reduce((s, r) => s + (r.size || 0), 0))} invitations in ${year}`) : null),
+      el("div", { class: "times-tools" }, searchBox("Find a round type, number or date", (v) => { q = v; draw(); })),
+      table),
+    el("p", { class: "footnote" }, `Most recent ${rd.rows.length} rounds as IRCC publishes them. Details opens IRCC's page for that round: tie-breaking rule, programs covered and the CRS score distribution. Source: `,
+      el("a", { href: rd.source, target: "_blank", rel: "noopener" }, rd.source_name), rd.checked ? `, read ${fmtDate(rd.checked)}.` : ".",
+      rd.stale ? el("span", { class: "warn" }, " Not read in the last day: click Check now.") : null,
+      " To see which of your clients a round reaches, ask Claude: ", el("code", { class: "mono" }, "/draws check")));
+}
+
+const PNP_PROV_KEY = "agent.pnpProvince";
+
+function provincialView(pv) {
+  if (!pv) return panel("Provincial draws", null, empty("Provincial draws couldn't be loaded."));
+  const provs = [...new Map(pv.rows.map((r) => [r.province, r.province_name])).entries()].sort((a, b) => a[1].localeCompare(b[1]));
+  let prov = "", q = "";
+  try { prov = localStorage.getItem(PNP_PROV_KEY) || ""; } catch { /* ignore */ }
+  if (prov && !provs.some(([c]) => c === prov)) prov = "";
+  const table = el("div", { class: "inv-scroll" });
+  const head = el("span", { class: "count" });
+  const draw = () => {
+    const rows = pv.rows.filter((r) => (!prov || r.province === prov) && (!q || `${r.province_name} ${r.province} ${r.stream} ${r.date} ${fmtDate(r.date)}`.toLowerCase().includes(q)));
+    const draws = new Set(rows.filter((r) => !r.recorded).map((r) => r.province + r.date)).size;
+    head.replaceChildren(rows.length ? `${draws} draw${draws === 1 ? "" : "s"}, ${rows.length} stream row${rows.length === 1 ? "" : "s"}` : "");
+    table.replaceChildren(rows.length ? el("table", { class: "inv-table clean rounds" },
+      el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Date"), el("th", { scope: "col" }, "Province"), el("th", { scope: "col" }, "Stream"),
+        el("th", { scope: "col", class: "num" }, "Minimum score"), el("th", { scope: "col", class: "num" }, "Invitations"), el("th", { scope: "col" }, "Details"))),
+      el("tbody", {}, rows.map((r) => el("tr", {},
+        el("td", { class: "nowrap" }, r.monthly ? fmtDate(r.date).replace(/ \d+,/, "") : fmtDate(r.date)),
+        el("td", { class: "nowrap" }, r.province_name),
+        el("th", { scope: "row" }, r.stream, r.note ? el("div", { class: "small muted" }, r.note) : null, r.recorded ? el("span", { class: "tag", title: r.note || "Recorded with /draws pnp-add" }, " recorded by you") : null),
+        el("td", { class: "num strong" }, r.score || "–"), el("td", { class: "num" }, r.count || "–"),
+        el("td", {}, r.link ? el("a", { href: r.link, target: "_blank", rel: "noopener", title: `${r.province_name}'s own draw page` }, `${r.site || "Official page"} ↗`) : "–"))))) : empty(pv.rows.length ? "Nothing matches." : "No provincial draws saved yet on this computer. Click Check now to read the provinces' draw pages."));
+  };
+  draw();
+  const sel = el("select", { "aria-label": "Province", onchange: (e) => { prov = e.target.value; try { localStorage.setItem(PNP_PROV_KEY, prov); } catch { /* ignore */ } draw(); } },
+    el("option", { value: "" }, "All provinces"), provs.map(([c, n]) => el("option", { value: c, selected: c === prov }, n)));
+  const failed = pv.read.filter((s) => s.ok === false);
+  return el("div", { class: "col" },
+    failed.length ? el("div", { class: "error" }, "Last check couldn't read: " + failed.map((s) => `${s.name} (${s.error})`).join("; ") + ". Its last good draws are shown.") : null,
+    el("section", { class: "panel" },
+      el("div", { class: "panel-head" }, el("h2", {}, "Provincial draws"), head),
+      el("div", { class: "times-tools" }, sel, searchBox("Find a stream or date", (v) => { q = v; draw(); })),
+      table),
+    el("p", { class: "footnote" }, `Draws from the last ${Math.round(pv.keep_days / 30)} months, read from each province's own draw page and shown as the province publishes them ("<5" and "–" mean the province gave no exact figure). `,
+      "Nova Scotia publishes a monthly total, not each draw. Minimum score is the province's own points system, not CRS; where one Ontario draw covers several streams, each stream's minimum is listed under it. ",
+      pv.checked ? `Read ${fmtDate(pv.checked)}.` : "", pv.stale ? el("span", { class: "warn" }, " Not read in the last day: click Check now.") : null),
+    el("p", { class: "footnote" }, "Check these on the official page (not read automatically): ",
+      pv.by_hand.map((b, i) => [i ? " · " : "", el("a", { href: b.url, target: "_blank", rel: "noopener", title: b.why }, b.name)]).flat()));
+}
+
 function irccDataView(d, start) {
-  const t = d.times, inv = d.inventory;
+  const t = d.times, inv = d.inventory, rd = d.rounds, pv = d.pnp;
   let view = start || "times";
   if (!start) { try { view = localStorage.getItem(IRCC_VIEW_KEY) || "times"; } catch { /* ignore */ } }
   const body = el("div");
@@ -279,22 +351,22 @@ function irccDataView(d, start) {
       el("a", { href: t.source, target: "_blank", rel: "noopener" }, t.source_name), t.read_date ? `, read ${fmtDate(t.read_date)}.` : ".",
       t.stale ? el("span", { class: "warn" }, ` Older than ${t.stale_after} days: ask Claude /changelog.`) : null, " Check IRCC's tool on the day you advise."))
     : panel("Processing times", null, empty("No processing time data in this version."));
-  const draw = () => body.replaceChildren(view === "inventory" ? inventoryView(inv) : timesView());
+  const draw = () => body.replaceChildren(view === "inventory" ? inventoryView(inv) : view === "rounds" ? roundsView(rd) : view === "pnp" ? provincialView(pv) : timesView());
   draw();
   const r = d.refresh || {}, failed = Object.entries(r.parts || {}).filter(([, p]) => p.ok === false);
   const hours = r.checked ? (Date.now() - new Date(r.checked).getTime()) / 3600000 : null;
   const off = !d.running && (hours === null || hours > 36);
   const checked = d.running ? "Checking IRCC's pages…" : r.checked ? `IRCC's pages checked ${fmtDate(r.checked)}.${off ? "" : " Updates by itself every day."}` : "IRCC's pages not checked yet on this computer.";
   return el("div", { class: "ircc-data" },
-    irccSummary(inv, t),
+    irccSummary(inv, t, rd),
     el("div", { class: "data-bar" },
-      segmented([["times", "Processing times"], ["inventory", "Application inventory"]], view, (k) => { view = k; try { localStorage.setItem(IRCC_VIEW_KEY, k); } catch { /* ignore */ } draw(); }, "IRCC data"),
+      segmented([["times", "Processing times"], ["inventory", "Application inventory"], ["rounds", "Express Entry rounds"], ["pnp", "Provincial draws"]], view, (k) => { view = k; try { localStorage.setItem(IRCC_VIEW_KEY, k); } catch { /* ignore */ } draw(); }, "IRCC data"),
       el("div", { class: "head-actions" }, el("span", { class: "small muted" }, checked), checkNowButton({ running: d.running }, route))),
     off ? el("section", { class: "tip", role: "note" },
       el("div", { class: "ub-text" }, el("div", { class: "tip-title" }, "Daily updates may be off on this computer"),
         el("div", { class: "small" }, "The news and IRCC figures refresh by themselves once a day when the daily updates are on. Turn them on once, or click Check now.")),
       el("button", { class: "btn", onclick: () => copyCommand("/daily-updates on") }, icon("copy"), "Copy /daily-updates on")) : null,
-    failed.length ? el("div", { class: "error" }, "Last check failed for " + failed.map(([k, p]) => `${k === "times" ? "processing times" : "inventory"} (${p.error})`).join("; ") + ". The figures shown are the last good ones.") : null,
+    failed.length ? el("div", { class: "error" }, "Last check failed for " + failed.map(([k, p]) => `${{ times: "processing times", inventory: "inventory", rounds: "Express Entry rounds" }[k] || k} (${p.error})`).join("; ") + ". The figures shown are the last good ones.") : null,
     d.error ? el("div", { class: "error" }, d.error) : null,
     body);
 }
@@ -561,8 +633,8 @@ const pages = {
     const tags = news.failed ? {} : news.tags;
     const count = (k) => news.failed ? 0 : k === "news" ? news.items.length : news.items.filter((n) => n.tag === k).length;
     const keys = ["data", "news", ...Object.keys(tags)];
-    let current = keys.includes(arg) ? arg : "data";  // #ircc/times and #ircc/inventory open the data tab on that view
-    const data = irccDataView(d, ["times", "inventory"].includes(arg) ? arg : null);
+    let current = keys.includes(arg) ? arg : "data";  // #ircc/times, #ircc/inventory, #ircc/rounds and #ircc/pnp open the data tab on that view
+    const data = irccDataView(d, ["times", "inventory", "rounds", "pnp"].includes(arg) ? arg : null);
     const body = el("div", { class: "tab-body" });
     const bar = el("div", { class: "tabs page-tabs", role: "tablist", "aria-label": "IRCC data and news" });
     const show = () => {
@@ -575,7 +647,7 @@ const pages = {
     bar.append(tab("data", "IRCC data", null), tab("news", "All news", count("news")), ...Object.entries(tags).map(([k, l]) => tab(k, l, count(k))));
     show();
     return [
-      pageHead("IRCC's own published figures and official news", "IRCC data and news", "Inventory and processing times, and news from IRCC, ESDC, Job Bank and the provinces' own pages."),
+      pageHead("IRCC's own published figures and official news", "IRCC data and news", "Inventory, processing times, Express Entry rounds and provincial draws, and news from IRCC, ESDC, Job Bank and the provinces' own pages."),
       bar,
       body,
     ];

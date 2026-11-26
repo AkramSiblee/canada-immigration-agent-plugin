@@ -19,7 +19,7 @@
 ## Provincial / territorial
 - Ontario: https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp
 - BC: https://www.welcomebc.ca
-- Alberta: https://www.alberta.ca/alberta-advantage-immigration-program
+- Alberta: https://www.alberta.ca/alberta-advantage-immigration-program (worker how-to: https://www.alberta.ca/how-to-apply-to-aaip-worker-streams; worker checklist PDF 2026-01-28: https://www.alberta.ca/system/files/jeti-aaip-worker-streams-document-checklist.pdf; business plan guidelines 2024-10-30: https://www.alberta.ca/system/files/im-aaip-business-plan-guidelines.pdf; processing: https://www.alberta.ca/aaip-processing-information)
 - Saskatchewan: https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program
 - Manitoba: https://immigratemanitoba.com (monthly data: https://immigratemanitoba.com/resources/data/monthly-data-2026/)
 - Quebec: https://www.quebec.ca/en/immigration

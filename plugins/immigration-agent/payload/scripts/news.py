@@ -32,6 +32,7 @@ import case as cs  # noqa: E402
 STATE = cs.ROOT / ".news-state.json"
 EVERY_HOURS = 20
 KEEP_DAYS = 180        # items older than this are dropped from the saved list
+DRAW_KEEP_DAYS = 400   # provincial draws are kept longer, for the IRCC data tab's draw table
 SHOW_DAYS = 60         # default window on the dashboard
 RULE_BACK, RULE_AHEAD = 60, 90
 TAGS = {"federal": "Federal", "provincial": "Provincial", "quebec": "Quebec", "work": "Work and wages", "rules": "Rules", "fees": "Forms and fees"}
@@ -66,6 +67,7 @@ SOURCES = {
     "nl-draws": ("Newfoundland and Labrador ITAs", "provincial", "NL", "https://www.gov.nl.ca/immigration/invitations-to-apply-updates/", "newfoundland"),
     "ns-draws": ("Nova Scotia EOI selections", "provincial", "NS", "https://liveinnovascotia.com/eoi-selection", "nova_scotia"),
     "on-updates": ("Ontario OINP updates", "provincial", "ON", "https://www.ontario.ca/page/{year}-ontario-immigrant-nominee-program-updates", "ontario"),
+    "on-draws": ("Ontario OINP draws", "provincial", "ON", "https://www.ontario.ca/page/{year}-ontario-immigrant-nominee-program-updates", "ontario_draws"),
     "qc-arrima": ("Quebec PSTQ invitations (Arrima)", "quebec", "QC",
                   "https://www.quebec.ca/en/immigration/permanent/skilled-workers/skilled-worker-selection-program/invitation/{year}", "quebec"),
 }
@@ -202,6 +204,11 @@ def p_jobbank(text, url):
                  ["The LMIA wage must meet the new Job Bank wage for the occupation and region. Re-check open employer files."], key=day.isoformat())]
 
 
+def score_of(low):
+    """The minimum score as the province publishes it, or '' when it publishes none."""
+    return "" if not low or low.strip().lower() in ("n/a", "-", "–", "") else low.strip()
+
+
 def group_draws(source, rows, link, name, unit="invitations"):
     """rows: [(date, stream, min score or '', count text)] -> one item per draw date."""
     by_day = {}
@@ -212,7 +219,8 @@ def group_draws(source, rows, link, name, unit="invitations"):
         detail = [f"{s}: {c} {unit}" + (f", minimum score {lo}" if lo and lo.lower() not in ("n/a", "-", "") else "") for s, lo, c in draws]
         n = total([c for _, _, c in draws])
         title = f"{name} issues {n} {unit} in {plural(len(draws), 'draw')}" if len(draws) > 1 else f"{name}: {n} {unit} ({draws[0][0]})"
-        out.append(item(source, day, title, link, detail, key=day.isoformat(), count=n))
+        out.append(item(source, day, title, link, detail, key=day.isoformat(), count=n,
+                        rows=[{"stream": st, "score": score_of(lo), "count": c} for st, lo, c in draws]))
     return out
 
 
@@ -256,18 +264,20 @@ def p_manitoba(text, url):
         if not h or not day or "draw" not in clean(h.group(2)).lower():
             continue
         name = clean(h.group(2))
-        detail, parts = [], re.split(r"<h4[^>]*>", art)[1:]
+        detail, rows, parts = [], [], re.split(r"<h4[^>]*>", art)[1:]
         for part in parts:
             stream = clean(part.split("</h4>", 1)[0])
             sub = re.search(r"<p[^>]*>\s*(?:<strong>\s*</strong>)?\s*<strong>([^<]{3,80})</strong>\s*</p>", part)
             n = re.search(r"Letters of Advice to Apply issued:\s*(?:<[^>]+>\s*)*([\d,]+)", part)
             if n:
                 detail.append(f"{stream}{' - ' + clean(sub.group(1)) if sub else ''}: {n.group(1)}")
+                low = re.search(r"Ranking score of lowest-ranked candidate invited:\s*(?:<[^>]+>\s*)*(\d+)", part)
+                rows.append({"stream": f"{stream}{' - ' + clean(sub.group(1)) if sub else ''}", "score": low.group(1) if low else "", "count": n.group(1)})
         whole = re.search(r"Of the\s*(?:<[^>]+>\s*)*([\d,]+)\s*(?:<[^>]+>\s*)*Letters of Advice", art)
         n = whole.group(1) if whole else total([d.rsplit(": ", 1)[1] for d in detail]) if detail else "?"
         number = re.search(r"#\s*(\d+)", name)
         out.append(item("mb-draws", day, f"Manitoba {name.replace('Expression of Interest', 'EOI')}: {n} Letters of Advice to Apply", h.group(1), detail,
-                        key=number.group(1) if number else name, count=n))
+                        key=number.group(1) if number else name, count=n, rows=rows))
     if not out:
         raise ValueError("no draws found (the page may have changed or blocked the read)")
     return out
@@ -286,7 +296,7 @@ def p_new_brunswick(text, url):
         paths = kv.get("pathways", "")
         out.append(item("nb-draws", day, f"New Brunswick {stream}: {count} {'selected' if 'applications selected' in kv else 'invitations'}", url,
                         [f"Pathways: {paths}" if paths else "", f"Cut-off: {kv['cut-off date and time']}" if kv.get("cut-off date and time") else ""],
-                        key=f"{stream}|{day}", count=count))
+                        key=f"{stream}|{day}", count=count, rows=[{"stream": stream + (f" ({paths})" if paths else ""), "score": "", "count": count}]))
     if not out:
         raise ValueError("no selection rounds found")
     return out
@@ -300,7 +310,10 @@ def p_newfoundland(text, url):
         for r in tb[1:]:
             day = parse_day(r[0]) if r else None
             if day and len(r) >= 2:
-                out.append(item("nl-draws", day, f"Newfoundland and Labrador issues {r[1]} invitations to apply", url, [r[2] if len(r) > 2 else ""], key=day.isoformat(), count=r[1]))
+                split = re.findall(r"([A-Za-z][A-Za-z ]*?)\s*-\s*(\d[\d,]*)", r[2]) if len(r) > 2 else []
+                rows = [{"stream": k.strip(), "score": "", "count": str(int(v.replace(",", "")))} for k, v in split] or [{"stream": "Invitations to apply", "score": "", "count": r[1]}]
+                out.append(item("nl-draws", day, f"Newfoundland and Labrador issues {r[1]} invitations to apply", url, [r[2] if len(r) > 2 else ""], key=day.isoformat(), count=r[1],
+                                rows=rows))
     if not out:
         raise ValueError("no ITA table found")
     return out
@@ -320,7 +333,8 @@ def p_nova_scotia(text, url):
             end = (datetime.date(year + (month == 12), month % 12 + 1, 1) - datetime.timedelta(days=1))
             day = min(end, updated) if updated else end
             out.append(item("ns-draws", day, f"Nova Scotia selects {r[1]} candidates from its EOI pool ({r[0]})", url,
-                            ["Monthly total of EOI selections (Nova Scotia Nominee Program and Atlantic Immigration Program)"], key=r[0], count=r[1]))
+                            ["Monthly total of EOI selections (Nova Scotia Nominee Program and Atlantic Immigration Program)"], key=r[0], count=r[1],
+                            rows=[{"stream": f"EOI selections, {r[0]} (monthly total, NSNP and AIP)", "score": "", "count": r[1]}]))
     if not out:
         raise ValueError("no monthly selection table found")
     return out
@@ -336,6 +350,45 @@ def p_ontario(text, url):
             out.append(item("on-updates", day, f"Ontario (OINP): {m.group(2)}", url, key=f"{day}|{m.group(2)}"))
     if not out:
         raise ValueError("no dated updates found")
+    return out
+
+
+def p_ontario_draws(text, url):
+    """Each OINP draw: a dated h3 (in the detail part of the page), then an h4 with its own anchor, then what was issued."""
+    year = re.search(r"/page/(\d{4})-", url)
+    pieces = re.split(r"(<h[234][^>]*>.*?</h[234]>)", text, flags=re.S)
+    out, day = [], None
+    for i, piece in enumerate(pieces):
+        h3 = re.match(r"<h3[^>]*>(.*?)</h3>", piece, re.S)
+        if h3:
+            got = clean(h3.group(1))
+            day = parse_day(got if re.search(r"\d{4}", got) else f"{got}, {year.group(1)}") if year else parse_day(got)
+            continue
+        h4 = re.match(r'<h4[^>]*id="([^"]+)"[^>]*>(.*?)</h4>', piece, re.S)
+        if not h4 or not day:
+            continue
+        title = re.sub(r"\(\s+", "(", re.sub(r"\s+\)", ")", clean(h4.group(2))))  # "( GTA )" -> "(GTA)"
+        body = clean(re.sub(r"<ul.*?</ul>", " ", pieces[i + 1] if i + 1 < len(pieces) else "", flags=re.S))
+        total_n = re.search(r"issued (?:an additional )?([\d,]+) (?:targeted )?invitations", body)
+        if "invit" not in title.lower() or not total_n:
+            continue
+        # "674 invitations ... under the Masters Graduate stream and 244 invitations ... under the PhD Graduate stream"
+        issued = re.findall(r"([\d,]+) (?:targeted )?invitations to apply to [^.]*?(?:under|for) the ([A-Z][\w -]*?) stream\b", body)
+        # "a score of 57 and above received an invitation under the Foreign Worker stream" / "..., and 80 and above under the International Student stream"
+        scores = re.findall(r"(?:score of |, and )(\d+) and above,?(?: received an invitation)?(?: under the (?:Employer Job Offer: )?([A-Z][\w -]*?) stream\b)?", body)
+        link = f"{url}#{h4.group(1)}"
+        if len({st for _, st in issued}) > 1:  # separate counts per stream (Masters and PhD Graduate)
+            rows = [{"stream": st + " stream", "score": next((sc for sc, name in scores if name == st), ""), "count": n} for n, st in issued]
+        else:
+            named = [f"{name} {sc}" if name else sc for sc, name in scores]
+            rows = [{"stream": title, "score": " / ".join(sc for sc, _ in scores),
+                     "count": total_n.group(1), "note": ("Minimum scores: " + ", ".join(named)) if len(scores) > 1 else ""}]
+        n = total([r["count"] for r in rows])
+        out.append(item("on-draws", day, f"Ontario (OINP): {n} invitations ({title})", link,
+                        [f"{r['stream']}: {r['count']} invitations" + (f", minimum score {r['score']}" if r["score"] and "/" not in r["score"] else "") for r in rows]
+                        + [r.get("note", "") for r in rows], key=h4.group(1) + day.isoformat(), count=n, rows=rows))
+    if not out:
+        raise ValueError("no draws found")
     return out
 
 
@@ -356,7 +409,8 @@ def p_quebec(text, url):
     out = []
     for day, rows in by_day.items():
         out.append(item("qc-arrima", day, f"Quebec invites {total([c for _, c in rows])} people to apply under the PSTQ (Arrima)", url,
-                        [f"{s}: {c}" for s, c in rows], key=day.isoformat(), count=total([c for _, c in rows])))
+                        [f"{s}: {c}" for s, c in rows], key=day.isoformat(), count=total([c for _, c in rows]),
+                        rows=[{"stream": f"PSTQ {s}", "score": "", "count": c} for s, c in rows]))
     if not out:
         raise ValueError("no invitation rounds found")
     return out
@@ -364,7 +418,7 @@ def p_quebec(text, url):
 
 PARSERS = {"ircc_news": p_ircc_news, "ircc_notices": p_ircc_notices, "page_date": p_page_date, "jobbank": p_jobbank, "alberta": p_alberta,
            "bc": p_bc, "manitoba": p_manitoba, "new_brunswick": p_new_brunswick, "newfoundland": p_newfoundland, "nova_scotia": p_nova_scotia,
-           "ontario": p_ontario, "quebec": p_quebec}
+           "ontario": p_ontario, "ontario_draws": p_ontario_draws, "quebec": p_quebec}
 
 
 # ---------- state ----------
@@ -396,6 +450,19 @@ def read_source(key, today, fetch=None):
     fetch = fetch or wt.fetch
     _, _, _, url, parser = SOURCES[key]
     years = [today.year, today.year - 1] if "{year}" in url else [None]
+    if key in BOTH_YEARS:  # draws: this year's page and last year's, so the draw table covers a full year
+        got, errors = [], []
+        for y in years:
+            text = fetch(year_url(url, y))
+            try:
+                if not text:
+                    raise ConnectionError("couldn't read the page")
+                got += PARSERS[parser](text, year_url(url, y))
+            except (ValueError, ConnectionError) as e:
+                errors.append(e)
+        if not got:
+            raise errors[0]
+        return got
     last = None
     for y in years:
         page_url = year_url(url, y) if y else url
@@ -429,9 +496,37 @@ def refresh(today=None, fetch=None, only=None):
         except Exception as e:  # a failed read must show, not pass as "no news"
             sources[key] = {"ok": False, "checked": stamp, "error": (str(e) or type(e).__name__)[:160], "last_ok": (sources.get(key) or {}).get("last_ok", "")}
     cutoff = (today - datetime.timedelta(days=KEEP_DAYS)).isoformat()
-    state.update(items={k: v for k, v in items.items() if v.get("date", "") >= cutoff}, sources=sources, checked=stamp)
+    draw_cutoff = (today - datetime.timedelta(days=DRAW_KEEP_DAYS)).isoformat()
+    state.update(items={k: v for k, v in items.items() if v.get("date", "") >= (draw_cutoff if v.get("source") in DRAW_SOURCES else cutoff)},
+                 sources=sources, checked=stamp)
     save_state(state)
     return state
+
+
+# ---------- provincial draws as a table ----------
+DRAW_SOURCES = [k for k, v in SOURCES.items() if k.endswith("-draws") or k == "qc-arrima"]
+BOTH_YEARS = {"on-draws"}
+
+
+def draw_rows(state=None, today=None):
+    """Every saved provincial draw, one row per stream, newest first, each linked to the province's own page."""
+    state = state if state is not None else load_state()
+    out = []
+    for it in (state.get("items") or {}).values():
+        if it.get("source") not in DRAW_SOURCES:
+            continue
+        rows = it.get("rows") or [{"stream": it.get("title", ""), "score": "", "count": it.get("count") or ""}]  # saved before rows were kept
+        for r in rows:
+            out.append({"date": it.get("date", ""), "province": it.get("province", ""), "province_name": PROVINCE_NAME.get(it.get("province", ""), it.get("province", "")),
+                        "stream": r.get("stream", ""), "score": r.get("score", ""), "count": r.get("count", ""), "note": r.get("note", ""), "link": it.get("link", ""),
+                        "site": site_name(it.get("link", "")), "monthly": it.get("source") == "ns-draws"})
+    out.sort(key=lambda r: (r["date"], r["province"]), reverse=True)
+    return out
+
+
+def site_name(url):
+    m = re.match(r"https?://(?:www\.)?([^/]+)", url or "")
+    return m.group(1) if m else ""
 
 
 # ---------- items the agent already holds (no web read) ----------

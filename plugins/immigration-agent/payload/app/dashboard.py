@@ -266,13 +266,44 @@ def inventory_card():
         return None
 
 
+def rounds_card():
+    """Every saved Express Entry round, newest first, each with IRCC's own page for it."""
+    state = dr.load_state()
+    rows = [{k: r.get(k) for k in ("number", "date", "name", "category", "crs", "size", "tiebreak", "programs")} | {"url": r.get("url") or dr.round_url(r.get("number"))}
+            for r in state.get("rounds") or []]
+    return {"rows": rows, "checked": state.get("checked", ""), "source": dr.ROUNDS_PAGE, "source_name": "IRCC, Express Entry rounds of invitations",
+            "stale": dr.stale()}
+
+
+def pnp_card():
+    """Provincial draws read from each province's own page (saved by the news check), plus draws you recorded with /draws."""
+    state = nw.load_state()
+    rows = nw.draw_rows(state)
+    for d in dr.load_state().get("pnp") or []:
+        code = d.get("province", "")
+        rows.append({"date": d.get("date", ""), "province": code, "province_name": nw.PROVINCE_NAME.get(code, code), "stream": d.get("stream", ""),
+                     "score": str(d.get("min_score", "")), "count": "", "link": nw.province_page(code), "site": nw.site_name(nw.province_page(code)),
+                     "recorded": True, "note": d.get("note", "")})
+    rows.sort(key=lambda r: (r["date"], r["province"]), reverse=True)
+    sources = state.get("sources") or {}
+    read = [{"province": nw.SOURCES[k][2], "name": nw.PROVINCE_NAME.get(nw.SOURCES[k][2], ""), "url": nw.year_url(nw.SOURCES[k][3], today().year),
+             "ok": (sources.get(k) or {}).get("ok"), "error": (sources.get(k) or {}).get("error", "")} for k in nw.DRAW_SOURCES]
+    by_hand = [{"province": p, "name": nw.PROVINCE_NAME.get(p, p), "url": u, "why": why} for _, p, u, why in nw.BY_HAND]
+    return {"rows": rows, "checked": state.get("checked", ""), "stale": nw.stale(), "keep_days": nw.DRAW_KEEP_DAYS, "read": read, "by_hand": by_hand}
+
+
 def ircc():
-    """The IRCC data page: inventory and processing times (the release's data, or the newer copy the daily check saved)."""
-    out = {"today": today().isoformat(), "inventory": inventory_card(), "times": None, "refresh": idata.status(),
+    """The IRCC data page: inventory, processing times (the release's data, or the newer copy the daily check saved) and the
+    Express Entry rounds saved from IRCC's feed."""
+    out = {"today": today().isoformat(), "inventory": inventory_card(), "times": None, "rounds": rounds_card(), "pnp": None, "refresh": idata.status(),
            "running": NEWS_CHECK["running"], "error": NEWS_CHECK["error"]}
     try:
         out["times"] = it.card(today())
     except Exception:  # a damaged data file must not break the page
+        pass
+    try:
+        out["pnp"] = pnp_card()
+    except Exception:
         pass
     return out
 

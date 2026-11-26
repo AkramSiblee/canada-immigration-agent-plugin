@@ -32,8 +32,11 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import case as cs  # noqa: E402
 
 FEED = "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json"
+ROUNDS_PAGE = "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations.html"
+ROUND_PAGE = ("https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/"
+              "ministerial-instructions/express-entry-rounds/invitations.html?q={n}")
 STATE = cs.ROOT / ".draws-state.json"
-KEEP = 60
+KEEP = 200          # rounds saved: about two years, so the IRCC data tab can total a whole year
 NEAR = 10            # points below the cut-off still worth a look
 RECENT_DAYS = 14     # a round this recent is flagged in the daily alerts
 EVERY_HOURS = 20
@@ -75,6 +78,14 @@ def num(text):
         return None
 
 
+def round_url(n, html=""):
+    """IRCC's page for one round (its Ministerial Instructions). The feed gives an internal path; the public page is the same path on canada.ca."""
+    m = re.search(r"href='([^']*invitations\.html\?q=\d+)'", html or "")
+    if m:
+        return "https://www.canada.ca" + m.group(1).replace("/content/canadasite", "", 1)
+    return ROUND_PAGE.format(n=n)
+
+
 def parse_feed(text):
     data = json.loads(text)
     out = []
@@ -87,7 +98,8 @@ def parse_feed(text):
         if n is None or crs is None:
             continue
         out.append({"number": n, "date": day.isoformat(), "name": r.get("drawName", ""), "category": category(r.get("drawName", "")),
-                    "size": num(r.get("drawSize")), "crs": crs, "tiebreak": r.get("drawCutOff", ""), "programs": r.get("drawText2", "")})
+                    "size": num(r.get("drawSize")), "crs": crs, "tiebreak": r.get("drawCutOff", ""), "programs": r.get("drawText2", ""),
+                    "url": round_url(n, r.get("drawNumberURL", ""))})
     if not out:
         raise ValueError("no rounds in IRCC's feed (its layout may have changed)")
     return sorted(out, key=lambda r: -r["number"])

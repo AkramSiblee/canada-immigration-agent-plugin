@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Keep the dashboard's IRCC data current: processing times and the application inventory, read from IRCC's own public pages.
+"""Keep the dashboard's IRCC data current: processing times, the application inventory and the Express Entry rounds, read from
+IRCC's own public pages.
 
 Usage:
   python3 scripts/ircc_data.py check      read IRCC's processing time feeds and inventory page now (public; nothing about you or
@@ -7,8 +8,8 @@ Usage:
   python3 scripts/ircc_data.py status     when each part was last read, IRCC's own update dates, and any failure
 
 Guarantees:
-  - Official sources only: the three feeds behind IRCC's "Check processing times" tool, and IRCC's "Inside IRCC's application
-    processing system" page. IRCC's words and figures are kept as published; nothing is estimated.
+  - Official sources only: the three feeds behind IRCC's "Check processing times" tool, IRCC's "Inside IRCC's application
+    processing system" page, and the feed behind IRCC's "Rounds of invitations" page (saved by scripts/draws.py). IRCC's words and figures are kept as published; nothing is estimated.
   - The daily alerts run this once a day; the dashboard's Check now button runs it on request.
   - The refreshed copy is saved in cases/.ircc-data/ and used only when it is at least as new as the data shipped with the agent.
     A failed read keeps the last good data and is reported; it never produces guessed figures.
@@ -52,14 +53,19 @@ def stale(now=None):
 
 
 def refresh(today=None):
-    """Read both sources; one failure doesn't stop the other. Returns the saved state."""
+    """Read every source; one failure doesn't stop the others. Returns the saved state."""
+    import draws as dr
     import inventory as iv
     import ircc_times as it
+
+    def rounds():
+        st, new = dr.refresh()
+        return f"{len(new)} new round(s), latest #{st['latest']}" if new else f"no new round, latest #{st['latest']}"
     today = today or datetime.date.today()
     stamp = datetime.datetime.now().isoformat(timespec="seconds")
     state = load_state()
     parts = state.get("parts", {})
-    for key, run in (("times", lambda: it.refresh_local(today)), ("inventory", lambda: iv.refresh_local(today))):
+    for key, run in (("times", lambda: it.refresh_local(today)), ("inventory", lambda: iv.refresh_local(today)), ("rounds", rounds)):
         try:
             result = run()
             note = result if isinstance(result, str) else (f"{len(result)} note(s): " + "; ".join(result[:3]) if result else "ok")
@@ -84,13 +90,13 @@ def main():
     p.add_argument("cmd", choices=["check", "status"])
     a = p.parse_args()
     if a.cmd == "check":
-        print("Reading IRCC's processing times and inventory (public pages; nothing about you or your clients is sent)...")
+        print("Reading IRCC's processing times, inventory and Express Entry rounds (public pages; nothing about you or your clients is sent)...")
         refresh()
     import inventory as iv
     import ircc_times as it
     s = load_state()
     print("Last check:", s.get("checked", "never"))
-    for key, label in (("times", "Processing times"), ("inventory", "Application inventory")):
+    for key, label in (("times", "Processing times"), ("inventory", "Application inventory"), ("rounds", "Express Entry rounds")):
         part = (s.get("parts") or {}).get(key) or {}
         print(f"  {label}: " + ("not read yet" if not part else "OK (" + part.get("note", "") + ")" if part.get("ok") else "FAILED: " + part.get("error", "")))
     c, inv = it.card(), iv.card()

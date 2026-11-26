@@ -2,7 +2,7 @@
 domain: 02-pnp
 topic: alberta
 status: verified
-last_verified: 2026-11-17
+last_verified: 2026-11-25
 confidence: H
 review_every_days: 30
 sources:
@@ -25,6 +25,11 @@ sources:
   - https://www.canada.ca/en/immigration-refugees-citizenship/corporate/publications-manuals/operational-bulletins-manuals/temporary-residents/foreign-workers/exemption-codes/canadian-interests-significant-benefit-entrepreneurs-self-employed-candidates-seeking-operate-business-r205-c11.html
   - https://www.alberta.ca/system/files/im-worker-stream-expression-of-interest-points-grid.pdf
   - https://www.alberta.ca/system/files/jeti-aaip-fee-schedule.pdf
+  - https://www.alberta.ca/how-to-apply-to-aaip-worker-streams
+  - https://www.alberta.ca/job-offer-and-employer-requirements
+  - https://www.alberta.ca/system/files/jeti-aaip-worker-streams-document-checklist.pdf
+  - https://www.alberta.ca/system/files/jeti-aaip-graduate-entrepreneur-stream-checklist.pdf
+  - https://www.alberta.ca/system/files/im-aaip-business-plan-guidelines.pdf
 ---
 # Alberta (AAIP)
 
@@ -94,6 +99,8 @@ sources:
 - Full-time Alberta offer. Excludes part-time, casual, seasonal, contractors, owners, agency, home-based, virtual.
 - Excluded NOCs: 00010, 40021, 40030, 40041, 60040*, 41100, 41220, 41221, 51111, 51122, 42200*, 42202*, 43100, 43109, 53121, 53122, 53124, 53200, 63101, 33100*, 44100, 44101, 64321, 55109, 65109, 65211, 65229, 65329, 75200, 85101, 85102, 85104, 85110, 85121.
 
+- Re-read 2026-11-25 (H): PGWP route needs a Minister-approved Alberta public credential (diploma 2+ yrs, bachelor's, graduate; post-diploma/post-bacc cert 1+ yr) and an occupation related to the Alberta field of study; paid full-time Alberta co-op counts. Single language test, no One Skill Retake, PTE accepted. How-to-apply moved to https://www.alberta.ca/how-to-apply-to-aaip-worker-streams (old stream URL 404): invitation 15 days to create the draft, 30 days to submit, $1,500 within 24 h; WEOI validity 12 months from fee payment. Worker Streams Checklist dated 2026-01-28 (https://www.alberta.ca/system/files/jeti-aaip-worker-streams-document-checklist.pdf): 3 months of pay statements, offer letter with 9 content points, Employer Declaration and Authorization (AINP13484), reference letters, credentials, all permits and LMIAs.
+
 **Job offer and employer rules (https://www.alberta.ca/job-offer-and-employer-requirements, read 2026-11-09) (H)**
 - Employer: registered, place of business in Alberta, **2 complete fiscal years** of operation, demonstrated need (valid TFW/IMP permit or recruitment efforts). $400,000 gross revenue and 3 FTE employees; if not met, capped at 1 nominee at 2 years, 2 at 3 years, +1 per added year.
 - Offer: bona fide, continuous, full-time 30+ h, 12+ months. Wage: provincial minimum **and** LMIA wage if applicable, **or** at least the lowest starting wage for the occupation across all industries in Alberta. Not the median.
@@ -151,8 +158,13 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 - **CLB/NCLC 7** in each skill; test under 2 years old at EOI.
 - New business or buy-out, **34%+** ownership; partners must be citizens or PRs. No business needs to be set up until the Business Application is approved. Must live in Alberta and manage day to day.
 - **No minimum investment, net worth or job creation stated.** Points only.
-- EOI grid **max 125**: business establishment 75 (management experience 15; economic benefit 40, including jobs up to 15 and rural location 5; investment 20, from 5 for $25,000 or less to 20 for $75,001+); human capital 25 (CLB 7 = 5, CLB 8 = 12, CLB 9+ = 15; Alberta education up to 10); adaptability 25 (age 21-49 5; spouse 10; Alberta relatives 10).
+- EOI grid **max 125** (eligibility page, read 2026-11-25, H). **Business establishment 75:** management or ownership experience (6 months 5; over 6 months to 1 year 10; over 1 year 15); economic benefit 40 = economic development sector (e.g. energy, agriculture, technology, fintech) 15 + succession 5 + jobs for citizens/PRs, not relatives, 6+ months (1 = 5, 2 = 10, 3+ = 15) + rural, outside Calgary and Edmonton CMAs, 5; total investment ($25,000 or less 5; $25,001-50,000 10; $50,001-75,000 15; $75,001+ 20). **Human capital 25:** CLB 7 = 5, CLB 8 = 12, CLB 9+ = 15; Alberta education: bachelor's or 2-yr diploma 5, two or more credentials 7, master's+ 10. **Adaptability 25:** age 21-49 5; spouse with 1 yr Alberta work, 2 yrs Alberta study or CLB 5 10; Alberta relative 10. A new business can reach 120 (no succession points).
+- Economic establishment factors AAIP may consider: Alberta business presence (owner-operator, premises), viability and sustainability, economic contribution, employment and workforce planning, applicant capacity and alignment, regulatory readiness.
+- Partner's investment: the grid says 'total business investment'; the pages do not say whether a citizen/PR partner's funds count toward the candidate's points. Confirm with AAIP. Owners are unlikely to count as created jobs.
 - Nomination can be used to renew the work permit.
+- Re-read 2026-11-25: still "currently accepting EOIs". EOI forms: Business Proposal Summary, Net Worth Worksheet (if investing), Use of Representative, Dependants Authorization. Business Application checklist PDF (2022/08, https://www.alberta.ca/system/files/jeti-aaip-graduate-entrepreneur-stream-checklist.pdf): passport, PGWP, language, Alberta credentials (2+ yrs), experience letters (own-words duties), income proof, AIT/licences if applicable, Alberta relative proof, business plan (same copy as evaluator's), Business Plan Evaluation Report (KPMG Calgary or MNP Edmonton), QSP report only if requested, certified translations. Start-up Report form AINP12696; Business Progress Report AINP12703. (H)
+- Business Plan Guidelines (dated 2024-10-30, https://www.alberta.ca/system/files/im-aaip-business-plan-guidelines.pdf, read 2026-11-25) (H): 8 sections; about 10 pages plus appendices; preparer and helpers must be named; interview possible (Edmonton or Teams). Required appendices: investment breakdown, 3-year pro formas (year 1 monthly) with assumptions, resume. Investment rules: goodwill only with a CPA/CBV valuation, capped at 30%; working capital excluded except up to 3 months of start-up inventory (written request); vehicle capped at $30,000 and real estate at $75,000 (both only with written approval); owner/family wages and personal property never count. The BPER for this stream is done only by KPMG (Calgary) or MNP (Edmonton); provider fees and turnaround are not published.
+- **Conflict:** eligibility page lists PTE among accepted tests; the 2022/08 checklist lists only CELPIP, IELTS GT, TEF, TCF. Confirm with AAIP before relying on PTE.
 
 ### Foreign Graduate Entrepreneur
 - Degree from a non-Canadian institution within 10 years of EOI, with ECA. 6 months' full-time experience as business owner or manager (incubator or accelerator counts). **CLB/NCLC 5**.
@@ -220,10 +232,11 @@ Pages read 2026-11-17. Alberta pages show no "last updated" date (footer "© 202
 - Farm Stream intake status (not stated on official pages; re-checked 2026-11-20)
 - Rural Renewal communities designated in 2022-2023 (past the 3-year term): still listed on the official designation page 2026-11-20, extension status not shown (see regional-community-streams.md)
 - Entrepreneur EOI selections (not published); Final Report for Nomination contents and deadline
+- Graduate Entrepreneur: PTE acceptance (eligibility page yes, 2022/08 checklist no); whether a partner's funds count toward investment points; MNP/KPMG BPER fees and turnaround (not published)
 
 ## Sources
 - AAIP: https://www.alberta.ca/alberta-advantage-immigration-program
 - Streams: https://www.alberta.ca/aaip-application-streams
 - Updates: https://www.alberta.ca/aaip-updates
 - Processing info (2026-11-04): https://www.alberta.ca/aaip-processing-information
-All read 2026-11-07.
+Read 2026-11-07; worker how-to, job offer, checklists and business plan guidelines read 2026-11-25. Old URL https://www.alberta.ca/aaip-alberta-opportunity-stream-how-to-apply returns 404.
